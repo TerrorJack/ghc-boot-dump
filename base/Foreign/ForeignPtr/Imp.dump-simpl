@@ -1,0 +1,625 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:02:53.837002859 UTC
+
+Result size of Tidy Core
+  = {terms: 277, types: 501, coercions: 84, joins: 0/3}
+
+-- RHS size: {terms: 25, types: 44, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$wnewForeignPtr [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Addr#
+     -> Addr#
+     -> State# RealWorld
+     -> (# State# RealWorld, ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S,U><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 113 30}]
+Foreign.ForeignPtr.Imp.$wnewForeignPtr
+  = \ (@ a_s7N1i)
+      (ww_s7N1o :: Addr#)
+      (ww1_s7N1s :: Addr#)
+      (w_s7N1l :: State# RealWorld) ->
+      case newMutVar#
+             @ GHC.ForeignPtr.Finalizers
+             @ RealWorld
+             GHC.ForeignPtr.NoFinalizers
+             w_s7N1l
+      of
+      { (# ipv_i7IAN, ipv1_i7IAO #) ->
+      case GHC.ForeignPtr.$winsertCFinalizer
+             @ () ipv1_i7IAO ww_s7N1o 0# __NULL ww1_s7N1s GHC.Tuple.() ipv_i7IAN
+      of
+      { (# ipv2_i7JiK, ipv3_i7JiL #) ->
+      (# ipv2_i7JiK,
+         GHC.ForeignPtr.ForeignPtr
+           @ a_s7N1i ww1_s7N1s (GHC.ForeignPtr.PlainForeignPtr ipv1_i7IAO) #)
+      }
+      }
+
+-- RHS size: {terms: 14, types: 15, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.newForeignPtr1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     FinalizerPtr a
+     -> Ptr a
+     -> State# RealWorld
+     -> (# State# RealWorld, ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7N1i)
+                 (w_s7N1j [Occ=Once!] :: FinalizerPtr a_s7N1i)
+                 (w1_s7N1k [Occ=Once!] :: Ptr a_s7N1i)
+                 (w2_s7N1l [Occ=Once] :: State# RealWorld) ->
+                 case w_s7N1j of { GHC.Ptr.FunPtr ww1_s7N1o [Occ=Once] ->
+                 case w1_s7N1k of { GHC.Ptr.Ptr ww3_s7N1s [Occ=Once] ->
+                 Foreign.ForeignPtr.Imp.$wnewForeignPtr
+                   @ a_s7N1i ww1_s7N1o ww3_s7N1s w2_s7N1l
+                 }
+                 }}]
+Foreign.ForeignPtr.Imp.newForeignPtr1
+  = \ (@ a_s7N1i)
+      (w_s7N1j :: FinalizerPtr a_s7N1i)
+      (w1_s7N1k :: Ptr a_s7N1i)
+      (w2_s7N1l :: State# RealWorld) ->
+      case w_s7N1j of { GHC.Ptr.FunPtr ww1_s7N1o ->
+      case w1_s7N1k of { GHC.Ptr.Ptr ww3_s7N1s ->
+      Foreign.ForeignPtr.Imp.$wnewForeignPtr
+        @ a_s7N1i ww1_s7N1o ww3_s7N1s w2_s7N1l
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+newForeignPtr
+  :: forall a. FinalizerPtr a -> Ptr a -> IO (ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.ForeignPtr.Imp.newForeignPtr1
+               `cast` (forall (a :: <*>_N).
+                       <FinalizerPtr a>_R
+                       ->_R <Ptr a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a>_R)
+                       :: (forall a.
+                           FinalizerPtr a
+                           -> Ptr a
+                           -> State# RealWorld
+                           -> (# State# RealWorld, ForeignPtr a #) :: *)
+                          ~R# (forall a.
+                               FinalizerPtr a -> Ptr a -> IO (ForeignPtr a) :: *))}]
+newForeignPtr
+  = Foreign.ForeignPtr.Imp.newForeignPtr1
+    `cast` (forall (a :: <*>_N).
+            <FinalizerPtr a>_R
+            ->_R <Ptr a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a>_R)
+            :: (forall a.
+                FinalizerPtr a
+                -> Ptr a
+                -> State# RealWorld
+                -> (# State# RealWorld, ForeignPtr a #) :: *)
+               ~R# (forall a. FinalizerPtr a -> Ptr a -> IO (ForeignPtr a) :: *))
+
+-- RHS size: {terms: 22, types: 39, coercions: 2, joins: 0/0}
+Foreign.ForeignPtr.Imp.withForeignPtr1
+  :: forall a b.
+     ForeignPtr a
+     -> (Ptr a -> IO b) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7MVy)
+                 (@ b_a7MVz)
+                 (fo_a7MSY :: ForeignPtr a_a7MVy)
+                 (io_a7MSZ [Occ=Once!] :: Ptr a_a7MVy -> IO b_a7MVz)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case ((io_a7MSZ (unsafeForeignPtrToPtr @ a_a7MVy fo_a7MSY))
+                       `cast` (GHC.Types.N:IO[0] <b_a7MVz>_R
+                               :: (IO b_a7MVz :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, b_a7MVz #) :: *)))
+                        s_i7IAv
+                 of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                 case fo_a7MSY of { ForeignPtr _ [Occ=Dead] r_a7ILa [Occ=Once] ->
+                 case touch# @ 'LiftedRep @ ForeignPtrContents r_a7ILa ipv_i7IAy
+                 of s'_a7ILd
+                 { __DEFAULT ->
+                 (# s'_a7ILd, ipv1_i7IAz #)
+                 }
+                 }
+                 }}]
+Foreign.ForeignPtr.Imp.withForeignPtr1
+  = \ (@ a_a7MVy)
+      (@ b_a7MVz)
+      (fo_a7MSY :: ForeignPtr a_a7MVy)
+      (io_a7MSZ :: Ptr a_a7MVy -> IO b_a7MVz)
+      (s_i7IAv :: State# RealWorld) ->
+      case ((io_a7MSZ (unsafeForeignPtrToPtr @ a_a7MVy fo_a7MSY))
+            `cast` (GHC.Types.N:IO[0] <b_a7MVz>_R
+                    :: (IO b_a7MVz :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, b_a7MVz #) :: *)))
+             s_i7IAv
+      of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case fo_a7MSY of { ForeignPtr ds2_d7J4I r_a7ILa ->
+      case touch# @ 'LiftedRep @ ForeignPtrContents r_a7ILa ipv_i7IAy
+      of s'_a7ILd
+      { __DEFAULT ->
+      (# s'_a7ILd, ipv1_i7IAz #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+withForeignPtr
+  :: forall a b. ForeignPtr a -> (Ptr a -> IO b) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.ForeignPtr.Imp.withForeignPtr1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <ForeignPtr a>_R
+                       ->_R <Ptr a -> IO b>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           ForeignPtr a
+                           -> (Ptr a -> IO b)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. ForeignPtr a -> (Ptr a -> IO b) -> IO b :: *))}]
+withForeignPtr
+  = Foreign.ForeignPtr.Imp.withForeignPtr1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <ForeignPtr a>_R
+            ->_R <Ptr a -> IO b>_R
+            ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                ForeignPtr a
+                -> (Ptr a -> IO b)
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. ForeignPtr a -> (Ptr a -> IO b) -> IO b :: *))
+
+-- RHS size: {terms: 27, types: 47, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     Addr#
+     -> Addr#
+     -> Addr#
+     -> State# RealWorld
+     -> (# State# RealWorld, ForeignPtr a #)
+[GblId,
+ Arity=4,
+ Str=<S,U><S,U><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0 0] 113 30}]
+Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+  = \ (@ env_s7N1v)
+      (@ a_s7N1w)
+      (ww_s7N1D :: Addr#)
+      (ww1_s7N1H :: Addr#)
+      (ww2_s7N1L :: Addr#)
+      (w_s7N1A :: State# RealWorld) ->
+      case newMutVar#
+             @ GHC.ForeignPtr.Finalizers
+             @ RealWorld
+             GHC.ForeignPtr.NoFinalizers
+             w_s7N1A
+      of
+      { (# ipv_i7IAN, ipv1_i7IAO #) ->
+      case GHC.ForeignPtr.$winsertCFinalizer
+             @ ()
+             ipv1_i7IAO
+             ww_s7N1D
+             1#
+             ww1_s7N1H
+             ww2_s7N1L
+             GHC.Tuple.()
+             ipv_i7IAN
+      of
+      { (# ipv2_i7JiK, ipv3_i7JiL #) ->
+      (# ipv2_i7JiK,
+         GHC.ForeignPtr.ForeignPtr
+           @ a_s7N1w ww2_s7N1L (GHC.ForeignPtr.PlainForeignPtr ipv1_i7IAO) #)
+      }
+      }
+
+-- RHS size: {terms: 20, types: 25, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.newForeignPtrEnv1 [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     FinalizerEnvPtr env a
+     -> Ptr env
+     -> Ptr a
+     -> State# RealWorld
+     -> (# State# RealWorld, ForeignPtr a #)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ env_s7N1v)
+                 (@ a_s7N1w)
+                 (w_s7N1x [Occ=Once!] :: FinalizerEnvPtr env_s7N1v a_s7N1w)
+                 (w1_s7N1y [Occ=Once!] :: Ptr env_s7N1v)
+                 (w2_s7N1z [Occ=Once!] :: Ptr a_s7N1w)
+                 (w3_s7N1A [Occ=Once] :: State# RealWorld) ->
+                 case w_s7N1x of { GHC.Ptr.FunPtr ww1_s7N1D [Occ=Once] ->
+                 case w1_s7N1y of { GHC.Ptr.Ptr ww3_s7N1H [Occ=Once] ->
+                 case w2_s7N1z of { GHC.Ptr.Ptr ww5_s7N1L [Occ=Once] ->
+                 Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+                   @ env_s7N1v @ a_s7N1w ww1_s7N1D ww3_s7N1H ww5_s7N1L w3_s7N1A
+                 }
+                 }
+                 }}]
+Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+  = \ (@ env_s7N1v)
+      (@ a_s7N1w)
+      (w_s7N1x :: FinalizerEnvPtr env_s7N1v a_s7N1w)
+      (w1_s7N1y :: Ptr env_s7N1v)
+      (w2_s7N1z :: Ptr a_s7N1w)
+      (w3_s7N1A :: State# RealWorld) ->
+      case w_s7N1x of { GHC.Ptr.FunPtr ww1_s7N1D ->
+      case w1_s7N1y of { GHC.Ptr.Ptr ww3_s7N1H ->
+      case w2_s7N1z of { GHC.Ptr.Ptr ww5_s7N1L ->
+      Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+        @ env_s7N1v @ a_s7N1w ww1_s7N1D ww3_s7N1H ww5_s7N1L w3_s7N1A
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 20, joins: 0/0}
+newForeignPtrEnv
+  :: forall env a.
+     FinalizerEnvPtr env a -> Ptr env -> Ptr a -> IO (ForeignPtr a)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+               `cast` (forall (env :: <*>_N) (a :: <*>_N).
+                       <FinalizerEnvPtr env a>_R
+                       ->_R <Ptr env>_R
+                       ->_R <Ptr a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a>_R)
+                       :: (forall env a.
+                           FinalizerEnvPtr env a
+                           -> Ptr env
+                           -> Ptr a
+                           -> State# RealWorld
+                           -> (# State# RealWorld, ForeignPtr a #) :: *)
+                          ~R# (forall env a.
+                               FinalizerEnvPtr env a
+                               -> Ptr env -> Ptr a -> IO (ForeignPtr a) :: *))}]
+newForeignPtrEnv
+  = Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+    `cast` (forall (env :: <*>_N) (a :: <*>_N).
+            <FinalizerEnvPtr env a>_R
+            ->_R <Ptr env>_R
+            ->_R <Ptr a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a>_R)
+            :: (forall env a.
+                FinalizerEnvPtr env a
+                -> Ptr env
+                -> Ptr a
+                -> State# RealWorld
+                -> (# State# RealWorld, ForeignPtr a #) :: *)
+               ~R# (forall env a.
+                    FinalizerEnvPtr env a
+                    -> Ptr env -> Ptr a -> IO (ForeignPtr a) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r7N3Z :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_r7N3Z = "undefined"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl1_r7N40 :: [Char]
+[GblId]
+lvl1_r7N40 = unpackCString# lvl_r7N3Z
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.ForeignPtr.Imp.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl2_r7N41 :: [Char]
+[GblId]
+lvl2_r7N41 = unpackCString# Foreign.ForeignPtr.Imp.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 70 0}]
+Foreign.ForeignPtr.Imp.$trModule2 = "Foreign.ForeignPtr.Imp"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl3_r7N42 :: [Char]
+[GblId]
+lvl3_r7N42 = unpackCString# Foreign.ForeignPtr.Imp.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl4_r7N43 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl4_r7N43 = "./Foreign/ForeignPtr/Imp.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl5_r7N44 :: [Char]
+[GblId]
+lvl5_r7N44 = unpackCString# lvl4_r7N43
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl6_r7N45 :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl6_r7N45 = GHC.Types.I# 110#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_r7N46 :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl7_r7N46 = GHC.Types.I# 35#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl8_r7N47 :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl8_r7N47 = GHC.Types.I# 44#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl9_r7N48 :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl9_r7N48
+  = GHC.Stack.Types.SrcLoc
+      lvl2_r7N41
+      lvl3_r7N42
+      lvl5_r7N44
+      lvl6_r7N45
+      lvl7_r7N46
+      lvl6_r7N45
+      lvl8_r7N47
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl10_r7N49 :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl10_r7N49
+  = GHC.Stack.Types.PushCallStack
+      lvl1_r7N40 lvl9_r7N48 GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 :: forall a. a
+[GblId, Str=x]
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray1
+  = \ (@ a_a7MUx) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7MUx
+        (lvl10_r7N49
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 44, types: 61, coercions: 11, joins: 0/2}
+mallocForeignPtrArray
+  :: forall a. Storable a => Int -> IO (ForeignPtr a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30] 139 60}]
+mallocForeignPtrArray
+  = \ (@ a_a7MUx) ($dStorable_a7MUz :: Storable a_a7MUx) ->
+      let {
+        lvl11_s7MY2 [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        lvl11_s7MY2
+          = sizeOf
+              @ a_a7MUx
+              $dStorable_a7MUz
+              (Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 @ a_a7MUx) } in
+      (\ (size_a7MT8 :: Int) (eta_B1 :: State# RealWorld) ->
+         case size_a7MT8 of { I# x_i7MWL ->
+         case lvl11_s7MY2 of { I# y_i7MWP ->
+         let {
+           x1_alN9 [Dmd=<S,U>] :: Int#
+           [LclId]
+           x1_alN9 = *# x_i7MWL y_i7MWP } in
+         case <# x1_alN9 0# of {
+           __DEFAULT ->
+             case newMutVar#
+                    @ GHC.ForeignPtr.Finalizers
+                    @ RealWorld
+                    GHC.ForeignPtr.NoFinalizers
+                    eta_B1
+             of
+             { (# ipv_i7IAN, ipv1_i7IAO #) ->
+             case newPinnedByteArray# @ RealWorld x1_alN9 ipv_i7IAN of
+             { (# ipv2_s7Jhx, ipv3_s7Jhy #) ->
+             (# ipv2_s7Jhx,
+                GHC.ForeignPtr.ForeignPtr
+                  @ a_a7MUx
+                  (byteArrayContents#
+                     (ipv3_s7Jhy
+                      `cast` (UnsafeCo representational (MutableByteArray#
+                                                           RealWorld) ByteArray#
+                              :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                 ~R# (ByteArray# :: TYPE 'UnliftedRep))))
+                  (GHC.ForeignPtr.MallocPtr ipv3_s7Jhy ipv1_i7IAO) #)
+             }
+             };
+           1# -> case GHC.ForeignPtr.mallocForeignPtrBytes2 of wild2_00 { }
+         }
+         }
+         })
+      `cast` (<Int>_R ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a_a7MUx>_R)
+              :: (Int
+                  -> State# RealWorld
+                  -> (# State# RealWorld, ForeignPtr a_a7MUx #) :: *)
+                 ~R# (Int -> IO (ForeignPtr a_a7MUx) :: *))
+
+-- RHS size: {terms: 41, types: 58, coercions: 5, joins: 0/1}
+Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Int# -> State# RealWorld -> (# State# RealWorld, ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0 0] 110 30}]
+Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+  = \ (@ a_s7N1Q)
+      (w_s7N1R :: Storable a_s7N1Q)
+      (ww_s7N1W :: Int#)
+      (w1_s7N1T :: State# RealWorld) ->
+      case sizeOf
+             @ a_s7N1Q
+             w_s7N1R
+             (Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 @ a_s7N1Q)
+      of
+      { I# y_i7MWP ->
+      let {
+        x_alN9 [Dmd=<S,U>] :: Int#
+        [LclId]
+        x_alN9 = *# (+# ww_s7N1W 1#) y_i7MWP } in
+      case <# x_alN9 0# of {
+        __DEFAULT ->
+          case newMutVar#
+                 @ GHC.ForeignPtr.Finalizers
+                 @ RealWorld
+                 GHC.ForeignPtr.NoFinalizers
+                 w1_s7N1T
+          of
+          { (# ipv_i7IAN, ipv1_i7IAO #) ->
+          case newPinnedByteArray# @ RealWorld x_alN9 ipv_i7IAN of
+          { (# ipv2_s7Jhx, ipv3_s7Jhy #) ->
+          (# ipv2_s7Jhx,
+             GHC.ForeignPtr.ForeignPtr
+               @ a_s7N1Q
+               (byteArrayContents#
+                  (ipv3_s7Jhy
+                   `cast` (UnsafeCo representational (MutableByteArray#
+                                                        RealWorld) ByteArray#
+                           :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                              ~R# (ByteArray# :: TYPE 'UnliftedRep))))
+               (GHC.ForeignPtr.MallocPtr ipv3_s7Jhy ipv1_i7IAO) #)
+          }
+          };
+        1# -> case GHC.ForeignPtr.mallocForeignPtrBytes2 of wild_00 { }
+      }
+      }
+
+-- RHS size: {terms: 11, types: 10, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Int -> State# RealWorld -> (# State# RealWorld, ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7N1Q)
+                 (w_s7N1R [Occ=Once] :: Storable a_s7N1Q)
+                 (w1_s7N1S [Occ=Once!] :: Int)
+                 (w2_s7N1T [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7N1S of { I# ww1_s7N1W [Occ=Once] ->
+                 Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+                   @ a_s7N1Q w_s7N1R ww1_s7N1W w2_s7N1T
+                 }}]
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray2
+  = \ (@ a_s7N1Q)
+      (w_s7N1R :: Storable a_s7N1Q)
+      (w1_s7N1S :: Int)
+      (w2_s7N1T :: State# RealWorld) ->
+      case w1_s7N1S of { I# ww1_s7N1W ->
+      Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+        @ a_s7N1Q w_s7N1R ww1_s7N1W w2_s7N1T
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+mallocForeignPtrArray0
+  :: forall a. Storable a => Int -> IO (ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.ForeignPtr.Imp.mallocForeignPtrArray2
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Int>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Int
+                           -> State# RealWorld -> (# State# RealWorld, ForeignPtr a #) :: *)
+                          ~R# (forall a. Storable a => Int -> IO (ForeignPtr a) :: *))}]
+mallocForeignPtrArray0
+  = Foreign.ForeignPtr.Imp.mallocForeignPtrArray2
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Int>_R
+            ->_R Sym (GHC.Types.N:IO[0] <ForeignPtr a>_R)
+            :: (forall a.
+                Storable a =>
+                Int
+                -> State# RealWorld -> (# State# RealWorld, ForeignPtr a #) :: *)
+               ~R# (forall a. Storable a => Int -> IO (ForeignPtr a) :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Foreign.ForeignPtr.Imp.$trModule3
+  = GHC.Types.TrNameS Foreign.ForeignPtr.Imp.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Foreign.ForeignPtr.Imp.$trModule1
+  = GHC.Types.TrNameS Foreign.ForeignPtr.Imp.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Foreign.ForeignPtr.Imp.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Foreign.ForeignPtr.Imp.$trModule
+  = GHC.Types.Module
+      Foreign.ForeignPtr.Imp.$trModule3 Foreign.ForeignPtr.Imp.$trModule1
+
+

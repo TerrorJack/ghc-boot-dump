@@ -1,0 +1,814 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:59:02.897843611 UTC
+
+Result size of Tidy Core
+  = {terms: 446, types: 228, coercions: 0, joins: 0/4}
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$WFingerprint [InlPrag=INLINE[2]]
+  :: Word64 -> Word64 -> Fingerprint
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (dt_a49GK [Occ=Once!] :: Word64)
+                 (dt_a49GL [Occ=Once!] :: Word64) ->
+                 case dt_a49GK of { W64# dt_a49GM [Occ=Once] ->
+                 case dt_a49GL of { W64# dt_a49GN [Occ=Once] ->
+                 GHC.Fingerprint.Type.Fingerprint dt_a49GM dt_a49GN
+                 }
+                 }}]
+GHC.Fingerprint.Type.$WFingerprint
+  = \ (dt_a49GK [Occ=Once!] :: Word64)
+      (dt_a49GL [Occ=Once!] :: Word64) ->
+      case dt_a49GK of { W64# dt_a49GM [Occ=Once] ->
+      case dt_a49GL of { W64# dt_a49GN [Occ=Once] ->
+      GHC.Fingerprint.Type.Fingerprint dt_a49GM dt_a49GN
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint3 :: Word64
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Fingerprint.Type.$fShowFingerprint3 = GHC.Word.W64# 16##
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint2 :: Char
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Fingerprint.Type.$fShowFingerprint2 = GHC.Types.C# '0'#
+
+-- RHS size: {terms: 44, types: 17, coercions: 0, joins: 0/4}
+GHC.Fingerprint.Type.$fShowFingerprint_hex16 :: Word64 -> String
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 253 0}]
+GHC.Fingerprint.Type.$fShowFingerprint_hex16
+  = \ (i_a49Go :: Word64) ->
+      let {
+        hex_s49LN [Dmd=<S,U>] :: String
+        [LclId]
+        hex_s49LN
+          = Numeric.showIntAtBase
+              @ Word64
+              GHC.Word.$fIntegralWord64
+              GHC.Word.$fShowWord64
+              GHC.Fingerprint.Type.$fShowFingerprint3
+              intToDigit
+              i_a49Go
+              (GHC.Types.[] @ Char) } in
+      case GHC.List.$wlenAcc @ Char hex_s49LN 0# of ww2_i3wsE
+      { __DEFAULT ->
+      let {
+        y_alNd [Dmd=<S,U>] :: Int#
+        [LclId]
+        y_alNd = -# 16# ww2_i3wsE } in
+      case <# 0# y_alNd of {
+        __DEFAULT -> hex_s49LN;
+        1# ->
+          let {
+            lvl_s49WY :: [Char]
+            [LclId, Unf=OtherCon []]
+            lvl_s49WY
+              = GHC.Types.:
+                  @ Char GHC.Fingerprint.Type.$fShowFingerprint2 hex_s49LN } in
+          letrec {
+            $wxs_s49TH [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+              :: Int# -> [Char]
+            [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+            $wxs_s49TH
+              = \ (ww_s49TF :: Int#) ->
+                  case ww_s49TF of ds1_i2KC9 {
+                    __DEFAULT ->
+                      GHC.Types.:
+                        @ Char
+                        GHC.Fingerprint.Type.$fShowFingerprint2
+                        ($wxs_s49TH (-# ds1_i2KC9 1#));
+                    1# -> lvl_s49WY
+                  }; } in
+          $wxs_s49TH y_alNd
+      }
+      }
+
+-- RHS size: {terms: 9, types: 3, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$w$cshow [InlPrag=NOUSERINLINE[0]]
+  :: Word# -> Word# -> String
+[GblId,
+ Arity=2,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 90 0}]
+GHC.Fingerprint.Type.$w$cshow
+  = \ (ww_s49TM :: Word#) (ww1_s49TN :: Word#) ->
+      ++
+        @ Char
+        (GHC.Fingerprint.Type.$fShowFingerprint_hex16
+           (GHC.Word.W64# ww_s49TM))
+        (GHC.Fingerprint.Type.$fShowFingerprint_hex16
+           (GHC.Word.W64# ww1_s49TN))
+
+-- RHS size: {terms: 7, types: 4, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint_$cshow [InlPrag=NOUSERINLINE[0]]
+  :: Fingerprint -> String
+[GblId,
+ Arity=1,
+ Str=<S(SS),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s49TJ [Occ=Once!] :: Fingerprint) ->
+                 case w_s49TJ of
+                 { Fingerprint ww1_s49TM [Occ=Once] ww2_s49TN [Occ=Once] ->
+                 GHC.Fingerprint.Type.$w$cshow ww1_s49TM ww2_s49TN
+                 }}]
+GHC.Fingerprint.Type.$fShowFingerprint_$cshow
+  = \ (w_s49TJ :: Fingerprint) ->
+      case w_s49TJ of { Fingerprint ww1_s49TM ww2_s49TN ->
+      GHC.Fingerprint.Type.$w$cshow ww1_s49TM ww2_s49TN
+      }
+
+-- RHS size: {terms: 12, types: 5, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$w$cshowsPrec [InlPrag=NOUSERINLINE[0]]
+  :: Word# -> Word# -> String -> [Char]
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 120 0}]
+GHC.Fingerprint.Type.$w$cshowsPrec
+  = \ (ww_s49TV :: Word#) (ww1_s49TW :: Word#) (w_s49TS :: String) ->
+      ++
+        @ Char
+        (GHC.Fingerprint.Type.$fShowFingerprint_hex16
+           (GHC.Word.W64# ww_s49TV))
+        (++
+           @ Char
+           (GHC.Fingerprint.Type.$fShowFingerprint_hex16
+              (GHC.Word.W64# ww1_s49TW))
+           w_s49TS)
+
+-- RHS size: {terms: 10, types: 6, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint_$cshowsPrec [InlPrag=NOUSERINLINE[0]]
+  :: Int -> Fingerprint -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,A><S(SS),1*U(U,U)><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ _ [Occ=Dead]
+                 (w1_s49TR [Occ=Once!] :: Fingerprint)
+                 (w2_s49TS [Occ=Once] :: String) ->
+                 case w1_s49TR of
+                 { Fingerprint ww1_s49TV [Occ=Once] ww2_s49TW [Occ=Once] ->
+                 GHC.Fingerprint.Type.$w$cshowsPrec ww1_s49TV ww2_s49TW w2_s49TS
+                 }}]
+GHC.Fingerprint.Type.$fShowFingerprint_$cshowsPrec
+  = \ _ [Occ=Dead] (w1_s49TR :: Fingerprint) (w2_s49TS :: String) ->
+      case w1_s49TR of { Fingerprint ww1_s49TV ww2_s49TW ->
+      GHC.Fingerprint.Type.$w$cshowsPrec ww1_s49TV ww2_s49TW w2_s49TS
+      }
+
+-- RHS size: {terms: 9, types: 5, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint1 [InlPrag=NOUSERINLINE[0]]
+  :: Fingerprint -> String -> [Char]
+[GblId,
+ Arity=2,
+ Str=<S(SS),1*U(U,U)><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s49TZ [Occ=Once!] :: Fingerprint)
+                 (w1_s49U0 [Occ=Once] :: String) ->
+                 case w_s49TZ of
+                 { Fingerprint ww1_s49U3 [Occ=Once] ww2_s49U4 [Occ=Once] ->
+                 GHC.Fingerprint.Type.$w$cshowsPrec ww1_s49U3 ww2_s49U4 w1_s49U0
+                 }}]
+GHC.Fingerprint.Type.$fShowFingerprint1
+  = \ (w_s49TZ :: Fingerprint) (w1_s49U0 :: String) ->
+      case w_s49TZ of { Fingerprint ww1_s49U3 ww2_s49U4 ->
+      GHC.Fingerprint.Type.$w$cshowsPrec ww1_s49U3 ww2_s49U4 w1_s49U0
+      }
+
+-- RHS size: {terms: 6, types: 4, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint_$cshowList
+  :: [Fingerprint] -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ls_i1Mix [Occ=Once] :: [Fingerprint])
+                 (s_i1Miy [Occ=Once] :: String) ->
+                 showList__
+                   @ Fingerprint
+                   GHC.Fingerprint.Type.$fShowFingerprint1
+                   ls_i1Mix
+                   s_i1Miy}]
+GHC.Fingerprint.Type.$fShowFingerprint_$cshowList
+  = \ (ls_i1Mix :: [Fingerprint]) (s_i1Miy :: String) ->
+      showList__
+        @ Fingerprint
+        GHC.Fingerprint.Type.$fShowFingerprint1
+        ls_i1Mix
+        s_i1Miy
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fShowFingerprint [InlPrag=NOUSERINLINE CONLIKE]
+  :: Show Fingerprint
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Show.C:Show TYPE: Fingerprint
+                       GHC.Fingerprint.Type.$fShowFingerprint_$cshowsPrec
+                       GHC.Fingerprint.Type.$fShowFingerprint_$cshow
+                       GHC.Fingerprint.Type.$fShowFingerprint_$cshowList]
+GHC.Fingerprint.Type.$fShowFingerprint
+  = GHC.Show.C:Show
+      @ Fingerprint
+      GHC.Fingerprint.Type.$fShowFingerprint_$cshowsPrec
+      GHC.Fingerprint.Type.$fShowFingerprint_$cshow
+      GHC.Fingerprint.Type.$fShowFingerprint_$cshowList
+
+-- RHS size: {terms: 26, types: 11, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$c<
+  :: Fingerprint -> Fingerprint -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (a_a49Hk [Occ=Once!] :: Fingerprint)
+                 (b_a49Hl [Occ=Once!] :: Fingerprint) ->
+                 case a_a49Hk of { Fingerprint dt_d49Kd dt1_d49Ke [Occ=Once] ->
+                 case b_a49Hl of { Fingerprint dt2_d49Kf dt3_d49Kg [Occ=Once] ->
+                 case eqWord# dt_d49Kd dt2_d49Kf of {
+                   __DEFAULT ->
+                     case leWord# dt_d49Kd dt2_d49Kf of {
+                       __DEFAULT -> GHC.Types.False;
+                       1# -> GHC.Types.True
+                     };
+                   1# -> tagToEnum# @ Bool (ltWord# dt1_d49Ke dt3_d49Kg)
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$c<
+  = \ (a_a49Hk :: Fingerprint) (b_a49Hl :: Fingerprint) ->
+      case a_a49Hk of { Fingerprint dt_d49Kd dt1_d49Ke ->
+      case b_a49Hl of { Fingerprint dt2_d49Kf dt3_d49Kg ->
+      case eqWord# dt_d49Kd dt2_d49Kf of {
+        __DEFAULT ->
+          case leWord# dt_d49Kd dt2_d49Kf of {
+            __DEFAULT -> GHC.Types.False;
+            1# -> GHC.Types.True
+          };
+        1# -> tagToEnum# @ Bool (ltWord# dt1_d49Ke dt3_d49Kg)
+      }
+      }
+      }
+
+-- RHS size: {terms: 33, types: 8, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$w$ccompare [InlPrag=NOUSERINLINE[0]]
+  :: Word# -> Word# -> Word# -> Word# -> Ordering
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><S,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0 0] 84 50}]
+GHC.Fingerprint.Type.$w$ccompare
+  = \ (ww_s49Ub :: Word#)
+      (ww1_s49Uc :: Word#)
+      (ww2_s49Ug :: Word#)
+      (ww3_s49Uh :: Word#) ->
+      case eqWord# ww_s49Ub ww2_s49Ug of {
+        __DEFAULT ->
+          case leWord# ww_s49Ub ww2_s49Ug of {
+            __DEFAULT -> GHC.Types.GT;
+            1# -> GHC.Types.LT
+          };
+        1# ->
+          case eqWord# ww1_s49Uc ww3_s49Uh of {
+            __DEFAULT ->
+              case leWord# ww1_s49Uc ww3_s49Uh of {
+                __DEFAULT -> GHC.Types.GT;
+                1# -> GHC.Types.LT
+              };
+            1# -> GHC.Types.EQ
+          }
+      }
+
+-- RHS size: {terms: 13, types: 8, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$ccompare [InlPrag=NOUSERINLINE[0]]
+  :: Fingerprint -> Fingerprint -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,U)><S(SS),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s49U7 [Occ=Once!] :: Fingerprint)
+                 (w1_s49U8 [Occ=Once!] :: Fingerprint) ->
+                 case w_s49U7 of
+                 { Fingerprint ww1_s49Ub [Occ=Once] ww2_s49Uc [Occ=Once] ->
+                 case w1_s49U8 of
+                 { Fingerprint ww4_s49Ug [Occ=Once] ww5_s49Uh [Occ=Once] ->
+                 GHC.Fingerprint.Type.$w$ccompare
+                   ww1_s49Ub ww2_s49Uc ww4_s49Ug ww5_s49Uh
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$ccompare
+  = \ (w_s49U7 :: Fingerprint) (w1_s49U8 :: Fingerprint) ->
+      case w_s49U7 of { Fingerprint ww1_s49Ub ww2_s49Uc ->
+      case w1_s49U8 of { Fingerprint ww4_s49Ug ww5_s49Uh ->
+      GHC.Fingerprint.Type.$w$ccompare
+        ww1_s49Ub ww2_s49Uc ww4_s49Ug ww5_s49Uh
+      }
+      }
+
+-- RHS size: {terms: 19, types: 10, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fEqFingerprint_$c==
+  :: Fingerprint -> Fingerprint -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d49JB [Occ=Once!] :: Fingerprint)
+                 (ds1_d49JC [Occ=Once!] :: Fingerprint) ->
+                 case ds_d49JB of
+                 { Fingerprint dt_d49K5 [Occ=Once] dt1_d49K6 [Occ=Once] ->
+                 case ds1_d49JC of
+                 { Fingerprint dt2_d49K7 [Occ=Once] dt3_d49K8 [Occ=Once] ->
+                 case eqWord# dt_d49K5 dt2_d49K7 of {
+                   __DEFAULT -> GHC.Types.False;
+                   1# -> tagToEnum# @ Bool (eqWord# dt1_d49K6 dt3_d49K8)
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fEqFingerprint_$c==
+  = \ (ds_d49JB :: Fingerprint) (ds1_d49JC :: Fingerprint) ->
+      case ds_d49JB of { Fingerprint dt_d49K5 dt1_d49K6 ->
+      case ds1_d49JC of { Fingerprint dt2_d49K7 dt3_d49K8 ->
+      case eqWord# dt_d49K5 dt2_d49K7 of {
+        __DEFAULT -> GHC.Types.False;
+        1# -> tagToEnum# @ Bool (eqWord# dt1_d49K6 dt3_d49K8)
+      }
+      }
+      }
+
+-- RHS size: {terms: 23, types: 10, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fEqFingerprint_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: Fingerprint -> Fingerprint -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (x_a22b [Occ=Once!] :: Fingerprint)
+                 (y_a22c [Occ=Once!] :: Fingerprint) ->
+                 case x_a22b of
+                 { Fingerprint dt_d49K5 [Occ=Once] dt1_d49K6 [Occ=Once] ->
+                 case y_a22c of
+                 { Fingerprint dt2_d49K7 [Occ=Once] dt3_d49K8 [Occ=Once] ->
+                 case eqWord# dt_d49K5 dt2_d49K7 of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# ->
+                     case eqWord# dt1_d49K6 dt3_d49K8 of {
+                       __DEFAULT -> GHC.Types.True;
+                       1# -> GHC.Types.False
+                     }
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fEqFingerprint_$c/=
+  = \ (eta_B2 :: Fingerprint) (eta1_B1 :: Fingerprint) ->
+      case eta_B2 of { Fingerprint dt_d49K5 dt1_d49K6 ->
+      case eta1_B1 of { Fingerprint dt2_d49K7 dt3_d49K8 ->
+      case eqWord# dt_d49K5 dt2_d49K7 of {
+        __DEFAULT -> GHC.Types.True;
+        1# ->
+          case eqWord# dt1_d49K6 dt3_d49K8 of {
+            __DEFAULT -> GHC.Types.True;
+            1# -> GHC.Types.False
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fEqFingerprint [InlPrag=NOUSERINLINE CONLIKE]
+  :: Eq Fingerprint
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Classes.C:Eq TYPE: Fingerprint
+                        GHC.Fingerprint.Type.$fEqFingerprint_$c==
+                        GHC.Fingerprint.Type.$fEqFingerprint_$c/=]
+GHC.Fingerprint.Type.$fEqFingerprint
+  = GHC.Classes.C:Eq
+      @ Fingerprint
+      GHC.Fingerprint.Type.$fEqFingerprint_$c==
+      GHC.Fingerprint.Type.$fEqFingerprint_$c/=
+
+-- RHS size: {terms: 30, types: 11, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$c<=
+  :: Fingerprint -> Fingerprint -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (a_a49Hq [Occ=Once!] :: Fingerprint)
+                 (b_a49Hr [Occ=Once!] :: Fingerprint) ->
+                 case b_a49Hr of { Fingerprint dt_d49Kd dt1_d49Ke [Occ=Once] ->
+                 case a_a49Hq of { Fingerprint dt2_d49Kf dt3_d49Kg [Occ=Once] ->
+                 case eqWord# dt_d49Kd dt2_d49Kf of {
+                   __DEFAULT ->
+                     case leWord# dt_d49Kd dt2_d49Kf of {
+                       __DEFAULT -> GHC.Types.True;
+                       1# -> GHC.Types.False
+                     };
+                   1# ->
+                     case ltWord# dt1_d49Ke dt3_d49Kg of {
+                       __DEFAULT -> GHC.Types.True;
+                       1# -> GHC.Types.False
+                     }
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$c<=
+  = \ (a_a49Hq :: Fingerprint) (b_a49Hr :: Fingerprint) ->
+      case b_a49Hr of { Fingerprint dt_d49Kd dt1_d49Ke ->
+      case a_a49Hq of { Fingerprint dt2_d49Kf dt3_d49Kg ->
+      case eqWord# dt_d49Kd dt2_d49Kf of {
+        __DEFAULT ->
+          case leWord# dt_d49Kd dt2_d49Kf of {
+            __DEFAULT -> GHC.Types.True;
+            1# -> GHC.Types.False
+          };
+        1# ->
+          case ltWord# dt1_d49Ke dt3_d49Kg of {
+            __DEFAULT -> GHC.Types.True;
+            1# -> GHC.Types.False
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 30, types: 11, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$cmax
+  :: Fingerprint -> Fingerprint -> Fingerprint
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a55d [Occ=Once!] :: Fingerprint)
+                 (y_a55e [Occ=Once!] :: Fingerprint) ->
+                 case y_a55e of wild_Xt
+                 { Fingerprint dt_d49Kd dt1_d49Ke [Occ=Once] ->
+                 case x_a55d of wild1_Xa
+                 { Fingerprint dt2_d49Kf dt3_d49Kg [Occ=Once] ->
+                 case eqWord# dt_d49Kd dt2_d49Kf of {
+                   __DEFAULT ->
+                     case leWord# dt_d49Kd dt2_d49Kf of {
+                       __DEFAULT -> wild_Xt;
+                       1# -> wild1_Xa
+                     };
+                   1# ->
+                     case ltWord# dt1_d49Ke dt3_d49Kg of {
+                       __DEFAULT -> wild_Xt;
+                       1# -> wild1_Xa
+                     }
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$cmax
+  = \ (x_a55d :: Fingerprint) (y_a55e :: Fingerprint) ->
+      case y_a55e of wild_Xt { Fingerprint dt_d49Kd dt1_d49Ke ->
+      case x_a55d of wild1_Xa { Fingerprint dt2_d49Kf dt3_d49Kg ->
+      case eqWord# dt_d49Kd dt2_d49Kf of {
+        __DEFAULT ->
+          case leWord# dt_d49Kd dt2_d49Kf of {
+            __DEFAULT -> wild_Xt;
+            1# -> wild1_Xa
+          };
+        1# ->
+          case ltWord# dt1_d49Ke dt3_d49Kg of {
+            __DEFAULT -> wild_Xt;
+            1# -> wild1_Xa
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 30, types: 11, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$c>=
+  :: Fingerprint -> Fingerprint -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (a_a49Hu [Occ=Once!] :: Fingerprint)
+                 (b_a49Hv [Occ=Once!] :: Fingerprint) ->
+                 case a_a49Hu of { Fingerprint dt_d49Kd dt1_d49Ke [Occ=Once] ->
+                 case b_a49Hv of { Fingerprint dt2_d49Kf dt3_d49Kg [Occ=Once] ->
+                 case eqWord# dt_d49Kd dt2_d49Kf of {
+                   __DEFAULT ->
+                     case leWord# dt_d49Kd dt2_d49Kf of {
+                       __DEFAULT -> GHC.Types.True;
+                       1# -> GHC.Types.False
+                     };
+                   1# ->
+                     case ltWord# dt1_d49Ke dt3_d49Kg of {
+                       __DEFAULT -> GHC.Types.True;
+                       1# -> GHC.Types.False
+                     }
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$c>=
+  = \ (a_a49Hu :: Fingerprint) (b_a49Hv :: Fingerprint) ->
+      case a_a49Hu of { Fingerprint dt_d49Kd dt1_d49Ke ->
+      case b_a49Hv of { Fingerprint dt2_d49Kf dt3_d49Kg ->
+      case eqWord# dt_d49Kd dt2_d49Kf of {
+        __DEFAULT ->
+          case leWord# dt_d49Kd dt2_d49Kf of {
+            __DEFAULT -> GHC.Types.True;
+            1# -> GHC.Types.False
+          };
+        1# ->
+          case ltWord# dt1_d49Ke dt3_d49Kg of {
+            __DEFAULT -> GHC.Types.True;
+            1# -> GHC.Types.False
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 5, types: 2, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$c>
+  :: Fingerprint -> Fingerprint -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (a_a49Hs [Occ=Once] :: Fingerprint)
+                 (b_a49Ht [Occ=Once] :: Fingerprint) ->
+                 GHC.Fingerprint.Type.$fOrdFingerprint_$c< b_a49Ht a_a49Hs}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$c>
+  = \ (a_a49Hs :: Fingerprint) (b_a49Ht :: Fingerprint) ->
+      GHC.Fingerprint.Type.$fOrdFingerprint_$c< b_a49Ht a_a49Hs
+
+-- RHS size: {terms: 30, types: 11, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint_$cmin
+  :: Fingerprint -> Fingerprint -> Fingerprint
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a55m [Occ=Once!] :: Fingerprint)
+                 (y_a55n [Occ=Once!] :: Fingerprint) ->
+                 case y_a55n of wild_Xt
+                 { Fingerprint dt_d49Kd dt1_d49Ke [Occ=Once] ->
+                 case x_a55m of wild1_Xa
+                 { Fingerprint dt2_d49Kf dt3_d49Kg [Occ=Once] ->
+                 case eqWord# dt_d49Kd dt2_d49Kf of {
+                   __DEFAULT ->
+                     case leWord# dt_d49Kd dt2_d49Kf of {
+                       __DEFAULT -> wild1_Xa;
+                       1# -> wild_Xt
+                     };
+                   1# ->
+                     case ltWord# dt1_d49Ke dt3_d49Kg of {
+                       __DEFAULT -> wild1_Xa;
+                       1# -> wild_Xt
+                     }
+                 }
+                 }
+                 }}]
+GHC.Fingerprint.Type.$fOrdFingerprint_$cmin
+  = \ (x_a55m :: Fingerprint) (y_a55n :: Fingerprint) ->
+      case y_a55n of wild_Xt { Fingerprint dt_d49Kd dt1_d49Ke ->
+      case x_a55m of wild1_Xa { Fingerprint dt2_d49Kf dt3_d49Kg ->
+      case eqWord# dt_d49Kd dt2_d49Kf of {
+        __DEFAULT ->
+          case leWord# dt_d49Kd dt2_d49Kf of {
+            __DEFAULT -> wild1_Xa;
+            1# -> wild_Xt
+          };
+        1# ->
+          case ltWord# dt1_d49Ke dt3_d49Kg of {
+            __DEFAULT -> wild1_Xa;
+            1# -> wild_Xt
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 9, types: 1, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$fOrdFingerprint [InlPrag=NOUSERINLINE CONLIKE]
+  :: Ord Fingerprint
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Classes.C:Ord TYPE: Fingerprint
+                         GHC.Fingerprint.Type.$fEqFingerprint
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$ccompare
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$c<
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$c<=
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$c>
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$c>=
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$cmax
+                         GHC.Fingerprint.Type.$fOrdFingerprint_$cmin]
+GHC.Fingerprint.Type.$fOrdFingerprint
+  = GHC.Classes.C:Ord
+      @ Fingerprint
+      GHC.Fingerprint.Type.$fEqFingerprint
+      GHC.Fingerprint.Type.$fOrdFingerprint_$ccompare
+      GHC.Fingerprint.Type.$fOrdFingerprint_$c<
+      GHC.Fingerprint.Type.$fOrdFingerprint_$c<=
+      GHC.Fingerprint.Type.$fOrdFingerprint_$c>
+      GHC.Fingerprint.Type.$fOrdFingerprint_$c>=
+      GHC.Fingerprint.Type.$fOrdFingerprint_$cmax
+      GHC.Fingerprint.Type.$fOrdFingerprint_$cmin
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Fingerprint.Type.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Fingerprint.Type.$trModule3
+  = GHC.Types.TrNameS GHC.Fingerprint.Type.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+GHC.Fingerprint.Type.$trModule2 = "GHC.Fingerprint.Type"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Fingerprint.Type.$trModule1
+  = GHC.Types.TrNameS GHC.Fingerprint.Type.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Fingerprint.Type.$trModule
+  = GHC.Types.Module
+      GHC.Fingerprint.Type.$trModule3 GHC.Fingerprint.Type.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r4a01 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r4a01
+  = GHC.Types.KindRepTyConApp
+      GHC.Word.$tcWord64 (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tcFingerprint2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Fingerprint.Type.$tcFingerprint2 = "Fingerprint"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tcFingerprint1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Fingerprint.Type.$tcFingerprint1
+  = GHC.Types.TrNameS GHC.Fingerprint.Type.$tcFingerprint2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tcFingerprint :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Fingerprint.Type.$tcFingerprint
+  = GHC.Types.TyCon
+      12761381476876783108##
+      2142724667088540655##
+      GHC.Fingerprint.Type.$trModule
+      GHC.Fingerprint.Type.$tcFingerprint1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_r4a02 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_r4a02
+  = GHC.Types.KindRepTyConApp
+      GHC.Fingerprint.Type.$tcFingerprint (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep2_r4a03 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep2_r4a03 = GHC.Types.KindRepFun $krep_r4a01 $krep1_r4a02
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tc'Fingerprint1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Fingerprint.Type.$tc'Fingerprint1
+  = GHC.Types.KindRepFun $krep_r4a01 $krep2_r4a03
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tc'Fingerprint3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Fingerprint.Type.$tc'Fingerprint3 = "'Fingerprint"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tc'Fingerprint2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Fingerprint.Type.$tc'Fingerprint2
+  = GHC.Types.TrNameS GHC.Fingerprint.Type.$tc'Fingerprint3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Fingerprint.Type.$tc'Fingerprint :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Fingerprint.Type.$tc'Fingerprint
+  = GHC.Types.TyCon
+      2008132202540166604##
+      4312636609190854538##
+      GHC.Fingerprint.Type.$trModule
+      GHC.Fingerprint.Type.$tc'Fingerprint2
+      0#
+      GHC.Fingerprint.Type.$tc'Fingerprint1
+
+

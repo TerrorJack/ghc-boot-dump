@@ -1,0 +1,631 @@
+[ CmmData
+    (Section CString (CLabel "base_SystemziMem_zdtrModule4_bytes"))
+    (Statics
+       (CLabel "base_SystemziMem_zdtrModule4_bytes")
+       [ CmmString [ 98 , 97 , 115 , 101 ] ])
+, CmmData
+    (Section Data (CLabel "base_SystemziMem_zdtrModule3_closure"))
+    (Statics
+       (CLabel "base_SystemziMem_zdtrModule3_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_zdtrModule4_bytes"))
+       ])
+, CmmData
+    (Section CString (CLabel "base_SystemziMem_zdtrModule2_bytes"))
+    (Statics
+       (CLabel "base_SystemziMem_zdtrModule2_bytes")
+       [ CmmString
+           [ 83 , 121 , 115 , 116 , 101 , 109 , 46 , 77 , 101 , 109 ]
+       ])
+, CmmData
+    (Section Data (CLabel "base_SystemziMem_zdtrModule1_closure"))
+    (Statics
+       (CLabel "base_SystemziMem_zdtrModule1_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_zdtrModule2_bytes"))
+       ])
+, CmmData
+    (Section Data (CLabel "base_SystemziMem_zdtrModule_closure"))
+    (Statics
+       (CLabel "base_SystemziMem_zdtrModule_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Module_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff (CLabel "base_SystemziMem_zdtrModule3_closure") 1)
+       , CmmStaticLit
+           (CmmLabelOff (CLabel "base_SystemziMem_zdtrModule1_closure") 1)
+       , CmmStaticLit (CmmInt 3 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "rcmsu_closure"))
+    (Statics
+       (CLabel "rcmsu_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "rcmsu_info")) ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "rcmsu_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812016
+      , g_graph =
+          [ ( L7133701809757812016
+            , BlockCC
+                (CmmEntry L7133701809757812016 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-8) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809757812017
+                  , cml_false = L7133701809757812018
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809757812017
+            , BlockCC
+                (CmmEntry L7133701809757812017 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "rcmsu_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809757812018
+            , BlockCC
+                (CmmEntry L7133701809757812018 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmLit (CmmLabel (CLabel "ccmtM_info")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-8))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmtU (CmmType "P64")))
+                    (CmmReg (CmmGlobal CurrentTSO))
+                , CmmStore
+                    (CmmMachOp
+                       (MO_Add W64)
+                       [ CmmLoad
+                           (CmmRegOff (CmmLocal (LocalReg ucmtU (CmmType "P64"))) 24)
+                           (CmmType "I64")
+                       , CmmLit (CmmInt 16 W64)
+                       ])
+                    (CmmReg (CmmGlobal Sp))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmtV (CmmType "I64")))
+                    (CmmReg (CmmGlobal CurrentNursery))
+                , CmmStore
+                    (CmmRegOff (CmmLocal (LocalReg ucmtV (CmmType "I64"))) 8)
+                    (CmmRegOff (CmmGlobal Hp) 8)
+                , CmmStore
+                    (CmmRegOff (CmmLocal (LocalReg ucmtU (CmmType "P64"))) 104)
+                    (CmmMachOp
+                       (MO_Sub W64)
+                       [ CmmLoad
+                           (CmmRegOff (CmmLocal (LocalReg ucmtU (CmmType "P64"))) 104)
+                           (CmmType "I64")
+                       , CmmMachOp
+                           (MO_Sub W64)
+                           [ CmmRegOff (CmmGlobal Hp) 8
+                           , CmmLoad
+                               (CmmReg (CmmLocal (LocalReg ucmtV (CmmType "I64"))))
+                               (CmmType "I64")
+                           ]
+                       ])
+                , CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "suspendThread")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , NoHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg ucmtS (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg) , CmmLit (CmmInt 0 W64) ]
+                , CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "performMajorGC")))
+                       (ForeignConvention CCallConv [] [] CmmMayReturn))
+                    []
+                    []
+                , CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "resumeThread")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg ucmtT (CmmType "I64") ]
+                    [ CmmReg (CmmLocal (LocalReg ucmtS (CmmType "I64"))) ]
+                , CmmAssign
+                    (CmmGlobal BaseReg)
+                    (CmmReg (CmmLocal (LocalReg ucmtT (CmmType "I64"))))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmtW (CmmType "P64")))
+                    (CmmReg (CmmGlobal CurrentTSO))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmtX (CmmType "P64")))
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg ucmtW (CmmType "P64"))) 24)
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal Sp)
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg ucmtX (CmmType "P64"))) 16)
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal SpLim)
+                    (CmmRegOff (CmmLocal (LocalReg ucmtX (CmmType "P64"))) 192)
+                , CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 0 W64))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmtY (CmmType "I64")))
+                    (CmmReg (CmmGlobal CurrentNursery))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmtZ (CmmType "I64")))
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg ucmtY (CmmType "I64"))) 8)
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal Hp)
+                    (CmmRegOff (CmmLocal (LocalReg ucmtZ (CmmType "I64"))) (-8))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmu0 (CmmType "I64")))
+                    (CmmLoad
+                       (CmmReg (CmmLocal (LocalReg ucmtY (CmmType "I64"))))
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal HpLim)
+                    (CmmMachOp
+                       (MO_Add W64)
+                       [ CmmReg (CmmLocal (LocalReg ucmu0 (CmmType "I64")))
+                       , CmmMachOp
+                           (MO_Add W64)
+                           [ CmmMachOp
+                               (MO_Shl W64)
+                               [ CmmMachOp
+                                   (MO_SS_Conv W32 W64)
+                                   [ CmmLoad
+                                       (CmmRegOff (CmmLocal (LocalReg ucmtY (CmmType "I64"))) 48)
+                                       (CmmType "I32")
+                                   ]
+                               , CmmLit (CmmInt 12 W64)
+                               ]
+                           , CmmLit (CmmInt (-1) W64)
+                           ]
+                       ])
+                , CmmStore
+                    (CmmRegOff (CmmLocal (LocalReg ucmtW (CmmType "P64"))) 104)
+                    (CmmMachOp
+                       (MO_Add W64)
+                       [ CmmLoad
+                           (CmmRegOff (CmmLocal (LocalReg ucmtW (CmmType "P64"))) 104)
+                           (CmmType "I64")
+                       , CmmMachOp
+                           (MO_Sub W64)
+                           [ CmmReg (CmmLocal (LocalReg ucmtZ (CmmType "I64")))
+                           , CmmReg (CmmLocal (LocalReg ucmu0 (CmmType "I64")))
+                           ]
+                       ])
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "I64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 8
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "rcmsu_info"))
+    (Statics
+       (CLabel "rcmsu_info")
+       [ CmmStaticLit (CmmLabel (CLabel "rcmsu_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel ".LccmtM")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812014
+      , g_graph =
+          [ ( L7133701809757812014
+            , BlockCC
+                (CmmEntry L7133701809757812014 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabelOff (CLabel "ghczmprim_GHCziTuple_Z0T_closure") 1))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) 8)
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "P64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "ccmtM_info"))
+    (Statics
+       (CLabel "ccmtM_info")
+       [ CmmStaticLit (CmmLabel (CLabel ".LccmtM"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 30 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "base_SystemziMem_performMajorGC_closure"))
+    (Statics
+       (CLabel "base_SystemziMem_performMajorGC_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_performMajorGC_info"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_SystemziMem_performMajorGC_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812034
+      , g_graph =
+          [ ( L7133701809757812034
+            , BlockCC
+                (CmmEntry L7133701809757812034 GlobalScope)
+                []
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "rcmsu_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData
+       (CLabel "base_SystemziMem_performMajorGC_info"))
+    (Statics
+       (CLabel "base_SystemziMem_performMajorGC_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_performMajorGC_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "base_SystemziMem_performGC_closure"))
+    (Statics
+       (CLabel "base_SystemziMem_performGC_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_performGC_info"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_SystemziMem_performGC_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812041
+      , g_graph =
+          [ ( L7133701809757812041
+            , BlockCC
+                (CmmEntry L7133701809757812041 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLit (CmmLabel (CLabel "base_SystemziMem_performMajorGC_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData (CLabel "base_SystemziMem_performGC_info"))
+    (Statics
+       (CLabel "base_SystemziMem_performGC_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_performGC_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "rcmsv_closure"))
+    (Statics
+       (CLabel "rcmsv_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "rcmsv_info")) ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "rcmsv_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812051
+      , g_graph =
+          [ ( L7133701809757812051
+            , BlockCC
+                (CmmEntry L7133701809757812051 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-8) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809757812052
+                  , cml_false = L7133701809757812053
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809757812052
+            , BlockCC
+                (CmmEntry L7133701809757812052 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "rcmsv_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809757812053
+            , BlockCC
+                (CmmEntry L7133701809757812053 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmLit (CmmLabel (CLabel "ccmul_info")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-8))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmut (CmmType "P64")))
+                    (CmmReg (CmmGlobal CurrentTSO))
+                , CmmStore
+                    (CmmMachOp
+                       (MO_Add W64)
+                       [ CmmLoad
+                           (CmmRegOff (CmmLocal (LocalReg ucmut (CmmType "P64"))) 24)
+                           (CmmType "I64")
+                       , CmmLit (CmmInt 16 W64)
+                       ])
+                    (CmmReg (CmmGlobal Sp))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmuu (CmmType "I64")))
+                    (CmmReg (CmmGlobal CurrentNursery))
+                , CmmStore
+                    (CmmRegOff (CmmLocal (LocalReg ucmuu (CmmType "I64"))) 8)
+                    (CmmRegOff (CmmGlobal Hp) 8)
+                , CmmStore
+                    (CmmRegOff (CmmLocal (LocalReg ucmut (CmmType "P64"))) 104)
+                    (CmmMachOp
+                       (MO_Sub W64)
+                       [ CmmLoad
+                           (CmmRegOff (CmmLocal (LocalReg ucmut (CmmType "P64"))) 104)
+                           (CmmType "I64")
+                       , CmmMachOp
+                           (MO_Sub W64)
+                           [ CmmRegOff (CmmGlobal Hp) 8
+                           , CmmLoad
+                               (CmmReg (CmmLocal (LocalReg ucmuu (CmmType "I64"))))
+                               (CmmType "I64")
+                           ]
+                       ])
+                , CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "suspendThread")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , NoHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg ucmur (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg) , CmmLit (CmmInt 0 W64) ]
+                , CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "performGC")))
+                       (ForeignConvention CCallConv [] [] CmmMayReturn))
+                    []
+                    []
+                , CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "resumeThread")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg ucmus (CmmType "I64") ]
+                    [ CmmReg (CmmLocal (LocalReg ucmur (CmmType "I64"))) ]
+                , CmmAssign
+                    (CmmGlobal BaseReg)
+                    (CmmReg (CmmLocal (LocalReg ucmus (CmmType "I64"))))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmuv (CmmType "P64")))
+                    (CmmReg (CmmGlobal CurrentTSO))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmuw (CmmType "P64")))
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg ucmuv (CmmType "P64"))) 24)
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal Sp)
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg ucmuw (CmmType "P64"))) 16)
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal SpLim)
+                    (CmmRegOff (CmmLocal (LocalReg ucmuw (CmmType "P64"))) 192)
+                , CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 0 W64))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmux (CmmType "I64")))
+                    (CmmReg (CmmGlobal CurrentNursery))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmuy (CmmType "I64")))
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg ucmux (CmmType "I64"))) 8)
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal Hp)
+                    (CmmRegOff (CmmLocal (LocalReg ucmuy (CmmType "I64"))) (-8))
+                , CmmAssign
+                    (CmmLocal (LocalReg ucmuz (CmmType "I64")))
+                    (CmmLoad
+                       (CmmReg (CmmLocal (LocalReg ucmux (CmmType "I64"))))
+                       (CmmType "I64"))
+                , CmmAssign
+                    (CmmGlobal HpLim)
+                    (CmmMachOp
+                       (MO_Add W64)
+                       [ CmmReg (CmmLocal (LocalReg ucmuz (CmmType "I64")))
+                       , CmmMachOp
+                           (MO_Add W64)
+                           [ CmmMachOp
+                               (MO_Shl W64)
+                               [ CmmMachOp
+                                   (MO_SS_Conv W32 W64)
+                                   [ CmmLoad
+                                       (CmmRegOff (CmmLocal (LocalReg ucmux (CmmType "I64"))) 48)
+                                       (CmmType "I32")
+                                   ]
+                               , CmmLit (CmmInt 12 W64)
+                               ]
+                           , CmmLit (CmmInt (-1) W64)
+                           ]
+                       ])
+                , CmmStore
+                    (CmmRegOff (CmmLocal (LocalReg ucmuv (CmmType "P64"))) 104)
+                    (CmmMachOp
+                       (MO_Add W64)
+                       [ CmmLoad
+                           (CmmRegOff (CmmLocal (LocalReg ucmuv (CmmType "P64"))) 104)
+                           (CmmType "I64")
+                       , CmmMachOp
+                           (MO_Sub W64)
+                           [ CmmReg (CmmLocal (LocalReg ucmuy (CmmType "I64")))
+                           , CmmReg (CmmLocal (LocalReg ucmuz (CmmType "I64")))
+                           ]
+                       ])
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "I64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 8
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "rcmsv_info"))
+    (Statics
+       (CLabel "rcmsv_info")
+       [ CmmStaticLit (CmmLabel (CLabel "rcmsv_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel ".Lccmul")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812049
+      , g_graph =
+          [ ( L7133701809757812049
+            , BlockCC
+                (CmmEntry L7133701809757812049 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabelOff (CLabel "ghczmprim_GHCziTuple_Z0T_closure") 1))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) 8)
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "P64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "ccmul_info"))
+    (Statics
+       (CLabel "ccmul_info")
+       [ CmmStaticLit (CmmLabel (CLabel ".Lccmul"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 30 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "base_SystemziMem_performMinorGC_closure"))
+    (Statics
+       (CLabel "base_SystemziMem_performMinorGC_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_performMinorGC_info"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_SystemziMem_performMinorGC_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809757812069
+      , g_graph =
+          [ ( L7133701809757812069
+            , BlockCC
+                (CmmEntry L7133701809757812069 GlobalScope)
+                []
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "rcmsv_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData
+       (CLabel "base_SystemziMem_performMinorGC_info"))
+    (Statics
+       (CLabel "base_SystemziMem_performMinorGC_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_SystemziMem_performMinorGC_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "ScmtG_srt"))
+    (Statics (CLabel "ScmtG_srt") [])
+]

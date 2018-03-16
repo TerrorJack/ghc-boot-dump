@@ -1,0 +1,744 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:34.125227847 UTC
+
+Data.STRef.Lazy.newSTRef1
+  :: forall a s.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (GHC.STRef.STRef s a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEGj eta_scEGk]
+        case eta_scEGk of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEGm [Occ=Once] ->
+              case newMutVar# [x_scEGj s1_scEGm] of {
+                (#,#) ipv_scEGo [Occ=Once] ipv1_scEGp [Occ=Once] ->
+                    let {
+                      sat_scEGr [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acEDf
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEGo]; } in
+                    let {
+                      sat_scEGq [Occ=Once] :: GHC.STRef.STRef s_acEDf a_acEDe
+                      [LclId] =
+                          CCCS GHC.STRef.STRef! [ipv1_scEGp];
+                    } in  (,) [sat_scEGq sat_scEGr];
+              };
+        };
+
+Data.STRef.Lazy.newSTRef
+  :: forall a s.
+     a -> Control.Monad.ST.Lazy.Imp.ST s (GHC.STRef.STRef s a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.newSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEGs eta_scEGt]
+        case eta_scEGt of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEGv [Occ=Once] ->
+              case x_scEGs of {
+                GHC.STRef.STRef var#_scEGx [Occ=Once] ->
+                    case readMutVar# [var#_scEGx s1_scEGv] of {
+                      (#,#) ipv_scEGz [Occ=Once] ipv1_scEGA [Occ=Once] ->
+                          let {
+                            sat_scEGB [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acED4
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEGz];
+                          } in  (,) [ipv1_scEGA sat_scEGB];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.readSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.readSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEGC a1_scEGD eta_scEGE]
+        case eta_scEGE of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEGG [Occ=Once] ->
+              case r_scEGC of {
+                GHC.STRef.STRef var#_scEGI [Occ=Once] ->
+                    case writeMutVar# [var#_scEGI a1_scEGD s1_scEGG] of s2#_scEGJ {
+                      __DEFAULT ->
+                          let {
+                            sat_scEGK [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECX
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [s2#_scEGJ];
+                          } in  (,) [GHC.Tuple.() sat_scEGK];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.writeSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> a -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.writeSTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.modifySTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEGL f_scEGM eta_scEGN]
+        case eta_scEGN of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEGP [Occ=Once] ->
+              case r_scEGL of {
+                GHC.STRef.STRef var#_scEGR ->
+                    case readMutVar# [var#_scEGR s1_scEGP] of {
+                      (#,#) ipv_scEGT [Occ=Once] ipv1_scEGU [Occ=Once] ->
+                          let {
+                            sat_scEGV [Occ=Once] :: a_acECR
+                            [LclId] =
+                                [f_scEGM ipv1_scEGU] \u [] f_scEGM ipv1_scEGU;
+                          } in 
+                            case writeMutVar# [var#_scEGR sat_scEGV ipv_scEGT] of s2#_scEGW {
+                              __DEFAULT ->
+                                  let {
+                                    sat_scEGX [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECQ
+                                    [LclId] =
+                                        CCCS Control.Monad.ST.Lazy.Imp.S#! [s2#_scEGW];
+                                  } in  (,) [GHC.Tuple.() sat_scEGX];
+                            };
+                    };
+              };
+        };
+
+Data.STRef.Lazy.modifySTRef
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a) -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.modifySTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.STRef.Lazy.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule4];
+
+Data.STRef.Lazy.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.STRef.Lazy"#;
+
+Data.STRef.Lazy.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule2];
+
+Data.STRef.Lazy.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.STRef.Lazy.$trModule3
+                                     Data.STRef.Lazy.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:34.128352486 UTC
+
+Data.STRef.Lazy.newSTRef1
+  :: forall a s.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (GHC.STRef.STRef s a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEGj eta_scEGk]
+        case eta_scEGk of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case newMutVar# [x_scEGj GHC.Prim.void#] of {
+                Unit# ipv1_scEGp [Occ=Once] ->
+                    let {
+                      sat_scEGr [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acEDf
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! []; } in
+                    let {
+                      sat_scEGq [Occ=Once] :: GHC.STRef.STRef s_acEDf a_acEDe
+                      [LclId] =
+                          CCCS GHC.STRef.STRef! [ipv1_scEGp];
+                    } in  (,) [sat_scEGq sat_scEGr];
+              };
+        };
+
+Data.STRef.Lazy.newSTRef
+  :: forall a s.
+     a -> Control.Monad.ST.Lazy.Imp.ST s (GHC.STRef.STRef s a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.newSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEGs eta_scEGt]
+        case eta_scEGt of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case x_scEGs of {
+                GHC.STRef.STRef var#_scEGx [Occ=Once] ->
+                    case readMutVar# [var#_scEGx GHC.Prim.void#] of {
+                      Unit# ipv1_scEGA [Occ=Once] ->
+                          let {
+                            sat_scEGB [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acED4
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                          } in  (,) [ipv1_scEGA sat_scEGB];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.readSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.readSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEGC a1_scEGD eta_scEGE]
+        case eta_scEGE of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case r_scEGC of {
+                GHC.STRef.STRef var#_scEGI [Occ=Once] ->
+                    case
+                        writeMutVar# [var#_scEGI a1_scEGD GHC.Prim.void#]
+                    of
+                    s2#_scEGJ
+                    { (##) ->
+                          let {
+                            sat_scEGK [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECX
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                          } in  (,) [GHC.Tuple.() sat_scEGK];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.writeSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> a -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.writeSTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.modifySTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEGL f_scEGM eta_scEGN]
+        case eta_scEGN of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case r_scEGL of {
+                GHC.STRef.STRef var#_scEGR ->
+                    case readMutVar# [var#_scEGR GHC.Prim.void#] of {
+                      Unit# ipv1_scEGU [Occ=Once] ->
+                          let {
+                            sat_scEGV [Occ=Once] :: a_acECR
+                            [LclId] =
+                                [f_scEGM ipv1_scEGU] \u [] f_scEGM ipv1_scEGU;
+                          } in 
+                            case
+                                writeMutVar# [var#_scEGR sat_scEGV GHC.Prim.void#]
+                            of
+                            s2#_scEGW
+                            { (##) ->
+                                  let {
+                                    sat_scEGX [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECQ
+                                    [LclId] =
+                                        CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                                  } in  (,) [GHC.Tuple.() sat_scEGX];
+                            };
+                    };
+              };
+        };
+
+Data.STRef.Lazy.modifySTRef
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a) -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.modifySTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.STRef.Lazy.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule4];
+
+Data.STRef.Lazy.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.STRef.Lazy"#;
+
+Data.STRef.Lazy.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule2];
+
+Data.STRef.Lazy.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.STRef.Lazy.$trModule3
+                                     Data.STRef.Lazy.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:34.30085642 UTC
+
+Data.STRef.Lazy.newSTRef1
+  :: forall a s.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (GHC.STRef.STRef s a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEOM eta_scEON]
+        case eta_scEON of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEOP [Occ=Once] ->
+              case newMutVar# [x_scEOM s1_scEOP] of {
+                (#,#) ipv_scEOR [Occ=Once] ipv1_scEOS [Occ=Once] ->
+                    let {
+                      sat_scEOU [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acEDf
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEOR]; } in
+                    let {
+                      sat_scEOT [Occ=Once] :: GHC.STRef.STRef s_acEDf a_acEDe
+                      [LclId] =
+                          CCCS GHC.STRef.STRef! [ipv1_scEOS];
+                    } in  (,) [sat_scEOT sat_scEOU];
+              };
+        };
+
+Data.STRef.Lazy.newSTRef
+  :: forall a s.
+     a -> Control.Monad.ST.Lazy.Imp.ST s (GHC.STRef.STRef s a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.newSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEOV eta_scEOW]
+        case eta_scEOW of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEOY [Occ=Once] ->
+              case x_scEOV of {
+                GHC.STRef.STRef var#_scEP0 [Occ=Once] ->
+                    case readMutVar# [var#_scEP0 s1_scEOY] of {
+                      (#,#) ipv_scEP2 [Occ=Once] ipv1_scEP3 [Occ=Once] ->
+                          let {
+                            sat_scEP4 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acED4
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEP2];
+                          } in  (,) [ipv1_scEP3 sat_scEP4];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.readSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.readSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEP5 a1_scEP6 eta_scEP7]
+        case eta_scEP7 of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEP9 [Occ=Once] ->
+              case r_scEP5 of {
+                GHC.STRef.STRef var#_scEPb [Occ=Once] ->
+                    case writeMutVar# [var#_scEPb a1_scEP6 s1_scEP9] of s2#_scEPc {
+                      __DEFAULT ->
+                          let {
+                            sat_scEPd [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECX
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [s2#_scEPc];
+                          } in  (,) [GHC.Tuple.() sat_scEPd];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.writeSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> a -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.writeSTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.modifySTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEPe f_scEPf eta_scEPg]
+        case eta_scEPg of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEPi [Occ=Once] ->
+              case r_scEPe of {
+                GHC.STRef.STRef var#_scEPk ->
+                    case readMutVar# [var#_scEPk s1_scEPi] of {
+                      (#,#) ipv_scEPm [Occ=Once] ipv1_scEPn [Occ=Once] ->
+                          let {
+                            sat_scEPo [Occ=Once] :: a_acECR
+                            [LclId] =
+                                [f_scEPf ipv1_scEPn] \u [] f_scEPf ipv1_scEPn;
+                          } in 
+                            case writeMutVar# [var#_scEPk sat_scEPo ipv_scEPm] of s2#_scEPp {
+                              __DEFAULT ->
+                                  let {
+                                    sat_scEPq [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECQ
+                                    [LclId] =
+                                        CCCS Control.Monad.ST.Lazy.Imp.S#! [s2#_scEPp];
+                                  } in  (,) [GHC.Tuple.() sat_scEPq];
+                            };
+                    };
+              };
+        };
+
+Data.STRef.Lazy.modifySTRef
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a) -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.modifySTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.STRef.Lazy.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule4];
+
+Data.STRef.Lazy.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.STRef.Lazy"#;
+
+Data.STRef.Lazy.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule2];
+
+Data.STRef.Lazy.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.STRef.Lazy.$trModule3
+                                     Data.STRef.Lazy.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:34.304183511 UTC
+
+Data.STRef.Lazy.newSTRef1
+  :: forall a s.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (GHC.STRef.STRef s a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEOM eta_scEON]
+        case eta_scEON of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case newMutVar# [x_scEOM GHC.Prim.void#] of {
+                Unit# ipv1_scEOS [Occ=Once] ->
+                    let {
+                      sat_scEOU [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acEDf
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! []; } in
+                    let {
+                      sat_scEOT [Occ=Once] :: GHC.STRef.STRef s_acEDf a_acEDe
+                      [LclId] =
+                          CCCS GHC.STRef.STRef! [ipv1_scEOS];
+                    } in  (,) [sat_scEOT sat_scEOU];
+              };
+        };
+
+Data.STRef.Lazy.newSTRef
+  :: forall a s.
+     a -> Control.Monad.ST.Lazy.Imp.ST s (GHC.STRef.STRef s a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.newSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEOV eta_scEOW]
+        case eta_scEOW of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case x_scEOV of {
+                GHC.STRef.STRef var#_scEP0 [Occ=Once] ->
+                    case readMutVar# [var#_scEP0 GHC.Prim.void#] of {
+                      Unit# ipv1_scEP3 [Occ=Once] ->
+                          let {
+                            sat_scEP4 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acED4
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                          } in  (,) [ipv1_scEP3 sat_scEP4];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.readSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Data.STRef.Lazy.readSTRef1 eta_B2 eta_B1;
+
+Data.STRef.Lazy.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEP5 a1_scEP6 eta_scEP7]
+        case eta_scEP7 of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case r_scEP5 of {
+                GHC.STRef.STRef var#_scEPb [Occ=Once] ->
+                    case
+                        writeMutVar# [var#_scEPb a1_scEP6 GHC.Prim.void#]
+                    of
+                    s2#_scEPc
+                    { (##) ->
+                          let {
+                            sat_scEPd [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECX
+                            [LclId] =
+                                CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                          } in  (,) [GHC.Tuple.() sat_scEPd];
+                    };
+              };
+        };
+
+Data.STRef.Lazy.writeSTRef
+  :: forall s a.
+     GHC.STRef.STRef s a -> a -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.writeSTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.modifySTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [r_scEPe f_scEPf eta_scEPg]
+        case eta_scEPg of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case r_scEPe of {
+                GHC.STRef.STRef var#_scEPk ->
+                    case readMutVar# [var#_scEPk GHC.Prim.void#] of {
+                      Unit# ipv1_scEPn [Occ=Once] ->
+                          let {
+                            sat_scEPo [Occ=Once] :: a_acECR
+                            [LclId] =
+                                [f_scEPf ipv1_scEPn] \u [] f_scEPf ipv1_scEPn;
+                          } in 
+                            case
+                                writeMutVar# [var#_scEPk sat_scEPo GHC.Prim.void#]
+                            of
+                            s2#_scEPp
+                            { (##) ->
+                                  let {
+                                    sat_scEPq [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acECQ
+                                    [LclId] =
+                                        CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                                  } in  (,) [GHC.Tuple.() sat_scEPq];
+                            };
+                    };
+              };
+        };
+
+Data.STRef.Lazy.modifySTRef
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> (a -> a) -> Control.Monad.ST.Lazy.Imp.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.STRef.Lazy.modifySTRef1 eta_B3 eta_B2 eta_B1;
+
+Data.STRef.Lazy.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.STRef.Lazy.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule4];
+
+Data.STRef.Lazy.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.STRef.Lazy"#;
+
+Data.STRef.Lazy.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.STRef.Lazy.$trModule2];
+
+Data.STRef.Lazy.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.STRef.Lazy.$trModule3
+                                     Data.STRef.Lazy.$trModule1];
+

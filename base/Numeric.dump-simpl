@@ -1,0 +1,1614 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:58:55.899575157 UTC
+
+Result size of Tidy Core
+  = {terms: 1,205, types: 1,111, coercions: 4, joins: 3/32}
+
+-- RHS size: {terms: 16, types: 22, coercions: 0, joins: 0/0}
+readInt
+  :: forall a.
+     Num a =>
+     a -> (Char -> Bool) -> (Char -> Int) -> ReadS a
+[GblId,
+ Arity=4,
+ Str=<L,U(C(C1(U)),A,C(C1(U)),A,A,A,C(U))><L,U><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a42Zn)
+                 ($dNum_a42Zp [Occ=Once] :: Num a_a42Zn)
+                 (base_a42Gw [Occ=Once] :: a_a42Zn)
+                 (isDigit_a42Gx [Occ=Once] :: Char -> Bool)
+                 (valDigit_a42Gy [Occ=Once] :: Char -> Int) ->
+                 Text.ParserCombinators.ReadP.run
+                   @ a_a42Zn
+                   (case Text.Read.Lex.$wreadIntP
+                           @ a_a42Zn
+                           $dNum_a42Zp
+                           base_a42Gw
+                           isDigit_a42Gx
+                           valDigit_a42Gy
+                           @ a_a42Zn
+                           (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure @ a_a42Zn)
+                    of
+                    { (# ww1_s3xl1 [Occ=Once] #) ->
+                    Text.ParserCombinators.ReadP.Get @ a_a42Zn ww1_s3xl1
+                    })}]
+readInt
+  = \ (@ a_a42Zn)
+      ($dNum_a42Zp :: Num a_a42Zn)
+      (base_a42Gw :: a_a42Zn)
+      (isDigit_a42Gx :: Char -> Bool)
+      (valDigit_a42Gy :: Char -> Int) ->
+      Text.ParserCombinators.ReadP.run
+        @ a_a42Zn
+        (case Text.Read.Lex.$wreadIntP
+                @ a_a42Zn
+                $dNum_a42Zp
+                base_a42Gw
+                isDigit_a42Gx
+                valDigit_a42Gy
+                @ a_a42Zn
+                (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure @ a_a42Zn)
+         of
+         { (# ww1_s3xl1 #) ->
+         Text.ParserCombinators.ReadP.Get @ a_a42Zn ww1_s3xl1
+         })
+
+-- RHS size: {terms: 15, types: 20, coercions: 0, joins: 0/0}
+readOct :: forall a. (Eq a, Num a) => ReadS a
+[GblId,
+ Arity=2,
+ Str=<L,U(C(C1(U)),A)><L,U(C(C1(U)),A,C(C1(U)),A,A,A,C(U))>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 30] 120 60}]
+readOct
+  = \ (@ a_a42Ze)
+      ($dEq_a42Zg :: Eq a_a42Ze)
+      ($dNum_a42Zh :: Num a_a42Ze) ->
+      Text.ParserCombinators.ReadP.run
+        @ a_a42Ze
+        (case Text.Read.Lex.$wreadIntP'
+                @ a_a42Ze
+                $dEq_a42Zg
+                $dNum_a42Zh
+                (fromInteger @ a_a42Ze $dNum_a42Zh Text.Read.Lex.readDecP4)
+                @ a_a42Ze
+                (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure @ a_a42Ze)
+         of
+         { (# ww1_s3xlb #) ->
+         Text.ParserCombinators.ReadP.Get @ a_a42Ze ww1_s3xlb
+         })
+
+-- RHS size: {terms: 15, types: 20, coercions: 0, joins: 0/0}
+readDec :: forall a. (Eq a, Num a) => ReadS a
+[GblId,
+ Arity=2,
+ Str=<L,U(C(C1(U)),A)><L,U(C(C1(U)),A,C(C1(U)),A,A,A,C(U))>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 30] 120 60}]
+readDec
+  = \ (@ a_a42Z5)
+      ($dEq_a42Z7 :: Eq a_a42Z5)
+      ($dNum_a42Z8 :: Num a_a42Z5) ->
+      Text.ParserCombinators.ReadP.run
+        @ a_a42Z5
+        (case Text.Read.Lex.$wreadIntP'
+                @ a_a42Z5
+                $dEq_a42Z7
+                $dNum_a42Z8
+                (fromInteger @ a_a42Z5 $dNum_a42Z8 Text.Read.Lex.numberToFixed1)
+                @ a_a42Z5
+                (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure @ a_a42Z5)
+         of
+         { (# ww1_s3xlb #) ->
+         Text.ParserCombinators.ReadP.Get @ a_a42Z5 ww1_s3xlb
+         })
+
+-- RHS size: {terms: 15, types: 20, coercions: 0, joins: 0/0}
+readHex :: forall a. (Eq a, Num a) => ReadS a
+[GblId,
+ Arity=2,
+ Str=<L,U(C(C1(U)),A)><L,U(C(C1(U)),A,C(C1(U)),A,A,A,C(U))>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 30] 120 60}]
+readHex
+  = \ (@ a_a42YW)
+      ($dEq_a42YY :: Eq a_a42YW)
+      ($dNum_a42YZ :: Num a_a42YW) ->
+      Text.ParserCombinators.ReadP.run
+        @ a_a42YW
+        (case Text.Read.Lex.$wreadIntP'
+                @ a_a42YW
+                $dEq_a42YY
+                $dNum_a42YZ
+                (fromInteger @ a_a42YW $dNum_a42YZ Text.Read.Lex.readDecP3)
+                @ a_a42YW
+                (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure @ a_a42YW)
+         of
+         { (# ww1_s3xlb #) ->
+         Text.ParserCombinators.ReadP.Get @ a_a42YW ww1_s3xlb
+         })
+
+-- RHS size: {terms: 6, types: 6, coercions: 0, joins: 0/0}
+Numeric.readFloat2
+  :: forall a. String -> Text.ParserCombinators.ReadP.P a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)}]
+Numeric.readFloat2
+  = \ (@ a_a42YP) (a3_X3nkL :: String) ->
+      case a3_X3nkL of { __DEFAULT ->
+      Text.ParserCombinators.ReadP.Fail @ a_a42YP
+      }
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+Numeric.readFloat1 :: forall a. Text.ParserCombinators.ReadP.P a
+[GblId,
+ Caf=NoCafRefs,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Numeric.readFloat1
+  = \ (@ a_a42YP) ->
+      Text.ParserCombinators.ReadP.Look
+        @ a_a42YP (Numeric.readFloat2 @ a_a42YP)
+
+-- RHS size: {terms: 35, types: 35, coercions: 0, joins: 0/3}
+readFloat :: forall a. RealFrac a => ReadS a
+[GblId,
+ Arity=1,
+ Str=<L,1*U(A,1*U(A,A,A,C(U)),A,A,A,A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30] 290 60}]
+readFloat
+  = \ (@ a_a42YP) ($dRealFrac_a42YR :: RealFrac a_a42YP) ->
+      Text.ParserCombinators.ReadP.run
+        @ a_a42YP
+        (let {
+           lvl116_s3was :: Text.ParserCombinators.ReadP.P a_a42YP
+           [LclId]
+           lvl116_s3was
+             = Text.ParserCombinators.ReadP.$fAlternativeP_$c<|>
+                 @ a_a42YP
+                 (Numeric.readFloat1 @ a_a42YP)
+                 (let {
+                    $dFractional_s43g4 [Dmd=<L,U(A,A,A,C(U))>] :: Fractional a_a42YP
+                    [LclId]
+                    $dFractional_s43g4
+                      = GHC.Real.$p2RealFrac @ a_a42YP $dRealFrac_a42YR } in
+                  Text.Read.Lex.expect2
+                    @ a_a42YP
+                    (\ (a1_a3ngt :: L.Lexeme) ->
+                       case a1_a3ngt of {
+                         __DEFAULT -> Text.ParserCombinators.ReadP.Fail @ a_a42YP;
+                         L.Number n_a42GA ->
+                           Text.ParserCombinators.ReadP.Result
+                             @ a_a42YP
+                             (fromRational
+                                @ a_a42YP
+                                $dFractional_s43g4
+                                (case Text.Read.Lex.$wnumberToRational n_a42GA of
+                                 { (# ww1_s3xl6, ww2_s3xl7 #) ->
+                                 GHC.Real.:% @ Integer ww1_s3xl6 ww2_s3xl7
+                                 }))
+                             (Text.ParserCombinators.ReadP.Fail @ a_a42YP)
+                       })) } in
+         let {
+           k_s3vVS [Dmd=<L,C(U)>]
+             :: () -> Text.ParserCombinators.ReadP.P a_a42YP
+           [LclId,
+            Arity=1,
+            Str=<L,A>,
+            Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                    WorkFree=True, Expandable=True,
+                    Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+                    Tmpl= \ _ [Occ=Dead] -> lvl116_s3was}]
+           k_s3vVS = \ _ [Occ=Dead] -> lvl116_s3was } in
+         Text.ParserCombinators.ReadP.Look
+           @ a_a42YP
+           (\ (a1_a3ngt :: String) ->
+              Text.ParserCombinators.ReadP.skipSpaces2
+                a1_a3ngt @ a_a42YP k_s3vVS))
+
+-- RHS size: {terms: 115, types: 175, coercions: 0, joins: 0/7}
+readSigned :: forall a. Real a => ReadS a -> ReadS a
+[GblId,
+ Arity=3,
+ Str=<L,1*U(1*U(A,A,A,C(U),A,A,A),A,A)><L,C(U)><L,U>,
+ Unf=OtherCon []]
+readSigned
+  = \ (@ a_a42Xv)
+      ($dReal_a42Xx :: Real a_a42Xv)
+      (eta_B2 :: ReadS a_a42Xv)
+      (eta1_B1 :: String) ->
+      let {
+        $dNum_s43g2 [Dmd=<L,U(A,A,A,C(U),A,A,A)>] :: Num a_a42Xv
+        [LclId]
+        $dNum_s43g2 = GHC.Real.$p1Real @ a_a42Xv $dReal_a42Xx } in
+      letrec {
+        go_s43IO [Occ=LoopBreaker]
+          :: [(String, String)] -> [(a_a42Xv, String)]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go_s43IO
+          = \ (ds_i1y1c :: [(String, String)]) ->
+              case ds_i1y1c of {
+                [] -> GHC.Types.[] @ (a_a42Xv, String);
+                : y_i1y1h ys_i1y1i ->
+                  case y_i1y1h of { (str_a42GJ, s_a42GK) ->
+                  let {
+                    z_X1y2Q :: [(a_a42Xv, String)]
+                    [LclId]
+                    z_X1y2Q = go_s43IO ys_i1y1i } in
+                  letrec {
+                    go1_X1y2T [Occ=LoopBreaker]
+                      :: [(a_a42Xv, String)] -> [(a_a42Xv, String)]
+                    [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+                    go1_X1y2T
+                      = \ (ds1_X1y2V :: [(a_a42Xv, String)]) ->
+                          case ds1_X1y2V of {
+                            [] -> z_X1y2Q;
+                            : y1_X1y33 ys1_X1y35 ->
+                              case y1_X1y33 of { (n_a42GL, ds2_d439q) ->
+                              case ds2_d439q of {
+                                [] ->
+                                  GHC.Types.:
+                                    @ (a_a42Xv, String) (n_a42GL, s_a42GK) (go1_X1y2T ys1_X1y35);
+                                : ipv_s43az ipv1_s43aA -> go1_X1y2T ys1_X1y35
+                              }
+                              }
+                          }; } in
+                  go1_X1y2T (eta_B2 str_a42GJ)
+                  }
+              }; } in
+      letrec {
+        go1_s43IQ [Occ=LoopBreaker]
+          :: [(String, String)] -> [(a_a42Xv, String)]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go1_s43IQ
+          = \ (ds_i1y1c :: [(String, String)]) ->
+              case ds_i1y1c of {
+                [] -> GHC.Types.[] @ (a_a42Xv, String);
+                : y_i1y1h ys_i1y1i ->
+                  case y_i1y1h of { (ds1_d4394, s_a42GF) ->
+                  case ds1_d4394 of {
+                    [] -> go1_s43IQ ys_i1y1i;
+                    : ds2_d4395 ds3_d4396 ->
+                      case ds2_d4395 of { C# ds4_d4397 ->
+                      case ds4_d4397 of {
+                        __DEFAULT -> go1_s43IQ ys_i1y1i;
+                        '-'# ->
+                          case ds3_d4396 of {
+                            [] ->
+                              let {
+                                z_X1y3b :: [(a_a42Xv, String)]
+                                [LclId]
+                                z_X1y3b = go1_s43IQ ys_i1y1i } in
+                              letrec {
+                                go2_X1y3e [Occ=LoopBreaker]
+                                  :: [(a_a42Xv, String)] -> [(a_a42Xv, String)]
+                                [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+                                go2_X1y3e
+                                  = \ (ds6_X1y3g :: [(a_a42Xv, String)]) ->
+                                      case ds6_X1y3g of {
+                                        [] -> z_X1y3b;
+                                        : y1_X1y3o ys1_X1y3q ->
+                                          case y1_X1y3o of { (x_a42GG, t_a42GH) ->
+                                          GHC.Types.:
+                                            @ (a_a42Xv, String)
+                                            (negate @ a_a42Xv $dNum_s43g2 x_a42GG, t_a42GH)
+                                            (go2_X1y3e ys1_X1y3q)
+                                          }
+                                      }; } in
+                              go2_X1y3e
+                                (go_s43IO
+                                   (Text.ParserCombinators.ReadP.run
+                                      @ String GHC.Read.lex1 s_a42GF));
+                            : ipv_s43aI ipv1_s43aK -> go1_s43IQ ys_i1y1i
+                          }
+                      }
+                      }
+                  }
+                  }
+              }; } in
+      readParen
+        @ a_a42Xv
+        GHC.Types.False
+        (\ (r_a42GE :: String) ->
+           ++
+             @ (a_a42Xv, String)
+             (go_s43IO
+                (Text.ParserCombinators.ReadP.run @ String GHC.Read.lex1 r_a42GE))
+             (go1_s43IQ
+                (Text.ParserCombinators.ReadP.run @ String GHC.Read.lex1 r_a42GE)))
+        eta1_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showInt2 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Numeric.showInt2 = 10
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r43OH :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_r43OH = "Numeric.showInt: can't show negative numbers"#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+Numeric.showInt1 :: String
+[GblId, Str=x]
+Numeric.showInt1
+  = errorWithoutStackTrace
+      @ 'LiftedRep @ String (unpackCString# lvl_r43OH)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat16 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Numeric.showHFloat16 = 0
+
+-- RHS size: {terms: 85, types: 56, coercions: 0, joins: 2/6}
+showInt :: forall a. Integral a => a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(LLC(C(S))LLLLL)L)LLLLLLLC(S)),U(1*U(U(A,A,A,A,A,A,C(U)),U(A,A,C(C1(U)),A,A,A,A,A),A),A,A,A,A,A,C(C1(U(1*U,1*U))),A,C(U))><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [120 0 0] 560 0}]
+showInt
+  = \ (@ a_a42W2)
+      ($dIntegral_a42W4 :: Integral a_a42W2)
+      (eta_B2 :: a_a42W2)
+      (eta1_B1 :: String) ->
+      let {
+        $dReal_s43fT [Dmd=<S(LS(LLC(C(S))LLLLL)L),U(U(A,A,A,A,A,A,C(U)),U(A,A,C(C1(U)),A,A,A,A,A),A)>]
+          :: Real a_a42W2
+        [LclId]
+        $dReal_s43fT = GHC.Real.$p1Integral @ a_a42W2 $dIntegral_a42W4 } in
+      case < @ a_a42W2
+             (GHC.Real.$p2Real @ a_a42W2 $dReal_s43fT)
+             eta_B2
+             (fromInteger
+                @ a_a42W2
+                (GHC.Real.$p1Real @ a_a42W2 $dReal_s43fT)
+                Numeric.showHFloat16)
+      of {
+        False ->
+          let {
+            lvl5_s43gi :: a_a42W2
+            [LclId]
+            lvl5_s43gi
+              = fromInteger
+                  @ a_a42W2
+                  (GHC.Real.$p1Real @ a_a42W2 $dReal_s43fT)
+                  Numeric.showInt2 } in
+          let {
+            $dOrd_s43fW [Dmd=<S(LLC(C(S))LLLLL),U(A,A,C(C1(U)),A,A,A,A,A)>]
+              :: Ord a_a42W2
+            [LclId]
+            $dOrd_s43fW = GHC.Real.$p2Real @ a_a42W2 $dReal_s43fT } in
+          join {
+            exit_X1t [Dmd=<C(C(S)),C(C1(U))>] :: a_a42W2 -> [Char] -> String
+            [LclId[JoinId(2)], Arity=2, Str=<L,U><L,U>]
+            exit_X1t (n_a42GP [OS=OneShot] :: a_a42W2)
+                     (cs_a42GQ [OS=OneShot] :: [Char])
+              = case integerToInt (toInteger @ a_a42W2 $dIntegral_a42W4 n_a42GP)
+                of wild1_i1AOp
+                { __DEFAULT ->
+                GHC.Types.:
+                  @ Char (GHC.Types.C# (chr# (+# 48# wild1_i1AOp))) cs_a42GQ
+                } } in
+          joinrec {
+            go_s43fS [Occ=LoopBreaker] :: a_a42W2 -> [Char] -> String
+            [LclId[JoinId(2)], Arity=2, Str=<L,U><L,U>, Unf=OtherCon []]
+            go_s43fS (n_a42GP :: a_a42W2) (cs_a42GQ :: [Char])
+              = case < @ a_a42W2 $dOrd_s43fW n_a42GP lvl5_s43gi of {
+                  False ->
+                    let {
+                      ds_s43fV [Dmd=<L,U(1*U,1*U)>] :: (a_a42W2, a_a42W2)
+                      [LclId]
+                      ds_s43fV
+                        = quotRem @ a_a42W2 $dIntegral_a42W4 n_a42GP lvl5_s43gi } in
+                    case integerToInt
+                           (toInteger
+                              @ a_a42W2
+                              $dIntegral_a42W4
+                              (case ds_s43fV of { (q_a42Wn, r_a42Wp) -> r_a42Wp }))
+                    of wild2_i1AOp
+                    { __DEFAULT ->
+                    jump go_s43fS
+                      (case ds_s43fV of { (q_a42Wn, r_a42Wp) -> q_a42Wn })
+                      (GHC.Types.:
+                         @ Char (GHC.Types.C# (chr# (+# 48# wild2_i1AOp))) cs_a42GQ)
+                    };
+                  True -> jump exit_X1t n_a42GP cs_a42GQ
+                }; } in
+          jump go_s43fS eta_B2 eta1_B1;
+        True -> Numeric.showInt1
+      }
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+showFFloatAlt :: forall a. RealFloat a => Maybe Int -> a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,U(U(U(U(A,A,A,C(U),A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,C(U),C(U),A,C(U),A,A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a42UA)
+                 ($dRealFloat_a42UC [Occ=Once] :: RealFloat a_a42UA)
+                 (d_a42H1 [Occ=Once] :: Maybe Int)
+                 (x_a42H2 [Occ=Once] :: a_a42UA) ->
+                 ++
+                   @ Char
+                   (formatRealFloatAlt
+                      @ a_a42UA
+                      $dRealFloat_a42UC
+                      GHC.Float.FFFixed
+                      d_a42H1
+                      GHC.Types.True
+                      x_a42H2)}]
+showFFloatAlt
+  = \ (@ a_a42UA)
+      ($dRealFloat_a42UC :: RealFloat a_a42UA)
+      (d_a42H1 :: Maybe Int)
+      (x_a42H2 :: a_a42UA) ->
+      ++
+        @ Char
+        (formatRealFloatAlt
+           @ a_a42UA
+           $dRealFloat_a42UC
+           GHC.Float.FFFixed
+           d_a42H1
+           GHC.Types.True
+           x_a42H2)
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+showGFloatAlt :: forall a. RealFloat a => Maybe Int -> a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,U(U(U(U(A,A,A,C(U),A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,C(U),C(U),A,C(U),A,A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a42Uu)
+                 ($dRealFloat_a42Uw [Occ=Once] :: RealFloat a_a42Uu)
+                 (d_a42H3 [Occ=Once] :: Maybe Int)
+                 (x_a42H4 [Occ=Once] :: a_a42Uu) ->
+                 ++
+                   @ Char
+                   (formatRealFloatAlt
+                      @ a_a42Uu
+                      $dRealFloat_a42Uw
+                      GHC.Float.FFGeneric
+                      d_a42H3
+                      GHC.Types.True
+                      x_a42H4)}]
+showGFloatAlt
+  = \ (@ a_a42Uu)
+      ($dRealFloat_a42Uw :: RealFloat a_a42Uu)
+      (d_a42H3 :: Maybe Int)
+      (x_a42H4 :: a_a42Uu) ->
+      ++
+        @ Char
+        (formatRealFloatAlt
+           @ a_a42Uu
+           $dRealFloat_a42Uw
+           GHC.Float.FFGeneric
+           d_a42H3
+           GHC.Types.True
+           x_a42H4)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_r43OI :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_r43OI = "Numeric.showIntAtBase: applied to negative number "#
+
+-- RHS size: {terms: 13, types: 14, coercions: 0, joins: 0/0}
+Numeric.$wlvl [InlPrag=NOUSERINLINE[0]] :: Int# -> String
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+Numeric.$wlvl
+  = \ (ww_s43yR :: Int#) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ String
+        (unpackAppendCString#
+           lvl1_r43OI
+           (case GHC.Show.$wshowSignedInt 0# ww_s43yR (GHC.Types.[] @ Char) of
+            { (# ww5_i1MP4, ww6_i1MP5 #) ->
+            GHC.Types.: @ Char ww5_i1MP4 ww6_i1MP5
+            }))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_r43OJ :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_r43OJ = "Numeric.showIntAtBase: applied to unsupported base "#
+
+-- RHS size: {terms: 9, types: 8, coercions: 0, joins: 0/0}
+Numeric.showIntAtBase2 :: forall a. Show a => a -> String
+[GblId, Arity=2, Str=<B,1*U(A,1*C1(U),A)><B,U>x, Unf=OtherCon []]
+Numeric.showIntAtBase2
+  = \ (@ a_a42NP)
+      ($dShow_a42NS :: Show a_a42NP)
+      (eta_B2 :: a_a42NP) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ String
+        (unpackAppendCString#
+           lvl1_r43OI (show @ a_a42NP $dShow_a42NS eta_B2))
+
+-- RHS size: {terms: 9, types: 8, coercions: 0, joins: 0/0}
+Numeric.showIntAtBase1 :: forall a. Show a => a -> String
+[GblId, Arity=2, Str=<B,1*U(A,1*C1(U),A)><B,U>x, Unf=OtherCon []]
+Numeric.showIntAtBase1
+  = \ (@ a_a42NP)
+      ($dShow_a42NS :: Show a_a42NP)
+      (eta_B4 :: a_a42NP) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ String
+        (unpackAppendCString#
+           lvl2_r43OJ (show @ a_a42NP $dShow_a42NS eta_B4))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showIntAtBase3 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Numeric.showIntAtBase3 = 1
+
+-- RHS size: {terms: 94, types: 62, coercions: 0, joins: 1/6}
+showIntAtBase
+  :: forall a.
+     (Integral a, Show a) =>
+     a -> (Int -> Char) -> a -> ShowS
+[GblId,
+ Arity=6,
+ Str=<S(S(LS(S(C(C(S))L)LC(C(S))C(C(S))LLLL)L)LLLLLC(C(S))LL),U(1*U(1*U(A,A,A,A,A,A,C(U)),1*U(1*U(C(C1(U)),A),A,1*C1(C1(U)),1*C1(C1(U)),A,A,A,A),A),A,A,A,A,A,C(C1(U(U,U))),A,C(U))><L,1*U(A,1*C1(U),A)><L,U><C(S),C(U(U))><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [120 0 0 60 0 0] 696 0}]
+showIntAtBase
+  = \ (@ a_a42NP)
+      ($dIntegral_a42NR :: Integral a_a42NP)
+      ($dShow_a42NS :: Show a_a42NP)
+      (eta_B4 :: a_a42NP)
+      (eta1_B3 :: Int -> Char)
+      (eta2_B2 :: a_a42NP)
+      (eta3_B1 :: String) ->
+      let {
+        $dReal_s43fz [Dmd=<S(LS(S(C(C(S))L)LC(C(S))C(C(S))LLLL)L),U(1*U(A,A,A,A,A,A,C(U)),1*U(1*U(C(C1(U)),A),A,1*C1(C1(U)),1*C1(C1(U)),A,A,A,A),A)>]
+          :: Real a_a42NP
+        [LclId]
+        $dReal_s43fz = GHC.Real.$p1Integral @ a_a42NP $dIntegral_a42NR } in
+      let {
+        $dNum_s43fy [Dmd=<L,U(A,A,A,A,A,A,C(U))>] :: Num a_a42NP
+        [LclId]
+        $dNum_s43fy = GHC.Real.$p1Real @ a_a42NP $dReal_s43fz } in
+      let {
+        $dOrd_s43fx [Dmd=<S(S(C(C(S))L)LC(C(S))C(C(S))LLLL),U(1*U(C(C1(U)),A),A,1*C1(C1(U)),1*C1(C1(U)),A,A,A,A)>]
+          :: Ord a_a42NP
+        [LclId]
+        $dOrd_s43fx = GHC.Real.$p2Real @ a_a42NP $dReal_s43fz } in
+      case <=
+             @ a_a42NP
+             $dOrd_s43fx
+             eta_B4
+             (fromInteger @ a_a42NP $dNum_s43fy Numeric.showIntAtBase3)
+      of {
+        False ->
+          case < @ a_a42NP
+                 $dOrd_s43fx
+                 eta2_B2
+                 (fromInteger @ a_a42NP $dNum_s43fy Numeric.showHFloat16)
+          of {
+            False ->
+              case quotRem @ a_a42NP $dIntegral_a42NR eta2_B2 eta_B4 of
+              { (ww1_s43zz, ww2_s43zA) ->
+              let {
+                lvl5_s43gJ :: a_a42NP
+                [LclId]
+                lvl5_s43gJ
+                  = fromInteger @ a_a42NP $dNum_s43fy Numeric.showHFloat16 } in
+              let {
+                $dEq_s43fw [Dmd=<S(C(C(S))L),U(C(C1(U)),A)>] :: Eq a_a42NP
+                [LclId]
+                $dEq_s43fw = GHC.Classes.$p1Ord @ a_a42NP $dOrd_s43fx } in
+              joinrec {
+                $wshowIt5_s43zC [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                  :: a_a42NP -> a_a42NP -> [Char] -> String
+                [LclId[JoinId(3)], Arity=3, Str=<L,U><L,U><L,U>, Unf=OtherCon []]
+                $wshowIt5_s43zC (ww3_X43BO :: a_a42NP)
+                                (ww4_X43BQ :: a_a42NP)
+                                (w_s43zw :: [Char])
+                  = case eta1_B3
+                           (case integerToInt (toInteger @ a_a42NP $dIntegral_a42NR ww4_X43BQ)
+                            of wild2_i1AOp
+                            { __DEFAULT ->
+                            GHC.Types.I# wild2_i1AOp
+                            })
+                    of v_X6
+                    { C# ipv_s43bc ->
+                    case == @ a_a42NP $dEq_s43fw ww3_X43BO lvl5_s43gJ of {
+                      False ->
+                        case quotRem @ a_a42NP $dIntegral_a42NR ww3_X43BO eta_B4 of
+                        { (ww6_X43BV, ww7_X43Ep) ->
+                        jump $wshowIt5_s43zC
+                          ww6_X43BV ww7_X43Ep (GHC.Types.: @ Char v_X6 w_s43zw)
+                        };
+                      True -> GHC.Types.: @ Char v_X6 w_s43zw
+                    }
+                    }; } in
+              jump $wshowIt5_s43zC ww1_s43zz ww2_s43zA eta3_B1
+              };
+            True -> Numeric.showIntAtBase2 @ a_a42NP $dShow_a42NS eta2_B2
+          };
+        True -> Numeric.showIntAtBase1 @ a_a42NP $dShow_a42NS eta_B4
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHex1 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Numeric.showHex1 = 16
+
+-- RHS size: {terms: 12, types: 10, coercions: 0, joins: 0/0}
+showHex :: forall a. (Integral a, Show a) => a -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U(U(U(A,A,A,A,A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),C(C1(U)),A,A,A,A),A),A,A,A,A,A,C(C1(U(U,U))),A,C(U))><L,U(A,C(U),A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 120 60}]
+showHex
+  = \ (@ a_a42Pa)
+      ($dIntegral_a42Pc :: Integral a_a42Pa)
+      ($dShow_a42Pd :: Show a_a42Pa) ->
+      showIntAtBase
+        @ a_a42Pa
+        $dIntegral_a42Pc
+        $dShow_a42Pd
+        (fromInteger
+           @ a_a42Pa
+           (GHC.Real.$p1Real
+              @ a_a42Pa (GHC.Real.$p1Integral @ a_a42Pa $dIntegral_a42Pc))
+           Numeric.showHex1)
+        intToDigit
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc_r43OK :: [Char]
+[GblId]
+loc_r43OK = unpackCString# Numeric.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Numeric.$trModule2 = "Numeric"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc1_r43OL :: [Char]
+[GblId]
+loc1_r43OL = unpackCString# Numeric.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+loc2_r43OM :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+loc2_r43OM = "Numeric.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc3_r43ON :: [Char]
+[GblId]
+loc3_r43ON = unpackCString# loc2_r43OM
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc4_r43OO :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+loc4_r43OO = GHC.Types.I# 241#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc5_r43OP :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+loc5_r43OP = GHC.Types.I# 22#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+loc6_r43OQ :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+loc6_r43OQ = GHC.Types.I# 75#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$dIP_r43OR :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+$dIP_r43OR = "error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$dIP1_r43OS :: [Char]
+[GblId]
+$dIP1_r43OS = unpackCString# $dIP_r43OR
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+$dIP2_r43OT :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+$dIP2_r43OT
+  = GHC.Stack.Types.SrcLoc
+      loc_r43OK
+      loc1_r43OL
+      loc3_r43ON
+      loc4_r43OO
+      loc5_r43OP
+      loc4_r43OO
+      loc6_r43OQ
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+$dIP3_r43OU :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+$dIP3_r43OU
+  = GHC.Stack.Types.PushCallStack
+      $dIP1_r43OS $dIP2_r43OT GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl3_r43OV :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl3_r43OV = "Impossible happened: showHFloat: "#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+lvl4_r43OW :: [Char]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+lvl4_r43OW
+  = GHC.Types.: @ Char GHC.Show.$fShow(,)2 (GHC.Types.[] @ Char)
+
+-- RHS size: {terms: 25, types: 21, coercions: 4, joins: 0/0}
+$wlvl2_r43OX :: [Int] -> Int# -> [Char]
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []]
+$wlvl2_r43OX
+  = \ (ww_s43zQ :: [Int]) (ww1_s43zU :: Int#) ->
+      error
+        @ 'LiftedRep
+        @ [Char]
+        ($dIP3_r43OU
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+        (unpackAppendCString#
+           lvl3_r43OV
+           (GHC.Types.:
+              @ Char
+              GHC.Show.$fShow(,)4
+              (GHC.Show.$fShow(,)_go1
+                 (GHC.Types.:
+                    @ ShowS
+                    (GHC.Show.$fShowInt_$cshowList ww_s43zQ)
+                    (GHC.Types.:
+                       @ ShowS
+                       (\ (w2_i1MOS :: String) ->
+                          case GHC.Show.$wshowSignedInt 0# ww1_s43zU w2_i1MOS of
+                          { (# ww5_i1MP4, ww6_i1MP5 #) ->
+                          GHC.Types.: @ Char ww5_i1MP4 ww6_i1MP5
+                          })
+                       (GHC.Types.[] @ ShowS)))
+                 lvl4_r43OW)))
+
+Rec {
+-- RHS size: {terms: 16, types: 10, coercions: 0, joins: 0/0}
+Numeric.showHFloat_allZ [Occ=LoopBreaker] :: [Int] -> Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Numeric.showHFloat_allZ
+  = \ (xs_a42Hy :: [Int]) ->
+      case xs_a42Hy of {
+        [] -> GHC.Types.True;
+        : x_a42Hz more_a42HA ->
+          case x_a42Hz of { I# x1_a22G ->
+          case x1_a22G of {
+            __DEFAULT -> GHC.Types.False;
+            0# -> Numeric.showHFloat_allZ more_a42HA
+          }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 31, types: 17, coercions: 0, joins: 0/0}
+$wshowIt1_r43OY :: Int# -> Int -> [Char] -> [Char]
+[GblId, Arity=3, Str=<S,1*U><S(S),1*U(U)><L,U>m2, Unf=OtherCon []]
+$wshowIt1_r43OY
+  = \ (ww_s43z7 :: Int#) (ww1_s43z9 :: Int) (w_s43z1 :: [Char]) ->
+      case ww1_s43z9 of { I# ww3_i2K89 ->
+      case GHC.Show.$wintToDigit ww3_i2K89 of ww4_i2K8b { __DEFAULT ->
+      case ww_s43z7 of wild_X2h {
+        __DEFAULT ->
+          case quotRemInt# wild_X2h 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+          $wshowIt1_r43OY
+            ipv_i43iW
+            (GHC.Types.I# ipv1_i43iX)
+            (GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1)
+          };
+        0# -> GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1
+      }
+      }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 31, types: 17, coercions: 0, joins: 0/0}
+$wshowIt2_r43OZ :: Int# -> Int -> [Char] -> [Char]
+[GblId, Arity=3, Str=<S,1*U><S(S),1*U(U)><L,U>m2, Unf=OtherCon []]
+$wshowIt2_r43OZ
+  = \ (ww_s43z7 :: Int#) (ww1_s43z9 :: Int) (w_s43z1 :: [Char]) ->
+      case ww1_s43z9 of { I# ww3_i2K89 ->
+      case GHC.Show.$wintToDigit ww3_i2K89 of ww4_i2K8b { __DEFAULT ->
+      case ww_s43z7 of wild_X2h {
+        __DEFAULT ->
+          case quotRemInt# wild_X2h 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+          $wshowIt2_r43OZ
+            ipv_i43iW
+            (GHC.Types.I# ipv1_i43iX)
+            (GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1)
+          };
+        0# -> GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1
+      }
+      }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 31, types: 17, coercions: 0, joins: 0/0}
+$wshowIt3_r43P0 :: Int# -> Int -> [Char] -> [Char]
+[GblId, Arity=3, Str=<S,1*U><S(S),1*U(U)><L,U>m2, Unf=OtherCon []]
+$wshowIt3_r43P0
+  = \ (ww_s43z7 :: Int#) (ww1_s43z9 :: Int) (w_s43z1 :: [Char]) ->
+      case ww1_s43z9 of { I# ww3_i2K89 ->
+      case GHC.Show.$wintToDigit ww3_i2K89 of ww4_i2K8b { __DEFAULT ->
+      case ww_s43z7 of wild_X2h {
+        __DEFAULT ->
+          case quotRemInt# wild_X2h 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+          $wshowIt3_r43P0
+            ipv_i43iW
+            (GHC.Types.I# ipv1_i43iX)
+            (GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1)
+          };
+        0# -> GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1
+      }
+      }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 31, types: 17, coercions: 0, joins: 0/0}
+$wshowIt4_r43P1 :: Int# -> Int -> [Char] -> [Char]
+[GblId, Arity=3, Str=<S,1*U><S(S),1*U(U)><L,U>m2, Unf=OtherCon []]
+$wshowIt4_r43P1
+  = \ (ww_s43z7 :: Int#) (ww1_s43z9 :: Int) (w_s43z1 :: [Char]) ->
+      case ww1_s43z9 of { I# ww3_i2K89 ->
+      case GHC.Show.$wintToDigit ww3_i2K89 of ww4_i2K8b { __DEFAULT ->
+      case ww_s43z7 of wild_X2h {
+        __DEFAULT ->
+          case quotRemInt# wild_X2h 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+          $wshowIt4_r43P1
+            ipv_i43iW
+            (GHC.Types.I# ipv1_i43iX)
+            (GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1)
+          };
+        0# -> GHC.Types.: @ Char (GHC.Types.C# ww4_i2K8b) w_s43z1
+      }
+      }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 159, types: 82, coercions: 0, joins: 0/4}
+Numeric.showHFloat_hex [Occ=LoopBreaker] :: [Int] -> String
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+Numeric.showHFloat_hex
+  = \ (ds_a42Hi :: [Int]) ->
+      case ds_a42Hi of {
+        [] -> GHC.Types.[] @ Char;
+        : a_a42Hj ds1_d434W ->
+          case ds1_d434W of {
+            [] ->
+              case a_a42Hj of { I# y_i1MAH ->
+              let {
+                ww_s43zm [Dmd=<S,U>] :: Int#
+                [LclId]
+                ww_s43zm = *# 8# y_i1MAH } in
+              case <# ww_s43zm 0# of {
+                __DEFAULT ->
+                  case quotRemInt# ww_s43zm 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+                  $wshowIt4_r43P1
+                    ipv_i43iW (GHC.Types.I# ipv1_i43iX) (GHC.Types.[] @ Char)
+                  };
+                1# -> Numeric.$wlvl ww_s43zm
+              }
+              };
+            : b_a42Hl ds2_d434X ->
+              case ds2_d434X of {
+                [] ->
+                  case a_a42Hj of { I# y_i1MAH ->
+                  case b_a42Hl of { I# y1_X1MDM ->
+                  let {
+                    ww_s43zm [Dmd=<S,U>] :: Int#
+                    [LclId]
+                    ww_s43zm = +# (*# 8# y_i1MAH) (*# 4# y1_X1MDM) } in
+                  case <# ww_s43zm 0# of {
+                    __DEFAULT ->
+                      case quotRemInt# ww_s43zm 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+                      $wshowIt3_r43P0
+                        ipv_i43iW (GHC.Types.I# ipv1_i43iX) (GHC.Types.[] @ Char)
+                      };
+                    1# -> Numeric.$wlvl ww_s43zm
+                  }
+                  }
+                  };
+                : c_a42Ho ds3_d434Y ->
+                  case ds3_d434Y of {
+                    [] ->
+                      case a_a42Hj of { I# y_i1MAH ->
+                      case b_a42Hl of { I# y1_X1MDM ->
+                      case c_a42Ho of { I# y2_X1MDU ->
+                      let {
+                        ww_s43zm [Dmd=<S,U>] :: Int#
+                        [LclId]
+                        ww_s43zm
+                          = +# (+# (*# 8# y_i1MAH) (*# 4# y1_X1MDM)) (*# 2# y2_X1MDU) } in
+                      case <# ww_s43zm 0# of {
+                        __DEFAULT ->
+                          case quotRemInt# ww_s43zm 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+                          $wshowIt2_r43OZ
+                            ipv_i43iW (GHC.Types.I# ipv1_i43iX) (GHC.Types.[] @ Char)
+                          };
+                        1# -> Numeric.$wlvl ww_s43zm
+                      }
+                      }
+                      }
+                      };
+                    : d_a42Hs r_a42Ht ->
+                      case a_a42Hj of { I# y_i1MAH ->
+                      case b_a42Hl of { I# y1_X1MDM ->
+                      case c_a42Ho of { I# y2_X1MDU ->
+                      case d_a42Hs of { I# y3_X1APG ->
+                      let {
+                        ww_s43zm [Dmd=<S,U>] :: Int#
+                        [LclId]
+                        ww_s43zm
+                          = +#
+                              (+# (+# (*# 8# y_i1MAH) (*# 4# y1_X1MDM)) (*# 2# y2_X1MDU))
+                              y3_X1APG } in
+                      case <# ww_s43zm 0# of {
+                        __DEFAULT ->
+                          case quotRemInt# ww_s43zm 16# of { (# ipv_i43iW, ipv1_i43iX #) ->
+                          $wshowIt1_r43OY
+                            ipv_i43iW
+                            (GHC.Types.I# ipv1_i43iX)
+                            (Numeric.showHFloat_hex r_a42Ht)
+                          };
+                        1# -> Numeric.$wlvl ww_s43zm
+                      }
+                      }
+                      }
+                      }
+                      }
+                  }
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat15 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Numeric.showHFloat15 = 2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat10 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Numeric.showHFloat10 = "0x0p+0"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat9 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat9 = unpackCString# Numeric.showHFloat10
+
+-- RHS size: {terms: 4, types: 2, coercions: 0, joins: 0/0}
+Numeric.showHFloat14 :: Int# -> [Char]
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+Numeric.showHFloat14
+  = \ (ww_s43zU :: Int#) ->
+      $wlvl2_r43OX (GHC.Types.[] @ Int) ww_s43zU
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat13 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat13 = "0x"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat12 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat12 = "p"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat11 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat11 = "."#
+
+-- RHS size: {terms: 81, types: 65, coercions: 0, joins: 0/3}
+Numeric.showHFloat_cvt :: forall a. RealFloat a => a -> [Char]
+[GblId,
+ Arity=2,
+ Str=<S(S(S(LS(S(C(C(S))L)LLLLLLL)L)LLLLLL)LLLLLLLLLLLLLLL),U(U(U(U(A,A,A,A,A,A,C(U)),U(U(C(C1(U)),A),A,A,A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,A,A,A,A,A,A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 671 0}]
+Numeric.showHFloat_cvt
+  = \ (@ a_a42SJ)
+      ($dRealFloat_a42Tg :: RealFloat a_a42SJ)
+      (eta_B1 :: a_a42SJ) ->
+      let {
+        $dRealFrac_s43f3 [Dmd=<S(S(LS(S(C(C(S))L)LLLLLLL)L)LLLLLL),1*U(1*U(1*U(A,A,A,A,A,A,1*C1(U)),1*U(1*U(1*C1(C1(U)),A),A,A,A,A,A,A,A),A),A,A,A,A,A,A)>]
+          :: RealFrac a_a42SJ
+        [LclId]
+        $dRealFrac_s43f3
+          = GHC.Float.$p1RealFloat @ a_a42SJ $dRealFloat_a42Tg } in
+      let {
+        $dReal_s43f2 [Dmd=<S(LS(S(C(C(S))L)LLLLLLL)L),U(1*U(A,A,A,A,A,A,1*C1(U)),1*U(1*U(1*C1(C1(U)),A),A,A,A,A,A,A,A),A)>]
+          :: Real a_a42SJ
+        [LclId]
+        $dReal_s43f2 = GHC.Real.$p1RealFrac @ a_a42SJ $dRealFrac_s43f3 } in
+      case ==
+             @ a_a42SJ
+             (GHC.Classes.$p1Ord
+                @ a_a42SJ (GHC.Real.$p2Real @ a_a42SJ $dReal_s43f2))
+             eta_B1
+             (fromInteger
+                @ a_a42SJ
+                (GHC.Real.$p1Real @ a_a42SJ $dReal_s43f2)
+                Numeric.showHFloat16)
+      of {
+        False ->
+          case GHC.Float.$wfloatToDigits
+                 @ a_a42SJ $dRealFloat_a42Tg Numeric.showHFloat15 eta_B1
+          of
+          { (# ww1_s2REc, ww2_s2REd #) ->
+          case ww1_s2REc of {
+            [] ->
+              case ww2_s2REd of { I# ww5_s43zU ->
+              Numeric.showHFloat14 ww5_s43zU
+              };
+            : d_a42Hd ds_a42He ->
+              unpackAppendCString#
+                Numeric.showHFloat13
+                (case d_a42Hd of { I# ww3_i1MP0 ->
+                 case GHC.Show.$wshowSignedInt 0# ww3_i1MP0 (GHC.Types.[] @ Char) of
+                 { (# ww6_i1MP4, ww7_i1MP5 #) ->
+                 ++
+                   @ Char
+                   (GHC.Types.: @ Char ww6_i1MP4 ww7_i1MP5)
+                   (let {
+                      n_X1Jq6 [Dmd=<L,1*U>] :: [Char]
+                      [LclId]
+                      n_X1Jq6
+                        = unpackAppendCString#
+                            Numeric.showHFloat12
+                            (case ww2_s2REd of { I# x_i1AMw ->
+                             case GHC.Show.$wshowSignedInt
+                                    0# (-# x_i1AMw 1#) (GHC.Types.[] @ Char)
+                             of
+                             { (# ww9_X1MRV, ww10_X1MRX #) ->
+                             GHC.Types.: @ Char ww9_X1MRV ww10_X1MRX
+                             }
+                             }) } in
+                    case Numeric.showHFloat_allZ ds_a42He of {
+                      False ->
+                        unpackAppendCString#
+                          Numeric.showHFloat11
+                          (++ @ Char (Numeric.showHFloat_hex ds_a42He) n_X1Jq6);
+                      True -> n_X1Jq6
+                    })
+                 }
+                 })
+          }
+          };
+        True -> Numeric.showHFloat9
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat8 :: Char
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Numeric.showHFloat8 = GHC.Types.C# '-'#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat5 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Numeric.showHFloat5 = "Infinity"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat7 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat7 = "-"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat6 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat6 = unpackCString# Numeric.showHFloat7
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat2 = "NaN"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat1 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat1 = unpackCString# Numeric.showHFloat2
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.showHFloat4 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Numeric.showHFloat4 = unpackCString# Numeric.showHFloat5
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+Numeric.showHFloat3 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 30 0}]
+Numeric.showHFloat3
+  = ++ @ Char Numeric.showHFloat6 Numeric.showHFloat4
+
+-- RHS size: {terms: 71, types: 36, coercions: 0, joins: 0/3}
+showHFloat :: forall a. RealFloat a => a -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U(U(U(U(A,A,A,1*C1(U),A,A,C(U)),U(U(C(C1(U)),A),A,1*C1(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,1*C1(U),1*C1(U),A,1*C1(U),A,A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [120 0] 650 60}]
+showHFloat
+  = \ (@ a_a42Pu)
+      ($dRealFloat_a42Pw :: RealFloat a_a42Pu)
+      (eta_B1 :: a_a42Pu) ->
+      ++
+        @ Char
+        (case isNaN @ a_a42Pu $dRealFloat_a42Pw eta_B1 of {
+           False ->
+             let {
+               $dRealFrac_s43ev [Dmd=<S(S(LS(LLC(C(S))LLLLL)L)LLLLLL),1*U(1*U(1*U(A,A,A,1*C1(U),A,A,1*C1(U)),1*U(A,A,1*C1(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A)>]
+                 :: RealFrac a_a42Pu
+               [LclId]
+               $dRealFrac_s43ev
+                 = GHC.Float.$p1RealFloat @ a_a42Pu $dRealFloat_a42Pw } in
+             let {
+               $dReal_s43eu [Dmd=<S(LS(LLC(C(S))LLLLL)L),U(1*U(A,A,A,1*C1(U),A,A,1*C1(U)),1*U(A,A,1*C1(C1(U)),A,A,A,A,A),A)>]
+                 :: Real a_a42Pu
+               [LclId]
+               $dReal_s43eu = GHC.Real.$p1RealFrac @ a_a42Pu $dRealFrac_s43ev } in
+             let {
+               $dNum_s43et [Dmd=<L,U(A,A,A,1*C1(U),A,A,1*C1(U))>] :: Num a_a42Pu
+               [LclId]
+               $dNum_s43et = GHC.Real.$p1Real @ a_a42Pu $dReal_s43eu } in
+             case isInfinite @ a_a42Pu $dRealFloat_a42Pw eta_B1 of {
+               False ->
+                 case < @ a_a42Pu
+                        (GHC.Real.$p2Real @ a_a42Pu $dReal_s43eu)
+                        eta_B1
+                        (fromInteger @ a_a42Pu $dNum_s43et Numeric.showHFloat16)
+                 of {
+                   False ->
+                     case isNegativeZero @ a_a42Pu $dRealFloat_a42Pw eta_B1 of {
+                       False -> Numeric.showHFloat_cvt @ a_a42Pu $dRealFloat_a42Pw eta_B1;
+                       True ->
+                         GHC.Types.:
+                           @ Char
+                           Numeric.showHFloat8
+                           (Numeric.showHFloat_cvt
+                              @ a_a42Pu $dRealFloat_a42Pw (negate @ a_a42Pu $dNum_s43et eta_B1))
+                     };
+                   True ->
+                     GHC.Types.:
+                       @ Char
+                       Numeric.showHFloat8
+                       (Numeric.showHFloat_cvt
+                          @ a_a42Pu $dRealFloat_a42Pw (negate @ a_a42Pu $dNum_s43et eta_B1))
+                 };
+               True ->
+                 case < @ a_a42Pu
+                        (GHC.Real.$p2Real @ a_a42Pu $dReal_s43eu)
+                        eta_B1
+                        (fromInteger @ a_a42Pu $dNum_s43et Numeric.showHFloat16)
+                 of {
+                   False -> Numeric.showHFloat4;
+                   True -> Numeric.showHFloat3
+                 }
+             };
+           True -> Numeric.showHFloat1
+         })
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Numeric.showOct1 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Numeric.showOct1 = 8
+
+-- RHS size: {terms: 12, types: 10, coercions: 0, joins: 0/0}
+showOct :: forall a. (Integral a, Show a) => a -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U(U(U(A,A,A,A,A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),C(C1(U)),A,A,A,A),A),A,A,A,A,A,C(C1(U(U,U))),A,C(U))><L,U(A,C(U),A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 120 60}]
+showOct
+  = \ (@ a_a42Pk)
+      ($dIntegral_a42Pm :: Integral a_a42Pk)
+      ($dShow_a42Pn :: Show a_a42Pk) ->
+      showIntAtBase
+        @ a_a42Pk
+        $dIntegral_a42Pm
+        $dShow_a42Pn
+        (fromInteger
+           @ a_a42Pk
+           (GHC.Real.$p1Real
+              @ a_a42Pk (GHC.Real.$p1Integral @ a_a42Pk $dIntegral_a42Pm))
+           Numeric.showOct1)
+        intToDigit
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Numeric.$trModule3 = GHC.Types.TrNameS Numeric.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Numeric.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Numeric.$trModule1 = GHC.Types.TrNameS Numeric.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Numeric.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Numeric.$trModule
+  = GHC.Types.Module Numeric.$trModule3 Numeric.$trModule1
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+Numeric.showGFloat_$sshowGFloat :: Maybe Int -> Float -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (d_a42GZ [Occ=Once] :: Maybe Int)
+                 (x_a42H0 [Occ=Once!] :: Float) ->
+                 ++
+                   @ Char
+                   (case x_a42H0 of { F# ww1_s2RCm [Occ=Once] ->
+                    GHC.Float.$w$sformatRealFloatAlt1
+                      GHC.Float.FFGeneric d_a42GZ GHC.Types.False ww1_s2RCm
+                    })}]
+Numeric.showGFloat_$sshowGFloat
+  = \ (d_a42GZ :: Maybe Int) (x_a42H0 :: Float) ->
+      ++
+        @ Char
+        (case x_a42H0 of { F# ww1_s2RCm ->
+         GHC.Float.$w$sformatRealFloatAlt1
+           GHC.Float.FFGeneric d_a42GZ GHC.Types.False ww1_s2RCm
+         })
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+Numeric.showFFloat_$sshowFFloat :: Maybe Int -> Float -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (d_a42GX [Occ=Once] :: Maybe Int)
+                 (x_a42GY [Occ=Once!] :: Float) ->
+                 ++
+                   @ Char
+                   (case x_a42GY of { F# ww1_s2RCm [Occ=Once] ->
+                    GHC.Float.$w$sformatRealFloatAlt1
+                      GHC.Float.FFFixed d_a42GX GHC.Types.False ww1_s2RCm
+                    })}]
+Numeric.showFFloat_$sshowFFloat
+  = \ (d_a42GX :: Maybe Int) (x_a42GY :: Float) ->
+      ++
+        @ Char
+        (case x_a42GY of { F# ww1_s2RCm ->
+         GHC.Float.$w$sformatRealFloatAlt1
+           GHC.Float.FFFixed d_a42GX GHC.Types.False ww1_s2RCm
+         })
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+Numeric.showEFloat_$sshowEFloat :: Maybe Int -> Float -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (d_a42GV [Occ=Once] :: Maybe Int)
+                 (x_a42GW [Occ=Once!] :: Float) ->
+                 ++
+                   @ Char
+                   (case x_a42GW of { F# ww1_s2RCm [Occ=Once] ->
+                    GHC.Float.$w$sformatRealFloatAlt1
+                      GHC.Float.FFExponent d_a42GV GHC.Types.False ww1_s2RCm
+                    })}]
+Numeric.showEFloat_$sshowEFloat
+  = \ (d_a42GV :: Maybe Int) (x_a42GW :: Float) ->
+      ++
+        @ Char
+        (case x_a42GW of { F# ww1_s2RCm ->
+         GHC.Float.$w$sformatRealFloatAlt1
+           GHC.Float.FFExponent d_a42GV GHC.Types.False ww1_s2RCm
+         })
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+Numeric.showGFloat_$sshowGFloat1 :: Maybe Int -> Double -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (d_a42GZ [Occ=Once] :: Maybe Int)
+                 (x_a42H0 [Occ=Once!] :: Double) ->
+                 ++
+                   @ Char
+                   (case x_a42H0 of { D# ww1_s2RD5 [Occ=Once] ->
+                    GHC.Float.$w$sformatRealFloatAlt
+                      GHC.Float.FFGeneric d_a42GZ GHC.Types.False ww1_s2RD5
+                    })}]
+Numeric.showGFloat_$sshowGFloat1
+  = \ (d_a42GZ :: Maybe Int) (x_a42H0 :: Double) ->
+      ++
+        @ Char
+        (case x_a42H0 of { D# ww1_s2RD5 ->
+         GHC.Float.$w$sformatRealFloatAlt
+           GHC.Float.FFGeneric d_a42GZ GHC.Types.False ww1_s2RD5
+         })
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+showGFloat :: forall a. RealFloat a => Maybe Int -> a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,U(U(U(U(A,A,A,C(U),A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,C(U),C(U),A,C(U),A,A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a42UG)
+                 ($dRealFloat_a42UI [Occ=Once] :: RealFloat a_a42UG)
+                 (d_a42GZ [Occ=Once] :: Maybe Int)
+                 (x_a42H0 [Occ=Once] :: a_a42UG) ->
+                 ++
+                   @ Char
+                   (formatRealFloatAlt
+                      @ a_a42UG
+                      $dRealFloat_a42UI
+                      GHC.Float.FFGeneric
+                      d_a42GZ
+                      GHC.Types.False
+                      x_a42H0)}]
+showGFloat
+  = \ (@ a_a42UG)
+      ($dRealFloat_a42UI :: RealFloat a_a42UG)
+      (d_a42GZ :: Maybe Int)
+      (x_a42H0 :: a_a42UG) ->
+      ++
+        @ Char
+        (formatRealFloatAlt
+           @ a_a42UG
+           $dRealFloat_a42UI
+           GHC.Float.FFGeneric
+           d_a42GZ
+           GHC.Types.False
+           x_a42H0)
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+Numeric.showFFloat_$sshowFFloat1 :: Maybe Int -> Double -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (d_a42GX [Occ=Once] :: Maybe Int)
+                 (x_a42GY [Occ=Once!] :: Double) ->
+                 ++
+                   @ Char
+                   (case x_a42GY of { D# ww1_s2RD5 [Occ=Once] ->
+                    GHC.Float.$w$sformatRealFloatAlt
+                      GHC.Float.FFFixed d_a42GX GHC.Types.False ww1_s2RD5
+                    })}]
+Numeric.showFFloat_$sshowFFloat1
+  = \ (d_a42GX :: Maybe Int) (x_a42GY :: Double) ->
+      ++
+        @ Char
+        (case x_a42GY of { D# ww1_s2RD5 ->
+         GHC.Float.$w$sformatRealFloatAlt
+           GHC.Float.FFFixed d_a42GX GHC.Types.False ww1_s2RD5
+         })
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+showFFloat :: forall a. RealFloat a => Maybe Int -> a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,U(U(U(U(A,A,A,C(U),A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,C(U),C(U),A,C(U),A,A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a42V8)
+                 ($dRealFloat_a42Va [Occ=Once] :: RealFloat a_a42V8)
+                 (d_a42GX [Occ=Once] :: Maybe Int)
+                 (x_a42GY [Occ=Once] :: a_a42V8) ->
+                 ++
+                   @ Char
+                   (formatRealFloatAlt
+                      @ a_a42V8
+                      $dRealFloat_a42Va
+                      GHC.Float.FFFixed
+                      d_a42GX
+                      GHC.Types.False
+                      x_a42GY)}]
+showFFloat
+  = \ (@ a_a42V8)
+      ($dRealFloat_a42Va :: RealFloat a_a42V8)
+      (d_a42GX :: Maybe Int)
+      (x_a42GY :: a_a42V8) ->
+      ++
+        @ Char
+        (formatRealFloatAlt
+           @ a_a42V8
+           $dRealFloat_a42Va
+           GHC.Float.FFFixed
+           d_a42GX
+           GHC.Types.False
+           x_a42GY)
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+Numeric.showEFloat_$sshowEFloat1 :: Maybe Int -> Double -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (d_a42GV [Occ=Once] :: Maybe Int)
+                 (x_a42GW [Occ=Once!] :: Double) ->
+                 ++
+                   @ Char
+                   (case x_a42GW of { D# ww1_s2RD5 [Occ=Once] ->
+                    GHC.Float.$w$sformatRealFloatAlt
+                      GHC.Float.FFExponent d_a42GV GHC.Types.False ww1_s2RD5
+                    })}]
+Numeric.showEFloat_$sshowEFloat1
+  = \ (d_a42GV :: Maybe Int) (x_a42GW :: Double) ->
+      ++
+        @ Char
+        (case x_a42GW of { D# ww1_s2RD5 ->
+         GHC.Float.$w$sformatRealFloatAlt
+           GHC.Float.FFExponent d_a42GV GHC.Types.False ww1_s2RD5
+         })
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+showEFloat :: forall a. RealFloat a => Maybe Int -> a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,U(U(U(U(A,A,A,C(U),A,A,C(U)),U(U(C(C1(U)),A),A,C(C1(U)),A,A,A,A,A),A),A,A,A,A,A,A),A,C(U),C(U(U)),C(U(1*U(U),A)),C(U(U,U(U))),A,A,A,A,C(U),C(U),A,C(U),A,A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a42VA)
+                 ($dRealFloat_a42VC [Occ=Once] :: RealFloat a_a42VA)
+                 (d_a42GV [Occ=Once] :: Maybe Int)
+                 (x_a42GW [Occ=Once] :: a_a42VA) ->
+                 ++
+                   @ Char
+                   (formatRealFloatAlt
+                      @ a_a42VA
+                      $dRealFloat_a42VC
+                      GHC.Float.FFExponent
+                      d_a42GV
+                      GHC.Types.False
+                      x_a42GW)}]
+showEFloat
+  = \ (@ a_a42VA)
+      ($dRealFloat_a42VC :: RealFloat a_a42VA)
+      (d_a42GV :: Maybe Int)
+      (x_a42GW :: a_a42VA) ->
+      ++
+        @ Char
+        (formatRealFloatAlt
+           @ a_a42VA
+           $dRealFloat_a42VC
+           GHC.Float.FFExponent
+           d_a42GV
+           GHC.Types.False
+           x_a42GW)
+
+
+------ Local rules for imported ids --------
+"SPEC showGFloat"
+    forall ($dRealFloat_a42UW :: RealFloat Double).
+      showGFloat @ Double $dRealFloat_a42UW
+      = Numeric.showGFloat_$sshowGFloat1
+"SPEC showGFloat"
+    forall ($dRealFloat_a42V7 :: RealFloat Float).
+      showGFloat @ Float $dRealFloat_a42V7
+      = Numeric.showGFloat_$sshowGFloat
+"SPEC showFFloat"
+    forall ($dRealFloat_a42Vo :: RealFloat Double).
+      showFFloat @ Double $dRealFloat_a42Vo
+      = Numeric.showFFloat_$sshowFFloat1
+"SPEC showFFloat"
+    forall ($dRealFloat_a42Vz :: RealFloat Float).
+      showFFloat @ Float $dRealFloat_a42Vz
+      = Numeric.showFFloat_$sshowFFloat
+"SPEC showEFloat"
+    forall ($dRealFloat_a42VQ :: RealFloat Double).
+      showEFloat @ Double $dRealFloat_a42VQ
+      = Numeric.showEFloat_$sshowEFloat1
+"SPEC showEFloat"
+    forall ($dRealFloat_a42W1 :: RealFloat Float).
+      showEFloat @ Float $dRealFloat_a42W1
+      = Numeric.showEFloat_$sshowEFloat
+

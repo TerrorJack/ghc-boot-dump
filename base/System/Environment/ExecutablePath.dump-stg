@@ -1,0 +1,602 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:16.328033723 UTC
+
+System.Environment.ExecutablePath.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.ExecutablePath.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule4];
+
+System.Environment.ExecutablePath.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.ExecutablePath"#;
+
+System.Environment.ExecutablePath.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule2];
+
+System.Environment.ExecutablePath.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.ExecutablePath.$trModule3
+                                     System.Environment.ExecutablePath.$trModule1];
+
+System.Environment.ExecutablePath.getExecutablePath4
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "/proc/self/exe"#;
+
+System.Environment.ExecutablePath.getExecutablePath_file
+  :: GHC.IO.FilePath
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath4;
+
+System.Environment.ExecutablePath.getExecutablePath3
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "readSymbolicLink"#;
+
+System.Environment.ExecutablePath.getExecutablePath2
+  :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath3;
+
+System.Environment.ExecutablePath.getExecutablePath1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.IO.FilePath #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta1_scnaB]
+        case newAlignedPinnedByteArray# [4097# 1# eta1_scnaB] of {
+          (#,#) ipv_scnaD [Occ=Once] ipv1_scnaE [Occ=Once] ->
+              case unsafeFreezeByteArray# [ipv1_scnaE ipv_scnaD] of {
+                (#,#) ipv2_scnaG [Occ=Once] ipv3_scnaH ->
+                    case GHC.IO.Encoding.getFileSystemEncoding ipv2_scnaG of {
+                      (#,#) ipv4_scnaJ [Occ=Once] ipv5_scnaK [Occ=Once] ->
+                          case byteArrayContents# [ipv3_scnaH] of buf_scnaL {
+                            __DEFAULT ->
+                                let {
+                                  buf1_scnaM [Occ=OnceL*, Dmd=<L,U(U)>]
+                                    :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [buf_scnaL]; } in
+                                let {
+                                  sat_scnb5 [Occ=Once]
+                                    :: GHC.Foreign.CString -> GHC.Types.IO GHC.IO.FilePath
+                                  [LclId] =
+                                      [buf_scnaL buf1_scnaM] \r [s_scnaN s1_scnaO]
+                                          case s_scnaN of {
+                                            GHC.Ptr.Ptr ds4_scnaQ [Occ=Once] ->
+                                                case
+                                                    __pkg_ccall base-4.11.0.0 [ds4_scnaQ
+                                                                               buf_scnaL
+                                                                               4096##
+                                                                               s1_scnaO]
+                                                of
+                                                { (#,#) ds5_scnaT [Occ=Once*]
+                                                        ds6_scnaU [Occ=Once] ->
+                                                      case narrow32Int# [ds6_scnaU] of wild1_scnaV {
+                                                        __DEFAULT ->
+                                                            let {
+                                                              sat_scnaW [Occ=Once] :: GHC.Types.Int
+                                                              [LclId] =
+                                                                  CCCS GHC.Types.I#! [wild1_scnaV]; } in
+                                                            let {
+                                                              sat_scnaX [Occ=Once]
+                                                                :: Foreign.C.String.CStringLen
+                                                              [LclId] =
+                                                                  CCCS (,)! [buf1_scnaM sat_scnaW];
+                                                            } in 
+                                                              System.Posix.Internals.peekFilePathLen1
+                                                                  sat_scnaX ds5_scnaT;
+                                                        -1# ->
+                                                            case
+                                                                Foreign.C.Error.throwErrnoPath1
+                                                                    System.Environment.ExecutablePath.getExecutablePath2
+                                                                    System.Environment.ExecutablePath.getExecutablePath_file
+                                                                    ds5_scnaT
+                                                            of
+                                                            { (#,#) ipv6_scnaZ [Occ=Once]
+                                                                    ipv7_scnb0 [Occ=Once] ->
+                                                                  let {
+                                                                    sat_scnb3 [Occ=Once]
+                                                                      :: GHC.Types.Int
+                                                                    [LclId] =
+                                                                        [ipv7_scnb0] \u []
+                                                                            case ipv7_scnb0 of {
+                                                                              GHC.Int.I32# x#_scnb2 [Occ=Once] ->
+                                                                                  GHC.Types.I# [x#_scnb2];
+                                                                            }; } in
+                                                                  let {
+                                                                    sat_scnb4 [Occ=Once]
+                                                                      :: Foreign.C.String.CStringLen
+                                                                    [LclId] =
+                                                                        CCCS (,)! [buf1_scnaM
+                                                                                   sat_scnb3];
+                                                                  } in 
+                                                                    System.Posix.Internals.peekFilePathLen1
+                                                                        sat_scnb4 ipv6_scnaZ;
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                } in 
+                                  case
+                                      GHC.Foreign.charIsRepresentable3
+                                          ipv5_scnaK
+                                          System.Environment.ExecutablePath.getExecutablePath_file
+                                          sat_scnb5
+                                          ipv4_scnaJ
+                                  of
+                                  { (#,#) ipv6_scnb7 [Occ=Once] ipv7_scnb8 [Occ=Once] ->
+                                        case touch# [ipv3_scnaH ipv6_scnb7] of s4_scnb9 {
+                                          __DEFAULT -> (#,#) [s4_scnb9 ipv7_scnb8];
+                                        };
+                                  };
+                          };
+                    };
+              };
+        };
+
+System.Environment.ExecutablePath.getExecutablePath
+  :: GHC.Types.IO GHC.IO.FilePath
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        System.Environment.ExecutablePath.getExecutablePath1 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:16.330880732 UTC
+
+System.Environment.ExecutablePath.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.ExecutablePath.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule4];
+
+System.Environment.ExecutablePath.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.ExecutablePath"#;
+
+System.Environment.ExecutablePath.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule2];
+
+System.Environment.ExecutablePath.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.ExecutablePath.$trModule3
+                                     System.Environment.ExecutablePath.$trModule1];
+
+System.Environment.ExecutablePath.getExecutablePath4
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "/proc/self/exe"#;
+
+System.Environment.ExecutablePath.getExecutablePath_file
+  :: GHC.IO.FilePath
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath4;
+
+System.Environment.ExecutablePath.getExecutablePath3
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "readSymbolicLink"#;
+
+System.Environment.ExecutablePath.getExecutablePath2
+  :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath3;
+
+System.Environment.ExecutablePath.getExecutablePath1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.IO.FilePath #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case newAlignedPinnedByteArray# [4097# 1# GHC.Prim.void#] of {
+          Unit# ipv1_scnaE [Occ=Once] ->
+              case unsafeFreezeByteArray# [ipv1_scnaE GHC.Prim.void#] of {
+                Unit# ipv3_scnaH ->
+                    case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+                      Unit# ipv5_scnaK [Occ=Once] ->
+                          case byteArrayContents# [ipv3_scnaH] of buf_scnaL {
+                            __DEFAULT ->
+                                let {
+                                  buf1_scnaM [Occ=OnceL*, Dmd=<L,U(U)>]
+                                    :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [buf_scnaL]; } in
+                                let {
+                                  sat_scnb5 [Occ=Once]
+                                    :: GHC.Foreign.CString -> GHC.Types.IO GHC.IO.FilePath
+                                  [LclId] =
+                                      [buf_scnaL buf1_scnaM] \r [s_scnaN void_0E]
+                                          case s_scnaN of {
+                                            GHC.Ptr.Ptr ds4_scnaQ [Occ=Once] ->
+                                                case
+                                                    __pkg_ccall base-4.11.0.0 [ds4_scnaQ
+                                                                               buf_scnaL
+                                                                               4096##
+                                                                               GHC.Prim.void#]
+                                                of
+                                                { Unit# ds6_scnaU [Occ=Once] ->
+                                                      case narrow32Int# [ds6_scnaU] of wild1_scnaV {
+                                                        __DEFAULT ->
+                                                            let {
+                                                              sat_scnaW [Occ=Once] :: GHC.Types.Int
+                                                              [LclId] =
+                                                                  CCCS GHC.Types.I#! [wild1_scnaV]; } in
+                                                            let {
+                                                              sat_scnaX [Occ=Once]
+                                                                :: Foreign.C.String.CStringLen
+                                                              [LclId] =
+                                                                  CCCS (,)! [buf1_scnaM sat_scnaW];
+                                                            } in 
+                                                              System.Posix.Internals.peekFilePathLen1
+                                                                  sat_scnaX GHC.Prim.void#;
+                                                        -1# ->
+                                                            case
+                                                                Foreign.C.Error.throwErrnoPath1
+                                                                    System.Environment.ExecutablePath.getExecutablePath2
+                                                                    System.Environment.ExecutablePath.getExecutablePath_file
+                                                                    GHC.Prim.void#
+                                                            of
+                                                            { Unit# ipv7_scnb0 [Occ=Once] ->
+                                                                  let {
+                                                                    sat_scnb3 [Occ=Once]
+                                                                      :: GHC.Types.Int
+                                                                    [LclId] =
+                                                                        [ipv7_scnb0] \u []
+                                                                            case ipv7_scnb0 of {
+                                                                              GHC.Int.I32# x#_scnb2 [Occ=Once] ->
+                                                                                  GHC.Types.I# [x#_scnb2];
+                                                                            }; } in
+                                                                  let {
+                                                                    sat_scnb4 [Occ=Once]
+                                                                      :: Foreign.C.String.CStringLen
+                                                                    [LclId] =
+                                                                        CCCS (,)! [buf1_scnaM
+                                                                                   sat_scnb3];
+                                                                  } in 
+                                                                    System.Posix.Internals.peekFilePathLen1
+                                                                        sat_scnb4 GHC.Prim.void#;
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                } in 
+                                  case
+                                      GHC.Foreign.charIsRepresentable3
+                                          ipv5_scnaK
+                                          System.Environment.ExecutablePath.getExecutablePath_file
+                                          sat_scnb5
+                                          GHC.Prim.void#
+                                  of
+                                  { Unit# ipv7_scnb8 [Occ=Once] ->
+                                        case touch# [ipv3_scnaH GHC.Prim.void#] of s4_scnb9 {
+                                          (##) -> Unit# [ipv7_scnb8];
+                                        };
+                                  };
+                          };
+                    };
+              };
+        };
+
+System.Environment.ExecutablePath.getExecutablePath
+  :: GHC.Types.IO GHC.IO.FilePath
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        System.Environment.ExecutablePath.getExecutablePath1
+            GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:16.492256731 UTC
+
+System.Environment.ExecutablePath.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.ExecutablePath.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule4];
+
+System.Environment.ExecutablePath.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.ExecutablePath"#;
+
+System.Environment.ExecutablePath.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule2];
+
+System.Environment.ExecutablePath.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.ExecutablePath.$trModule3
+                                     System.Environment.ExecutablePath.$trModule1];
+
+System.Environment.ExecutablePath.getExecutablePath4
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "/proc/self/exe"#;
+
+System.Environment.ExecutablePath.getExecutablePath_file
+  :: GHC.IO.FilePath
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath4;
+
+System.Environment.ExecutablePath.getExecutablePath3
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "readSymbolicLink"#;
+
+System.Environment.ExecutablePath.getExecutablePath2
+  :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath3;
+
+System.Environment.ExecutablePath.getExecutablePath1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.IO.FilePath #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta1_scnhO]
+        case newAlignedPinnedByteArray# [4097# 1# eta1_scnhO] of {
+          (#,#) ipv_scnhQ [Occ=Once] ipv1_scnhR [Occ=Once] ->
+              case unsafeFreezeByteArray# [ipv1_scnhR ipv_scnhQ] of {
+                (#,#) ipv2_scnhT [Occ=Once] ipv3_scnhU ->
+                    case GHC.IO.Encoding.getFileSystemEncoding ipv2_scnhT of {
+                      (#,#) ipv4_scnhW [Occ=Once] ipv5_scnhX [Occ=Once] ->
+                          case byteArrayContents# [ipv3_scnhU] of buf_scnhY {
+                            __DEFAULT ->
+                                let {
+                                  buf1_scnhZ [Occ=OnceL*, Dmd=<L,U(U)>]
+                                    :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [buf_scnhY]; } in
+                                let {
+                                  sat_scnii [Occ=Once]
+                                    :: GHC.Foreign.CString -> GHC.Types.IO GHC.IO.FilePath
+                                  [LclId] =
+                                      [buf_scnhY buf1_scnhZ] \r [s_scni0 s1_scni1]
+                                          case s_scni0 of {
+                                            GHC.Ptr.Ptr ds4_scni3 [Occ=Once] ->
+                                                case
+                                                    __pkg_ccall base-4.11.0.0 [ds4_scni3
+                                                                               buf_scnhY
+                                                                               4096##
+                                                                               s1_scni1]
+                                                of
+                                                { (#,#) ds5_scni6 [Occ=Once*]
+                                                        ds6_scni7 [Occ=Once] ->
+                                                      case narrow32Int# [ds6_scni7] of wild1_scni8 {
+                                                        __DEFAULT ->
+                                                            let {
+                                                              sat_scni9 [Occ=Once] :: GHC.Types.Int
+                                                              [LclId] =
+                                                                  CCCS GHC.Types.I#! [wild1_scni8]; } in
+                                                            let {
+                                                              sat_scnia [Occ=Once]
+                                                                :: Foreign.C.String.CStringLen
+                                                              [LclId] =
+                                                                  CCCS (,)! [buf1_scnhZ sat_scni9];
+                                                            } in 
+                                                              System.Posix.Internals.peekFilePathLen1
+                                                                  sat_scnia ds5_scni6;
+                                                        -1# ->
+                                                            case
+                                                                Foreign.C.Error.throwErrnoPath1
+                                                                    System.Environment.ExecutablePath.getExecutablePath2
+                                                                    System.Environment.ExecutablePath.getExecutablePath_file
+                                                                    ds5_scni6
+                                                            of
+                                                            { (#,#) ipv6_scnic [Occ=Once]
+                                                                    ipv7_scnid [Occ=Once] ->
+                                                                  let {
+                                                                    sat_scnig [Occ=Once]
+                                                                      :: GHC.Types.Int
+                                                                    [LclId] =
+                                                                        [ipv7_scnid] \u []
+                                                                            case ipv7_scnid of {
+                                                                              GHC.Int.I32# x#_scnif [Occ=Once] ->
+                                                                                  GHC.Types.I# [x#_scnif];
+                                                                            }; } in
+                                                                  let {
+                                                                    sat_scnih [Occ=Once]
+                                                                      :: Foreign.C.String.CStringLen
+                                                                    [LclId] =
+                                                                        CCCS (,)! [buf1_scnhZ
+                                                                                   sat_scnig];
+                                                                  } in 
+                                                                    System.Posix.Internals.peekFilePathLen1
+                                                                        sat_scnih ipv6_scnic;
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                } in 
+                                  case
+                                      GHC.Foreign.charIsRepresentable3
+                                          ipv5_scnhX
+                                          System.Environment.ExecutablePath.getExecutablePath_file
+                                          sat_scnii
+                                          ipv4_scnhW
+                                  of
+                                  { (#,#) ipv6_scnik [Occ=Once] ipv7_scnil [Occ=Once] ->
+                                        case touch# [ipv3_scnhU ipv6_scnik] of s4_scnim {
+                                          __DEFAULT -> (#,#) [s4_scnim ipv7_scnil];
+                                        };
+                                  };
+                          };
+                    };
+              };
+        };
+
+System.Environment.ExecutablePath.getExecutablePath
+  :: GHC.Types.IO GHC.IO.FilePath
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        System.Environment.ExecutablePath.getExecutablePath1 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:16.49578417 UTC
+
+System.Environment.ExecutablePath.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.ExecutablePath.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule4];
+
+System.Environment.ExecutablePath.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.ExecutablePath"#;
+
+System.Environment.ExecutablePath.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.ExecutablePath.$trModule2];
+
+System.Environment.ExecutablePath.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.ExecutablePath.$trModule3
+                                     System.Environment.ExecutablePath.$trModule1];
+
+System.Environment.ExecutablePath.getExecutablePath4
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "/proc/self/exe"#;
+
+System.Environment.ExecutablePath.getExecutablePath_file
+  :: GHC.IO.FilePath
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath4;
+
+System.Environment.ExecutablePath.getExecutablePath3
+  :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "readSymbolicLink"#;
+
+System.Environment.ExecutablePath.getExecutablePath2
+  :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString#
+            System.Environment.ExecutablePath.getExecutablePath3;
+
+System.Environment.ExecutablePath.getExecutablePath1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.IO.FilePath #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case newAlignedPinnedByteArray# [4097# 1# GHC.Prim.void#] of {
+          Unit# ipv1_scnhR [Occ=Once] ->
+              case unsafeFreezeByteArray# [ipv1_scnhR GHC.Prim.void#] of {
+                Unit# ipv3_scnhU ->
+                    case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+                      Unit# ipv5_scnhX [Occ=Once] ->
+                          case byteArrayContents# [ipv3_scnhU] of buf_scnhY {
+                            __DEFAULT ->
+                                let {
+                                  buf1_scnhZ [Occ=OnceL*, Dmd=<L,U(U)>]
+                                    :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [buf_scnhY]; } in
+                                let {
+                                  sat_scnii [Occ=Once]
+                                    :: GHC.Foreign.CString -> GHC.Types.IO GHC.IO.FilePath
+                                  [LclId] =
+                                      [buf_scnhY buf1_scnhZ] \r [s_scni0 void_0E]
+                                          case s_scni0 of {
+                                            GHC.Ptr.Ptr ds4_scni3 [Occ=Once] ->
+                                                case
+                                                    __pkg_ccall base-4.11.0.0 [ds4_scni3
+                                                                               buf_scnhY
+                                                                               4096##
+                                                                               GHC.Prim.void#]
+                                                of
+                                                { Unit# ds6_scni7 [Occ=Once] ->
+                                                      case narrow32Int# [ds6_scni7] of wild1_scni8 {
+                                                        __DEFAULT ->
+                                                            let {
+                                                              sat_scni9 [Occ=Once] :: GHC.Types.Int
+                                                              [LclId] =
+                                                                  CCCS GHC.Types.I#! [wild1_scni8]; } in
+                                                            let {
+                                                              sat_scnia [Occ=Once]
+                                                                :: Foreign.C.String.CStringLen
+                                                              [LclId] =
+                                                                  CCCS (,)! [buf1_scnhZ sat_scni9];
+                                                            } in 
+                                                              System.Posix.Internals.peekFilePathLen1
+                                                                  sat_scnia GHC.Prim.void#;
+                                                        -1# ->
+                                                            case
+                                                                Foreign.C.Error.throwErrnoPath1
+                                                                    System.Environment.ExecutablePath.getExecutablePath2
+                                                                    System.Environment.ExecutablePath.getExecutablePath_file
+                                                                    GHC.Prim.void#
+                                                            of
+                                                            { Unit# ipv7_scnid [Occ=Once] ->
+                                                                  let {
+                                                                    sat_scnig [Occ=Once]
+                                                                      :: GHC.Types.Int
+                                                                    [LclId] =
+                                                                        [ipv7_scnid] \u []
+                                                                            case ipv7_scnid of {
+                                                                              GHC.Int.I32# x#_scnif [Occ=Once] ->
+                                                                                  GHC.Types.I# [x#_scnif];
+                                                                            }; } in
+                                                                  let {
+                                                                    sat_scnih [Occ=Once]
+                                                                      :: Foreign.C.String.CStringLen
+                                                                    [LclId] =
+                                                                        CCCS (,)! [buf1_scnhZ
+                                                                                   sat_scnig];
+                                                                  } in 
+                                                                    System.Posix.Internals.peekFilePathLen1
+                                                                        sat_scnih GHC.Prim.void#;
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                } in 
+                                  case
+                                      GHC.Foreign.charIsRepresentable3
+                                          ipv5_scnhX
+                                          System.Environment.ExecutablePath.getExecutablePath_file
+                                          sat_scnii
+                                          GHC.Prim.void#
+                                  of
+                                  { Unit# ipv7_scnil [Occ=Once] ->
+                                        case touch# [ipv3_scnhU GHC.Prim.void#] of s4_scnim {
+                                          (##) -> Unit# [ipv7_scnil];
+                                        };
+                                  };
+                          };
+                    };
+              };
+        };
+
+System.Environment.ExecutablePath.getExecutablePath
+  :: GHC.Types.IO GHC.IO.FilePath
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        System.Environment.ExecutablePath.getExecutablePath1
+            GHC.Prim.void#;
+

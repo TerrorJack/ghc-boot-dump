@@ -1,0 +1,588 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:05.095207077 UTC
+
+GHC.Stack.errorWithStackTrace1
+  :: forall a.
+     [GHC.Base.String]
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,1*U><B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ipv1_sa3mB x_sa3mC eta_sa3mD]
+        let {
+          sat_sa3mG [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [ipv1_sa3mB x_sa3mC] \u []
+                  let {
+                    sat_sa3mE [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [ipv1_sa3mB] \u [] GHC.Stack.CCS.renderStack ipv1_sa3mB; } in
+                  let {
+                    sat_sa3mF [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        CCCS GHC.Exception.ErrorCallWithLocation! [x_sa3mC sat_sa3mE];
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3mF;
+        } in  raiseIO# [sat_sa3mG eta_sa3mD];
+
+GHC.Stack.errorWithStackTrace2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_sa3mH eta_sa3mI]
+        let {
+          sat_sa3mK [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_sa3mH] \u []
+                  let {
+                    sat_sa3mJ [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        [x_sa3mH] \u [] GHC.Exception.$bErrorCall x_sa3mH;
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3mJ;
+        } in  raiseIO# [sat_sa3mK eta_sa3mI];
+
+GHC.Stack.errorWithStackTrace :: forall a. GHC.Base.String -> a
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [x_sa3mL]
+        case
+            case getCurrentCCS# [x_sa3mL GHC.Prim.realWorld#] of {
+              (#,#) s'_sa3mN [Occ=Once] addr_sa3mO [Occ=Once] ->
+                  case GHC.Stack.CCS.$wgo addr_sa3mO GHC.Types.[] s'_sa3mN of {
+                    (#,#) ipv_sa3mQ [Occ=Once*] ipv1_sa3mR [Occ=Once!] ->
+                        case ipv1_sa3mR of wild1_sa3mS {
+                          [] -> GHC.Stack.errorWithStackTrace2 x_sa3mL ipv_sa3mQ;
+                          : _ [Occ=Dead] _ [Occ=Dead] ->
+                              GHC.Stack.errorWithStackTrace1 wild1_sa3mS x_sa3mL ipv_sa3mQ;
+                        };
+                  };
+            }
+        of
+        { (#,#) _ [Occ=Dead] ipv1_sa3mX [Occ=Once] -> ipv1_sa3mX;
+        };
+
+lvl_ra3mz :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "popCallStack: empty stack"#;
+
+GHC.Stack.withFrozenCallStack1 :: GHC.Stack.Types.CallStack
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_ra3mz of sat_sa3mY {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sa3mY;
+        };
+
+GHC.Stack.popCallStack [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Stack.Types.CallStack -> GHC.Stack.Types.CallStack
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [stk_sa3mZ]
+        case stk_sa3mZ of wild_sa3n0 {
+          GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3n3 [Occ=Once] ->
+              stk'_sa3n3;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3n0;
+        };
+
+GHC.Stack.callStack [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Stack.Types.HasCallStack => GHC.Stack.Types.CallStack
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3n5]
+        case $dIP_sa3n5 of wild_sa3n6 {
+          GHC.Stack.Types.EmptyCallStack ->
+              GHC.Stack.Types.EmptyCallStack [];
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3n9 [Occ=Once] ->
+              stk'_sa3n9;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3n6;
+        };
+
+GHC.Stack.withFrozenCallStack
+  :: forall a.
+     GHC.Stack.Types.HasCallStack =>
+     (GHC.Stack.Types.HasCallStack => a) -> a
+[GblId, Arity=2, Str=<L,1*U><C(S),1*C1(U)>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3nb eta_sa3nc]
+        let {
+          sat_sa3ni [Occ=Once] :: GHC.Stack.Types.CallStack
+          [LclId] =
+              [$dIP_sa3nb] \u []
+                  case $dIP_sa3nb of wild1_sa3nd {
+                    GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+                    GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                                  _ [Occ=Dead]
+                                                  stk'_sa3ng [Occ=Once] ->
+                        stk'_sa3ng;
+                    GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild1_sa3nd;
+                  }; } in
+        let {
+          sat_sa3nj [Occ=Once] :: GHC.Stack.Types.HasCallStack
+          [LclId] =
+              CCCS GHC.Stack.Types.FreezeCallStack! [sat_sa3ni];
+        } in  eta_sa3nc sat_sa3nj;
+
+GHC.Stack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule4];
+
+GHC.Stack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack"#;
+
+GHC.Stack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule2];
+
+GHC.Stack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.$trModule3
+                                     GHC.Stack.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:05.097817894 UTC
+
+GHC.Stack.errorWithStackTrace1
+  :: forall a.
+     [GHC.Base.String]
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,1*U><B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ipv1_sa3mB x_sa3mC void_0E]
+        let {
+          sat_sa3mG [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [ipv1_sa3mB x_sa3mC] \u []
+                  let {
+                    sat_sa3mE [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [ipv1_sa3mB] \u [] GHC.Stack.CCS.renderStack ipv1_sa3mB; } in
+                  let {
+                    sat_sa3mF [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        CCCS GHC.Exception.ErrorCallWithLocation! [x_sa3mC sat_sa3mE];
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3mF;
+        } in  raiseIO# [sat_sa3mG GHC.Prim.void#];
+
+GHC.Stack.errorWithStackTrace2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_sa3mH void_0E]
+        let {
+          sat_sa3mK [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_sa3mH] \u []
+                  let {
+                    sat_sa3mJ [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        [x_sa3mH] \u [] GHC.Exception.$bErrorCall x_sa3mH;
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3mJ;
+        } in  raiseIO# [sat_sa3mK GHC.Prim.void#];
+
+GHC.Stack.errorWithStackTrace :: forall a. GHC.Base.String -> a
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [x_sa3mL]
+        case
+            case getCurrentCCS# [x_sa3mL GHC.Prim.realWorld#] of {
+              Unit# addr_sa3mO [Occ=Once] ->
+                  case GHC.Stack.CCS.$wgo addr_sa3mO GHC.Types.[] GHC.Prim.void# of {
+                    Unit# ipv1_sa3mR [Occ=Once!] ->
+                        case ipv1_sa3mR of wild1_sa3mS {
+                          [] -> GHC.Stack.errorWithStackTrace2 x_sa3mL GHC.Prim.void#;
+                          : _ [Occ=Dead] _ [Occ=Dead] ->
+                              GHC.Stack.errorWithStackTrace1 wild1_sa3mS x_sa3mL GHC.Prim.void#;
+                        };
+                  };
+            }
+        of
+        { Unit# ipv1_sa3mX [Occ=Once] -> ipv1_sa3mX;
+        };
+
+lvl_ra3mz :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "popCallStack: empty stack"#;
+
+GHC.Stack.withFrozenCallStack1 :: GHC.Stack.Types.CallStack
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_ra3mz of sat_sa3mY {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sa3mY;
+        };
+
+GHC.Stack.popCallStack [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Stack.Types.CallStack -> GHC.Stack.Types.CallStack
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [stk_sa3mZ]
+        case stk_sa3mZ of wild_sa3n0 {
+          GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3n3 [Occ=Once] ->
+              stk'_sa3n3;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3n0;
+        };
+
+GHC.Stack.callStack [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Stack.Types.HasCallStack => GHC.Stack.Types.CallStack
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3n5]
+        case $dIP_sa3n5 of wild_sa3n6 {
+          GHC.Stack.Types.EmptyCallStack ->
+              GHC.Stack.Types.EmptyCallStack [];
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3n9 [Occ=Once] ->
+              stk'_sa3n9;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3n6;
+        };
+
+GHC.Stack.withFrozenCallStack
+  :: forall a.
+     GHC.Stack.Types.HasCallStack =>
+     (GHC.Stack.Types.HasCallStack => a) -> a
+[GblId, Arity=2, Str=<L,1*U><C(S),1*C1(U)>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3nb eta_sa3nc]
+        let {
+          sat_sa3ni [Occ=Once] :: GHC.Stack.Types.CallStack
+          [LclId] =
+              [$dIP_sa3nb] \u []
+                  case $dIP_sa3nb of wild1_sa3nd {
+                    GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+                    GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                                  _ [Occ=Dead]
+                                                  stk'_sa3ng [Occ=Once] ->
+                        stk'_sa3ng;
+                    GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild1_sa3nd;
+                  }; } in
+        let {
+          sat_sa3nj [Occ=Once] :: GHC.Stack.Types.HasCallStack
+          [LclId] =
+              CCCS GHC.Stack.Types.FreezeCallStack! [sat_sa3ni];
+        } in  eta_sa3nc sat_sa3nj;
+
+GHC.Stack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule4];
+
+GHC.Stack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack"#;
+
+GHC.Stack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule2];
+
+GHC.Stack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.$trModule3
+                                     GHC.Stack.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:05.299065229 UTC
+
+GHC.Stack.errorWithStackTrace1
+  :: forall a.
+     [GHC.Base.String]
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,1*U><B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ipv1_sa3xW x_sa3xX eta_sa3xY]
+        let {
+          sat_sa3y1 [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [ipv1_sa3xW x_sa3xX] \u []
+                  let {
+                    sat_sa3xZ [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [ipv1_sa3xW] \u [] GHC.Stack.CCS.renderStack ipv1_sa3xW; } in
+                  let {
+                    sat_sa3y0 [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        CCCS GHC.Exception.ErrorCallWithLocation! [x_sa3xX sat_sa3xZ];
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3y0;
+        } in  raiseIO# [sat_sa3y1 eta_sa3xY];
+
+GHC.Stack.errorWithStackTrace2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_sa3y2 eta_sa3y3]
+        let {
+          sat_sa3y5 [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_sa3y2] \u []
+                  let {
+                    sat_sa3y4 [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        [x_sa3y2] \u [] GHC.Exception.$bErrorCall x_sa3y2;
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3y4;
+        } in  raiseIO# [sat_sa3y5 eta_sa3y3];
+
+GHC.Stack.errorWithStackTrace :: forall a. GHC.Base.String -> a
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [x_sa3y6]
+        case
+            case getCurrentCCS# [x_sa3y6 GHC.Prim.realWorld#] of {
+              (#,#) s'_sa3y8 [Occ=Once] addr_sa3y9 [Occ=Once] ->
+                  case GHC.Stack.CCS.$wgo addr_sa3y9 GHC.Types.[] s'_sa3y8 of {
+                    (#,#) ipv_sa3yb [Occ=Once*] ipv1_sa3yc [Occ=Once!] ->
+                        case ipv1_sa3yc of wild1_sa3yd {
+                          [] -> GHC.Stack.errorWithStackTrace2 x_sa3y6 ipv_sa3yb;
+                          : _ [Occ=Dead] _ [Occ=Dead] ->
+                              GHC.Stack.errorWithStackTrace1 wild1_sa3yd x_sa3y6 ipv_sa3yb;
+                        };
+                  };
+            }
+        of
+        { (#,#) _ [Occ=Dead] ipv1_sa3yi [Occ=Once] -> ipv1_sa3yi;
+        };
+
+lvl_ra3mz :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "popCallStack: empty stack"#;
+
+GHC.Stack.withFrozenCallStack1 :: GHC.Stack.Types.CallStack
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_ra3mz of sat_sa3yj {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sa3yj;
+        };
+
+GHC.Stack.popCallStack [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Stack.Types.CallStack -> GHC.Stack.Types.CallStack
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [stk_sa3yk]
+        case stk_sa3yk of wild_sa3yl {
+          GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3yo [Occ=Once] ->
+              stk'_sa3yo;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3yl;
+        };
+
+GHC.Stack.callStack [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Stack.Types.HasCallStack => GHC.Stack.Types.CallStack
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3yq]
+        case $dIP_sa3yq of wild_sa3yr {
+          GHC.Stack.Types.EmptyCallStack ->
+              GHC.Stack.Types.EmptyCallStack [];
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3yu [Occ=Once] ->
+              stk'_sa3yu;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3yr;
+        };
+
+GHC.Stack.withFrozenCallStack
+  :: forall a.
+     GHC.Stack.Types.HasCallStack =>
+     (GHC.Stack.Types.HasCallStack => a) -> a
+[GblId, Arity=2, Str=<L,1*U><C(S),1*C1(U)>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3yw eta_sa3yx]
+        let {
+          sat_sa3yD [Occ=Once] :: GHC.Stack.Types.CallStack
+          [LclId] =
+              [$dIP_sa3yw] \u []
+                  case $dIP_sa3yw of wild1_sa3yy {
+                    GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+                    GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                                  _ [Occ=Dead]
+                                                  stk'_sa3yB [Occ=Once] ->
+                        stk'_sa3yB;
+                    GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild1_sa3yy;
+                  }; } in
+        let {
+          sat_sa3yE [Occ=Once] :: GHC.Stack.Types.HasCallStack
+          [LclId] =
+              CCCS GHC.Stack.Types.FreezeCallStack! [sat_sa3yD];
+        } in  eta_sa3yx sat_sa3yE;
+
+GHC.Stack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule4];
+
+GHC.Stack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack"#;
+
+GHC.Stack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule2];
+
+GHC.Stack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.$trModule3
+                                     GHC.Stack.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:05.302635785 UTC
+
+GHC.Stack.errorWithStackTrace1
+  :: forall a.
+     [GHC.Base.String]
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,1*U><B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ipv1_sa3xW x_sa3xX void_0E]
+        let {
+          sat_sa3y1 [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [ipv1_sa3xW x_sa3xX] \u []
+                  let {
+                    sat_sa3xZ [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [ipv1_sa3xW] \u [] GHC.Stack.CCS.renderStack ipv1_sa3xW; } in
+                  let {
+                    sat_sa3y0 [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        CCCS GHC.Exception.ErrorCallWithLocation! [x_sa3xX sat_sa3xZ];
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3y0;
+        } in  raiseIO# [sat_sa3y1 GHC.Prim.void#];
+
+GHC.Stack.errorWithStackTrace2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_sa3y2 void_0E]
+        let {
+          sat_sa3y5 [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_sa3y2] \u []
+                  let {
+                    sat_sa3y4 [Occ=Once] :: GHC.Exception.ErrorCall
+                    [LclId] =
+                        [x_sa3y2] \u [] GHC.Exception.$bErrorCall x_sa3y2;
+                  } in  GHC.Exception.$fExceptionErrorCall_$ctoException sat_sa3y4;
+        } in  raiseIO# [sat_sa3y5 GHC.Prim.void#];
+
+GHC.Stack.errorWithStackTrace :: forall a. GHC.Base.String -> a
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [x_sa3y6]
+        case
+            case getCurrentCCS# [x_sa3y6 GHC.Prim.realWorld#] of {
+              Unit# addr_sa3y9 [Occ=Once] ->
+                  case GHC.Stack.CCS.$wgo addr_sa3y9 GHC.Types.[] GHC.Prim.void# of {
+                    Unit# ipv1_sa3yc [Occ=Once!] ->
+                        case ipv1_sa3yc of wild1_sa3yd {
+                          [] -> GHC.Stack.errorWithStackTrace2 x_sa3y6 GHC.Prim.void#;
+                          : _ [Occ=Dead] _ [Occ=Dead] ->
+                              GHC.Stack.errorWithStackTrace1 wild1_sa3yd x_sa3y6 GHC.Prim.void#;
+                        };
+                  };
+            }
+        of
+        { Unit# ipv1_sa3yi [Occ=Once] -> ipv1_sa3yi;
+        };
+
+lvl_ra3mz :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "popCallStack: empty stack"#;
+
+GHC.Stack.withFrozenCallStack1 :: GHC.Stack.Types.CallStack
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_ra3mz of sat_sa3yj {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sa3yj;
+        };
+
+GHC.Stack.popCallStack [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Stack.Types.CallStack -> GHC.Stack.Types.CallStack
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [stk_sa3yk]
+        case stk_sa3yk of wild_sa3yl {
+          GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3yo [Occ=Once] ->
+              stk'_sa3yo;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3yl;
+        };
+
+GHC.Stack.callStack [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Stack.Types.HasCallStack => GHC.Stack.Types.CallStack
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3yq]
+        case $dIP_sa3yq of wild_sa3yr {
+          GHC.Stack.Types.EmptyCallStack ->
+              GHC.Stack.Types.EmptyCallStack [];
+          GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                        _ [Occ=Dead]
+                                        stk'_sa3yu [Occ=Once] ->
+              stk'_sa3yu;
+          GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild_sa3yr;
+        };
+
+GHC.Stack.withFrozenCallStack
+  :: forall a.
+     GHC.Stack.Types.HasCallStack =>
+     (GHC.Stack.Types.HasCallStack => a) -> a
+[GblId, Arity=2, Str=<L,1*U><C(S),1*C1(U)>, Unf=OtherCon []] =
+    [] \r [$dIP_sa3yw eta_sa3yx]
+        let {
+          sat_sa3yD [Occ=Once] :: GHC.Stack.Types.CallStack
+          [LclId] =
+              [$dIP_sa3yw] \u []
+                  case $dIP_sa3yw of wild1_sa3yy {
+                    GHC.Stack.Types.EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+                    GHC.Stack.Types.PushCallStack _ [Occ=Dead]
+                                                  _ [Occ=Dead]
+                                                  stk'_sa3yB [Occ=Once] ->
+                        stk'_sa3yB;
+                    GHC.Stack.Types.FreezeCallStack _ [Occ=Dead] -> wild1_sa3yy;
+                  }; } in
+        let {
+          sat_sa3yE [Occ=Once] :: GHC.Stack.Types.HasCallStack
+          [LclId] =
+              CCCS GHC.Stack.Types.FreezeCallStack! [sat_sa3yD];
+        } in  eta_sa3yx sat_sa3yE;
+
+GHC.Stack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule4];
+
+GHC.Stack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack"#;
+
+GHC.Stack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.$trModule2];
+
+GHC.Stack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.$trModule3
+                                     GHC.Stack.$trModule1];
+

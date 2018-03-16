@@ -1,0 +1,307 @@
+[ CmmData
+    (Section CString (CLabel "base_GHCziClock_zdtrModule4_bytes"))
+    (Statics
+       (CLabel "base_GHCziClock_zdtrModule4_bytes")
+       [ CmmString [ 98 , 97 , 115 , 101 ] ])
+, CmmData
+    (Section Data (CLabel "base_GHCziClock_zdtrModule3_closure"))
+    (Statics
+       (CLabel "base_GHCziClock_zdtrModule3_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_zdtrModule4_bytes"))
+       ])
+, CmmData
+    (Section CString (CLabel "base_GHCziClock_zdtrModule2_bytes"))
+    (Statics
+       (CLabel "base_GHCziClock_zdtrModule2_bytes")
+       [ CmmString [ 71 , 72 , 67 , 46 , 67 , 108 , 111 , 99 , 107 ] ])
+, CmmData
+    (Section Data (CLabel "base_GHCziClock_zdtrModule1_closure"))
+    (Statics
+       (CLabel "base_GHCziClock_zdtrModule1_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_zdtrModule2_bytes"))
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziClock_zdtrModule_closure"))
+    (Statics
+       (CLabel "base_GHCziClock_zdtrModule_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Module_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff (CLabel "base_GHCziClock_zdtrModule3_closure") 1)
+       , CmmStaticLit
+           (CmmLabelOff (CLabel "base_GHCziClock_zdtrModule1_closure") 1)
+       , CmmStaticLit (CmmInt 3 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "r4RZ9_closure"))
+    (Statics
+       (CLabel "r4RZ9_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r4RZ9_info")) ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "r4RZ9_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809756026565
+      , g_graph =
+          [ ( L7133701809756026565
+            , BlockCC
+                (CmmEntry L7133701809756026565 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 16) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809756026569
+                  , cml_false = L7133701809756026568
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809756026568
+            , BlockCC
+                (CmmEntry L7133701809756026568 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "getMonotonicNSec")))
+                       (ForeignConvention CCallConv [] [ NoHint ] CmmMayReturn))
+                    [ LocalReg s4RZf (CmmType "I64") ]
+                    []
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-8))
+                    (CmmLit (CmmLabel (CLabel "base_GHCziWord_W64zh_con_info")))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp))
+                    (CmmReg (CmmLocal (LocalReg s4RZf (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-7))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "P64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809756026569
+            , BlockCC
+                (CmmEntry L7133701809756026569 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 16 W64))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r4RZ9_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "r4RZ9_info"))
+    (Statics
+       (CLabel "r4RZ9_info")
+       [ CmmStaticLit (CmmLabel (CLabel "r4RZ9_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section
+       Data (CLabel "base_GHCziClock_getMonotonicTimeNSec_closure"))
+    (Statics
+       (CLabel "base_GHCziClock_getMonotonicTimeNSec_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_getMonotonicTimeNSec_info"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_GHCziClock_getMonotonicTimeNSec_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809756026574
+      , g_graph =
+          [ ( L7133701809756026574
+            , BlockCC
+                (CmmEntry L7133701809756026574 GlobalScope)
+                []
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "r4RZ9_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData
+       (CLabel "base_GHCziClock_getMonotonicTimeNSec_info"))
+    (Statics
+       (CLabel "base_GHCziClock_getMonotonicTimeNSec_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_getMonotonicTimeNSec_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziClock_getMonotonicTime1_closure"))
+    (Statics
+       (CLabel "base_GHCziClock_getMonotonicTime1_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_getMonotonicTime1_info"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_GHCziClock_getMonotonicTime1_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809756026585
+      , g_graph =
+          [ ( L7133701809756026585
+            , BlockCC
+                (CmmEntry L7133701809756026585 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 16) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809756026594
+                  , cml_false = L7133701809756026593
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809756026593
+            , BlockCC
+                (CmmEntry L7133701809756026593 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "getMonotonicNSec")))
+                       (ForeignConvention CCallConv [] [ NoHint ] CmmMayReturn))
+                    [ LocalReg s4RZl (CmmType "I64") ]
+                    []
+                , CmmUnsafeForeignCall
+                    (PrimTarget (MO_UF_Conv W64))
+                    [ LocalReg c4S0u (CmmType "F64") ]
+                    [ CmmReg (CmmLocal (LocalReg s4RZl (CmmType "I64"))) ]
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-8))
+                    (CmmLit (CmmLabel (CLabel "ghczmprim_GHCziTypes_Dzh_con_info")))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp))
+                    (CmmMachOp
+                       (MO_F_Quot W64)
+                       [ CmmReg (CmmLocal (LocalReg c4S0u (CmmType "F64")))
+                       , CmmLit (CmmFloat (1000000000 % 1) W64)
+                       ])
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-7))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "P64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809756026594
+            , BlockCC
+                (CmmEntry L7133701809756026594 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 16 W64))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabel (CLabel "base_GHCziClock_getMonotonicTime1_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData
+       (CLabel "base_GHCziClock_getMonotonicTime1_info"))
+    (Statics
+       (CLabel "base_GHCziClock_getMonotonicTime1_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_getMonotonicTime1_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziClock_getMonotonicTime_closure"))
+    (Statics
+       (CLabel "base_GHCziClock_getMonotonicTime_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_getMonotonicTime_info"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_GHCziClock_getMonotonicTime_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809756026599
+      , g_graph =
+          [ ( L7133701809756026599
+            , BlockCC
+                (CmmEntry L7133701809756026599 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "base_GHCziClock_getMonotonicTime1_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData
+       (CLabel "base_GHCziClock_getMonotonicTime_info"))
+    (Statics
+       (CLabel "base_GHCziClock_getMonotonicTime_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziClock_getMonotonicTime_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 14 W64)
+       , CmmStaticLit (CmmInt 4294967299 W64)
+       ])
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "S4S06_srt"))
+    (Statics (CLabel "S4S06_srt") [])
+]

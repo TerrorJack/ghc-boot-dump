@@ -1,0 +1,916 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:02:59.217453786 UTC
+
+Data.IORef.mkWeakIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.IORef.IORef a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [r_s7RBw ds_s7RBx eta_s7RBy]
+        case r_s7RBw of wild_s7RBz {
+          GHC.STRef.STRef r#_s7RBA [Occ=Once] ->
+              case mkWeak# [r#_s7RBA wild_s7RBz ds_s7RBx eta_s7RBy] of {
+                (#,#) ipv_s7RBC [Occ=Once] ipv1_s7RBD [Occ=Once] ->
+                    let {
+                      sat_s7RBE [Occ=Once] :: GHC.Weak.Weak (GHC.IORef.IORef a_a7RwD)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s7RBD];
+                    } in  (#,#) [ipv_s7RBC sat_s7RBE];
+              };
+        };
+
+Data.IORef.mkWeakIORef
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.IORef.IORef a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.mkWeakIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.modifyIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RBF f_s7RBG s_s7RBH]
+        case ref_s7RBF of {
+          GHC.STRef.STRef var#_s7RBJ ->
+              case readMutVar# [var#_s7RBJ s_s7RBH] of {
+                (#,#) ipv_s7RBL [Occ=Once] ipv1_s7RBM [Occ=Once] ->
+                    let {
+                      sat_s7RBN [Occ=Once] :: a_a7Rwn
+                      [LclId] =
+                          [f_s7RBG ipv1_s7RBM] \u [] f_s7RBG ipv1_s7RBM;
+                    } in 
+                      case writeMutVar# [var#_s7RBJ sat_s7RBN ipv_s7RBL] of s2#_s7RBO {
+                        __DEFAULT -> (#,#) [s2#_s7RBO GHC.Tuple.()];
+                      };
+              };
+        };
+
+Data.IORef.modifyIORef
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.modifyIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.modifyIORef'1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RBP f_s7RBQ s_s7RBR]
+        case ref_s7RBP of {
+          GHC.STRef.STRef var#_s7RBT ->
+              case readMutVar# [var#_s7RBT s_s7RBR] of {
+                (#,#) ipv_s7RBV [Occ=Once] ipv1_s7RBW [Occ=Once] ->
+                    case f_s7RBQ ipv1_s7RBW of x'_s7RBX {
+                      __DEFAULT ->
+                          case writeMutVar# [var#_s7RBT x'_s7RBX ipv_s7RBV] of s2#_s7RBY {
+                            __DEFAULT -> (#,#) [s2#_s7RBY GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+Data.IORef.modifyIORef'
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.modifyIORef'1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.atomicModifyIORef
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.IORef.atomicModifyIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.atomicModifyIORef'1
+  :: forall a b.
+     GHC.IORef.IORef a
+     -> (a -> (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RBZ f_s7RC0 s_s7RC1]
+        case ref_s7RBZ of {
+          GHC.STRef.STRef r#_s7RC3 [Occ=Once] ->
+              let {
+                sat_s7RC9 [Occ=Once] :: a_a7RvA -> (a_a7RvA, b_a7RvB)
+                [LclId] =
+                    [f_s7RC0] \r [a1_s7RC4]
+                        case f_s7RC0 a1_s7RC4 of wild1_s7RC5 {
+                          (,) a'_s7RC6 [Occ=Once] _ [Occ=Dead] ->
+                              case a'_s7RC6 of { __DEFAULT -> wild1_s7RC5; };
+                        };
+              } in 
+                case
+                    atomicModifyMutVar# [r#_s7RC3 sat_s7RC9 s_s7RC1]
+                of
+                ds1_s7RCa
+                { (#,#) _ [Occ=Dead] ipv1_s7RCc [Occ=Once] ->
+                      case ipv1_s7RCc of { __DEFAULT -> ds1_s7RCa; };
+                };
+        };
+
+Data.IORef.atomicModifyIORef'
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.atomicModifyIORef'1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.atomicWriteIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RCe a1_s7RCf s_s7RCg]
+        case ref_s7RCe of {
+          GHC.STRef.STRef r#_s7RCi [Occ=Once] ->
+              let {
+                lvl_s7RCj [Occ=OnceL] :: (a_a7RvT, ())
+                [LclId, Unf=OtherCon []] =
+                    CCCS (,)! [a1_s7RCf GHC.Tuple.()]; } in
+              let {
+                sat_s7RCl [Occ=Once] :: a_a7RvT -> (a_a7RvT, ())
+                [LclId] =
+                    [lvl_s7RCj] \r [ds_s7RCk] lvl_s7RCj;
+              } in 
+                case atomicModifyMutVar# [r#_s7RCi sat_s7RCl s_s7RCg] of {
+                  (#,#) ipv_s7RCn [Occ=Once] ipv1_s7RCo [Occ=Once!] ->
+                      case ipv1_s7RCo of { () -> (#,#) [ipv_s7RCn GHC.Tuple.()]; };
+                };
+        };
+
+Data.IORef.atomicWriteIORef
+  :: forall a. GHC.IORef.IORef a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.atomicWriteIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.IORef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule4];
+
+Data.IORef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.IORef"#;
+
+Data.IORef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule2];
+
+Data.IORef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.IORef.$trModule3
+                                     Data.IORef.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:02:59.221825473 UTC
+
+Data.IORef.mkWeakIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.IORef.IORef a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [r_s7RBw ds_s7RBx void_0E]
+        case r_s7RBw of wild_s7RBz {
+          GHC.STRef.STRef r#_s7RBA [Occ=Once] ->
+              case mkWeak# [r#_s7RBA wild_s7RBz ds_s7RBx GHC.Prim.void#] of {
+                Unit# ipv1_s7RBD [Occ=Once] ->
+                    let {
+                      sat_s7RBE [Occ=Once] :: GHC.Weak.Weak (GHC.IORef.IORef a_a7RwD)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s7RBD];
+                    } in  Unit# [sat_s7RBE];
+              };
+        };
+
+Data.IORef.mkWeakIORef
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.IORef.IORef a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.mkWeakIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.modifyIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RBF f_s7RBG void_0E]
+        case ref_s7RBF of {
+          GHC.STRef.STRef var#_s7RBJ ->
+              case readMutVar# [var#_s7RBJ GHC.Prim.void#] of {
+                Unit# ipv1_s7RBM [Occ=Once] ->
+                    let {
+                      sat_s7RBN [Occ=Once] :: a_a7Rwn
+                      [LclId] =
+                          [f_s7RBG ipv1_s7RBM] \u [] f_s7RBG ipv1_s7RBM;
+                    } in 
+                      case
+                          writeMutVar# [var#_s7RBJ sat_s7RBN GHC.Prim.void#]
+                      of
+                      s2#_s7RBO
+                      { (##) -> Unit# [GHC.Tuple.()];
+                      };
+              };
+        };
+
+Data.IORef.modifyIORef
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.modifyIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.modifyIORef'1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RBP f_s7RBQ void_0E]
+        case ref_s7RBP of {
+          GHC.STRef.STRef var#_s7RBT ->
+              case readMutVar# [var#_s7RBT GHC.Prim.void#] of {
+                Unit# ipv1_s7RBW [Occ=Once] ->
+                    case f_s7RBQ ipv1_s7RBW of x'_s7RBX {
+                      __DEFAULT ->
+                          case
+                              writeMutVar# [var#_s7RBT x'_s7RBX GHC.Prim.void#]
+                          of
+                          s2#_s7RBY
+                          { (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+Data.IORef.modifyIORef'
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.modifyIORef'1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.atomicModifyIORef
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.IORef.atomicModifyIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.atomicModifyIORef'1
+  :: forall a b.
+     GHC.IORef.IORef a
+     -> (a -> (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RBZ f_s7RC0 void_0E]
+        case ref_s7RBZ of {
+          GHC.STRef.STRef r#_s7RC3 [Occ=Once] ->
+              let {
+                sat_s7RC9 [Occ=Once] :: a_a7RvA -> (a_a7RvA, b_a7RvB)
+                [LclId] =
+                    [f_s7RC0] \r [a1_s7RC4]
+                        case f_s7RC0 a1_s7RC4 of wild1_s7RC5 {
+                          (,) a'_s7RC6 [Occ=Once] _ [Occ=Dead] ->
+                              case a'_s7RC6 of { __DEFAULT -> wild1_s7RC5; };
+                        };
+              } in 
+                case
+                    atomicModifyMutVar# [r#_s7RC3 sat_s7RC9 GHC.Prim.void#]
+                of
+                ds1_s7RCa
+                { Unit# ipv1_s7RCc [Occ=Once] ->
+                      case ipv1_s7RCc of { __DEFAULT -> Unit# [ipv1_s7RCc]; };
+                };
+        };
+
+Data.IORef.atomicModifyIORef'
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.atomicModifyIORef'1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.atomicWriteIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RCe a1_s7RCf void_0E]
+        case ref_s7RCe of {
+          GHC.STRef.STRef r#_s7RCi [Occ=Once] ->
+              let {
+                lvl_s7RCj [Occ=OnceL] :: (a_a7RvT, ())
+                [LclId, Unf=OtherCon []] =
+                    CCCS (,)! [a1_s7RCf GHC.Tuple.()]; } in
+              let {
+                sat_s7RCl [Occ=Once] :: a_a7RvT -> (a_a7RvT, ())
+                [LclId] =
+                    [lvl_s7RCj] \r [ds_s7RCk] lvl_s7RCj;
+              } in 
+                case atomicModifyMutVar# [r#_s7RCi sat_s7RCl GHC.Prim.void#] of {
+                  Unit# ipv1_s7RCo [Occ=Once!] ->
+                      case ipv1_s7RCo of { () -> Unit# [GHC.Tuple.()]; };
+                };
+        };
+
+Data.IORef.atomicWriteIORef
+  :: forall a. GHC.IORef.IORef a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.atomicWriteIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.IORef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule4];
+
+Data.IORef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.IORef"#;
+
+Data.IORef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule2];
+
+Data.IORef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.IORef.$trModule3
+                                     Data.IORef.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:02:59.476714851 UTC
+
+Data.IORef.mkWeakIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.IORef.IORef a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [r_s7RMS ds_s7RMT eta_s7RMU]
+        case r_s7RMS of wild_s7RMV {
+          GHC.STRef.STRef r#_s7RMW [Occ=Once] ->
+              case mkWeak# [r#_s7RMW wild_s7RMV ds_s7RMT eta_s7RMU] of {
+                (#,#) ipv_s7RMY [Occ=Once] ipv1_s7RMZ [Occ=Once] ->
+                    let {
+                      sat_s7RN0 [Occ=Once] :: GHC.Weak.Weak (GHC.IORef.IORef a_a7RwD)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s7RMZ];
+                    } in  (#,#) [ipv_s7RMY sat_s7RN0];
+              };
+        };
+
+Data.IORef.mkWeakIORef
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.IORef.IORef a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.mkWeakIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.modifyIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RN1 f_s7RN2 s_s7RN3]
+        case ref_s7RN1 of {
+          GHC.STRef.STRef var#_s7RN5 ->
+              case readMutVar# [var#_s7RN5 s_s7RN3] of {
+                (#,#) ipv_s7RN7 [Occ=Once] ipv1_s7RN8 [Occ=Once] ->
+                    let {
+                      sat_s7RN9 [Occ=Once] :: a_a7Rwn
+                      [LclId] =
+                          [f_s7RN2 ipv1_s7RN8] \u [] f_s7RN2 ipv1_s7RN8;
+                    } in 
+                      case writeMutVar# [var#_s7RN5 sat_s7RN9 ipv_s7RN7] of s2#_s7RNa {
+                        __DEFAULT -> (#,#) [s2#_s7RNa GHC.Tuple.()];
+                      };
+              };
+        };
+
+Data.IORef.modifyIORef
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.modifyIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.modifyIORef'1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RNb f_s7RNc s_s7RNd]
+        case ref_s7RNb of {
+          GHC.STRef.STRef var#_s7RNf ->
+              case readMutVar# [var#_s7RNf s_s7RNd] of {
+                (#,#) ipv_s7RNh [Occ=Once] ipv1_s7RNi [Occ=Once] ->
+                    case f_s7RNc ipv1_s7RNi of x'_s7RNj {
+                      __DEFAULT ->
+                          case writeMutVar# [var#_s7RNf x'_s7RNj ipv_s7RNh] of s2#_s7RNk {
+                            __DEFAULT -> (#,#) [s2#_s7RNk GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+Data.IORef.modifyIORef'
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.modifyIORef'1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.atomicModifyIORef
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.IORef.atomicModifyIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.atomicModifyIORef'1
+  :: forall a b.
+     GHC.IORef.IORef a
+     -> (a -> (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RNl f_s7RNm s_s7RNn]
+        case ref_s7RNl of {
+          GHC.STRef.STRef r#_s7RNp [Occ=Once] ->
+              let {
+                sat_s7RNv [Occ=Once] :: a_a7RvA -> (a_a7RvA, b_a7RvB)
+                [LclId] =
+                    [f_s7RNm] \r [a1_s7RNq]
+                        case f_s7RNm a1_s7RNq of wild1_s7RNr {
+                          (,) a'_s7RNs [Occ=Once] _ [Occ=Dead] ->
+                              case a'_s7RNs of { __DEFAULT -> wild1_s7RNr; };
+                        };
+              } in 
+                case
+                    atomicModifyMutVar# [r#_s7RNp sat_s7RNv s_s7RNn]
+                of
+                ds1_s7RNw
+                { (#,#) _ [Occ=Dead] ipv1_s7RNy [Occ=Once] ->
+                      case ipv1_s7RNy of { __DEFAULT -> ds1_s7RNw; };
+                };
+        };
+
+Data.IORef.atomicModifyIORef'
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.atomicModifyIORef'1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.atomicWriteIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RNA a1_s7RNB s_s7RNC]
+        case ref_s7RNA of {
+          GHC.STRef.STRef r#_s7RNE [Occ=Once] ->
+              let {
+                lvl_s7RNF [Occ=OnceL] :: (a_a7RvT, ())
+                [LclId, Unf=OtherCon []] =
+                    CCCS (,)! [a1_s7RNB GHC.Tuple.()]; } in
+              let {
+                sat_s7RNH [Occ=Once] :: a_a7RvT -> (a_a7RvT, ())
+                [LclId] =
+                    [lvl_s7RNF] \r [ds_s7RNG] lvl_s7RNF;
+              } in 
+                case atomicModifyMutVar# [r#_s7RNE sat_s7RNH s_s7RNC] of {
+                  (#,#) ipv_s7RNJ [Occ=Once] ipv1_s7RNK [Occ=Once!] ->
+                      case ipv1_s7RNK of { () -> (#,#) [ipv_s7RNJ GHC.Tuple.()]; };
+                };
+        };
+
+Data.IORef.atomicWriteIORef
+  :: forall a. GHC.IORef.IORef a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Data.IORef.atomicWriteIORef1 eta_B3 eta_B2 eta_B1;
+
+Data.IORef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.IORef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule4];
+
+Data.IORef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.IORef"#;
+
+Data.IORef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule2];
+
+Data.IORef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.IORef.$trModule3
+                                     Data.IORef.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:02:59.481844947 UTC
+
+Data.IORef.mkWeakIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.IORef.IORef a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [r_s7RMS ds_s7RMT void_0E]
+        case r_s7RMS of wild_s7RMV {
+          GHC.STRef.STRef r#_s7RMW [Occ=Once] ->
+              case mkWeak# [r#_s7RMW wild_s7RMV ds_s7RMT GHC.Prim.void#] of {
+                Unit# ipv1_s7RMZ [Occ=Once] ->
+                    let {
+                      sat_s7RN0 [Occ=Once] :: GHC.Weak.Weak (GHC.IORef.IORef a_a7RwD)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s7RMZ];
+                    } in  Unit# [sat_s7RN0];
+              };
+        };
+
+Data.IORef.mkWeakIORef
+  :: forall a.
+     GHC.IORef.IORef a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.IORef.IORef a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.mkWeakIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.modifyIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RN1 f_s7RN2 void_0E]
+        case ref_s7RN1 of {
+          GHC.STRef.STRef var#_s7RN5 ->
+              case readMutVar# [var#_s7RN5 GHC.Prim.void#] of {
+                Unit# ipv1_s7RN8 [Occ=Once] ->
+                    let {
+                      sat_s7RN9 [Occ=Once] :: a_a7Rwn
+                      [LclId] =
+                          [f_s7RN2 ipv1_s7RN8] \u [] f_s7RN2 ipv1_s7RN8;
+                    } in 
+                      case
+                          writeMutVar# [var#_s7RN5 sat_s7RN9 GHC.Prim.void#]
+                      of
+                      s2#_s7RNa
+                      { (##) -> Unit# [GHC.Tuple.()];
+                      };
+              };
+        };
+
+Data.IORef.modifyIORef
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.modifyIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.modifyIORef'1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> (a -> a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RNb f_s7RNc void_0E]
+        case ref_s7RNb of {
+          GHC.STRef.STRef var#_s7RNf ->
+              case readMutVar# [var#_s7RNf GHC.Prim.void#] of {
+                Unit# ipv1_s7RNi [Occ=Once] ->
+                    case f_s7RNc ipv1_s7RNi of x'_s7RNj {
+                      __DEFAULT ->
+                          case
+                              writeMutVar# [var#_s7RNf x'_s7RNj GHC.Prim.void#]
+                          of
+                          s2#_s7RNk
+                          { (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+Data.IORef.modifyIORef'
+  :: forall a. GHC.IORef.IORef a -> (a -> a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.modifyIORef'1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.atomicModifyIORef
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.IORef.atomicModifyIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.atomicModifyIORef'1
+  :: forall a b.
+     GHC.IORef.IORef a
+     -> (a -> (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RNl f_s7RNm void_0E]
+        case ref_s7RNl of {
+          GHC.STRef.STRef r#_s7RNp [Occ=Once] ->
+              let {
+                sat_s7RNv [Occ=Once] :: a_a7RvA -> (a_a7RvA, b_a7RvB)
+                [LclId] =
+                    [f_s7RNm] \r [a1_s7RNq]
+                        case f_s7RNm a1_s7RNq of wild1_s7RNr {
+                          (,) a'_s7RNs [Occ=Once] _ [Occ=Dead] ->
+                              case a'_s7RNs of { __DEFAULT -> wild1_s7RNr; };
+                        };
+              } in 
+                case
+                    atomicModifyMutVar# [r#_s7RNp sat_s7RNv GHC.Prim.void#]
+                of
+                ds1_s7RNw
+                { Unit# ipv1_s7RNy [Occ=Once] ->
+                      case ipv1_s7RNy of { __DEFAULT -> Unit# [ipv1_s7RNy]; };
+                };
+        };
+
+Data.IORef.atomicModifyIORef'
+  :: forall a b. GHC.IORef.IORef a -> (a -> (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.atomicModifyIORef'1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.atomicWriteIORef1
+  :: forall a.
+     GHC.IORef.IORef a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ref_s7RNA a1_s7RNB void_0E]
+        case ref_s7RNA of {
+          GHC.STRef.STRef r#_s7RNE [Occ=Once] ->
+              let {
+                lvl_s7RNF [Occ=OnceL] :: (a_a7RvT, ())
+                [LclId, Unf=OtherCon []] =
+                    CCCS (,)! [a1_s7RNB GHC.Tuple.()]; } in
+              let {
+                sat_s7RNH [Occ=Once] :: a_a7RvT -> (a_a7RvT, ())
+                [LclId] =
+                    [lvl_s7RNF] \r [ds_s7RNG] lvl_s7RNF;
+              } in 
+                case atomicModifyMutVar# [r#_s7RNE sat_s7RNH GHC.Prim.void#] of {
+                  Unit# ipv1_s7RNK [Occ=Once!] ->
+                      case ipv1_s7RNK of { () -> Unit# [GHC.Tuple.()]; };
+                };
+        };
+
+Data.IORef.atomicWriteIORef
+  :: forall a. GHC.IORef.IORef a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Data.IORef.atomicWriteIORef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Data.IORef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.IORef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule4];
+
+Data.IORef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.IORef"#;
+
+Data.IORef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.IORef.$trModule2];
+
+Data.IORef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.IORef.$trModule3
+                                     Data.IORef.$trModule1];
+

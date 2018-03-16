@@ -1,0 +1,866 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:56:32.112911086 UTC
+
+GHC.STRef.$fEqSTRef_$c==
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KCO ds1_s1KCP]
+        case ds_s1KCO of {
+          GHC.STRef.STRef v1#_s1KCR [Occ=Once] ->
+              case ds1_s1KCP of {
+                GHC.STRef.STRef v2#_s1KCT [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KCR v2#_s1KCT] of sat_s1KCU {
+                      __DEFAULT -> tagToEnum# [sat_s1KCU];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s1KCV eta1_s1KCW]
+        case eta_s1KCV of {
+          GHC.STRef.STRef v1#_s1KCY [Occ=Once] ->
+              case eta1_s1KCW of {
+                GHC.STRef.STRef v2#_s1KD0 [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KCY v2#_s1KD0] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Classes.Eq (GHC.STRef.STRef s a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.STRef.$fEqSTRef_$c==
+                                     GHC.STRef.$fEqSTRef_$c/=];
+
+GHC.STRef.newSTRef1
+  :: forall a s.
+     a
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, GHC.STRef.STRef s a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [init_s1KD2 s1#_s1KD3]
+        case newMutVar# [init_s1KD2 s1#_s1KD3] of {
+          (#,#) ipv_s1KD5 [Occ=Once] ipv1_s1KD6 [Occ=Once] ->
+              let {
+                sat_s1KD7 [Occ=Once] :: GHC.STRef.STRef s_a1KyE a_a1KyD
+                [LclId] =
+                    CCCS GHC.STRef.STRef! [ipv1_s1KD6];
+              } in  (#,#) [ipv_s1KD5 sat_s1KD7];
+        };
+
+GHC.STRef.newSTRef
+  :: forall a s. a -> GHC.ST.ST s (GHC.STRef.STRef s a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.STRef.newSTRef1 eta_B2 eta_B1;
+
+GHC.STRef.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KD8 eta_s1KD9]
+        case ds_s1KD8 of {
+          GHC.STRef.STRef var#_s1KDb [Occ=Once] ->
+              readMutVar# [var#_s1KDb eta_s1KD9];
+        };
+
+GHC.STRef.readSTRef
+  :: forall s a. GHC.STRef.STRef s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.STRef.readSTRef1 eta_B2 eta_B1;
+
+GHC.STRef.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KDc val_s1KDd eta_s1KDe]
+        case ds_s1KDc of {
+          GHC.STRef.STRef var#_s1KDg [Occ=Once] ->
+              case writeMutVar# [var#_s1KDg val_s1KDd eta_s1KDe] of s2#_s1KDh {
+                __DEFAULT -> (#,#) [s2#_s1KDh GHC.Tuple.()];
+              };
+        };
+
+GHC.STRef.writeSTRef
+  :: forall s a. GHC.STRef.STRef s a -> a -> GHC.ST.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.STRef.writeSTRef1 eta_B3 eta_B2 eta_B1;
+
+GHC.STRef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.STRef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule4];
+
+GHC.STRef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.STRef"#;
+
+GHC.STRef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule2];
+
+GHC.STRef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.STRef.$trModule3
+                                     GHC.STRef.$trModule1];
+
+$krep_r1KCH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r1KCI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r1KCJ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1KCH GHC.Types.[]];
+
+$krep3_r1KCK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1KCI $krep2_r1KCJ];
+
+$krep4_r1KCL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutVar#
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tcSTRef2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STRef"#;
+
+GHC.STRef.$tcSTRef1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tcSTRef2];
+
+GHC.STRef.$tcSTRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12301805959212734792##
+                                    9407763519371677403##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tcSTRef1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep5_r1KCM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.STRef.$tcSTRef
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tc'STRef1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r1KCL $krep5_r1KCM];
+
+GHC.STRef.$tc'STRef3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STRef"#;
+
+GHC.STRef.$tc'STRef2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tc'STRef3];
+
+GHC.STRef.$tc'STRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18008618360073045522##
+                                    5182275770463432138##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tc'STRef2
+                                    2#
+                                    GHC.STRef.$tc'STRef1];
+
+GHC.STRef.STRef
+  :: forall s a. GHC.Prim.MutVar# s a -> GHC.STRef.STRef s a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.STRef.STRef [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:56:32.116408684 UTC
+
+GHC.STRef.$fEqSTRef_$c==
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KCO ds1_s1KCP]
+        case ds_s1KCO of {
+          GHC.STRef.STRef v1#_s1KCR [Occ=Once] ->
+              case ds1_s1KCP of {
+                GHC.STRef.STRef v2#_s1KCT [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KCR v2#_s1KCT] of sat_s1KCU {
+                      __DEFAULT -> tagToEnum# [sat_s1KCU];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s1KCV eta1_s1KCW]
+        case eta_s1KCV of {
+          GHC.STRef.STRef v1#_s1KCY [Occ=Once] ->
+              case eta1_s1KCW of {
+                GHC.STRef.STRef v2#_s1KD0 [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KCY v2#_s1KD0] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Classes.Eq (GHC.STRef.STRef s a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.STRef.$fEqSTRef_$c==
+                                     GHC.STRef.$fEqSTRef_$c/=];
+
+GHC.STRef.newSTRef1
+  :: forall a s.
+     a
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, GHC.STRef.STRef s a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [init_s1KD2 void_0E]
+        case newMutVar# [init_s1KD2 GHC.Prim.void#] of {
+          Unit# ipv1_s1KD6 [Occ=Once] ->
+              let {
+                sat_s1KD7 [Occ=Once] :: GHC.STRef.STRef s_a1KyE a_a1KyD
+                [LclId] =
+                    CCCS GHC.STRef.STRef! [ipv1_s1KD6];
+              } in  Unit# [sat_s1KD7];
+        };
+
+GHC.STRef.newSTRef
+  :: forall a s. a -> GHC.ST.ST s (GHC.STRef.STRef s a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.STRef.newSTRef1 eta_B2 GHC.Prim.void#;
+
+GHC.STRef.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KD8 void_0E]
+        case ds_s1KD8 of {
+          GHC.STRef.STRef var#_s1KDb [Occ=Once] ->
+              readMutVar# [var#_s1KDb GHC.Prim.void#];
+        };
+
+GHC.STRef.readSTRef
+  :: forall s a. GHC.STRef.STRef s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.STRef.readSTRef1 eta_B2 GHC.Prim.void#;
+
+GHC.STRef.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KDc val_s1KDd void_0E]
+        case ds_s1KDc of {
+          GHC.STRef.STRef var#_s1KDg [Occ=Once] ->
+              case
+                  writeMutVar# [var#_s1KDg val_s1KDd GHC.Prim.void#]
+              of
+              s2#_s1KDh
+              { (##) -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.STRef.writeSTRef
+  :: forall s a. GHC.STRef.STRef s a -> a -> GHC.ST.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.STRef.writeSTRef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.STRef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.STRef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule4];
+
+GHC.STRef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.STRef"#;
+
+GHC.STRef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule2];
+
+GHC.STRef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.STRef.$trModule3
+                                     GHC.STRef.$trModule1];
+
+$krep_r1KCH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r1KCI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r1KCJ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1KCH GHC.Types.[]];
+
+$krep3_r1KCK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1KCI $krep2_r1KCJ];
+
+$krep4_r1KCL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutVar#
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tcSTRef2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STRef"#;
+
+GHC.STRef.$tcSTRef1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tcSTRef2];
+
+GHC.STRef.$tcSTRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12301805959212734792##
+                                    9407763519371677403##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tcSTRef1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep5_r1KCM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.STRef.$tcSTRef
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tc'STRef1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r1KCL $krep5_r1KCM];
+
+GHC.STRef.$tc'STRef3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STRef"#;
+
+GHC.STRef.$tc'STRef2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tc'STRef3];
+
+GHC.STRef.$tc'STRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18008618360073045522##
+                                    5182275770463432138##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tc'STRef2
+                                    2#
+                                    GHC.STRef.$tc'STRef1];
+
+GHC.STRef.STRef
+  :: forall s a. GHC.Prim.MutVar# s a -> GHC.STRef.STRef s a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.STRef.STRef [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:56:32.376573315 UTC
+
+GHC.STRef.$fEqSTRef_$c==
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KLz ds1_s1KLA]
+        case ds_s1KLz of {
+          GHC.STRef.STRef v1#_s1KLC [Occ=Once] ->
+              case ds1_s1KLA of {
+                GHC.STRef.STRef v2#_s1KLE [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KLC v2#_s1KLE] of sat_s1KLF {
+                      __DEFAULT -> tagToEnum# [sat_s1KLF];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s1KLG eta1_s1KLH]
+        case eta_s1KLG of {
+          GHC.STRef.STRef v1#_s1KLJ [Occ=Once] ->
+              case eta1_s1KLH of {
+                GHC.STRef.STRef v2#_s1KLL [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KLJ v2#_s1KLL] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Classes.Eq (GHC.STRef.STRef s a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.STRef.$fEqSTRef_$c==
+                                     GHC.STRef.$fEqSTRef_$c/=];
+
+GHC.STRef.newSTRef1
+  :: forall a s.
+     a
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, GHC.STRef.STRef s a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [init_s1KLN s1#_s1KLO]
+        case newMutVar# [init_s1KLN s1#_s1KLO] of {
+          (#,#) ipv_s1KLQ [Occ=Once] ipv1_s1KLR [Occ=Once] ->
+              let {
+                sat_s1KLS [Occ=Once] :: GHC.STRef.STRef s_a1KyE a_a1KyD
+                [LclId] =
+                    CCCS GHC.STRef.STRef! [ipv1_s1KLR];
+              } in  (#,#) [ipv_s1KLQ sat_s1KLS];
+        };
+
+GHC.STRef.newSTRef
+  :: forall a s. a -> GHC.ST.ST s (GHC.STRef.STRef s a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.STRef.newSTRef1 eta_B2 eta_B1;
+
+GHC.STRef.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KLT eta_s1KLU]
+        case ds_s1KLT of {
+          GHC.STRef.STRef var#_s1KLW [Occ=Once] ->
+              readMutVar# [var#_s1KLW eta_s1KLU];
+        };
+
+GHC.STRef.readSTRef
+  :: forall s a. GHC.STRef.STRef s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.STRef.readSTRef1 eta_B2 eta_B1;
+
+GHC.STRef.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KLX val_s1KLY eta_s1KLZ]
+        case ds_s1KLX of {
+          GHC.STRef.STRef var#_s1KM1 [Occ=Once] ->
+              case writeMutVar# [var#_s1KM1 val_s1KLY eta_s1KLZ] of s2#_s1KM2 {
+                __DEFAULT -> (#,#) [s2#_s1KM2 GHC.Tuple.()];
+              };
+        };
+
+GHC.STRef.writeSTRef
+  :: forall s a. GHC.STRef.STRef s a -> a -> GHC.ST.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.STRef.writeSTRef1 eta_B3 eta_B2 eta_B1;
+
+GHC.STRef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.STRef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule4];
+
+GHC.STRef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.STRef"#;
+
+GHC.STRef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule2];
+
+GHC.STRef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.STRef.$trModule3
+                                     GHC.STRef.$trModule1];
+
+$krep_r1KCH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r1KCI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r1KCJ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1KCH GHC.Types.[]];
+
+$krep3_r1KCK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1KCI $krep2_r1KCJ];
+
+$krep4_r1KCL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutVar#
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tcSTRef2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STRef"#;
+
+GHC.STRef.$tcSTRef1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tcSTRef2];
+
+GHC.STRef.$tcSTRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12301805959212734792##
+                                    9407763519371677403##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tcSTRef1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep5_r1KCM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.STRef.$tcSTRef
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tc'STRef1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r1KCL $krep5_r1KCM];
+
+GHC.STRef.$tc'STRef3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STRef"#;
+
+GHC.STRef.$tc'STRef2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tc'STRef3];
+
+GHC.STRef.$tc'STRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18008618360073045522##
+                                    5182275770463432138##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tc'STRef2
+                                    2#
+                                    GHC.STRef.$tc'STRef1];
+
+GHC.STRef.STRef
+  :: forall s a. GHC.Prim.MutVar# s a -> GHC.STRef.STRef s a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.STRef.STRef [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:56:32.380282833 UTC
+
+GHC.STRef.$fEqSTRef_$c==
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KLz ds1_s1KLA]
+        case ds_s1KLz of {
+          GHC.STRef.STRef v1#_s1KLC [Occ=Once] ->
+              case ds1_s1KLA of {
+                GHC.STRef.STRef v2#_s1KLE [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KLC v2#_s1KLE] of sat_s1KLF {
+                      __DEFAULT -> tagToEnum# [sat_s1KLF];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a.
+     GHC.STRef.STRef s a -> GHC.STRef.STRef s a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s1KLG eta1_s1KLH]
+        case eta_s1KLG of {
+          GHC.STRef.STRef v1#_s1KLJ [Occ=Once] ->
+              case eta1_s1KLH of {
+                GHC.STRef.STRef v2#_s1KLL [Occ=Once] ->
+                    case sameMutVar# [v1#_s1KLJ v2#_s1KLL] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.STRef.$fEqSTRef [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Classes.Eq (GHC.STRef.STRef s a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.STRef.$fEqSTRef_$c==
+                                     GHC.STRef.$fEqSTRef_$c/=];
+
+GHC.STRef.newSTRef1
+  :: forall a s.
+     a
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, GHC.STRef.STRef s a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [init_s1KLN void_0E]
+        case newMutVar# [init_s1KLN GHC.Prim.void#] of {
+          Unit# ipv1_s1KLR [Occ=Once] ->
+              let {
+                sat_s1KLS [Occ=Once] :: GHC.STRef.STRef s_a1KyE a_a1KyD
+                [LclId] =
+                    CCCS GHC.STRef.STRef! [ipv1_s1KLR];
+              } in  Unit# [sat_s1KLS];
+        };
+
+GHC.STRef.newSTRef
+  :: forall a s. a -> GHC.ST.ST s (GHC.STRef.STRef s a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.STRef.newSTRef1 eta_B2 GHC.Prim.void#;
+
+GHC.STRef.readSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KLT void_0E]
+        case ds_s1KLT of {
+          GHC.STRef.STRef var#_s1KLW [Occ=Once] ->
+              readMutVar# [var#_s1KLW GHC.Prim.void#];
+        };
+
+GHC.STRef.readSTRef
+  :: forall s a. GHC.STRef.STRef s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.STRef.readSTRef1 eta_B2 GHC.Prim.void#;
+
+GHC.STRef.writeSTRef1
+  :: forall s a.
+     GHC.STRef.STRef s a
+     -> a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KLX val_s1KLY void_0E]
+        case ds_s1KLX of {
+          GHC.STRef.STRef var#_s1KM1 [Occ=Once] ->
+              case
+                  writeMutVar# [var#_s1KM1 val_s1KLY GHC.Prim.void#]
+              of
+              s2#_s1KM2
+              { (##) -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.STRef.writeSTRef
+  :: forall s a. GHC.STRef.STRef s a -> a -> GHC.ST.ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.STRef.writeSTRef1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.STRef.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.STRef.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule4];
+
+GHC.STRef.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.STRef"#;
+
+GHC.STRef.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$trModule2];
+
+GHC.STRef.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.STRef.$trModule3
+                                     GHC.STRef.$trModule1];
+
+$krep_r1KCH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r1KCI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r1KCJ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1KCH GHC.Types.[]];
+
+$krep3_r1KCK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1KCI $krep2_r1KCJ];
+
+$krep4_r1KCL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutVar#
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tcSTRef2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STRef"#;
+
+GHC.STRef.$tcSTRef1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tcSTRef2];
+
+GHC.STRef.$tcSTRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12301805959212734792##
+                                    9407763519371677403##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tcSTRef1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep5_r1KCM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.STRef.$tcSTRef
+                                              $krep3_r1KCK];
+
+GHC.STRef.$tc'STRef1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r1KCL $krep5_r1KCM];
+
+GHC.STRef.$tc'STRef3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STRef"#;
+
+GHC.STRef.$tc'STRef2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.STRef.$tc'STRef3];
+
+GHC.STRef.$tc'STRef :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18008618360073045522##
+                                    5182275770463432138##
+                                    GHC.STRef.$trModule
+                                    GHC.STRef.$tc'STRef2
+                                    2#
+                                    GHC.STRef.$tc'STRef1];
+
+GHC.STRef.STRef
+  :: forall s a. GHC.Prim.MutVar# s a -> GHC.STRef.STRef s a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.STRef.STRef [eta_B1];
+

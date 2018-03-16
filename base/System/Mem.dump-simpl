@@ -1,0 +1,152 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:15.562080982 UTC
+
+Result size of Tidy Core
+  = {terms: 38, types: 65, coercions: 6, joins: 0/0}
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Mem.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.Mem.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Mem.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Mem.$trModule3 = GHC.Types.TrNameS System.Mem.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Mem.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+System.Mem.$trModule2 = "System.Mem"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Mem.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Mem.$trModule1 = GHC.Types.TrNameS System.Mem.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.Mem.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.Mem.$trModule
+  = GHC.Types.Module System.Mem.$trModule3 System.Mem.$trModule1
+
+-- RHS size: {terms: 8, types: 17, coercions: 0, joins: 0/0}
+performMajorGC1_rcmsu
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+performMajorGC1_rcmsu
+  = \ (ds_dcmro :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case {__pkg_ccall_GC base-4.11.0.0 State# RealWorld
+                              -> (# State# RealWorld #)}_dcmrp
+             ds_dcmro
+      of
+      { (# ds1_dcmrn #) ->
+      (# ds1_dcmrn, GHC.Tuple.() #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+performMajorGC :: IO ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (ds_XcmrA [Occ=Once]
+                     :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                  case {__pkg_ccall_GC base-4.11.0.0 State# RealWorld
+                              -> (# State# RealWorld #)}_dcmrp
+                         ds_XcmrA
+                  of
+                  { (# ds1_dcmrn [Occ=Once] #) ->
+                  (# ds1_dcmrn, GHC.Tuple.() #)
+                  })
+               `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)
+                          ~R# (IO () :: *))}]
+performMajorGC
+  = performMajorGC1_rcmsu
+    `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)
+               ~R# (IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+performGC :: IO ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= performMajorGC}]
+performGC = performMajorGC
+
+-- RHS size: {terms: 8, types: 17, coercions: 0, joins: 0/0}
+performMinorGC1_rcmsv
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+performMinorGC1_rcmsv
+  = \ (ds_dcmrk :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case {__pkg_ccall_GC base-4.11.0.0 State# RealWorld
+                              -> (# State# RealWorld #)}_dcmrl
+             ds_dcmrk
+      of
+      { (# ds1_dcmrj #) ->
+      (# ds1_dcmrj, GHC.Tuple.() #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+performMinorGC :: IO ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (ds_XcmrA [Occ=Once]
+                     :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                  case {__pkg_ccall_GC base-4.11.0.0 State# RealWorld
+                              -> (# State# RealWorld #)}_dcmrl
+                         ds_XcmrA
+                  of
+                  { (# ds1_dcmrj [Occ=Once] #) ->
+                  (# ds1_dcmrj, GHC.Tuple.() #)
+                  })
+               `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)
+                          ~R# (IO () :: *))}]
+performMinorGC
+  = performMinorGC1_rcmsv
+    `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)
+               ~R# (IO () :: *))
+
+

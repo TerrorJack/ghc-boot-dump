@@ -1,0 +1,3662 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:17.112509831 UTC
+
+Control.Concurrent.MVar.$wswapMVar [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sagk6 w_sagk7 w1_sagk8]
+        case getMaskingState# [w1_sagk8] of {
+          (#,#) ipv_sagka [Occ=Once*] ipv1_sagkb [Occ=Once!] ->
+              case ipv1_sagkb of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sagk6 ipv_sagka] of {
+                      (#,#) ipv2_sagke [Occ=Once] ipv3_sagkf [Occ=Once] ->
+                          case putMVar# [ww_sagk6 w_sagk7 ipv2_sagke] of s2#_sagkg {
+                            __DEFAULT -> (#,#) [s2#_sagkg ipv3_sagkf];
+                          };
+                    };
+                0# ->
+                    let {
+                      sat_sagkm [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7s #)
+                      [LclId] =
+                          [ww_sagk6 w_sagk7] \r [s_sagkh]
+                              case takeMVar# [ww_sagk6 s_sagkh] of {
+                                (#,#) ipv2_sagkj [Occ=Once] ipv3_sagkk [Occ=Once] ->
+                                    case putMVar# [ww_sagk6 w_sagk7 ipv2_sagkj] of s2#_sagkl {
+                                      __DEFAULT -> (#,#) [s2#_sagkl ipv3_sagkk];
+                                    };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagkm ipv_sagka];
+              };
+        };
+
+Control.Concurrent.MVar.swapMVar1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sagkn w1_sagko w2_sagkp]
+        case w_sagkn of {
+          GHC.MVar.MVar ww1_sagkr [Occ=Once] ->
+              Control.Concurrent.MVar.$wswapMVar ww1_sagkr w1_sagko w2_sagkp;
+        };
+
+Control.Concurrent.MVar.swapMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.MVar.swapMVar1 eta_B3 eta_B2 eta_B1;
+
+$wwithMVar_ragjT
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagks w_sagkt w1_sagku]
+        case getMaskingState# [w1_sagku] of {
+          (#,#) ipv_sagkw [Occ=Once*] ipv1_sagkx [Occ=Once!] ->
+              case ipv1_sagkx of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sagks ipv_sagkw] of {
+                      (#,#) ipv2_sagkA [Occ=Once] ipv3_sagkB ->
+                          let {
+                            sat_sagkH [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sagks ipv3_sagkB] \r [e1_sagkE s_sagkF]
+                                    case putMVar# [ww_sagks ipv3_sagkB s_sagkF] of s2#_sagkG {
+                                      __DEFAULT -> raiseIO# [e1_sagkE s2#_sagkG];
+                                    }; } in
+                          let {
+                            sat_sagkC [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sagkt ipv3_sagkB] \u [] w_sagkt ipv3_sagkB; } in
+                          let {
+                            sat_sagkD [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sagkC] \r [eta_B1] maskAsyncExceptions# [sat_sagkC eta_B1];
+                          } in 
+                            case catch# [sat_sagkD sat_sagkH ipv2_sagkA] of {
+                              (#,#) ipv4_sagkJ [Occ=Once] ipv5_sagkK [Occ=Once] ->
+                                  case putMVar# [ww_sagks ipv3_sagkB ipv4_sagkJ] of s2#_sagkL {
+                                    __DEFAULT -> (#,#) [s2#_sagkL ipv5_sagkK];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sagl0 [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                      [LclId] =
+                          [ww_sagks w_sagkt] \r [s_sagkM]
+                              case takeMVar# [ww_sagks s_sagkM] of {
+                                (#,#) ipv2_sagkO [Occ=Once] ipv3_sagkP ->
+                                    let {
+                                      sat_sagkV [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [ww_sagks ipv3_sagkP] \r [e1_sagkS s1_sagkT]
+                                              case
+                                                  putMVar# [ww_sagks ipv3_sagkP s1_sagkT]
+                                              of
+                                              s2#_sagkU
+                                              { __DEFAULT -> raiseIO# [e1_sagkS s2#_sagkU];
+                                              }; } in
+                                    let {
+                                      sat_sagkQ [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [w_sagkt ipv3_sagkP] \u [] w_sagkt ipv3_sagkP; } in
+                                    let {
+                                      sat_sagkR [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [sat_sagkQ] \r [eta_B1]
+                                              unmaskAsyncExceptions# [sat_sagkQ eta_B1];
+                                    } in 
+                                      case catch# [sat_sagkR sat_sagkV ipv2_sagkO] of {
+                                        (#,#) ipv4_sagkX [Occ=Once] ipv5_sagkY [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sagks ipv3_sagkP ipv4_sagkX]
+                                            of
+                                            s2#_sagkZ
+                                            { __DEFAULT -> (#,#) [s2#_sagkZ ipv5_sagkY];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagl0 ipv_sagkw];
+                1# ->
+                    case takeMVar# [ww_sagks ipv_sagkw] of {
+                      (#,#) ipv2_sagl2 [Occ=Once] ipv3_sagl3 ->
+                          let {
+                            sat_sagl9 [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sagks ipv3_sagl3] \r [e1_sagl6 s_sagl7]
+                                    case putMVar# [ww_sagks ipv3_sagl3 s_sagl7] of s2#_sagl8 {
+                                      __DEFAULT -> raiseIO# [e1_sagl6 s2#_sagl8];
+                                    }; } in
+                          let {
+                            sat_sagl4 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sagkt ipv3_sagl3] \u [] w_sagkt ipv3_sagl3; } in
+                          let {
+                            sat_sagl5 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sagl4] \r [eta_B1] maskUninterruptible# [sat_sagl4 eta_B1];
+                          } in 
+                            case catch# [sat_sagl5 sat_sagl9 ipv2_sagl2] of {
+                              (#,#) ipv4_saglb [Occ=Once] ipv5_saglc [Occ=Once] ->
+                                  case putMVar# [ww_sagks ipv3_sagl3 ipv4_saglb] of s2#_sagld {
+                                    __DEFAULT -> (#,#) [s2#_sagld ipv5_saglc];
+                                  };
+                            };
+                    };
+              };
+        };
+
+withMVar1_ragjU
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagle w1_saglf w2_saglg]
+        case w_sagle of {
+          GHC.MVar.MVar ww1_sagli [Occ=Once] ->
+              $wwithMVar_ragjT ww1_sagli w1_saglf w2_saglg;
+        };
+
+Control.Concurrent.MVar.withMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1] withMVar1_ragjU eta_B3 eta_B2 eta_B1;
+
+$wwithMVarMasked_ragjV
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_saglj w_saglk w1_sagll]
+        case getMaskingState# [w1_sagll] of {
+          (#,#) ipv_sagln [Occ=Once*] ipv1_saglo [Occ=Once!] ->
+              let {
+                io_saglp [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_saglj w_saglk] \r [s_saglq]
+                        case takeMVar# [ww_saglj s_saglq] of {
+                          (#,#) ipv2_sagls [Occ=Once] ipv3_saglt ->
+                              let {
+                                sat_sagly [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [ww_saglj ipv3_saglt] \r [e1_saglv s1_saglw]
+                                        case putMVar# [ww_saglj ipv3_saglt s1_saglw] of s2#_saglx {
+                                          __DEFAULT -> raiseIO# [e1_saglv s2#_saglx];
+                                        }; } in
+                              let {
+                                sat_saglu [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [w_saglk ipv3_saglt] \s [] w_saglk ipv3_saglt;
+                              } in 
+                                case catch# [sat_saglu sat_sagly ipv2_sagls] of {
+                                  (#,#) ipv4_saglA [Occ=Once] ipv5_saglB [Occ=Once] ->
+                                      case putMVar# [ww_saglj ipv3_saglt ipv4_saglA] of s2#_saglC {
+                                        __DEFAULT -> (#,#) [s2#_saglC ipv5_saglB];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_saglo of {
+                  __DEFAULT -> io_saglp ipv_sagln;
+                  0# -> maskAsyncExceptions# [io_saglp ipv_sagln];
+                };
+        };
+
+withMVarMasked1_ragjW
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_saglE w1_saglF w2_saglG]
+        case w_saglE of {
+          GHC.MVar.MVar ww1_saglI [Occ=Once] ->
+              $wwithMVarMasked_ragjV ww1_saglI w1_saglF w2_saglG;
+        };
+
+Control.Concurrent.MVar.withMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        withMVarMasked1_ragjW eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVar__ragjX
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_saglJ w_saglK w1_saglL]
+        case getMaskingState# [w1_saglL] of {
+          (#,#) ipv_saglN [Occ=Once*] ipv1_saglO [Occ=Once!] ->
+              case ipv1_saglO of {
+                __DEFAULT ->
+                    case takeMVar# [ww_saglJ ipv_saglN] of {
+                      (#,#) ipv2_saglR [Occ=Once] ipv3_saglS ->
+                          let {
+                            sat_saglY [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_saglJ ipv3_saglS] \r [e1_saglV s_saglW]
+                                    case putMVar# [ww_saglJ ipv3_saglS s_saglW] of s2#_saglX {
+                                      __DEFAULT -> raiseIO# [e1_saglV s2#_saglX];
+                                    }; } in
+                          let {
+                            sat_saglT [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_saglK ipv3_saglS] \u [] w_saglK ipv3_saglS; } in
+                          let {
+                            sat_saglU [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_saglT] \r [eta_B1] maskAsyncExceptions# [sat_saglT eta_B1];
+                          } in 
+                            case catch# [sat_saglU sat_saglY ipv2_saglR] of {
+                              (#,#) ipv4_sagm0 [Occ=Once] ipv5_sagm1 [Occ=Once] ->
+                                  case putMVar# [ww_saglJ ipv5_sagm1 ipv4_sagm0] of s2#_sagm2 {
+                                    __DEFAULT -> (#,#) [s2#_sagm2 GHC.Tuple.()];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sagmh [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                      [LclId] =
+                          [ww_saglJ w_saglK] \r [s_sagm3]
+                              case takeMVar# [ww_saglJ s_sagm3] of {
+                                (#,#) ipv2_sagm5 [Occ=Once] ipv3_sagm6 ->
+                                    let {
+                                      sat_sagmc [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [ww_saglJ ipv3_sagm6] \r [e1_sagm9 s1_sagma]
+                                              case
+                                                  putMVar# [ww_saglJ ipv3_sagm6 s1_sagma]
+                                              of
+                                              s2#_sagmb
+                                              { __DEFAULT -> raiseIO# [e1_sagm9 s2#_sagmb];
+                                              }; } in
+                                    let {
+                                      sat_sagm7 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [w_saglK ipv3_sagm6] \u [] w_saglK ipv3_sagm6; } in
+                                    let {
+                                      sat_sagm8 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [sat_sagm7] \r [eta_B1]
+                                              unmaskAsyncExceptions# [sat_sagm7 eta_B1];
+                                    } in 
+                                      case catch# [sat_sagm8 sat_sagmc ipv2_sagm5] of {
+                                        (#,#) ipv4_sagme [Occ=Once] ipv5_sagmf [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_saglJ ipv5_sagmf ipv4_sagme]
+                                            of
+                                            s2#_sagmg
+                                            { __DEFAULT -> (#,#) [s2#_sagmg GHC.Tuple.()];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagmh ipv_saglN];
+                1# ->
+                    case takeMVar# [ww_saglJ ipv_saglN] of {
+                      (#,#) ipv2_sagmj [Occ=Once] ipv3_sagmk ->
+                          let {
+                            sat_sagmq [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_saglJ ipv3_sagmk] \r [e1_sagmn s_sagmo]
+                                    case putMVar# [ww_saglJ ipv3_sagmk s_sagmo] of s2#_sagmp {
+                                      __DEFAULT -> raiseIO# [e1_sagmn s2#_sagmp];
+                                    }; } in
+                          let {
+                            sat_sagml [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_saglK ipv3_sagmk] \u [] w_saglK ipv3_sagmk; } in
+                          let {
+                            sat_sagmm [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_sagml] \r [eta_B1] maskUninterruptible# [sat_sagml eta_B1];
+                          } in 
+                            case catch# [sat_sagmm sat_sagmq ipv2_sagmj] of {
+                              (#,#) ipv4_sagms [Occ=Once] ipv5_sagmt [Occ=Once] ->
+                                  case putMVar# [ww_saglJ ipv5_sagmt ipv4_sagms] of s2#_sagmu {
+                                    __DEFAULT -> (#,#) [s2#_sagmu GHC.Tuple.()];
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar_1_ragjY
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagmv w1_sagmw w2_sagmx]
+        case w_sagmv of {
+          GHC.MVar.MVar ww1_sagmz [Occ=Once] ->
+              $wmodifyMVar__ragjX ww1_sagmz w1_sagmw w2_sagmx;
+        };
+
+Control.Concurrent.MVar.modifyMVar_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVar_1_ragjY eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVar_ragjZ
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagmA w_sagmB w1_sagmC]
+        case getMaskingState# [w1_sagmC] of {
+          (#,#) ipv_sagmE [Occ=Once*] ipv1_sagmF [Occ=Once!] ->
+              case ipv1_sagmF of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sagmA ipv_sagmE] of {
+                      (#,#) ipv2_sagmI [Occ=Once] ipv3_sagmJ ->
+                          let {
+                            sat_sagmT [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sagmA ipv3_sagmJ] \r [e1_sagmQ s_sagmR]
+                                    case putMVar# [ww_sagmA ipv3_sagmJ s_sagmR] of s2#_sagmS {
+                                      __DEFAULT -> raiseIO# [e1_sagmQ s2#_sagmS];
+                                    }; } in
+                          let {
+                            sat_sagmO [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sagmB ipv3_sagmJ] \r [s_sagmK]
+                                    case w_sagmB ipv3_sagmJ s_sagmK of {
+                                      (#,#) ipv4_sagmM [Occ=Once] ipv5_sagmN [Occ=Once] ->
+                                          seq# [ipv5_sagmN ipv4_sagmM];
+                                    }; } in
+                          let {
+                            sat_sagmP [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sagmO] \r [eta_B1] maskAsyncExceptions# [sat_sagmO eta_B1];
+                          } in 
+                            case catch# [sat_sagmP sat_sagmT ipv2_sagmI] of {
+                              (#,#) ipv4_sagmV [Occ=Once] ipv5_sagmW [Occ=Once!] ->
+                                  case ipv5_sagmW of {
+                                    (,) a'_sagmY [Occ=Once] b1_sagmZ [Occ=Once] ->
+                                        case putMVar# [ww_sagmA a'_sagmY ipv4_sagmV] of s2#_sagn0 {
+                                          __DEFAULT -> (#,#) [s2#_sagn0 b1_sagmZ];
+                                        };
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sagnm [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag86 #)
+                      [LclId] =
+                          [ww_sagmA w_sagmB] \r [s_sagn1]
+                              case takeMVar# [ww_sagmA s_sagn1] of {
+                                (#,#) ipv2_sagn3 [Occ=Once] ipv3_sagn4 ->
+                                    let {
+                                      sat_sagne [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [ww_sagmA ipv3_sagn4] \r [e1_sagnb s1_sagnc]
+                                              case
+                                                  putMVar# [ww_sagmA ipv3_sagn4 s1_sagnc]
+                                              of
+                                              s2#_sagnd
+                                              { __DEFAULT -> raiseIO# [e1_sagnb s2#_sagnd];
+                                              }; } in
+                                    let {
+                                      sat_sagn9 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [w_sagmB ipv3_sagn4] \r [s1_sagn5]
+                                              case w_sagmB ipv3_sagn4 s1_sagn5 of {
+                                                (#,#) ipv4_sagn7 [Occ=Once] ipv5_sagn8 [Occ=Once] ->
+                                                    seq# [ipv5_sagn8 ipv4_sagn7];
+                                              }; } in
+                                    let {
+                                      sat_sagna [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [sat_sagn9] \r [eta_B1]
+                                              unmaskAsyncExceptions# [sat_sagn9 eta_B1];
+                                    } in 
+                                      case catch# [sat_sagna sat_sagne ipv2_sagn3] of {
+                                        (#,#) ipv4_sagng [Occ=Once] ipv5_sagnh [Occ=Once!] ->
+                                            case ipv5_sagnh of {
+                                              (,) a'_sagnj [Occ=Once] b1_sagnk [Occ=Once] ->
+                                                  case
+                                                      putMVar# [ww_sagmA a'_sagnj ipv4_sagng]
+                                                  of
+                                                  s2#_sagnl
+                                                  { __DEFAULT -> (#,#) [s2#_sagnl b1_sagnk];
+                                                  };
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagnm ipv_sagmE];
+                1# ->
+                    case takeMVar# [ww_sagmA ipv_sagmE] of {
+                      (#,#) ipv2_sagno [Occ=Once] ipv3_sagnp ->
+                          let {
+                            sat_sagnz [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sagmA ipv3_sagnp] \r [e1_sagnw s_sagnx]
+                                    case putMVar# [ww_sagmA ipv3_sagnp s_sagnx] of s2#_sagny {
+                                      __DEFAULT -> raiseIO# [e1_sagnw s2#_sagny];
+                                    }; } in
+                          let {
+                            sat_sagnu [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sagmB ipv3_sagnp] \r [s_sagnq]
+                                    case w_sagmB ipv3_sagnp s_sagnq of {
+                                      (#,#) ipv4_sagns [Occ=Once] ipv5_sagnt [Occ=Once] ->
+                                          seq# [ipv5_sagnt ipv4_sagns];
+                                    }; } in
+                          let {
+                            sat_sagnv [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sagnu] \r [eta_B1] maskUninterruptible# [sat_sagnu eta_B1];
+                          } in 
+                            case catch# [sat_sagnv sat_sagnz ipv2_sagno] of {
+                              (#,#) ipv4_sagnB [Occ=Once] ipv5_sagnC [Occ=Once!] ->
+                                  case ipv5_sagnC of {
+                                    (,) a'_sagnE [Occ=Once] b1_sagnF [Occ=Once] ->
+                                        case putMVar# [ww_sagmA a'_sagnE ipv4_sagnB] of s2#_sagnG {
+                                          __DEFAULT -> (#,#) [s2#_sagnG b1_sagnF];
+                                        };
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar1_ragk0
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagnH w1_sagnI w2_sagnJ]
+        case w_sagnH of {
+          GHC.MVar.MVar ww1_sagnL [Occ=Once] ->
+              $wmodifyMVar_ragjZ ww1_sagnL w1_sagnI w2_sagnJ;
+        };
+
+Control.Concurrent.MVar.modifyMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVar1_ragk0 eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVarMasked__ragk1
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagnM w_sagnN w1_sagnO]
+        case getMaskingState# [w1_sagnO] of {
+          (#,#) ipv_sagnQ [Occ=Once*] ipv1_sagnR [Occ=Once!] ->
+              let {
+                io_sagnS [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sagnM w_sagnN] \r [s_sagnT]
+                        case takeMVar# [ww_sagnM s_sagnT] of {
+                          (#,#) ipv2_sagnV [Occ=Once] ipv3_sagnW ->
+                              let {
+                                sat_sago1 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [ww_sagnM ipv3_sagnW] \r [e1_sagnY s1_sagnZ]
+                                        case putMVar# [ww_sagnM ipv3_sagnW s1_sagnZ] of s2#_sago0 {
+                                          __DEFAULT -> raiseIO# [e1_sagnY s2#_sago0];
+                                        }; } in
+                              let {
+                                sat_sagnX [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [w_sagnN ipv3_sagnW] \s [] w_sagnN ipv3_sagnW;
+                              } in 
+                                case catch# [sat_sagnX sat_sago1 ipv2_sagnV] of {
+                                  (#,#) ipv4_sago3 [Occ=Once] ipv5_sago4 [Occ=Once] ->
+                                      case putMVar# [ww_sagnM ipv5_sago4 ipv4_sago3] of s2#_sago5 {
+                                        __DEFAULT -> (#,#) [s2#_sago5 GHC.Tuple.()];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sagnR of {
+                  __DEFAULT -> io_sagnS ipv_sagnQ;
+                  0# -> maskAsyncExceptions# [io_sagnS ipv_sagnQ];
+                };
+        };
+
+modifyMVarMasked_1_ragk2
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sago7 w1_sago8 w2_sago9]
+        case w_sago7 of {
+          GHC.MVar.MVar ww1_sagob [Occ=Once] ->
+              $wmodifyMVarMasked__ragk1 ww1_sagob w1_sago8 w2_sago9;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVarMasked_1_ragk2 eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVarMasked_ragk3
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagoc w_sagod w1_sagoe]
+        case getMaskingState# [w1_sagoe] of {
+          (#,#) ipv_sagog [Occ=Once*] ipv1_sagoh [Occ=Once!] ->
+              let {
+                io_sagoi [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag8r #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sagoc w_sagod] \r [s_sagoj]
+                        case takeMVar# [ww_sagoc s_sagoj] of {
+                          (#,#) ipv2_sagol [Occ=Once] ipv3_sagom ->
+                              let {
+                                sat_sagov [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [ww_sagoc ipv3_sagom] \r [e1_sagos s1_sagot]
+                                        case putMVar# [ww_sagoc ipv3_sagom s1_sagot] of s2#_sagou {
+                                          __DEFAULT -> raiseIO# [e1_sagos s2#_sagou];
+                                        }; } in
+                              let {
+                                sat_sagor [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [w_sagod ipv3_sagom] \r [s1_sagon]
+                                        case w_sagod ipv3_sagom s1_sagon of {
+                                          (#,#) ipv4_sagop [Occ=Once] ipv5_sagoq [Occ=Once] ->
+                                              seq# [ipv5_sagoq ipv4_sagop];
+                                        };
+                              } in 
+                                case catch# [sat_sagor sat_sagov ipv2_sagol] of {
+                                  (#,#) ipv4_sagox [Occ=Once] ipv5_sagoy [Occ=Once!] ->
+                                      case ipv5_sagoy of {
+                                        (,) a'_sagoA [Occ=Once] b1_sagoB [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sagoc a'_sagoA ipv4_sagox]
+                                            of
+                                            s2#_sagoC
+                                            { __DEFAULT -> (#,#) [s2#_sagoC b1_sagoB];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sagoh of {
+                  __DEFAULT -> io_sagoi ipv_sagog;
+                  0# -> maskAsyncExceptions# [io_sagoi ipv_sagog];
+                };
+        };
+
+modifyMVarMasked1_ragk4
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagoE w1_sagoF w2_sagoG]
+        case w_sagoE of {
+          GHC.MVar.MVar ww1_sagoI [Occ=Once] ->
+              $wmodifyMVarMasked_ragk3 ww1_sagoI w1_sagoF w2_sagoG;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVarMasked1_ragk4 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.MVar.mkWeakMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.MVar.MVar a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m_sagoJ ds_sagoK eta_sagoL]
+        case m_sagoJ of wild_sagoM {
+          GHC.MVar.MVar m#_sagoN [Occ=Once] ->
+              case mkWeak# [m#_sagoN wild_sagoM ds_sagoK eta_sagoL] of {
+                (#,#) ipv_sagoP [Occ=Once] ipv1_sagoQ [Occ=Once] ->
+                    let {
+                      sat_sagoR [Occ=Once] :: GHC.Weak.Weak (GHC.MVar.MVar a_aafIt)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_sagoQ];
+                    } in  (#,#) [ipv_sagoP sat_sagoR];
+              };
+        };
+
+Control.Concurrent.MVar.mkWeakMVar
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.MVar.MVar a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.MVar.mkWeakMVar1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule4];
+
+Control.Concurrent.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.MVar"#;
+
+Control.Concurrent.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule2];
+
+Control.Concurrent.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.MVar.$trModule3
+                                     Control.Concurrent.MVar.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:17.129202726 UTC
+
+Control.Concurrent.MVar.$wswapMVar [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sagk6 w_sagk7 void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sagkb [Occ=Once!] ->
+              case ipv1_sagkb of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sagk6 GHC.Prim.void#] of {
+                      Unit# ipv3_sagkf [Occ=Once] ->
+                          case putMVar# [ww_sagk6 w_sagk7 GHC.Prim.void#] of s2#_sagkg {
+                            (##) -> Unit# [ipv3_sagkf];
+                          };
+                    };
+                0# ->
+                    let {
+                      sat_sagkm [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7s #)
+                      [LclId] =
+                          [ww_sagk6 w_sagk7] \r [void_0E]
+                              case takeMVar# [ww_sagk6 GHC.Prim.void#] of {
+                                Unit# ipv3_sagkk [Occ=Once] ->
+                                    case putMVar# [ww_sagk6 w_sagk7 GHC.Prim.void#] of s2#_sagkl {
+                                      (##) -> Unit# [ipv3_sagkk];
+                                    };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagkm GHC.Prim.void#];
+              };
+        };
+
+Control.Concurrent.MVar.swapMVar1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sagkn w1_sagko void_0E]
+        case w_sagkn of {
+          GHC.MVar.MVar ww1_sagkr [Occ=Once] ->
+              Control.Concurrent.MVar.$wswapMVar
+                  ww1_sagkr w1_sagko GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.swapMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.MVar.swapMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+$wwithMVar_ragjT
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagks w_sagkt void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sagkx [Occ=Once!] ->
+              case ipv1_sagkx of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sagks GHC.Prim.void#] of {
+                      Unit# ipv3_sagkB ->
+                          let {
+                            sat_sagkH [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sagks ipv3_sagkB] \r [e1_sagkE void_0E]
+                                    case
+                                        putMVar# [ww_sagks ipv3_sagkB GHC.Prim.void#]
+                                    of
+                                    s2#_sagkG
+                                    { (##) -> raiseIO# [e1_sagkE GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagkC [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sagkt ipv3_sagkB] \u [] w_sagkt ipv3_sagkB; } in
+                          let {
+                            sat_sagkD [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sagkC] \r [void_0E]
+                                    maskAsyncExceptions# [sat_sagkC GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sagkD sat_sagkH GHC.Prim.void#] of {
+                              Unit# ipv5_sagkK [Occ=Once] ->
+                                  case putMVar# [ww_sagks ipv3_sagkB GHC.Prim.void#] of s2#_sagkL {
+                                    (##) -> Unit# [ipv5_sagkK];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sagl0 [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                      [LclId] =
+                          [ww_sagks w_sagkt] \r [void_0E]
+                              case takeMVar# [ww_sagks GHC.Prim.void#] of {
+                                Unit# ipv3_sagkP ->
+                                    let {
+                                      sat_sagkV [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [ww_sagks ipv3_sagkP] \r [e1_sagkS void_0E]
+                                              case
+                                                  putMVar# [ww_sagks ipv3_sagkP GHC.Prim.void#]
+                                              of
+                                              s2#_sagkU
+                                              { (##) -> raiseIO# [e1_sagkS GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sagkQ [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [w_sagkt ipv3_sagkP] \u [] w_sagkt ipv3_sagkP; } in
+                                    let {
+                                      sat_sagkR [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [sat_sagkQ] \r [void_0E]
+                                              unmaskAsyncExceptions# [sat_sagkQ GHC.Prim.void#];
+                                    } in 
+                                      case catch# [sat_sagkR sat_sagkV GHC.Prim.void#] of {
+                                        Unit# ipv5_sagkY [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sagks ipv3_sagkP GHC.Prim.void#]
+                                            of
+                                            s2#_sagkZ
+                                            { (##) -> Unit# [ipv5_sagkY];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagl0 GHC.Prim.void#];
+                1# ->
+                    case takeMVar# [ww_sagks GHC.Prim.void#] of {
+                      Unit# ipv3_sagl3 ->
+                          let {
+                            sat_sagl9 [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sagks ipv3_sagl3] \r [e1_sagl6 void_0E]
+                                    case
+                                        putMVar# [ww_sagks ipv3_sagl3 GHC.Prim.void#]
+                                    of
+                                    s2#_sagl8
+                                    { (##) -> raiseIO# [e1_sagl6 GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagl4 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sagkt ipv3_sagl3] \u [] w_sagkt ipv3_sagl3; } in
+                          let {
+                            sat_sagl5 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sagl4] \r [void_0E]
+                                    maskUninterruptible# [sat_sagl4 GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sagl5 sat_sagl9 GHC.Prim.void#] of {
+                              Unit# ipv5_saglc [Occ=Once] ->
+                                  case putMVar# [ww_sagks ipv3_sagl3 GHC.Prim.void#] of s2#_sagld {
+                                    (##) -> Unit# [ipv5_saglc];
+                                  };
+                            };
+                    };
+              };
+        };
+
+withMVar1_ragjU
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagle w1_saglf void_0E]
+        case w_sagle of {
+          GHC.MVar.MVar ww1_sagli [Occ=Once] ->
+              $wwithMVar_ragjT ww1_sagli w1_saglf GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.withMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        withMVar1_ragjU eta_B3 eta_B2 GHC.Prim.void#;
+
+$wwithMVarMasked_ragjV
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_saglj w_saglk void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_saglo [Occ=Once!] ->
+              let {
+                io_saglp [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_saglj w_saglk] \r [void_0E]
+                        case takeMVar# [ww_saglj GHC.Prim.void#] of {
+                          Unit# ipv3_saglt ->
+                              let {
+                                sat_sagly [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [ww_saglj ipv3_saglt] \r [e1_saglv void_0E]
+                                        case
+                                            putMVar# [ww_saglj ipv3_saglt GHC.Prim.void#]
+                                        of
+                                        s2#_saglx
+                                        { (##) -> raiseIO# [e1_saglv GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_saglu [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [w_saglk ipv3_saglt] \s [] w_saglk ipv3_saglt;
+                              } in 
+                                case catch# [sat_saglu sat_sagly GHC.Prim.void#] of {
+                                  Unit# ipv5_saglB [Occ=Once] ->
+                                      case
+                                          putMVar# [ww_saglj ipv3_saglt GHC.Prim.void#]
+                                      of
+                                      s2#_saglC
+                                      { (##) -> Unit# [ipv5_saglB];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_saglo of {
+                  __DEFAULT -> io_saglp GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io_saglp GHC.Prim.void#];
+                };
+        };
+
+withMVarMasked1_ragjW
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_saglE w1_saglF void_0E]
+        case w_saglE of {
+          GHC.MVar.MVar ww1_saglI [Occ=Once] ->
+              $wwithMVarMasked_ragjV ww1_saglI w1_saglF GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.withMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        withMVarMasked1_ragjW eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVar__ragjX
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_saglJ w_saglK void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_saglO [Occ=Once!] ->
+              case ipv1_saglO of {
+                __DEFAULT ->
+                    case takeMVar# [ww_saglJ GHC.Prim.void#] of {
+                      Unit# ipv3_saglS ->
+                          let {
+                            sat_saglY [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_saglJ ipv3_saglS] \r [e1_saglV void_0E]
+                                    case
+                                        putMVar# [ww_saglJ ipv3_saglS GHC.Prim.void#]
+                                    of
+                                    s2#_saglX
+                                    { (##) -> raiseIO# [e1_saglV GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_saglT [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_saglK ipv3_saglS] \u [] w_saglK ipv3_saglS; } in
+                          let {
+                            sat_saglU [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_saglT] \r [void_0E]
+                                    maskAsyncExceptions# [sat_saglT GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_saglU sat_saglY GHC.Prim.void#] of {
+                              Unit# ipv5_sagm1 [Occ=Once] ->
+                                  case putMVar# [ww_saglJ ipv5_sagm1 GHC.Prim.void#] of s2#_sagm2 {
+                                    (##) -> Unit# [GHC.Tuple.()];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sagmh [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                      [LclId] =
+                          [ww_saglJ w_saglK] \r [void_0E]
+                              case takeMVar# [ww_saglJ GHC.Prim.void#] of {
+                                Unit# ipv3_sagm6 ->
+                                    let {
+                                      sat_sagmc [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [ww_saglJ ipv3_sagm6] \r [e1_sagm9 void_0E]
+                                              case
+                                                  putMVar# [ww_saglJ ipv3_sagm6 GHC.Prim.void#]
+                                              of
+                                              s2#_sagmb
+                                              { (##) -> raiseIO# [e1_sagm9 GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sagm7 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [w_saglK ipv3_sagm6] \u [] w_saglK ipv3_sagm6; } in
+                                    let {
+                                      sat_sagm8 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [sat_sagm7] \r [void_0E]
+                                              unmaskAsyncExceptions# [sat_sagm7 GHC.Prim.void#];
+                                    } in 
+                                      case catch# [sat_sagm8 sat_sagmc GHC.Prim.void#] of {
+                                        Unit# ipv5_sagmf [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_saglJ ipv5_sagmf GHC.Prim.void#]
+                                            of
+                                            s2#_sagmg
+                                            { (##) -> Unit# [GHC.Tuple.()];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagmh GHC.Prim.void#];
+                1# ->
+                    case takeMVar# [ww_saglJ GHC.Prim.void#] of {
+                      Unit# ipv3_sagmk ->
+                          let {
+                            sat_sagmq [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_saglJ ipv3_sagmk] \r [e1_sagmn void_0E]
+                                    case
+                                        putMVar# [ww_saglJ ipv3_sagmk GHC.Prim.void#]
+                                    of
+                                    s2#_sagmp
+                                    { (##) -> raiseIO# [e1_sagmn GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagml [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_saglK ipv3_sagmk] \u [] w_saglK ipv3_sagmk; } in
+                          let {
+                            sat_sagmm [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_sagml] \r [void_0E]
+                                    maskUninterruptible# [sat_sagml GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sagmm sat_sagmq GHC.Prim.void#] of {
+                              Unit# ipv5_sagmt [Occ=Once] ->
+                                  case putMVar# [ww_saglJ ipv5_sagmt GHC.Prim.void#] of s2#_sagmu {
+                                    (##) -> Unit# [GHC.Tuple.()];
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar_1_ragjY
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagmv w1_sagmw void_0E]
+        case w_sagmv of {
+          GHC.MVar.MVar ww1_sagmz [Occ=Once] ->
+              $wmodifyMVar__ragjX ww1_sagmz w1_sagmw GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVar_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVar_1_ragjY eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVar_ragjZ
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagmA w_sagmB void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sagmF [Occ=Once!] ->
+              case ipv1_sagmF of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sagmA GHC.Prim.void#] of {
+                      Unit# ipv3_sagmJ ->
+                          let {
+                            sat_sagmT [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sagmA ipv3_sagmJ] \r [e1_sagmQ void_0E]
+                                    case
+                                        putMVar# [ww_sagmA ipv3_sagmJ GHC.Prim.void#]
+                                    of
+                                    s2#_sagmS
+                                    { (##) -> raiseIO# [e1_sagmQ GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagmO [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sagmB ipv3_sagmJ] \r [void_0E]
+                                    case w_sagmB ipv3_sagmJ GHC.Prim.void# of {
+                                      Unit# ipv5_sagmN [Occ=Once] ->
+                                          seq# [ipv5_sagmN GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagmP [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sagmO] \r [void_0E]
+                                    maskAsyncExceptions# [sat_sagmO GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sagmP sat_sagmT GHC.Prim.void#] of {
+                              Unit# ipv5_sagmW [Occ=Once!] ->
+                                  case ipv5_sagmW of {
+                                    (,) a'_sagmY [Occ=Once] b1_sagmZ [Occ=Once] ->
+                                        case
+                                            putMVar# [ww_sagmA a'_sagmY GHC.Prim.void#]
+                                        of
+                                        s2#_sagn0
+                                        { (##) -> Unit# [b1_sagmZ];
+                                        };
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sagnm [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag86 #)
+                      [LclId] =
+                          [ww_sagmA w_sagmB] \r [void_0E]
+                              case takeMVar# [ww_sagmA GHC.Prim.void#] of {
+                                Unit# ipv3_sagn4 ->
+                                    let {
+                                      sat_sagne [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [ww_sagmA ipv3_sagn4] \r [e1_sagnb void_0E]
+                                              case
+                                                  putMVar# [ww_sagmA ipv3_sagn4 GHC.Prim.void#]
+                                              of
+                                              s2#_sagnd
+                                              { (##) -> raiseIO# [e1_sagnb GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sagn9 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [w_sagmB ipv3_sagn4] \r [void_0E]
+                                              case w_sagmB ipv3_sagn4 GHC.Prim.void# of {
+                                                Unit# ipv5_sagn8 [Occ=Once] ->
+                                                    seq# [ipv5_sagn8 GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sagna [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [sat_sagn9] \r [void_0E]
+                                              unmaskAsyncExceptions# [sat_sagn9 GHC.Prim.void#];
+                                    } in 
+                                      case catch# [sat_sagna sat_sagne GHC.Prim.void#] of {
+                                        Unit# ipv5_sagnh [Occ=Once!] ->
+                                            case ipv5_sagnh of {
+                                              (,) a'_sagnj [Occ=Once] b1_sagnk [Occ=Once] ->
+                                                  case
+                                                      putMVar# [ww_sagmA a'_sagnj GHC.Prim.void#]
+                                                  of
+                                                  s2#_sagnl
+                                                  { (##) -> Unit# [b1_sagnk];
+                                                  };
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sagnm GHC.Prim.void#];
+                1# ->
+                    case takeMVar# [ww_sagmA GHC.Prim.void#] of {
+                      Unit# ipv3_sagnp ->
+                          let {
+                            sat_sagnz [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sagmA ipv3_sagnp] \r [e1_sagnw void_0E]
+                                    case
+                                        putMVar# [ww_sagmA ipv3_sagnp GHC.Prim.void#]
+                                    of
+                                    s2#_sagny
+                                    { (##) -> raiseIO# [e1_sagnw GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagnu [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sagmB ipv3_sagnp] \r [void_0E]
+                                    case w_sagmB ipv3_sagnp GHC.Prim.void# of {
+                                      Unit# ipv5_sagnt [Occ=Once] ->
+                                          seq# [ipv5_sagnt GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sagnv [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sagnu] \r [void_0E]
+                                    maskUninterruptible# [sat_sagnu GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sagnv sat_sagnz GHC.Prim.void#] of {
+                              Unit# ipv5_sagnC [Occ=Once!] ->
+                                  case ipv5_sagnC of {
+                                    (,) a'_sagnE [Occ=Once] b1_sagnF [Occ=Once] ->
+                                        case
+                                            putMVar# [ww_sagmA a'_sagnE GHC.Prim.void#]
+                                        of
+                                        s2#_sagnG
+                                        { (##) -> Unit# [b1_sagnF];
+                                        };
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar1_ragk0
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagnH w1_sagnI void_0E]
+        case w_sagnH of {
+          GHC.MVar.MVar ww1_sagnL [Occ=Once] ->
+              $wmodifyMVar_ragjZ ww1_sagnL w1_sagnI GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVar1_ragk0 eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVarMasked__ragk1
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagnM w_sagnN void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sagnR [Occ=Once!] ->
+              let {
+                io_sagnS [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sagnM w_sagnN] \r [void_0E]
+                        case takeMVar# [ww_sagnM GHC.Prim.void#] of {
+                          Unit# ipv3_sagnW ->
+                              let {
+                                sat_sago1 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [ww_sagnM ipv3_sagnW] \r [e1_sagnY void_0E]
+                                        case
+                                            putMVar# [ww_sagnM ipv3_sagnW GHC.Prim.void#]
+                                        of
+                                        s2#_sago0
+                                        { (##) -> raiseIO# [e1_sagnY GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sagnX [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [w_sagnN ipv3_sagnW] \s [] w_sagnN ipv3_sagnW;
+                              } in 
+                                case catch# [sat_sagnX sat_sago1 GHC.Prim.void#] of {
+                                  Unit# ipv5_sago4 [Occ=Once] ->
+                                      case
+                                          putMVar# [ww_sagnM ipv5_sago4 GHC.Prim.void#]
+                                      of
+                                      s2#_sago5
+                                      { (##) -> Unit# [GHC.Tuple.()];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sagnR of {
+                  __DEFAULT -> io_sagnS GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io_sagnS GHC.Prim.void#];
+                };
+        };
+
+modifyMVarMasked_1_ragk2
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sago7 w1_sago8 void_0E]
+        case w_sago7 of {
+          GHC.MVar.MVar ww1_sagob [Occ=Once] ->
+              $wmodifyMVarMasked__ragk1 ww1_sagob w1_sago8 GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVarMasked_1_ragk2 eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVarMasked_ragk3
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sagoc w_sagod void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sagoh [Occ=Once!] ->
+              let {
+                io_sagoi [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag8r #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sagoc w_sagod] \r [void_0E]
+                        case takeMVar# [ww_sagoc GHC.Prim.void#] of {
+                          Unit# ipv3_sagom ->
+                              let {
+                                sat_sagov [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [ww_sagoc ipv3_sagom] \r [e1_sagos void_0E]
+                                        case
+                                            putMVar# [ww_sagoc ipv3_sagom GHC.Prim.void#]
+                                        of
+                                        s2#_sagou
+                                        { (##) -> raiseIO# [e1_sagos GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sagor [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [w_sagod ipv3_sagom] \r [void_0E]
+                                        case w_sagod ipv3_sagom GHC.Prim.void# of {
+                                          Unit# ipv5_sagoq [Occ=Once] ->
+                                              seq# [ipv5_sagoq GHC.Prim.void#];
+                                        };
+                              } in 
+                                case catch# [sat_sagor sat_sagov GHC.Prim.void#] of {
+                                  Unit# ipv5_sagoy [Occ=Once!] ->
+                                      case ipv5_sagoy of {
+                                        (,) a'_sagoA [Occ=Once] b1_sagoB [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sagoc a'_sagoA GHC.Prim.void#]
+                                            of
+                                            s2#_sagoC
+                                            { (##) -> Unit# [b1_sagoB];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sagoh of {
+                  __DEFAULT -> io_sagoi GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io_sagoi GHC.Prim.void#];
+                };
+        };
+
+modifyMVarMasked1_ragk4
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sagoE w1_sagoF void_0E]
+        case w_sagoE of {
+          GHC.MVar.MVar ww1_sagoI [Occ=Once] ->
+              $wmodifyMVarMasked_ragk3 ww1_sagoI w1_sagoF GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVarMasked1_ragk4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.MVar.mkWeakMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.MVar.MVar a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m_sagoJ ds_sagoK void_0E]
+        case m_sagoJ of wild_sagoM {
+          GHC.MVar.MVar m#_sagoN [Occ=Once] ->
+              case mkWeak# [m#_sagoN wild_sagoM ds_sagoK GHC.Prim.void#] of {
+                Unit# ipv1_sagoQ [Occ=Once] ->
+                    let {
+                      sat_sagoR [Occ=Once] :: GHC.Weak.Weak (GHC.MVar.MVar a_aafIt)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_sagoQ];
+                    } in  Unit# [sat_sagoR];
+              };
+        };
+
+Control.Concurrent.MVar.mkWeakMVar
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.MVar.MVar a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.MVar.mkWeakMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule4];
+
+Control.Concurrent.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.MVar"#;
+
+Control.Concurrent.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule2];
+
+Control.Concurrent.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.MVar.$trModule3
+                                     Control.Concurrent.MVar.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:18.219998219 UTC
+
+Control.Concurrent.MVar.$wswapMVar [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sahaF w_sahaG w1_sahaH]
+        case getMaskingState# [w1_sahaH] of {
+          (#,#) ipv_sahaJ [Occ=Once*] ipv1_sahaK [Occ=Once!] ->
+              case ipv1_sahaK of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahaF ipv_sahaJ] of {
+                      (#,#) ipv2_sahaN [Occ=Once] ipv3_sahaO [Occ=Once] ->
+                          case putMVar# [ww_sahaF w_sahaG ipv2_sahaN] of s2#_sahaP {
+                            __DEFAULT -> (#,#) [s2#_sahaP ipv3_sahaO];
+                          };
+                    };
+                0# ->
+                    let {
+                      sat_sahaV [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7s #)
+                      [LclId] =
+                          [ww_sahaF w_sahaG] \r [s_sahaQ]
+                              case takeMVar# [ww_sahaF s_sahaQ] of {
+                                (#,#) ipv2_sahaS [Occ=Once] ipv3_sahaT [Occ=Once] ->
+                                    case putMVar# [ww_sahaF w_sahaG ipv2_sahaS] of s2#_sahaU {
+                                      __DEFAULT -> (#,#) [s2#_sahaU ipv3_sahaT];
+                                    };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahaV ipv_sahaJ];
+              };
+        };
+
+Control.Concurrent.MVar.swapMVar1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sahaW w1_sahaX w2_sahaY]
+        case w_sahaW of {
+          GHC.MVar.MVar ww1_sahb0 [Occ=Once] ->
+              Control.Concurrent.MVar.$wswapMVar ww1_sahb0 w1_sahaX w2_sahaY;
+        };
+
+Control.Concurrent.MVar.swapMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.MVar.swapMVar1 eta_B3 eta_B2 eta_B1;
+
+$wwithMVar_ragjT
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahb1 w_sahb2 w1_sahb3]
+        case getMaskingState# [w1_sahb3] of {
+          (#,#) ipv_sahb5 [Occ=Once*] ipv1_sahb6 [Occ=Once!] ->
+              case ipv1_sahb6 of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahb1 ipv_sahb5] of {
+                      (#,#) ipv2_sahb9 [Occ=Once] ipv3_sahba ->
+                          let {
+                            sat_sahbg [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sahb1 ipv3_sahba] \r [e1_sahbd s_sahbe]
+                                    case putMVar# [ww_sahb1 ipv3_sahba s_sahbe] of s2#_sahbf {
+                                      __DEFAULT -> raiseIO# [e1_sahbd s2#_sahbf];
+                                    }; } in
+                          let {
+                            sat_sahbb [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sahb2 ipv3_sahba] \u [] w_sahb2 ipv3_sahba; } in
+                          let {
+                            sat_sahbc [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sahbb] \r [eta_B1] maskAsyncExceptions# [sat_sahbb eta_B1];
+                          } in 
+                            case catch# [sat_sahbc sat_sahbg ipv2_sahb9] of {
+                              (#,#) ipv4_sahbi [Occ=Once] ipv5_sahbj [Occ=Once] ->
+                                  case putMVar# [ww_sahb1 ipv3_sahba ipv4_sahbi] of s2#_sahbk {
+                                    __DEFAULT -> (#,#) [s2#_sahbk ipv5_sahbj];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sahbz [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                      [LclId] =
+                          [ww_sahb1 w_sahb2] \r [s_sahbl]
+                              case takeMVar# [ww_sahb1 s_sahbl] of {
+                                (#,#) ipv2_sahbn [Occ=Once] ipv3_sahbo ->
+                                    let {
+                                      sat_sahbu [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [ww_sahb1 ipv3_sahbo] \r [e1_sahbr s1_sahbs]
+                                              case
+                                                  putMVar# [ww_sahb1 ipv3_sahbo s1_sahbs]
+                                              of
+                                              s2#_sahbt
+                                              { __DEFAULT -> raiseIO# [e1_sahbr s2#_sahbt];
+                                              }; } in
+                                    let {
+                                      sat_sahbp [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [w_sahb2 ipv3_sahbo] \u [] w_sahb2 ipv3_sahbo; } in
+                                    let {
+                                      sat_sahbq [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [sat_sahbp] \r [eta_B1]
+                                              unmaskAsyncExceptions# [sat_sahbp eta_B1];
+                                    } in 
+                                      case catch# [sat_sahbq sat_sahbu ipv2_sahbn] of {
+                                        (#,#) ipv4_sahbw [Occ=Once] ipv5_sahbx [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sahb1 ipv3_sahbo ipv4_sahbw]
+                                            of
+                                            s2#_sahby
+                                            { __DEFAULT -> (#,#) [s2#_sahby ipv5_sahbx];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahbz ipv_sahb5];
+                1# ->
+                    case takeMVar# [ww_sahb1 ipv_sahb5] of {
+                      (#,#) ipv2_sahbB [Occ=Once] ipv3_sahbC ->
+                          let {
+                            sat_sahbI [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sahb1 ipv3_sahbC] \r [e1_sahbF s_sahbG]
+                                    case putMVar# [ww_sahb1 ipv3_sahbC s_sahbG] of s2#_sahbH {
+                                      __DEFAULT -> raiseIO# [e1_sahbF s2#_sahbH];
+                                    }; } in
+                          let {
+                            sat_sahbD [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sahb2 ipv3_sahbC] \u [] w_sahb2 ipv3_sahbC; } in
+                          let {
+                            sat_sahbE [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sahbD] \r [eta_B1] maskUninterruptible# [sat_sahbD eta_B1];
+                          } in 
+                            case catch# [sat_sahbE sat_sahbI ipv2_sahbB] of {
+                              (#,#) ipv4_sahbK [Occ=Once] ipv5_sahbL [Occ=Once] ->
+                                  case putMVar# [ww_sahb1 ipv3_sahbC ipv4_sahbK] of s2#_sahbM {
+                                    __DEFAULT -> (#,#) [s2#_sahbM ipv5_sahbL];
+                                  };
+                            };
+                    };
+              };
+        };
+
+withMVar1_ragjU
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahbN w1_sahbO w2_sahbP]
+        case w_sahbN of {
+          GHC.MVar.MVar ww1_sahbR [Occ=Once] ->
+              $wwithMVar_ragjT ww1_sahbR w1_sahbO w2_sahbP;
+        };
+
+Control.Concurrent.MVar.withMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1] withMVar1_ragjU eta_B3 eta_B2 eta_B1;
+
+$wwithMVarMasked_ragjV
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahbS w_sahbT w1_sahbU]
+        case getMaskingState# [w1_sahbU] of {
+          (#,#) ipv_sahbW [Occ=Once*] ipv1_sahbX [Occ=Once!] ->
+              let {
+                io_sahbY [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sahbS w_sahbT] \r [s_sahbZ]
+                        case takeMVar# [ww_sahbS s_sahbZ] of {
+                          (#,#) ipv2_sahc1 [Occ=Once] ipv3_sahc2 ->
+                              let {
+                                sat_sahc7 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [ww_sahbS ipv3_sahc2] \r [e1_sahc4 s1_sahc5]
+                                        case putMVar# [ww_sahbS ipv3_sahc2 s1_sahc5] of s2#_sahc6 {
+                                          __DEFAULT -> raiseIO# [e1_sahc4 s2#_sahc6];
+                                        }; } in
+                              let {
+                                sat_sahc3 [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [w_sahbT ipv3_sahc2] \s [] w_sahbT ipv3_sahc2;
+                              } in 
+                                case catch# [sat_sahc3 sat_sahc7 ipv2_sahc1] of {
+                                  (#,#) ipv4_sahc9 [Occ=Once] ipv5_sahca [Occ=Once] ->
+                                      case putMVar# [ww_sahbS ipv3_sahc2 ipv4_sahc9] of s2#_sahcb {
+                                        __DEFAULT -> (#,#) [s2#_sahcb ipv5_sahca];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sahbX of {
+                  __DEFAULT -> io_sahbY ipv_sahbW;
+                  0# -> maskAsyncExceptions# [io_sahbY ipv_sahbW];
+                };
+        };
+
+withMVarMasked1_ragjW
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahcd w1_sahce w2_sahcf]
+        case w_sahcd of {
+          GHC.MVar.MVar ww1_sahch [Occ=Once] ->
+              $wwithMVarMasked_ragjV ww1_sahch w1_sahce w2_sahcf;
+        };
+
+Control.Concurrent.MVar.withMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        withMVarMasked1_ragjW eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVar__ragjX
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahci w_sahcj w1_sahck]
+        case getMaskingState# [w1_sahck] of {
+          (#,#) ipv_sahcm [Occ=Once*] ipv1_sahcn [Occ=Once!] ->
+              case ipv1_sahcn of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahci ipv_sahcm] of {
+                      (#,#) ipv2_sahcq [Occ=Once] ipv3_sahcr ->
+                          let {
+                            sat_sahcx [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_sahci ipv3_sahcr] \r [e1_sahcu s_sahcv]
+                                    case putMVar# [ww_sahci ipv3_sahcr s_sahcv] of s2#_sahcw {
+                                      __DEFAULT -> raiseIO# [e1_sahcu s2#_sahcw];
+                                    }; } in
+                          let {
+                            sat_sahcs [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_sahcj ipv3_sahcr] \u [] w_sahcj ipv3_sahcr; } in
+                          let {
+                            sat_sahct [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_sahcs] \r [eta_B1] maskAsyncExceptions# [sat_sahcs eta_B1];
+                          } in 
+                            case catch# [sat_sahct sat_sahcx ipv2_sahcq] of {
+                              (#,#) ipv4_sahcz [Occ=Once] ipv5_sahcA [Occ=Once] ->
+                                  case putMVar# [ww_sahci ipv5_sahcA ipv4_sahcz] of s2#_sahcB {
+                                    __DEFAULT -> (#,#) [s2#_sahcB GHC.Tuple.()];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sahcQ [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                      [LclId] =
+                          [ww_sahci w_sahcj] \r [s_sahcC]
+                              case takeMVar# [ww_sahci s_sahcC] of {
+                                (#,#) ipv2_sahcE [Occ=Once] ipv3_sahcF ->
+                                    let {
+                                      sat_sahcL [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [ww_sahci ipv3_sahcF] \r [e1_sahcI s1_sahcJ]
+                                              case
+                                                  putMVar# [ww_sahci ipv3_sahcF s1_sahcJ]
+                                              of
+                                              s2#_sahcK
+                                              { __DEFAULT -> raiseIO# [e1_sahcI s2#_sahcK];
+                                              }; } in
+                                    let {
+                                      sat_sahcG [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [w_sahcj ipv3_sahcF] \u [] w_sahcj ipv3_sahcF; } in
+                                    let {
+                                      sat_sahcH [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [sat_sahcG] \r [eta_B1]
+                                              unmaskAsyncExceptions# [sat_sahcG eta_B1];
+                                    } in 
+                                      case catch# [sat_sahcH sat_sahcL ipv2_sahcE] of {
+                                        (#,#) ipv4_sahcN [Occ=Once] ipv5_sahcO [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sahci ipv5_sahcO ipv4_sahcN]
+                                            of
+                                            s2#_sahcP
+                                            { __DEFAULT -> (#,#) [s2#_sahcP GHC.Tuple.()];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahcQ ipv_sahcm];
+                1# ->
+                    case takeMVar# [ww_sahci ipv_sahcm] of {
+                      (#,#) ipv2_sahcS [Occ=Once] ipv3_sahcT ->
+                          let {
+                            sat_sahcZ [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_sahci ipv3_sahcT] \r [e1_sahcW s_sahcX]
+                                    case putMVar# [ww_sahci ipv3_sahcT s_sahcX] of s2#_sahcY {
+                                      __DEFAULT -> raiseIO# [e1_sahcW s2#_sahcY];
+                                    }; } in
+                          let {
+                            sat_sahcU [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_sahcj ipv3_sahcT] \u [] w_sahcj ipv3_sahcT; } in
+                          let {
+                            sat_sahcV [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_sahcU] \r [eta_B1] maskUninterruptible# [sat_sahcU eta_B1];
+                          } in 
+                            case catch# [sat_sahcV sat_sahcZ ipv2_sahcS] of {
+                              (#,#) ipv4_sahd1 [Occ=Once] ipv5_sahd2 [Occ=Once] ->
+                                  case putMVar# [ww_sahci ipv5_sahd2 ipv4_sahd1] of s2#_sahd3 {
+                                    __DEFAULT -> (#,#) [s2#_sahd3 GHC.Tuple.()];
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar_1_ragjY
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahd4 w1_sahd5 w2_sahd6]
+        case w_sahd4 of {
+          GHC.MVar.MVar ww1_sahd8 [Occ=Once] ->
+              $wmodifyMVar__ragjX ww1_sahd8 w1_sahd5 w2_sahd6;
+        };
+
+Control.Concurrent.MVar.modifyMVar_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVar_1_ragjY eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVar_ragjZ
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahd9 w_sahda w1_sahdb]
+        case getMaskingState# [w1_sahdb] of {
+          (#,#) ipv_sahdd [Occ=Once*] ipv1_sahde [Occ=Once!] ->
+              case ipv1_sahde of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahd9 ipv_sahdd] of {
+                      (#,#) ipv2_sahdh [Occ=Once] ipv3_sahdi ->
+                          let {
+                            sat_sahds [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sahd9 ipv3_sahdi] \r [e1_sahdp s_sahdq]
+                                    case putMVar# [ww_sahd9 ipv3_sahdi s_sahdq] of s2#_sahdr {
+                                      __DEFAULT -> raiseIO# [e1_sahdp s2#_sahdr];
+                                    }; } in
+                          let {
+                            sat_sahdn [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sahda ipv3_sahdi] \r [s_sahdj]
+                                    case w_sahda ipv3_sahdi s_sahdj of {
+                                      (#,#) ipv4_sahdl [Occ=Once] ipv5_sahdm [Occ=Once] ->
+                                          seq# [ipv5_sahdm ipv4_sahdl];
+                                    }; } in
+                          let {
+                            sat_sahdo [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sahdn] \r [eta_B1] maskAsyncExceptions# [sat_sahdn eta_B1];
+                          } in 
+                            case catch# [sat_sahdo sat_sahds ipv2_sahdh] of {
+                              (#,#) ipv4_sahdu [Occ=Once] ipv5_sahdv [Occ=Once!] ->
+                                  case ipv5_sahdv of {
+                                    (,) a'_sahdx [Occ=Once] b1_sahdy [Occ=Once] ->
+                                        case putMVar# [ww_sahd9 a'_sahdx ipv4_sahdu] of s2#_sahdz {
+                                          __DEFAULT -> (#,#) [s2#_sahdz b1_sahdy];
+                                        };
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sahdV [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag86 #)
+                      [LclId] =
+                          [ww_sahd9 w_sahda] \r [s_sahdA]
+                              case takeMVar# [ww_sahd9 s_sahdA] of {
+                                (#,#) ipv2_sahdC [Occ=Once] ipv3_sahdD ->
+                                    let {
+                                      sat_sahdN [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [ww_sahd9 ipv3_sahdD] \r [e1_sahdK s1_sahdL]
+                                              case
+                                                  putMVar# [ww_sahd9 ipv3_sahdD s1_sahdL]
+                                              of
+                                              s2#_sahdM
+                                              { __DEFAULT -> raiseIO# [e1_sahdK s2#_sahdM];
+                                              }; } in
+                                    let {
+                                      sat_sahdI [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [w_sahda ipv3_sahdD] \r [s1_sahdE]
+                                              case w_sahda ipv3_sahdD s1_sahdE of {
+                                                (#,#) ipv4_sahdG [Occ=Once] ipv5_sahdH [Occ=Once] ->
+                                                    seq# [ipv5_sahdH ipv4_sahdG];
+                                              }; } in
+                                    let {
+                                      sat_sahdJ [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [sat_sahdI] \r [eta_B1]
+                                              unmaskAsyncExceptions# [sat_sahdI eta_B1];
+                                    } in 
+                                      case catch# [sat_sahdJ sat_sahdN ipv2_sahdC] of {
+                                        (#,#) ipv4_sahdP [Occ=Once] ipv5_sahdQ [Occ=Once!] ->
+                                            case ipv5_sahdQ of {
+                                              (,) a'_sahdS [Occ=Once] b1_sahdT [Occ=Once] ->
+                                                  case
+                                                      putMVar# [ww_sahd9 a'_sahdS ipv4_sahdP]
+                                                  of
+                                                  s2#_sahdU
+                                                  { __DEFAULT -> (#,#) [s2#_sahdU b1_sahdT];
+                                                  };
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahdV ipv_sahdd];
+                1# ->
+                    case takeMVar# [ww_sahd9 ipv_sahdd] of {
+                      (#,#) ipv2_sahdX [Occ=Once] ipv3_sahdY ->
+                          let {
+                            sat_sahe8 [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sahd9 ipv3_sahdY] \r [e1_sahe5 s_sahe6]
+                                    case putMVar# [ww_sahd9 ipv3_sahdY s_sahe6] of s2#_sahe7 {
+                                      __DEFAULT -> raiseIO# [e1_sahe5 s2#_sahe7];
+                                    }; } in
+                          let {
+                            sat_sahe3 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sahda ipv3_sahdY] \r [s_sahdZ]
+                                    case w_sahda ipv3_sahdY s_sahdZ of {
+                                      (#,#) ipv4_sahe1 [Occ=Once] ipv5_sahe2 [Occ=Once] ->
+                                          seq# [ipv5_sahe2 ipv4_sahe1];
+                                    }; } in
+                          let {
+                            sat_sahe4 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sahe3] \r [eta_B1] maskUninterruptible# [sat_sahe3 eta_B1];
+                          } in 
+                            case catch# [sat_sahe4 sat_sahe8 ipv2_sahdX] of {
+                              (#,#) ipv4_sahea [Occ=Once] ipv5_saheb [Occ=Once!] ->
+                                  case ipv5_saheb of {
+                                    (,) a'_sahed [Occ=Once] b1_sahee [Occ=Once] ->
+                                        case putMVar# [ww_sahd9 a'_sahed ipv4_sahea] of s2#_sahef {
+                                          __DEFAULT -> (#,#) [s2#_sahef b1_sahee];
+                                        };
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar1_ragk0
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_saheg w1_saheh w2_sahei]
+        case w_saheg of {
+          GHC.MVar.MVar ww1_sahek [Occ=Once] ->
+              $wmodifyMVar_ragjZ ww1_sahek w1_saheh w2_sahei;
+        };
+
+Control.Concurrent.MVar.modifyMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVar1_ragk0 eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVarMasked__ragk1
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahel w_sahem w1_sahen]
+        case getMaskingState# [w1_sahen] of {
+          (#,#) ipv_sahep [Occ=Once*] ipv1_saheq [Occ=Once!] ->
+              let {
+                io_saher [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sahel w_sahem] \r [s_sahes]
+                        case takeMVar# [ww_sahel s_sahes] of {
+                          (#,#) ipv2_saheu [Occ=Once] ipv3_sahev ->
+                              let {
+                                sat_saheA [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [ww_sahel ipv3_sahev] \r [e1_sahex s1_sahey]
+                                        case putMVar# [ww_sahel ipv3_sahev s1_sahey] of s2#_sahez {
+                                          __DEFAULT -> raiseIO# [e1_sahex s2#_sahez];
+                                        }; } in
+                              let {
+                                sat_sahew [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [w_sahem ipv3_sahev] \s [] w_sahem ipv3_sahev;
+                              } in 
+                                case catch# [sat_sahew sat_saheA ipv2_saheu] of {
+                                  (#,#) ipv4_saheC [Occ=Once] ipv5_saheD [Occ=Once] ->
+                                      case putMVar# [ww_sahel ipv5_saheD ipv4_saheC] of s2#_saheE {
+                                        __DEFAULT -> (#,#) [s2#_saheE GHC.Tuple.()];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_saheq of {
+                  __DEFAULT -> io_saher ipv_sahep;
+                  0# -> maskAsyncExceptions# [io_saher ipv_sahep];
+                };
+        };
+
+modifyMVarMasked_1_ragk2
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_saheG w1_saheH w2_saheI]
+        case w_saheG of {
+          GHC.MVar.MVar ww1_saheK [Occ=Once] ->
+              $wmodifyMVarMasked__ragk1 ww1_saheK w1_saheH w2_saheI;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVarMasked_1_ragk2 eta_B3 eta_B2 eta_B1;
+
+$wmodifyMVarMasked_ragk3
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_saheL w_saheM w1_saheN]
+        case getMaskingState# [w1_saheN] of {
+          (#,#) ipv_saheP [Occ=Once*] ipv1_saheQ [Occ=Once!] ->
+              let {
+                io_saheR [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag8r #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_saheL w_saheM] \r [s_saheS]
+                        case takeMVar# [ww_saheL s_saheS] of {
+                          (#,#) ipv2_saheU [Occ=Once] ipv3_saheV ->
+                              let {
+                                sat_sahf4 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [ww_saheL ipv3_saheV] \r [e1_sahf1 s1_sahf2]
+                                        case putMVar# [ww_saheL ipv3_saheV s1_sahf2] of s2#_sahf3 {
+                                          __DEFAULT -> raiseIO# [e1_sahf1 s2#_sahf3];
+                                        }; } in
+                              let {
+                                sat_sahf0 [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [w_saheM ipv3_saheV] \r [s1_saheW]
+                                        case w_saheM ipv3_saheV s1_saheW of {
+                                          (#,#) ipv4_saheY [Occ=Once] ipv5_saheZ [Occ=Once] ->
+                                              seq# [ipv5_saheZ ipv4_saheY];
+                                        };
+                              } in 
+                                case catch# [sat_sahf0 sat_sahf4 ipv2_saheU] of {
+                                  (#,#) ipv4_sahf6 [Occ=Once] ipv5_sahf7 [Occ=Once!] ->
+                                      case ipv5_sahf7 of {
+                                        (,) a'_sahf9 [Occ=Once] b1_sahfa [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_saheL a'_sahf9 ipv4_sahf6]
+                                            of
+                                            s2#_sahfb
+                                            { __DEFAULT -> (#,#) [s2#_sahfb b1_sahfa];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_saheQ of {
+                  __DEFAULT -> io_saheR ipv_saheP;
+                  0# -> maskAsyncExceptions# [io_saheR ipv_saheP];
+                };
+        };
+
+modifyMVarMasked1_ragk4
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahfd w1_sahfe w2_sahff]
+        case w_sahfd of {
+          GHC.MVar.MVar ww1_sahfh [Occ=Once] ->
+              $wmodifyMVarMasked_ragk3 ww1_sahfh w1_sahfe w2_sahff;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        modifyMVarMasked1_ragk4 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.MVar.mkWeakMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.MVar.MVar a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m_sahfi ds_sahfj eta_sahfk]
+        case m_sahfi of wild_sahfl {
+          GHC.MVar.MVar m#_sahfm [Occ=Once] ->
+              case mkWeak# [m#_sahfm wild_sahfl ds_sahfj eta_sahfk] of {
+                (#,#) ipv_sahfo [Occ=Once] ipv1_sahfp [Occ=Once] ->
+                    let {
+                      sat_sahfq [Occ=Once] :: GHC.Weak.Weak (GHC.MVar.MVar a_aafIt)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_sahfp];
+                    } in  (#,#) [ipv_sahfo sat_sahfq];
+              };
+        };
+
+Control.Concurrent.MVar.mkWeakMVar
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.MVar.MVar a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.MVar.mkWeakMVar1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule4];
+
+Control.Concurrent.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.MVar"#;
+
+Control.Concurrent.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule2];
+
+Control.Concurrent.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.MVar.$trModule3
+                                     Control.Concurrent.MVar.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:18.237222034 UTC
+
+Control.Concurrent.MVar.$wswapMVar [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sahaF w_sahaG void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sahaK [Occ=Once!] ->
+              case ipv1_sahaK of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahaF GHC.Prim.void#] of {
+                      Unit# ipv3_sahaO [Occ=Once] ->
+                          case putMVar# [ww_sahaF w_sahaG GHC.Prim.void#] of s2#_sahaP {
+                            (##) -> Unit# [ipv3_sahaO];
+                          };
+                    };
+                0# ->
+                    let {
+                      sat_sahaV [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7s #)
+                      [LclId] =
+                          [ww_sahaF w_sahaG] \r [void_0E]
+                              case takeMVar# [ww_sahaF GHC.Prim.void#] of {
+                                Unit# ipv3_sahaT [Occ=Once] ->
+                                    case putMVar# [ww_sahaF w_sahaG GHC.Prim.void#] of s2#_sahaU {
+                                      (##) -> Unit# [ipv3_sahaT];
+                                    };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahaV GHC.Prim.void#];
+              };
+        };
+
+Control.Concurrent.MVar.swapMVar1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sahaW w1_sahaX void_0E]
+        case w_sahaW of {
+          GHC.MVar.MVar ww1_sahb0 [Occ=Once] ->
+              Control.Concurrent.MVar.$wswapMVar
+                  ww1_sahb0 w1_sahaX GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.swapMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.MVar.swapMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+$wwithMVar_ragjT
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahb1 w_sahb2 void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sahb6 [Occ=Once!] ->
+              case ipv1_sahb6 of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahb1 GHC.Prim.void#] of {
+                      Unit# ipv3_sahba ->
+                          let {
+                            sat_sahbg [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sahb1 ipv3_sahba] \r [e1_sahbd void_0E]
+                                    case
+                                        putMVar# [ww_sahb1 ipv3_sahba GHC.Prim.void#]
+                                    of
+                                    s2#_sahbf
+                                    { (##) -> raiseIO# [e1_sahbd GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahbb [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sahb2 ipv3_sahba] \u [] w_sahb2 ipv3_sahba; } in
+                          let {
+                            sat_sahbc [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sahbb] \r [void_0E]
+                                    maskAsyncExceptions# [sat_sahbb GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sahbc sat_sahbg GHC.Prim.void#] of {
+                              Unit# ipv5_sahbj [Occ=Once] ->
+                                  case putMVar# [ww_sahb1 ipv3_sahba GHC.Prim.void#] of s2#_sahbk {
+                                    (##) -> Unit# [ipv5_sahbj];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sahbz [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                      [LclId] =
+                          [ww_sahb1 w_sahb2] \r [void_0E]
+                              case takeMVar# [ww_sahb1 GHC.Prim.void#] of {
+                                Unit# ipv3_sahbo ->
+                                    let {
+                                      sat_sahbu [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [ww_sahb1 ipv3_sahbo] \r [e1_sahbr void_0E]
+                                              case
+                                                  putMVar# [ww_sahb1 ipv3_sahbo GHC.Prim.void#]
+                                              of
+                                              s2#_sahbt
+                                              { (##) -> raiseIO# [e1_sahbr GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sahbp [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [w_sahb2 ipv3_sahbo] \u [] w_sahb2 ipv3_sahbo; } in
+                                    let {
+                                      sat_sahbq [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                                      [LclId] =
+                                          [sat_sahbp] \r [void_0E]
+                                              unmaskAsyncExceptions# [sat_sahbp GHC.Prim.void#];
+                                    } in 
+                                      case catch# [sat_sahbq sat_sahbu GHC.Prim.void#] of {
+                                        Unit# ipv5_sahbx [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sahb1 ipv3_sahbo GHC.Prim.void#]
+                                            of
+                                            s2#_sahby
+                                            { (##) -> Unit# [ipv5_sahbx];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahbz GHC.Prim.void#];
+                1# ->
+                    case takeMVar# [ww_sahb1 GHC.Prim.void#] of {
+                      Unit# ipv3_sahbC ->
+                          let {
+                            sat_sahbI [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [ww_sahb1 ipv3_sahbC] \r [e1_sahbF void_0E]
+                                    case
+                                        putMVar# [ww_sahb1 ipv3_sahbC GHC.Prim.void#]
+                                    of
+                                    s2#_sahbH
+                                    { (##) -> raiseIO# [e1_sahbF GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahbD [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [w_sahb2 ipv3_sahbC] \u [] w_sahb2 ipv3_sahbC; } in
+                          let {
+                            sat_sahbE [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7C #)
+                            [LclId] =
+                                [sat_sahbD] \r [void_0E]
+                                    maskUninterruptible# [sat_sahbD GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sahbE sat_sahbI GHC.Prim.void#] of {
+                              Unit# ipv5_sahbL [Occ=Once] ->
+                                  case putMVar# [ww_sahb1 ipv3_sahbC GHC.Prim.void#] of s2#_sahbM {
+                                    (##) -> Unit# [ipv5_sahbL];
+                                  };
+                            };
+                    };
+              };
+        };
+
+withMVar1_ragjU
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahbN w1_sahbO void_0E]
+        case w_sahbN of {
+          GHC.MVar.MVar ww1_sahbR [Occ=Once] ->
+              $wwithMVar_ragjT ww1_sahbR w1_sahbO GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.withMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        withMVar1_ragjU eta_B3 eta_B2 GHC.Prim.void#;
+
+$wwithMVarMasked_ragjV
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahbS w_sahbT void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sahbX [Occ=Once!] ->
+              let {
+                io_sahbY [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sahbS w_sahbT] \r [void_0E]
+                        case takeMVar# [ww_sahbS GHC.Prim.void#] of {
+                          Unit# ipv3_sahc2 ->
+                              let {
+                                sat_sahc7 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [ww_sahbS ipv3_sahc2] \r [e1_sahc4 void_0E]
+                                        case
+                                            putMVar# [ww_sahbS ipv3_sahc2 GHC.Prim.void#]
+                                        of
+                                        s2#_sahc6
+                                        { (##) -> raiseIO# [e1_sahc4 GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sahc3 [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag7N #)
+                                [LclId] =
+                                    [w_sahbT ipv3_sahc2] \s [] w_sahbT ipv3_sahc2;
+                              } in 
+                                case catch# [sat_sahc3 sat_sahc7 GHC.Prim.void#] of {
+                                  Unit# ipv5_sahca [Occ=Once] ->
+                                      case
+                                          putMVar# [ww_sahbS ipv3_sahc2 GHC.Prim.void#]
+                                      of
+                                      s2#_sahcb
+                                      { (##) -> Unit# [ipv5_sahca];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sahbX of {
+                  __DEFAULT -> io_sahbY GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io_sahbY GHC.Prim.void#];
+                };
+        };
+
+withMVarMasked1_ragjW
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahcd w1_sahce void_0E]
+        case w_sahcd of {
+          GHC.MVar.MVar ww1_sahch [Occ=Once] ->
+              $wwithMVarMasked_ragjV ww1_sahch w1_sahce GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.withMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        withMVarMasked1_ragjW eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVar__ragjX
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahci w_sahcj void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sahcn [Occ=Once!] ->
+              case ipv1_sahcn of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahci GHC.Prim.void#] of {
+                      Unit# ipv3_sahcr ->
+                          let {
+                            sat_sahcx [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_sahci ipv3_sahcr] \r [e1_sahcu void_0E]
+                                    case
+                                        putMVar# [ww_sahci ipv3_sahcr GHC.Prim.void#]
+                                    of
+                                    s2#_sahcw
+                                    { (##) -> raiseIO# [e1_sahcu GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahcs [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_sahcj ipv3_sahcr] \u [] w_sahcj ipv3_sahcr; } in
+                          let {
+                            sat_sahct [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_sahcs] \r [void_0E]
+                                    maskAsyncExceptions# [sat_sahcs GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sahct sat_sahcx GHC.Prim.void#] of {
+                              Unit# ipv5_sahcA [Occ=Once] ->
+                                  case putMVar# [ww_sahci ipv5_sahcA GHC.Prim.void#] of s2#_sahcB {
+                                    (##) -> Unit# [GHC.Tuple.()];
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sahcQ [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                      [LclId] =
+                          [ww_sahci w_sahcj] \r [void_0E]
+                              case takeMVar# [ww_sahci GHC.Prim.void#] of {
+                                Unit# ipv3_sahcF ->
+                                    let {
+                                      sat_sahcL [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [ww_sahci ipv3_sahcF] \r [e1_sahcI void_0E]
+                                              case
+                                                  putMVar# [ww_sahci ipv3_sahcF GHC.Prim.void#]
+                                              of
+                                              s2#_sahcK
+                                              { (##) -> raiseIO# [e1_sahcI GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sahcG [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [w_sahcj ipv3_sahcF] \u [] w_sahcj ipv3_sahcF; } in
+                                    let {
+                                      sat_sahcH [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                                      [LclId] =
+                                          [sat_sahcG] \r [void_0E]
+                                              unmaskAsyncExceptions# [sat_sahcG GHC.Prim.void#];
+                                    } in 
+                                      case catch# [sat_sahcH sat_sahcL GHC.Prim.void#] of {
+                                        Unit# ipv5_sahcO [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sahci ipv5_sahcO GHC.Prim.void#]
+                                            of
+                                            s2#_sahcP
+                                            { (##) -> Unit# [GHC.Tuple.()];
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahcQ GHC.Prim.void#];
+                1# ->
+                    case takeMVar# [ww_sahci GHC.Prim.void#] of {
+                      Unit# ipv3_sahcT ->
+                          let {
+                            sat_sahcZ [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [ww_sahci ipv3_sahcT] \r [e1_sahcW void_0E]
+                                    case
+                                        putMVar# [ww_sahci ipv3_sahcT GHC.Prim.void#]
+                                    of
+                                    s2#_sahcY
+                                    { (##) -> raiseIO# [e1_sahcW GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahcU [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [w_sahcj ipv3_sahcT] \u [] w_sahcj ipv3_sahcT; } in
+                          let {
+                            sat_sahcV [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag7W #)
+                            [LclId] =
+                                [sat_sahcU] \r [void_0E]
+                                    maskUninterruptible# [sat_sahcU GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sahcV sat_sahcZ GHC.Prim.void#] of {
+                              Unit# ipv5_sahd2 [Occ=Once] ->
+                                  case putMVar# [ww_sahci ipv5_sahd2 GHC.Prim.void#] of s2#_sahd3 {
+                                    (##) -> Unit# [GHC.Tuple.()];
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar_1_ragjY
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahd4 w1_sahd5 void_0E]
+        case w_sahd4 of {
+          GHC.MVar.MVar ww1_sahd8 [Occ=Once] ->
+              $wmodifyMVar__ragjX ww1_sahd8 w1_sahd5 GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVar_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVar_1_ragjY eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVar_ragjZ
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahd9 w_sahda void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sahde [Occ=Once!] ->
+              case ipv1_sahde of {
+                __DEFAULT ->
+                    case takeMVar# [ww_sahd9 GHC.Prim.void#] of {
+                      Unit# ipv3_sahdi ->
+                          let {
+                            sat_sahds [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sahd9 ipv3_sahdi] \r [e1_sahdp void_0E]
+                                    case
+                                        putMVar# [ww_sahd9 ipv3_sahdi GHC.Prim.void#]
+                                    of
+                                    s2#_sahdr
+                                    { (##) -> raiseIO# [e1_sahdp GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahdn [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sahda ipv3_sahdi] \r [void_0E]
+                                    case w_sahda ipv3_sahdi GHC.Prim.void# of {
+                                      Unit# ipv5_sahdm [Occ=Once] ->
+                                          seq# [ipv5_sahdm GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahdo [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sahdn] \r [void_0E]
+                                    maskAsyncExceptions# [sat_sahdn GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sahdo sat_sahds GHC.Prim.void#] of {
+                              Unit# ipv5_sahdv [Occ=Once!] ->
+                                  case ipv5_sahdv of {
+                                    (,) a'_sahdx [Occ=Once] b1_sahdy [Occ=Once] ->
+                                        case
+                                            putMVar# [ww_sahd9 a'_sahdx GHC.Prim.void#]
+                                        of
+                                        s2#_sahdz
+                                        { (##) -> Unit# [b1_sahdy];
+                                        };
+                                  };
+                            };
+                    };
+                0# ->
+                    let {
+                      sat_sahdV [Occ=Once]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag86 #)
+                      [LclId] =
+                          [ww_sahd9 w_sahda] \r [void_0E]
+                              case takeMVar# [ww_sahd9 GHC.Prim.void#] of {
+                                Unit# ipv3_sahdD ->
+                                    let {
+                                      sat_sahdN [Occ=Once]
+                                        :: GHC.Exception.SomeException
+                                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [ww_sahd9 ipv3_sahdD] \r [e1_sahdK void_0E]
+                                              case
+                                                  putMVar# [ww_sahd9 ipv3_sahdD GHC.Prim.void#]
+                                              of
+                                              s2#_sahdM
+                                              { (##) -> raiseIO# [e1_sahdK GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sahdI [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [w_sahda ipv3_sahdD] \r [void_0E]
+                                              case w_sahda ipv3_sahdD GHC.Prim.void# of {
+                                                Unit# ipv5_sahdH [Occ=Once] ->
+                                                    seq# [ipv5_sahdH GHC.Prim.void#];
+                                              }; } in
+                                    let {
+                                      sat_sahdJ [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                                 (a_sag85, b_sag86) #)
+                                      [LclId] =
+                                          [sat_sahdI] \r [void_0E]
+                                              unmaskAsyncExceptions# [sat_sahdI GHC.Prim.void#];
+                                    } in 
+                                      case catch# [sat_sahdJ sat_sahdN GHC.Prim.void#] of {
+                                        Unit# ipv5_sahdQ [Occ=Once!] ->
+                                            case ipv5_sahdQ of {
+                                              (,) a'_sahdS [Occ=Once] b1_sahdT [Occ=Once] ->
+                                                  case
+                                                      putMVar# [ww_sahd9 a'_sahdS GHC.Prim.void#]
+                                                  of
+                                                  s2#_sahdU
+                                                  { (##) -> Unit# [b1_sahdT];
+                                                  };
+                                            };
+                                      };
+                              };
+                    } in  maskAsyncExceptions# [sat_sahdV GHC.Prim.void#];
+                1# ->
+                    case takeMVar# [ww_sahd9 GHC.Prim.void#] of {
+                      Unit# ipv3_sahdY ->
+                          let {
+                            sat_sahe8 [Occ=Once]
+                              :: GHC.Exception.SomeException
+                                 -> GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [ww_sahd9 ipv3_sahdY] \r [e1_sahe5 void_0E]
+                                    case
+                                        putMVar# [ww_sahd9 ipv3_sahdY GHC.Prim.void#]
+                                    of
+                                    s2#_sahe7
+                                    { (##) -> raiseIO# [e1_sahe5 GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahe3 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [w_sahda ipv3_sahdY] \r [void_0E]
+                                    case w_sahda ipv3_sahdY GHC.Prim.void# of {
+                                      Unit# ipv5_sahe2 [Occ=Once] ->
+                                          seq# [ipv5_sahe2 GHC.Prim.void#];
+                                    }; } in
+                          let {
+                            sat_sahe4 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag85, b_sag86) #)
+                            [LclId] =
+                                [sat_sahe3] \r [void_0E]
+                                    maskUninterruptible# [sat_sahe3 GHC.Prim.void#];
+                          } in 
+                            case catch# [sat_sahe4 sat_sahe8 GHC.Prim.void#] of {
+                              Unit# ipv5_saheb [Occ=Once!] ->
+                                  case ipv5_saheb of {
+                                    (,) a'_sahed [Occ=Once] b1_sahee [Occ=Once] ->
+                                        case
+                                            putMVar# [ww_sahd9 a'_sahed GHC.Prim.void#]
+                                        of
+                                        s2#_sahef
+                                        { (##) -> Unit# [b1_sahee];
+                                        };
+                                  };
+                            };
+                    };
+              };
+        };
+
+modifyMVar1_ragk0
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_saheg w1_saheh void_0E]
+        case w_saheg of {
+          GHC.MVar.MVar ww1_sahek [Occ=Once] ->
+              $wmodifyMVar_ragjZ ww1_sahek w1_saheh GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVar1_ragk0 eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVarMasked__ragk1
+  :: forall a.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_sahel w_sahem void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_saheq [Occ=Once!] ->
+              let {
+                io_saher [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sahel w_sahem] \r [void_0E]
+                        case takeMVar# [ww_sahel GHC.Prim.void#] of {
+                          Unit# ipv3_sahev ->
+                              let {
+                                sat_saheA [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [ww_sahel ipv3_sahev] \r [e1_sahex void_0E]
+                                        case
+                                            putMVar# [ww_sahel ipv3_sahev GHC.Prim.void#]
+                                        of
+                                        s2#_sahez
+                                        { (##) -> raiseIO# [e1_sahex GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sahew [Occ=Once, Dmd=<L,1*C1(U)>]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sag8g #)
+                                [LclId] =
+                                    [w_sahem ipv3_sahev] \s [] w_sahem ipv3_sahev;
+                              } in 
+                                case catch# [sat_sahew sat_saheA GHC.Prim.void#] of {
+                                  Unit# ipv5_saheD [Occ=Once] ->
+                                      case
+                                          putMVar# [ww_sahel ipv5_saheD GHC.Prim.void#]
+                                      of
+                                      s2#_saheE
+                                      { (##) -> Unit# [GHC.Tuple.()];
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_saheq of {
+                  __DEFAULT -> io_saher GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io_saher GHC.Prim.void#];
+                };
+        };
+
+modifyMVarMasked_1_ragk2
+  :: forall a.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_saheG w1_saheH void_0E]
+        case w_saheG of {
+          GHC.MVar.MVar ww1_saheK [Occ=Once] ->
+              $wmodifyMVarMasked__ragk1 ww1_saheK w1_saheH GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO a) -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVarMasked_1_ragk2 eta_B3 eta_B2 GHC.Prim.void#;
+
+$wmodifyMVarMasked_ragk3
+  :: forall a b.
+     GHC.Prim.MVar# GHC.Prim.RealWorld a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ww_saheL w_saheM void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_saheQ [Occ=Once!] ->
+              let {
+                io_saheR [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_sag8r #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_saheL w_saheM] \r [void_0E]
+                        case takeMVar# [ww_saheL GHC.Prim.void#] of {
+                          Unit# ipv3_saheV ->
+                              let {
+                                sat_sahf4 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [ww_saheL ipv3_saheV] \r [e1_sahf1 void_0E]
+                                        case
+                                            putMVar# [ww_saheL ipv3_saheV GHC.Prim.void#]
+                                        of
+                                        s2#_sahf3
+                                        { (##) -> raiseIO# [e1_sahf1 GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sahf0 [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, (a_sag8q, b_sag8r) #)
+                                [LclId] =
+                                    [w_saheM ipv3_saheV] \r [void_0E]
+                                        case w_saheM ipv3_saheV GHC.Prim.void# of {
+                                          Unit# ipv5_saheZ [Occ=Once] ->
+                                              seq# [ipv5_saheZ GHC.Prim.void#];
+                                        };
+                              } in 
+                                case catch# [sat_sahf0 sat_sahf4 GHC.Prim.void#] of {
+                                  Unit# ipv5_sahf7 [Occ=Once!] ->
+                                      case ipv5_sahf7 of {
+                                        (,) a'_sahf9 [Occ=Once] b1_sahfa [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_saheL a'_sahf9 GHC.Prim.void#]
+                                            of
+                                            s2#_sahfb
+                                            { (##) -> Unit# [b1_sahfa];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_saheQ of {
+                  __DEFAULT -> io_saheR GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io_saheR GHC.Prim.void#];
+                };
+        };
+
+modifyMVarMasked1_ragk4
+  :: forall a b.
+     GHC.MVar.MVar a
+     -> (a -> GHC.Types.IO (a, b))
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_sahfd w1_sahfe void_0E]
+        case w_sahfd of {
+          GHC.MVar.MVar ww1_sahfh [Occ=Once] ->
+              $wmodifyMVarMasked_ragk3 ww1_sahfh w1_sahfe GHC.Prim.void#;
+        };
+
+Control.Concurrent.MVar.modifyMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b.
+     GHC.MVar.MVar a -> (a -> GHC.Types.IO (a, b)) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        modifyMVarMasked1_ragk4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.MVar.mkWeakMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Weak.Weak (GHC.MVar.MVar a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m_sahfi ds_sahfj void_0E]
+        case m_sahfi of wild_sahfl {
+          GHC.MVar.MVar m#_sahfm [Occ=Once] ->
+              case mkWeak# [m#_sahfm wild_sahfl ds_sahfj GHC.Prim.void#] of {
+                Unit# ipv1_sahfp [Occ=Once] ->
+                    let {
+                      sat_sahfq [Occ=Once] :: GHC.Weak.Weak (GHC.MVar.MVar a_aafIt)
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_sahfp];
+                    } in  Unit# [sat_sahfq];
+              };
+        };
+
+Control.Concurrent.MVar.mkWeakMVar
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Types.IO (GHC.Weak.Weak (GHC.MVar.MVar a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.MVar.mkWeakMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule4];
+
+Control.Concurrent.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.MVar"#;
+
+Control.Concurrent.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.MVar.$trModule2];
+
+Control.Concurrent.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.MVar.$trModule3
+                                     Control.Concurrent.MVar.$trModule1];
+

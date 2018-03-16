@@ -1,0 +1,1687 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:11:10.965961436 UTC
+
+Result size of Tidy Core
+  = {terms: 721, types: 1,208, coercions: 123, joins: 0/10}
+
+-- RHS size: {terms: 6, types: 19, coercions: 0, joins: 0/0}
+fromList :: forall l. IsList l => [Item l] -> l
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SLL),U(U,A,A)>,
+ RULES: Built in rule for fromList: "Class op fromList"]
+fromList
+  = \ (@ l_afsOc) (v_B1 :: IsList l_afsOc) ->
+      case v_B1 of v_B1 { GHC.Exts.C:IsList v_B2 v_B3 v_B4 -> v_B2 }
+
+-- RHS size: {terms: 6, types: 19, coercions: 0, joins: 0/0}
+fromListN :: forall l. IsList l => Int -> [Item l] -> l
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSL),U(A,U,A)>,
+ RULES: Built in rule for fromListN: "Class op fromListN"]
+fromListN
+  = \ (@ l_afsOc) (v_B1 :: IsList l_afsOc) ->
+      case v_B1 of v_B1 { GHC.Exts.C:IsList v_B2 v_B3 v_B4 -> v_B3 }
+
+-- RHS size: {terms: 6, types: 19, coercions: 0, joins: 0/0}
+toList :: forall l. IsList l => l -> [Item l]
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLS),U(A,A,U)>,
+ RULES: Built in rule for toList: "Class op toList"]
+toList
+  = \ (@ l_afsOc) (v_B1 :: IsList l_afsOc) ->
+      case v_B1 of v_B1 { GHC.Exts.C:IsList v_B2 v_B3 v_B4 -> v_B4 }
+
+-- RHS size: {terms: 11, types: 15, coercions: 0, joins: 0/0}
+GHC.Exts.$fIsListNonEmpty1 :: forall a. NonEmpty a -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U,1*U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_afsY2) (ds_dft0W :: NonEmpty a_afsY2) ->
+                 GHC.Types.:
+                   @ a_afsY2
+                   (case ds_dft0W of { :| a1_afsOg [Occ=Once] _ [Occ=Dead] ->
+                    a1_afsOg
+                    })
+                   (case ds_dft0W of { :| _ [Occ=Dead] as_afsOh [Occ=Once] ->
+                    as_afsOh
+                    })}]
+GHC.Exts.$fIsListNonEmpty1
+  = \ (@ a_afsY2) (ds_dft0W :: NonEmpty a_afsY2) ->
+      GHC.Types.:
+        @ a_afsY2
+        (case ds_dft0W of { :| a1_afsOg as_afsOh -> a1_afsOg })
+        (case ds_dft0W of { :| a1_afsOg as_afsOh -> as_afsOh })
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_rftgk :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_rftgk = "NonEmpty.fromList: empty list"#
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+GHC.Exts.$fIsListNonEmpty2 :: forall a. NonEmpty a
+[GblId, Str=x]
+GHC.Exts.$fIsListNonEmpty2
+  = \ (@ a_XfsYS) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ (NonEmpty a_XfsYS) (unpackCString# lvl_rftgk)
+
+-- RHS size: {terms: 10, types: 19, coercions: 7, joins: 0/0}
+GHC.Exts.$fIsListNonEmpty_$cfromList
+  :: forall a. [Item (NonEmpty a)] -> NonEmpty a
+[GblId,
+ Arity=1,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_XfsYS)
+                 (ds_dft0Q [Occ=Once!] :: [Item (NonEmpty a_XfsYS)]) ->
+                 case ds_dft0Q of {
+                   [] -> GHC.Exts.$fIsListNonEmpty2 @ a_XfsYS;
+                   : a1_afsOe [Occ=Once] as_afsOf [Occ=Once] ->
+                     GHC.Base.:|
+                       @ a_XfsYS
+                       (a1_afsOe
+                        `cast` (Sub (GHC.Exts.D:R:ItemNonEmpty[0] <a_XfsYS>_N)
+                                :: (Item (NonEmpty a_XfsYS) :: *) ~R# (a_XfsYS :: *)))
+                       (as_afsOf
+                        `cast` (([Sub (GHC.Exts.D:R:ItemNonEmpty[0] <a_XfsYS>_N)])_R
+                                :: ([Item (NonEmpty a_XfsYS)] :: *) ~R# ([a_XfsYS] :: *)))
+                 }}]
+GHC.Exts.$fIsListNonEmpty_$cfromList
+  = \ (@ a_XfsYS) (ds_dft0Q :: [Item (NonEmpty a_XfsYS)]) ->
+      case ds_dft0Q of {
+        [] -> GHC.Exts.$fIsListNonEmpty2 @ a_XfsYS;
+        : a1_afsOe as_afsOf ->
+          GHC.Base.:|
+            @ a_XfsYS
+            (a1_afsOe
+             `cast` (Sub (GHC.Exts.D:R:ItemNonEmpty[0] <a_XfsYS>_N)
+                     :: (Item (NonEmpty a_XfsYS) :: *) ~R# (a_XfsYS :: *)))
+            (as_afsOf
+             `cast` (([Sub (GHC.Exts.D:R:ItemNonEmpty[0] <a_XfsYS>_N)])_R
+                     :: ([Item (NonEmpty a_XfsYS)] :: *) ~R# ([a_XfsYS] :: *)))
+      }
+
+-- RHS size: {terms: 18, types: 5, coercions: 0, joins: 0/0}
+GHC.Exts.$fEqSpecConstrAnnotation_$c==
+  :: SpecConstrAnnotation -> SpecConstrAnnotation -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_dft0I [Occ=Once!] :: SpecConstrAnnotation)
+                 (ds1_dft0J [Occ=Once*!] :: SpecConstrAnnotation) ->
+                 case ds_dft0I of {
+                   NoSpecConstr ->
+                     case ds1_dft0J of {
+                       NoSpecConstr -> GHC.Types.True;
+                       ForceSpecConstr -> GHC.Types.False
+                     };
+                   ForceSpecConstr ->
+                     case ds1_dft0J of {
+                       NoSpecConstr -> GHC.Types.False;
+                       ForceSpecConstr -> GHC.Types.True
+                     }
+                 }}]
+GHC.Exts.$fEqSpecConstrAnnotation_$c==
+  = \ (ds_dft0I :: SpecConstrAnnotation)
+      (ds1_dft0J :: SpecConstrAnnotation) ->
+      case ds_dft0I of {
+        NoSpecConstr ->
+          case ds1_dft0J of {
+            NoSpecConstr -> GHC.Types.True;
+            ForceSpecConstr -> GHC.Types.False
+          };
+        ForceSpecConstr ->
+          case ds1_dft0J of {
+            NoSpecConstr -> GHC.Types.False;
+            ForceSpecConstr -> GHC.Types.True
+          }
+      }
+
+-- RHS size: {terms: 18, types: 5, coercions: 0, joins: 0/0}
+GHC.Exts.$fEqSpecConstrAnnotation_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: SpecConstrAnnotation -> SpecConstrAnnotation -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (x_a22b [Occ=Once!] :: SpecConstrAnnotation)
+                 (y_a22c [Occ=Once*!] :: SpecConstrAnnotation) ->
+                 case x_a22b of {
+                   NoSpecConstr ->
+                     case y_a22c of {
+                       NoSpecConstr -> GHC.Types.False;
+                       ForceSpecConstr -> GHC.Types.True
+                     };
+                   ForceSpecConstr ->
+                     case y_a22c of {
+                       NoSpecConstr -> GHC.Types.True;
+                       ForceSpecConstr -> GHC.Types.False
+                     }
+                 }}]
+GHC.Exts.$fEqSpecConstrAnnotation_$c/=
+  = \ (eta_B2 :: SpecConstrAnnotation)
+      (eta1_B1 :: SpecConstrAnnotation) ->
+      case eta_B2 of {
+        NoSpecConstr ->
+          case eta1_B1 of {
+            NoSpecConstr -> GHC.Types.False;
+            ForceSpecConstr -> GHC.Types.True
+          };
+        ForceSpecConstr ->
+          case eta1_B1 of {
+            NoSpecConstr -> GHC.Types.True;
+            ForceSpecConstr -> GHC.Types.False
+          }
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$fEqSpecConstrAnnotation [InlPrag=NOUSERINLINE CONLIKE]
+  :: Eq SpecConstrAnnotation
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Classes.C:Eq TYPE: SpecConstrAnnotation
+                        GHC.Exts.$fEqSpecConstrAnnotation_$c==
+                        GHC.Exts.$fEqSpecConstrAnnotation_$c/=]
+GHC.Exts.$fEqSpecConstrAnnotation
+  = GHC.Classes.C:Eq
+      @ SpecConstrAnnotation
+      GHC.Exts.$fEqSpecConstrAnnotation_$c==
+      GHC.Exts.$fEqSpecConstrAnnotation_$c/=
+
+-- RHS size: {terms: 25, types: 22, coercions: 0, joins: 0/0}
+GHC.Exts.$w$cgunfold [InlPrag=NOUSERINLINE[0]]
+  :: forall (c :: * -> *).
+     (forall r. r -> c r)
+     -> ConstrRep -> DataType -> c SpecConstrAnnotation
+[GblId,
+ Arity=3,
+ Str=<C(S),1*C1(U)><S,1*U><L,1*U(1*U,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [120 60 20] 120 0}]
+GHC.Exts.$w$cgunfold
+  = \ (@ (c_sfta4 :: * -> *))
+      (w_sfta6 :: forall r. r -> c_sfta4 r)
+      (ww_sftaa :: ConstrRep)
+      (ww1_sftae :: DataType) ->
+      case ww_sftaa of {
+        __DEFAULT ->
+          case ww1_sftae of { Data.Data.DataType ww7_sefV0 ww8_sefV1 ->
+          case Data.Data.$wlvl ww7_sefV0 of wild_00 { }
+          };
+        AlgConstr idx_ae1Ws ->
+          case idx_ae1Ws of { I# ds_dft0o ->
+          case ds_dft0o of {
+            __DEFAULT ->
+              w_sfta6 @ SpecConstrAnnotation GHC.Exts.ForceSpecConstr;
+            1# -> w_sfta6 @ SpecConstrAnnotation GHC.Exts.NoSpecConstr
+          }
+          }
+      }
+
+-- RHS size: {terms: 11, types: 29, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgunfold [InlPrag=NOUSERINLINE[0]]
+  :: forall (c :: * -> *).
+     (forall b r. Data b => c (b -> r) -> c r)
+     -> (forall r. r -> c r) -> Constr -> c SpecConstrAnnotation
+[GblId,
+ Arity=3,
+ Str=<L,A><C(S),1*C1(U)><S(SLLLL),1*U(1*U,A,A,A,1*U(1*U,A))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (c_sfta4 :: * -> *))
+                 _ [Occ=Dead]
+                 (w5_sfta6 [Occ=Once] :: forall r. r -> c_sfta4 r)
+                 (w6_sfta7 [Occ=Once!] :: Constr) ->
+                 case w6_sfta7 of
+                 { Data.Data.Constr ww1_sftaa [Occ=Once] _ [Occ=Dead] _ [Occ=Dead]
+                                    _ [Occ=Dead] ww5_sftae [Occ=Once] ->
+                 GHC.Exts.$w$cgunfold @ c_sfta4 w5_sfta6 ww1_sftaa ww5_sftae
+                 }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgunfold
+  = \ (@ (c_sfta4 :: * -> *))
+      _ [Occ=Dead]
+      (w5_sfta6 :: forall r. r -> c_sfta4 r)
+      (w6_sfta7 :: Constr) ->
+      case w6_sfta7 of
+      { Data.Data.Constr ww1_sftaa ww2_sftab ww3_sftac ww4_sftad
+                         ww5_sftae ->
+      GHC.Exts.$w$cgunfold @ c_sfta4 w5_sfta6 ww1_sftaa ww5_sftae
+      }
+
+-- RHS size: {terms: 12, types: 25, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgfoldl
+  :: forall (c :: * -> *).
+     (forall d b. Data d => c (d -> b) -> d -> c b)
+     -> (forall g. g -> c g)
+     -> SpecConstrAnnotation
+     -> c SpecConstrAnnotation
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,A><C(S),1*C1(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (c_afsUj :: * -> *))
+                 _ [Occ=Dead]
+                 (z_afsR2 [Occ=Once*!] :: forall g. g -> c_afsUj g)
+                 (ds_dft0l [Occ=Once!] :: SpecConstrAnnotation) ->
+                 case ds_dft0l of {
+                   NoSpecConstr ->
+                     z_afsR2 @ SpecConstrAnnotation GHC.Exts.NoSpecConstr;
+                   ForceSpecConstr ->
+                     z_afsR2 @ SpecConstrAnnotation GHC.Exts.ForceSpecConstr
+                 }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgfoldl
+  = \ (@ (c_afsUj :: * -> *))
+      _ [Occ=Dead]
+      (z_afsR2 :: forall g. g -> c_afsUj g)
+      (ds_dft0l :: SpecConstrAnnotation) ->
+      case ds_dft0l of {
+        NoSpecConstr ->
+          z_afsR2 @ SpecConstrAnnotation GHC.Exts.NoSpecConstr;
+        ForceSpecConstr ->
+          z_afsR2 @ SpecConstrAnnotation GHC.Exts.ForceSpecConstr
+      }
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+GHC.Exts.$dmfromListN :: forall l. IsList l => Int -> [Item l] -> l
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SLL),1*U(1*U,A,A)><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ l_afsOc)
+                 ($dIsList_afsU5 [Occ=Once] :: IsList l_afsOc)
+                 _ [Occ=Dead] ->
+                 fromList @ l_afsOc $dIsList_afsU5}]
+GHC.Exts.$dmfromListN
+  = \ (@ l_afsOc) ($dIsList_afsU5 :: IsList l_afsOc) _ [Occ=Dead] ->
+      fromList @ l_afsOc $dIsList_afsU5
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$fIsListCallStack1
+  :: Int -> [([Char], SrcLoc)] -> CallStack
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ _ [Occ=Dead] -> fromCallSiteList}]
+GHC.Exts.$fIsListCallStack1 = \ _ [Occ=Dead] -> fromCallSiteList
+
+-- RHS size: {terms: 4, types: 1, coercions: 20, joins: 0/0}
+GHC.Exts.$fIsListCallStack [InlPrag=NOUSERINLINE CONLIKE]
+  :: IsList CallStack
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Exts.C:IsList TYPE: CallStack
+                         fromCallSiteList
+                         `cast` (([Sub (Sym (GHC.Exts.D:R:ItemCallStack[0]))])_R
+                                 ->_R <CallStack>_R
+                                 :: ([(String, SrcLoc)] -> CallStack :: *)
+                                    ~R# ([Item CallStack] -> CallStack :: *))
+                         GHC.Exts.$fIsListCallStack1
+                         `cast` (<Int>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:ItemCallStack[0]))])_R
+                                 ->_R <CallStack>_R
+                                 :: (Int -> [(String, SrcLoc)] -> CallStack :: *)
+                                    ~R# (Int -> [Item CallStack] -> CallStack :: *))
+                         getCallStack
+                         `cast` (<CallStack>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:ItemCallStack[0]))])_R
+                                 :: (CallStack -> [(String, SrcLoc)] :: *)
+                                    ~R# (CallStack -> [Item CallStack] :: *))]
+GHC.Exts.$fIsListCallStack
+  = GHC.Exts.C:IsList
+      @ CallStack
+      (fromCallSiteList
+       `cast` (([Sub (Sym (GHC.Exts.D:R:ItemCallStack[0]))])_R
+               ->_R <CallStack>_R
+               :: ([(String, SrcLoc)] -> CallStack :: *)
+                  ~R# ([Item CallStack] -> CallStack :: *)))
+      (GHC.Exts.$fIsListCallStack1
+       `cast` (<Int>_R
+               ->_R ([Sub (Sym (GHC.Exts.D:R:ItemCallStack[0]))])_R
+               ->_R <CallStack>_R
+               :: (Int -> [(String, SrcLoc)] -> CallStack :: *)
+                  ~R# (Int -> [Item CallStack] -> CallStack :: *)))
+      (getCallStack
+       `cast` (<CallStack>_R
+               ->_R ([Sub (Sym (GHC.Exts.D:R:ItemCallStack[0]))])_R
+               :: (CallStack -> [(String, SrcLoc)] :: *)
+                  ~R# (CallStack -> [Item CallStack] :: *)))
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$fIsListVersion1 :: Int -> [Int] -> Version
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ _ [Occ=Dead] -> makeVersion}]
+GHC.Exts.$fIsListVersion1 = \ _ [Occ=Dead] -> makeVersion
+
+-- RHS size: {terms: 4, types: 1, coercions: 20, joins: 0/0}
+GHC.Exts.$fIsListVersion [InlPrag=NOUSERINLINE CONLIKE]
+  :: IsList Version
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Exts.C:IsList TYPE: Version
+                         makeVersion
+                         `cast` (([Sub (Sym (GHC.Exts.D:R:ItemVersion[0]))])_R
+                                 ->_R <Version>_R
+                                 :: ([Int] -> Version :: *) ~R# ([Item Version] -> Version :: *))
+                         GHC.Exts.$fIsListVersion1
+                         `cast` (<Int>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:ItemVersion[0]))])_R
+                                 ->_R <Version>_R
+                                 :: (Int -> [Int] -> Version :: *)
+                                    ~R# (Int -> [Item Version] -> Version :: *))
+                         versionBranch
+                         `cast` (<Version>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:ItemVersion[0]))])_R
+                                 :: (Version -> [Int] :: *) ~R# (Version -> [Item Version] :: *))]
+GHC.Exts.$fIsListVersion
+  = GHC.Exts.C:IsList
+      @ Version
+      (makeVersion
+       `cast` (([Sub (Sym (GHC.Exts.D:R:ItemVersion[0]))])_R
+               ->_R <Version>_R
+               :: ([Int] -> Version :: *) ~R# ([Item Version] -> Version :: *)))
+      (GHC.Exts.$fIsListVersion1
+       `cast` (<Int>_R
+               ->_R ([Sub (Sym (GHC.Exts.D:R:ItemVersion[0]))])_R
+               ->_R <Version>_R
+               :: (Int -> [Int] -> Version :: *)
+                  ~R# (Int -> [Item Version] -> Version :: *)))
+      (versionBranch
+       `cast` (<Version>_R
+               ->_R ([Sub (Sym (GHC.Exts.D:R:ItemVersion[0]))])_R
+               :: (Version -> [Int] :: *) ~R# (Version -> [Item Version] :: *)))
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+GHC.Exts.$fIsListNonEmpty_$cfromListN
+  :: forall a. Int -> [Item (NonEmpty a)] -> NonEmpty a
+[GblId,
+ Arity=2,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_XfsZa) _ [Occ=Dead] ->
+                 GHC.Exts.$fIsListNonEmpty_$cfromList @ a_XfsZa}]
+GHC.Exts.$fIsListNonEmpty_$cfromListN
+  = \ (@ a_XfsZa) _ [Occ=Dead] ->
+      GHC.Exts.$fIsListNonEmpty_$cfromList @ a_XfsZa
+
+-- RHS size: {terms: 5, types: 7, coercions: 8, joins: 0/0}
+GHC.Exts.$fIsListNonEmpty [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. IsList (NonEmpty a)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ a_afsOd) ->
+       GHC.Exts.C:IsList TYPE: NonEmpty a_afsOd
+                         GHC.Exts.$fIsListNonEmpty_$cfromList @ a_afsOd
+                         GHC.Exts.$fIsListNonEmpty_$cfromListN @ a_afsOd
+                         (GHC.Exts.$fIsListNonEmpty1 @ a_afsOd)
+                         `cast` (<NonEmpty a_afsOd>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:ItemNonEmpty[0] <a_afsOd>_N))])_R
+                                 :: (NonEmpty a_afsOd -> [a_afsOd] :: *)
+                                    ~R# (NonEmpty a_afsOd -> [Item (NonEmpty a_afsOd)] :: *))]
+GHC.Exts.$fIsListNonEmpty
+  = \ (@ a_XfsZ9) ->
+      GHC.Exts.C:IsList
+        @ (NonEmpty a_XfsZ9)
+        (GHC.Exts.$fIsListNonEmpty_$cfromList @ a_XfsZ9)
+        (GHC.Exts.$fIsListNonEmpty_$cfromListN @ a_XfsZ9)
+        ((GHC.Exts.$fIsListNonEmpty1 @ a_XfsZ9)
+         `cast` (<NonEmpty a_XfsZ9>_R
+                 ->_R ([Sub (Sym (GHC.Exts.D:R:ItemNonEmpty[0] <a_XfsZ9>_N))])_R
+                 :: (NonEmpty a_XfsZ9 -> [a_XfsZ9] :: *)
+                    ~R# (NonEmpty a_XfsZ9 -> [Item (NonEmpty a_XfsZ9)] :: *)))
+
+-- RHS size: {terms: 3, types: 5, coercions: 0, joins: 0/0}
+GHC.Exts.$fIsList[]1 :: forall a. Int -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_afsYp) _ [Occ=Dead] -> id @ [a_afsYp]}]
+GHC.Exts.$fIsList[]1 = \ (@ a_afsYp) _ [Occ=Dead] -> id @ [a_afsYp]
+
+-- RHS size: {terms: 5, types: 9, coercions: 26, joins: 0/0}
+GHC.Exts.$fIsList[] [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. IsList [a]
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_afsOi) ->
+       GHC.Exts.C:IsList TYPE: [a_afsOi]
+                         (id @ [a_afsOi])
+                         `cast` (([Sub (Sym (GHC.Exts.D:R:Item[][0] <a_afsOi>_N))])_R
+                                 ->_R <[a_afsOi]>_R
+                                 :: ([a_afsOi] -> [a_afsOi] :: *)
+                                    ~R# ([Item [a_afsOi]] -> [a_afsOi] :: *))
+                         (GHC.Exts.$fIsList[]1 @ a_afsOi)
+                         `cast` (<Int>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:Item[][0] <a_afsOi>_N))])_R
+                                 ->_R <[a_afsOi]>_R
+                                 :: (Int -> [a_afsOi] -> [a_afsOi] :: *)
+                                    ~R# (Int -> [Item [a_afsOi]] -> [a_afsOi] :: *))
+                         (id @ [a_afsOi])
+                         `cast` (<[a_afsOi]>_R
+                                 ->_R ([Sub (Sym (GHC.Exts.D:R:Item[][0] <a_afsOi>_N))])_R
+                                 :: ([a_afsOi] -> [a_afsOi] :: *)
+                                    ~R# ([a_afsOi] -> [Item [a_afsOi]] :: *))]
+GHC.Exts.$fIsList[]
+  = \ (@ a_afsYp) ->
+      GHC.Exts.C:IsList
+        @ [a_afsYp]
+        ((id @ [a_afsYp])
+         `cast` (([Sub (Sym (GHC.Exts.D:R:Item[][0] <a_afsYp>_N))])_R
+                 ->_R <[a_afsYp]>_R
+                 :: ([a_afsYp] -> [a_afsYp] :: *)
+                    ~R# ([Item [a_afsYp]] -> [a_afsYp] :: *)))
+        ((GHC.Exts.$fIsList[]1 @ a_afsYp)
+         `cast` (<Int>_R
+                 ->_R ([Sub (Sym (GHC.Exts.D:R:Item[][0] <a_afsYp>_N))])_R
+                 ->_R <[a_afsYp]>_R
+                 :: (Int -> [a_afsYp] -> [a_afsYp] :: *)
+                    ~R# (Int -> [Item [a_afsYp]] -> [a_afsYp] :: *)))
+        ((id @ [a_afsYp])
+         `cast` (<[a_afsYp]>_R
+                 ->_R ([Sub (Sym (GHC.Exts.D:R:Item[][0] <a_afsYp>_N))])_R
+                 :: ([a_afsYp] -> [a_afsYp] :: *)
+                    ~R# ([a_afsYp] -> [Item [a_afsYp]] :: *)))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+maxTupleSize :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+maxTupleSize = GHC.Types.I# 62#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_rftgl :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_rftgl = "GHC.Exts.the: empty list"#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+GHC.Exts.the2 :: forall a. a
+[GblId, Str=x]
+GHC.Exts.the2
+  = \ (@ a_afsTA) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_afsTA (unpackCString# lvl1_rftgl)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_rftgm :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_rftgm = "GHC.Exts.the: non-identical elements"#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+GHC.Exts.the1 :: forall a. a
+[GblId, Str=x]
+GHC.Exts.the1
+  = \ (@ a_afsTA) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_afsTA (unpackCString# lvl2_rftgm)
+
+-- RHS size: {terms: 18, types: 16, coercions: 0, joins: 0/0}
+the :: forall a. Eq a => [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*C1(C(U)),A)><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 30] 100 0}]
+the
+  = \ (@ a_afsTA)
+      ($dEq_afsTC :: Eq a_afsTA)
+      (ds_dft09 :: [a_afsTA]) ->
+      case ds_dft09 of {
+        [] -> GHC.Exts.the2 @ a_afsTA;
+        : x_afsOq xs_afsOr ->
+          case all @ a_afsTA (== @ a_afsTA $dEq_afsTC x_afsOq) xs_afsOr of {
+            False -> GHC.Exts.the1 @ a_afsTA;
+            True -> x_afsOq
+          }
+      }
+
+-- RHS size: {terms: 15, types: 14, coercions: 0, joins: 0/0}
+sortWith :: forall b a. Ord b => (a -> b) -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(C1(U)),A,A,A,A,A,A)><L,C(U)><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 130 0}]
+sortWith
+  = \ (@ b_afsTb)
+      (@ a_afsTc)
+      ($dOrd_afsTe :: Ord b_afsTb)
+      (f_afsOs :: a_afsTc -> b_afsTb)
+      (eta_B1 :: [a_afsTc]) ->
+      sortBy
+        @ a_afsTc
+        (\ (x_afsOt :: a_afsTc) (y_afsOu [OS=OneShot] :: a_afsTc) ->
+           compare @ b_afsTb $dOrd_afsTe (f_afsOs x_afsOt) (f_afsOs y_afsOu))
+        eta_B1
+
+-- RHS size: {terms: 37, types: 64, coercions: 0, joins: 0/2}
+groupByFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall a lst.
+     ([a] -> lst -> lst) -> lst -> (a -> a -> Bool) -> [a] -> lst
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><L,C(C(U))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_afsSM)
+                 (@ lst_afsSN)
+                 (c_afsOB [Occ=OnceL!] :: [a_afsSM] -> lst_afsSN -> lst_afsSN)
+                 (n_afsOC [Occ=OnceL] :: lst_afsSN)
+                 (eq_afsOD [Occ=OnceL!] :: a_afsSM -> a_afsSM -> Bool)
+                 (xs0_afsOE [Occ=Once] :: [a_afsSM]) ->
+                 letrec {
+                   groupByFBCore_afsOF [Occ=LoopBreaker] :: [a_afsSM] -> lst_afsSN
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   groupByFBCore_afsOF
+                     = \ (ds_dfsZJ [Occ=Once!] :: [a_afsSM]) ->
+                         case ds_dfsZJ of {
+                           [] -> n_afsOC;
+                           : x_afsOG xs_afsOH [Occ=Once] ->
+                             let {
+                               ds1_dfsZQ :: ([a_afsSM], [a_afsSM])
+                               [LclId]
+                               ds1_dfsZQ
+                                 = case GHC.List.$wspan @ a_afsSM (eq_afsOD x_afsOG) xs_afsOH of
+                                   { (# ww1_i8hm4 [Occ=Once], ww2_i8hm5 [Occ=Once] #) ->
+                                   (ww1_i8hm4, ww2_i8hm5)
+                                   } } in
+                             c_afsOB
+                               (GHC.Types.:
+                                  @ a_afsSM
+                                  x_afsOG
+                                  (case ds1_dfsZQ of { (ys_afsOI [Occ=Once], _ [Occ=Dead]) ->
+                                   ys_afsOI
+                                   }))
+                               (groupByFBCore_afsOF
+                                  (case ds1_dfsZQ of { (_ [Occ=Dead], zs_afsOJ [Occ=Once]) ->
+                                   zs_afsOJ
+                                   }))
+                         }; } in
+                 groupByFBCore_afsOF xs0_afsOE}]
+groupByFB
+  = \ (@ a_afsSM)
+      (@ lst_afsSN)
+      (c_afsOB :: [a_afsSM] -> lst_afsSN -> lst_afsSN)
+      (n_afsOC :: lst_afsSN)
+      (eq_afsOD :: a_afsSM -> a_afsSM -> Bool)
+      (xs0_afsOE :: [a_afsSM]) ->
+      letrec {
+        groupByFBCore_sft3x [Occ=LoopBreaker] :: [a_afsSM] -> lst_afsSN
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        groupByFBCore_sft3x
+          = \ (ds_dfsZJ :: [a_afsSM]) ->
+              case ds_dfsZJ of {
+                [] -> n_afsOC;
+                : x_afsOG xs_afsOH ->
+                  let {
+                    ds1_sft3z [Dmd=<L,U(1*U,1*U)>] :: ([a_afsSM], [a_afsSM])
+                    [LclId]
+                    ds1_sft3z
+                      = case GHC.List.$wspan @ a_afsSM (eq_afsOD x_afsOG) xs_afsOH of
+                        { (# ww1_i8hm4, ww2_i8hm5 #) ->
+                        (ww1_i8hm4, ww2_i8hm5)
+                        } } in
+                  c_afsOB
+                    (GHC.Types.:
+                       @ a_afsSM
+                       x_afsOG
+                       (case ds1_sft3z of { (ys_afsOI, zs_afsOJ) -> ys_afsOI }))
+                    (case ds1_sft3z of { (ys_afsOI, zs_afsOJ) ->
+                     groupByFBCore_sft3x zs_afsOJ
+                     })
+              }; } in
+      groupByFBCore_sft3x xs0_afsOE
+
+-- RHS size: {terms: 49, types: 74, coercions: 0, joins: 0/4}
+groupWith [InlPrag=INLINE (sat-args=2)]
+  :: forall b a. Ord b => (a -> b) -> [a] -> [[a]]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(C(C1(U)),A),C(C1(U)),A,A,A,A,A,A)><L,C(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ b_afsTj) (@ a_afsTk) ($dOrd_afsTm :: Ord b_afsTj) ->
+                 let {
+                   $dEq_afsYL [Occ=OnceL] :: Eq b_afsTj
+                   [LclId]
+                   $dEq_afsYL = GHC.Classes.$p1Ord @ b_afsTj $dOrd_afsTm } in
+                 \ (f_afsOv :: a_afsTk -> b_afsTj)
+                   (xs_afsOw [Occ=Once] :: [a_afsTk]) ->
+                   build
+                     @ [a_afsTk]
+                     (\ (@ b1_afsTp)
+                        (c_afsOx [Occ=Once, OS=OneShot]
+                           :: [a_afsTk] -> b1_afsTp -> b1_afsTp)
+                        (n_afsOy [Occ=Once, OS=OneShot] :: b1_afsTp) ->
+                        groupByFB
+                          @ a_afsTk
+                          @ b1_afsTp
+                          c_afsOx
+                          n_afsOy
+                          (\ (x_afsOz [Occ=Once] :: a_afsTk)
+                             (y_afsOA [Occ=Once] :: a_afsTk) ->
+                             == @ b_afsTj $dEq_afsYL (f_afsOv x_afsOz) (f_afsOv y_afsOA))
+                          (sortWith @ b_afsTj @ a_afsTk $dOrd_afsTm f_afsOv xs_afsOw))}]
+groupWith
+  = \ (@ b_afsTj)
+      (@ a_afsTk)
+      ($dOrd_afsTm :: Ord b_afsTj)
+      (eta_B2 :: a_afsTk -> b_afsTj)
+      (eta1_B1 :: [a_afsTk]) ->
+      let {
+        $dEq_sft3v [Dmd=<L,U(C(C1(U)),A)>] :: Eq b_afsTj
+        [LclId]
+        $dEq_sft3v = GHC.Classes.$p1Ord @ b_afsTj $dOrd_afsTm } in
+      letrec {
+        groupByFBCore_afsOF [Occ=LoopBreaker] :: [a_afsTk] -> [[a_afsTk]]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        groupByFBCore_afsOF
+          = \ (ds_dfsZJ :: [a_afsTk]) ->
+              case ds_dfsZJ of {
+                [] -> GHC.Types.[] @ [a_afsTk];
+                : x_afsOG xs_afsOH ->
+                  let {
+                    ds1_dfsZQ [Dmd=<L,U(1*U,1*U)>] :: ([a_afsTk], [a_afsTk])
+                    [LclId]
+                    ds1_dfsZQ
+                      = let {
+                          lvl3_sftcW :: b_afsTj
+                          [LclId]
+                          lvl3_sftcW = eta_B2 x_afsOG } in
+                        case GHC.List.$wspan
+                               @ a_afsTk
+                               (\ (y_afsOA :: a_afsTk) ->
+                                  == @ b_afsTj $dEq_sft3v lvl3_sftcW (eta_B2 y_afsOA))
+                               xs_afsOH
+                        of
+                        { (# ww1_i8hm4, ww2_i8hm5 #) ->
+                        (ww1_i8hm4, ww2_i8hm5)
+                        } } in
+                  GHC.Types.:
+                    @ [a_afsTk]
+                    (GHC.Types.:
+                       @ a_afsTk
+                       x_afsOG
+                       (case ds1_dfsZQ of { (ys_afsOI, zs_afsOJ) -> ys_afsOI }))
+                    (case ds1_dfsZQ of { (ys_afsOI, zs_afsOJ) ->
+                     groupByFBCore_afsOF zs_afsOJ
+                     })
+              }; } in
+      groupByFBCore_afsOF
+        (sortWith @ b_afsTj @ a_afsTk $dOrd_afsTm eta_B2 eta1_B1)
+
+-- RHS size: {terms: 1, types: 0, coercions: 5, joins: 0/0}
+traceEvent :: String -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Debug.Trace.traceEventIO1
+               `cast` (<String>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (String -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (String -> IO () :: *))}]
+traceEvent
+  = Debug.Trace.traceEventIO1
+    `cast` (<String>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (String -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (String -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation7 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+GHC.Exts.$fDataSpecConstrAnnotation7 = "SpecConstrAnnotation"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$tSpecConstrAnnotation1_rftgn :: [Char]
+[GblId]
+$tSpecConstrAnnotation1_rftgn
+  = unpackCString# GHC.Exts.$fDataSpecConstrAnnotation7
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+w1_rftgo :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+w1_rftgo = "ForceSpecConstr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+w2_rftgp :: String
+[GblId]
+w2_rftgp = unpackCString# w1_rftgo
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+w3_rftgq :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+w3_rftgq = "NoSpecConstr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+w4_rftgr :: String
+[GblId]
+w4_rftgr = unpackCString# w3_rftgq
+
+Rec {
+-- RHS size: {terms: 25, types: 24, coercions: 0, joins: 0/0}
+go61_rftgs :: [Constr] -> [Int] -> ConIndex
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+go61_rftgs
+  = \ (ds2_iaIB3 :: [Constr]) (_ys_iaIB4 :: [Int]) ->
+      case ds2_iaIB3 of {
+        [] -> GHC.List.badHead @ Int;
+        : ipv_iaIB9 ipv1_iaIBa ->
+          case _ys_iaIB4 of {
+            [] -> GHC.List.badHead @ Int;
+            : ipv2_iaIBg ipv3_iaIBh ->
+              case ipv_iaIB9 of
+              { Data.Data.Constr ds3_de7m3 ds4_de7m4 ds5_de7m5 ds6_de7m6
+                                 ds7_de7m7 ->
+              case eqString ds4_de7m4 w2_rftgp of {
+                False -> go61_rftgs ipv1_iaIBa ipv3_iaIBh;
+                True -> ipv2_iaIBg
+              }
+              }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 25, types: 24, coercions: 0, joins: 0/0}
+go1_rftgt :: [Constr] -> [Int] -> ConIndex
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+go1_rftgt
+  = \ (ds2_iaIB3 :: [Constr]) (_ys_iaIB4 :: [Int]) ->
+      case ds2_iaIB3 of {
+        [] -> GHC.List.badHead @ Int;
+        : ipv_iaIB9 ipv1_iaIBa ->
+          case _ys_iaIB4 of {
+            [] -> GHC.List.badHead @ Int;
+            : ipv2_iaIBg ipv3_iaIBh ->
+              case ipv_iaIB9 of
+              { Data.Data.Constr ds3_de7m3 ds4_de7m4 ds5_de7m5 ds6_de7m6
+                                 ds7_de7m7 ->
+              case eqString ds4_de7m4 w4_rftgr of {
+                False -> go1_rftgt ipv1_iaIBa ipv3_iaIBh;
+                True -> ipv2_iaIBg
+              }
+              }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$cForceSpecConstr1_rftgu :: ConstrRep
+[GblId, Str=m1, Unf=OtherCon []]
+$cForceSpecConstr1_rftgu
+  = Data.Data.AlgConstr $cForceSpecConstr2_rftgA
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$cNoSpecConstr1_rftgv :: ConstrRep
+[GblId, Str=m1, Unf=OtherCon []]
+$cNoSpecConstr1_rftgv = Data.Data.AlgConstr $cNoSpecConstr2_rftgz
+
+-- RHS size: {terms: 6, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$cForceSpecConstr [Occ=LoopBreaker] :: Constr
+[GblId, Str=m, Unf=OtherCon []]
+GHC.Exts.$cForceSpecConstr
+  = Data.Data.Constr
+      $cForceSpecConstr1_rftgu
+      w2_rftgp
+      (GHC.Types.[] @ String)
+      Data.Data.Prefix
+      GHC.Exts.$tSpecConstrAnnotation
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$tSpecConstrAnnotation2_rftgw :: [Constr]
+[GblId, Str=m2, Unf=OtherCon []]
+$tSpecConstrAnnotation2_rftgw
+  = GHC.Types.:
+      @ Constr GHC.Exts.$cForceSpecConstr (GHC.Types.[] @ Constr)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$tSpecConstrAnnotation3_rftgx :: [Constr]
+[GblId, Str=m2, Unf=OtherCon []]
+$tSpecConstrAnnotation3_rftgx
+  = GHC.Types.:
+      @ Constr GHC.Exts.$cNoSpecConstr $tSpecConstrAnnotation2_rftgw
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$tSpecConstrAnnotation4_rftgy :: DataRep
+[GblId, Str=m1, Unf=OtherCon []]
+$tSpecConstrAnnotation4_rftgy
+  = Data.Data.AlgRep $tSpecConstrAnnotation3_rftgx
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tSpecConstrAnnotation [Occ=LoopBreaker] :: DataType
+[GblId, Str=m, Unf=OtherCon []]
+GHC.Exts.$tSpecConstrAnnotation
+  = Data.Data.DataType
+      $tSpecConstrAnnotation1_rftgn $tSpecConstrAnnotation4_rftgy
+
+-- RHS size: {terms: 6, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$cNoSpecConstr [Occ=LoopBreaker] :: Constr
+[GblId, Str=m, Unf=OtherCon []]
+GHC.Exts.$cNoSpecConstr
+  = Data.Data.Constr
+      $cNoSpecConstr1_rftgv
+      w4_rftgr
+      (GHC.Types.[] @ String)
+      Data.Data.Prefix
+      GHC.Exts.$tSpecConstrAnnotation
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$cNoSpecConstr2_rftgz :: ConIndex
+[GblId]
+$cNoSpecConstr2_rftgz
+  = go1_rftgt $tSpecConstrAnnotation3_rftgx Data.Data.mkConstr1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$cForceSpecConstr2_rftgA :: ConIndex
+[GblId]
+$cForceSpecConstr2_rftgA
+  = go61_rftgs $tSpecConstrAnnotation3_rftgx Data.Data.mkConstr1
+end Rec }
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cdataTypeOf
+  :: SpecConstrAnnotation -> DataType
+[GblId,
+ Arity=1,
+ Str=<L,A>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ _ [Occ=Dead] -> GHC.Exts.$tSpecConstrAnnotation}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cdataTypeOf
+  = \ _ [Occ=Dead] -> GHC.Exts.$tSpecConstrAnnotation
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$ctoConstr
+  :: SpecConstrAnnotation -> Constr
+[GblId,
+ Arity=1,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_dft0r [Occ=Once!] :: SpecConstrAnnotation) ->
+                 case ds_dft0r of {
+                   NoSpecConstr -> GHC.Exts.$cNoSpecConstr;
+                   ForceSpecConstr -> GHC.Exts.$cForceSpecConstr
+                 }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$ctoConstr
+  = \ (ds_dft0r :: SpecConstrAnnotation) ->
+      case ds_dft0r of {
+        NoSpecConstr -> GHC.Exts.$cNoSpecConstr;
+        ForceSpecConstr -> GHC.Exts.$cForceSpecConstr
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Exts.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Exts.$trModule3 = GHC.Types.TrNameS GHC.Exts.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Exts.$trModule2 = "GHC.Exts"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Exts.$trModule1 = GHC.Types.TrNameS GHC.Exts.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Exts.$trModule
+  = GHC.Types.Module GHC.Exts.$trModule3 GHC.Exts.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rftgB :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rftgB
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tcIsList1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Exts.$tcIsList1
+  = GHC.Types.KindRepFun GHC.Types.krep$* $krep_rftgB
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation6 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Exts.$fDataSpecConstrAnnotation6
+  = GHC.Types.TrNameS GHC.Exts.$fDataSpecConstrAnnotation7
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tcSpecConstrAnnotation :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Exts.$tcSpecConstrAnnotation
+  = GHC.Types.TyCon
+      8217012571387563927##
+      8545973142114271769##
+      GHC.Exts.$trModule
+      GHC.Exts.$fDataSpecConstrAnnotation6
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'ForceSpecConstr1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+GHC.Exts.$tc'ForceSpecConstr1
+  = GHC.Types.KindRepTyConApp
+      GHC.Exts.$tcSpecConstrAnnotation (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'NoSpecConstr2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Exts.$tc'NoSpecConstr2 = "'NoSpecConstr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'NoSpecConstr1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Exts.$tc'NoSpecConstr1
+  = GHC.Types.TrNameS GHC.Exts.$tc'NoSpecConstr2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'NoSpecConstr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Exts.$tc'NoSpecConstr
+  = GHC.Types.TyCon
+      18402820579108170608##
+      14598374581444186552##
+      GHC.Exts.$trModule
+      GHC.Exts.$tc'NoSpecConstr1
+      0#
+      GHC.Exts.$tc'ForceSpecConstr1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'ForceSpecConstr3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Exts.$tc'ForceSpecConstr3 = "'ForceSpecConstr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'ForceSpecConstr2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Exts.$tc'ForceSpecConstr2
+  = GHC.Types.TrNameS GHC.Exts.$tc'ForceSpecConstr3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tc'ForceSpecConstr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Exts.$tc'ForceSpecConstr
+  = GHC.Types.TyCon
+      13715005538542947299##
+      3802030838304098377##
+      GHC.Exts.$trModule
+      GHC.Exts.$tc'ForceSpecConstr2
+      0#
+      GHC.Exts.$tc'ForceSpecConstr1
+
+-- RHS size: {terms: 16, types: 33, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation5
+  :: Data.Typeable.Internal.TypeRep SpecConstrAnnotation
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 100 60}]
+GHC.Exts.$fDataSpecConstrAnnotation5
+  = case Data.Typeable.Internal.$wmkTrCon
+           @ *
+           @ SpecConstrAnnotation
+           8217012571387563927##
+           8545973142114271769##
+           GHC.Exts.$trModule
+           GHC.Exts.$fDataSpecConstrAnnotation6
+           0#
+           GHC.Types.krep$*
+           (GHC.Types.[] @ Data.Typeable.Internal.SomeTypeRep)
+    of
+    { (# ww8_idPJm, ww9_idPJn, ww10_idPJo, ww11_idPJp, ww12_idPJq #) ->
+    Data.Typeable.Internal.TrTyCon
+      @ *
+      @ SpecConstrAnnotation
+      ww8_idPJm
+      ww9_idPJn
+      ww10_idPJo
+      ww11_idPJp
+      ww12_idPJq
+    }
+
+-- RHS size: {terms: 5, types: 23, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast1
+  :: forall (t :: * -> *) (c :: * -> *).
+     Typeable t =>
+     (forall d. Data d => c (t d)) -> Maybe (c SpecConstrAnnotation)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_afsUH :: * -> *))
+                 (@ (c_afsUI :: * -> *))
+                 _ [Occ=Dead]
+                 _ [Occ=Dead] ->
+                 GHC.Base.Nothing @ (c_afsUI SpecConstrAnnotation)}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast1
+  = \ (@ (t_afsUH :: * -> *))
+      (@ (c_afsUI :: * -> *))
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      GHC.Base.Nothing @ (c_afsUI SpecConstrAnnotation)
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation2
+  :: (SpecConstrAnnotation, Bool)
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Exts.$fDataSpecConstrAnnotation2
+  = (GHC.Exts.NoSpecConstr, GHC.Types.False)
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation1
+  :: (SpecConstrAnnotation, Bool)
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Exts.$fDataSpecConstrAnnotation1
+  = (GHC.Exts.ForceSpecConstr, GHC.Types.False)
+
+-- RHS size: {terms: 33, types: 39, coercions: 0, joins: 0/2}
+GHC.Exts.$w$cgmapMp [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *).
+     MonadPlus m =>
+     SpecConstrAnnotation -> m SpecConstrAnnotation
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 60] 250 0}]
+GHC.Exts.$w$cgmapMp
+  = \ (@ (m_sftav :: * -> *))
+      (w_sftaw :: MonadPlus m_sftav)
+      (w5_sftay :: SpecConstrAnnotation) ->
+      let {
+        lvl3_sft3V :: m_sftav SpecConstrAnnotation
+        [LclId]
+        lvl3_sft3V = mzero @ m_sftav w_sftaw @ SpecConstrAnnotation } in
+      let {
+        $dMonad_sft3t [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          :: Monad m_sftav
+        [LclId]
+        $dMonad_sft3t = GHC.Base.$p2MonadPlus @ m_sftav w_sftaw } in
+      >>=
+        @ m_sftav
+        $dMonad_sft3t
+        @ (SpecConstrAnnotation, Bool)
+        @ SpecConstrAnnotation
+        (case w5_sftay of {
+           NoSpecConstr ->
+             return
+               @ m_sftav
+               $dMonad_sft3t
+               @ (SpecConstrAnnotation, Bool)
+               GHC.Exts.$fDataSpecConstrAnnotation2;
+           ForceSpecConstr ->
+             return
+               @ m_sftav
+               $dMonad_sft3t
+               @ (SpecConstrAnnotation, Bool)
+               GHC.Exts.$fDataSpecConstrAnnotation1
+         })
+        (\ (ds_de7oa :: (SpecConstrAnnotation, Bool)) ->
+           case ds_de7oa of { (x'_ae1TD, b_ae1TE) ->
+           case b_ae1TE of {
+             False -> lvl3_sft3V;
+             True ->
+               return @ m_sftav $dMonad_sft3t @ SpecConstrAnnotation x'_ae1TD
+           }
+           })
+
+-- RHS size: {terms: 7, types: 15, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMp [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *).
+     MonadPlus m =>
+     (forall d. Data d => d -> m d)
+     -> SpecConstrAnnotation -> m SpecConstrAnnotation
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,U(A,C(C1(U)),A,C(U),A),U,A)><L,A><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (m_sftav :: * -> *))
+                 (w_sftaw [Occ=Once] :: MonadPlus m_sftav)
+                 _ [Occ=Dead]
+                 (w6_sftay [Occ=Once] :: SpecConstrAnnotation) ->
+                 GHC.Exts.$w$cgmapMp @ m_sftav w_sftaw w6_sftay}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMp
+  = \ (@ (m_sftav :: * -> *))
+      (w_sftaw :: MonadPlus m_sftav)
+      _ [Occ=Dead]
+      (w6_sftay :: SpecConstrAnnotation) ->
+      GHC.Exts.$w$cgmapMp @ m_sftav w_sftaw w6_sftay
+
+-- RHS size: {terms: 14, types: 19, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapM
+  :: forall (m :: * -> *).
+     Monad m =>
+     (forall d. Data d => d -> m d)
+     -> SpecConstrAnnotation -> m SpecConstrAnnotation
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLLC(S)L),1*U(A,A,A,1*C1(U),A)><L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_afsWy :: * -> *))
+                 ($dMonad_afsWA [Occ=Once*] :: Monad m_afsWy)
+                 _ [Occ=Dead]
+                 (eta_B1 [Occ=Once!] :: SpecConstrAnnotation) ->
+                 case eta_B1 of {
+                   NoSpecConstr ->
+                     return
+                       @ m_afsWy
+                       $dMonad_afsWA
+                       @ SpecConstrAnnotation
+                       GHC.Exts.NoSpecConstr;
+                   ForceSpecConstr ->
+                     return
+                       @ m_afsWy
+                       $dMonad_afsWA
+                       @ SpecConstrAnnotation
+                       GHC.Exts.ForceSpecConstr
+                 }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapM
+  = \ (@ (m_afsWy :: * -> *))
+      ($dMonad_afsWA :: Monad m_afsWy)
+      _ [Occ=Dead]
+      (eta_B1 :: SpecConstrAnnotation) ->
+      case eta_B1 of {
+        NoSpecConstr ->
+          return
+            @ m_afsWy
+            $dMonad_afsWA
+            @ SpecConstrAnnotation
+            GHC.Exts.NoSpecConstr;
+        ForceSpecConstr ->
+          return
+            @ m_afsWy
+            $dMonad_afsWA
+            @ SpecConstrAnnotation
+            GHC.Exts.ForceSpecConstr
+      }
+
+-- RHS size: {terms: 8, types: 12, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQi
+  :: forall u.
+     Int -> (forall d. Data d => d -> u) -> SpecConstrAnnotation -> u
+[GblId,
+ Arity=3,
+ Str=<B,A><B,A><B,1*U>x,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ u_afsWk)
+                 _ [Occ=Dead]
+                 _ [Occ=Dead]
+                 (x_ae1T7 [Occ=Once] :: SpecConstrAnnotation) ->
+                 case x_ae1T7 of { __DEFAULT -> Data.Maybe.fromJust1 @ u_afsWk }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQi
+  = \ (@ u_afsWk)
+      _ [Occ=Dead]
+      _ [Occ=Dead]
+      (x_ae1T7 :: SpecConstrAnnotation) ->
+      case x_ae1T7 of { __DEFAULT -> Data.Maybe.fromJust1 @ u_afsWk }
+
+-- RHS size: {terms: 10, types: 16, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQr
+  :: forall r r'.
+     (r' -> r -> r)
+     -> r -> (forall d. Data d => d -> r') -> SpecConstrAnnotation -> r
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U><L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ r_afsVP)
+                 (@ r'_afsVQ)
+                 _ [Occ=Dead]
+                 (ds1_dft0A [Occ=Once] :: r_afsVP)
+                 _ [Occ=Dead]
+                 (x0_ae1SX [Occ=Once] :: SpecConstrAnnotation) ->
+                 case x0_ae1SX of { __DEFAULT -> ds1_dft0A }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQr
+  = \ (@ r_afsVP)
+      (@ r'_afsVQ)
+      _ [Occ=Dead]
+      (ds1_dft0A :: r_afsVP)
+      _ [Occ=Dead]
+      (x0_ae1SX :: SpecConstrAnnotation) ->
+      case x0_ae1SX of { __DEFAULT -> ds1_dft0A }
+
+-- RHS size: {terms: 7, types: 11, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQ
+  :: forall u.
+     (forall d. Data d => d -> u) -> SpecConstrAnnotation -> [u]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ u_afsW6)
+                 _ [Occ=Dead]
+                 (x0_ae1SX [Occ=Once] :: SpecConstrAnnotation) ->
+                 case x0_ae1SX of { __DEFAULT -> GHC.Types.[] @ u_afsW6 }}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQ
+  = \ (@ u_afsW6) _ [Occ=Dead] (x0_ae1SX :: SpecConstrAnnotation) ->
+      case x0_ae1SX of { __DEFAULT -> GHC.Types.[] @ u_afsW6 }
+
+-- RHS size: {terms: 10, types: 16, coercions: 6, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation3
+  :: forall r r'.
+     (r -> r' -> r)
+     -> r
+     -> (forall d. Data d => d -> r')
+     -> SpecConstrAnnotation
+     -> Data.Functor.Const.Const r SpecConstrAnnotation
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U><L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ r_afsVy)
+                 (@ r'_afsVz)
+                 _ [Occ=Dead]
+                 (ds1_dft0x [Occ=Once] :: r_afsVy)
+                 _ [Occ=Dead]
+                 (eta_B1 [Occ=Once] :: SpecConstrAnnotation) ->
+                 case eta_B1 of { __DEFAULT ->
+                 ds1_dft0x
+                 `cast` (Sym (Data.Functor.Const.N:Const[0]
+                                  <*>_N <r_afsVy>_R <SpecConstrAnnotation>_P)
+                         :: (r_afsVy :: *)
+                            ~R# (Data.Functor.Const.Const r_afsVy SpecConstrAnnotation :: *))
+                 }}]
+GHC.Exts.$fDataSpecConstrAnnotation3
+  = \ (@ r_afsVy)
+      (@ r'_afsVz)
+      _ [Occ=Dead]
+      (ds1_dft0x :: r_afsVy)
+      _ [Occ=Dead]
+      (eta_B1 :: SpecConstrAnnotation) ->
+      case eta_B1 of { __DEFAULT ->
+      ds1_dft0x
+      `cast` (Sym (Data.Functor.Const.N:Const[0]
+                       <*>_N <r_afsVy>_R <SpecConstrAnnotation>_P)
+              :: (r_afsVy :: *)
+                 ~R# (Data.Functor.Const.Const r_afsVy SpecConstrAnnotation :: *))
+      }
+
+-- RHS size: {terms: 3, types: 7, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation4
+  :: (forall b. Data b => b -> b)
+     -> SpecConstrAnnotation -> SpecConstrAnnotation
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ _ [Occ=Dead]
+                 (x0_Xe2jm [Occ=Once] :: SpecConstrAnnotation) ->
+                 x0_Xe2jm}]
+GHC.Exts.$fDataSpecConstrAnnotation4
+  = \ _ [Occ=Dead] (x0_Xe2jm :: SpecConstrAnnotation) -> x0_Xe2jm
+
+-- RHS size: {terms: 5, types: 32, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast2
+  :: forall (t :: * -> * -> *) (c :: * -> *).
+     Typeable t =>
+     (forall d e. (Data d, Data e) => c (t d e))
+     -> Maybe (c SpecConstrAnnotation)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_afsV0 :: * -> * -> *))
+                 (@ (c_afsV1 :: * -> *))
+                 _ [Occ=Dead]
+                 _ [Occ=Dead] ->
+                 GHC.Base.Nothing @ (c_afsV1 SpecConstrAnnotation)}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast2
+  = \ (@ (t_afsV0 :: * -> * -> *))
+      (@ (c_afsV1 :: * -> *))
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      GHC.Base.Nothing @ (c_afsV1 SpecConstrAnnotation)
+
+-- RHS size: {terms: 33, types: 39, coercions: 0, joins: 0/2}
+GHC.Exts.$w$cgmapMo [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *).
+     MonadPlus m =>
+     SpecConstrAnnotation -> m SpecConstrAnnotation
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 60] 250 0}]
+GHC.Exts.$w$cgmapMo
+  = \ (@ (m_sftaA :: * -> *))
+      (w_sftaB :: MonadPlus m_sftaA)
+      (w5_sftaD :: SpecConstrAnnotation) ->
+      let {
+        lvl3_sft44 :: m_sftaA SpecConstrAnnotation
+        [LclId]
+        lvl3_sft44 = mzero @ m_sftaA w_sftaB @ SpecConstrAnnotation } in
+      let {
+        $dMonad_sft3r [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          :: Monad m_sftaA
+        [LclId]
+        $dMonad_sft3r = GHC.Base.$p2MonadPlus @ m_sftaA w_sftaB } in
+      >>=
+        @ m_sftaA
+        $dMonad_sft3r
+        @ (SpecConstrAnnotation, Bool)
+        @ SpecConstrAnnotation
+        (case w5_sftaD of {
+           NoSpecConstr ->
+             return
+               @ m_sftaA
+               $dMonad_sft3r
+               @ (SpecConstrAnnotation, Bool)
+               GHC.Exts.$fDataSpecConstrAnnotation2;
+           ForceSpecConstr ->
+             return
+               @ m_sftaA
+               $dMonad_sft3r
+               @ (SpecConstrAnnotation, Bool)
+               GHC.Exts.$fDataSpecConstrAnnotation1
+         })
+        (\ (ds_de7pa :: (SpecConstrAnnotation, Bool)) ->
+           case ds_de7pa of { (x'_ae1TS, b_ae1TT) ->
+           case b_ae1TT of {
+             False -> lvl3_sft44;
+             True ->
+               return @ m_sftaA $dMonad_sft3r @ SpecConstrAnnotation x'_ae1TS
+           }
+           })
+
+-- RHS size: {terms: 7, types: 15, coercions: 0, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMo [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *).
+     MonadPlus m =>
+     (forall d. Data d => d -> m d)
+     -> SpecConstrAnnotation -> m SpecConstrAnnotation
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,U(A,C(C1(U)),A,C(U),A),U,A)><L,A><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (m_sftaA :: * -> *))
+                 (w_sftaB [Occ=Once] :: MonadPlus m_sftaA)
+                 _ [Occ=Dead]
+                 (w6_sftaD [Occ=Once] :: SpecConstrAnnotation) ->
+                 GHC.Exts.$w$cgmapMo @ m_sftaA w_sftaB w6_sftaD}]
+GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMo
+  = \ (@ (m_sftaA :: * -> *))
+      (w_sftaB :: MonadPlus m_sftaA)
+      _ [Occ=Dead]
+      (w6_sftaD :: SpecConstrAnnotation) ->
+      GHC.Exts.$w$cgmapMo @ m_sftaA w_sftaB w6_sftaD
+
+-- RHS size: {terms: 16, types: 1, coercions: 31, joins: 0/0}
+GHC.Exts.$fDataSpecConstrAnnotation [InlPrag=NOUSERINLINE CONLIKE]
+  :: Data SpecConstrAnnotation
+[GblId[DFunId],
+ Unf=DFun: \ ->
+       Data.Data.C:Data TYPE: SpecConstrAnnotation
+                        GHC.Exts.$fDataSpecConstrAnnotation5
+                        `cast` (Sym (Data.Typeable.Internal.N:Typeable[0]) <*>_N <SpecConstrAnnotation>_N
+                                :: (Data.Typeable.Internal.TypeRep SpecConstrAnnotation :: *)
+                                   ~R# (Typeable SpecConstrAnnotation :: Constraint))
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgfoldl
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgunfold
+                        GHC.Exts.$fDataSpecConstrAnnotation_$ctoConstr
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cdataTypeOf
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast1
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast2
+                        GHC.Exts.$fDataSpecConstrAnnotation4
+                        GHC.Exts.$fDataSpecConstrAnnotation3
+                        `cast` (forall (r :: <*>_N) (r' :: <*>_N).
+                                <r -> r' -> r>_R
+                                ->_R <r>_R
+                                ->_R <forall d. Data d => d -> r'>_R
+                                ->_R <SpecConstrAnnotation>_R
+                                ->_R Data.Functor.Const.N:Const[0]
+                                         <*>_N <r>_R <SpecConstrAnnotation>_P
+                                :: (forall r r'.
+                                    (r -> r' -> r)
+                                    -> r
+                                    -> (forall d. Data d => d -> r')
+                                    -> SpecConstrAnnotation
+                                    -> Data.Functor.Const.Const r SpecConstrAnnotation :: *)
+                                   ~R# (forall r r'.
+                                        (r -> r' -> r)
+                                        -> r
+                                        -> (forall d. Data d => d -> r')
+                                        -> SpecConstrAnnotation
+                                        -> r :: *))
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQr
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQ
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQi
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgmapM
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMp
+                        GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMo]
+GHC.Exts.$fDataSpecConstrAnnotation
+  = Data.Data.C:Data
+      @ SpecConstrAnnotation
+      (GHC.Exts.$fDataSpecConstrAnnotation5
+       `cast` (Sym (Data.Typeable.Internal.N:Typeable[0]) <*>_N <SpecConstrAnnotation>_N
+               :: (Data.Typeable.Internal.TypeRep SpecConstrAnnotation :: *)
+                  ~R# (Typeable SpecConstrAnnotation :: Constraint)))
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgfoldl
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgunfold
+      GHC.Exts.$fDataSpecConstrAnnotation_$ctoConstr
+      GHC.Exts.$fDataSpecConstrAnnotation_$cdataTypeOf
+      GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast1
+      GHC.Exts.$fDataSpecConstrAnnotation_$cdataCast2
+      GHC.Exts.$fDataSpecConstrAnnotation4
+      (GHC.Exts.$fDataSpecConstrAnnotation3
+       `cast` (forall (r :: <*>_N) (r' :: <*>_N).
+               <r -> r' -> r>_R
+               ->_R <r>_R
+               ->_R <forall d. Data d => d -> r'>_R
+               ->_R <SpecConstrAnnotation>_R
+               ->_R Data.Functor.Const.N:Const[0]
+                        <*>_N <r>_R <SpecConstrAnnotation>_P
+               :: (forall r r'.
+                   (r -> r' -> r)
+                   -> r
+                   -> (forall d. Data d => d -> r')
+                   -> SpecConstrAnnotation
+                   -> Data.Functor.Const.Const r SpecConstrAnnotation :: *)
+                  ~R# (forall r r'.
+                       (r -> r' -> r)
+                       -> r
+                       -> (forall d. Data d => d -> r')
+                       -> SpecConstrAnnotation
+                       -> r :: *)))
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQr
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQ
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgmapQi
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgmapM
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMp
+      GHC.Exts.$fDataSpecConstrAnnotation_$cgmapMo
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tcIsList3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Exts.$tcIsList3 = "IsList"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tcIsList2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Exts.$tcIsList2 = GHC.Types.TrNameS GHC.Exts.$tcIsList3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Exts.$tcIsList :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Exts.$tcIsList
+  = GHC.Types.TyCon
+      17963880945977000500##
+      13985778898022155754##
+      GHC.Exts.$trModule
+      GHC.Exts.$tcIsList2
+      0#
+      GHC.Exts.$tcIsList1
+
+

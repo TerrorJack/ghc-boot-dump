@@ -1,0 +1,660 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:05.038929687 UTC
+
+Data.Maybe.maybe
+  :: forall b a. b -> (a -> b) -> GHC.Base.Maybe a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U><L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [n_srog ds_sroh ds1_sroi]
+        case ds1_sroi of {
+          GHC.Base.Nothing -> n_srog;
+          GHC.Base.Just x_srok [Occ=Once] -> ds_sroh x_srok;
+        };
+
+Data.Maybe.isJust :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srol]
+        case ds_srol of {
+          GHC.Base.Nothing -> GHC.Types.False [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.True [];
+        };
+
+Data.Maybe.isNothing
+  :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sroo]
+        case ds_sroo of {
+          GHC.Base.Nothing -> GHC.Types.True [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.False [];
+        };
+
+lvl_rrod :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Maybe.fromJust: Nothing"#;
+
+Data.Maybe.fromJust1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rrod of sat_sror {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sror;
+        };
+
+Data.Maybe.fromJust :: forall a. GHC.Base.Maybe a -> a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sros]
+        case ds_sros of {
+          GHC.Base.Nothing -> Data.Maybe.fromJust1;
+          GHC.Base.Just x_srou [Occ=Once] -> x_srou;
+        };
+
+Data.Maybe.fromMaybe :: forall a. a -> GHC.Base.Maybe a -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [d_srov x_srow]
+        case x_srow of {
+          GHC.Base.Nothing -> d_srov;
+          GHC.Base.Just v_sroy [Occ=Once] -> v_sroy;
+        };
+
+Data.Maybe.maybeToList :: forall a. GHC.Base.Maybe a -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sroz]
+        case ds_sroz of {
+          GHC.Base.Nothing -> [] [];
+          GHC.Base.Just x_sroB [Occ=Once] -> : [x_sroB GHC.Types.[]];
+        };
+
+go_rroe :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_sroC]
+        case ds_sroC of {
+          [] -> GHC.Base.Nothing [];
+          : y_sroE [Occ=Once] _ [Occ=Dead] -> GHC.Base.Just [y_sroE];
+        };
+
+Data.Maybe.listToMaybe [InlPrag=INLINE (sat-args=0)]
+  :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] go_rroe eta_B1;
+
+Data.Maybe.catMaybes1 [Occ=LoopBreaker]
+  :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sroG]
+        case ds_sroG of {
+          [] -> [] [];
+          : y_sroI [Occ=Once!] ys_sroJ [Occ=Once*] ->
+              case y_sroI of {
+                GHC.Base.Nothing -> Data.Maybe.catMaybes1 ys_sroJ;
+                GHC.Base.Just x_sroL [Occ=Once] ->
+                    let {
+                      sat_sroM [Occ=Once] :: [a_argu]
+                      [LclId] =
+                          [ys_sroJ] \u [] Data.Maybe.catMaybes1 ys_sroJ;
+                    } in  : [x_sroL sat_sroM];
+              };
+        };
+
+Data.Maybe.catMaybes :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ls_sroN] Data.Maybe.catMaybes1 ls_sroN;
+
+Data.Maybe.mapMaybeFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall b r a.
+     (b -> r -> r) -> (a -> GHC.Base.Maybe b) -> a -> r -> r
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S),1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cons_sroO f_sroP x_sroQ next_sroR]
+        case f_sroP x_sroQ of {
+          GHC.Base.Nothing -> next_sroR;
+          GHC.Base.Just r1_sroT [Occ=Once] -> cons_sroO r1_sroT next_sroR;
+        };
+
+Data.Maybe.mapMaybe [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. (a -> GHC.Base.Maybe b) -> [a] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sroU ds1_sroV]
+        case ds1_sroV of {
+          [] -> [] [];
+          : x_sroX [Occ=Once] xs_sroY [Occ=Once*] ->
+              case ds_sroU x_sroX of {
+                GHC.Base.Nothing -> Data.Maybe.mapMaybe ds_sroU xs_sroY;
+                GHC.Base.Just r_srp0 [Occ=Once] ->
+                    let {
+                      sat_srp1 [Occ=Once] :: [b_argg]
+                      [LclId] =
+                          [ds_sroU xs_sroY] \u [] Data.Maybe.mapMaybe ds_sroU xs_sroY;
+                    } in  : [r_srp0 sat_srp1];
+              };
+        };
+
+Data.Maybe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.Maybe"#;
+
+Data.Maybe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule2];
+
+Data.Maybe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.Maybe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule4];
+
+Data.Maybe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.Maybe.$trModule3
+                                     Data.Maybe.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:05.041971734 UTC
+
+Data.Maybe.maybe
+  :: forall b a. b -> (a -> b) -> GHC.Base.Maybe a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U><L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [n_srog ds_sroh ds1_sroi]
+        case ds1_sroi of {
+          GHC.Base.Nothing -> n_srog;
+          GHC.Base.Just x_srok [Occ=Once] -> ds_sroh x_srok;
+        };
+
+Data.Maybe.isJust :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srol]
+        case ds_srol of {
+          GHC.Base.Nothing -> GHC.Types.False [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.True [];
+        };
+
+Data.Maybe.isNothing
+  :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sroo]
+        case ds_sroo of {
+          GHC.Base.Nothing -> GHC.Types.True [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.False [];
+        };
+
+lvl_rrod :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Maybe.fromJust: Nothing"#;
+
+Data.Maybe.fromJust1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rrod of sat_sror {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sror;
+        };
+
+Data.Maybe.fromJust :: forall a. GHC.Base.Maybe a -> a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sros]
+        case ds_sros of {
+          GHC.Base.Nothing -> Data.Maybe.fromJust1;
+          GHC.Base.Just x_srou [Occ=Once] -> x_srou;
+        };
+
+Data.Maybe.fromMaybe :: forall a. a -> GHC.Base.Maybe a -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [d_srov x_srow]
+        case x_srow of {
+          GHC.Base.Nothing -> d_srov;
+          GHC.Base.Just v_sroy [Occ=Once] -> v_sroy;
+        };
+
+Data.Maybe.maybeToList :: forall a. GHC.Base.Maybe a -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sroz]
+        case ds_sroz of {
+          GHC.Base.Nothing -> [] [];
+          GHC.Base.Just x_sroB [Occ=Once] -> : [x_sroB GHC.Types.[]];
+        };
+
+go_rroe :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_sroC]
+        case ds_sroC of {
+          [] -> GHC.Base.Nothing [];
+          : y_sroE [Occ=Once] _ [Occ=Dead] -> GHC.Base.Just [y_sroE];
+        };
+
+Data.Maybe.listToMaybe [InlPrag=INLINE (sat-args=0)]
+  :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] go_rroe eta_B1;
+
+Data.Maybe.catMaybes1 [Occ=LoopBreaker]
+  :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sroG]
+        case ds_sroG of {
+          [] -> [] [];
+          : y_sroI [Occ=Once!] ys_sroJ [Occ=Once*] ->
+              case y_sroI of {
+                GHC.Base.Nothing -> Data.Maybe.catMaybes1 ys_sroJ;
+                GHC.Base.Just x_sroL [Occ=Once] ->
+                    let {
+                      sat_sroM [Occ=Once] :: [a_argu]
+                      [LclId] =
+                          [ys_sroJ] \u [] Data.Maybe.catMaybes1 ys_sroJ;
+                    } in  : [x_sroL sat_sroM];
+              };
+        };
+
+Data.Maybe.catMaybes :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ls_sroN] Data.Maybe.catMaybes1 ls_sroN;
+
+Data.Maybe.mapMaybeFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall b r a.
+     (b -> r -> r) -> (a -> GHC.Base.Maybe b) -> a -> r -> r
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S),1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cons_sroO f_sroP x_sroQ next_sroR]
+        case f_sroP x_sroQ of {
+          GHC.Base.Nothing -> next_sroR;
+          GHC.Base.Just r1_sroT [Occ=Once] -> cons_sroO r1_sroT next_sroR;
+        };
+
+Data.Maybe.mapMaybe [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. (a -> GHC.Base.Maybe b) -> [a] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sroU ds1_sroV]
+        case ds1_sroV of {
+          [] -> [] [];
+          : x_sroX [Occ=Once] xs_sroY [Occ=Once*] ->
+              case ds_sroU x_sroX of {
+                GHC.Base.Nothing -> Data.Maybe.mapMaybe ds_sroU xs_sroY;
+                GHC.Base.Just r_srp0 [Occ=Once] ->
+                    let {
+                      sat_srp1 [Occ=Once] :: [b_argg]
+                      [LclId] =
+                          [ds_sroU xs_sroY] \u [] Data.Maybe.mapMaybe ds_sroU xs_sroY;
+                    } in  : [r_srp0 sat_srp1];
+              };
+        };
+
+Data.Maybe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.Maybe"#;
+
+Data.Maybe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule2];
+
+Data.Maybe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.Maybe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule4];
+
+Data.Maybe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.Maybe.$trModule3
+                                     Data.Maybe.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:05.404260222 UTC
+
+Data.Maybe.maybe
+  :: forall b a. b -> (a -> b) -> GHC.Base.Maybe a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U><L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [n_srG8 ds_srG9 ds1_srGa]
+        case ds1_srGa of {
+          GHC.Base.Nothing -> n_srG8;
+          GHC.Base.Just x_srGc [Occ=Once] -> ds_srG9 x_srGc;
+        };
+
+Data.Maybe.isJust :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGd]
+        case ds_srGd of {
+          GHC.Base.Nothing -> GHC.Types.False [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.True [];
+        };
+
+Data.Maybe.isNothing
+  :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGg]
+        case ds_srGg of {
+          GHC.Base.Nothing -> GHC.Types.True [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.False [];
+        };
+
+lvl_rrod :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Maybe.fromJust: Nothing"#;
+
+Data.Maybe.fromJust1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rrod of sat_srGj {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_srGj;
+        };
+
+Data.Maybe.fromJust :: forall a. GHC.Base.Maybe a -> a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGk]
+        case ds_srGk of {
+          GHC.Base.Nothing -> Data.Maybe.fromJust1;
+          GHC.Base.Just x_srGm [Occ=Once] -> x_srGm;
+        };
+
+Data.Maybe.fromMaybe :: forall a. a -> GHC.Base.Maybe a -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [d_srGn x_srGo]
+        case x_srGo of {
+          GHC.Base.Nothing -> d_srGn;
+          GHC.Base.Just v_srGq [Occ=Once] -> v_srGq;
+        };
+
+Data.Maybe.maybeToList :: forall a. GHC.Base.Maybe a -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGr]
+        case ds_srGr of {
+          GHC.Base.Nothing -> [] [];
+          GHC.Base.Just x_srGt [Occ=Once] -> : [x_srGt GHC.Types.[]];
+        };
+
+go_rroe :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_srGu]
+        case ds_srGu of {
+          [] -> GHC.Base.Nothing [];
+          : y_srGw [Occ=Once] _ [Occ=Dead] -> GHC.Base.Just [y_srGw];
+        };
+
+Data.Maybe.listToMaybe [InlPrag=INLINE (sat-args=0)]
+  :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] go_rroe eta_B1;
+
+Data.Maybe.catMaybes1 [Occ=LoopBreaker]
+  :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGy]
+        case ds_srGy of {
+          [] -> [] [];
+          : y_srGA [Occ=Once!] ys_srGB [Occ=Once*] ->
+              case y_srGA of {
+                GHC.Base.Nothing -> Data.Maybe.catMaybes1 ys_srGB;
+                GHC.Base.Just x_srGD [Occ=Once] ->
+                    let {
+                      sat_srGE [Occ=Once] :: [a_argu]
+                      [LclId] =
+                          [ys_srGB] \u [] Data.Maybe.catMaybes1 ys_srGB;
+                    } in  : [x_srGD sat_srGE];
+              };
+        };
+
+Data.Maybe.catMaybes :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ls_srGF] Data.Maybe.catMaybes1 ls_srGF;
+
+Data.Maybe.mapMaybeFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall b r a.
+     (b -> r -> r) -> (a -> GHC.Base.Maybe b) -> a -> r -> r
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S),1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cons_srGG f_srGH x_srGI next_srGJ]
+        case f_srGH x_srGI of {
+          GHC.Base.Nothing -> next_srGJ;
+          GHC.Base.Just r1_srGL [Occ=Once] -> cons_srGG r1_srGL next_srGJ;
+        };
+
+Data.Maybe.mapMaybe [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. (a -> GHC.Base.Maybe b) -> [a] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_srGM ds1_srGN]
+        case ds1_srGN of {
+          [] -> [] [];
+          : x_srGP [Occ=Once] xs_srGQ [Occ=Once*] ->
+              case ds_srGM x_srGP of {
+                GHC.Base.Nothing -> Data.Maybe.mapMaybe ds_srGM xs_srGQ;
+                GHC.Base.Just r_srGS [Occ=Once] ->
+                    let {
+                      sat_srGT [Occ=Once] :: [b_argg]
+                      [LclId] =
+                          [ds_srGM xs_srGQ] \u [] Data.Maybe.mapMaybe ds_srGM xs_srGQ;
+                    } in  : [r_srGS sat_srGT];
+              };
+        };
+
+Data.Maybe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.Maybe"#;
+
+Data.Maybe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule2];
+
+Data.Maybe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.Maybe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule4];
+
+Data.Maybe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.Maybe.$trModule3
+                                     Data.Maybe.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:05.407812414 UTC
+
+Data.Maybe.maybe
+  :: forall b a. b -> (a -> b) -> GHC.Base.Maybe a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U><L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [n_srG8 ds_srG9 ds1_srGa]
+        case ds1_srGa of {
+          GHC.Base.Nothing -> n_srG8;
+          GHC.Base.Just x_srGc [Occ=Once] -> ds_srG9 x_srGc;
+        };
+
+Data.Maybe.isJust :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGd]
+        case ds_srGd of {
+          GHC.Base.Nothing -> GHC.Types.False [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.True [];
+        };
+
+Data.Maybe.isNothing
+  :: forall a. GHC.Base.Maybe a -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGg]
+        case ds_srGg of {
+          GHC.Base.Nothing -> GHC.Types.True [];
+          GHC.Base.Just _ [Occ=Dead] -> GHC.Types.False [];
+        };
+
+lvl_rrod :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Maybe.fromJust: Nothing"#;
+
+Data.Maybe.fromJust1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rrod of sat_srGj {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_srGj;
+        };
+
+Data.Maybe.fromJust :: forall a. GHC.Base.Maybe a -> a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGk]
+        case ds_srGk of {
+          GHC.Base.Nothing -> Data.Maybe.fromJust1;
+          GHC.Base.Just x_srGm [Occ=Once] -> x_srGm;
+        };
+
+Data.Maybe.fromMaybe :: forall a. a -> GHC.Base.Maybe a -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [d_srGn x_srGo]
+        case x_srGo of {
+          GHC.Base.Nothing -> d_srGn;
+          GHC.Base.Just v_srGq [Occ=Once] -> v_srGq;
+        };
+
+Data.Maybe.maybeToList :: forall a. GHC.Base.Maybe a -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGr]
+        case ds_srGr of {
+          GHC.Base.Nothing -> [] [];
+          GHC.Base.Just x_srGt [Occ=Once] -> : [x_srGt GHC.Types.[]];
+        };
+
+go_rroe :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_srGu]
+        case ds_srGu of {
+          [] -> GHC.Base.Nothing [];
+          : y_srGw [Occ=Once] _ [Occ=Dead] -> GHC.Base.Just [y_srGw];
+        };
+
+Data.Maybe.listToMaybe [InlPrag=INLINE (sat-args=0)]
+  :: forall a. [a] -> GHC.Base.Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] go_rroe eta_B1;
+
+Data.Maybe.catMaybes1 [Occ=LoopBreaker]
+  :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_srGy]
+        case ds_srGy of {
+          [] -> [] [];
+          : y_srGA [Occ=Once!] ys_srGB [Occ=Once*] ->
+              case y_srGA of {
+                GHC.Base.Nothing -> Data.Maybe.catMaybes1 ys_srGB;
+                GHC.Base.Just x_srGD [Occ=Once] ->
+                    let {
+                      sat_srGE [Occ=Once] :: [a_argu]
+                      [LclId] =
+                          [ys_srGB] \u [] Data.Maybe.catMaybes1 ys_srGB;
+                    } in  : [x_srGD sat_srGE];
+              };
+        };
+
+Data.Maybe.catMaybes :: forall a. [GHC.Base.Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ls_srGF] Data.Maybe.catMaybes1 ls_srGF;
+
+Data.Maybe.mapMaybeFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall b r a.
+     (b -> r -> r) -> (a -> GHC.Base.Maybe b) -> a -> r -> r
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S),1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cons_srGG f_srGH x_srGI next_srGJ]
+        case f_srGH x_srGI of {
+          GHC.Base.Nothing -> next_srGJ;
+          GHC.Base.Just r1_srGL [Occ=Once] -> cons_srGG r1_srGL next_srGJ;
+        };
+
+Data.Maybe.mapMaybe [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. (a -> GHC.Base.Maybe b) -> [a] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_srGM ds1_srGN]
+        case ds1_srGN of {
+          [] -> [] [];
+          : x_srGP [Occ=Once] xs_srGQ [Occ=Once*] ->
+              case ds_srGM x_srGP of {
+                GHC.Base.Nothing -> Data.Maybe.mapMaybe ds_srGM xs_srGQ;
+                GHC.Base.Just r_srGS [Occ=Once] ->
+                    let {
+                      sat_srGT [Occ=Once] :: [b_argg]
+                      [LclId] =
+                          [ds_srGM xs_srGQ] \u [] Data.Maybe.mapMaybe ds_srGM xs_srGQ;
+                    } in  : [r_srGS sat_srGT];
+              };
+        };
+
+Data.Maybe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Data.Maybe"#;
+
+Data.Maybe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule2];
+
+Data.Maybe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Data.Maybe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Data.Maybe.$trModule4];
+
+Data.Maybe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Data.Maybe.$trModule3
+                                     Data.Maybe.$trModule1];
+

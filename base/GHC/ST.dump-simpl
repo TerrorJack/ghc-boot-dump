@@ -1,0 +1,1678 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:56:30.519869002 UTC
+
+Result size of Tidy Core
+  = {terms: 615, types: 1,504, coercions: 328, joins: 0/5}
+
+-- RHS size: {terms: 14, types: 31, coercions: 3, joins: 0/0}
+GHC.ST.$fFunctorST2
+  :: forall s a b.
+     (a -> b) -> ST s a -> State# s -> (# State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_a1Jh1)
+                 (@ a_a1Jh5)
+                 (@ b_a1Jh6)
+                 (f_a1J6k [Occ=Once!] :: a_a1Jh5 -> b_a1Jh6)
+                 (ds_d1Jkj [Occ=Once] :: ST s_a1Jh1 a_a1Jh5)
+                 (s1_a1J6m [Occ=Once] :: State# s_a1Jh1) ->
+                 case (ds_d1Jkj
+                       `cast` (GHC.ST.N:ST[0] <s_a1Jh1>_N <a_a1Jh5>_R
+                               :: (ST s_a1Jh1 a_a1Jh5 :: *) ~R# (STRep s_a1Jh1 a_a1Jh5 :: *)))
+                        s1_a1J6m
+                 of
+                 { (# ipv_s1Jkw [Occ=Once], ipv1_s1Jkx [Occ=Once] #) ->
+                 (# ipv_s1Jkw, f_a1J6k ipv1_s1Jkx #)
+                 }}]
+GHC.ST.$fFunctorST2
+  = \ (@ s_a1Jh1)
+      (@ a_a1Jh5)
+      (@ b_a1Jh6)
+      (f_a1J6k :: a_a1Jh5 -> b_a1Jh6)
+      (ds_d1Jkj :: ST s_a1Jh1 a_a1Jh5)
+      (s1_a1J6m :: State# s_a1Jh1) ->
+      case (ds_d1Jkj
+            `cast` (GHC.ST.N:ST[0] <s_a1Jh1>_N <a_a1Jh5>_R
+                    :: (ST s_a1Jh1 a_a1Jh5 :: *) ~R# (STRep s_a1Jh1 a_a1Jh5 :: *)))
+             s1_a1J6m
+      of
+      { (# ipv_s1Jkw, ipv1_s1Jkx #) ->
+      (# ipv_s1Jkw, f_a1J6k ipv1_s1Jkx #)
+      }
+
+-- RHS size: {terms: 13, types: 30, coercions: 3, joins: 0/0}
+GHC.ST.$fFunctorST1
+  :: forall a s b. a -> ST s b -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a1Jhh)
+                 (@ s_X1Ji3)
+                 (@ b_a1Jhi)
+                 (x_X1xZp [Occ=Once] :: a_a1Jhh)
+                 (ds_X1Jlr [Occ=Once] :: ST s_X1Ji3 b_a1Jhi)
+                 (s1_a1J6m [Occ=Once] :: State# s_X1Ji3) ->
+                 case (ds_X1Jlr
+                       `cast` (GHC.ST.N:ST[0] <s_X1Ji3>_N <b_a1Jhi>_R
+                               :: (ST s_X1Ji3 b_a1Jhi :: *) ~R# (STRep s_X1Ji3 b_a1Jhi :: *)))
+                        s1_a1J6m
+                 of
+                 { (# ipv_s1Jkw [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv_s1Jkw, x_X1xZp #)
+                 }}]
+GHC.ST.$fFunctorST1
+  = \ (@ a_a1Jhh)
+      (@ s_X1Ji3)
+      (@ b_a1Jhi)
+      (x_X1xZp :: a_a1Jhh)
+      (ds_X1Jlr :: ST s_X1Ji3 b_a1Jhi)
+      (s1_a1J6m :: State# s_X1Ji3) ->
+      case (ds_X1Jlr
+            `cast` (GHC.ST.N:ST[0] <s_X1Ji3>_N <b_a1Jhi>_R
+                    :: (ST s_X1Ji3 b_a1Jhi :: *) ~R# (STRep s_X1Ji3 b_a1Jhi :: *)))
+             s1_a1J6m
+      of
+      { (# ipv_s1Jkw, ipv1_s1Jkx #) ->
+      (# ipv_s1Jkw, x_X1xZp #)
+      }
+
+-- RHS size: {terms: 6, types: 12, coercions: 33, joins: 0/0}
+GHC.ST.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Functor (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_a1J6j) ->
+       GHC.Base.C:Functor TYPE: ST s_a1J6j
+                          (GHC.ST.$fFunctorST2 @ s_a1J6j)
+                          `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                  <a -> b>_R
+                                  ->_R <ST s_a1J6j a>_R
+                                  ->_R Sym (GHC.ST.N:ST[0] <s_a1J6j>_N <b>_R)
+                                  :: (forall a b. (a -> b) -> ST s_a1J6j a -> STRep s_a1J6j b :: *)
+                                     ~R# (forall a b.
+                                          (a -> b) -> ST s_a1J6j a -> ST s_a1J6j b :: *))
+                          (\ (@ a_a1Jhh) (@ b_a1Jhi) ->
+                             GHC.ST.$fFunctorST1 @ a_a1Jhh @ s_a1J6j @ b_a1Jhi)
+                          `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                  <a>_R
+                                  ->_R <ST s_a1J6j b>_R
+                                  ->_R Sym (GHC.ST.N:ST[0] <s_a1J6j>_N <a>_R)
+                                  :: (forall a b. a -> ST s_a1J6j b -> STRep s_a1J6j a :: *)
+                                     ~R# (forall a b. a -> ST s_a1J6j b -> ST s_a1J6j a :: *))]
+GHC.ST.$fFunctorST
+  = \ (@ s_X1Ji2) ->
+      GHC.Base.C:Functor
+        @ (ST s_X1Ji2)
+        ((GHC.ST.$fFunctorST2 @ s_X1Ji2)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <a -> b>_R
+                 ->_R <ST s_X1Ji2 a>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Ji2>_N <b>_R)
+                 :: (forall a b. (a -> b) -> ST s_X1Ji2 a -> STRep s_X1Ji2 b :: *)
+                    ~R# (forall a b. (a -> b) -> ST s_X1Ji2 a -> ST s_X1Ji2 b :: *)))
+        ((\ (@ a_a1Jhh) (@ b_a1Jhi) ->
+            GHC.ST.$fFunctorST1 @ a_a1Jhh @ s_X1Ji2 @ b_a1Jhi)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <a>_R
+                 ->_R <ST s_X1Ji2 b>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Ji2>_N <a>_R)
+                 :: (forall a b. a -> ST s_X1Ji2 b -> STRep s_X1Ji2 a :: *)
+                    ~R# (forall a b. a -> ST s_X1Ji2 b -> ST s_X1Ji2 a :: *)))
+
+-- RHS size: {terms: 7, types: 14, coercions: 0, joins: 0/0}
+$cpure_r1Jzx :: forall s a. a -> State# s -> (# State# s, a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []]
+$cpure_r1Jzx
+  = \ (@ s_a1JfV)
+      (@ a_a1Jg3)
+      (x_a1J6f :: a_a1Jg3)
+      (s1_a1J6g :: State# s_a1JfV) ->
+      (# s1_a1J6g, x_a1J6f #)
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+GHC.ST.$fApplicativeST_$cpure [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=True)
+         Tmpl= (\ (@ s_X1Jh3)
+                  (@ a_X1Jhc)
+                  (x_X1J7p [Occ=Once] :: a_X1Jhc)
+                  (s1_a1J6g [Occ=Once] :: State# s_X1Jh3) ->
+                  (# s1_a1J6g, x_X1J7p #))
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a. a -> STRep s a :: *)
+                          ~R# (forall s a. a -> ST s a :: *))}]
+GHC.ST.$fApplicativeST_$cpure
+  = $cpure_r1Jzx
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. a -> STRep s a :: *)
+               ~R# (forall s a. a -> ST s a :: *))
+
+-- RHS size: {terms: 13, types: 26, coercions: 6, joins: 0/0}
+$c>>=_r1Jzy
+  :: forall s a b.
+     ST s a -> (a -> ST s b) -> State# s -> (# State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []]
+$c>>=_r1Jzy
+  = \ (@ s_a1Jf1)
+      (@ a_a1Jfb)
+      (@ b_a1Jfc)
+      (ds_d1Jjx :: ST s_a1Jf1 a_a1Jfb)
+      (k_a1J69 :: a_a1Jfb -> ST s_a1Jf1 b_a1Jfc)
+      (s1_a1J6a :: State# s_a1Jf1) ->
+      case (ds_d1Jjx
+            `cast` (GHC.ST.N:ST[0] <s_a1Jf1>_N <a_a1Jfb>_R
+                    :: (ST s_a1Jf1 a_a1Jfb :: *) ~R# (STRep s_a1Jf1 a_a1Jfb :: *)))
+             s1_a1J6a
+      of
+      { (# ipv_s1JkF, ipv1_s1JkG #) ->
+      ((k_a1J69 ipv1_s1JkG)
+       `cast` (GHC.ST.N:ST[0] <s_a1Jf1>_N <b_a1Jfc>_R
+               :: (ST s_a1Jf1 b_a1Jfc :: *) ~R# (STRep s_a1Jf1 b_a1Jfc :: *)))
+        ipv_s1JkF
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 22, joins: 0/0}
+GHC.ST.$fMonadST_$c>>= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b. ST s a -> (a -> ST s b) -> ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ s_X1Jgg)
+                  (@ a_X1Jgr)
+                  (@ b_X1Jgt)
+                  (ds_X1JkP [Occ=Once] :: ST s_X1Jgg a_X1Jgr)
+                  (k_X1J7s [Occ=Once!] :: a_X1Jgr -> ST s_X1Jgg b_X1Jgt)
+                  (s1_a1J6a [Occ=Once] :: State# s_X1Jgg) ->
+                  case (ds_X1JkP
+                        `cast` (GHC.ST.N:ST[0] <s_X1Jgg>_N <a_X1Jgr>_R
+                                :: (ST s_X1Jgg a_X1Jgr :: *) ~R# (STRep s_X1Jgg a_X1Jgr :: *)))
+                         s1_a1J6a
+                  of
+                  { (# ipv_s1JkK [Occ=Once], ipv1_s1JkL [Occ=Once] #) ->
+                  ((k_X1J7s ipv1_s1JkL)
+                   `cast` (GHC.ST.N:ST[0] <s_X1Jgg>_N <b_X1Jgt>_R
+                           :: (ST s_X1Jgg b_X1Jgt :: *) ~R# (STRep s_X1Jgg b_X1Jgt :: *)))
+                    ipv_s1JkK
+                  })
+               `cast` (forall (s :: <*>_N) (a :: <*>_N) (b :: <*>_N).
+                       <ST s a>_R
+                       ->_R <a -> ST s b>_R
+                       ->_R Sym (GHC.ST.N:ST[0] <s>_N <b>_R)
+                       :: (forall s a b. ST s a -> (a -> ST s b) -> STRep s b :: *)
+                          ~R# (forall s a b. ST s a -> (a -> ST s b) -> ST s b :: *))}]
+GHC.ST.$fMonadST_$c>>=
+  = $c>>=_r1Jzy
+    `cast` (forall (s :: <*>_N) (a :: <*>_N) (b :: <*>_N).
+            <ST s a>_R
+            ->_R <a -> ST s b>_R
+            ->_R Sym (GHC.ST.N:ST[0] <s>_N <b>_R)
+            :: (forall s a b. ST s a -> (a -> ST s b) -> STRep s b :: *)
+               ~R# (forall s a b. ST s a -> (a -> ST s b) -> ST s b :: *))
+
+-- RHS size: {terms: 21, types: 48, coercions: 6, joins: 0/0}
+GHC.ST.$fApplicativeST2
+  :: forall c s b a.
+     (a -> b -> c) -> ST s a -> ST s b -> State# s -> (# State# s, c #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ c_a1Jgr)
+                 (@ s_X1Jhn)
+                 (@ b_a1Jgq)
+                 (@ a_a1Jgp)
+                 (f_X1JlK [Occ=Once!] :: a_a1Jgp -> b_a1Jgq -> c_a1Jgr)
+                 (m1_X1JlM [Occ=Once] :: ST s_X1Jhn a_a1Jgp)
+                 (m2_X1JlO [Occ=Once] :: ST s_X1Jhn b_a1Jgq)
+                 (s1_a1J6a [Occ=Once] :: State# s_X1Jhn) ->
+                 case (m1_X1JlM
+                       `cast` (GHC.ST.N:ST[0] <s_X1Jhn>_N <a_a1Jgp>_R
+                               :: (ST s_X1Jhn a_a1Jgp :: *) ~R# (STRep s_X1Jhn a_a1Jgp :: *)))
+                        s1_a1J6a
+                 of
+                 { (# ipv_s1JkK [Occ=Once], ipv1_s1JkL [Occ=Once] #) ->
+                 case (m2_X1JlO
+                       `cast` (GHC.ST.N:ST[0] <s_X1Jhn>_N <b_a1Jgq>_R
+                               :: (ST s_X1Jhn b_a1Jgq :: *) ~R# (STRep s_X1Jhn b_a1Jgq :: *)))
+                        ipv_s1JkK
+                 of
+                 { (# ipv2_X1Jmt [Occ=Once], ipv3_X1Jmv [Occ=Once] #) ->
+                 (# ipv2_X1Jmt, f_X1JlK ipv1_s1JkL ipv3_X1Jmv #)
+                 }
+                 }}]
+GHC.ST.$fApplicativeST2
+  = \ (@ c_a1Jgr)
+      (@ s_X1Jhn)
+      (@ b_a1Jgq)
+      (@ a_a1Jgp)
+      (f_X1JlK :: a_a1Jgp -> b_a1Jgq -> c_a1Jgr)
+      (m1_X1JlM :: ST s_X1Jhn a_a1Jgp)
+      (m2_X1JlO :: ST s_X1Jhn b_a1Jgq)
+      (s1_a1J6a :: State# s_X1Jhn) ->
+      case (m1_X1JlM
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhn>_N <a_a1Jgp>_R
+                    :: (ST s_X1Jhn a_a1Jgp :: *) ~R# (STRep s_X1Jhn a_a1Jgp :: *)))
+             s1_a1J6a
+      of
+      { (# ipv_s1JkK, ipv1_s1JkL #) ->
+      case (m2_X1JlO
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhn>_N <b_a1Jgq>_R
+                    :: (ST s_X1Jhn b_a1Jgq :: *) ~R# (STRep s_X1Jhn b_a1Jgq :: *)))
+             ipv_s1JkK
+      of
+      { (# ipv2_X1Jmt, ipv3_X1Jmv #) ->
+      (# ipv2_X1Jmt, f_X1JlK ipv1_s1JkL ipv3_X1Jmv #)
+      }
+      }
+
+-- RHS size: {terms: 17, types: 43, coercions: 6, joins: 0/0}
+GHC.ST.$fApplicativeST1
+  :: forall a s b. ST s a -> ST s b -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a1JgS)
+                 (@ s_X1Jhr)
+                 (@ b_a1JgT)
+                 (m1_X1Jnv [Occ=Once] :: ST s_X1Jhr a_a1JgS)
+                 (m2_X1Jny [Occ=Once] :: ST s_X1Jhr b_a1JgT)
+                 (s1_X1J7V [Occ=Once] :: State# s_X1Jhr) ->
+                 case (m1_X1Jnv
+                       `cast` (GHC.ST.N:ST[0] <s_X1Jhr>_N <a_a1JgS>_R
+                               :: (ST s_X1Jhr a_a1JgS :: *) ~R# (STRep s_X1Jhr a_a1JgS :: *)))
+                        s1_X1J7V
+                 of
+                 { (# ipv_s1JkK [Occ=Once], ipv1_s1JkL [Occ=Once] #) ->
+                 case (m2_X1Jny
+                       `cast` (GHC.ST.N:ST[0] <s_X1Jhr>_N <b_a1JgT>_R
+                               :: (ST s_X1Jhr b_a1JgT :: *) ~R# (STRep s_X1Jhr b_a1JgT :: *)))
+                        ipv_s1JkK
+                 of
+                 { (# ipv2_X1Jmt [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv2_X1Jmt, ipv1_s1JkL #)
+                 }
+                 }}]
+GHC.ST.$fApplicativeST1
+  = \ (@ a_a1JgS)
+      (@ s_X1Jhr)
+      (@ b_a1JgT)
+      (m1_X1Jnv :: ST s_X1Jhr a_a1JgS)
+      (m2_X1Jny :: ST s_X1Jhr b_a1JgT)
+      (s1_X1J7V :: State# s_X1Jhr) ->
+      case (m1_X1Jnv
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhr>_N <a_a1JgS>_R
+                    :: (ST s_X1Jhr a_a1JgS :: *) ~R# (STRep s_X1Jhr a_a1JgS :: *)))
+             s1_X1J7V
+      of
+      { (# ipv_s1JkK, ipv1_s1JkL #) ->
+      case (m2_X1Jny
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhr>_N <b_a1JgT>_R
+                    :: (ST s_X1Jhr b_a1JgT :: *) ~R# (STRep s_X1Jhr b_a1JgT :: *)))
+             ipv_s1JkK
+      of
+      { (# ipv2_X1Jmt, ipv3_X1Jmv #) ->
+      (# ipv2_X1Jmt, ipv1_s1JkL #)
+      }
+      }
+
+-- RHS size: {terms: 18, types: 46, coercions: 7, joins: 0/0}
+GHC.ST.$fApplicativeST3
+  :: forall b s a.
+     ST s (a -> b) -> ST s a -> State# s -> (# State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,1*C1(U)))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_a1Jgb)
+                 (@ s_X1Jhl)
+                 (@ a_a1Jga)
+                 (m1_X1Jlw [Occ=Once] :: ST s_X1Jhl (a_a1Jga -> b_a1Jgb))
+                 (m2_X1Jly [Occ=Once] :: ST s_X1Jhl a_a1Jga)
+                 (s1_a1J6a [Occ=Once] :: State# s_X1Jhl) ->
+                 case (m1_X1Jlw
+                       `cast` (GHC.ST.N:ST[0] <s_X1Jhl>_N <a_a1Jga -> b_a1Jgb>_R
+                               :: (ST s_X1Jhl (a_a1Jga -> b_a1Jgb) :: *)
+                                  ~R# (STRep s_X1Jhl (a_a1Jga -> b_a1Jgb) :: *)))
+                        s1_a1J6a
+                 of
+                 { (# ipv_s1JkK [Occ=Once], ipv1_s1JkL [Occ=Once!] #) ->
+                 case (m2_X1Jly
+                       `cast` (GHC.ST.N:ST[0] <s_X1Jhl>_N <a_a1Jga>_R
+                               :: (ST s_X1Jhl a_a1Jga :: *) ~R# (STRep s_X1Jhl a_a1Jga :: *)))
+                        ipv_s1JkK
+                 of
+                 { (# ipv2_X1Jmp [Occ=Once], ipv3_X1Jmr [Occ=Once] #) ->
+                 (# ipv2_X1Jmp, ipv1_s1JkL ipv3_X1Jmr #)
+                 }
+                 }}]
+GHC.ST.$fApplicativeST3
+  = \ (@ b_a1Jgb)
+      (@ s_X1Jhl)
+      (@ a_a1Jga)
+      (m1_X1Jlw :: ST s_X1Jhl (a_a1Jga -> b_a1Jgb))
+      (m2_X1Jly :: ST s_X1Jhl a_a1Jga)
+      (s1_a1J6a :: State# s_X1Jhl) ->
+      case (m1_X1Jlw
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhl>_N <a_a1Jga -> b_a1Jgb>_R
+                    :: (ST s_X1Jhl (a_a1Jga -> b_a1Jgb) :: *)
+                       ~R# (STRep s_X1Jhl (a_a1Jga -> b_a1Jgb) :: *)))
+             s1_a1J6a
+      of
+      { (# ipv_s1JkK, ipv1_s1JkL #) ->
+      case (m2_X1Jly
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhl>_N <a_a1Jga>_R
+                    :: (ST s_X1Jhl a_a1Jga :: *) ~R# (STRep s_X1Jhl a_a1Jga :: *)))
+             ipv_s1JkK
+      of
+      { (# ipv2_X1Jmp, ipv3_X1Jmr #) ->
+      (# ipv2_X1Jmp, ipv1_s1JkL ipv3_X1Jmr #)
+      }
+      }
+
+-- RHS size: {terms: 12, types: 25, coercions: 6, joins: 0/0}
+$c*>_r1Jzz
+  :: forall s a b. ST s a -> ST s b -> State# s -> (# State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []]
+$c*>_r1Jzz
+  = \ (@ s_X1Jhe)
+      (@ a_a1JgH)
+      (@ b_a1JgI)
+      (eta_B2 :: ST s_X1Jhe a_a1JgH)
+      (eta1_B1 :: ST s_X1Jhe b_a1JgI)
+      (s1_a1J6a :: State# s_X1Jhe) ->
+      case (eta_B2
+            `cast` (GHC.ST.N:ST[0] <s_X1Jhe>_N <a_a1JgH>_R
+                    :: (ST s_X1Jhe a_a1JgH :: *) ~R# (STRep s_X1Jhe a_a1JgH :: *)))
+             s1_a1J6a
+      of
+      { (# ipv_s1JkK, ipv1_s1JkL #) ->
+      (eta1_B1
+       `cast` (GHC.ST.N:ST[0] <s_X1Jhe>_N <b_a1JgI>_R
+               :: (ST s_X1Jhe b_a1JgI :: *) ~R# (STRep s_X1Jhe b_a1JgI :: *)))
+        ipv_s1JkK
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 21, joins: 0/0}
+GHC.ST.$fApplicativeST_$c*> [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b. ST s a -> ST s b -> ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ s_X1Jhk)
+                  (@ a_X1Ji7)
+                  (@ b_X1Ji9)
+                  (m_a1J6h [Occ=Once] :: ST s_X1Jhk a_X1Ji7)
+                  (k_a1J6i [Occ=Once] :: ST s_X1Jhk b_X1Ji9)
+                  (s1_a1J6a [Occ=Once] :: State# s_X1Jhk) ->
+                  case (m_a1J6h
+                        `cast` (GHC.ST.N:ST[0] <s_X1Jhk>_N <a_X1Ji7>_R
+                                :: (ST s_X1Jhk a_X1Ji7 :: *) ~R# (STRep s_X1Jhk a_X1Ji7 :: *)))
+                         s1_a1J6a
+                  of
+                  { (# ipv_s1JkK [Occ=Once], _ [Occ=Dead] #) ->
+                  (k_a1J6i
+                   `cast` (GHC.ST.N:ST[0] <s_X1Jhk>_N <b_X1Ji9>_R
+                           :: (ST s_X1Jhk b_X1Ji9 :: *) ~R# (STRep s_X1Jhk b_X1Ji9 :: *)))
+                    ipv_s1JkK
+                  })
+               `cast` (forall (s :: <*>_N) (a :: <*>_N) (b :: <*>_N).
+                       <ST s a>_R ->_R <ST s b>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <b>_R)
+                       :: (forall s a b. ST s a -> ST s b -> STRep s b :: *)
+                          ~R# (forall s a b. ST s a -> ST s b -> ST s b :: *))}]
+GHC.ST.$fApplicativeST_$c*>
+  = $c*>_r1Jzz
+    `cast` (forall (s :: <*>_N) (a :: <*>_N) (b :: <*>_N).
+            <ST s a>_R ->_R <ST s b>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <b>_R)
+            :: (forall s a b. ST s a -> ST s b -> STRep s b :: *)
+               ~R# (forall s a b. ST s a -> ST s b -> ST s b :: *))
+
+-- RHS size: {terms: 15, types: 31, coercions: 62, joins: 0/0}
+GHC.ST.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Applicative (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_a1J6e) ->
+       GHC.Base.C:Applicative TYPE: ST s_a1J6e
+                              GHC.ST.$fFunctorST @ s_a1J6e
+                              GHC.ST.$fApplicativeST_$cpure @ s_a1J6e
+                              (\ (@ a_a1Jga) (@ b_a1Jgb) ->
+                                 GHC.ST.$fApplicativeST3 @ b_a1Jgb @ s_a1J6e @ a_a1Jga)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <ST s_a1J6e (a -> b)>_R
+                                      ->_R <ST s_a1J6e a>_R
+                                      ->_R Sym (GHC.ST.N:ST[0] <s_a1J6e>_N <b>_R)
+                                      :: (forall a b.
+                                          ST s_a1J6e (a -> b)
+                                          -> ST s_a1J6e a -> STRep s_a1J6e b :: *)
+                                         ~R# (forall a b.
+                                              ST s_a1J6e (a -> b)
+                                              -> ST s_a1J6e a -> ST s_a1J6e b :: *))
+                              (\ (@ a_a1Jgp) (@ b_a1Jgq) (@ c_a1Jgr) ->
+                                 GHC.ST.$fApplicativeST2 @ c_a1Jgr @ s_a1J6e @ b_a1Jgq @ a_a1Jgp)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                      <a -> b -> c>_R
+                                      ->_R <ST s_a1J6e a>_R
+                                      ->_R <ST s_a1J6e b>_R
+                                      ->_R Sym (GHC.ST.N:ST[0] <s_a1J6e>_N <c>_R)
+                                      :: (forall a b c.
+                                          (a -> b -> c)
+                                          -> ST s_a1J6e a -> ST s_a1J6e b -> STRep s_a1J6e c :: *)
+                                         ~R# (forall a b c.
+                                              (a -> b -> c)
+                                              -> ST s_a1J6e a -> ST s_a1J6e b -> ST s_a1J6e c :: *))
+                              GHC.ST.$fApplicativeST_$c*> @ s_a1J6e
+                              (\ (@ a_a1JgS) (@ b_a1JgT) ->
+                                 GHC.ST.$fApplicativeST1 @ a_a1JgS @ s_a1J6e @ b_a1JgT)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <ST s_a1J6e a>_R
+                                      ->_R <ST s_a1J6e b>_R
+                                      ->_R Sym (GHC.ST.N:ST[0] <s_a1J6e>_N <a>_R)
+                                      :: (forall a b.
+                                          ST s_a1J6e a -> ST s_a1J6e b -> STRep s_a1J6e a :: *)
+                                         ~R# (forall a b.
+                                              ST s_a1J6e a -> ST s_a1J6e b -> ST s_a1J6e a :: *))]
+GHC.ST.$fApplicativeST
+  = \ (@ s_X1Jhb) ->
+      GHC.Base.C:Applicative
+        @ (ST s_X1Jhb)
+        (GHC.ST.$fFunctorST @ s_X1Jhb)
+        (GHC.ST.$fApplicativeST_$cpure @ s_X1Jhb)
+        ((\ (@ a_a1Jga) (@ b_a1Jgb) ->
+            GHC.ST.$fApplicativeST3 @ b_a1Jgb @ s_X1Jhb @ a_a1Jga)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_X1Jhb (a -> b)>_R
+                 ->_R <ST s_X1Jhb a>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Jhb>_N <b>_R)
+                 :: (forall a b.
+                     ST s_X1Jhb (a -> b) -> ST s_X1Jhb a -> STRep s_X1Jhb b :: *)
+                    ~R# (forall a b.
+                         ST s_X1Jhb (a -> b) -> ST s_X1Jhb a -> ST s_X1Jhb b :: *)))
+        ((\ (@ a_a1Jgp) (@ b_a1Jgq) (@ c_a1Jgr) ->
+            GHC.ST.$fApplicativeST2 @ c_a1Jgr @ s_X1Jhb @ b_a1Jgq @ a_a1Jgp)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                 <a -> b -> c>_R
+                 ->_R <ST s_X1Jhb a>_R
+                 ->_R <ST s_X1Jhb b>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Jhb>_N <c>_R)
+                 :: (forall a b c.
+                     (a -> b -> c)
+                     -> ST s_X1Jhb a -> ST s_X1Jhb b -> STRep s_X1Jhb c :: *)
+                    ~R# (forall a b c.
+                         (a -> b -> c)
+                         -> ST s_X1Jhb a -> ST s_X1Jhb b -> ST s_X1Jhb c :: *)))
+        (GHC.ST.$fApplicativeST_$c*> @ s_X1Jhb)
+        ((\ (@ a_a1JgS) (@ b_a1JgT) ->
+            GHC.ST.$fApplicativeST1 @ a_a1JgS @ s_X1Jhb @ b_a1JgT)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_X1Jhb a>_R
+                 ->_R <ST s_X1Jhb b>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Jhb>_N <a>_R)
+                 :: (forall a b.
+                     ST s_X1Jhb a -> ST s_X1Jhb b -> STRep s_X1Jhb a :: *)
+                    ~R# (forall a b.
+                         ST s_X1Jhb a -> ST s_X1Jhb b -> ST s_X1Jhb a :: *)))
+
+-- RHS size: {terms: 5, types: 10, coercions: 0, joins: 0/0}
+GHC.ST.$fMonadFailST1 :: forall s a. [Char] -> ST s a
+[GblId,
+ Arity=1,
+ Str=<B,U>x,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ s_X1Jgj) (@ a_a1JfO) (eta_B1 [Occ=Once] :: [Char]) ->
+                 errorWithoutStackTrace @ 'LiftedRep @ (ST s_X1Jgj a_a1JfO) eta_B1}]
+GHC.ST.$fMonadFailST1
+  = \ (@ s_X1Jgj) (@ a_a1JfO) (eta_B1 :: [Char]) ->
+      errorWithoutStackTrace @ 'LiftedRep @ (ST s_X1Jgj a_a1JfO) eta_B1
+
+-- RHS size: {terms: 7, types: 9, coercions: 0, joins: 0/0}
+GHC.ST.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Monad (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_a1J67) ->
+       GHC.Base.C:Monad TYPE: ST s_a1J67
+                        GHC.ST.$fApplicativeST @ s_a1J67
+                        GHC.ST.$fMonadST_$c>>= @ s_a1J67
+                        GHC.ST.$fApplicativeST_$c*> @ s_a1J67
+                        GHC.ST.$fApplicativeST_$cpure @ s_a1J67
+                        \ (@ a_a1JfO) ->
+                          errorWithoutStackTrace @ 'LiftedRep @ (ST s_a1J67 a_a1JfO)]
+GHC.ST.$fMonadST
+  = \ (@ s_X1Jgj) ->
+      GHC.Base.C:Monad
+        @ (ST s_X1Jgj)
+        (GHC.ST.$fApplicativeST @ s_X1Jgj)
+        (GHC.ST.$fMonadST_$c>>= @ s_X1Jgj)
+        (GHC.ST.$fApplicativeST_$c*> @ s_X1Jgj)
+        (GHC.ST.$fApplicativeST_$cpure @ s_X1Jgj)
+        (GHC.ST.$fMonadFailST1 @ s_X1Jgj)
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.ST.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Fail.MonadFail (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_a1J65) ->
+       Control.Monad.Fail.C:MonadFail TYPE: ST s_a1J65
+                                      GHC.ST.$fMonadST @ s_a1J65
+                                      GHC.ST.$fMonadFailST1 @ s_a1J65]
+GHC.ST.$fMonadFailST
+  = \ (@ s_a1JeN) ->
+      Control.Monad.Fail.C:MonadFail
+        @ (ST s_a1JeN)
+        (GHC.ST.$fMonadST @ s_a1JeN)
+        (GHC.ST.$fMonadFailST1 @ s_a1JeN)
+
+-- RHS size: {terms: 20, types: 44, coercions: 6, joins: 0/0}
+GHC.ST.$fSemigroupST2
+  :: forall a s.
+     Semigroup a =>
+     ST s a -> ST s a -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C1(U)),A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a1Jei)
+                 (@ s_a1Jej)
+                 ($dSemigroup_a1Jek [Occ=Once] :: Semigroup a_a1Jei)
+                 (eta_B3 [Occ=Once] :: ST s_a1Jej a_a1Jei)
+                 (eta1_B2 [Occ=Once] :: ST s_a1Jej a_a1Jei)
+                 (eta2_B1 [Occ=Once] :: State# s_a1Jej) ->
+                 case (eta_B3
+                       `cast` (GHC.ST.N:ST[0] <s_a1Jej>_N <a_a1Jei>_R
+                               :: (ST s_a1Jej a_a1Jei :: *) ~R# (STRep s_a1Jej a_a1Jei :: *)))
+                        eta2_B1
+                 of
+                 { (# ipv_s1JkK [Occ=Once], ipv1_s1JkL [Occ=Once] #) ->
+                 case (eta1_B2
+                       `cast` (GHC.ST.N:ST[0] <s_a1Jej>_N <a_a1Jei>_R
+                               :: (ST s_a1Jej a_a1Jei :: *) ~R# (STRep s_a1Jej a_a1Jei :: *)))
+                        ipv_s1JkK
+                 of
+                 { (# ipv2_X1Jmt [Occ=Once], ipv3_X1Jmv [Occ=Once] #) ->
+                 (# ipv2_X1Jmt,
+                    <> @ a_a1Jei $dSemigroup_a1Jek ipv1_s1JkL ipv3_X1Jmv #)
+                 }
+                 }}]
+GHC.ST.$fSemigroupST2
+  = \ (@ a_a1Jei)
+      (@ s_a1Jej)
+      ($dSemigroup_a1Jek :: Semigroup a_a1Jei)
+      (eta_B3 :: ST s_a1Jej a_a1Jei)
+      (eta1_B2 :: ST s_a1Jej a_a1Jei)
+      (eta2_B1 :: State# s_a1Jej) ->
+      case (eta_B3
+            `cast` (GHC.ST.N:ST[0] <s_a1Jej>_N <a_a1Jei>_R
+                    :: (ST s_a1Jej a_a1Jei :: *) ~R# (STRep s_a1Jej a_a1Jei :: *)))
+             eta2_B1
+      of
+      { (# ipv_s1JkK, ipv1_s1JkL #) ->
+      case (eta1_B2
+            `cast` (GHC.ST.N:ST[0] <s_a1Jej>_N <a_a1Jei>_R
+                    :: (ST s_a1Jej a_a1Jei :: *) ~R# (STRep s_a1Jej a_a1Jei :: *)))
+             ipv_s1JkK
+      of
+      { (# ipv2_X1Jmt, ipv3_X1Jmv #) ->
+      (# ipv2_X1Jmt,
+         <> @ a_a1Jei $dSemigroup_a1Jek ipv1_s1JkL ipv3_X1Jmv #)
+      }
+      }
+
+-- RHS size: {terms: 36, types: 82, coercions: 6, joins: 0/1}
+GHC.ST.$w$csconcat [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     Semigroup a =>
+     ST s a -> [ST s a] -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><C(S),1*C1(U(U,U))><S,1*U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0 0 0] 240 0}]
+GHC.ST.$w$csconcat
+  = \ (@ a_s1JuO)
+      (@ s_s1JuP)
+      (w_s1JuQ :: Semigroup a_s1JuO)
+      (ww_s1JuV :: ST s_s1JuP a_s1JuO)
+      (ww1_s1JuW :: [ST s_s1JuP a_s1JuO])
+      (w1_s1JuS :: State# s_s1JuP) ->
+      letrec {
+        go_s1Jpa [Occ=LoopBreaker]
+          :: ST s_s1JuP a_s1JuO
+             -> [ST s_s1JuP a_s1JuO]
+             -> State# s_s1JuP
+             -> (# State# s_s1JuP, a_s1JuO #)
+        [LclId,
+         Arity=3,
+         Str=<C(S),1*C1(U(U,U))><S,1*U><S,U>,
+         Unf=OtherCon []]
+        go_s1Jpa
+          = \ (b_i1y06 :: ST s_s1JuP a_s1JuO)
+              (ds1_i1y07 :: [ST s_s1JuP a_s1JuO])
+              (eta_X28 :: State# s_s1JuP) ->
+              case ds1_i1y07 of {
+                [] ->
+                  (b_i1y06
+                   `cast` (GHC.ST.N:ST[0] <s_s1JuP>_N <a_s1JuO>_R
+                           :: (ST s_s1JuP a_s1JuO :: *) ~R# (STRep s_s1JuP a_s1JuO :: *)))
+                    eta_X28;
+                : c_i1y0f cs_i1y0g ->
+                  case (b_i1y06
+                        `cast` (GHC.ST.N:ST[0] <s_s1JuP>_N <a_s1JuO>_R
+                                :: (ST s_s1JuP a_s1JuO :: *) ~R# (STRep s_s1JuP a_s1JuO :: *)))
+                         eta_X28
+                  of
+                  { (# ipv_s1JkK, ipv1_s1JkL #) ->
+                  case go_s1Jpa c_i1y0f cs_i1y0g ipv_s1JkK of
+                  { (# ipv2_X1Jmt, ipv3_X1Jmv #) ->
+                  (# ipv2_X1Jmt, <> @ a_s1JuO w_s1JuQ ipv1_s1JkL ipv3_X1Jmv #)
+                  }
+                  }
+              }; } in
+      go_s1Jpa ww_s1JuV ww1_s1JuW w1_s1JuS
+
+-- RHS size: {terms: 13, types: 25, coercions: 0, joins: 0/0}
+GHC.ST.$fSemigroupST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     Semigroup a =>
+     NonEmpty (ST s a) -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><S(C(S)S),1*U(1*C1(U(U,U)),1*U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s1JuO)
+                 (@ s_s1JuP)
+                 (w_s1JuQ [Occ=Once] :: Semigroup a_s1JuO)
+                 (w1_s1JuR [Occ=Once!] :: NonEmpty (ST s_s1JuP a_s1JuO))
+                 (w2_s1JuS [Occ=Once] :: State# s_s1JuP) ->
+                 case w1_s1JuR of { :| ww1_s1JuV [Occ=Once] ww2_s1JuW [Occ=Once] ->
+                 GHC.ST.$w$csconcat
+                   @ a_s1JuO @ s_s1JuP w_s1JuQ ww1_s1JuV ww2_s1JuW w2_s1JuS
+                 }}]
+GHC.ST.$fSemigroupST1
+  = \ (@ a_s1JuO)
+      (@ s_s1JuP)
+      (w_s1JuQ :: Semigroup a_s1JuO)
+      (w1_s1JuR :: NonEmpty (ST s_s1JuP a_s1JuO))
+      (w2_s1JuS :: State# s_s1JuP) ->
+      case w1_s1JuR of { :| ww1_s1JuV ww2_s1JuW ->
+      GHC.ST.$w$csconcat
+        @ a_s1JuO @ s_s1JuP w_s1JuQ ww1_s1JuV ww2_s1JuW w2_s1JuS
+      }
+
+Rec {
+-- RHS size: {terms: 10, types: 15, coercions: 21, joins: 0/0}
+GHC.ST.$fSemigroupST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s. Semigroup a => Semigroup (ST s a)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(C(C1(U)),A,A)>m,
+ Unf=DFun: \ (@ a_a1J63) (@ s_a1J64) (v_X1E :: Semigroup a_a1J63) ->
+       GHC.Base.C:Semigroup TYPE: ST s_a1J64 a_a1J63
+                            (GHC.ST.$fSemigroupST2 @ a_a1J63 @ s_a1J64 v_X1E)
+                            `cast` (<ST s_a1J64 a_a1J63>_R
+                                    ->_R <ST s_a1J64 a_a1J63>_R
+                                    ->_R Sym (GHC.ST.N:ST[0] <s_a1J64>_N <a_a1J63>_R)
+                                    :: (ST s_a1J64 a_a1J63
+                                        -> ST s_a1J64 a_a1J63 -> STRep s_a1J64 a_a1J63 :: *)
+                                       ~R# (ST s_a1J64 a_a1J63
+                                            -> ST s_a1J64 a_a1J63 -> ST s_a1J64 a_a1J63 :: *))
+                            (GHC.ST.$fSemigroupST1 @ a_a1J63 @ s_a1J64 v_X1E)
+                            `cast` (<NonEmpty (ST s_a1J64 a_a1J63)>_R
+                                    ->_R Sym (GHC.ST.N:ST[0] <s_a1J64>_N <a_a1J63>_R)
+                                    :: (NonEmpty (ST s_a1J64 a_a1J63) -> STRep s_a1J64 a_a1J63 :: *)
+                                       ~R# (NonEmpty (ST s_a1J64 a_a1J63)
+                                            -> ST s_a1J64 a_a1J63 :: *))
+                            GHC.ST.$fSemigroupST_$cstimes @ a_a1J63 @ s_a1J64 v_X1E]
+GHC.ST.$fSemigroupST
+  = \ (@ a_X1Jgh)
+      (@ s_X1Jgj)
+      ($dSemigroup_X1Jgl :: Semigroup a_X1Jgh) ->
+      GHC.Base.C:Semigroup
+        @ (ST s_X1Jgj a_X1Jgh)
+        ((GHC.ST.$fSemigroupST2 @ a_X1Jgh @ s_X1Jgj $dSemigroup_X1Jgl)
+         `cast` (<ST s_X1Jgj a_X1Jgh>_R
+                 ->_R <ST s_X1Jgj a_X1Jgh>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Jgj>_N <a_X1Jgh>_R)
+                 :: (ST s_X1Jgj a_X1Jgh
+                     -> ST s_X1Jgj a_X1Jgh -> STRep s_X1Jgj a_X1Jgh :: *)
+                    ~R# (ST s_X1Jgj a_X1Jgh
+                         -> ST s_X1Jgj a_X1Jgh -> ST s_X1Jgj a_X1Jgh :: *)))
+        ((GHC.ST.$fSemigroupST1 @ a_X1Jgh @ s_X1Jgj $dSemigroup_X1Jgl)
+         `cast` (<NonEmpty (ST s_X1Jgj a_X1Jgh)>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Jgj>_N <a_X1Jgh>_R)
+                 :: (NonEmpty (ST s_X1Jgj a_X1Jgh) -> STRep s_X1Jgj a_X1Jgh :: *)
+                    ~R# (NonEmpty (ST s_X1Jgj a_X1Jgh) -> ST s_X1Jgj a_X1Jgh :: *)))
+        (GHC.ST.$fSemigroupST_$cstimes
+           @ a_X1Jgh @ s_X1Jgj $dSemigroup_X1Jgl)
+
+-- RHS size: {terms: 10, types: 27, coercions: 0, joins: 0/0}
+GHC.ST.$fSemigroupST_$cstimes [Occ=LoopBreaker]
+  :: forall a s.
+     Semigroup a =>
+     forall b. GHC.Real.Integral b => b -> ST s a -> ST s a
+[GblId, Arity=2, Str=<L,U(C(C1(U)),A,A)><L,U>, Unf=OtherCon []]
+GHC.ST.$fSemigroupST_$cstimes
+  = \ (@ a_X1Jgi)
+      (@ s_X1Jgk)
+      ($dSemigroup_X1Jgm :: Semigroup a_X1Jgi)
+      (@ b_a1JeE)
+      ($dIntegral_a1JeG :: GHC.Real.Integral b_a1JeE) ->
+      noinline
+        @ (forall b1 a1.
+           (GHC.Real.Integral b1, Semigroup a1) =>
+           b1 -> a1 -> a1)
+        Data.Semigroup.Internal.stimesDefault
+        @ b_a1JeE
+        @ (ST s_X1Jgk a_X1Jgi)
+        $dIntegral_a1JeG
+        (GHC.ST.$fSemigroupST @ a_X1Jgi @ s_X1Jgk $dSemigroup_X1Jgm)
+end Rec }
+
+-- RHS size: {terms: 6, types: 9, coercions: 0, joins: 0/0}
+GHC.ST.$fMonoidST_$cp1Monoid
+  :: forall a s. Monoid a => Semigroup (ST s a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(C(C1(U)),A,A),A,A,A)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_X1Jfz)
+                 (@ s_X1JfB)
+                 ($dMonoid_X1JfD [Occ=Once] :: Monoid a_X1Jfz) ->
+                 GHC.ST.$fSemigroupST
+                   @ a_X1Jfz @ s_X1JfB (GHC.Base.$p1Monoid @ a_X1Jfz $dMonoid_X1JfD)}]
+GHC.ST.$fMonoidST_$cp1Monoid
+  = \ (@ a_X1Jfz) (@ s_X1JfB) ($dMonoid_X1JfD :: Monoid a_X1Jfz) ->
+      GHC.ST.$fSemigroupST
+        @ a_X1Jfz @ s_X1JfB (GHC.Base.$p1Monoid @ a_X1Jfz $dMonoid_X1JfD)
+
+-- RHS size: {terms: 21, types: 45, coercions: 6, joins: 0/0}
+$cmappend_r1JzA
+  :: forall a s.
+     Monoid a =>
+     ST s a -> ST s a -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []]
+$cmappend_r1JzA
+  = \ (@ a_X1JfB)
+      (@ s_X1JfD)
+      ($dMonoid_X1JfF :: Monoid a_X1JfB)
+      (eta_X28 :: ST s_X1JfD a_X1JfB)
+      (eta1_X4e :: ST s_X1JfD a_X1JfB)
+      (eta2_B1 :: State# s_X1JfD) ->
+      case (eta_X28
+            `cast` (GHC.ST.N:ST[0] <s_X1JfD>_N <a_X1JfB>_R
+                    :: (ST s_X1JfD a_X1JfB :: *) ~R# (STRep s_X1JfD a_X1JfB :: *)))
+             eta2_B1
+      of
+      { (# ipv_s1JkK, ipv1_s1JkL #) ->
+      case (eta1_X4e
+            `cast` (GHC.ST.N:ST[0] <s_X1JfD>_N <a_X1JfB>_R
+                    :: (ST s_X1JfD a_X1JfB :: *) ~R# (STRep s_X1JfD a_X1JfB :: *)))
+             ipv_s1JkK
+      of
+      { (# ipv2_X1Jmt, ipv3_X1Jmv #) ->
+      (# ipv2_X1Jmt,
+         <>
+           @ a_X1JfB
+           (GHC.Base.$p1Monoid @ a_X1JfB $dMonoid_X1JfF)
+           ipv1_s1JkL
+           ipv3_X1Jmv #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 21, joins: 0/0}
+GHC.ST.$fMonoidST_$cmappend [InlPrag=INLINE (sat-args=0)]
+  :: forall a s. Monoid a => ST s a -> ST s a -> ST s a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_X1JhJ)
+                 (@ s_X1JhM)
+                 ($dMonoid_X1JhP [Occ=OnceL] :: Monoid a_X1JhJ) ->
+                 let {
+                   $dSemigroup_X1Jgv [Occ=OnceL] :: Semigroup a_X1JhJ
+                   [LclId]
+                   $dSemigroup_X1Jgv
+                     = GHC.Base.$p1Monoid @ a_X1JhJ $dMonoid_X1JhP } in
+                 (\ (eta_X2g [Occ=Once] :: ST s_X1JhM a_X1JhJ)
+                    (eta1_X1T [Occ=Once] :: ST s_X1JhM a_X1JhJ)
+                    (eta2_X3L [Occ=Once] :: State# s_X1JhM) ->
+                    case (eta_X2g
+                          `cast` (GHC.ST.N:ST[0] <s_X1JhM>_N <a_X1JhJ>_R
+                                  :: (ST s_X1JhM a_X1JhJ :: *) ~R# (STRep s_X1JhM a_X1JhJ :: *)))
+                           eta2_X3L
+                    of
+                    { (# ipv_s1JkK [Occ=Once], ipv1_s1JkL [Occ=Once] #) ->
+                    case (eta1_X1T
+                          `cast` (GHC.ST.N:ST[0] <s_X1JhM>_N <a_X1JhJ>_R
+                                  :: (ST s_X1JhM a_X1JhJ :: *) ~R# (STRep s_X1JhM a_X1JhJ :: *)))
+                           ipv_s1JkK
+                    of
+                    { (# ipv2_X1Jmt [Occ=Once], ipv3_X1Jmv [Occ=Once] #) ->
+                    (# ipv2_X1Jmt,
+                       <> @ a_X1JhJ $dSemigroup_X1Jgv ipv1_s1JkL ipv3_X1Jmv #)
+                    }
+                    })
+                 `cast` (<ST s_X1JhM a_X1JhJ>_R
+                         ->_R <ST s_X1JhM a_X1JhJ>_R
+                         ->_R Sym (GHC.ST.N:ST[0] <s_X1JhM>_N <a_X1JhJ>_R)
+                         :: (ST s_X1JhM a_X1JhJ
+                             -> ST s_X1JhM a_X1JhJ -> STRep s_X1JhM a_X1JhJ :: *)
+                            ~R# (ST s_X1JhM a_X1JhJ
+                                 -> ST s_X1JhM a_X1JhJ -> ST s_X1JhM a_X1JhJ :: *))}]
+GHC.ST.$fMonoidST_$cmappend
+  = $cmappend_r1JzA
+    `cast` (forall (a :: <*>_N) (s :: <*>_N).
+            <Monoid a>_R
+            ->_R <ST s a>_R
+            ->_R <ST s a>_R
+            ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall a s. Monoid a => ST s a -> ST s a -> STRep s a :: *)
+               ~R# (forall a s. Monoid a => ST s a -> ST s a -> ST s a :: *))
+
+-- RHS size: {terms: 39, types: 85, coercions: 3, joins: 0/3}
+GHC.ST.$fMonoidST1
+  :: forall a s.
+     Monoid a =>
+     [ST s a] -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(C(C1(U)),A,A),1*U,A,A)><S,1*U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0 0] 250 0}]
+GHC.ST.$fMonoidST1
+  = \ (@ a_X1JfC)
+      (@ s_X1JfE)
+      ($dMonoid_X1JfG :: Monoid a_X1JfC)
+      (eta_B1 :: [ST s_X1JfE a_X1JfC])
+      (eta1_X2 :: State# s_X1JfE) ->
+      let {
+        $dSemigroup_s1Jp8 [Dmd=<L,U(C(C1(U)),A,A)>] :: Semigroup a_X1JfC
+        [LclId]
+        $dSemigroup_s1Jp8
+          = GHC.Base.$p1Monoid @ a_X1JfC $dMonoid_X1JfG } in
+      let {
+        lvl_s1Jx7 :: a_X1JfC
+        [LclId]
+        lvl_s1Jx7 = mempty @ a_X1JfC $dMonoid_X1JfG } in
+      letrec {
+        go_s1JsQ [Occ=LoopBreaker]
+          :: [ST s_X1JfE a_X1JfC]
+             -> State# s_X1JfE -> (# State# s_X1JfE, a_X1JfC #)
+        [LclId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []]
+        go_s1JsQ
+          = \ (ds_i1y1c :: [ST s_X1JfE a_X1JfC])
+              (eta2_X22 :: State# s_X1JfE) ->
+              case ds_i1y1c of {
+                [] -> (# eta2_X22, lvl_s1Jx7 #);
+                : y_i1y1h ys_i1y1i ->
+                  case (y_i1y1h
+                        `cast` (GHC.ST.N:ST[0] <s_X1JfE>_N <a_X1JfC>_R
+                                :: (ST s_X1JfE a_X1JfC :: *) ~R# (STRep s_X1JfE a_X1JfC :: *)))
+                         eta2_X22
+                  of
+                  { (# ipv_s1JkK, ipv1_s1JkL #) ->
+                  case go_s1JsQ ys_i1y1i ipv_s1JkK of
+                  { (# ipv2_X1Jmt, ipv3_X1Jmv #) ->
+                  (# ipv2_X1Jmt,
+                     <> @ a_X1JfC $dSemigroup_s1Jp8 ipv1_s1JkL ipv3_X1Jmv #)
+                  }
+                  }
+              }; } in
+      go_s1JsQ eta_B1 eta1_X2
+
+-- RHS size: {terms: 15, types: 25, coercions: 13, joins: 0/0}
+GHC.ST.$fMonoidST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s. Monoid a => Monoid (ST s a)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(U(C(C1(U)),A,A),U,A,A)>m,
+ Unf=DFun: \ (@ a_a1J61) (@ s_a1J62) (v_X1N :: Monoid a_a1J61) ->
+       GHC.Base.C:Monoid TYPE: ST s_a1J62 a_a1J61
+                         GHC.ST.$fMonoidST_$cp1Monoid @ a_a1J61 @ s_a1J62 v_X1N
+                         (\ (s1_a1J6g [Occ=Once] :: State# s_a1J62) ->
+                            (# s1_a1J6g, mempty @ a_a1J61 v_X1N #))
+                         `cast` (Sym (GHC.ST.N:ST[0] <s_a1J62>_N <a_a1J61>_R)
+                                 :: (STRep s_a1J62 a_a1J61 :: *) ~R# (ST s_a1J62 a_a1J61 :: *))
+                         GHC.ST.$fMonoidST_$cmappend @ a_a1J61 @ s_a1J62 v_X1N
+                         (GHC.ST.$fMonoidST1 @ a_a1J61 @ s_a1J62 v_X1N)
+                         `cast` (<[ST s_a1J62 a_a1J61]>_R
+                                 ->_R Sym (GHC.ST.N:ST[0] <s_a1J62>_N <a_a1J61>_R)
+                                 :: ([ST s_a1J62 a_a1J61] -> STRep s_a1J62 a_a1J61 :: *)
+                                    ~R# ([ST s_a1J62 a_a1J61] -> ST s_a1J62 a_a1J61 :: *))]
+GHC.ST.$fMonoidST
+  = \ (@ a_X1JfA) (@ s_X1Jhz) ($dMonoid_X1JhC :: Monoid a_X1JfA) ->
+      GHC.Base.C:Monoid
+        @ (ST s_X1Jhz a_X1JfA)
+        (GHC.ST.$fMonoidST_$cp1Monoid @ a_X1JfA @ s_X1Jhz $dMonoid_X1JhC)
+        ((\ (s1_a1J6g :: State# s_X1Jhz) ->
+            (# s1_a1J6g, mempty @ a_X1JfA $dMonoid_X1JhC #))
+         `cast` (Sym (GHC.ST.N:ST[0] <s_X1Jhz>_N <a_X1JfA>_R)
+                 :: (STRep s_X1Jhz a_X1JfA :: *) ~R# (ST s_X1Jhz a_X1JfA :: *)))
+        (GHC.ST.$fMonoidST_$cmappend @ a_X1JfA @ s_X1Jhz $dMonoid_X1JhC)
+        ((GHC.ST.$fMonoidST1 @ a_X1JfA @ s_X1Jhz $dMonoid_X1JhC)
+         `cast` (<[ST s_X1Jhz a_X1JfA]>_R
+                 ->_R Sym (GHC.ST.N:ST[0] <s_X1Jhz>_N <a_X1JfA>_R)
+                 :: ([ST s_X1Jhz a_X1JfA] -> STRep s_X1Jhz a_X1JfA :: *)
+                    ~R# ([ST s_X1Jhz a_X1JfA] -> ST s_X1Jhz a_X1JfA :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.ST.$fShowST4 = "<<ST action>>"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST3 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.ST.$fShowST3 = unpackCString# GHC.ST.$fShowST4
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST2 :: [Char] -> [Char]
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+GHC.ST.$fShowST2 = ++ @ Char GHC.ST.$fShowST3
+
+-- RHS size: {terms: 5, types: 8, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST_$cshowsPrec :: forall s a. Int -> ST s a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ s_a1Jdq) (@ a_a1Jdr) _ [Occ=Dead] _ [Occ=Dead] ->
+                 GHC.ST.$fShowST2}]
+GHC.ST.$fShowST_$cshowsPrec
+  = \ (@ s_a1Jdq) (@ a_a1Jdr) _ [Occ=Dead] _ [Occ=Dead] ->
+      GHC.ST.$fShowST2
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST_$cshow :: forall s a. ST s a -> String
+[GblId,
+ Arity=1,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ s_a1Jdq) (@ a_a1Jdr) _ [Occ=Dead] -> GHC.ST.$fShowST3}]
+GHC.ST.$fShowST_$cshow
+  = \ (@ s_a1Jdq) (@ a_a1Jdr) _ [Occ=Dead] -> GHC.ST.$fShowST3
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST1 :: forall a s. ST s a -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_a1Jdr) (@ s_a1Jdq) _ [Occ=Dead] -> GHC.ST.$fShowST2}]
+GHC.ST.$fShowST1
+  = \ (@ a_a1Jdr) (@ s_a1Jdq) _ [Occ=Dead] -> GHC.ST.$fShowST2
+
+-- RHS size: {terms: 4, types: 9, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST_$cshowList :: forall s a. [ST s a] -> ShowS
+[GblId,
+ Arity=2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+GHC.ST.$fShowST_$cshowList
+  = \ (@ s_a1Jdq) (@ a_a1Jdr) ->
+      showList__
+        @ (ST s_a1Jdq a_a1Jdr) (GHC.ST.$fShowST1 @ a_a1Jdr @ s_a1Jdq)
+
+-- RHS size: {terms: 6, types: 13, coercions: 0, joins: 0/0}
+GHC.ST.$fShowST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. Show (ST s a)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_a1J5Z) (@ a_a1J60) ->
+       GHC.Show.C:Show TYPE: ST s_a1J5Z a_a1J60
+                       GHC.ST.$fShowST_$cshowsPrec @ s_a1J5Z @ a_a1J60
+                       GHC.ST.$fShowST_$cshow @ s_a1J5Z @ a_a1J60
+                       GHC.ST.$fShowST_$cshowList @ s_a1J5Z @ a_a1J60]
+GHC.ST.$fShowST
+  = \ (@ s_a1Jdq) (@ a_a1Jdr) ->
+      GHC.Show.C:Show
+        @ (ST s_a1Jdq a_a1Jdr)
+        (GHC.ST.$fShowST_$cshowsPrec @ s_a1Jdq @ a_a1Jdr)
+        (GHC.ST.$fShowST_$cshow @ s_a1Jdq @ a_a1Jdr)
+        (GHC.ST.$fShowST_$cshowList @ s_a1Jdq @ a_a1Jdr)
+
+-- RHS size: {terms: 11, types: 22, coercions: 3, joins: 0/0}
+liftST :: forall s a. ST s a -> State# s -> STret s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_a1JcR)
+                 (@ a_a1JcS)
+                 (ds_d1Jiv [Occ=Once] :: ST s_a1JcR a_a1JcS)
+                 (s1_a1J6B [Occ=Once] :: State# s_a1JcR) ->
+                 case (ds_d1Jiv
+                       `cast` (GHC.ST.N:ST[0] <s_a1JcR>_N <a_a1JcS>_R
+                               :: (ST s_a1JcR a_a1JcS :: *) ~R# (STRep s_a1JcR a_a1JcS :: *)))
+                        s1_a1J6B
+                 of
+                 { (# ipv_s1Jmy [Occ=Once], ipv1_s1Jmz [Occ=Once] #) ->
+                 GHC.ST.STret @ s_a1JcR @ a_a1JcS ipv_s1Jmy ipv1_s1Jmz
+                 }}]
+liftST
+  = \ (@ s_a1JcR)
+      (@ a_a1JcS)
+      (ds_d1Jiv :: ST s_a1JcR a_a1JcS)
+      (s1_a1J6B :: State# s_a1JcR) ->
+      case (ds_d1Jiv
+            `cast` (GHC.ST.N:ST[0] <s_a1JcR>_N <a_a1JcS>_R
+                    :: (ST s_a1JcR a_a1JcS :: *) ~R# (STRep s_a1JcR a_a1JcS :: *)))
+             s1_a1J6B
+      of
+      { (# ipv_s1Jmy, ipv1_s1Jmz #) ->
+      GHC.ST.STret @ s_a1JcR @ a_a1JcS ipv_s1Jmy ipv1_s1Jmz
+      }
+
+-- RHS size: {terms: 22, types: 45, coercions: 3, joins: 0/1}
+GHC.ST.fixST1
+  :: forall a s. (a -> ST s a) -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a1JcY)
+                 (@ s_a1JcZ)
+                 (k_a1J6K [Occ=Once!] :: a_a1JcY -> ST s_a1JcZ a_a1JcY)
+                 (s1_a1J6L [Occ=Once] :: State# s_a1JcZ) ->
+                 letrec {
+                   ans_s1Jp6 [Occ=LoopBreaker] :: STret s_a1JcZ a_a1JcY
+                   [LclId]
+                   ans_s1Jp6
+                     = case ((k_a1J6K
+                                (case ans_s1Jp6 of { STret _ [Occ=Dead] r_X1JdT [Occ=Once] ->
+                                 r_X1JdT
+                                 }))
+                             `cast` (GHC.ST.N:ST[0] <s_a1JcZ>_N <a_a1JcY>_R
+                                     :: (ST s_a1JcZ a_a1JcY :: *) ~R# (STRep s_a1JcZ a_a1JcY :: *)))
+                              s1_a1J6L
+                       of
+                       { (# ipv_s1Jmy [Occ=Once], ipv1_s1Jmz [Occ=Once] #) ->
+                       GHC.ST.STret @ s_a1JcZ @ a_a1JcY ipv_s1Jmy ipv1_s1Jmz
+                       }; } in
+                 case ans_s1Jp6 of { STret s'_a1J6O [Occ=Once] x_a1J6P [Occ=Once] ->
+                 (# s'_a1J6O, x_a1J6P #)
+                 }}]
+GHC.ST.fixST1
+  = \ (@ a_a1JcY)
+      (@ s_a1JcZ)
+      (k_a1J6K :: a_a1JcY -> ST s_a1JcZ a_a1JcY)
+      (s1_a1J6L :: State# s_a1JcZ) ->
+      letrec {
+        ans_s1Jp6 [Occ=LoopBreaker] :: STret s_a1JcZ a_a1JcY
+        [LclId]
+        ans_s1Jp6
+          = case ((k_a1J6K
+                     (case ans_s1Jp6 of { STret ds_d1JiS r_X1JdT -> r_X1JdT }))
+                  `cast` (GHC.ST.N:ST[0] <s_a1JcZ>_N <a_a1JcY>_R
+                          :: (ST s_a1JcZ a_a1JcY :: *) ~R# (STRep s_a1JcZ a_a1JcY :: *)))
+                   s1_a1J6L
+            of
+            { (# ipv_s1Jmy, ipv1_s1Jmz #) ->
+            GHC.ST.STret @ s_a1JcZ @ a_a1JcY ipv_s1Jmy ipv1_s1Jmz
+            }; } in
+      case ans_s1Jp6 of { STret s'_a1J6O x_a1J6P ->
+      (# s'_a1J6O, x_a1J6P #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+fixST :: forall a s. (a -> ST s a) -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.ST.fixST1
+               `cast` (forall (a :: <*>_N) (s :: <*>_N).
+                       <a -> ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+                       :: (forall a s. (a -> ST s a) -> STRep s a :: *)
+                          ~R# (forall a s. (a -> ST s a) -> ST s a :: *))}]
+fixST
+  = GHC.ST.fixST1
+    `cast` (forall (a :: <*>_N) (s :: <*>_N).
+            <a -> ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall a s. (a -> ST s a) -> STRep s a :: *)
+               ~R# (forall a s. (a -> ST s a) -> ST s a :: *))
+
+-- RHS size: {terms: 11, types: 27, coercions: 3, joins: 0/0}
+GHC.ST.unsafeDupableInterleaveST1
+  :: forall s a. ST s a -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_a1Jcg)
+                 (@ a_a1Jch)
+                 (ds_d1Jie [Occ=Once] :: ST s_a1Jcg a_a1Jch)
+                 (s1_a1J6H :: State# s_a1Jcg) ->
+                 (# s1_a1J6H,
+                    case (ds_d1Jie
+                          `cast` (GHC.ST.N:ST[0] <s_a1Jcg>_N <a_a1Jch>_R
+                                  :: (ST s_a1Jcg a_a1Jch :: *) ~R# (STRep s_a1Jcg a_a1Jch :: *)))
+                           s1_a1J6H
+                    of
+                    { (# _ [Occ=Dead], ipv1_s1JmK [Occ=Once] #) ->
+                    ipv1_s1JmK
+                    } #)}]
+GHC.ST.unsafeDupableInterleaveST1
+  = \ (@ s_a1Jcg)
+      (@ a_a1Jch)
+      (ds_d1Jie :: ST s_a1Jcg a_a1Jch)
+      (s1_a1J6H :: State# s_a1Jcg) ->
+      (# s1_a1J6H,
+         case (ds_d1Jie
+               `cast` (GHC.ST.N:ST[0] <s_a1Jcg>_N <a_a1Jch>_R
+                       :: (ST s_a1Jcg a_a1Jch :: *) ~R# (STRep s_a1Jcg a_a1Jch :: *)))
+                s1_a1J6H
+         of
+         { (# ipv_s1JmJ, ipv1_s1JmK #) ->
+         ipv1_s1JmK
+         } #)
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+unsafeDupableInterleaveST [InlPrag=NOINLINE]
+  :: forall s a. ST s a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.ST.unsafeDupableInterleaveST1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a. ST s a -> STRep s a :: *)
+                          ~R# (forall s a. ST s a -> ST s a :: *))}]
+unsafeDupableInterleaveST
+  = GHC.ST.unsafeDupableInterleaveST1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. ST s a -> STRep s a :: *)
+               ~R# (forall s a. ST s a -> ST s a :: *))
+
+-- RHS size: {terms: 13, types: 16, coercions: 10, joins: 0/0}
+unsafeInterleaveST1_r1JzB
+  :: forall s a. ST s a -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []]
+unsafeInterleaveST1_r1JzB
+  = \ (@ s_a1JcE)
+      (@ a_a1JcF)
+      (eta_X29 :: ST s_a1JcE a_a1JcF)
+      (eta1_X2j :: State# s_a1JcE) ->
+      ((unsafeDupableInterleaveST
+          @ s_a1JcE
+          @ a_a1JcF
+          ((\ (s1_a1J6a [OS=OneShot] :: State# s_a1JcE) ->
+              case noDuplicate# @ s_a1JcE s1_a1J6a of wild_X21 { __DEFAULT ->
+              (eta_X29
+               `cast` (GHC.ST.N:ST[0] <s_a1JcE>_N <a_a1JcF>_R
+                       :: (ST s_a1JcE a_a1JcF :: *) ~R# (STRep s_a1JcE a_a1JcF :: *)))
+                wild_X21
+              })
+           `cast` (Sym (GHC.ST.N:ST[0] <s_a1JcE>_N <a_a1JcF>_R)
+                   :: (STRep s_a1JcE a_a1JcF :: *) ~R# (ST s_a1JcE a_a1JcF :: *))))
+       `cast` (GHC.ST.N:ST[0] <s_a1JcE>_N <a_a1JcF>_R
+               :: (ST s_a1JcE a_a1JcF :: *) ~R# (STRep s_a1JcE a_a1JcF :: *)))
+        eta1_X2j
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+unsafeInterleaveST [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. ST s a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ s_X1Jf5)
+                 (@ a_X1Jf7)
+                 (m_a1J6F [Occ=Once] :: ST s_X1Jf5 a_X1Jf7) ->
+                 unsafeDupableInterleaveST
+                   @ s_X1Jf5
+                   @ a_X1Jf7
+                   ((\ (s1_a1J6a [Occ=Once] :: State# s_X1Jf5) ->
+                       case noDuplicate# @ s_X1Jf5 s1_a1J6a of wild_X21 { __DEFAULT ->
+                       (m_a1J6F
+                        `cast` (GHC.ST.N:ST[0] <s_X1Jf5>_N <a_X1Jf7>_R
+                                :: (ST s_X1Jf5 a_X1Jf7 :: *) ~R# (STRep s_X1Jf5 a_X1Jf7 :: *)))
+                         wild_X21
+                       })
+                    `cast` (Sym (GHC.ST.N:ST[0] <s_X1Jf5>_N <a_X1Jf7>_R)
+                            :: (STRep s_X1Jf5 a_X1Jf7 :: *) ~R# (ST s_X1Jf5 a_X1Jf7 :: *)))}]
+unsafeInterleaveST
+  = unsafeInterleaveST1_r1JzB
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. ST s a -> STRep s a :: *)
+               ~R# (forall s a. ST s a -> ST s a :: *))
+
+-- RHS size: {terms: 7, types: 38, coercions: 3, joins: 0/0}
+runST [InlPrag=INLINE (sat-args=1)]
+  :: forall a. (forall s. ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a1Jc9)
+                 (ds_d1JhZ [Occ=Once] :: forall s. ST s a_a1Jc9) ->
+                 case runRW#
+                        @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+                        @ (# State# RealWorld, a_a1Jc9 #)
+                        ((ds_d1JhZ @ RealWorld)
+                         `cast` (GHC.ST.N:ST[0] <RealWorld>_N <a_a1Jc9>_R
+                                 :: (ST RealWorld a_a1Jc9 :: *) ~R# (STRep RealWorld a_a1Jc9 :: *)))
+                 of
+                 { (# _ [Occ=Dead], ipv1_s1JmT [Occ=Once] #) ->
+                 ipv1_s1JmT
+                 }}]
+runST
+  = \ (@ a_a1Jc9) (ds_d1JhZ :: forall s. ST s a_a1Jc9) ->
+      case runRW#
+             @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+             @ (# State# RealWorld, a_a1Jc9 #)
+             ((ds_d1JhZ @ RealWorld)
+              `cast` (GHC.ST.N:ST[0] <RealWorld>_N <a_a1Jc9>_R
+                      :: (ST RealWorld a_a1Jc9 :: *) ~R# (STRep RealWorld a_a1Jc9 :: *)))
+      of
+      { (# ipv_s1JmO, ipv1_s1JmP #) ->
+      ipv1_s1JmP
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.ST.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.ST.$trModule3 = GHC.Types.TrNameS GHC.ST.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.ST.$trModule2 = "GHC.ST"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.ST.$trModule1 = GHC.Types.TrNameS GHC.ST.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.ST.$trModule
+  = GHC.Types.Module GHC.ST.$trModule3 GHC.ST.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r1JzC :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r1JzC
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tc'LiftedRep (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_r1JzD :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_r1JzD
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcRuntimeRep (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep2_r1JzE :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r1JzE = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep3_r1JzF :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r1JzF = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep4_r1JzG :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep4_r1JzG
+  = GHC.Types.: @ KindRep $krep3_r1JzF (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r1JzH :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_r1JzH
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcState# $krep4_r1JzG
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep6_r1JzI :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep6_r1JzI
+  = GHC.Types.: @ KindRep $krep1_r1JzD (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep7_r1JzJ :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep7_r1JzJ
+  = GHC.Types.KindRepTyConApp GHC.Types.$tc'[] $krep6_r1JzI
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep8_r1JzK :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep8_r1JzK
+  = GHC.Types.: @ KindRep $krep7_r1JzJ (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep9_r1JzL :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep9_r1JzL
+  = GHC.Types.KindRepTyConApp GHC.Types.$tc'TupleRep $krep8_r1JzK
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep10_r1JzM :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep10_r1JzM
+  = GHC.Types.: @ KindRep $krep2_r1JzE (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep11_r1JzN :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep11_r1JzN = GHC.Types.: @ KindRep $krep5_r1JzH $krep10_r1JzM
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep12_r1JzO :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep12_r1JzO = GHC.Types.: @ KindRep $krep_r1JzC $krep11_r1JzN
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep13_r1JzP :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep13_r1JzP = GHC.Types.: @ KindRep $krep9_r1JzL $krep12_r1JzO
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep14_r1JzQ :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep14_r1JzQ
+  = GHC.Types.KindRepTyConApp GHC.Types.$tc(#,#) $krep13_r1JzP
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep15_r1JzR :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep15_r1JzR = GHC.Types.KindRepFun $krep5_r1JzH $krep14_r1JzQ
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tcST2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.ST.$tcST2 = "ST"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tcST1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.ST.$tcST1 = GHC.Types.TrNameS GHC.ST.$tcST2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tcST :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.ST.$tcST
+  = GHC.Types.TyCon
+      6436416558974291297##
+      634350057185658725##
+      GHC.ST.$trModule
+      GHC.ST.$tcST1
+      0#
+      GHC.Types.krep$*->*->*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep16_r1JzS :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep16_r1JzS = GHC.Types.: @ KindRep $krep3_r1JzF $krep10_r1JzM
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep17_r1JzT :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep17_r1JzT
+  = GHC.Types.KindRepTyConApp GHC.ST.$tcST $krep16_r1JzS
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'ST1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.ST.$tc'ST1 = GHC.Types.KindRepFun $krep15_r1JzR $krep17_r1JzT
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'ST3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.ST.$tc'ST3 = "'ST"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'ST2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.ST.$tc'ST2 = GHC.Types.TrNameS GHC.ST.$tc'ST3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'ST :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.ST.$tc'ST
+  = GHC.Types.TyCon
+      13769291328326942007##
+      10130644975726413154##
+      GHC.ST.$trModule
+      GHC.ST.$tc'ST2
+      2#
+      GHC.ST.$tc'ST1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tcSTret2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.ST.$tcSTret2 = "STret"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tcSTret1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.ST.$tcSTret1 = GHC.Types.TrNameS GHC.ST.$tcSTret2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tcSTret :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.ST.$tcSTret
+  = GHC.Types.TyCon
+      18266429679521839845##
+      6736124203785980802##
+      GHC.ST.$trModule
+      GHC.ST.$tcSTret1
+      0#
+      GHC.Types.krep$*->*->*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep18_r1JzU :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep18_r1JzU
+  = GHC.Types.KindRepTyConApp GHC.ST.$tcSTret $krep16_r1JzS
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep19_r1JzV :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep19_r1JzV = GHC.Types.KindRepFun $krep2_r1JzE $krep18_r1JzU
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'STret1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.ST.$tc'STret1 = GHC.Types.KindRepFun $krep5_r1JzH $krep19_r1JzV
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'STret3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.ST.$tc'STret3 = "'STret"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'STret2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.ST.$tc'STret2 = GHC.Types.TrNameS GHC.ST.$tc'STret3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.ST.$tc'STret :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.ST.$tc'STret
+  = GHC.Types.TyCon
+      12272761794237483025##
+      16570602352537544279##
+      GHC.ST.$trModule
+      GHC.ST.$tc'STret2
+      2#
+      GHC.ST.$tc'STret1
+
+

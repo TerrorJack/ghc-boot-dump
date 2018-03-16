@@ -1,0 +1,662 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:15.955763068 UTC
+
+lvl_rcmP9 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException
+            GHC.IO.Exception.ExitSuccess;
+
+System.Exit.exitSuccess1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_scmPm] raiseIO# [lvl_rcmP9 eta_scmPm];
+
+lvl1_rcmPa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "exitWith"#;
+
+lvl2_rcmPb :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl1_rcmPa;
+
+lvl3_rcmPc :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ExitFailure 0"#;
+
+lvl4_rcmPd :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_rcmPc;
+
+lvl5_rcmPe :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             lvl2_rcmPb
+                                             lvl4_rcmPd
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+lvl6_rcmPf :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException lvl5_rcmPe;
+
+System.Exit.exitWith1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_scmPn] raiseIO# [lvl6_rcmPf eta_scmPn];
+
+System.Exit.exitWith
+  :: forall a. GHC.IO.Exception.ExitCode -> GHC.Types.IO a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scmPo]
+        case ds_scmPo of wild_scmPp {
+          GHC.IO.Exception.ExitSuccess -> System.Exit.exitSuccess1;
+          GHC.IO.Exception.ExitFailure n_scmPq [Occ=Once!] ->
+              case n_scmPq of {
+                GHC.Types.I# x_scmPs [Occ=Once!] ->
+                    case x_scmPs of {
+                      __DEFAULT ->
+                          let {
+                            sat_scmPw [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #)
+                            [LclId] =
+                                [wild_scmPp] \r [eta_scmPu]
+                                    let {
+                                      sat_scmPv [Occ=Once] :: GHC.Exception.SomeException
+                                      [LclId] =
+                                          [wild_scmPp] \u []
+                                              GHC.IO.Exception.$fExceptionExitCode_$ctoException
+                                                  wild_scmPp;
+                                    } in  raiseIO# [sat_scmPv eta_scmPu];
+                          } in  sat_scmPw;
+                      0# -> System.Exit.exitWith1;
+                    };
+              };
+        };
+
+lvl7_rcmPg :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+lvl8_rcmPh :: GHC.IO.Exception.ExitCode
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.ExitFailure! [lvl7_rcmPg];
+
+lvl9_rcmPi :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException lvl8_rcmPh;
+
+System.Exit.exitFailure1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_scmPx] raiseIO# [lvl9_rcmPi eta_scmPx];
+
+exitFailure2_rcmPj
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [eta_scmPy] raiseIO# [lvl9_rcmPi eta_scmPy];
+
+System.Exit.exitFailure :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_B1] exitFailure2_rcmPj eta_B1;
+
+System.Exit.die1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [err_scmPz s_scmPA]
+        case
+            GHC.IO.Handle.Text.hPutStr'
+                GHC.IO.Handle.FD.stderr err_scmPz GHC.Types.True s_scmPA
+        of
+        { (#,#) ipv_scmPC [Occ=Once] _ [Occ=Dead] ->
+              raiseIO# [lvl9_rcmPi ipv_scmPC];
+        };
+
+System.Exit.die :: forall a. GHC.Base.String -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] System.Exit.die1 eta_B2 eta_B1;
+
+exitSuccess2_rcmPk
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [eta_scmPE] raiseIO# [lvl_rcmP9 eta_scmPE];
+
+System.Exit.exitSuccess :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_B1] exitSuccess2_rcmPk eta_B1;
+
+System.Exit.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Exit.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule4];
+
+System.Exit.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Exit"#;
+
+System.Exit.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule2];
+
+System.Exit.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Exit.$trModule3
+                                     System.Exit.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:15.959161987 UTC
+
+lvl_rcmP9 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException
+            GHC.IO.Exception.ExitSuccess;
+
+System.Exit.exitSuccess1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] raiseIO# [lvl_rcmP9 GHC.Prim.void#];
+
+lvl1_rcmPa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "exitWith"#;
+
+lvl2_rcmPb :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl1_rcmPa;
+
+lvl3_rcmPc :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ExitFailure 0"#;
+
+lvl4_rcmPd :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_rcmPc;
+
+lvl5_rcmPe :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             lvl2_rcmPb
+                                             lvl4_rcmPd
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+lvl6_rcmPf :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException lvl5_rcmPe;
+
+System.Exit.exitWith1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] raiseIO# [lvl6_rcmPf GHC.Prim.void#];
+
+System.Exit.exitWith
+  :: forall a. GHC.IO.Exception.ExitCode -> GHC.Types.IO a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scmPo]
+        case ds_scmPo of wild_scmPp {
+          GHC.IO.Exception.ExitSuccess -> System.Exit.exitSuccess1;
+          GHC.IO.Exception.ExitFailure n_scmPq [Occ=Once!] ->
+              case n_scmPq of {
+                GHC.Types.I# x_scmPs [Occ=Once!] ->
+                    case x_scmPs of {
+                      __DEFAULT ->
+                          let {
+                            sat_scmPw [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #)
+                            [LclId] =
+                                [wild_scmPp] \r [void_0E]
+                                    let {
+                                      sat_scmPv [Occ=Once] :: GHC.Exception.SomeException
+                                      [LclId] =
+                                          [wild_scmPp] \u []
+                                              GHC.IO.Exception.$fExceptionExitCode_$ctoException
+                                                  wild_scmPp;
+                                    } in  raiseIO# [sat_scmPv GHC.Prim.void#];
+                          } in  sat_scmPw;
+                      0# -> System.Exit.exitWith1;
+                    };
+              };
+        };
+
+lvl7_rcmPg :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+lvl8_rcmPh :: GHC.IO.Exception.ExitCode
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.ExitFailure! [lvl7_rcmPg];
+
+lvl9_rcmPi :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException lvl8_rcmPh;
+
+System.Exit.exitFailure1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] raiseIO# [lvl9_rcmPi GHC.Prim.void#];
+
+exitFailure2_rcmPj
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [void_0E] raiseIO# [lvl9_rcmPi GHC.Prim.void#];
+
+System.Exit.exitFailure :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] exitFailure2_rcmPj GHC.Prim.void#;
+
+System.Exit.die1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [err_scmPz void_0E]
+        case
+            GHC.IO.Handle.Text.hPutStr'
+                GHC.IO.Handle.FD.stderr err_scmPz GHC.Types.True GHC.Prim.void#
+        of
+        { Unit# _ [Occ=Dead] -> raiseIO# [lvl9_rcmPi GHC.Prim.void#];
+        };
+
+System.Exit.die :: forall a. GHC.Base.String -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] System.Exit.die1 eta_B2 GHC.Prim.void#;
+
+exitSuccess2_rcmPk
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [void_0E] raiseIO# [lvl_rcmP9 GHC.Prim.void#];
+
+System.Exit.exitSuccess :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] exitSuccess2_rcmPk GHC.Prim.void#;
+
+System.Exit.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Exit.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule4];
+
+System.Exit.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Exit"#;
+
+System.Exit.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule2];
+
+System.Exit.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Exit.$trModule3
+                                     System.Exit.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:16.194496523 UTC
+
+lvl_rcmP9 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException
+            GHC.IO.Exception.ExitSuccess;
+
+System.Exit.exitSuccess1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_scmZn] raiseIO# [lvl_rcmP9 eta_scmZn];
+
+lvl1_rcmPa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "exitWith"#;
+
+lvl2_rcmPb :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl1_rcmPa;
+
+lvl3_rcmPc :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ExitFailure 0"#;
+
+lvl4_rcmPd :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_rcmPc;
+
+lvl5_rcmPe :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             lvl2_rcmPb
+                                             lvl4_rcmPd
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+lvl6_rcmPf :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException lvl5_rcmPe;
+
+System.Exit.exitWith1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_scmZo] raiseIO# [lvl6_rcmPf eta_scmZo];
+
+System.Exit.exitWith
+  :: forall a. GHC.IO.Exception.ExitCode -> GHC.Types.IO a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scmZp]
+        case ds_scmZp of wild_scmZq {
+          GHC.IO.Exception.ExitSuccess -> System.Exit.exitSuccess1;
+          GHC.IO.Exception.ExitFailure n_scmZr [Occ=Once!] ->
+              case n_scmZr of {
+                GHC.Types.I# x_scmZt [Occ=Once!] ->
+                    case x_scmZt of {
+                      __DEFAULT ->
+                          let {
+                            sat_scmZx [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #)
+                            [LclId] =
+                                [wild_scmZq] \r [eta_scmZv]
+                                    let {
+                                      sat_scmZw [Occ=Once] :: GHC.Exception.SomeException
+                                      [LclId] =
+                                          [wild_scmZq] \u []
+                                              GHC.IO.Exception.$fExceptionExitCode_$ctoException
+                                                  wild_scmZq;
+                                    } in  raiseIO# [sat_scmZw eta_scmZv];
+                          } in  sat_scmZx;
+                      0# -> System.Exit.exitWith1;
+                    };
+              };
+        };
+
+lvl7_rcmPg :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+lvl8_rcmPh :: GHC.IO.Exception.ExitCode
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.ExitFailure! [lvl7_rcmPg];
+
+lvl9_rcmPi :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException lvl8_rcmPh;
+
+System.Exit.exitFailure1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_scmZy] raiseIO# [lvl9_rcmPi eta_scmZy];
+
+exitFailure2_rcmPj
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [eta_scmZz] raiseIO# [lvl9_rcmPi eta_scmZz];
+
+System.Exit.exitFailure :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_B1] exitFailure2_rcmPj eta_B1;
+
+System.Exit.die1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [err_scmZA s_scmZB]
+        case
+            GHC.IO.Handle.Text.hPutStr'
+                GHC.IO.Handle.FD.stderr err_scmZA GHC.Types.True s_scmZB
+        of
+        { (#,#) ipv_scmZD [Occ=Once] _ [Occ=Dead] ->
+              raiseIO# [lvl9_rcmPi ipv_scmZD];
+        };
+
+System.Exit.die :: forall a. GHC.Base.String -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] System.Exit.die1 eta_B2 eta_B1;
+
+exitSuccess2_rcmPk
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [eta_scmZF] raiseIO# [lvl_rcmP9 eta_scmZF];
+
+System.Exit.exitSuccess :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_B1] exitSuccess2_rcmPk eta_B1;
+
+System.Exit.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Exit.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule4];
+
+System.Exit.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Exit"#;
+
+System.Exit.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule2];
+
+System.Exit.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Exit.$trModule3
+                                     System.Exit.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:16.198362942 UTC
+
+lvl_rcmP9 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException
+            GHC.IO.Exception.ExitSuccess;
+
+System.Exit.exitSuccess1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] raiseIO# [lvl_rcmP9 GHC.Prim.void#];
+
+lvl1_rcmPa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "exitWith"#;
+
+lvl2_rcmPb :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl1_rcmPa;
+
+lvl3_rcmPc :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ExitFailure 0"#;
+
+lvl4_rcmPd :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_rcmPc;
+
+lvl5_rcmPe :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             lvl2_rcmPb
+                                             lvl4_rcmPd
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+lvl6_rcmPf :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException lvl5_rcmPe;
+
+System.Exit.exitWith1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] raiseIO# [lvl6_rcmPf GHC.Prim.void#];
+
+System.Exit.exitWith
+  :: forall a. GHC.IO.Exception.ExitCode -> GHC.Types.IO a
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scmZp]
+        case ds_scmZp of wild_scmZq {
+          GHC.IO.Exception.ExitSuccess -> System.Exit.exitSuccess1;
+          GHC.IO.Exception.ExitFailure n_scmZr [Occ=Once!] ->
+              case n_scmZr of {
+                GHC.Types.I# x_scmZt [Occ=Once!] ->
+                    case x_scmZt of {
+                      __DEFAULT ->
+                          let {
+                            sat_scmZx [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #)
+                            [LclId] =
+                                [wild_scmZq] \r [void_0E]
+                                    let {
+                                      sat_scmZw [Occ=Once] :: GHC.Exception.SomeException
+                                      [LclId] =
+                                          [wild_scmZq] \u []
+                                              GHC.IO.Exception.$fExceptionExitCode_$ctoException
+                                                  wild_scmZq;
+                                    } in  raiseIO# [sat_scmZw GHC.Prim.void#];
+                          } in  sat_scmZx;
+                      0# -> System.Exit.exitWith1;
+                    };
+              };
+        };
+
+lvl7_rcmPg :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+lvl8_rcmPh :: GHC.IO.Exception.ExitCode
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.ExitFailure! [lvl7_rcmPg];
+
+lvl9_rcmPi :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionExitCode_$ctoException lvl8_rcmPh;
+
+System.Exit.exitFailure1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] raiseIO# [lvl9_rcmPi GHC.Prim.void#];
+
+exitFailure2_rcmPj
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [void_0E] raiseIO# [lvl9_rcmPi GHC.Prim.void#];
+
+System.Exit.exitFailure :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] exitFailure2_rcmPj GHC.Prim.void#;
+
+System.Exit.die1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [err_scmZA void_0E]
+        case
+            GHC.IO.Handle.Text.hPutStr'
+                GHC.IO.Handle.FD.stderr err_scmZA GHC.Types.True GHC.Prim.void#
+        of
+        { Unit# _ [Occ=Dead] -> raiseIO# [lvl9_rcmPi GHC.Prim.void#];
+        };
+
+System.Exit.die :: forall a. GHC.Base.String -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] System.Exit.die1 eta_B2 GHC.Prim.void#;
+
+exitSuccess2_rcmPk
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    sat-only [] \r [void_0E] raiseIO# [lvl_rcmP9 GHC.Prim.void#];
+
+System.Exit.exitSuccess :: forall a. GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E] exitSuccess2_rcmPk GHC.Prim.void#;
+
+System.Exit.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Exit.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule4];
+
+System.Exit.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Exit"#;
+
+System.Exit.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Exit.$trModule2];
+
+System.Exit.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Exit.$trModule3
+                                     System.Exit.$trModule1];
+

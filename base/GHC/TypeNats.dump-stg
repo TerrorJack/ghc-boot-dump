@@ -1,0 +1,2980 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:00:27.598085426 UTC
+
+GHC.TypeNats.natSing [InlPrag=INLINE]
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.TypeNats.SNat n
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=OtherCon []] =
+    [] \r [v_s5s6h] v_s5s6h;
+
+GHC.TypeNats.natVal1
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5s6i ds_s5s6j] $dKnownNat_s5s6i;
+
+GHC.TypeNats.natVal
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.natVal1 eta_B2 eta_B1;
+
+GHC.TypeNats.sameNat1
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [Data.Type.Equality.$WRefl];
+
+GHC.TypeNats.sameNat
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     (GHC.TypeNats.KnownNat a, GHC.TypeNats.KnownNat b) =>
+     Data.Proxy.Proxy a
+     -> Data.Proxy.Proxy b
+     -> GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U><L,A><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5s6k $dKnownNat1_s5s6l x_s5s6m y_s5s6n]
+        case
+            GHC.Integer.Type.eqInteger# $dKnownNat_s5s6k $dKnownNat1_s5s6l
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# -> GHC.TypeNats.sameNat1;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+  :: GHC.Types.Int -> GHC.TypeNats.SomeNat -> GHC.Show.ShowS
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S,1*U><L,U>m2,
+ Unf=OtherCon []] =
+    [] \r [p_s5s6p ds_s5s6q eta_s5s6r]
+        case ds_s5s6q of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6t [Occ=Once] _ [Occ=Dead] ->
+              GHC.Show.$fShowInteger_$cshowsPrec
+                  p_s5s6p $dKnownNat_s5s6t eta_s5s6r;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshow
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String
+[GblId, Arity=1, Str=<S,1*U>m2, Unf=OtherCon []] =
+    [] \r [x_s5s6v]
+        case x_s5s6v of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6x [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5s6x GHC.Types.[] of {
+                (#,#) ww3_s5s6A [Occ=Once] ww4_s5s6B [Occ=Once] ->
+                    : [ww3_s5s6A ww4_s5s6B];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat1
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String -> GHC.Base.String
+[GblId, Arity=2, Str=<S,1*U><L,U>m2, Unf=OtherCon []] =
+    [] \r [ds_s5s6C eta_s5s6D]
+        case ds_s5s6C of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6F [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5s6F eta_s5s6D of {
+                (#,#) ww3_s5s6I [Occ=Once] ww4_s5s6J [Occ=Once] ->
+                    : [ww3_s5s6I ww4_s5s6J];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowList
+  :: [GHC.TypeNats.SomeNat] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s5s6K s_s5s6L]
+        GHC.Show.showList__ GHC.TypeNats.$fShowSomeNat1 ls_s5s6K s_s5s6L;
+
+GHC.TypeNats.$fShowSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+                                    GHC.TypeNats.$fShowSomeNat_$cshow
+                                    GHC.TypeNats.$fShowSomeNat_$cshowList];
+
+GHC.TypeNats.$fOrdSomeNat_$ccompare
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.Types.Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5s6M ds1_s5s6N]
+        case ds_s5s6M of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6P [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5s6N of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s6S [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.compareInteger $dKnownNat_s5s6P $dKnownNat1_s5s6S;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c==
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5s6U ds1_s5s6V]
+        case ds_s5s6U of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6X [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5s6V of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s70 [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.eqInteger $dKnownNat_s5s6X $dKnownNat1_s5s70;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_s5s72 eta1_s5s73]
+        case eta_s5s72 of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s75 [Occ=Once] _ [Occ=Dead] ->
+              case eta1_s5s73 of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s78 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.eqInteger# $dKnownNat_s5s75 $dKnownNat1_s5s78
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.TypeNats.$fEqSomeNat_$c==
+                                     GHC.TypeNats.$fEqSomeNat_$c/=];
+
+GHC.TypeNats.$fOrdSomeNat_$c<
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7b y_s5s7c]
+        case x_s5s7b of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7e [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7c of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7h [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7e $dKnownNat1_s5s7h
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.LT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7k y_s5s7l]
+        case x_s5s7k of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7n [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7l of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7q [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7n $dKnownNat1_s5s7q
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.LT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7t y_s5s7u]
+        case x_s5s7t of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7w [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7u of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7z [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7w $dKnownNat1_s5s7z
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.GT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c<=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7C y_s5s7D]
+        case x_s5s7C of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7F [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7D of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7I [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7F $dKnownNat1_s5s7I
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.GT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmax
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7L y_s5s7M]
+        case x_s5s7L of wild_s5s7N {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7O [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7M of wild1_s5s7Q {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7R [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7O $dKnownNat1_s5s7R
+                    of
+                    { __DEFAULT -> wild1_s5s7Q;
+                      GHC.Types.GT -> wild_s5s7N;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmin
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7U y_s5s7V]
+        case x_s5s7U of wild_s5s7W {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7X [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7V of wild1_s5s7Z {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s80 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7X $dKnownNat1_s5s80
+                    of
+                    { __DEFAULT -> wild_s5s7W;
+                      GHC.Types.GT -> wild1_s5s7Z;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.TypeNats.$fEqSomeNat
+                                      GHC.TypeNats.$fOrdSomeNat_$ccompare
+                                      GHC.TypeNats.$fOrdSomeNat_$c<
+                                      GHC.TypeNats.$fOrdSomeNat_$c<=
+                                      GHC.TypeNats.$fOrdSomeNat_$c>
+                                      GHC.TypeNats.$fOrdSomeNat_$c>=
+                                      GHC.TypeNats.$fOrdSomeNat_$cmax
+                                      GHC.TypeNats.$fOrdSomeNat_$cmin];
+
+GHC.TypeNats.natVal'1
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5s83 ds_s5s84] $dKnownNat_s5s83;
+
+GHC.TypeNats.natVal'
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.natVal'1 eta_B2 eta_B1;
+
+GHC.TypeNats.someNatVal
+  :: GHC.Natural.Natural -> GHC.TypeNats.SomeNat
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s5s85] GHC.TypeNats.SomeNat [n_s5s85 Data.Proxy.Proxy];
+
+GHC.TypeNats.$fReadSomeNat_go [Occ=LoopBreaker]
+  :: [(GHC.Natural.Natural, GHC.Base.String)]
+     -> [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5s86]
+        case ds_s5s86 of {
+          [] -> [] [];
+          : y_s5s88 [Occ=Once!] ys_s5s89 [Occ=Once] ->
+              case y_s5s88 of {
+                (,) a_s5s8b [Occ=Once] ys1_s5s8c [Occ=Once] ->
+                    let {
+                      sat_s5s8f [Occ=Once] :: [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+                      [LclId] =
+                          [ys_s5s89] \u [] GHC.TypeNats.$fReadSomeNat_go ys_s5s89; } in
+                    let {
+                      sat_s5s8d [Occ=Once] :: GHC.TypeNats.SomeNat
+                      [LclId] =
+                          CCCS GHC.TypeNats.SomeNat! [a_s5s8b Data.Proxy.Proxy]; } in
+                    let {
+                      sat_s5s8e [Occ=Once] :: (GHC.TypeNats.SomeNat, GHC.Base.String)
+                      [LclId] =
+                          CCCS (,)! [sat_s5s8d ys1_s5s8c];
+                    } in  : [sat_s5s8e sat_s5s8f];
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+[GblId, Arity=2, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [p_s5s8g xs_s5s8h]
+        case
+            GHC.Read.$fReadInteger_$sreadNumber
+                GHC.Read.$fReadInteger2
+                p_s5s8g
+                Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+        of
+        sat_s5s8i
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5s8i xs_s5s8h
+              of
+              sat_s5s8j
+              { __DEFAULT ->
+                    case GHC.Natural.$fReadNatural_go sat_s5s8j of sat_s5s8k {
+                      __DEFAULT -> GHC.TypeNats.$fReadSomeNat_go sat_s5s8k;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.TypeNats.SomeNat -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,U><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5s8l eta_s5s8m]
+        let {
+          sat_s5s8n [Occ=Once]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+          [LclId] =
+              [n_s5s8l] \r [eta_B1]
+                  GHC.TypeNats.$fReadSomeNat_$creadsPrec n_s5s8l eta_B1;
+        } in 
+          case
+              Text.ParserCombinators.ReadP.$wreadS_to_P sat_s5s8n eta_s5s8m
+          of
+          { Unit# ww1_s5s8p [Occ=Once] ->
+                Text.ParserCombinators.ReadP.Look [ww1_s5s8p];
+          };
+
+GHC.TypeNats.$fReadSomeNat3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.TypeNats.$fReadSomeNat2
+  :: Text.ParserCombinators.ReadP.P [GHC.TypeNats.SomeNat]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.TypeNats.$fReadSomeNat4
+            GHC.TypeNats.$fReadSomeNat3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.TypeNats.$fReadSomeNat_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.TypeNats.SomeNat]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run
+            GHC.TypeNats.$fReadSomeNat2 eta_B1;
+
+GHC.TypeNats.$fReadSomeNat1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.TypeNats.SomeNat] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5s8q w1_s5s8r]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.TypeNats.$fReadSomeNat_$creadList w1_s5s8r
+        of
+        { Unit# ww1_s5s8t [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s5s8t];
+        };
+
+GHC.TypeNats.$fReadSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.TypeNats.$fReadSomeNat_$creadsPrec
+                                    GHC.TypeNats.$fReadSomeNat_$creadList
+                                    GHC.TypeNats.$fReadSomeNat4
+                                    GHC.TypeNats.$fReadSomeNat1];
+
+GHC.TypeNats.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.TypeNats.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule4];
+
+GHC.TypeNats.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.TypeNats"#;
+
+GHC.TypeNats.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule2];
+
+GHC.TypeNats.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.TypeNats.$trModule3
+                                     GHC.TypeNats.$trModule1];
+
+$krep_r5s5Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r5s60 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+$krep2_r5s61 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+$krep3_r5s62 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcNat
+                                              GHC.Types.[]];
+
+$krep4_r5s63 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z GHC.Types.[]];
+
+$krep5_r5s64 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r5s62 $krep4_r5s63];
+
+$krep6_r5s65 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Data.Proxy.$tcProxy
+                                              $krep5_r5s64];
+
+GHC.TypeNats.$tcKnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62 $krep2_r5s61];
+
+GHC.TypeNats.$tcSNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*];
+
+GHC.TypeNats.$tcWrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*Arr*];
+
+$krep7_r5s66 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep8_r5s67 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep7_r5s66];
+
+GHC.TypeNats.$tcSNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SNat"#;
+
+GHC.TypeNats.$tcSNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSNat3];
+
+GHC.TypeNats.$tcSNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [14249323166640683464##
+                                    2956401390546376063##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSNat2
+                                    0#
+                                    GHC.TypeNats.$tcSNat1];
+
+$krep9_r5s68 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSNat
+                                              $krep4_r5s63];
+
+GHC.TypeNats.$tc'SNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r5s60 $krep9_r5s68];
+
+GHC.TypeNats.$tc'SNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SNat"#;
+
+GHC.TypeNats.$tc'SNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SNat3];
+
+GHC.TypeNats.$tc'SNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10248898659057561068##
+                                    4968065829559829914##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SNat1];
+
+GHC.TypeNats.$tcKnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "KnownNat"#;
+
+GHC.TypeNats.$tcKnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcKnownNat3];
+
+GHC.TypeNats.$tcKnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4406426137333124098##
+                                    3858660218128115833##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcKnownNat2
+                                    0#
+                                    GHC.TypeNats.$tcKnownNat1];
+
+$krep10_r5s69 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcKnownNat
+                                              $krep4_r5s63];
+
+$krep11_r5s6a :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep8_r5s67];
+
+GHC.TypeNats.$tc'C:KnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep9_r5s68 $krep10_r5s69];
+
+GHC.TypeNats.$tc'C:KnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'C:KnownNat"#;
+
+GHC.TypeNats.$tc'C:KnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'C:KnownNat3];
+
+GHC.TypeNats.$tc'C:KnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12421457977663053218##
+                                    18328904747962077722##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'C:KnownNat2
+                                    1#
+                                    GHC.TypeNats.$tc'C:KnownNat1];
+
+GHC.TypeNats.$tcSomeNat2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SomeNat"#;
+
+GHC.TypeNats.$tcSomeNat1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSomeNat2];
+
+GHC.TypeNats.$tcSomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9244180789053763601##
+                                    6189216451384407387##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSomeNat1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep12_r5s6b :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSomeNat
+                                              GHC.Types.[]];
+
+$krep13_r5s6c :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep12_r5s6b];
+
+GHC.TypeNats.$tc'SomeNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep13_r5s6c];
+
+GHC.TypeNats.$tc'SomeNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SomeNat"#;
+
+GHC.TypeNats.$tc'SomeNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SomeNat3];
+
+GHC.TypeNats.$tc'SomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5872332339143923373##
+                                    16743196919708003695##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SomeNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SomeNat1];
+
+GHC.TypeNats.$tcWrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "WrapN"#;
+
+GHC.TypeNats.$tcWrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcWrapN3];
+
+GHC.TypeNats.$tcWrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [825875854269014453##
+                                    10073258292275044429##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcWrapN2
+                                    0#
+                                    GHC.TypeNats.$tcWrapN1];
+
+$krep14_r5s6d :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r5s66 GHC.Types.[]];
+
+$krep15_r5s6e :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z $krep14_r5s6d];
+
+$krep16_r5s6f :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcWrapN
+                                              $krep15_r5s6e];
+
+GHC.TypeNats.$tc'WrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep11_r5s6a $krep16_r5s6f];
+
+GHC.TypeNats.$tc'WrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'WrapN"#;
+
+GHC.TypeNats.$tc'WrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'WrapN3];
+
+GHC.TypeNats.$tc'WrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [731800900372900037##
+                                    17722817696101367246##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'WrapN2
+                                    2#
+                                    GHC.TypeNats.$tc'WrapN1];
+
+GHC.TypeNats.WrapN
+  :: forall (a :: GHC.Types.Nat) b.
+     (GHC.TypeNats.KnownNat a => Data.Proxy.Proxy a -> b)
+     -> GHC.TypeNats.WrapN a b
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.TypeNats.WrapN [eta_B1];
+
+GHC.TypeNats.SomeNat
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     Data.Proxy.Proxy n -> GHC.TypeNats.SomeNat
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.SomeNat [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:00:27.607835268 UTC
+
+GHC.TypeNats.natSing [InlPrag=INLINE]
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.TypeNats.SNat n
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=OtherCon []] =
+    [] \r [v_s5s6h] v_s5s6h;
+
+GHC.TypeNats.natVal1
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5s6i ds_s5s6j] $dKnownNat_s5s6i;
+
+GHC.TypeNats.natVal
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.natVal1 eta_B2 eta_B1;
+
+GHC.TypeNats.sameNat1
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [Data.Type.Equality.$WRefl];
+
+GHC.TypeNats.sameNat
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     (GHC.TypeNats.KnownNat a, GHC.TypeNats.KnownNat b) =>
+     Data.Proxy.Proxy a
+     -> Data.Proxy.Proxy b
+     -> GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U><L,A><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5s6k $dKnownNat1_s5s6l x_s5s6m y_s5s6n]
+        case
+            GHC.Integer.Type.eqInteger# $dKnownNat_s5s6k $dKnownNat1_s5s6l
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# -> GHC.TypeNats.sameNat1;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+  :: GHC.Types.Int -> GHC.TypeNats.SomeNat -> GHC.Show.ShowS
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S,1*U><L,U>m2,
+ Unf=OtherCon []] =
+    [] \r [p_s5s6p ds_s5s6q eta_s5s6r]
+        case ds_s5s6q of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6t [Occ=Once] _ [Occ=Dead] ->
+              GHC.Show.$fShowInteger_$cshowsPrec
+                  p_s5s6p $dKnownNat_s5s6t eta_s5s6r;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshow
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String
+[GblId, Arity=1, Str=<S,1*U>m2, Unf=OtherCon []] =
+    [] \r [x_s5s6v]
+        case x_s5s6v of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6x [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5s6x GHC.Types.[] of {
+                (#,#) ww3_s5s6A [Occ=Once] ww4_s5s6B [Occ=Once] ->
+                    : [ww3_s5s6A ww4_s5s6B];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat1
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String -> GHC.Base.String
+[GblId, Arity=2, Str=<S,1*U><L,U>m2, Unf=OtherCon []] =
+    [] \r [ds_s5s6C eta_s5s6D]
+        case ds_s5s6C of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6F [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5s6F eta_s5s6D of {
+                (#,#) ww3_s5s6I [Occ=Once] ww4_s5s6J [Occ=Once] ->
+                    : [ww3_s5s6I ww4_s5s6J];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowList
+  :: [GHC.TypeNats.SomeNat] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s5s6K s_s5s6L]
+        GHC.Show.showList__ GHC.TypeNats.$fShowSomeNat1 ls_s5s6K s_s5s6L;
+
+GHC.TypeNats.$fShowSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+                                    GHC.TypeNats.$fShowSomeNat_$cshow
+                                    GHC.TypeNats.$fShowSomeNat_$cshowList];
+
+GHC.TypeNats.$fOrdSomeNat_$ccompare
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.Types.Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5s6M ds1_s5s6N]
+        case ds_s5s6M of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6P [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5s6N of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s6S [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.compareInteger $dKnownNat_s5s6P $dKnownNat1_s5s6S;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c==
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5s6U ds1_s5s6V]
+        case ds_s5s6U of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s6X [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5s6V of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s70 [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.eqInteger $dKnownNat_s5s6X $dKnownNat1_s5s70;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_s5s72 eta1_s5s73]
+        case eta_s5s72 of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s75 [Occ=Once] _ [Occ=Dead] ->
+              case eta1_s5s73 of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s78 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.eqInteger# $dKnownNat_s5s75 $dKnownNat1_s5s78
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.TypeNats.$fEqSomeNat_$c==
+                                     GHC.TypeNats.$fEqSomeNat_$c/=];
+
+GHC.TypeNats.$fOrdSomeNat_$c<
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7b y_s5s7c]
+        case x_s5s7b of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7e [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7c of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7h [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7e $dKnownNat1_s5s7h
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.LT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7k y_s5s7l]
+        case x_s5s7k of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7n [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7l of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7q [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7n $dKnownNat1_s5s7q
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.LT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7t y_s5s7u]
+        case x_s5s7t of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7w [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7u of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7z [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7w $dKnownNat1_s5s7z
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.GT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c<=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7C y_s5s7D]
+        case x_s5s7C of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7F [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7D of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7I [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7F $dKnownNat1_s5s7I
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.GT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmax
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7L y_s5s7M]
+        case x_s5s7L of wild_s5s7N {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7O [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7M of wild1_s5s7Q {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s7R [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7O $dKnownNat1_s5s7R
+                    of
+                    { __DEFAULT -> wild1_s5s7Q;
+                      GHC.Types.GT -> wild_s5s7N;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmin
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5s7U y_s5s7V]
+        case x_s5s7U of wild_s5s7W {
+          GHC.TypeNats.SomeNat $dKnownNat_s5s7X [Occ=Once] _ [Occ=Dead] ->
+              case y_s5s7V of wild1_s5s7Z {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5s80 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5s7X $dKnownNat1_s5s80
+                    of
+                    { __DEFAULT -> wild_s5s7W;
+                      GHC.Types.GT -> wild1_s5s7Z;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.TypeNats.$fEqSomeNat
+                                      GHC.TypeNats.$fOrdSomeNat_$ccompare
+                                      GHC.TypeNats.$fOrdSomeNat_$c<
+                                      GHC.TypeNats.$fOrdSomeNat_$c<=
+                                      GHC.TypeNats.$fOrdSomeNat_$c>
+                                      GHC.TypeNats.$fOrdSomeNat_$c>=
+                                      GHC.TypeNats.$fOrdSomeNat_$cmax
+                                      GHC.TypeNats.$fOrdSomeNat_$cmin];
+
+GHC.TypeNats.natVal'1
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5s83 void_0E] $dKnownNat_s5s83;
+
+GHC.TypeNats.natVal'
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.TypeNats.natVal'1 eta_B2 GHC.Prim.void#;
+
+GHC.TypeNats.someNatVal
+  :: GHC.Natural.Natural -> GHC.TypeNats.SomeNat
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s5s85] GHC.TypeNats.SomeNat [n_s5s85 Data.Proxy.Proxy];
+
+GHC.TypeNats.$fReadSomeNat_go [Occ=LoopBreaker]
+  :: [(GHC.Natural.Natural, GHC.Base.String)]
+     -> [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5s86]
+        case ds_s5s86 of {
+          [] -> [] [];
+          : y_s5s88 [Occ=Once!] ys_s5s89 [Occ=Once] ->
+              case y_s5s88 of {
+                (,) a_s5s8b [Occ=Once] ys1_s5s8c [Occ=Once] ->
+                    let {
+                      sat_s5s8f [Occ=Once] :: [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+                      [LclId] =
+                          [ys_s5s89] \u [] GHC.TypeNats.$fReadSomeNat_go ys_s5s89; } in
+                    let {
+                      sat_s5s8d [Occ=Once] :: GHC.TypeNats.SomeNat
+                      [LclId] =
+                          CCCS GHC.TypeNats.SomeNat! [a_s5s8b Data.Proxy.Proxy]; } in
+                    let {
+                      sat_s5s8e [Occ=Once] :: (GHC.TypeNats.SomeNat, GHC.Base.String)
+                      [LclId] =
+                          CCCS (,)! [sat_s5s8d ys1_s5s8c];
+                    } in  : [sat_s5s8e sat_s5s8f];
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+[GblId, Arity=2, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [p_s5s8g xs_s5s8h]
+        case
+            GHC.Read.$fReadInteger_$sreadNumber
+                GHC.Read.$fReadInteger2
+                p_s5s8g
+                Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+        of
+        sat_s5s8i
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5s8i xs_s5s8h
+              of
+              sat_s5s8j
+              { __DEFAULT ->
+                    case GHC.Natural.$fReadNatural_go sat_s5s8j of sat_s5s8k {
+                      __DEFAULT -> GHC.TypeNats.$fReadSomeNat_go sat_s5s8k;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.TypeNats.SomeNat -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,U><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5s8l eta_s5s8m]
+        let {
+          sat_s5s8n [Occ=Once]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+          [LclId] =
+              [n_s5s8l] \r [eta_B1]
+                  GHC.TypeNats.$fReadSomeNat_$creadsPrec n_s5s8l eta_B1;
+        } in 
+          case
+              Text.ParserCombinators.ReadP.$wreadS_to_P sat_s5s8n eta_s5s8m
+          of
+          { Unit# ww1_s5s8p [Occ=Once] ->
+                Text.ParserCombinators.ReadP.Look [ww1_s5s8p];
+          };
+
+GHC.TypeNats.$fReadSomeNat3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.TypeNats.$fReadSomeNat2
+  :: Text.ParserCombinators.ReadP.P [GHC.TypeNats.SomeNat]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.TypeNats.$fReadSomeNat4
+            GHC.TypeNats.$fReadSomeNat3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.TypeNats.$fReadSomeNat_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.TypeNats.SomeNat]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run
+            GHC.TypeNats.$fReadSomeNat2 eta_B1;
+
+GHC.TypeNats.$fReadSomeNat1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.TypeNats.SomeNat] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5s8q w1_s5s8r]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.TypeNats.$fReadSomeNat_$creadList w1_s5s8r
+        of
+        { Unit# ww1_s5s8t [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s5s8t];
+        };
+
+GHC.TypeNats.$fReadSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.TypeNats.$fReadSomeNat_$creadsPrec
+                                    GHC.TypeNats.$fReadSomeNat_$creadList
+                                    GHC.TypeNats.$fReadSomeNat4
+                                    GHC.TypeNats.$fReadSomeNat1];
+
+GHC.TypeNats.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.TypeNats.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule4];
+
+GHC.TypeNats.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.TypeNats"#;
+
+GHC.TypeNats.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule2];
+
+GHC.TypeNats.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.TypeNats.$trModule3
+                                     GHC.TypeNats.$trModule1];
+
+$krep_r5s5Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r5s60 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+$krep2_r5s61 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+$krep3_r5s62 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcNat
+                                              GHC.Types.[]];
+
+$krep4_r5s63 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z GHC.Types.[]];
+
+$krep5_r5s64 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r5s62 $krep4_r5s63];
+
+$krep6_r5s65 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Data.Proxy.$tcProxy
+                                              $krep5_r5s64];
+
+GHC.TypeNats.$tcKnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62 $krep2_r5s61];
+
+GHC.TypeNats.$tcSNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*];
+
+GHC.TypeNats.$tcWrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*Arr*];
+
+$krep7_r5s66 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep8_r5s67 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep7_r5s66];
+
+GHC.TypeNats.$tcSNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SNat"#;
+
+GHC.TypeNats.$tcSNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSNat3];
+
+GHC.TypeNats.$tcSNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [14249323166640683464##
+                                    2956401390546376063##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSNat2
+                                    0#
+                                    GHC.TypeNats.$tcSNat1];
+
+$krep9_r5s68 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSNat
+                                              $krep4_r5s63];
+
+GHC.TypeNats.$tc'SNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r5s60 $krep9_r5s68];
+
+GHC.TypeNats.$tc'SNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SNat"#;
+
+GHC.TypeNats.$tc'SNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SNat3];
+
+GHC.TypeNats.$tc'SNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10248898659057561068##
+                                    4968065829559829914##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SNat1];
+
+GHC.TypeNats.$tcKnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "KnownNat"#;
+
+GHC.TypeNats.$tcKnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcKnownNat3];
+
+GHC.TypeNats.$tcKnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4406426137333124098##
+                                    3858660218128115833##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcKnownNat2
+                                    0#
+                                    GHC.TypeNats.$tcKnownNat1];
+
+$krep10_r5s69 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcKnownNat
+                                              $krep4_r5s63];
+
+$krep11_r5s6a :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep8_r5s67];
+
+GHC.TypeNats.$tc'C:KnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep9_r5s68 $krep10_r5s69];
+
+GHC.TypeNats.$tc'C:KnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'C:KnownNat"#;
+
+GHC.TypeNats.$tc'C:KnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'C:KnownNat3];
+
+GHC.TypeNats.$tc'C:KnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12421457977663053218##
+                                    18328904747962077722##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'C:KnownNat2
+                                    1#
+                                    GHC.TypeNats.$tc'C:KnownNat1];
+
+GHC.TypeNats.$tcSomeNat2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SomeNat"#;
+
+GHC.TypeNats.$tcSomeNat1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSomeNat2];
+
+GHC.TypeNats.$tcSomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9244180789053763601##
+                                    6189216451384407387##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSomeNat1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep12_r5s6b :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSomeNat
+                                              GHC.Types.[]];
+
+$krep13_r5s6c :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep12_r5s6b];
+
+GHC.TypeNats.$tc'SomeNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep13_r5s6c];
+
+GHC.TypeNats.$tc'SomeNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SomeNat"#;
+
+GHC.TypeNats.$tc'SomeNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SomeNat3];
+
+GHC.TypeNats.$tc'SomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5872332339143923373##
+                                    16743196919708003695##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SomeNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SomeNat1];
+
+GHC.TypeNats.$tcWrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "WrapN"#;
+
+GHC.TypeNats.$tcWrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcWrapN3];
+
+GHC.TypeNats.$tcWrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [825875854269014453##
+                                    10073258292275044429##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcWrapN2
+                                    0#
+                                    GHC.TypeNats.$tcWrapN1];
+
+$krep14_r5s6d :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r5s66 GHC.Types.[]];
+
+$krep15_r5s6e :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z $krep14_r5s6d];
+
+$krep16_r5s6f :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcWrapN
+                                              $krep15_r5s6e];
+
+GHC.TypeNats.$tc'WrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep11_r5s6a $krep16_r5s6f];
+
+GHC.TypeNats.$tc'WrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'WrapN"#;
+
+GHC.TypeNats.$tc'WrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'WrapN3];
+
+GHC.TypeNats.$tc'WrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [731800900372900037##
+                                    17722817696101367246##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'WrapN2
+                                    2#
+                                    GHC.TypeNats.$tc'WrapN1];
+
+GHC.TypeNats.WrapN
+  :: forall (a :: GHC.Types.Nat) b.
+     (GHC.TypeNats.KnownNat a => Data.Proxy.Proxy a -> b)
+     -> GHC.TypeNats.WrapN a b
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.TypeNats.WrapN [eta_B1];
+
+GHC.TypeNats.SomeNat
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     Data.Proxy.Proxy n -> GHC.TypeNats.SomeNat
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.SomeNat [eta_B2 eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:00:28.664144332 UTC
+
+GHC.TypeNats.natSing [InlPrag=INLINE]
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.TypeNats.SNat n
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=OtherCon []] =
+    [] \r [v_s5sEI] v_s5sEI;
+
+GHC.TypeNats.natVal1
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5sEJ ds_s5sEK] $dKnownNat_s5sEJ;
+
+GHC.TypeNats.natVal
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.natVal1 eta_B2 eta_B1;
+
+GHC.TypeNats.sameNat1
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [Data.Type.Equality.$WRefl];
+
+GHC.TypeNats.sameNat
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     (GHC.TypeNats.KnownNat a, GHC.TypeNats.KnownNat b) =>
+     Data.Proxy.Proxy a
+     -> Data.Proxy.Proxy b
+     -> GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U><L,A><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5sEL $dKnownNat1_s5sEM x_s5sEN y_s5sEO]
+        case
+            GHC.Integer.Type.eqInteger# $dKnownNat_s5sEL $dKnownNat1_s5sEM
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# -> GHC.TypeNats.sameNat1;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+  :: GHC.Types.Int -> GHC.TypeNats.SomeNat -> GHC.Show.ShowS
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S,1*U><L,U>m2,
+ Unf=OtherCon []] =
+    [] \r [p_s5sEQ ds_s5sER eta_s5sES]
+        case ds_s5sER of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sEU [Occ=Once] _ [Occ=Dead] ->
+              GHC.Show.$fShowInteger_$cshowsPrec
+                  p_s5sEQ $dKnownNat_s5sEU eta_s5sES;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshow
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String
+[GblId, Arity=1, Str=<S,1*U>m2, Unf=OtherCon []] =
+    [] \r [x_s5sEW]
+        case x_s5sEW of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sEY [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5sEY GHC.Types.[] of {
+                (#,#) ww3_s5sF1 [Occ=Once] ww4_s5sF2 [Occ=Once] ->
+                    : [ww3_s5sF1 ww4_s5sF2];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat1
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String -> GHC.Base.String
+[GblId, Arity=2, Str=<S,1*U><L,U>m2, Unf=OtherCon []] =
+    [] \r [ds_s5sF3 eta_s5sF4]
+        case ds_s5sF3 of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sF6 [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5sF6 eta_s5sF4 of {
+                (#,#) ww3_s5sF9 [Occ=Once] ww4_s5sFa [Occ=Once] ->
+                    : [ww3_s5sF9 ww4_s5sFa];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowList
+  :: [GHC.TypeNats.SomeNat] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s5sFb s_s5sFc]
+        GHC.Show.showList__ GHC.TypeNats.$fShowSomeNat1 ls_s5sFb s_s5sFc;
+
+GHC.TypeNats.$fShowSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+                                    GHC.TypeNats.$fShowSomeNat_$cshow
+                                    GHC.TypeNats.$fShowSomeNat_$cshowList];
+
+GHC.TypeNats.$fOrdSomeNat_$ccompare
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.Types.Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5sFd ds1_s5sFe]
+        case ds_s5sFd of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFg [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5sFe of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFj [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.compareInteger $dKnownNat_s5sFg $dKnownNat1_s5sFj;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c==
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5sFl ds1_s5sFm]
+        case ds_s5sFl of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFo [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5sFm of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFr [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.eqInteger $dKnownNat_s5sFo $dKnownNat1_s5sFr;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_s5sFt eta1_s5sFu]
+        case eta_s5sFt of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFw [Occ=Once] _ [Occ=Dead] ->
+              case eta1_s5sFu of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFz [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.eqInteger# $dKnownNat_s5sFw $dKnownNat1_s5sFz
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.TypeNats.$fEqSomeNat_$c==
+                                     GHC.TypeNats.$fEqSomeNat_$c/=];
+
+GHC.TypeNats.$fOrdSomeNat_$c<
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sFC y_s5sFD]
+        case x_s5sFC of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFF [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sFD of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFI [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sFF $dKnownNat1_s5sFI
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.LT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sFL y_s5sFM]
+        case x_s5sFL of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFO [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sFM of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFR [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sFO $dKnownNat1_s5sFR
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.LT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sFU y_s5sFV]
+        case x_s5sFU of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFX [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sFV of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sG0 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sFX $dKnownNat1_s5sG0
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.GT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c<=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sG3 y_s5sG4]
+        case x_s5sG3 of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sG6 [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sG4 of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sG9 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sG6 $dKnownNat1_s5sG9
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.GT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmax
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sGc y_s5sGd]
+        case x_s5sGc of wild_s5sGe {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sGf [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sGd of wild1_s5sGh {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sGi [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sGf $dKnownNat1_s5sGi
+                    of
+                    { __DEFAULT -> wild1_s5sGh;
+                      GHC.Types.GT -> wild_s5sGe;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmin
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sGl y_s5sGm]
+        case x_s5sGl of wild_s5sGn {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sGo [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sGm of wild1_s5sGq {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sGr [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sGo $dKnownNat1_s5sGr
+                    of
+                    { __DEFAULT -> wild_s5sGn;
+                      GHC.Types.GT -> wild1_s5sGq;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.TypeNats.$fEqSomeNat
+                                      GHC.TypeNats.$fOrdSomeNat_$ccompare
+                                      GHC.TypeNats.$fOrdSomeNat_$c<
+                                      GHC.TypeNats.$fOrdSomeNat_$c<=
+                                      GHC.TypeNats.$fOrdSomeNat_$c>
+                                      GHC.TypeNats.$fOrdSomeNat_$c>=
+                                      GHC.TypeNats.$fOrdSomeNat_$cmax
+                                      GHC.TypeNats.$fOrdSomeNat_$cmin];
+
+GHC.TypeNats.natVal'1
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5sGu ds_s5sGv] $dKnownNat_s5sGu;
+
+GHC.TypeNats.natVal'
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.natVal'1 eta_B2 eta_B1;
+
+GHC.TypeNats.someNatVal
+  :: GHC.Natural.Natural -> GHC.TypeNats.SomeNat
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s5sGw] GHC.TypeNats.SomeNat [n_s5sGw Data.Proxy.Proxy];
+
+GHC.TypeNats.$fReadSomeNat_go [Occ=LoopBreaker]
+  :: [(GHC.Natural.Natural, GHC.Base.String)]
+     -> [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5sGx]
+        case ds_s5sGx of {
+          [] -> [] [];
+          : y_s5sGz [Occ=Once!] ys_s5sGA [Occ=Once] ->
+              case y_s5sGz of {
+                (,) a_s5sGC [Occ=Once] ys1_s5sGD [Occ=Once] ->
+                    let {
+                      sat_s5sGG [Occ=Once] :: [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+                      [LclId] =
+                          [ys_s5sGA] \u [] GHC.TypeNats.$fReadSomeNat_go ys_s5sGA; } in
+                    let {
+                      sat_s5sGE [Occ=Once] :: GHC.TypeNats.SomeNat
+                      [LclId] =
+                          CCCS GHC.TypeNats.SomeNat! [a_s5sGC Data.Proxy.Proxy]; } in
+                    let {
+                      sat_s5sGF [Occ=Once] :: (GHC.TypeNats.SomeNat, GHC.Base.String)
+                      [LclId] =
+                          CCCS (,)! [sat_s5sGE ys1_s5sGD];
+                    } in  : [sat_s5sGF sat_s5sGG];
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+[GblId, Arity=2, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [p_s5sGH xs_s5sGI]
+        case
+            GHC.Read.$fReadInteger_$sreadNumber
+                GHC.Read.$fReadInteger2
+                p_s5sGH
+                Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+        of
+        sat_s5sGJ
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5sGJ xs_s5sGI
+              of
+              sat_s5sGK
+              { __DEFAULT ->
+                    case GHC.Natural.$fReadNatural_go sat_s5sGK of sat_s5sGL {
+                      __DEFAULT -> GHC.TypeNats.$fReadSomeNat_go sat_s5sGL;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.TypeNats.SomeNat -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,U><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5sGM eta_s5sGN]
+        let {
+          sat_s5sGO [Occ=Once]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+          [LclId] =
+              [n_s5sGM] \r [eta_B1]
+                  GHC.TypeNats.$fReadSomeNat_$creadsPrec n_s5sGM eta_B1;
+        } in 
+          case
+              Text.ParserCombinators.ReadP.$wreadS_to_P sat_s5sGO eta_s5sGN
+          of
+          { Unit# ww1_s5sGQ [Occ=Once] ->
+                Text.ParserCombinators.ReadP.Look [ww1_s5sGQ];
+          };
+
+GHC.TypeNats.$fReadSomeNat3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.TypeNats.$fReadSomeNat2
+  :: Text.ParserCombinators.ReadP.P [GHC.TypeNats.SomeNat]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.TypeNats.$fReadSomeNat4
+            GHC.TypeNats.$fReadSomeNat3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.TypeNats.$fReadSomeNat_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.TypeNats.SomeNat]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run
+            GHC.TypeNats.$fReadSomeNat2 eta_B1;
+
+GHC.TypeNats.$fReadSomeNat1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.TypeNats.SomeNat] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5sGR w1_s5sGS]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.TypeNats.$fReadSomeNat_$creadList w1_s5sGS
+        of
+        { Unit# ww1_s5sGU [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s5sGU];
+        };
+
+GHC.TypeNats.$fReadSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.TypeNats.$fReadSomeNat_$creadsPrec
+                                    GHC.TypeNats.$fReadSomeNat_$creadList
+                                    GHC.TypeNats.$fReadSomeNat4
+                                    GHC.TypeNats.$fReadSomeNat1];
+
+GHC.TypeNats.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.TypeNats.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule4];
+
+GHC.TypeNats.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.TypeNats"#;
+
+GHC.TypeNats.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule2];
+
+GHC.TypeNats.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.TypeNats.$trModule3
+                                     GHC.TypeNats.$trModule1];
+
+$krep_r5s5Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r5s60 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+$krep2_r5s61 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+$krep3_r5s62 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcNat
+                                              GHC.Types.[]];
+
+$krep4_r5s63 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z GHC.Types.[]];
+
+$krep5_r5s64 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r5s62 $krep4_r5s63];
+
+$krep6_r5s65 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Data.Proxy.$tcProxy
+                                              $krep5_r5s64];
+
+GHC.TypeNats.$tcKnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62 $krep2_r5s61];
+
+GHC.TypeNats.$tcSNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*];
+
+GHC.TypeNats.$tcWrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*Arr*];
+
+$krep7_r5s66 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep8_r5s67 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep7_r5s66];
+
+GHC.TypeNats.$tcSNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SNat"#;
+
+GHC.TypeNats.$tcSNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSNat3];
+
+GHC.TypeNats.$tcSNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [14249323166640683464##
+                                    2956401390546376063##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSNat2
+                                    0#
+                                    GHC.TypeNats.$tcSNat1];
+
+$krep9_r5s68 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSNat
+                                              $krep4_r5s63];
+
+GHC.TypeNats.$tc'SNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r5s60 $krep9_r5s68];
+
+GHC.TypeNats.$tc'SNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SNat"#;
+
+GHC.TypeNats.$tc'SNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SNat3];
+
+GHC.TypeNats.$tc'SNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10248898659057561068##
+                                    4968065829559829914##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SNat1];
+
+GHC.TypeNats.$tcKnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "KnownNat"#;
+
+GHC.TypeNats.$tcKnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcKnownNat3];
+
+GHC.TypeNats.$tcKnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4406426137333124098##
+                                    3858660218128115833##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcKnownNat2
+                                    0#
+                                    GHC.TypeNats.$tcKnownNat1];
+
+$krep10_r5s69 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcKnownNat
+                                              $krep4_r5s63];
+
+$krep11_r5s6a :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep8_r5s67];
+
+GHC.TypeNats.$tc'C:KnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep9_r5s68 $krep10_r5s69];
+
+GHC.TypeNats.$tc'C:KnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'C:KnownNat"#;
+
+GHC.TypeNats.$tc'C:KnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'C:KnownNat3];
+
+GHC.TypeNats.$tc'C:KnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12421457977663053218##
+                                    18328904747962077722##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'C:KnownNat2
+                                    1#
+                                    GHC.TypeNats.$tc'C:KnownNat1];
+
+GHC.TypeNats.$tcSomeNat2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SomeNat"#;
+
+GHC.TypeNats.$tcSomeNat1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSomeNat2];
+
+GHC.TypeNats.$tcSomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9244180789053763601##
+                                    6189216451384407387##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSomeNat1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep12_r5s6b :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSomeNat
+                                              GHC.Types.[]];
+
+$krep13_r5s6c :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep12_r5s6b];
+
+GHC.TypeNats.$tc'SomeNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep13_r5s6c];
+
+GHC.TypeNats.$tc'SomeNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SomeNat"#;
+
+GHC.TypeNats.$tc'SomeNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SomeNat3];
+
+GHC.TypeNats.$tc'SomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5872332339143923373##
+                                    16743196919708003695##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SomeNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SomeNat1];
+
+GHC.TypeNats.$tcWrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "WrapN"#;
+
+GHC.TypeNats.$tcWrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcWrapN3];
+
+GHC.TypeNats.$tcWrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [825875854269014453##
+                                    10073258292275044429##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcWrapN2
+                                    0#
+                                    GHC.TypeNats.$tcWrapN1];
+
+$krep14_r5s6d :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r5s66 GHC.Types.[]];
+
+$krep15_r5s6e :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z $krep14_r5s6d];
+
+$krep16_r5s6f :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcWrapN
+                                              $krep15_r5s6e];
+
+GHC.TypeNats.$tc'WrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep11_r5s6a $krep16_r5s6f];
+
+GHC.TypeNats.$tc'WrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'WrapN"#;
+
+GHC.TypeNats.$tc'WrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'WrapN3];
+
+GHC.TypeNats.$tc'WrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [731800900372900037##
+                                    17722817696101367246##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'WrapN2
+                                    2#
+                                    GHC.TypeNats.$tc'WrapN1];
+
+GHC.TypeNats.WrapN
+  :: forall (a :: GHC.Types.Nat) b.
+     (GHC.TypeNats.KnownNat a => Data.Proxy.Proxy a -> b)
+     -> GHC.TypeNats.WrapN a b
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.TypeNats.WrapN [eta_B1];
+
+GHC.TypeNats.SomeNat
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     Data.Proxy.Proxy n -> GHC.TypeNats.SomeNat
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.SomeNat [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:00:28.674528664 UTC
+
+GHC.TypeNats.natSing [InlPrag=INLINE]
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.TypeNats.SNat n
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=OtherCon []] =
+    [] \r [v_s5sEI] v_s5sEI;
+
+GHC.TypeNats.natVal1
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5sEJ ds_s5sEK] $dKnownNat_s5sEJ;
+
+GHC.TypeNats.natVal
+  :: forall (n :: GHC.Types.Nat) (proxy :: GHC.Types.Nat -> *).
+     GHC.TypeNats.KnownNat n =>
+     proxy n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.natVal1 eta_B2 eta_B1;
+
+GHC.TypeNats.sameNat1
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [Data.Type.Equality.$WRefl];
+
+GHC.TypeNats.sameNat
+  :: forall (a :: GHC.Types.Nat) (b :: GHC.Types.Nat).
+     (GHC.TypeNats.KnownNat a, GHC.TypeNats.KnownNat b) =>
+     Data.Proxy.Proxy a
+     -> Data.Proxy.Proxy b
+     -> GHC.Base.Maybe (a Data.Type.Equality.:~: b)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U><L,A><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5sEL $dKnownNat1_s5sEM x_s5sEN y_s5sEO]
+        case
+            GHC.Integer.Type.eqInteger# $dKnownNat_s5sEL $dKnownNat1_s5sEM
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# -> GHC.TypeNats.sameNat1;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+  :: GHC.Types.Int -> GHC.TypeNats.SomeNat -> GHC.Show.ShowS
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S,1*U><L,U>m2,
+ Unf=OtherCon []] =
+    [] \r [p_s5sEQ ds_s5sER eta_s5sES]
+        case ds_s5sER of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sEU [Occ=Once] _ [Occ=Dead] ->
+              GHC.Show.$fShowInteger_$cshowsPrec
+                  p_s5sEQ $dKnownNat_s5sEU eta_s5sES;
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshow
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String
+[GblId, Arity=1, Str=<S,1*U>m2, Unf=OtherCon []] =
+    [] \r [x_s5sEW]
+        case x_s5sEW of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sEY [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5sEY GHC.Types.[] of {
+                (#,#) ww3_s5sF1 [Occ=Once] ww4_s5sF2 [Occ=Once] ->
+                    : [ww3_s5sF1 ww4_s5sF2];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat1
+  :: GHC.TypeNats.SomeNat -> GHC.Base.String -> GHC.Base.String
+[GblId, Arity=2, Str=<S,1*U><L,U>m2, Unf=OtherCon []] =
+    [] \r [ds_s5sF3 eta_s5sF4]
+        case ds_s5sF3 of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sF6 [Occ=Once] _ [Occ=Dead] ->
+              case GHC.Show.$w$cshowsPrec4 0# $dKnownNat_s5sF6 eta_s5sF4 of {
+                (#,#) ww3_s5sF9 [Occ=Once] ww4_s5sFa [Occ=Once] ->
+                    : [ww3_s5sF9 ww4_s5sFa];
+              };
+        };
+
+GHC.TypeNats.$fShowSomeNat_$cshowList
+  :: [GHC.TypeNats.SomeNat] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s5sFb s_s5sFc]
+        GHC.Show.showList__ GHC.TypeNats.$fShowSomeNat1 ls_s5sFb s_s5sFc;
+
+GHC.TypeNats.$fShowSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+                                    GHC.TypeNats.$fShowSomeNat_$cshow
+                                    GHC.TypeNats.$fShowSomeNat_$cshowList];
+
+GHC.TypeNats.$fOrdSomeNat_$ccompare
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.Types.Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5sFd ds1_s5sFe]
+        case ds_s5sFd of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFg [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5sFe of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFj [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.compareInteger $dKnownNat_s5sFg $dKnownNat1_s5sFj;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c==
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s5sFl ds1_s5sFm]
+        case ds_s5sFl of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFo [Occ=Once] _ [Occ=Dead] ->
+              case ds1_s5sFm of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFr [Occ=Once] _ [Occ=Dead] ->
+                    GHC.Integer.Type.eqInteger $dKnownNat_s5sFo $dKnownNat1_s5sFr;
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_s5sFt eta1_s5sFu]
+        case eta_s5sFt of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFw [Occ=Once] _ [Occ=Dead] ->
+              case eta1_s5sFu of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFz [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.eqInteger# $dKnownNat_s5sFw $dKnownNat1_s5sFz
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fEqSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.TypeNats.$fEqSomeNat_$c==
+                                     GHC.TypeNats.$fEqSomeNat_$c/=];
+
+GHC.TypeNats.$fOrdSomeNat_$c<
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sFC y_s5sFD]
+        case x_s5sFC of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFF [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sFD of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFI [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sFF $dKnownNat1_s5sFI
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.LT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sFL y_s5sFM]
+        case x_s5sFL of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFO [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sFM of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sFR [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sFO $dKnownNat1_s5sFR
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.LT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c>
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sFU y_s5sFV]
+        case x_s5sFU of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sFX [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sFV of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sG0 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sFX $dKnownNat1_s5sG0
+                    of
+                    { __DEFAULT -> GHC.Types.False [];
+                      GHC.Types.GT -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$c<=
+  :: GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sG3 y_s5sG4]
+        case x_s5sG3 of {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sG6 [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sG4 of {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sG9 [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sG6 $dKnownNat1_s5sG9
+                    of
+                    { __DEFAULT -> GHC.Types.True [];
+                      GHC.Types.GT -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmax
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sGc y_s5sGd]
+        case x_s5sGc of wild_s5sGe {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sGf [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sGd of wild1_s5sGh {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sGi [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sGf $dKnownNat1_s5sGi
+                    of
+                    { __DEFAULT -> wild1_s5sGh;
+                      GHC.Types.GT -> wild_s5sGe;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat_$cmin
+  :: GHC.TypeNats.SomeNat
+     -> GHC.TypeNats.SomeNat -> GHC.TypeNats.SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s5sGl y_s5sGm]
+        case x_s5sGl of wild_s5sGn {
+          GHC.TypeNats.SomeNat $dKnownNat_s5sGo [Occ=Once] _ [Occ=Dead] ->
+              case y_s5sGm of wild1_s5sGq {
+                GHC.TypeNats.SomeNat $dKnownNat1_s5sGr [Occ=Once] _ [Occ=Dead] ->
+                    case
+                        GHC.Integer.Type.compareInteger $dKnownNat_s5sGo $dKnownNat1_s5sGr
+                    of
+                    { __DEFAULT -> wild_s5sGn;
+                      GHC.Types.GT -> wild1_s5sGq;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fOrdSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.TypeNats.SomeNat
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.TypeNats.$fEqSomeNat
+                                      GHC.TypeNats.$fOrdSomeNat_$ccompare
+                                      GHC.TypeNats.$fOrdSomeNat_$c<
+                                      GHC.TypeNats.$fOrdSomeNat_$c<=
+                                      GHC.TypeNats.$fOrdSomeNat_$c>
+                                      GHC.TypeNats.$fOrdSomeNat_$c>=
+                                      GHC.TypeNats.$fOrdSomeNat_$cmax
+                                      GHC.TypeNats.$fOrdSomeNat_$cmin];
+
+GHC.TypeNats.natVal'1
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.TypeNats.KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [$dKnownNat_s5sGu void_0E] $dKnownNat_s5sGu;
+
+GHC.TypeNats.natVal'
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     GHC.Prim.Proxy# n -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.TypeNats.natVal'1 eta_B2 GHC.Prim.void#;
+
+GHC.TypeNats.someNatVal
+  :: GHC.Natural.Natural -> GHC.TypeNats.SomeNat
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s5sGw] GHC.TypeNats.SomeNat [n_s5sGw Data.Proxy.Proxy];
+
+GHC.TypeNats.$fReadSomeNat_go [Occ=LoopBreaker]
+  :: [(GHC.Natural.Natural, GHC.Base.String)]
+     -> [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5sGx]
+        case ds_s5sGx of {
+          [] -> [] [];
+          : y_s5sGz [Occ=Once!] ys_s5sGA [Occ=Once] ->
+              case y_s5sGz of {
+                (,) a_s5sGC [Occ=Once] ys1_s5sGD [Occ=Once] ->
+                    let {
+                      sat_s5sGG [Occ=Once] :: [(GHC.TypeNats.SomeNat, GHC.Base.String)]
+                      [LclId] =
+                          [ys_s5sGA] \u [] GHC.TypeNats.$fReadSomeNat_go ys_s5sGA; } in
+                    let {
+                      sat_s5sGE [Occ=Once] :: GHC.TypeNats.SomeNat
+                      [LclId] =
+                          CCCS GHC.TypeNats.SomeNat! [a_s5sGC Data.Proxy.Proxy]; } in
+                    let {
+                      sat_s5sGF [Occ=Once] :: (GHC.TypeNats.SomeNat, GHC.Base.String)
+                      [LclId] =
+                          CCCS (,)! [sat_s5sGE ys1_s5sGD];
+                    } in  : [sat_s5sGF sat_s5sGG];
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+[GblId, Arity=2, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [p_s5sGH xs_s5sGI]
+        case
+            GHC.Read.$fReadInteger_$sreadNumber
+                GHC.Read.$fReadInteger2
+                p_s5sGH
+                Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+        of
+        sat_s5sGJ
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5sGJ xs_s5sGI
+              of
+              sat_s5sGK
+              { __DEFAULT ->
+                    case GHC.Natural.$fReadNatural_go sat_s5sGK of sat_s5sGL {
+                      __DEFAULT -> GHC.TypeNats.$fReadSomeNat_go sat_s5sGL;
+                    };
+              };
+        };
+
+GHC.TypeNats.$fReadSomeNat4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.TypeNats.SomeNat -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,U><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5sGM eta_s5sGN]
+        let {
+          sat_s5sGO [Occ=Once]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.TypeNats.SomeNat
+          [LclId] =
+              [n_s5sGM] \r [eta_B1]
+                  GHC.TypeNats.$fReadSomeNat_$creadsPrec n_s5sGM eta_B1;
+        } in 
+          case
+              Text.ParserCombinators.ReadP.$wreadS_to_P sat_s5sGO eta_s5sGN
+          of
+          { Unit# ww1_s5sGQ [Occ=Once] ->
+                Text.ParserCombinators.ReadP.Look [ww1_s5sGQ];
+          };
+
+GHC.TypeNats.$fReadSomeNat3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.TypeNats.$fReadSomeNat2
+  :: Text.ParserCombinators.ReadP.P [GHC.TypeNats.SomeNat]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.TypeNats.$fReadSomeNat4
+            GHC.TypeNats.$fReadSomeNat3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.TypeNats.$fReadSomeNat_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.TypeNats.SomeNat]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run
+            GHC.TypeNats.$fReadSomeNat2 eta_B1;
+
+GHC.TypeNats.$fReadSomeNat1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.TypeNats.SomeNat] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s5sGR w1_s5sGS]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.TypeNats.$fReadSomeNat_$creadList w1_s5sGS
+        of
+        { Unit# ww1_s5sGU [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s5sGU];
+        };
+
+GHC.TypeNats.$fReadSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.TypeNats.SomeNat
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.TypeNats.$fReadSomeNat_$creadsPrec
+                                    GHC.TypeNats.$fReadSomeNat_$creadList
+                                    GHC.TypeNats.$fReadSomeNat4
+                                    GHC.TypeNats.$fReadSomeNat1];
+
+GHC.TypeNats.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.TypeNats.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule4];
+
+GHC.TypeNats.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.TypeNats"#;
+
+GHC.TypeNats.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$trModule2];
+
+GHC.TypeNats.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.TypeNats.$trModule3
+                                     GHC.TypeNats.$trModule1];
+
+$krep_r5s5Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r5s60 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+$krep2_r5s61 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+$krep3_r5s62 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcNat
+                                              GHC.Types.[]];
+
+$krep4_r5s63 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z GHC.Types.[]];
+
+$krep5_r5s64 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r5s62 $krep4_r5s63];
+
+$krep6_r5s65 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Data.Proxy.$tcProxy
+                                              $krep5_r5s64];
+
+GHC.TypeNats.$tcKnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62 $krep2_r5s61];
+
+GHC.TypeNats.$tcSNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*];
+
+GHC.TypeNats.$tcWrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_r5s62
+                                         GHC.Types.krep$*Arr*];
+
+$krep7_r5s66 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep8_r5s67 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep7_r5s66];
+
+GHC.TypeNats.$tcSNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SNat"#;
+
+GHC.TypeNats.$tcSNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSNat3];
+
+GHC.TypeNats.$tcSNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [14249323166640683464##
+                                    2956401390546376063##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSNat2
+                                    0#
+                                    GHC.TypeNats.$tcSNat1];
+
+$krep9_r5s68 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSNat
+                                              $krep4_r5s63];
+
+GHC.TypeNats.$tc'SNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r5s60 $krep9_r5s68];
+
+GHC.TypeNats.$tc'SNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SNat"#;
+
+GHC.TypeNats.$tc'SNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SNat3];
+
+GHC.TypeNats.$tc'SNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10248898659057561068##
+                                    4968065829559829914##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SNat1];
+
+GHC.TypeNats.$tcKnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "KnownNat"#;
+
+GHC.TypeNats.$tcKnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcKnownNat3];
+
+GHC.TypeNats.$tcKnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4406426137333124098##
+                                    3858660218128115833##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcKnownNat2
+                                    0#
+                                    GHC.TypeNats.$tcKnownNat1];
+
+$krep10_r5s69 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcKnownNat
+                                              $krep4_r5s63];
+
+$krep11_r5s6a :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep8_r5s67];
+
+GHC.TypeNats.$tc'C:KnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep9_r5s68 $krep10_r5s69];
+
+GHC.TypeNats.$tc'C:KnownNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'C:KnownNat"#;
+
+GHC.TypeNats.$tc'C:KnownNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'C:KnownNat3];
+
+GHC.TypeNats.$tc'C:KnownNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12421457977663053218##
+                                    18328904747962077722##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'C:KnownNat2
+                                    1#
+                                    GHC.TypeNats.$tc'C:KnownNat1];
+
+GHC.TypeNats.$tcSomeNat2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "SomeNat"#;
+
+GHC.TypeNats.$tcSomeNat1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcSomeNat2];
+
+GHC.TypeNats.$tcSomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9244180789053763601##
+                                    6189216451384407387##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcSomeNat1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep12_r5s6b :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcSomeNat
+                                              GHC.Types.[]];
+
+$krep13_r5s6c :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r5s65 $krep12_r5s6b];
+
+GHC.TypeNats.$tc'SomeNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep10_r5s69 $krep13_r5s6c];
+
+GHC.TypeNats.$tc'SomeNat3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'SomeNat"#;
+
+GHC.TypeNats.$tc'SomeNat2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'SomeNat3];
+
+GHC.TypeNats.$tc'SomeNat :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5872332339143923373##
+                                    16743196919708003695##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'SomeNat2
+                                    1#
+                                    GHC.TypeNats.$tc'SomeNat1];
+
+GHC.TypeNats.$tcWrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "WrapN"#;
+
+GHC.TypeNats.$tcWrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tcWrapN3];
+
+GHC.TypeNats.$tcWrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [825875854269014453##
+                                    10073258292275044429##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tcWrapN2
+                                    0#
+                                    GHC.TypeNats.$tcWrapN1];
+
+$krep14_r5s6d :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r5s66 GHC.Types.[]];
+
+$krep15_r5s6e :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r5s5Z $krep14_r5s6d];
+
+$krep16_r5s6f :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.TypeNats.$tcWrapN
+                                              $krep15_r5s6e];
+
+GHC.TypeNats.$tc'WrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep11_r5s6a $krep16_r5s6f];
+
+GHC.TypeNats.$tc'WrapN3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'WrapN"#;
+
+GHC.TypeNats.$tc'WrapN2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.TypeNats.$tc'WrapN3];
+
+GHC.TypeNats.$tc'WrapN :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [731800900372900037##
+                                    17722817696101367246##
+                                    GHC.TypeNats.$trModule
+                                    GHC.TypeNats.$tc'WrapN2
+                                    2#
+                                    GHC.TypeNats.$tc'WrapN1];
+
+GHC.TypeNats.WrapN
+  :: forall (a :: GHC.Types.Nat) b.
+     (GHC.TypeNats.KnownNat a => Data.Proxy.Proxy a -> b)
+     -> GHC.TypeNats.WrapN a b
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.TypeNats.WrapN [eta_B1];
+
+GHC.TypeNats.SomeNat
+  :: forall (n :: GHC.Types.Nat).
+     GHC.TypeNats.KnownNat n =>
+     Data.Proxy.Proxy n -> GHC.TypeNats.SomeNat
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.TypeNats.SomeNat [eta_B2 eta_B1];
+

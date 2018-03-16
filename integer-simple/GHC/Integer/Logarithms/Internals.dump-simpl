@@ -1,0 +1,667 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:53:56.753727845 UTC
+
+Result size of Tidy Core
+  = {terms: 825, types: 279, coercions: 0, joins: 2/4}
+
+-- RHS size: {terms: 29, types: 6, coercions: 0, joins: 0/2}
+roundingMode# :: Integer -> Int# -> Int#
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 240 0}]
+roundingMode#
+  = \ (m_a98H :: Integer) (h_a98I :: Int#) ->
+      let {
+        c_s9hU [Dmd=<S,U>] :: Integer
+        [LclId]
+        c_s9hU = shiftLInteger oneInteger h_a98I } in
+      let {
+        r_s9hT [Dmd=<S,U>] :: Integer
+        [LclId]
+        r_s9hT
+          = andInteger
+              m_a98H (minusInteger (plusInteger c_s9hU c_s9hU) oneInteger) } in
+      case ltInteger# c_s9hU r_s9hT of {
+        __DEFAULT ->
+          case gtInteger# c_s9hU r_s9hT of {
+            __DEFAULT -> 1#;
+            1# -> 0#
+          };
+        1# -> 2#
+      }
+
+-- RHS size: {terms: 66, types: 50, coercions: 0, joins: 2/2}
+leadingZeros :: BA
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 96 0}]
+leadingZeros
+  = case newByteArray# @ RealWorld 256# realWorld# of
+    { (# ipv_s9ey, ipv1_s9ez #) ->
+    case writeInt8Array# @ RealWorld ipv1_s9ez 0# 9# ipv_s9ey
+    of s2_a98P
+    { __DEFAULT ->
+    join {
+      $j_s9sm [Dmd=<C(S),C(U(U))>] :: State# RealWorld -> BA
+      [LclId[JoinId(1)], Arity=1, Str=<S,U>m]
+      $j_s9sm (s3_a98W [OS=OneShot]
+                 :: State# RealWorld
+                 Unf=OtherCon [])
+        = case unsafeFreezeByteArray# @ RealWorld ipv1_s9ez s3_a98W of
+          { (# ipv2_s9eK, ipv3_s9eL #) ->
+          GHC.Integer.Logarithms.Internals.BA ipv3_s9eL
+          } } in
+    joinrec {
+      fillA_s9hQ [Occ=LoopBreaker]
+        :: Int# -> Int# -> Int# -> State# RealWorld -> BA
+      [LclId[JoinId(4)],
+       Arity=4,
+       Str=<L,U><L,U><S,1*U><S,U>m,
+       Unf=OtherCon []]
+      fillA_s9hQ (lim_a98R :: Int#)
+                 (val_a98S :: Int#)
+                 (idx_a98T :: Int#)
+                 (st_a98U :: State# RealWorld)
+        = case idx_a98T of wild_Xs {
+            __DEFAULT ->
+              case <# wild_Xs lim_a98R of {
+                __DEFAULT ->
+                  jump fillA_s9hQ (*# 2# lim_a98R) (-# val_a98S 1#) wild_Xs st_a98U;
+                1# ->
+                  case writeInt8Array# @ RealWorld ipv1_s9ez wild_Xs val_a98S st_a98U
+                  of nx_a98V
+                  { __DEFAULT ->
+                  jump fillA_s9hQ lim_a98R val_a98S (+# wild_Xs 1#) nx_a98V
+                  }
+              };
+            256# -> jump $j_s9sm st_a98U
+          }; } in
+    jump fillA_s9hQ 2# 8# 1# s2_a98P
+    }
+    }
+
+-- RHS size: {terms: 118, types: 18, coercions: 0, joins: 0/0}
+wordLog2# [InlPrag=INLINE (sat-args=1)] :: Word# -> Int#
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (w_a98b :: Word#) ->
+                 case leadingZeros of { BA lz_a98c [Occ=Once*] ->
+                 case uncheckedShiftRL# w_a98b 56# of wild1_Xo {
+                   __DEFAULT ->
+                     case indexInt8Array# lz_a98c (word2Int# wild1_Xo) of wild2_X7
+                     { __DEFAULT ->
+                     -# 64# wild2_X7
+                     };
+                   0## ->
+                     case uncheckedShiftRL# w_a98b 48# of wild2_Xt {
+                       __DEFAULT ->
+                         case indexInt8Array# lz_a98c (word2Int# wild2_Xt) of wild3_X9
+                         { __DEFAULT ->
+                         -# 56# wild3_X9
+                         };
+                       0## ->
+                         case uncheckedShiftRL# w_a98b 40# of wild3_Xy {
+                           __DEFAULT ->
+                             case indexInt8Array# lz_a98c (word2Int# wild3_Xy) of wild4_Xb
+                             { __DEFAULT ->
+                             -# 48# wild4_Xb
+                             };
+                           0## ->
+                             case uncheckedShiftRL# w_a98b 32# of wild4_XD {
+                               __DEFAULT ->
+                                 case indexInt8Array# lz_a98c (word2Int# wild4_XD) of wild5_Xd
+                                 { __DEFAULT ->
+                                 -# 40# wild5_Xd
+                                 };
+                               0## ->
+                                 case uncheckedShiftRL# w_a98b 24# of wild5_XI {
+                                   __DEFAULT ->
+                                     case indexInt8Array# lz_a98c (word2Int# wild5_XI) of wild6_X10
+                                     { __DEFAULT ->
+                                     -# 32# wild6_X10
+                                     };
+                                   0## ->
+                                     case uncheckedShiftRL# w_a98b 16# of wild6_XN {
+                                       __DEFAULT ->
+                                         case indexInt8Array# lz_a98c (word2Int# wild6_XN)
+                                         of wild7_Xh
+                                         { __DEFAULT ->
+                                         -# 24# wild7_Xh
+                                         };
+                                       0## ->
+                                         case uncheckedShiftRL# w_a98b 8# of wild7_XS {
+                                           __DEFAULT ->
+                                             case indexInt8Array# lz_a98c (word2Int# wild7_XS)
+                                             of wild8_Xj
+                                             { __DEFAULT ->
+                                             -# 16# wild8_Xj
+                                             };
+                                           0## ->
+                                             case indexInt8Array# lz_a98c (word2Int# w_a98b)
+                                             of wild8_Xj
+                                             { __DEFAULT ->
+                                             -# 8# wild8_Xj
+                                             }
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+                 }}]
+wordLog2#
+  = \ (w_a98b :: Word#) ->
+      case leadingZeros of { BA lz_a98c ->
+      case uncheckedShiftRL# w_a98b 56# of wild1_Xo {
+        __DEFAULT ->
+          case indexInt8Array# lz_a98c (word2Int# wild1_Xo) of wild2_X9
+          { __DEFAULT ->
+          -# 64# wild2_X9
+          };
+        0## ->
+          case uncheckedShiftRL# w_a98b 48# of wild2_Xt {
+            __DEFAULT ->
+              case indexInt8Array# lz_a98c (word2Int# wild2_Xt) of wild3_Xb
+              { __DEFAULT ->
+              -# 56# wild3_Xb
+              };
+            0## ->
+              case uncheckedShiftRL# w_a98b 40# of wild3_Xy {
+                __DEFAULT ->
+                  case indexInt8Array# lz_a98c (word2Int# wild3_Xy) of wild4_Xd
+                  { __DEFAULT ->
+                  -# 48# wild4_Xd
+                  };
+                0## ->
+                  case uncheckedShiftRL# w_a98b 32# of wild4_XD {
+                    __DEFAULT ->
+                      case indexInt8Array# lz_a98c (word2Int# wild4_XD) of wild5_XV
+                      { __DEFAULT ->
+                      -# 40# wild5_XV
+                      };
+                    0## ->
+                      case uncheckedShiftRL# w_a98b 24# of wild5_XI {
+                        __DEFAULT ->
+                          case indexInt8Array# lz_a98c (word2Int# wild5_XI) of wild6_Xh
+                          { __DEFAULT ->
+                          -# 32# wild6_Xh
+                          };
+                        0## ->
+                          case uncheckedShiftRL# w_a98b 16# of wild6_XN {
+                            __DEFAULT ->
+                              case indexInt8Array# lz_a98c (word2Int# wild6_XN) of wild7_Xj
+                              { __DEFAULT ->
+                              -# 24# wild7_Xj
+                              };
+                            0## ->
+                              case uncheckedShiftRL# w_a98b 8# of wild7_XS {
+                                __DEFAULT ->
+                                  case indexInt8Array# lz_a98c (word2Int# wild7_XS) of wild8_Xl
+                                  { __DEFAULT ->
+                                  -# 16# wild8_Xl
+                                  };
+                                0## ->
+                                  case indexInt8Array# lz_a98c (word2Int# w_a98b) of wild8_Xl
+                                  { __DEFAULT ->
+                                  -# 8# wild8_Xl
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 149, types: 25, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.integerLog2#_step [Occ=LoopBreaker]
+  :: Int# -> Digits -> Int#
+[GblId, Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+GHC.Integer.Logarithms.Internals.integerLog2#_step
+  = \ (acc_a98o :: Int#) (ds_d9dz :: Digits) ->
+      case ds_d9dz of {
+        Some dig_a98p ds1_d9dK ->
+          case ds1_d9dK of wild1_Xd {
+            Some ipv_s9fP ipv1_s9fQ ->
+              GHC.Integer.Logarithms.Internals.integerLog2#_step
+                (+# acc_a98o 64#) wild1_Xd;
+            None ->
+              case leadingZeros of { BA lz_a98c ->
+              case uncheckedShiftRL# dig_a98p 56# of wild3_Xo {
+                __DEFAULT ->
+                  case indexInt8Array# lz_a98c (word2Int# wild3_Xo) of wild4_X7
+                  { __DEFAULT ->
+                  +# acc_a98o (-# 64# wild4_X7)
+                  };
+                0## ->
+                  case uncheckedShiftRL# dig_a98p 48# of wild4_Xt {
+                    __DEFAULT ->
+                      case indexInt8Array# lz_a98c (word2Int# wild4_Xt) of wild5_X9
+                      { __DEFAULT ->
+                      +# acc_a98o (-# 56# wild5_X9)
+                      };
+                    0## ->
+                      case uncheckedShiftRL# dig_a98p 40# of wild5_Xy {
+                        __DEFAULT ->
+                          case indexInt8Array# lz_a98c (word2Int# wild5_Xy) of wild6_Xb
+                          { __DEFAULT ->
+                          +# acc_a98o (-# 48# wild6_Xb)
+                          };
+                        0## ->
+                          case uncheckedShiftRL# dig_a98p 32# of wild6_XD {
+                            __DEFAULT ->
+                              case indexInt8Array# lz_a98c (word2Int# wild6_XD) of wild7_X1i
+                              { __DEFAULT ->
+                              +# acc_a98o (-# 40# wild7_X1i)
+                              };
+                            0## ->
+                              case uncheckedShiftRL# dig_a98p 24# of wild7_XI {
+                                __DEFAULT ->
+                                  case indexInt8Array# lz_a98c (word2Int# wild7_XI) of wild8_X10
+                                  { __DEFAULT ->
+                                  +# acc_a98o (-# 32# wild8_X10)
+                                  };
+                                0## ->
+                                  case uncheckedShiftRL# dig_a98p 16# of wild8_XN {
+                                    __DEFAULT ->
+                                      case indexInt8Array# lz_a98c (word2Int# wild8_XN) of wild9_Xh
+                                      { __DEFAULT ->
+                                      +# acc_a98o (-# 24# wild9_Xh)
+                                      };
+                                    0## ->
+                                      case uncheckedShiftRL# dig_a98p 8# of wild9_XS {
+                                        __DEFAULT ->
+                                          case indexInt8Array# lz_a98c (word2Int# wild9_XS)
+                                          of wild10_Xj
+                                          { __DEFAULT ->
+                                          +# acc_a98o (-# 16# wild10_Xj)
+                                          };
+                                        0## ->
+                                          case indexInt8Array# lz_a98c (word2Int# dig_a98p)
+                                          of wild10_Xj
+                                          { __DEFAULT ->
+                                          +# acc_a98o (-# 8# wild10_Xj)
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+              }
+          };
+        None -> acc_a98o
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 3, coercions: 0, joins: 0/0}
+integerLog2# :: Integer -> Int#
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9dp [Occ=Once!] :: Integer) ->
+                 case ds_d9dp of {
+                   __DEFAULT -> -1#;
+                   Positive digits_a98m [Occ=Once] ->
+                     GHC.Integer.Logarithms.Internals.integerLog2#_step 0# digits_a98m
+                 }}]
+integerLog2#
+  = \ (ds_d9dp :: Integer) ->
+      case ds_d9dp of {
+        __DEFAULT -> -1#;
+        Positive digits_a98m ->
+          GHC.Integer.Logarithms.Internals.integerLog2#_step 0# digits_a98m
+      }
+
+Rec {
+-- RHS size: {terms: 167, types: 61, coercions: 0, joins: 0/0}
+noPower_r9AI :: Int# -> Digits -> (# Int#, Int# #)
+[GblId, Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+noPower_r9AI
+  = \ (acc_a98C :: Int#) (ds_d9ed :: Digits) ->
+      case ds_d9ed of {
+        Some dig_a98D ds1_d9eo ->
+          case ds1_d9eo of wild1_Xe {
+            Some ipv_s9fW ipv1_s9fX -> noPower_r9AI (+# acc_a98C 64#) wild1_Xe;
+            None ->
+              case leadingZeros of { BA lz_a98c ->
+              case uncheckedShiftRL# dig_a98D 56# of wild3_Xo {
+                __DEFAULT ->
+                  case indexInt8Array# lz_a98c (word2Int# wild3_Xo) of wild4_X7
+                  { __DEFAULT ->
+                  (# +# acc_a98C (-# 64# wild4_X7), 1# #)
+                  };
+                0## ->
+                  case uncheckedShiftRL# dig_a98D 48# of wild4_Xt {
+                    __DEFAULT ->
+                      case indexInt8Array# lz_a98c (word2Int# wild4_Xt) of wild5_X9
+                      { __DEFAULT ->
+                      (# +# acc_a98C (-# 56# wild5_X9), 1# #)
+                      };
+                    0## ->
+                      case uncheckedShiftRL# dig_a98D 40# of wild5_Xy {
+                        __DEFAULT ->
+                          case indexInt8Array# lz_a98c (word2Int# wild5_Xy) of wild6_X1d
+                          { __DEFAULT ->
+                          (# +# acc_a98C (-# 48# wild6_X1d), 1# #)
+                          };
+                        0## ->
+                          case uncheckedShiftRL# dig_a98D 32# of wild6_XD {
+                            __DEFAULT ->
+                              case indexInt8Array# lz_a98c (word2Int# wild6_XD) of wild7_Xd
+                              { __DEFAULT ->
+                              (# +# acc_a98C (-# 40# wild7_Xd), 1# #)
+                              };
+                            0## ->
+                              case uncheckedShiftRL# dig_a98D 24# of wild7_XI {
+                                __DEFAULT ->
+                                  case indexInt8Array# lz_a98c (word2Int# wild7_XI) of wild8_X10
+                                  { __DEFAULT ->
+                                  (# +# acc_a98C (-# 32# wild8_X10), 1# #)
+                                  };
+                                0## ->
+                                  case uncheckedShiftRL# dig_a98D 16# of wild8_XN {
+                                    __DEFAULT ->
+                                      case indexInt8Array# lz_a98c (word2Int# wild8_XN) of wild9_Xh
+                                      { __DEFAULT ->
+                                      (# +# acc_a98C (-# 24# wild9_Xh), 1# #)
+                                      };
+                                    0## ->
+                                      case uncheckedShiftRL# dig_a98D 8# of wild9_XS {
+                                        __DEFAULT ->
+                                          case indexInt8Array# lz_a98c (word2Int# wild9_XS)
+                                          of wild10_Xj
+                                          { __DEFAULT ->
+                                          (# +# acc_a98C (-# 16# wild10_Xj), 1# #)
+                                          };
+                                        0## ->
+                                          case indexInt8Array# lz_a98c (word2Int# dig_a98D)
+                                          of wild10_Xj
+                                          { __DEFAULT ->
+                                          (# +# acc_a98C (-# 8# wild10_Xj), 1# #)
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+              }
+          };
+        None -> (# acc_a98C, 1# #)
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 216, types: 62, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.integerLog2IsPowerOf2#_couldBe [Occ=LoopBreaker]
+  :: Int# -> Digits -> (# Int#, Int# #)
+[GblId, Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+GHC.Integer.Logarithms.Internals.integerLog2IsPowerOf2#_couldBe
+  = \ (acc_a98w :: Int#) (ds_d9dZ :: Digits) ->
+      case ds_d9dZ of {
+        Some dig_a98x ds1_d9e9 ->
+          case ds1_d9e9 of wild1_Xf {
+            Some ipv_s9g3 ipv1_s9g4 ->
+              case dig_a98x of {
+                __DEFAULT -> noPower_r9AI (+# acc_a98w 64#) wild1_Xf;
+                0## ->
+                  GHC.Integer.Logarithms.Internals.integerLog2IsPowerOf2#_couldBe
+                    (+# acc_a98w 64#) wild1_Xf
+              };
+            None ->
+              case leadingZeros of { BA lz_a98c ->
+              case uncheckedShiftRL# dig_a98x 56# of wild3_Xo {
+                __DEFAULT ->
+                  case indexInt8Array# lz_a98c (word2Int# wild3_Xo) of wild4_X7
+                  { __DEFAULT ->
+                  (# +# acc_a98w (-# 64# wild4_X7),
+                     word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                  };
+                0## ->
+                  case uncheckedShiftRL# dig_a98x 48# of wild4_Xt {
+                    __DEFAULT ->
+                      case indexInt8Array# lz_a98c (word2Int# wild4_Xt) of wild5_X9
+                      { __DEFAULT ->
+                      (# +# acc_a98w (-# 56# wild5_X9),
+                         word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                      };
+                    0## ->
+                      case uncheckedShiftRL# dig_a98x 40# of wild5_Xy {
+                        __DEFAULT ->
+                          case indexInt8Array# lz_a98c (word2Int# wild5_Xy) of wild6_Xb
+                          { __DEFAULT ->
+                          (# +# acc_a98w (-# 48# wild6_Xb),
+                             word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                          };
+                        0## ->
+                          case uncheckedShiftRL# dig_a98x 32# of wild6_XD {
+                            __DEFAULT ->
+                              case indexInt8Array# lz_a98c (word2Int# wild6_XD) of wild7_Xd
+                              { __DEFAULT ->
+                              (# +# acc_a98w (-# 40# wild7_Xd),
+                                 word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                              };
+                            0## ->
+                              case uncheckedShiftRL# dig_a98x 24# of wild7_XI {
+                                __DEFAULT ->
+                                  case indexInt8Array# lz_a98c (word2Int# wild7_XI) of wild8_X10
+                                  { __DEFAULT ->
+                                  (# +# acc_a98w (-# 32# wild8_X10),
+                                     word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                                  };
+                                0## ->
+                                  case uncheckedShiftRL# dig_a98x 16# of wild8_XN {
+                                    __DEFAULT ->
+                                      case indexInt8Array# lz_a98c (word2Int# wild8_XN) of wild9_Xh
+                                      { __DEFAULT ->
+                                      (# +# acc_a98w (-# 24# wild9_Xh),
+                                         word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                                      };
+                                    0## ->
+                                      case uncheckedShiftRL# dig_a98x 8# of wild9_XS {
+                                        __DEFAULT ->
+                                          case indexInt8Array# lz_a98c (word2Int# wild9_XS)
+                                          of wild10_Xj
+                                          { __DEFAULT ->
+                                          (# +# acc_a98w (-# 16# wild10_Xj),
+                                             word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                                          };
+                                        0## ->
+                                          case indexInt8Array# lz_a98c (word2Int# dig_a98x)
+                                          of wild10_Xj
+                                          { __DEFAULT ->
+                                          (# +# acc_a98w (-# 8# wild10_Xj),
+                                             word2Int# (and# dig_a98x (minusWord# dig_a98x 1##)) #)
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+              }
+          };
+        None -> (# acc_a98w, 1# #)
+      }
+end Rec }
+
+-- RHS size: {terms: 11, types: 7, coercions: 0, joins: 0/0}
+integerLog2IsPowerOf2# :: Integer -> (# Int#, Int# #)
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9dP [Occ=Once!] :: Integer) ->
+                 case ds_d9dP of {
+                   __DEFAULT -> (# -1#, 1# #);
+                   Positive digits_a98t [Occ=Once] ->
+                     GHC.Integer.Logarithms.Internals.integerLog2IsPowerOf2#_couldBe
+                       0# digits_a98t
+                 }}]
+integerLog2IsPowerOf2#
+  = \ (ds_d9dP :: Integer) ->
+      case ds_d9dP of {
+        __DEFAULT -> (# -1#, 1# #);
+        Positive digits_a98t ->
+          GHC.Integer.Logarithms.Internals.integerLog2IsPowerOf2#_couldBe
+            0# digits_a98t
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Integer.Logarithms.Internals.$trModule4 = "integer-simple"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Logarithms.Internals.$trModule3
+  = GHC.Types.TrNameS GHC.Integer.Logarithms.Internals.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 90 0}]
+GHC.Integer.Logarithms.Internals.$trModule2
+  = "GHC.Integer.Logarithms.Internals"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Logarithms.Internals.$trModule1
+  = GHC.Types.TrNameS GHC.Integer.Logarithms.Internals.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Integer.Logarithms.Internals.$trModule
+  = GHC.Types.Module
+      GHC.Integer.Logarithms.Internals.$trModule3
+      GHC.Integer.Logarithms.Internals.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r9AJ :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r9AJ
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcByteArray# (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tcBA2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Integer.Logarithms.Internals.$tcBA2 = "BA"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tcBA1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Logarithms.Internals.$tcBA1
+  = GHC.Types.TrNameS GHC.Integer.Logarithms.Internals.$tcBA2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tcBA :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Logarithms.Internals.$tcBA
+  = GHC.Types.TyCon
+      1270308961569198254##
+      6805106280991229347##
+      GHC.Integer.Logarithms.Internals.$trModule
+      GHC.Integer.Logarithms.Internals.$tcBA1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_r9AK :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_r9AK
+  = GHC.Types.KindRepTyConApp
+      GHC.Integer.Logarithms.Internals.$tcBA (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tc'BA1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Integer.Logarithms.Internals.$tc'BA1
+  = GHC.Types.KindRepFun $krep_r9AJ $krep1_r9AK
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tc'BA3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Integer.Logarithms.Internals.$tc'BA3 = "'BA"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tc'BA2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Logarithms.Internals.$tc'BA2
+  = GHC.Types.TrNameS GHC.Integer.Logarithms.Internals.$tc'BA3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.Internals.$tc'BA :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Logarithms.Internals.$tc'BA
+  = GHC.Types.TyCon
+      12402798602385785556##
+      5679508278348334299##
+      GHC.Integer.Logarithms.Internals.$trModule
+      GHC.Integer.Logarithms.Internals.$tc'BA2
+      0#
+      GHC.Integer.Logarithms.Internals.$tc'BA1
+
+

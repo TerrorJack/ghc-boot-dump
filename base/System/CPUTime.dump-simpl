@@ -1,0 +1,101 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:26.47401871 UTC
+
+Result size of Tidy Core
+  = {terms: 30, types: 53, coercions: 3, joins: 0/0}
+
+-- RHS size: {terms: 7, types: 5, coercions: 0, joins: 0/0}
+lvl_rcxCQ
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Integer #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+lvl_rcxCQ
+  = \ (s_i91ZD [OS=OneShot] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case GHC.Prim.noDuplicate# @ GHC.Prim.RealWorld s_i91ZD of s'_i91ZE
+      { __DEFAULT ->
+      System.CPUTime.Posix.ClockGetTime.getCpuTimePrecision1 s'_i91ZE
+      }
+
+-- RHS size: {terms: 5, types: 30, coercions: 0, joins: 0/0}
+cpuTimePrecision [InlPrag=NOINLINE] :: Integer
+[GblId]
+cpuTimePrecision
+  = case GHC.Magic.runRW#
+           @ ('GHC.Types.TupleRep
+                '['GHC.Types.TupleRep '[], 'GHC.Types.LiftedRep])
+           @ (# GHC.Prim.State# GHC.Prim.RealWorld, Integer #)
+           lvl_rcxCQ
+    of
+    { (# ipv_i91ZH, ipv1_i91ZI #) ->
+    ipv1_i91ZI
+    }
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+getCPUTime :: IO Integer
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.CPUTime.Posix.ClockGetTime.getCPUTime1
+               `cast` (Sym (GHC.Types.N:IO[0] <Integer>_R)
+                       :: (GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, Integer #) :: *)
+                          ~R# (IO Integer :: *))}]
+getCPUTime
+  = System.CPUTime.Posix.ClockGetTime.getCPUTime1
+    `cast` (Sym (GHC.Types.N:IO[0] <Integer>_R)
+            :: (GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, Integer #) :: *)
+               ~R# (IO Integer :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.CPUTime.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.CPUTime.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.CPUTime.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.CPUTime.$trModule3
+  = GHC.Types.TrNameS System.CPUTime.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.CPUTime.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+System.CPUTime.$trModule2 = "System.CPUTime"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.CPUTime.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.CPUTime.$trModule1
+  = GHC.Types.TrNameS System.CPUTime.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.CPUTime.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.CPUTime.$trModule
+  = GHC.Types.Module
+      System.CPUTime.$trModule3 System.CPUTime.$trModule1
+
+

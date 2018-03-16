@@ -1,0 +1,866 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:04.353552467 UTC
+
+GHC.Event.Arr.new1
+  :: forall a.
+     a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Event.Arr.Arr a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [defval_sqPW ds_sqPX eta_sqPY]
+        case ds_sqPX of {
+          GHC.Types.I# n#_sqQ0 [Occ=Once] ->
+              case newArray# [n#_sqQ0 defval_sqPW eta_sqPY] of {
+                (#,#) ipv_sqQ2 [Occ=Once] ipv1_sqQ3 [Occ=Once] ->
+                    let {
+                      sat_sqQ4 [Occ=Once] :: GHC.Event.Arr.Arr a_aqMu
+                      [LclId] =
+                          CCCS GHC.Event.Arr.Arr! [ipv1_sqQ3];
+                    } in  (#,#) [ipv_sqQ2 sat_sqQ4];
+              };
+        };
+
+GHC.Event.Arr.new
+  :: forall a.
+     a -> GHC.Types.Int -> GHC.Types.IO (GHC.Event.Arr.Arr a)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Event.Arr.new1 eta_B3 eta_B2 eta_B1;
+
+GHC.Event.Arr.size
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_sqQ5]
+        case ds_sqQ5 of {
+          GHC.Event.Arr.Arr a1_sqQ7 [Occ=Once] ->
+              case sizeofMutableArray# [a1_sqQ7] of sat_sqQ8 {
+                __DEFAULT -> GHC.Types.I# [sat_sqQ8];
+              };
+        };
+
+GHC.Event.Arr.read1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqQ9 ds1_sqQa eta_sqQb]
+        case ds_sqQ9 of {
+          GHC.Event.Arr.Arr a1_sqQd [Occ=Once] ->
+              case ds1_sqQa of {
+                GHC.Types.I# n#_sqQf [Occ=Once] ->
+                    readArray# [a1_sqQd n#_sqQf eta_sqQb];
+              };
+        };
+
+GHC.Event.Arr.read
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Event.Arr.read1 eta_B3 eta_B2 eta_B1;
+
+GHC.Event.Arr.write1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqQg ds1_sqQh val_sqQi eta_sqQj]
+        case ds_sqQg of {
+          GHC.Event.Arr.Arr a1_sqQl [Occ=Once] ->
+              case ds1_sqQh of {
+                GHC.Types.I# n#_sqQn [Occ=Once] ->
+                    case writeArray# [a1_sqQl n#_sqQn val_sqQi eta_sqQj] of s1#_sqQo {
+                      __DEFAULT -> (#,#) [s1#_sqQo GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Event.Arr.write
+  :: forall a.
+     GHC.Event.Arr.Arr a -> GHC.Types.Int -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.Event.Arr.write1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.Event.Arr.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Event.Arr.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule4];
+
+GHC.Event.Arr.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Event.Arr"#;
+
+GHC.Event.Arr.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule2];
+
+GHC.Event.Arr.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Event.Arr.$trModule3
+                                     GHC.Event.Arr.$trModule1];
+
+$krep_rqPP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rqPQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rqPR :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rqPQ GHC.Types.[]];
+
+$krep3_rqPS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rqPP $krep2_rqPR];
+
+$krep4_rqPT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableArray#
+                                              $krep3_rqPS];
+
+GHC.Event.Arr.$tcArr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Arr"#;
+
+GHC.Event.Arr.$tcArr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tcArr2];
+
+GHC.Event.Arr.$tcArr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [7773062135567581215##
+                                    417034436732562294##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tcArr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rqPU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Event.Arr.$tcArr
+                                              $krep2_rqPR];
+
+GHC.Event.Arr.$tc'Arr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rqPT $krep5_rqPU];
+
+GHC.Event.Arr.$tc'Arr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Arr"#;
+
+GHC.Event.Arr.$tc'Arr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tc'Arr3];
+
+GHC.Event.Arr.$tc'Arr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2259010253002565214##
+                                    11584643395998142804##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tc'Arr2
+                                    1#
+                                    GHC.Event.Arr.$tc'Arr1];
+
+GHC.Event.Arr.Arr
+  :: forall a.
+     GHC.Prim.MutableArray# GHC.Prim.RealWorld a -> GHC.Event.Arr.Arr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Event.Arr.Arr [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:04.356787019 UTC
+
+GHC.Event.Arr.new1
+  :: forall a.
+     a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Event.Arr.Arr a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [defval_sqPW ds_sqPX void_0E]
+        case ds_sqPX of {
+          GHC.Types.I# n#_sqQ0 [Occ=Once] ->
+              case newArray# [n#_sqQ0 defval_sqPW GHC.Prim.void#] of {
+                Unit# ipv1_sqQ3 [Occ=Once] ->
+                    let {
+                      sat_sqQ4 [Occ=Once] :: GHC.Event.Arr.Arr a_aqMu
+                      [LclId] =
+                          CCCS GHC.Event.Arr.Arr! [ipv1_sqQ3];
+                    } in  Unit# [sat_sqQ4];
+              };
+        };
+
+GHC.Event.Arr.new
+  :: forall a.
+     a -> GHC.Types.Int -> GHC.Types.IO (GHC.Event.Arr.Arr a)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Event.Arr.new1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Event.Arr.size
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_sqQ5]
+        case ds_sqQ5 of {
+          GHC.Event.Arr.Arr a1_sqQ7 [Occ=Once] ->
+              case sizeofMutableArray# [a1_sqQ7] of sat_sqQ8 {
+                __DEFAULT -> GHC.Types.I# [sat_sqQ8];
+              };
+        };
+
+GHC.Event.Arr.read1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqQ9 ds1_sqQa void_0E]
+        case ds_sqQ9 of {
+          GHC.Event.Arr.Arr a1_sqQd [Occ=Once] ->
+              case ds1_sqQa of {
+                GHC.Types.I# n#_sqQf [Occ=Once] ->
+                    readArray# [a1_sqQd n#_sqQf GHC.Prim.void#];
+              };
+        };
+
+GHC.Event.Arr.read
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Event.Arr.read1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Event.Arr.write1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqQg ds1_sqQh val_sqQi void_0E]
+        case ds_sqQg of {
+          GHC.Event.Arr.Arr a1_sqQl [Occ=Once] ->
+              case ds1_sqQh of {
+                GHC.Types.I# n#_sqQn [Occ=Once] ->
+                    case
+                        writeArray# [a1_sqQl n#_sqQn val_sqQi GHC.Prim.void#]
+                    of
+                    s1#_sqQo
+                    { (##) -> Unit# [GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Event.Arr.write
+  :: forall a.
+     GHC.Event.Arr.Arr a -> GHC.Types.Int -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.Event.Arr.write1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Event.Arr.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Event.Arr.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule4];
+
+GHC.Event.Arr.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Event.Arr"#;
+
+GHC.Event.Arr.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule2];
+
+GHC.Event.Arr.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Event.Arr.$trModule3
+                                     GHC.Event.Arr.$trModule1];
+
+$krep_rqPP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rqPQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rqPR :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rqPQ GHC.Types.[]];
+
+$krep3_rqPS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rqPP $krep2_rqPR];
+
+$krep4_rqPT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableArray#
+                                              $krep3_rqPS];
+
+GHC.Event.Arr.$tcArr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Arr"#;
+
+GHC.Event.Arr.$tcArr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tcArr2];
+
+GHC.Event.Arr.$tcArr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [7773062135567581215##
+                                    417034436732562294##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tcArr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rqPU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Event.Arr.$tcArr
+                                              $krep2_rqPR];
+
+GHC.Event.Arr.$tc'Arr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rqPT $krep5_rqPU];
+
+GHC.Event.Arr.$tc'Arr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Arr"#;
+
+GHC.Event.Arr.$tc'Arr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tc'Arr3];
+
+GHC.Event.Arr.$tc'Arr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2259010253002565214##
+                                    11584643395998142804##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tc'Arr2
+                                    1#
+                                    GHC.Event.Arr.$tc'Arr1];
+
+GHC.Event.Arr.Arr
+  :: forall a.
+     GHC.Prim.MutableArray# GHC.Prim.RealWorld a -> GHC.Event.Arr.Arr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Event.Arr.Arr [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:04.596791405 UTC
+
+GHC.Event.Arr.new1
+  :: forall a.
+     a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Event.Arr.Arr a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [defval_sqXB ds_sqXC eta_sqXD]
+        case ds_sqXC of {
+          GHC.Types.I# n#_sqXF [Occ=Once] ->
+              case newArray# [n#_sqXF defval_sqXB eta_sqXD] of {
+                (#,#) ipv_sqXH [Occ=Once] ipv1_sqXI [Occ=Once] ->
+                    let {
+                      sat_sqXJ [Occ=Once] :: GHC.Event.Arr.Arr a_aqMu
+                      [LclId] =
+                          CCCS GHC.Event.Arr.Arr! [ipv1_sqXI];
+                    } in  (#,#) [ipv_sqXH sat_sqXJ];
+              };
+        };
+
+GHC.Event.Arr.new
+  :: forall a.
+     a -> GHC.Types.Int -> GHC.Types.IO (GHC.Event.Arr.Arr a)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Event.Arr.new1 eta_B3 eta_B2 eta_B1;
+
+GHC.Event.Arr.size
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_sqXK]
+        case ds_sqXK of {
+          GHC.Event.Arr.Arr a1_sqXM [Occ=Once] ->
+              case sizeofMutableArray# [a1_sqXM] of sat_sqXN {
+                __DEFAULT -> GHC.Types.I# [sat_sqXN];
+              };
+        };
+
+GHC.Event.Arr.read1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqXO ds1_sqXP eta_sqXQ]
+        case ds_sqXO of {
+          GHC.Event.Arr.Arr a1_sqXS [Occ=Once] ->
+              case ds1_sqXP of {
+                GHC.Types.I# n#_sqXU [Occ=Once] ->
+                    readArray# [a1_sqXS n#_sqXU eta_sqXQ];
+              };
+        };
+
+GHC.Event.Arr.read
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Event.Arr.read1 eta_B3 eta_B2 eta_B1;
+
+GHC.Event.Arr.write1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqXV ds1_sqXW val_sqXX eta_sqXY]
+        case ds_sqXV of {
+          GHC.Event.Arr.Arr a1_sqY0 [Occ=Once] ->
+              case ds1_sqXW of {
+                GHC.Types.I# n#_sqY2 [Occ=Once] ->
+                    case writeArray# [a1_sqY0 n#_sqY2 val_sqXX eta_sqXY] of s1#_sqY3 {
+                      __DEFAULT -> (#,#) [s1#_sqY3 GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Event.Arr.write
+  :: forall a.
+     GHC.Event.Arr.Arr a -> GHC.Types.Int -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.Event.Arr.write1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.Event.Arr.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Event.Arr.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule4];
+
+GHC.Event.Arr.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Event.Arr"#;
+
+GHC.Event.Arr.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule2];
+
+GHC.Event.Arr.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Event.Arr.$trModule3
+                                     GHC.Event.Arr.$trModule1];
+
+$krep_rqPP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rqPQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rqPR :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rqPQ GHC.Types.[]];
+
+$krep3_rqPS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rqPP $krep2_rqPR];
+
+$krep4_rqPT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableArray#
+                                              $krep3_rqPS];
+
+GHC.Event.Arr.$tcArr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Arr"#;
+
+GHC.Event.Arr.$tcArr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tcArr2];
+
+GHC.Event.Arr.$tcArr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [7773062135567581215##
+                                    417034436732562294##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tcArr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rqPU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Event.Arr.$tcArr
+                                              $krep2_rqPR];
+
+GHC.Event.Arr.$tc'Arr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rqPT $krep5_rqPU];
+
+GHC.Event.Arr.$tc'Arr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Arr"#;
+
+GHC.Event.Arr.$tc'Arr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tc'Arr3];
+
+GHC.Event.Arr.$tc'Arr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2259010253002565214##
+                                    11584643395998142804##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tc'Arr2
+                                    1#
+                                    GHC.Event.Arr.$tc'Arr1];
+
+GHC.Event.Arr.Arr
+  :: forall a.
+     GHC.Prim.MutableArray# GHC.Prim.RealWorld a -> GHC.Event.Arr.Arr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Event.Arr.Arr [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:04.60261949 UTC
+
+GHC.Event.Arr.new1
+  :: forall a.
+     a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Event.Arr.Arr a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [defval_sqXB ds_sqXC void_0E]
+        case ds_sqXC of {
+          GHC.Types.I# n#_sqXF [Occ=Once] ->
+              case newArray# [n#_sqXF defval_sqXB GHC.Prim.void#] of {
+                Unit# ipv1_sqXI [Occ=Once] ->
+                    let {
+                      sat_sqXJ [Occ=Once] :: GHC.Event.Arr.Arr a_aqMu
+                      [LclId] =
+                          CCCS GHC.Event.Arr.Arr! [ipv1_sqXI];
+                    } in  Unit# [sat_sqXJ];
+              };
+        };
+
+GHC.Event.Arr.new
+  :: forall a.
+     a -> GHC.Types.Int -> GHC.Types.IO (GHC.Event.Arr.Arr a)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Event.Arr.new1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Event.Arr.size
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_sqXK]
+        case ds_sqXK of {
+          GHC.Event.Arr.Arr a1_sqXM [Occ=Once] ->
+              case sizeofMutableArray# [a1_sqXM] of sat_sqXN {
+                __DEFAULT -> GHC.Types.I# [sat_sqXN];
+              };
+        };
+
+GHC.Event.Arr.read1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqXO ds1_sqXP void_0E]
+        case ds_sqXO of {
+          GHC.Event.Arr.Arr a1_sqXS [Occ=Once] ->
+              case ds1_sqXP of {
+                GHC.Types.I# n#_sqXU [Occ=Once] ->
+                    readArray# [a1_sqXS n#_sqXU GHC.Prim.void#];
+              };
+        };
+
+GHC.Event.Arr.read
+  :: forall a. GHC.Event.Arr.Arr a -> GHC.Types.Int -> GHC.Types.IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Event.Arr.read1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Event.Arr.write1
+  :: forall a.
+     GHC.Event.Arr.Arr a
+     -> GHC.Types.Int
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sqXV ds1_sqXW val_sqXX void_0E]
+        case ds_sqXV of {
+          GHC.Event.Arr.Arr a1_sqY0 [Occ=Once] ->
+              case ds1_sqXW of {
+                GHC.Types.I# n#_sqY2 [Occ=Once] ->
+                    case
+                        writeArray# [a1_sqY0 n#_sqY2 val_sqXX GHC.Prim.void#]
+                    of
+                    s1#_sqY3
+                    { (##) -> Unit# [GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Event.Arr.write
+  :: forall a.
+     GHC.Event.Arr.Arr a -> GHC.Types.Int -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.Event.Arr.write1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Event.Arr.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Event.Arr.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule4];
+
+GHC.Event.Arr.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Event.Arr"#;
+
+GHC.Event.Arr.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$trModule2];
+
+GHC.Event.Arr.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Event.Arr.$trModule3
+                                     GHC.Event.Arr.$trModule1];
+
+$krep_rqPP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rqPQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rqPR :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rqPQ GHC.Types.[]];
+
+$krep3_rqPS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rqPP $krep2_rqPR];
+
+$krep4_rqPT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableArray#
+                                              $krep3_rqPS];
+
+GHC.Event.Arr.$tcArr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Arr"#;
+
+GHC.Event.Arr.$tcArr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tcArr2];
+
+GHC.Event.Arr.$tcArr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [7773062135567581215##
+                                    417034436732562294##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tcArr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rqPU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Event.Arr.$tcArr
+                                              $krep2_rqPR];
+
+GHC.Event.Arr.$tc'Arr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rqPT $krep5_rqPU];
+
+GHC.Event.Arr.$tc'Arr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Arr"#;
+
+GHC.Event.Arr.$tc'Arr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Event.Arr.$tc'Arr3];
+
+GHC.Event.Arr.$tc'Arr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2259010253002565214##
+                                    11584643395998142804##
+                                    GHC.Event.Arr.$trModule
+                                    GHC.Event.Arr.$tc'Arr2
+                                    1#
+                                    GHC.Event.Arr.$tc'Arr1];
+
+GHC.Event.Arr.Arr
+  :: forall a.
+     GHC.Prim.MutableArray# GHC.Prim.RealWorld a -> GHC.Event.Arr.Arr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Event.Arr.Arr [eta_B1];
+

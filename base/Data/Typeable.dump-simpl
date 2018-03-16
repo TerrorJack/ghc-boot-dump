@@ -1,0 +1,1770 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:02:40.125840704 UTC
+
+Result size of Tidy Core
+  = {terms: 831, types: 2,294, coercions: 318, joins: 7/7}
+
+-- RHS size: {terms: 5, types: 10, coercions: 4, joins: 0/0}
+typeOf :: forall a. Typeable a => a -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_a7mEy)
+                 ($dTypeable_a7mEA [Occ=Once] :: Typeable a_a7mEy)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ *
+                   @ a_a7mEy
+                   ($dTypeable_a7mEA
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a7mEy>_N
+                            :: (Typeable a_a7mEy :: Constraint)
+                               ~R# (I.TypeRep a_a7mEy :: *)))}]
+typeOf
+  = \ (@ a_a7mEy)
+      ($dTypeable_a7mEA :: Typeable a_a7mEy)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ *
+        @ a_a7mEy
+        ($dTypeable_a7mEA
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a7mEy>_N
+                 :: (Typeable a_a7mEy :: Constraint) ~R# (I.TypeRep a_a7mEy :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+typeRep
+  :: forall k (proxy :: k -> *) (a :: k).
+     Typeable a =>
+     proxy a -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= I.someTypeRep}]
+typeRep = I.someTypeRep
+
+-- RHS size: {terms: 14, types: 22, coercions: 13, joins: 0/0}
+cast :: forall a b. (Typeable a, Typeable b) => a -> Maybe b
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7mDH)
+                 (@ b_a7mDI)
+                 ($dTypeable_a7mDK [Occ=Once] :: Typeable a_a7mDH)
+                 ($dTypeable1_a7mDL [Occ=Once] :: Typeable b_a7mDI)
+                 (x_a7mpa [Occ=Once] :: a_a7mDH) ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ *
+                        @ *
+                        @ a_a7mDH
+                        @ b_a7mDI
+                        ($dTypeable_a7mDK
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a7mDH>_N
+                                 :: (Typeable a_a7mDH :: Constraint) ~R# (I.TypeRep a_a7mDH :: *)))
+                        ($dTypeable1_a7mDL
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <b_a7mDI>_N
+                                 :: (Typeable b_a7mDI :: Constraint) ~R# (I.TypeRep b_a7mDI :: *)))
+                 of {
+                   False -> GHC.Base.Nothing @ b_a7mDI;
+                   True ->
+                     (GHC.Base.Just @ a_a7mDH x_a7mpa)
+                     `cast` ((Maybe (UnsafeCo representational a_a7mDH b_a7mDI))_R
+                             :: (Maybe a_a7mDH :: *) ~R# (Maybe b_a7mDI :: *))
+                 }}]
+cast
+  = \ (@ a_a7mDH)
+      (@ b_a7mDI)
+      ($dTypeable_a7mDK :: Typeable a_a7mDH)
+      ($dTypeable1_a7mDL :: Typeable b_a7mDI)
+      (x_a7mpa :: a_a7mDH) ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ a_a7mDH
+             @ b_a7mDI
+             ($dTypeable_a7mDK
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a7mDH>_N
+                      :: (Typeable a_a7mDH :: Constraint) ~R# (I.TypeRep a_a7mDH :: *)))
+             ($dTypeable1_a7mDL
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <b_a7mDI>_N
+                      :: (Typeable b_a7mDI :: Constraint) ~R# (I.TypeRep b_a7mDI :: *)))
+      of {
+        False -> GHC.Base.Nothing @ b_a7mDI;
+        True ->
+          (GHC.Base.Just @ a_a7mDH x_a7mpa)
+          `cast` ((Maybe (UnsafeCo representational a_a7mDH b_a7mDI))_R
+                  :: (Maybe a_a7mDH :: *) ~R# (Maybe b_a7mDI :: *))
+      }
+
+-- RHS size: {terms: 4, types: 9, coercions: 0, joins: 0/0}
+Data.Typeable.eqT1 :: forall k (a :: k). Maybe (a :~: a)
+[GblId,
+ Caf=NoCafRefs,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.eqT1
+  = \ (@ k_a7mBB) (@ (a_a7mBC :: k_a7mBB)) ->
+      GHC.Base.Just
+        @ (a_a7mBC :~: a_a7mBC)
+        (Data.Type.Equality.$WRefl @ k_a7mBB @ a_a7mBC)
+
+-- RHS size: {terms: 13, types: 21, coercions: 14, joins: 0/0}
+eqT
+  :: forall k (a :: k) (b :: k).
+     (Typeable a, Typeable b) =>
+     Maybe (a :~: b)
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a7mBB)
+                 (@ (a_a7mBC :: k_a7mBB))
+                 (@ (b_a7mBD :: k_a7mBB))
+                 ($dTypeable_a7mBF [Occ=Once] :: Typeable a_a7mBC)
+                 ($dTypeable1_a7mBG [Occ=Once] :: Typeable b_a7mBD) ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ k_a7mBB
+                        @ k_a7mBB
+                        @ a_a7mBC
+                        @ b_a7mBD
+                        ($dTypeable_a7mBF
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mBB>_N <a_a7mBC>_N
+                                 :: (Typeable a_a7mBC :: Constraint) ~R# (I.TypeRep a_a7mBC :: *)))
+                        ($dTypeable1_a7mBG
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mBB>_N <b_a7mBD>_N
+                                 :: (Typeable b_a7mBD :: Constraint) ~R# (I.TypeRep b_a7mBD :: *)))
+                 of {
+                   False -> GHC.Base.Nothing @ (a_a7mBC :~: b_a7mBD);
+                   True ->
+                     (Data.Typeable.eqT1 @ k_a7mBB @ a_a7mBC)
+                     `cast` ((Maybe
+                                ((:~:)
+                                   <k_a7mBB>_N <a_a7mBC>_N (UnsafeCo nominal a_a7mBC b_a7mBD))_R)_R
+                             :: (Maybe (a_a7mBC :~: a_a7mBC) :: *)
+                                ~R# (Maybe (a_a7mBC :~: b_a7mBD) :: *))
+                 }}]
+eqT
+  = \ (@ k_a7mBB)
+      (@ (a_a7mBC :: k_a7mBB))
+      (@ (b_a7mBD :: k_a7mBB))
+      ($dTypeable_a7mBF :: Typeable a_a7mBC)
+      ($dTypeable1_a7mBG :: Typeable b_a7mBD) ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ k_a7mBB
+             @ k_a7mBB
+             @ a_a7mBC
+             @ b_a7mBD
+             ($dTypeable_a7mBF
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mBB>_N <a_a7mBC>_N
+                      :: (Typeable a_a7mBC :: Constraint) ~R# (I.TypeRep a_a7mBC :: *)))
+             ($dTypeable1_a7mBG
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mBB>_N <b_a7mBD>_N
+                      :: (Typeable b_a7mBD :: Constraint) ~R# (I.TypeRep b_a7mBD :: *)))
+      of {
+        False -> GHC.Base.Nothing @ (a_a7mBC :~: b_a7mBD);
+        True ->
+          (Data.Typeable.eqT1 @ k_a7mBB @ a_a7mBC)
+          `cast` ((Maybe
+                     ((:~:)
+                        <k_a7mBB>_N <a_a7mBC>_N (UnsafeCo nominal a_a7mBC b_a7mBD))_R)_R
+                  :: (Maybe (a_a7mBC :~: a_a7mBC) :: *)
+                     ~R# (Maybe (a_a7mBC :~: b_a7mBD) :: *))
+      }
+
+-- RHS size: {terms: 16, types: 24, coercions: 11, joins: 0/0}
+gcast
+  :: forall k (a :: k) (b :: k) (c :: k -> *).
+     (Typeable a, Typeable b) =>
+     c a -> Maybe (c b)
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a7mCi)
+                 (@ (a_a7mCj :: k_a7mCi))
+                 (@ (b_a7mCk :: k_a7mCi))
+                 (@ (c_a7mCl :: k_a7mCi -> *))
+                 ($dTypeable_a7mCn [Occ=Once] :: Typeable a_a7mCj)
+                 ($dTypeable1_a7mCo [Occ=Once] :: Typeable b_a7mCk)
+                 (x_a7mpf [Occ=Once] :: c_a7mCl a_a7mCj) ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ k_a7mCi
+                        @ k_a7mCi
+                        @ a_a7mCj
+                        @ b_a7mCk
+                        ($dTypeable_a7mCn
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCi>_N <a_a7mCj>_N
+                                 :: (Typeable a_a7mCj :: Constraint) ~R# (I.TypeRep a_a7mCj :: *)))
+                        ($dTypeable1_a7mCo
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCi>_N <b_a7mCk>_N
+                                 :: (Typeable b_a7mCk :: Constraint) ~R# (I.TypeRep b_a7mCk :: *)))
+                 of {
+                   False -> GHC.Base.Nothing @ (c_a7mCl b_a7mCk);
+                   True ->
+                     GHC.Base.Just
+                       @ (c_a7mCl b_a7mCk)
+                       (x_a7mpf
+                        `cast` (<c_a7mCl>_R (UnsafeCo nominal a_a7mCj b_a7mCk)
+                                :: (c_a7mCl a_a7mCj :: *) ~R# (c_a7mCl b_a7mCk :: *)))
+                 }}]
+gcast
+  = \ (@ k_a7mCi)
+      (@ (a_a7mCj :: k_a7mCi))
+      (@ (b_a7mCk :: k_a7mCi))
+      (@ (c_a7mCl :: k_a7mCi -> *))
+      ($dTypeable_a7mCn :: Typeable a_a7mCj)
+      ($dTypeable1_a7mCo :: Typeable b_a7mCk)
+      (x_a7mpf :: c_a7mCl a_a7mCj) ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ k_a7mCi
+             @ k_a7mCi
+             @ a_a7mCj
+             @ b_a7mCk
+             ($dTypeable_a7mCn
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCi>_N <a_a7mCj>_N
+                      :: (Typeable a_a7mCj :: Constraint) ~R# (I.TypeRep a_a7mCj :: *)))
+             ($dTypeable1_a7mCo
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCi>_N <b_a7mCk>_N
+                      :: (Typeable b_a7mCk :: Constraint) ~R# (I.TypeRep b_a7mCk :: *)))
+      of {
+        False -> GHC.Base.Nothing @ (c_a7mCl b_a7mCk);
+        True ->
+          GHC.Base.Just
+            @ (c_a7mCl b_a7mCk)
+            (x_a7mpf
+             `cast` (<c_a7mCl>_R (UnsafeCo nominal a_a7mCj b_a7mCk)
+                     :: (c_a7mCl a_a7mCj :: *) ~R# (c_a7mCl b_a7mCk :: *)))
+      }
+
+-- RHS size: {terms: 18, types: 36, coercions: 14, joins: 0/0}
+gcast1
+  :: forall k1 k2 (c :: k2 -> *) (t :: k1 -> k2) (t' :: k1
+                                                        -> k2) (a :: k1).
+     (Typeable t, Typeable t') =>
+     c (t a) -> Maybe (c (t' a))
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a7mCJ)
+                 (@ k1_a7mCK)
+                 (@ (c_a7mCL :: k1_a7mCK -> *))
+                 (@ (t_a7mCM :: k_a7mCJ -> k1_a7mCK))
+                 (@ (t'_a7mCN :: k_a7mCJ -> k1_a7mCK))
+                 (@ (a_a7mCO :: k_a7mCJ))
+                 ($dTypeable_a7mCQ [Occ=Once] :: Typeable t_a7mCM)
+                 ($dTypeable1_a7mCR [Occ=Once] :: Typeable t'_a7mCN)
+                 (x_a7mpg [Occ=Once] :: c_a7mCL (t_a7mCM a_a7mCO)) ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ (k_a7mCJ -> k1_a7mCK)
+                        @ (k_a7mCJ -> k1_a7mCK)
+                        @ t_a7mCM
+                        @ t'_a7mCN
+                        ($dTypeable_a7mCQ
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCJ
+                                                                       -> k1_a7mCK>_N <t_a7mCM>_N
+                                 :: (Typeable t_a7mCM :: Constraint) ~R# (I.TypeRep t_a7mCM :: *)))
+                        ($dTypeable1_a7mCR
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCJ
+                                                                       -> k1_a7mCK>_N <t'_a7mCN>_N
+                                 :: (Typeable t'_a7mCN :: Constraint)
+                                    ~R# (I.TypeRep t'_a7mCN :: *)))
+                 of {
+                   False -> GHC.Base.Nothing @ (c_a7mCL (t'_a7mCN a_a7mCO));
+                   True ->
+                     GHC.Base.Just
+                       @ (c_a7mCL (t'_a7mCN a_a7mCO))
+                       (x_a7mpg
+                        `cast` (<c_a7mCL>_R (UnsafeCo nominal t_a7mCM t'_a7mCN <a_a7mCO>_N)
+                                :: (c_a7mCL (t_a7mCM a_a7mCO) :: *)
+                                   ~R# (c_a7mCL (t'_a7mCN a_a7mCO) :: *)))
+                 }}]
+gcast1
+  = \ (@ k_a7mCJ)
+      (@ k1_a7mCK)
+      (@ (c_a7mCL :: k1_a7mCK -> *))
+      (@ (t_a7mCM :: k_a7mCJ -> k1_a7mCK))
+      (@ (t'_a7mCN :: k_a7mCJ -> k1_a7mCK))
+      (@ (a_a7mCO :: k_a7mCJ))
+      ($dTypeable_a7mCQ :: Typeable t_a7mCM)
+      ($dTypeable1_a7mCR :: Typeable t'_a7mCN)
+      (x_a7mpg :: c_a7mCL (t_a7mCM a_a7mCO)) ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ (k_a7mCJ -> k1_a7mCK)
+             @ (k_a7mCJ -> k1_a7mCK)
+             @ t_a7mCM
+             @ t'_a7mCN
+             ($dTypeable_a7mCQ
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCJ
+                                                            -> k1_a7mCK>_N <t_a7mCM>_N
+                      :: (Typeable t_a7mCM :: Constraint) ~R# (I.TypeRep t_a7mCM :: *)))
+             ($dTypeable1_a7mCR
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mCJ
+                                                            -> k1_a7mCK>_N <t'_a7mCN>_N
+                      :: (Typeable t'_a7mCN :: Constraint)
+                         ~R# (I.TypeRep t'_a7mCN :: *)))
+      of {
+        False -> GHC.Base.Nothing @ (c_a7mCL (t'_a7mCN a_a7mCO));
+        True ->
+          GHC.Base.Just
+            @ (c_a7mCL (t'_a7mCN a_a7mCO))
+            (x_a7mpg
+             `cast` (<c_a7mCL>_R (UnsafeCo nominal t_a7mCM t'_a7mCN <a_a7mCO>_N)
+                     :: (c_a7mCL (t_a7mCM a_a7mCO) :: *)
+                        ~R# (c_a7mCL (t'_a7mCN a_a7mCO) :: *)))
+      }
+
+-- RHS size: {terms: 20, types: 48, coercions: 17, joins: 0/0}
+gcast2
+  :: forall k1 k2 k3 (c :: k3 -> *) (t :: k1 -> k2 -> k3) (t' :: k1
+                                                                 -> k2 -> k3) (a :: k1) (b :: k2).
+     (Typeable t, Typeable t') =>
+     c (t a b) -> Maybe (c (t' a b))
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a7mDc)
+                 (@ k1_a7mDd)
+                 (@ k2_a7mDe)
+                 (@ (c_a7mDf :: k2_a7mDe -> *))
+                 (@ (t_a7mDg :: k_a7mDc -> k1_a7mDd -> k2_a7mDe))
+                 (@ (t'_a7mDh :: k_a7mDc -> k1_a7mDd -> k2_a7mDe))
+                 (@ (a_a7mDi :: k_a7mDc))
+                 (@ (b_a7mDj :: k1_a7mDd))
+                 ($dTypeable_a7mDl [Occ=Once] :: Typeable t_a7mDg)
+                 ($dTypeable1_a7mDm [Occ=Once] :: Typeable t'_a7mDh)
+                 (x_a7mph [Occ=Once] :: c_a7mDf (t_a7mDg a_a7mDi b_a7mDj)) ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ (k_a7mDc -> k1_a7mDd -> k2_a7mDe)
+                        @ (k_a7mDc -> k1_a7mDd -> k2_a7mDe)
+                        @ t_a7mDg
+                        @ t'_a7mDh
+                        ($dTypeable_a7mDl
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mDc
+                                                                       -> k1_a7mDd
+                                                                       -> k2_a7mDe>_N <t_a7mDg>_N
+                                 :: (Typeable t_a7mDg :: Constraint) ~R# (I.TypeRep t_a7mDg :: *)))
+                        ($dTypeable1_a7mDm
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mDc
+                                                                       -> k1_a7mDd
+                                                                       -> k2_a7mDe>_N <t'_a7mDh>_N
+                                 :: (Typeable t'_a7mDh :: Constraint)
+                                    ~R# (I.TypeRep t'_a7mDh :: *)))
+                 of {
+                   False -> GHC.Base.Nothing @ (c_a7mDf (t'_a7mDh a_a7mDi b_a7mDj));
+                   True ->
+                     GHC.Base.Just
+                       @ (c_a7mDf (t'_a7mDh a_a7mDi b_a7mDj))
+                       (x_a7mph
+                        `cast` (<c_a7mDf>_R (UnsafeCo nominal t_a7mDg t'_a7mDh <a_a7mDi>_N <b_a7mDj>_N)
+                                :: (c_a7mDf (t_a7mDg a_a7mDi b_a7mDj) :: *)
+                                   ~R# (c_a7mDf (t'_a7mDh a_a7mDi b_a7mDj) :: *)))
+                 }}]
+gcast2
+  = \ (@ k_a7mDc)
+      (@ k1_a7mDd)
+      (@ k2_a7mDe)
+      (@ (c_a7mDf :: k2_a7mDe -> *))
+      (@ (t_a7mDg :: k_a7mDc -> k1_a7mDd -> k2_a7mDe))
+      (@ (t'_a7mDh :: k_a7mDc -> k1_a7mDd -> k2_a7mDe))
+      (@ (a_a7mDi :: k_a7mDc))
+      (@ (b_a7mDj :: k1_a7mDd))
+      ($dTypeable_a7mDl :: Typeable t_a7mDg)
+      ($dTypeable1_a7mDm :: Typeable t'_a7mDh)
+      (x_a7mph :: c_a7mDf (t_a7mDg a_a7mDi b_a7mDj)) ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ (k_a7mDc -> k1_a7mDd -> k2_a7mDe)
+             @ (k_a7mDc -> k1_a7mDd -> k2_a7mDe)
+             @ t_a7mDg
+             @ t'_a7mDh
+             ($dTypeable_a7mDl
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mDc
+                                                            -> k1_a7mDd -> k2_a7mDe>_N <t_a7mDg>_N
+                      :: (Typeable t_a7mDg :: Constraint) ~R# (I.TypeRep t_a7mDg :: *)))
+             ($dTypeable1_a7mDm
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <k_a7mDc
+                                                            -> k1_a7mDd -> k2_a7mDe>_N <t'_a7mDh>_N
+                      :: (Typeable t'_a7mDh :: Constraint)
+                         ~R# (I.TypeRep t'_a7mDh :: *)))
+      of {
+        False -> GHC.Base.Nothing @ (c_a7mDf (t'_a7mDh a_a7mDi b_a7mDj));
+        True ->
+          GHC.Base.Just
+            @ (c_a7mDf (t'_a7mDh a_a7mDi b_a7mDj))
+            (x_a7mph
+             `cast` (<c_a7mDf>_R (UnsafeCo nominal t_a7mDg t'_a7mDh <a_a7mDi>_N <b_a7mDj>_N)
+                     :: (c_a7mDf (t_a7mDg a_a7mDi b_a7mDj) :: *)
+                        ~R# (c_a7mDf (t'_a7mDh a_a7mDi b_a7mDj) :: *)))
+      }
+
+-- RHS size: {terms: 33, types: 71, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy1 :: I.TypeRep *
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 230 0}]
+Data.Typeable.mkFunTy1
+  = case Data.Typeable.Internal.$wmkTrCon
+           @ (RuntimeRep -> *)
+           @ TYPE
+           16277905407886699876##
+           12502576999761269576##
+           GHC.Types.tr$ModuleGHCPrim
+           GHC.Types.$tcTYPE2
+           0#
+           GHC.Types.$tcTYPE1
+           (GHC.Types.[] @ I.SomeTypeRep)
+    of
+    { (# ww8_s7bDc, ww9_s7bDd, ww10_s7bDe, ww11_s7bDf, ww12_s7bDg #) ->
+    case Data.Typeable.Internal.$wmkTrCon
+           @ RuntimeRep
+           @ 'LiftedRep
+           16105171405184389724##
+           5595830777317938557##
+           GHC.Types.tr$ModuleGHCPrim
+           GHC.Types.$tc'LiftedRep1
+           0#
+           GHC.Types.$tc'AddrRep1
+           (GHC.Types.[] @ I.SomeTypeRep)
+    of
+    { (# ww2_X7bEp, ww3_X7bEr, ww4_X7bEt, ww5_X7bEv, ww6_X7bEx #) ->
+    I.mkTrApp
+      @ RuntimeRep
+      @ *
+      @ TYPE
+      @ 'LiftedRep
+      (Data.Typeable.Internal.TrTyCon
+         @ (RuntimeRep -> *)
+         @ TYPE
+         ww8_s7bDc
+         ww9_s7bDd
+         ww10_s7bDe
+         ww11_s7bDf
+         ww12_s7bDg)
+      (Data.Typeable.Internal.TrTyCon
+         @ RuntimeRep
+         @ 'LiftedRep
+         ww2_X7bEp
+         ww3_X7bEr
+         ww4_X7bEt
+         ww5_X7bEv
+         ww6_X7bEx)
+    }
+    }
+
+-- RHS size: {terms: 365, types: 887, coercions: 77, joins: 4/4}
+funResultTy :: TypeRep -> TypeRep -> Maybe TypeRep
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+funResultTy
+  = \ (ds_d7mGT :: I.SomeTypeRep) (ds1_d7mGU :: I.SomeTypeRep) ->
+      case ds_d7mGT of { I.SomeTypeRep @ k_a7mAN @ a_a7mAO f_a7mpi ->
+      case ds1_d7mGU of { I.SomeTypeRep @ k1_a7mAP @ a1_a7mAQ x_a7mpj ->
+      join {
+        $w$j_s7n2B [InlPrag=NOUSERINLINE[0], Dmd=<L,1*C1(U)>]
+          :: (* :~~: k_a7mAN) -> Maybe TypeRep
+        [LclId[JoinId(1)], Arity=1, Str=<L,A>, Unf=OtherCon []]
+        $w$j_s7n2B _ [Occ=Dead, OS=OneShot]
+          = case f_a7mpi of {
+              __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+              Data.Typeable.Internal.TrFun @ r1_a78GT @ r2_a78GU @ a2_a78GV
+                                           @ b_a78GW co_a78GX [Dmd=<L,A>] co1_a78GY [Dmd=<L,A>]
+                                           dt_d7a1W dt1_d7a1X ds2_d79gE ds3_d79gF ->
+                join {
+                  $j_s7mOW [Dmd=<C(C(S)),1*C1(C1(U))>]
+                    :: Word# -> Word# -> Maybe TypeRep
+                  [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>, Unf=OtherCon []]
+                  $j_s7mOW (dt2_i7a94 [OS=OneShot] :: Word#)
+                           (dt3_i7a95 [OS=OneShot] :: Word#)
+                    = case x_a7mpj of {
+                        Data.Typeable.Internal.TrType co2_a78IC [Dmd=<L,A>]
+                                                      co3_a78ID [Dmd=<L,A>] ->
+                          case Data.Typeable.Internal.fpTYPELiftedRep of
+                          { Fingerprint dt4_i7a99 dt5_i7a9a ->
+                          case eqWord# dt2_i7a94 dt4_i7a99 of {
+                            __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                            1# ->
+                              case eqWord# dt3_i7a95 dt5_i7a9a of {
+                                __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                                1# ->
+                                  GHC.Base.Just
+                                    @ I.SomeTypeRep
+                                    (Data.Typeable.Internal.SomeTypeRep
+                                       @ (TYPE r2_a78GU) @ b_a78GW ds3_d79gF)
+                              }
+                          }
+                          };
+                        Data.Typeable.Internal.TrTyCon dt4_d7a25 dt5_d7a26 ds4_d79qi
+                                                       ds5_d79qj ds6_d79qk ->
+                          case eqWord# dt2_i7a94 dt4_d7a25 of {
+                            __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                            1# ->
+                              case eqWord# dt3_i7a95 dt5_d7a26 of {
+                                __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                                1# ->
+                                  GHC.Base.Just
+                                    @ I.SomeTypeRep
+                                    (Data.Typeable.Internal.SomeTypeRep
+                                       @ (TYPE r2_a78GU) @ b_a78GW ds3_d79gF)
+                              }
+                          };
+                        Data.Typeable.Internal.TrApp @ k4_a78IF @ a3_a78IG @ b2_a78IH
+                                                     co2_a78II [Dmd=<L,A>] dt4_d7a27 dt5_d7a28
+                                                     ds4_d79qm ds5_d79qn ds6_d79qo ->
+                          case eqWord# dt2_i7a94 dt4_d7a27 of {
+                            __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                            1# ->
+                              case eqWord# dt3_i7a95 dt5_d7a28 of {
+                                __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                                1# ->
+                                  GHC.Base.Just
+                                    @ I.SomeTypeRep
+                                    (Data.Typeable.Internal.SomeTypeRep
+                                       @ (TYPE r2_a78GU) @ b_a78GW ds3_d79gF)
+                              }
+                          };
+                        Data.Typeable.Internal.TrFun @ r4_a78IK @ r5_a78IL @ a3_a78IM
+                                                     @ b2_a78IN co2_a78IO [Dmd=<L,A>]
+                                                     co3_a78IP [Dmd=<L,A>] dt4_d7a29 dt5_d7a2a
+                                                     ds4_d79qq ds5_d79qr ->
+                          case eqWord# dt2_i7a94 dt4_d7a29 of {
+                            __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                            1# ->
+                              case eqWord# dt3_i7a95 dt5_d7a2a of {
+                                __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                                1# ->
+                                  GHC.Base.Just
+                                    @ I.SomeTypeRep
+                                    (Data.Typeable.Internal.SomeTypeRep
+                                       @ (TYPE r2_a78GU) @ b_a78GW ds3_d79gF)
+                              }
+                          }
+                      } } in
+                case ds2_d79gE of {
+                  Data.Typeable.Internal.TrType co2_a78IC [Dmd=<L,A>]
+                                                co3_a78ID [Dmd=<L,A>] ->
+                    case Data.Typeable.Internal.fpTYPELiftedRep of
+                    { Fingerprint dt2_i7a94 dt3_i7a95 ->
+                    jump $j_s7mOW dt2_i7a94 dt3_i7a95
+                    };
+                  Data.Typeable.Internal.TrTyCon dt2_d7a25 dt3_d7a26 ds4_d79qi
+                                                 ds5_d79qj ds6_d79qk ->
+                    jump $j_s7mOW dt2_d7a25 dt3_d7a26;
+                  Data.Typeable.Internal.TrApp @ k4_a78IF @ a3_a78IG @ b2_a78IH
+                                               co2_a78II [Dmd=<L,A>] dt2_d7a27 dt3_d7a28 ds4_d79qm
+                                               ds5_d79qn ds6_d79qo ->
+                    jump $j_s7mOW dt2_d7a27 dt3_d7a28;
+                  Data.Typeable.Internal.TrFun @ r4_a78IK @ r5_a78IL @ a3_a78IM
+                                               @ b2_a78IN co2_a78IO [Dmd=<L,A>]
+                                               co3_a78IP [Dmd=<L,A>] dt2_d7a29 dt3_d7a2a ds4_d79qq
+                                               ds5_d79qr ->
+                    jump $j_s7mOW dt2_d7a29 dt3_d7a2a
+                }
+            } } in
+      case f_a7mpi of {
+        Data.Typeable.Internal.TrType co_a78FJ [Dmd=<L,A>]
+                                      co1_a78FK [Dmd=<L,A>] ->
+          case Data.Typeable.mkFunTy1 of {
+            Data.Typeable.Internal.TrType co2_a78IC [Dmd=<L,A>]
+                                          co3_a78ID [Dmd=<L,A>] ->
+              case Data.Typeable.Internal.fpTYPELiftedRep of
+              { Fingerprint dt_i7a94 dt1_i7a95 ->
+              jump $w$j_s7n2B
+                (Data.Type.Equality.HRefl
+                   @ *
+                   @ *
+                   @ *
+                   @ k_a7mAN
+                   @~ (<*>_N :: (* :: *) ~# (* :: *))
+                   @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+              };
+            Data.Typeable.Internal.TrTyCon dt_d7a25 dt1_d7a26 ds2_d79qi
+                                           ds3_d79qj ds4_d79qk ->
+              case Data.Typeable.Internal.fpTYPELiftedRep of
+              { Fingerprint dt2_i7a99 dt3_i7a9a ->
+              case eqWord# dt_d7a25 dt2_i7a99 of {
+                __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                1# ->
+                  case eqWord# dt1_d7a26 dt3_i7a9a of {
+                    __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                    1# ->
+                      jump $w$j_s7n2B
+                        (Data.Type.Equality.HRefl
+                           @ *
+                           @ *
+                           @ *
+                           @ k_a7mAN
+                           @~ (<*>_N :: (* :: *) ~# (* :: *))
+                           @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                  }
+              }
+              };
+            Data.Typeable.Internal.TrApp @ k4_a78IF @ a2_a78IG @ b2_a78IH
+                                         co2_a78II [Dmd=<L,A>] dt_d7a27 dt1_d7a28 ds2_d79qm
+                                         ds3_d79qn ds4_d79qo ->
+              case Data.Typeable.Internal.fpTYPELiftedRep of
+              { Fingerprint dt2_i7a99 dt3_i7a9a ->
+              case eqWord# dt_d7a27 dt2_i7a99 of {
+                __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                1# ->
+                  case eqWord# dt1_d7a28 dt3_i7a9a of {
+                    __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                    1# ->
+                      jump $w$j_s7n2B
+                        (Data.Type.Equality.HRefl
+                           @ *
+                           @ *
+                           @ *
+                           @ k_a7mAN
+                           @~ (<*>_N :: (* :: *) ~# (* :: *))
+                           @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                  }
+              }
+              }
+          };
+        Data.Typeable.Internal.TrTyCon dt_d7a1O dt1_d7a1P ds2_d79dC
+                                       ds3_d79dD ds4_d79dE ->
+          join {
+            $j_s7aBu [Dmd=<C(C(S)),1*C1(C1(U))>]
+              :: Word# -> Word# -> Maybe TypeRep
+            [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>, Unf=OtherCon []]
+            $j_s7aBu (dt2_i7a94 [OS=OneShot] :: Word#)
+                     (dt3_i7a95 [OS=OneShot] :: Word#)
+              = case ds4_d79dE of {
+                  Data.Typeable.Internal.TrType co_a78IC [Dmd=<L,A>]
+                                                co1_a78ID [Dmd=<L,A>] ->
+                    case Data.Typeable.Internal.fpTYPELiftedRep of
+                    { Fingerprint dt4_i7a99 dt5_i7a9a ->
+                    case eqWord# dt2_i7a94 dt4_i7a99 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_i7a9a of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    }
+                    };
+                  Data.Typeable.Internal.TrTyCon dt4_d7a25 dt5_d7a26 ds5_d79qi
+                                                 ds6_d79qj ds7_d79qk ->
+                    case eqWord# dt2_i7a94 dt4_d7a25 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_d7a26 of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    };
+                  Data.Typeable.Internal.TrApp @ k4_a78IF @ a2_a78IG @ b2_a78IH
+                                               co_a78II [Dmd=<L,A>] dt4_d7a27 dt5_d7a28 ds5_d79qm
+                                               ds6_d79qn ds7_d79qo ->
+                    case eqWord# dt2_i7a94 dt4_d7a27 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_d7a28 of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    };
+                  Data.Typeable.Internal.TrFun @ r1_a78IK @ r2_a78IL @ a2_a78IM
+                                               @ b2_a78IN co_a78IO [Dmd=<L,A>] co1_a78IP [Dmd=<L,A>]
+                                               dt4_d7a29 dt5_d7a2a ds5_d79qq ds6_d79qr ->
+                    case eqWord# dt2_i7a94 dt4_d7a29 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_d7a2a of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    }
+                } } in
+          case Data.Typeable.mkFunTy1 of {
+            Data.Typeable.Internal.TrType co_a78IC [Dmd=<L,A>]
+                                          co1_a78ID [Dmd=<L,A>] ->
+              case Data.Typeable.Internal.fpTYPELiftedRep of
+              { Fingerprint dt2_i7a94 dt3_i7a95 ->
+              jump $j_s7aBu dt2_i7a94 dt3_i7a95
+              };
+            Data.Typeable.Internal.TrTyCon dt2_d7a25 dt3_d7a26 ds5_d79qi
+                                           ds6_d79qj ds7_d79qk ->
+              jump $j_s7aBu dt2_d7a25 dt3_d7a26;
+            Data.Typeable.Internal.TrApp @ k4_a78IF @ a2_a78IG @ b2_a78IH
+                                         co_a78II [Dmd=<L,A>] dt2_d7a27 dt3_d7a28 ds5_d79qm
+                                         ds6_d79qn ds7_d79qo ->
+              jump $j_s7aBu dt2_d7a27 dt3_d7a28
+          };
+        Data.Typeable.Internal.TrApp @ k2_a78FN @ a2_a78FO @ b_a78FP
+                                     co_a78FQ [Dmd=<L,A>] dt_d7a1Q dt1_d7a1R ds2_d79dG ds3_d79dH
+                                     ds4_d79dI ->
+          join {
+            $j_s7aBu [Dmd=<C(C(S)),1*C1(C1(U))>]
+              :: Word# -> Word# -> Maybe TypeRep
+            [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>, Unf=OtherCon []]
+            $j_s7aBu (dt2_i7a94 [OS=OneShot] :: Word#)
+                     (dt3_i7a95 [OS=OneShot] :: Word#)
+              = case ds4_d79dI of {
+                  Data.Typeable.Internal.TrType co1_a78IC [Dmd=<L,A>]
+                                                co2_a78ID [Dmd=<L,A>] ->
+                    case Data.Typeable.Internal.fpTYPELiftedRep of
+                    { Fingerprint dt4_i7a99 dt5_i7a9a ->
+                    case eqWord# dt2_i7a94 dt4_i7a99 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_i7a9a of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    }
+                    };
+                  Data.Typeable.Internal.TrTyCon dt4_d7a25 dt5_d7a26 ds5_d79qi
+                                                 ds6_d79qj ds7_d79qk ->
+                    case eqWord# dt2_i7a94 dt4_d7a25 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_d7a26 of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    };
+                  Data.Typeable.Internal.TrApp @ k4_a78IF @ a3_a78IG @ b2_a78IH
+                                               co1_a78II [Dmd=<L,A>] dt4_d7a27 dt5_d7a28 ds5_d79qm
+                                               ds6_d79qn ds7_d79qo ->
+                    case eqWord# dt2_i7a94 dt4_d7a27 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_d7a28 of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    };
+                  Data.Typeable.Internal.TrFun @ r1_a78IK @ r2_a78IL @ a3_a78IM
+                                               @ b2_a78IN co1_a78IO [Dmd=<L,A>]
+                                               co2_a78IP [Dmd=<L,A>] dt4_d7a29 dt5_d7a2a ds5_d79qq
+                                               ds6_d79qr ->
+                    case eqWord# dt2_i7a94 dt4_d7a29 of {
+                      __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                      1# ->
+                        case eqWord# dt3_i7a95 dt5_d7a2a of {
+                          __DEFAULT -> GHC.Base.Nothing @ TypeRep;
+                          1# ->
+                            jump $w$j_s7n2B
+                              (Data.Type.Equality.HRefl
+                                 @ *
+                                 @ *
+                                 @ *
+                                 @ k_a7mAN
+                                 @~ (<*>_N :: (* :: *) ~# (* :: *))
+                                 @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+                        }
+                    }
+                } } in
+          case Data.Typeable.mkFunTy1 of {
+            Data.Typeable.Internal.TrType co1_a78IC [Dmd=<L,A>]
+                                          co2_a78ID [Dmd=<L,A>] ->
+              case Data.Typeable.Internal.fpTYPELiftedRep of
+              { Fingerprint dt2_i7a94 dt3_i7a95 ->
+              jump $j_s7aBu dt2_i7a94 dt3_i7a95
+              };
+            Data.Typeable.Internal.TrTyCon dt2_d7a25 dt3_d7a26 ds5_d79qi
+                                           ds6_d79qj ds7_d79qk ->
+              jump $j_s7aBu dt2_d7a25 dt3_d7a26;
+            Data.Typeable.Internal.TrApp @ k4_a78IF @ a3_a78IG @ b2_a78IH
+                                         co1_a78II [Dmd=<L,A>] dt2_d7a27 dt3_d7a28 ds5_d79qm
+                                         ds6_d79qn ds7_d79qo ->
+              jump $j_s7aBu dt2_d7a27 dt3_d7a28
+          };
+        Data.Typeable.Internal.TrFun @ r1_a78FS @ r2_a78FT @ a2_a78FU
+                                     @ b_a78FV co_a78FW co1_a78FX [Dmd=<L,A>] dt_d7a1S dt1_d7a1T
+                                     ds2_d79dK ds3_d79dL ->
+          case Data.Typeable.Internal.sameTypeRep
+                 @ *
+                 @ *
+                 @ *
+                 @ k_a7mAN
+                 Data.Typeable.mkFunTy1
+                 (Data.Typeable.Internal.$mApp1
+                  `cast` ((I.TypeRep <*>_N (Sym co_a78FW))_R
+                          :: (I.TypeRep * :: *) ~R# (I.TypeRep k_a7mAN :: *)))
+          of {
+            False -> GHC.Base.Nothing @ TypeRep;
+            True ->
+              jump $w$j_s7n2B
+                (Data.Type.Equality.HRefl
+                   @ *
+                   @ *
+                   @ *
+                   @ k_a7mAN
+                   @~ (<*>_N :: (* :: *) ~# (* :: *))
+                   @~ (UnsafeCo nominal k_a7mAN * :: (k_a7mAN :: *) ~# (* :: *)))
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy16 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Data.Typeable.mkFunTy16 = "error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy15 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Typeable.mkFunTy15 = unpackCString# Data.Typeable.mkFunTy16
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Typeable.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy14 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Typeable.mkFunTy14 = unpackCString# Data.Typeable.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+Data.Typeable.$trModule2 = "Data.Typeable"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy13 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Typeable.mkFunTy13 = unpackCString# Data.Typeable.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy12 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+Data.Typeable.mkFunTy12 = "./Data/Typeable.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy11 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Typeable.mkFunTy11 = unpackCString# Data.Typeable.mkFunTy12
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy10 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.mkFunTy10 = GHC.Types.I# 171#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy9 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.mkFunTy9 = GHC.Types.I# 5#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy8 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.mkFunTy8 = GHC.Types.I# 172#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy7 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.mkFunTy7 = GHC.Types.I# 55#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy6 :: GHC.Stack.Types.SrcLoc
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 80}]
+Data.Typeable.mkFunTy6
+  = GHC.Stack.Types.SrcLoc
+      Data.Typeable.mkFunTy14
+      Data.Typeable.mkFunTy13
+      Data.Typeable.mkFunTy11
+      Data.Typeable.mkFunTy10
+      Data.Typeable.mkFunTy9
+      Data.Typeable.mkFunTy8
+      Data.Typeable.mkFunTy7
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy5 :: GHC.Stack.Types.CallStack
+[GblId,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 40}]
+Data.Typeable.mkFunTy5
+  = GHC.Stack.Types.PushCallStack
+      Data.Typeable.mkFunTy15
+      Data.Typeable.mkFunTy6
+      GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 170 0}]
+Data.Typeable.mkFunTy4
+  = "mkFunTy: Attempted to construct function type from non-lifted "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Typeable.mkFunTy3 = "type: arg="#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.mkFunTy2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Data.Typeable.mkFunTy2 = ", res="#
+
+-- RHS size: {terms: 161, types: 540, coercions: 112, joins: 3/3}
+mkFunTy :: TypeRep -> TypeRep -> TypeRep
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 20] 988 240}]
+mkFunTy
+  = \ (ds_d7mGb :: I.SomeTypeRep) (ds1_d7mGc :: I.SomeTypeRep) ->
+      case ds_d7mGb of { I.SomeTypeRep @ k_a7mzz @ a_a7mzA arg_a7mpm ->
+      case ds1_d7mGc of
+      { I.SomeTypeRep @ k1_a7mzB @ a1_a7mzC res_a7mpn ->
+      join {
+        fail_s7mOT [Dmd=<L,1*C1(U)>] :: Void# -> TypeRep
+        [LclId[JoinId(1)], Arity=1, Str=<B,A>x, Unf=OtherCon []]
+        fail_s7mOT _ [Occ=Dead, OS=OneShot]
+          = error
+              @ 'LiftedRep
+              @ TypeRep
+              (Data.Typeable.mkFunTy5
+               `cast` (Sym (GHC.Classes.N:IP[0]
+                                <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                       :: (GHC.Stack.Types.CallStack :: *)
+                          ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+              (unpackAppendCString#
+                 Data.Typeable.mkFunTy4
+                 (unpackAppendCString#
+                    Data.Typeable.mkFunTy3
+                    (++
+                       @ Char
+                       (Data.Typeable.Internal.showTypeable
+                          @ k_a7mzz
+                          @ a_a7mzA
+                          Data.Typeable.Internal.$fShowSomeTypeRep2
+                          arg_a7mpm
+                          (GHC.Types.[] @ Char))
+                       (unpackAppendCString#
+                          Data.Typeable.mkFunTy2
+                          (Data.Typeable.Internal.showTypeable
+                             @ k1_a7mzB
+                             @ a1_a7mzC
+                             Data.Typeable.Internal.$fShowSomeTypeRep2
+                             res_a7mpn
+                             (GHC.Types.[] @ Char)))))) } in
+      join {
+        $w$j_s7n2W [InlPrag=NOUSERINLINE[0], Dmd=<C(C(S)),1*C1(C1(U))>]
+          :: ((* :: *) ~# (* :: *), (* :: *) ~# (k_a7mzz :: *)) => TypeRep
+        [LclId[JoinId(2)], Arity=2, Str=<L,A><L,U>, Unf=OtherCon []]
+        $w$j_s7n2W (ww_s7n2T [Dmd=<L,A>] :: (* :: *) ~# (* :: *))
+                   (ww1_s7n2U :: (* :: *) ~# (k_a7mzz :: *))
+          = join {
+              $w$j1_s7n2P [InlPrag=NOUSERINLINE[0], Dmd=<C(C(S)),1*C1(C1(U))>]
+                :: ((* :: *) ~# (* :: *), (* :: *) ~# (k1_a7mzB :: *)) => TypeRep
+              [LclId[JoinId(2)], Arity=2, Str=<L,A><L,U>, Unf=OtherCon []]
+              $w$j1_s7n2P (ww2_s7n2M [Dmd=<L,A>] :: (* :: *) ~# (* :: *))
+                          (ww3_s7n2N :: (* :: *) ~# (k1_a7mzB :: *))
+                = case GHC.Fingerprint.fingerprintFingerprints
+                         (GHC.Types.:
+                            @ Fingerprint
+                            (case arg_a7mpm
+                                  `cast` ((I.TypeRep
+                                             (Sym ww1_s7n2U)
+                                             (Sym (Coh <a_a7mzA>_N (Sym ww1_s7n2U))))_R
+                                          :: (I.TypeRep a_a7mzA :: *)
+                                             ~R# (I.TypeRep (a_a7mzA |> Sym ww1_s7n2U) :: *))
+                             of {
+                               Data.Typeable.Internal.TrType co_a78IC [Dmd=<L,A>]
+                                                             co1_a78ID [Dmd=<L,A>] ->
+                                 Data.Typeable.Internal.fpTYPELiftedRep;
+                               Data.Typeable.Internal.TrTyCon dt_d7a25 dt1_d7a26 ds2_d79qi
+                                                              ds3_d79qj ds4_d79qk ->
+                                 GHC.Fingerprint.Type.Fingerprint dt_d7a25 dt1_d7a26;
+                               Data.Typeable.Internal.TrApp @ k2_a78IF @ a2_a78IG @ b_a78IH
+                                                            co_a78II [Dmd=<L,A>] dt_d7a27 dt1_d7a28
+                                                            ds2_d79qm ds3_d79qn ds4_d79qo ->
+                                 GHC.Fingerprint.Type.Fingerprint dt_d7a27 dt1_d7a28;
+                               Data.Typeable.Internal.TrFun @ r1_a78IK @ r2_a78IL @ a2_a78IM
+                                                            @ b_a78IN co_a78IO [Dmd=<L,A>]
+                                                            co1_a78IP [Dmd=<L,A>] dt_d7a29 dt1_d7a2a
+                                                            ds2_d79qq ds3_d79qr ->
+                                 GHC.Fingerprint.Type.Fingerprint dt_d7a29 dt1_d7a2a
+                             })
+                            (GHC.Types.:
+                               @ Fingerprint
+                               (case res_a7mpn
+                                     `cast` ((I.TypeRep
+                                                (Sym ww3_s7n2N)
+                                                (Sym (Coh <a1_a7mzC>_N (Sym ww3_s7n2N))))_R
+                                             :: (I.TypeRep a1_a7mzC :: *)
+                                                ~R# (I.TypeRep (a1_a7mzC |> Sym ww3_s7n2N) :: *))
+                                of {
+                                  Data.Typeable.Internal.TrType co_a78IC [Dmd=<L,A>]
+                                                                co1_a78ID [Dmd=<L,A>] ->
+                                    Data.Typeable.Internal.fpTYPELiftedRep;
+                                  Data.Typeable.Internal.TrTyCon dt_d7a25 dt1_d7a26 ds2_d79qi
+                                                                 ds3_d79qj ds4_d79qk ->
+                                    GHC.Fingerprint.Type.Fingerprint dt_d7a25 dt1_d7a26;
+                                  Data.Typeable.Internal.TrApp @ k2_a78IF @ a2_a78IG @ b_a78IH
+                                                               co_a78II [Dmd=<L,A>] dt_d7a27
+                                                               dt1_d7a28 ds2_d79qm ds3_d79qn
+                                                               ds4_d79qo ->
+                                    GHC.Fingerprint.Type.Fingerprint dt_d7a27 dt1_d7a28;
+                                  Data.Typeable.Internal.TrFun @ r1_a78IK @ r2_a78IL @ a2_a78IM
+                                                               @ b_a78IN co_a78IO [Dmd=<L,A>]
+                                                               co1_a78IP [Dmd=<L,A>] dt_d7a29
+                                                               dt1_d7a2a ds2_d79qq ds3_d79qr ->
+                                    GHC.Fingerprint.Type.Fingerprint dt_d7a29 dt1_d7a2a
+                                })
+                               (GHC.Types.[] @ Fingerprint)))
+                  of
+                  { Fingerprint dt1_a78hz dt2_a78hA ->
+                  Data.Typeable.Internal.SomeTypeRep
+                    @ *
+                    @ ((a_a7mzA |> Sym ww1_s7n2U) -> (a1_a7mzC |> Sym ww3_s7n2N))
+                    (Data.Typeable.Internal.TrFun
+                       @ *
+                       @ ((a_a7mzA |> Sym ww1_s7n2U) -> (a1_a7mzC |> Sym ww3_s7n2N))
+                       @ 'LiftedRep
+                       @ 'LiftedRep
+                       @ (a_a7mzA |> Sym ww1_s7n2U)
+                       @ (a1_a7mzC |> Sym ww3_s7n2N)
+                       @~ (<*>_N :: (* :: *) ~# (* :: *))
+                       @~ (<(a_a7mzA |> Sym ww1_s7n2U) -> (a1_a7mzC |> Sym ww3_s7n2N)>_N
+                           :: ((a_a7mzA |> Sym ww1_s7n2U) -> (a1_a7mzC |> Sym ww3_s7n2N) :: *)
+                              ~# ((a_a7mzA |> Sym ww1_s7n2U)
+                                  -> (a1_a7mzC |> Sym ww3_s7n2N) :: *))
+                       dt1_a78hz
+                       dt2_a78hA
+                       (arg_a7mpm
+                        `cast` ((I.TypeRep
+                                   (Sym ww1_s7n2U) (Sym (Coh <a_a7mzA>_N (Sym ww1_s7n2U))))_R
+                                :: (I.TypeRep a_a7mzA :: *)
+                                   ~R# (I.TypeRep (a_a7mzA |> Sym ww1_s7n2U) :: *)))
+                       (res_a7mpn
+                        `cast` ((I.TypeRep
+                                   (Sym ww3_s7n2N) (Sym (Coh <a1_a7mzC>_N (Sym ww3_s7n2N))))_R
+                                :: (I.TypeRep a1_a7mzC :: *)
+                                   ~R# (I.TypeRep (a1_a7mzC |> Sym ww3_s7n2N) :: *))))
+                  } } in
+            case res_a7mpn of {
+              Data.Typeable.Internal.TrType co_a78FJ co1_a78FK [Dmd=<L,A>] ->
+                case Data.Typeable.Internal.sameTypeRep
+                       @ *
+                       @ *
+                       @ k1_a7mzB
+                       @ *
+                       (Data.Typeable.Internal.$WTrType
+                        `cast` ((I.TypeRep <*>_N (Sym co_a78FJ))_R
+                                :: (I.TypeRep * :: *) ~R# (I.TypeRep k1_a7mzB :: *)))
+                       Data.Typeable.mkFunTy1
+                of {
+                  False -> jump fail_s7mOT void#;
+                  True ->
+                    jump $w$j1_s7n2P
+                      @~ (<*>_N :: (* :: *) ~# (* :: *))
+                      @~ (UnsafeCo nominal * k1_a7mzB :: (* :: *) ~# (k1_a7mzB :: *))
+                };
+              Data.Typeable.Internal.TrTyCon dt_d7a1O dt1_d7a1P ds2_d79dC
+                                             ds3_d79dD ds4_d79dE ->
+                case Data.Typeable.Internal.sameTypeRep
+                       @ * @ * @ k1_a7mzB @ * ds4_d79dE Data.Typeable.mkFunTy1
+                of {
+                  False -> jump fail_s7mOT void#;
+                  True ->
+                    jump $w$j1_s7n2P
+                      @~ (<*>_N :: (* :: *) ~# (* :: *))
+                      @~ (UnsafeCo nominal * k1_a7mzB :: (* :: *) ~# (k1_a7mzB :: *))
+                };
+              Data.Typeable.Internal.TrApp @ k2_a78FN @ a2_a78FO @ b_a78FP
+                                           co_a78FQ [Dmd=<L,A>] dt_d7a1Q dt1_d7a1R ds2_d79dG
+                                           ds3_d79dH ds4_d79dI ->
+                case Data.Typeable.Internal.sameTypeRep
+                       @ * @ * @ k1_a7mzB @ * ds4_d79dI Data.Typeable.mkFunTy1
+                of {
+                  False -> jump fail_s7mOT void#;
+                  True ->
+                    jump $w$j1_s7n2P
+                      @~ (<*>_N :: (* :: *) ~# (* :: *))
+                      @~ (UnsafeCo nominal * k1_a7mzB :: (* :: *) ~# (k1_a7mzB :: *))
+                };
+              Data.Typeable.Internal.TrFun @ r1_a78FS @ r2_a78FT @ a2_a78FU
+                                           @ b_a78FV co_a78FW co1_a78FX [Dmd=<L,A>] dt_d7a1S
+                                           dt1_d7a1T ds2_d79dK ds3_d79dL ->
+                case Data.Typeable.Internal.sameTypeRep
+                       @ *
+                       @ *
+                       @ k1_a7mzB
+                       @ *
+                       (Data.Typeable.Internal.$mApp1
+                        `cast` ((I.TypeRep <*>_N (Sym co_a78FW))_R
+                                :: (I.TypeRep * :: *) ~R# (I.TypeRep k1_a7mzB :: *)))
+                       Data.Typeable.mkFunTy1
+                of {
+                  False -> jump fail_s7mOT void#;
+                  True ->
+                    jump $w$j1_s7n2P
+                      @~ (<*>_N :: (* :: *) ~# (* :: *))
+                      @~ (UnsafeCo nominal * k1_a7mzB :: (* :: *) ~# (k1_a7mzB :: *))
+                }
+            } } in
+      case arg_a7mpm of {
+        Data.Typeable.Internal.TrType co_a78FJ co1_a78FK [Dmd=<L,A>] ->
+          case Data.Typeable.Internal.sameTypeRep
+                 @ *
+                 @ *
+                 @ k_a7mzz
+                 @ *
+                 (Data.Typeable.Internal.$WTrType
+                  `cast` ((I.TypeRep <*>_N (Sym co_a78FJ))_R
+                          :: (I.TypeRep * :: *) ~R# (I.TypeRep k_a7mzz :: *)))
+                 Data.Typeable.mkFunTy1
+          of {
+            False -> jump fail_s7mOT void#;
+            True ->
+              jump $w$j_s7n2W
+                @~ (<*>_N :: (* :: *) ~# (* :: *))
+                @~ (UnsafeCo nominal * k_a7mzz :: (* :: *) ~# (k_a7mzz :: *))
+          };
+        Data.Typeable.Internal.TrTyCon dt_d7a1O dt1_d7a1P ds2_d79dC
+                                       ds3_d79dD ds4_d79dE ->
+          case Data.Typeable.Internal.sameTypeRep
+                 @ * @ * @ k_a7mzz @ * ds4_d79dE Data.Typeable.mkFunTy1
+          of {
+            False -> jump fail_s7mOT void#;
+            True ->
+              jump $w$j_s7n2W
+                @~ (<*>_N :: (* :: *) ~# (* :: *))
+                @~ (UnsafeCo nominal * k_a7mzz :: (* :: *) ~# (k_a7mzz :: *))
+          };
+        Data.Typeable.Internal.TrApp @ k2_a78FN @ a2_a78FO @ b_a78FP
+                                     co_a78FQ [Dmd=<L,A>] dt_d7a1Q dt1_d7a1R ds2_d79dG ds3_d79dH
+                                     ds4_d79dI ->
+          case Data.Typeable.Internal.sameTypeRep
+                 @ * @ * @ k_a7mzz @ * ds4_d79dI Data.Typeable.mkFunTy1
+          of {
+            False -> jump fail_s7mOT void#;
+            True ->
+              jump $w$j_s7n2W
+                @~ (<*>_N :: (* :: *) ~# (* :: *))
+                @~ (UnsafeCo nominal * k_a7mzz :: (* :: *) ~# (k_a7mzz :: *))
+          };
+        Data.Typeable.Internal.TrFun @ r1_a78FS @ r2_a78FT @ a2_a78FU
+                                     @ b_a78FV co_a78FW co1_a78FX [Dmd=<L,A>] dt_d7a1S dt1_d7a1T
+                                     ds2_d79dK ds3_d79dL ->
+          case Data.Typeable.Internal.sameTypeRep
+                 @ *
+                 @ *
+                 @ k_a7mzz
+                 @ *
+                 (Data.Typeable.Internal.$mApp1
+                  `cast` ((I.TypeRep <*>_N (Sym co_a78FW))_R
+                          :: (I.TypeRep * :: *) ~R# (I.TypeRep k_a7mzz :: *)))
+                 Data.Typeable.mkFunTy1
+          of {
+            False -> jump fail_s7mOT void#;
+            True ->
+              jump $w$j_s7n2W
+                @~ (<*>_N :: (* :: *) ~# (* :: *))
+                @~ (UnsafeCo nominal * k_a7mzz :: (* :: *) ~# (k_a7mzz :: *))
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 12, types: 25, coercions: 0, joins: 0/0}
+splitTyConApp :: TypeRep -> (TyCon, [TypeRep])
+[GblId,
+ Arity=1,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d7mFT [Occ=Once!] :: I.SomeTypeRep) ->
+                 case ds_d7mFT of
+                 { I.SomeTypeRep @ k_a7mzr @ a_a7mzs x_a7mpp [Occ=Once] ->
+                 case Data.Typeable.Internal.$wgo
+                        @ k_a7mzr
+                        @ a_a7mzs
+                        @ k_a7mzr
+                        @ a_a7mzs
+                        (GHC.Types.[] @ I.SomeTypeRep)
+                        x_a7mpp
+                 of
+                 { (# ww1_s7bDi [Occ=Once], ww2_s7bDj [Occ=Once] #) ->
+                 (ww1_s7bDi, ww2_s7bDj)
+                 }
+                 }}]
+splitTyConApp
+  = \ (ds_d7mFT :: I.SomeTypeRep) ->
+      case ds_d7mFT of { I.SomeTypeRep @ k_a7mzr @ a_a7mzs x_a7mpp ->
+      case Data.Typeable.Internal.$wgo
+             @ k_a7mzr
+             @ a_a7mzs
+             @ k_a7mzr
+             @ a_a7mzs
+             (GHC.Types.[] @ I.SomeTypeRep)
+             x_a7mpp
+      of
+      { (# ww1_s7bDi, ww2_s7bDj #) ->
+      (ww1_s7bDi, ww2_s7bDj)
+      }
+      }
+
+-- RHS size: {terms: 10, types: 22, coercions: 0, joins: 0/0}
+typeRepArgs :: TypeRep -> [TypeRep]
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ty_a7mpq [Occ=Once!] :: TypeRep) ->
+                 case ty_a7mpq of
+                 { I.SomeTypeRep @ k_a7mzr @ a_a7mzs x_a7mpp [Occ=Once] ->
+                 case Data.Typeable.Internal.$wgo
+                        @ k_a7mzr
+                        @ a_a7mzs
+                        @ k_a7mzr
+                        @ a_a7mzs
+                        (GHC.Types.[] @ I.SomeTypeRep)
+                        x_a7mpp
+                 of
+                 { (# _ [Occ=Dead], ww2_s7bDj [Occ=Once] #) ->
+                 ww2_s7bDj
+                 }
+                 }}]
+typeRepArgs
+  = \ (ty_a7mpq :: TypeRep) ->
+      case ty_a7mpq of { I.SomeTypeRep @ k_a7mzr @ a_a7mzs x_a7mpp ->
+      case Data.Typeable.Internal.$wgo
+             @ k_a7mzr
+             @ a_a7mzs
+             @ k_a7mzr
+             @ a_a7mzs
+             (GHC.Types.[] @ I.SomeTypeRep)
+             x_a7mpp
+      of
+      { (# ww1_s7bDi, ww2_s7bDj #) ->
+      ww2_s7bDj
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+typeRepTyCon :: TypeRep -> TyCon
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= I.someTypeRepTyCon}]
+typeRepTyCon = I.someTypeRepTyCon
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+typeRepFingerprint :: TypeRep -> Fingerprint
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= I.someTypeRepFingerprint}]
+typeRepFingerprint = I.someTypeRepFingerprint
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+rnfTypeRep :: TypeRep -> ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= I.rnfSomeTypeRep}]
+rnfTypeRep = I.rnfSomeTypeRep
+
+-- RHS size: {terms: 6, types: 15, coercions: 5, joins: 0/0}
+typeOf1 :: forall (t :: * -> *) a. Typeable t => t a -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7mz8 :: * -> *))
+                 (@ a_a7mz9)
+                 ($dTypeable_a7mzb [Occ=Once] :: Typeable t_a7mz8)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> *)
+                   @ t_a7mz8
+                   ($dTypeable_a7mzb
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <* -> *>_N <t_a7mz8>_N
+                            :: (Typeable t_a7mz8 :: Constraint)
+                               ~R# (I.TypeRep t_a7mz8 :: *)))}]
+typeOf1
+  = \ (@ (t_a7mz8 :: * -> *))
+      (@ a_a7mz9)
+      ($dTypeable_a7mzb :: Typeable t_a7mz8)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> *)
+        @ t_a7mz8
+        ($dTypeable_a7mzb
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <* -> *>_N <t_a7mz8>_N
+                 :: (Typeable t_a7mz8 :: Constraint) ~R# (I.TypeRep t_a7mz8 :: *)))
+
+-- RHS size: {terms: 7, types: 20, coercions: 6, joins: 0/0}
+typeOf2
+  :: forall (t :: * -> * -> *) a b. Typeable t => t a b -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7myS :: * -> * -> *))
+                 (@ a_a7myT)
+                 (@ b_a7myU)
+                 ($dTypeable_a7myW [Occ=Once] :: Typeable t_a7myS)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> * -> *)
+                   @ t_a7myS
+                   ($dTypeable_a7myW
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                                  -> * -> *>_N <t_a7myS>_N
+                            :: (Typeable t_a7myS :: Constraint)
+                               ~R# (I.TypeRep t_a7myS :: *)))}]
+typeOf2
+  = \ (@ (t_a7myS :: * -> * -> *))
+      (@ a_a7myT)
+      (@ b_a7myU)
+      ($dTypeable_a7myW :: Typeable t_a7myS)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> * -> *)
+        @ t_a7myS
+        ($dTypeable_a7myW
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                       -> * -> *>_N <t_a7myS>_N
+                 :: (Typeable t_a7myS :: Constraint) ~R# (I.TypeRep t_a7myS :: *)))
+
+-- RHS size: {terms: 8, types: 25, coercions: 7, joins: 0/0}
+typeOf3
+  :: forall (t :: * -> * -> * -> *) a b c.
+     Typeable t =>
+     t a b c -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7myB :: * -> * -> * -> *))
+                 (@ a_a7myC)
+                 (@ b_a7myD)
+                 (@ c_a7myE)
+                 ($dTypeable_a7myG [Occ=Once] :: Typeable t_a7myB)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> * -> * -> *)
+                   @ t_a7myB
+                   ($dTypeable_a7myG
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                                  -> * -> * -> *>_N <t_a7myB>_N
+                            :: (Typeable t_a7myB :: Constraint)
+                               ~R# (I.TypeRep t_a7myB :: *)))}]
+typeOf3
+  = \ (@ (t_a7myB :: * -> * -> * -> *))
+      (@ a_a7myC)
+      (@ b_a7myD)
+      (@ c_a7myE)
+      ($dTypeable_a7myG :: Typeable t_a7myB)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> * -> * -> *)
+        @ t_a7myB
+        ($dTypeable_a7myG
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                       -> * -> * -> *>_N <t_a7myB>_N
+                 :: (Typeable t_a7myB :: Constraint) ~R# (I.TypeRep t_a7myB :: *)))
+
+-- RHS size: {terms: 9, types: 30, coercions: 8, joins: 0/0}
+typeOf4
+  :: forall (t :: * -> * -> * -> * -> *) a b c d.
+     Typeable t =>
+     t a b c d -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7myj :: * -> * -> * -> * -> *))
+                 (@ a_a7myk)
+                 (@ b_a7myl)
+                 (@ c_a7mym)
+                 (@ d_a7myn)
+                 ($dTypeable_a7myp [Occ=Once] :: Typeable t_a7myj)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> * -> * -> * -> *)
+                   @ t_a7myj
+                   ($dTypeable_a7myp
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                                  -> * -> * -> * -> *>_N <t_a7myj>_N
+                            :: (Typeable t_a7myj :: Constraint)
+                               ~R# (I.TypeRep t_a7myj :: *)))}]
+typeOf4
+  = \ (@ (t_a7myj :: * -> * -> * -> * -> *))
+      (@ a_a7myk)
+      (@ b_a7myl)
+      (@ c_a7mym)
+      (@ d_a7myn)
+      ($dTypeable_a7myp :: Typeable t_a7myj)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> * -> * -> * -> *)
+        @ t_a7myj
+        ($dTypeable_a7myp
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                       -> * -> * -> * -> *>_N <t_a7myj>_N
+                 :: (Typeable t_a7myj :: Constraint) ~R# (I.TypeRep t_a7myj :: *)))
+
+-- RHS size: {terms: 10, types: 35, coercions: 9, joins: 0/0}
+typeOf5
+  :: forall (t :: * -> * -> * -> * -> * -> *) a b c d e.
+     Typeable t =>
+     t a b c d e -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7my0 :: * -> * -> * -> * -> * -> *))
+                 (@ a_a7my1)
+                 (@ b_a7my2)
+                 (@ c_a7my3)
+                 (@ d_a7my4)
+                 (@ e_a7my5)
+                 ($dTypeable_a7my7 [Occ=Once] :: Typeable t_a7my0)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> * -> * -> * -> * -> *)
+                   @ t_a7my0
+                   ($dTypeable_a7my7
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *>_N <t_a7my0>_N
+                            :: (Typeable t_a7my0 :: Constraint)
+                               ~R# (I.TypeRep t_a7my0 :: *)))}]
+typeOf5
+  = \ (@ (t_a7my0 :: * -> * -> * -> * -> * -> *))
+      (@ a_a7my1)
+      (@ b_a7my2)
+      (@ c_a7my3)
+      (@ d_a7my4)
+      (@ e_a7my5)
+      ($dTypeable_a7my7 :: Typeable t_a7my0)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> * -> * -> * -> * -> *)
+        @ t_a7my0
+        ($dTypeable_a7my7
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                       -> * -> * -> * -> * -> *>_N <t_a7my0>_N
+                 :: (Typeable t_a7my0 :: Constraint) ~R# (I.TypeRep t_a7my0 :: *)))
+
+-- RHS size: {terms: 11, types: 40, coercions: 10, joins: 0/0}
+typeOf6
+  :: forall (t :: * -> * -> * -> * -> * -> * -> *) a b c d e f.
+     Typeable t =>
+     t a b c d e f -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7mxG :: * -> * -> * -> * -> * -> * -> *))
+                 (@ a_a7mxH)
+                 (@ b_a7mxI)
+                 (@ c_a7mxJ)
+                 (@ d_a7mxK)
+                 (@ e_a7mxL)
+                 (@ f_a7mxM)
+                 ($dTypeable_a7mxO [Occ=Once] :: Typeable t_a7mxG)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> * -> * -> * -> * -> * -> *)
+                   @ t_a7mxG
+                   ($dTypeable_a7mxO
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *>_N <t_a7mxG>_N
+                            :: (Typeable t_a7mxG :: Constraint)
+                               ~R# (I.TypeRep t_a7mxG :: *)))}]
+typeOf6
+  = \ (@ (t_a7mxG :: * -> * -> * -> * -> * -> * -> *))
+      (@ a_a7mxH)
+      (@ b_a7mxI)
+      (@ c_a7mxJ)
+      (@ d_a7mxK)
+      (@ e_a7mxL)
+      (@ f_a7mxM)
+      ($dTypeable_a7mxO :: Typeable t_a7mxG)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> * -> * -> * -> * -> * -> *)
+        @ t_a7mxG
+        ($dTypeable_a7mxO
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                       -> * -> * -> * -> * -> * -> *>_N <t_a7mxG>_N
+                 :: (Typeable t_a7mxG :: Constraint) ~R# (I.TypeRep t_a7mxG :: *)))
+
+-- RHS size: {terms: 12, types: 45, coercions: 11, joins: 0/0}
+typeOf7
+  :: forall (t :: *
+                  -> * -> * -> * -> * -> * -> * -> *) a b c d e f g.
+     Typeable t =>
+     t a b c d e f g -> TypeRep
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_a7mxk :: * -> * -> * -> * -> * -> * -> * -> *))
+                 (@ a_a7mxl)
+                 (@ b_a7mxm)
+                 (@ c_a7mxn)
+                 (@ d_a7mxo)
+                 (@ e_a7mxp)
+                 (@ f_a7mxq)
+                 (@ g_a7mxr)
+                 ($dTypeable_a7mxt [Occ=Once] :: Typeable t_a7mxk)
+                 _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep
+                   @ (* -> * -> * -> * -> * -> * -> * -> *)
+                   @ t_a7mxk
+                   ($dTypeable_a7mxt
+                    `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *
+                                                                  -> *>_N <t_a7mxk>_N
+                            :: (Typeable t_a7mxk :: Constraint)
+                               ~R# (I.TypeRep t_a7mxk :: *)))}]
+typeOf7
+  = \ (@ (t_a7mxk :: * -> * -> * -> * -> * -> * -> * -> *))
+      (@ a_a7mxl)
+      (@ b_a7mxm)
+      (@ c_a7mxn)
+      (@ d_a7mxo)
+      (@ e_a7mxp)
+      (@ f_a7mxq)
+      (@ g_a7mxr)
+      ($dTypeable_a7mxt :: Typeable t_a7mxk)
+      _ [Occ=Dead] ->
+      Data.Typeable.Internal.$WSomeTypeRep
+        @ (* -> * -> * -> * -> * -> * -> * -> *)
+        @ t_a7mxk
+        ($dTypeable_a7mxt
+         `cast` (Data.Typeable.Internal.N:Typeable[0] <*
+                                                       -> *
+                                                       -> *
+                                                       -> *
+                                                       -> *
+                                                       -> *
+                                                       -> *
+                                                       -> *>_N <t_a7mxk>_N
+                 :: (Typeable t_a7mxk :: Constraint) ~R# (I.TypeRep t_a7mxk :: *)))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.$trModule3
+  = GHC.Types.TrNameS Data.Typeable.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Typeable.$trModule1
+  = GHC.Types.TrNameS Data.Typeable.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Typeable.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Typeable.$trModule
+  = GHC.Types.Module
+      Data.Typeable.$trModule3 Data.Typeable.$trModule1
+
+-- RHS size: {terms: 7, types: 10, coercions: 0, joins: 0/0}
+showsTypeRep :: TypeRep -> ShowS
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d7a05 [Occ=Once!] :: I.SomeTypeRep) ->
+                 case ds_d7a05 of
+                 { I.SomeTypeRep @ k_a78Ze @ a_a78Zf ty_a78a0 [Occ=Once] ->
+                 Data.Typeable.Internal.showTypeable
+                   @ k_a78Ze @ a_a78Zf GHC.Show.$fShow(,)1 ty_a78a0
+                 }}]
+showsTypeRep
+  = \ (ds_d7a05 :: I.SomeTypeRep) ->
+      case ds_d7a05 of { I.SomeTypeRep @ k_a78Ze @ a_a78Zf ty_a78a0 ->
+      Data.Typeable.Internal.showTypeable
+        @ k_a78Ze @ a_a78Zf GHC.Show.$fShow(,)1 ty_a78a0
+      }
+
+

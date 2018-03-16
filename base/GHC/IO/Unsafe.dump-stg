@@ -1,0 +1,500 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:01.392564135 UTC
+
+GHC.IO.Unsafe.unsafeDupablePerformIO
+  :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_snwG]
+        case ds_snwG GHC.Prim.realWorld# of {
+          (#,#) _ [Occ=Dead] ipv1_snwJ [Occ=Once] -> ipv1_snwJ;
+        };
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snwK s_snwL]
+        let {
+          sat_snwP [Occ=Once] :: a_antl
+          [LclId] =
+              [ds_snwK s_snwL] \u []
+                  case ds_snwK s_snwL of {
+                    (#,#) _ [Occ=Dead] ipv1_snwO [Occ=Once] -> ipv1_snwO;
+                  };
+        } in  (#,#) [s_snwL sat_snwP];
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO [InlPrag=NOINLINE]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.IO.Unsafe.unsafeDupableInterleaveIO1 eta_B2 eta_B1;
+
+GHC.IO.Unsafe.noDuplicate1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_snwQ]
+        case noDuplicate# [s_snwQ] of s'_snwR {
+          __DEFAULT -> (#,#) [s'_snwR GHC.Tuple.()];
+        };
+
+GHC.IO.Unsafe.noDuplicate :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.IO.Unsafe.noDuplicate1 eta_B1;
+
+unsafeInterleaveIO1_rnwE
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_snwS eta1_snwT]
+        let {
+          sat_snwW [Occ=Once] :: GHC.Types.IO a_antx
+          [LclId] =
+              [eta_snwS] \r [s_snwU]
+                  case noDuplicate# [s_snwU] of s'_snwV {
+                    __DEFAULT -> eta_snwS s'_snwV;
+                  };
+        } in  GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_snwW eta1_snwT;
+
+GHC.IO.Unsafe.unsafeInterleaveIO [InlPrag=INLINE (sat-args=1)]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] unsafeInterleaveIO1_rnwE eta_B2 eta_B1;
+
+GHC.IO.Unsafe.unsafePerformIO :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [m_snwX]
+        case
+            case noDuplicate# [GHC.Prim.realWorld#] of s'_snwY {
+              __DEFAULT -> m_snwX s'_snwY;
+            }
+        of
+        { (#,#) _ [Occ=Dead] ipv1_snx1 [Occ=Once] -> ipv1_snx1;
+        };
+
+GHC.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule4];
+
+GHC.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IO.Unsafe"#;
+
+GHC.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule2];
+
+GHC.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IO.Unsafe.$trModule3
+                                     GHC.IO.Unsafe.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:01.394867635 UTC
+
+GHC.IO.Unsafe.unsafeDupablePerformIO
+  :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_snwG]
+        case ds_snwG GHC.Prim.realWorld# of {
+          Unit# ipv1_snwJ [Occ=Once] -> ipv1_snwJ;
+        };
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snwK void_0E]
+        let {
+          sat_snwP [Occ=Once] :: a_antl
+          [LclId] =
+              [ds_snwK] \u []
+                  case ds_snwK GHC.Prim.void# of {
+                    Unit# ipv1_snwO [Occ=Once] -> ipv1_snwO;
+                  };
+        } in  Unit# [sat_snwP];
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO [InlPrag=NOINLINE]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.IO.Unsafe.unsafeDupableInterleaveIO1 eta_B2 GHC.Prim.void#;
+
+GHC.IO.Unsafe.noDuplicate1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case noDuplicate# [GHC.Prim.void#] of s'_snwR {
+          (##) -> Unit# [GHC.Tuple.()];
+        };
+
+GHC.IO.Unsafe.noDuplicate :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.IO.Unsafe.noDuplicate1 GHC.Prim.void#;
+
+unsafeInterleaveIO1_rnwE
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_snwS void_0E]
+        let {
+          sat_snwW [Occ=Once] :: GHC.Types.IO a_antx
+          [LclId] =
+              [eta_snwS] \r [void_0E]
+                  case noDuplicate# [GHC.Prim.void#] of s'_snwV {
+                    (##) -> eta_snwS GHC.Prim.void#;
+                  };
+        } in 
+          GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_snwW GHC.Prim.void#;
+
+GHC.IO.Unsafe.unsafeInterleaveIO [InlPrag=INLINE (sat-args=1)]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        unsafeInterleaveIO1_rnwE eta_B2 GHC.Prim.void#;
+
+GHC.IO.Unsafe.unsafePerformIO :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [m_snwX]
+        case
+            case noDuplicate# [GHC.Prim.realWorld#] of s'_snwY {
+              (##) -> m_snwX GHC.Prim.void#;
+            }
+        of
+        { Unit# ipv1_snx1 [Occ=Once] -> ipv1_snx1;
+        };
+
+GHC.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule4];
+
+GHC.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IO.Unsafe"#;
+
+GHC.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule2];
+
+GHC.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IO.Unsafe.$trModule3
+                                     GHC.IO.Unsafe.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:01.536713011 UTC
+
+GHC.IO.Unsafe.unsafeDupablePerformIO
+  :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_snCG]
+        case ds_snCG GHC.Prim.realWorld# of {
+          (#,#) _ [Occ=Dead] ipv1_snCJ [Occ=Once] -> ipv1_snCJ;
+        };
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snCK s_snCL]
+        let {
+          sat_snCP [Occ=Once] :: a_antl
+          [LclId] =
+              [ds_snCK s_snCL] \u []
+                  case ds_snCK s_snCL of {
+                    (#,#) _ [Occ=Dead] ipv1_snCO [Occ=Once] -> ipv1_snCO;
+                  };
+        } in  (#,#) [s_snCL sat_snCP];
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO [InlPrag=NOINLINE]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.IO.Unsafe.unsafeDupableInterleaveIO1 eta_B2 eta_B1;
+
+GHC.IO.Unsafe.noDuplicate1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_snCQ]
+        case noDuplicate# [s_snCQ] of s'_snCR {
+          __DEFAULT -> (#,#) [s'_snCR GHC.Tuple.()];
+        };
+
+GHC.IO.Unsafe.noDuplicate :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.IO.Unsafe.noDuplicate1 eta_B1;
+
+unsafeInterleaveIO1_rnwE
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_snCS eta1_snCT]
+        let {
+          sat_snCW [Occ=Once] :: GHC.Types.IO a_antx
+          [LclId] =
+              [eta_snCS] \r [s_snCU]
+                  case noDuplicate# [s_snCU] of s'_snCV {
+                    __DEFAULT -> eta_snCS s'_snCV;
+                  };
+        } in  GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_snCW eta1_snCT;
+
+GHC.IO.Unsafe.unsafeInterleaveIO [InlPrag=INLINE (sat-args=1)]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] unsafeInterleaveIO1_rnwE eta_B2 eta_B1;
+
+GHC.IO.Unsafe.unsafePerformIO :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [m_snCX]
+        case
+            case noDuplicate# [GHC.Prim.realWorld#] of s'_snCY {
+              __DEFAULT -> m_snCX s'_snCY;
+            }
+        of
+        { (#,#) _ [Occ=Dead] ipv1_snD1 [Occ=Once] -> ipv1_snD1;
+        };
+
+GHC.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule4];
+
+GHC.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IO.Unsafe"#;
+
+GHC.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule2];
+
+GHC.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IO.Unsafe.$trModule3
+                                     GHC.IO.Unsafe.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:01.539230332 UTC
+
+GHC.IO.Unsafe.unsafeDupablePerformIO
+  :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_snCG]
+        case ds_snCG GHC.Prim.realWorld# of {
+          Unit# ipv1_snCJ [Occ=Once] -> ipv1_snCJ;
+        };
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snCK void_0E]
+        let {
+          sat_snCP [Occ=Once] :: a_antl
+          [LclId] =
+              [ds_snCK] \u []
+                  case ds_snCK GHC.Prim.void# of {
+                    Unit# ipv1_snCO [Occ=Once] -> ipv1_snCO;
+                  };
+        } in  Unit# [sat_snCP];
+
+GHC.IO.Unsafe.unsafeDupableInterleaveIO [InlPrag=NOINLINE]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.IO.Unsafe.unsafeDupableInterleaveIO1 eta_B2 GHC.Prim.void#;
+
+GHC.IO.Unsafe.noDuplicate1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case noDuplicate# [GHC.Prim.void#] of s'_snCR {
+          (##) -> Unit# [GHC.Tuple.()];
+        };
+
+GHC.IO.Unsafe.noDuplicate :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.IO.Unsafe.noDuplicate1 GHC.Prim.void#;
+
+unsafeInterleaveIO1_rnwE
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_snCS void_0E]
+        let {
+          sat_snCW [Occ=Once] :: GHC.Types.IO a_antx
+          [LclId] =
+              [eta_snCS] \r [void_0E]
+                  case noDuplicate# [GHC.Prim.void#] of s'_snCV {
+                    (##) -> eta_snCS GHC.Prim.void#;
+                  };
+        } in 
+          GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_snCW GHC.Prim.void#;
+
+GHC.IO.Unsafe.unsafeInterleaveIO [InlPrag=INLINE (sat-args=1)]
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        unsafeInterleaveIO1_rnwE eta_B2 GHC.Prim.void#;
+
+GHC.IO.Unsafe.unsafePerformIO :: forall a. GHC.Types.IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [m_snCX]
+        case
+            case noDuplicate# [GHC.Prim.realWorld#] of s'_snCY {
+              (##) -> m_snCX GHC.Prim.void#;
+            }
+        of
+        { Unit# ipv1_snD1 [Occ=Once] -> ipv1_snD1;
+        };
+
+GHC.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule4];
+
+GHC.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IO.Unsafe"#;
+
+GHC.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IO.Unsafe.$trModule2];
+
+GHC.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IO.Unsafe.$trModule3
+                                     GHC.IO.Unsafe.$trModule1];
+

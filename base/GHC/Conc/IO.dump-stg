@@ -1,0 +1,1480 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:53.831829742 UTC
+
+GHC.Conc.IO.ensureIOManagerIsRunning :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Event.Thread.ensureIOManagerIsRunning1 eta_B1;
+
+GHC.Conc.IO.ioManagerCapabilitiesChanged :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        GHC.Event.Thread.ioManagerCapabilitiesChanged1 eta_B1;
+
+GHC.Conc.IO.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Conc.IO.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule4];
+
+GHC.Conc.IO.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Conc.IO"#;
+
+GHC.Conc.IO.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule2];
+
+GHC.Conc.IO.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Conc.IO.$trModule3
+                                     GHC.Conc.IO.$trModule1];
+
+lvl_raTBq :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "registerDelay: requires -threaded"#;
+
+GHC.Conc.IO.registerDelay2
+  :: GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_raTBq of sat_saTBs {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_saTBs;
+        };
+
+GHC.Conc.IO.registerDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Conc.Sync.TVar GHC.Types.Bool #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [usecs_saTBt eta_saTBu]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTBy [Occ=Once!] ->
+              case ds1_saTBy of {
+                __DEFAULT -> GHC.Event.Thread.registerDelay1 usecs_saTBt eta_saTBu;
+                0# -> GHC.Conc.IO.registerDelay2;
+              };
+        };
+
+GHC.Conc.IO.registerDelay
+  :: GHC.Types.Int
+     -> GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.registerDelay1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [time_saTBB eta_saTBC]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTBG [Occ=Once!] ->
+              case ds1_saTBG of {
+                __DEFAULT -> GHC.Event.Thread.threadDelay1 time_saTBB eta_saTBC;
+                0# ->
+                    case time_saTBB of {
+                      GHC.Types.I# time#_saTBJ [Occ=Once] ->
+                          case delay# [time#_saTBJ eta_saTBC] of s'_saTBK {
+                            __DEFAULT -> (#,#) [s'_saTBK GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadDelay :: GHC.Types.Int -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadDelay1 eta_B2 eta_B1;
+
+GHC.Conc.IO.closeFdWith1
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [close_saTBL fd_saTBM eta_saTBN]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTBR [Occ=Once!] ->
+              case ds1_saTBR of {
+                __DEFAULT ->
+                    GHC.Event.Thread.closeFdWith1 close_saTBL fd_saTBM eta_saTBN;
+                0# -> close_saTBL fd_saTBM eta_saTBN;
+              };
+        };
+
+GHC.Conc.IO.closeFdWith
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Conc.IO.closeFdWith1 eta_B3 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitWrite1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTBT eta_saTBU]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTBY [Occ=Once!] ->
+              case ds1_saTBY of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtWrite fd_saTBT eta_saTBU;
+                0# ->
+                    case fd_saTBT of {
+                      GHC.Int.I32# x#_saTC1 [Occ=Once] ->
+                          case waitWrite# [x#_saTC1 eta_saTBU] of s'_saTC2 {
+                            __DEFAULT -> (#,#) [s'_saTC2 GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWrite
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadWaitWrite1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitWriteSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTC3 eta_saTC4]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTC8 [Occ=Once!] ->
+              case ds1_saTC8 of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtWrite fd_saTC3 eta_saTC4;
+                0# ->
+                    case newTVar# [GHC.Types.False eta_saTC4] of {
+                      (#,#) ipv_saTCb [Occ=Once] ipv1_saTCc ->
+                          let {
+                            sat_saTCm [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saTC3 ipv1_saTCc] \r [eta1_saTCd]
+                                    let {
+                                      sat_saTCl [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saTC3 ipv1_saTCc] \r [s_saTCe]
+                                              case fd_saTC3 of {
+                                                GHC.Int.I32# x#_saTCg [Occ=Once] ->
+                                                    case waitWrite# [x#_saTCg s_saTCe] of s'_saTCh {
+                                                      __DEFAULT ->
+                                                          let {
+                                                            sat_saTCk [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saTCc] \r [eta2_saTCi]
+                                                                    case
+                                                                        writeTVar# [ipv1_saTCc
+                                                                                    GHC.Types.True
+                                                                                    eta2_saTCi]
+                                                                    of
+                                                                    s2#_saTCj
+                                                                    { __DEFAULT ->
+                                                                          (#,#) [s2#_saTCj
+                                                                                 GHC.Tuple.()];
+                                                                    };
+                                                          } in  atomically# [sat_saTCk s'_saTCh];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saTCl GHC.Conc.Sync.forkIO2 eta1_saTCd];
+                          } in 
+                            case fork# [sat_saTCm ipv_saTCb] of {
+                              (#,#) ipv2_saTCo [Occ=Once] ipv3_saTCp [Occ=Once] ->
+                                  let {
+                                    sat_saTCy [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saTCp] \r [eta1_saTCw]
+                                            case
+                                                killThread# [ipv3_saTCp
+                                                             GHC.Conc.Sync.killThread2
+                                                             eta1_saTCw]
+                                            of
+                                            s1_saTCx
+                                            { __DEFAULT -> (#,#) [s1_saTCx GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saTCv [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saTCc] \r [s_saTCq]
+                                            case readTVar# [ipv1_saTCc s_saTCq] of {
+                                              (#,#) ipv4_saTCs [Occ=Once*] ipv5_saTCt [Occ=Once!] ->
+                                                  case ipv5_saTCt of {
+                                                    GHC.Types.False -> retry# [ipv4_saTCs];
+                                                    GHC.Types.True ->
+                                                        (#,#) [ipv4_saTCs GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saTCz [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saTCv sat_saTCy];
+                                  } in  (#,#) [ipv2_saTCo sat_saTCz];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWriteSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Conc.IO.threadWaitWriteSTM1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitRead1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTCA eta_saTCB]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTCF [Occ=Once!] ->
+              case ds1_saTCF of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtRead fd_saTCA eta_saTCB;
+                0# ->
+                    case fd_saTCA of {
+                      GHC.Int.I32# x#_saTCI [Occ=Once] ->
+                          case waitRead# [x#_saTCI eta_saTCB] of s'_saTCJ {
+                            __DEFAULT -> (#,#) [s'_saTCJ GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitRead
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadWaitRead1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitReadSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTCK eta_saTCL]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTCP [Occ=Once!] ->
+              case ds1_saTCP of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtRead fd_saTCK eta_saTCL;
+                0# ->
+                    case newTVar# [GHC.Types.False eta_saTCL] of {
+                      (#,#) ipv_saTCS [Occ=Once] ipv1_saTCT ->
+                          let {
+                            sat_saTD3 [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saTCK ipv1_saTCT] \r [eta1_saTCU]
+                                    let {
+                                      sat_saTD2 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saTCK ipv1_saTCT] \r [s_saTCV]
+                                              case fd_saTCK of {
+                                                GHC.Int.I32# x#_saTCX [Occ=Once] ->
+                                                    case waitRead# [x#_saTCX s_saTCV] of s'_saTCY {
+                                                      __DEFAULT ->
+                                                          let {
+                                                            sat_saTD1 [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saTCT] \r [eta2_saTCZ]
+                                                                    case
+                                                                        writeTVar# [ipv1_saTCT
+                                                                                    GHC.Types.True
+                                                                                    eta2_saTCZ]
+                                                                    of
+                                                                    s2#_saTD0
+                                                                    { __DEFAULT ->
+                                                                          (#,#) [s2#_saTD0
+                                                                                 GHC.Tuple.()];
+                                                                    };
+                                                          } in  atomically# [sat_saTD1 s'_saTCY];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saTD2 GHC.Conc.Sync.forkIO2 eta1_saTCU];
+                          } in 
+                            case fork# [sat_saTD3 ipv_saTCS] of {
+                              (#,#) ipv2_saTD5 [Occ=Once] ipv3_saTD6 [Occ=Once] ->
+                                  let {
+                                    sat_saTDf [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saTD6] \r [eta1_saTDd]
+                                            case
+                                                killThread# [ipv3_saTD6
+                                                             GHC.Conc.Sync.killThread2
+                                                             eta1_saTDd]
+                                            of
+                                            s1_saTDe
+                                            { __DEFAULT -> (#,#) [s1_saTDe GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saTDc [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saTCT] \r [s_saTD7]
+                                            case readTVar# [ipv1_saTCT s_saTD7] of {
+                                              (#,#) ipv4_saTD9 [Occ=Once*] ipv5_saTDa [Occ=Once!] ->
+                                                  case ipv5_saTDa of {
+                                                    GHC.Types.False -> retry# [ipv4_saTD9];
+                                                    GHC.Types.True ->
+                                                        (#,#) [ipv4_saTD9 GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saTDg [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saTDc sat_saTDf];
+                                  } in  (#,#) [ipv2_saTD5 sat_saTDg];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitReadSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadWaitReadSTM1 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:53.841507922 UTC
+
+GHC.Conc.IO.ensureIOManagerIsRunning :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        GHC.Event.Thread.ensureIOManagerIsRunning1 GHC.Prim.void#;
+
+GHC.Conc.IO.ioManagerCapabilitiesChanged :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        GHC.Event.Thread.ioManagerCapabilitiesChanged1 GHC.Prim.void#;
+
+GHC.Conc.IO.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Conc.IO.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule4];
+
+GHC.Conc.IO.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Conc.IO"#;
+
+GHC.Conc.IO.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule2];
+
+GHC.Conc.IO.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Conc.IO.$trModule3
+                                     GHC.Conc.IO.$trModule1];
+
+lvl_raTBq :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "registerDelay: requires -threaded"#;
+
+GHC.Conc.IO.registerDelay2
+  :: GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_raTBq of sat_saTBs {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_saTBs;
+        };
+
+GHC.Conc.IO.registerDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Conc.Sync.TVar GHC.Types.Bool #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [usecs_saTBt void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTBy [Occ=Once!] ->
+              case ds1_saTBy of {
+                __DEFAULT ->
+                    GHC.Event.Thread.registerDelay1 usecs_saTBt GHC.Prim.void#;
+                0# -> GHC.Conc.IO.registerDelay2;
+              };
+        };
+
+GHC.Conc.IO.registerDelay
+  :: GHC.Types.Int
+     -> GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.registerDelay1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [time_saTBB void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTBG [Occ=Once!] ->
+              case ds1_saTBG of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadDelay1 time_saTBB GHC.Prim.void#;
+                0# ->
+                    case time_saTBB of {
+                      GHC.Types.I# time#_saTBJ [Occ=Once] ->
+                          case delay# [time#_saTBJ GHC.Prim.void#] of s'_saTBK {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadDelay :: GHC.Types.Int -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadDelay1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.closeFdWith1
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [close_saTBL fd_saTBM void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTBR [Occ=Once!] ->
+              case ds1_saTBR of {
+                __DEFAULT ->
+                    GHC.Event.Thread.closeFdWith1 close_saTBL fd_saTBM GHC.Prim.void#;
+                0# -> close_saTBL fd_saTBM GHC.Prim.void#;
+              };
+        };
+
+GHC.Conc.IO.closeFdWith
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Conc.IO.closeFdWith1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitWrite1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTBT void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTBY [Occ=Once!] ->
+              case ds1_saTBY of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtWrite fd_saTBT GHC.Prim.void#;
+                0# ->
+                    case fd_saTBT of {
+                      GHC.Int.I32# x#_saTC1 [Occ=Once] ->
+                          case waitWrite# [x#_saTC1 GHC.Prim.void#] of s'_saTC2 {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWrite
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitWrite1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitWriteSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTC3 void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTC8 [Occ=Once!] ->
+              case ds1_saTC8 of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtWrite fd_saTC3 GHC.Prim.void#;
+                0# ->
+                    case newTVar# [GHC.Types.False GHC.Prim.void#] of {
+                      Unit# ipv1_saTCc ->
+                          let {
+                            sat_saTCm [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saTC3 ipv1_saTCc] \r [void_0E]
+                                    let {
+                                      sat_saTCl [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saTC3 ipv1_saTCc] \r [void_0E]
+                                              case fd_saTC3 of {
+                                                GHC.Int.I32# x#_saTCg [Occ=Once] ->
+                                                    case
+                                                        waitWrite# [x#_saTCg GHC.Prim.void#]
+                                                    of
+                                                    s'_saTCh
+                                                    { (##) ->
+                                                          let {
+                                                            sat_saTCk [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saTCc] \r [void_0E]
+                                                                    case
+                                                                        writeTVar# [ipv1_saTCc
+                                                                                    GHC.Types.True
+                                                                                    GHC.Prim.void#]
+                                                                    of
+                                                                    s2#_saTCj
+                                                                    { (##) -> Unit# [GHC.Tuple.()];
+                                                                    };
+                                                          } in 
+                                                            atomically# [sat_saTCk GHC.Prim.void#];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saTCl GHC.Conc.Sync.forkIO2 GHC.Prim.void#];
+                          } in 
+                            case fork# [sat_saTCm GHC.Prim.void#] of {
+                              Unit# ipv3_saTCp [Occ=Once] ->
+                                  let {
+                                    sat_saTCy [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saTCp] \r [void_0E]
+                                            case
+                                                killThread# [ipv3_saTCp
+                                                             GHC.Conc.Sync.killThread2
+                                                             GHC.Prim.void#]
+                                            of
+                                            s1_saTCx
+                                            { (##) -> Unit# [GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saTCv [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saTCc] \r [void_0E]
+                                            case readTVar# [ipv1_saTCc GHC.Prim.void#] of {
+                                              Unit# ipv5_saTCt [Occ=Once!] ->
+                                                  case ipv5_saTCt of {
+                                                    GHC.Types.False -> retry# [GHC.Prim.void#];
+                                                    GHC.Types.True -> Unit# [GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saTCz [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saTCv sat_saTCy];
+                                  } in  Unit# [sat_saTCz];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWriteSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitWriteSTM1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitRead1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTCA void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTCF [Occ=Once!] ->
+              case ds1_saTCF of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtRead fd_saTCA GHC.Prim.void#;
+                0# ->
+                    case fd_saTCA of {
+                      GHC.Int.I32# x#_saTCI [Occ=Once] ->
+                          case waitRead# [x#_saTCI GHC.Prim.void#] of s'_saTCJ {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitRead
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitRead1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitReadSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTCK void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTCP [Occ=Once!] ->
+              case ds1_saTCP of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtRead fd_saTCK GHC.Prim.void#;
+                0# ->
+                    case newTVar# [GHC.Types.False GHC.Prim.void#] of {
+                      Unit# ipv1_saTCT ->
+                          let {
+                            sat_saTD3 [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saTCK ipv1_saTCT] \r [void_0E]
+                                    let {
+                                      sat_saTD2 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saTCK ipv1_saTCT] \r [void_0E]
+                                              case fd_saTCK of {
+                                                GHC.Int.I32# x#_saTCX [Occ=Once] ->
+                                                    case
+                                                        waitRead# [x#_saTCX GHC.Prim.void#]
+                                                    of
+                                                    s'_saTCY
+                                                    { (##) ->
+                                                          let {
+                                                            sat_saTD1 [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saTCT] \r [void_0E]
+                                                                    case
+                                                                        writeTVar# [ipv1_saTCT
+                                                                                    GHC.Types.True
+                                                                                    GHC.Prim.void#]
+                                                                    of
+                                                                    s2#_saTD0
+                                                                    { (##) -> Unit# [GHC.Tuple.()];
+                                                                    };
+                                                          } in 
+                                                            atomically# [sat_saTD1 GHC.Prim.void#];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saTD2 GHC.Conc.Sync.forkIO2 GHC.Prim.void#];
+                          } in 
+                            case fork# [sat_saTD3 GHC.Prim.void#] of {
+                              Unit# ipv3_saTD6 [Occ=Once] ->
+                                  let {
+                                    sat_saTDf [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saTD6] \r [void_0E]
+                                            case
+                                                killThread# [ipv3_saTD6
+                                                             GHC.Conc.Sync.killThread2
+                                                             GHC.Prim.void#]
+                                            of
+                                            s1_saTDe
+                                            { (##) -> Unit# [GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saTDc [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saTCT] \r [void_0E]
+                                            case readTVar# [ipv1_saTCT GHC.Prim.void#] of {
+                                              Unit# ipv5_saTDa [Occ=Once!] ->
+                                                  case ipv5_saTDa of {
+                                                    GHC.Types.False -> retry# [GHC.Prim.void#];
+                                                    GHC.Types.True -> Unit# [GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saTDg [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saTDc sat_saTDf];
+                                  } in  Unit# [sat_saTDg];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitReadSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitReadSTM1 eta_B2 GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:54.321697909 UTC
+
+GHC.Conc.IO.ensureIOManagerIsRunning :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Event.Thread.ensureIOManagerIsRunning1 eta_B1;
+
+GHC.Conc.IO.ioManagerCapabilitiesChanged :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        GHC.Event.Thread.ioManagerCapabilitiesChanged1 eta_B1;
+
+GHC.Conc.IO.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Conc.IO.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule4];
+
+GHC.Conc.IO.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Conc.IO"#;
+
+GHC.Conc.IO.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule2];
+
+GHC.Conc.IO.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Conc.IO.$trModule3
+                                     GHC.Conc.IO.$trModule1];
+
+lvl_raTBq :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "registerDelay: requires -threaded"#;
+
+GHC.Conc.IO.registerDelay2
+  :: GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_raTBq of sat_saTZ7 {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_saTZ7;
+        };
+
+GHC.Conc.IO.registerDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Conc.Sync.TVar GHC.Types.Bool #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [usecs_saTZ8 eta_saTZ9]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTZd [Occ=Once!] ->
+              case ds1_saTZd of {
+                __DEFAULT -> GHC.Event.Thread.registerDelay1 usecs_saTZ8 eta_saTZ9;
+                0# -> GHC.Conc.IO.registerDelay2;
+              };
+        };
+
+GHC.Conc.IO.registerDelay
+  :: GHC.Types.Int
+     -> GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.registerDelay1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [time_saTZg eta_saTZh]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTZl [Occ=Once!] ->
+              case ds1_saTZl of {
+                __DEFAULT -> GHC.Event.Thread.threadDelay1 time_saTZg eta_saTZh;
+                0# ->
+                    case time_saTZg of {
+                      GHC.Types.I# time#_saTZo [Occ=Once] ->
+                          case delay# [time#_saTZo eta_saTZh] of s'_saTZp {
+                            __DEFAULT -> (#,#) [s'_saTZp GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadDelay :: GHC.Types.Int -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadDelay1 eta_B2 eta_B1;
+
+GHC.Conc.IO.closeFdWith1
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [close_saTZq fd_saTZr eta_saTZs]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTZw [Occ=Once!] ->
+              case ds1_saTZw of {
+                __DEFAULT ->
+                    GHC.Event.Thread.closeFdWith1 close_saTZq fd_saTZr eta_saTZs;
+                0# -> close_saTZq fd_saTZr eta_saTZs;
+              };
+        };
+
+GHC.Conc.IO.closeFdWith
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Conc.IO.closeFdWith1 eta_B3 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitWrite1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTZy eta_saTZz]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTZD [Occ=Once!] ->
+              case ds1_saTZD of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtWrite fd_saTZy eta_saTZz;
+                0# ->
+                    case fd_saTZy of {
+                      GHC.Int.I32# x#_saTZG [Occ=Once] ->
+                          case waitWrite# [x#_saTZG eta_saTZz] of s'_saTZH {
+                            __DEFAULT -> (#,#) [s'_saTZH GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWrite
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadWaitWrite1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitWriteSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTZI eta_saTZJ]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saTZN [Occ=Once!] ->
+              case ds1_saTZN of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtWrite fd_saTZI eta_saTZJ;
+                0# ->
+                    case newTVar# [GHC.Types.False eta_saTZJ] of {
+                      (#,#) ipv_saTZQ [Occ=Once] ipv1_saTZR ->
+                          let {
+                            sat_saU01 [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saTZI ipv1_saTZR] \r [eta1_saTZS]
+                                    let {
+                                      sat_saU00 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saTZI ipv1_saTZR] \r [s_saTZT]
+                                              case fd_saTZI of {
+                                                GHC.Int.I32# x#_saTZV [Occ=Once] ->
+                                                    case waitWrite# [x#_saTZV s_saTZT] of s'_saTZW {
+                                                      __DEFAULT ->
+                                                          let {
+                                                            sat_saTZZ [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saTZR] \r [eta2_saTZX]
+                                                                    case
+                                                                        writeTVar# [ipv1_saTZR
+                                                                                    GHC.Types.True
+                                                                                    eta2_saTZX]
+                                                                    of
+                                                                    s2#_saTZY
+                                                                    { __DEFAULT ->
+                                                                          (#,#) [s2#_saTZY
+                                                                                 GHC.Tuple.()];
+                                                                    };
+                                                          } in  atomically# [sat_saTZZ s'_saTZW];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saU00 GHC.Conc.Sync.forkIO2 eta1_saTZS];
+                          } in 
+                            case fork# [sat_saU01 ipv_saTZQ] of {
+                              (#,#) ipv2_saU03 [Occ=Once] ipv3_saU04 [Occ=Once] ->
+                                  let {
+                                    sat_saU0d [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saU04] \r [eta1_saU0b]
+                                            case
+                                                killThread# [ipv3_saU04
+                                                             GHC.Conc.Sync.killThread2
+                                                             eta1_saU0b]
+                                            of
+                                            s1_saU0c
+                                            { __DEFAULT -> (#,#) [s1_saU0c GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saU0a [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saTZR] \r [s_saU05]
+                                            case readTVar# [ipv1_saTZR s_saU05] of {
+                                              (#,#) ipv4_saU07 [Occ=Once*] ipv5_saU08 [Occ=Once!] ->
+                                                  case ipv5_saU08 of {
+                                                    GHC.Types.False -> retry# [ipv4_saU07];
+                                                    GHC.Types.True ->
+                                                        (#,#) [ipv4_saU07 GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saU0e [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saU0a sat_saU0d];
+                                  } in  (#,#) [ipv2_saU03 sat_saU0e];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWriteSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Conc.IO.threadWaitWriteSTM1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitRead1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saU0f eta_saU0g]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saU0k [Occ=Once!] ->
+              case ds1_saU0k of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtRead fd_saU0f eta_saU0g;
+                0# ->
+                    case fd_saU0f of {
+                      GHC.Int.I32# x#_saU0n [Occ=Once] ->
+                          case waitRead# [x#_saU0n eta_saU0g] of s'_saU0o {
+                            __DEFAULT -> (#,#) [s'_saU0o GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitRead
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadWaitRead1 eta_B2 eta_B1;
+
+GHC.Conc.IO.threadWaitReadSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saU0p eta_saU0q]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          (#,#) _ [Occ=Dead] ds1_saU0u [Occ=Once!] ->
+              case ds1_saU0u of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtRead fd_saU0p eta_saU0q;
+                0# ->
+                    case newTVar# [GHC.Types.False eta_saU0q] of {
+                      (#,#) ipv_saU0x [Occ=Once] ipv1_saU0y ->
+                          let {
+                            sat_saU0I [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saU0p ipv1_saU0y] \r [eta1_saU0z]
+                                    let {
+                                      sat_saU0H [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saU0p ipv1_saU0y] \r [s_saU0A]
+                                              case fd_saU0p of {
+                                                GHC.Int.I32# x#_saU0C [Occ=Once] ->
+                                                    case waitRead# [x#_saU0C s_saU0A] of s'_saU0D {
+                                                      __DEFAULT ->
+                                                          let {
+                                                            sat_saU0G [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saU0y] \r [eta2_saU0E]
+                                                                    case
+                                                                        writeTVar# [ipv1_saU0y
+                                                                                    GHC.Types.True
+                                                                                    eta2_saU0E]
+                                                                    of
+                                                                    s2#_saU0F
+                                                                    { __DEFAULT ->
+                                                                          (#,#) [s2#_saU0F
+                                                                                 GHC.Tuple.()];
+                                                                    };
+                                                          } in  atomically# [sat_saU0G s'_saU0D];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saU0H GHC.Conc.Sync.forkIO2 eta1_saU0z];
+                          } in 
+                            case fork# [sat_saU0I ipv_saU0x] of {
+                              (#,#) ipv2_saU0K [Occ=Once] ipv3_saU0L [Occ=Once] ->
+                                  let {
+                                    sat_saU0U [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saU0L] \r [eta1_saU0S]
+                                            case
+                                                killThread# [ipv3_saU0L
+                                                             GHC.Conc.Sync.killThread2
+                                                             eta1_saU0S]
+                                            of
+                                            s1_saU0T
+                                            { __DEFAULT -> (#,#) [s1_saU0T GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saU0R [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saU0y] \r [s_saU0M]
+                                            case readTVar# [ipv1_saU0y s_saU0M] of {
+                                              (#,#) ipv4_saU0O [Occ=Once*] ipv5_saU0P [Occ=Once!] ->
+                                                  case ipv5_saU0P of {
+                                                    GHC.Types.False -> retry# [ipv4_saU0O];
+                                                    GHC.Types.True ->
+                                                        (#,#) [ipv4_saU0O GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saU0V [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saU0R sat_saU0U];
+                                  } in  (#,#) [ipv2_saU0K sat_saU0V];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitReadSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Conc.IO.threadWaitReadSTM1 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:54.328626364 UTC
+
+GHC.Conc.IO.ensureIOManagerIsRunning :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        GHC.Event.Thread.ensureIOManagerIsRunning1 GHC.Prim.void#;
+
+GHC.Conc.IO.ioManagerCapabilitiesChanged :: GHC.Types.IO ()
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        GHC.Event.Thread.ioManagerCapabilitiesChanged1 GHC.Prim.void#;
+
+GHC.Conc.IO.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Conc.IO.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule4];
+
+GHC.Conc.IO.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Conc.IO"#;
+
+GHC.Conc.IO.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Conc.IO.$trModule2];
+
+GHC.Conc.IO.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Conc.IO.$trModule3
+                                     GHC.Conc.IO.$trModule1];
+
+lvl_raTBq :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "registerDelay: requires -threaded"#;
+
+GHC.Conc.IO.registerDelay2
+  :: GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_raTBq of sat_saTZ7 {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_saTZ7;
+        };
+
+GHC.Conc.IO.registerDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Conc.Sync.TVar GHC.Types.Bool #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [usecs_saTZ8 void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTZd [Occ=Once!] ->
+              case ds1_saTZd of {
+                __DEFAULT ->
+                    GHC.Event.Thread.registerDelay1 usecs_saTZ8 GHC.Prim.void#;
+                0# -> GHC.Conc.IO.registerDelay2;
+              };
+        };
+
+GHC.Conc.IO.registerDelay
+  :: GHC.Types.Int
+     -> GHC.Types.IO (GHC.Conc.Sync.TVar GHC.Types.Bool)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.registerDelay1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadDelay1
+  :: GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [time_saTZg void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTZl [Occ=Once!] ->
+              case ds1_saTZl of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadDelay1 time_saTZg GHC.Prim.void#;
+                0# ->
+                    case time_saTZg of {
+                      GHC.Types.I# time#_saTZo [Occ=Once] ->
+                          case delay# [time#_saTZo GHC.Prim.void#] of s'_saTZp {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadDelay :: GHC.Types.Int -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,1*U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadDelay1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.closeFdWith1
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [close_saTZq fd_saTZr void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTZw [Occ=Once!] ->
+              case ds1_saTZw of {
+                __DEFAULT ->
+                    GHC.Event.Thread.closeFdWith1 close_saTZq fd_saTZr GHC.Prim.void#;
+                0# -> close_saTZq fd_saTZr GHC.Prim.void#;
+              };
+        };
+
+GHC.Conc.IO.closeFdWith
+  :: (System.Posix.Types.Fd -> GHC.Types.IO ())
+     -> System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Str=<L,C(C1(U(U,U)))><L,U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Conc.IO.closeFdWith1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitWrite1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTZy void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTZD [Occ=Once!] ->
+              case ds1_saTZD of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtWrite fd_saTZy GHC.Prim.void#;
+                0# ->
+                    case fd_saTZy of {
+                      GHC.Int.I32# x#_saTZG [Occ=Once] ->
+                          case waitWrite# [x#_saTZG GHC.Prim.void#] of s'_saTZH {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWrite
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitWrite1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitWriteSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saTZI void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saTZN [Occ=Once!] ->
+              case ds1_saTZN of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtWrite fd_saTZI GHC.Prim.void#;
+                0# ->
+                    case newTVar# [GHC.Types.False GHC.Prim.void#] of {
+                      Unit# ipv1_saTZR ->
+                          let {
+                            sat_saU01 [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saTZI ipv1_saTZR] \r [void_0E]
+                                    let {
+                                      sat_saU00 [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saTZI ipv1_saTZR] \r [void_0E]
+                                              case fd_saTZI of {
+                                                GHC.Int.I32# x#_saTZV [Occ=Once] ->
+                                                    case
+                                                        waitWrite# [x#_saTZV GHC.Prim.void#]
+                                                    of
+                                                    s'_saTZW
+                                                    { (##) ->
+                                                          let {
+                                                            sat_saTZZ [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saTZR] \r [void_0E]
+                                                                    case
+                                                                        writeTVar# [ipv1_saTZR
+                                                                                    GHC.Types.True
+                                                                                    GHC.Prim.void#]
+                                                                    of
+                                                                    s2#_saTZY
+                                                                    { (##) -> Unit# [GHC.Tuple.()];
+                                                                    };
+                                                          } in 
+                                                            atomically# [sat_saTZZ GHC.Prim.void#];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saU00 GHC.Conc.Sync.forkIO2 GHC.Prim.void#];
+                          } in 
+                            case fork# [sat_saU01 GHC.Prim.void#] of {
+                              Unit# ipv3_saU04 [Occ=Once] ->
+                                  let {
+                                    sat_saU0d [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saU04] \r [void_0E]
+                                            case
+                                                killThread# [ipv3_saU04
+                                                             GHC.Conc.Sync.killThread2
+                                                             GHC.Prim.void#]
+                                            of
+                                            s1_saU0c
+                                            { (##) -> Unit# [GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saU0a [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saTZR] \r [void_0E]
+                                            case readTVar# [ipv1_saTZR GHC.Prim.void#] of {
+                                              Unit# ipv5_saU08 [Occ=Once!] ->
+                                                  case ipv5_saU08 of {
+                                                    GHC.Types.False -> retry# [GHC.Prim.void#];
+                                                    GHC.Types.True -> Unit# [GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saU0e [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saU0a sat_saU0d];
+                                  } in  Unit# [sat_saU0e];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitWriteSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitWriteSTM1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitRead1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saU0f void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saU0k [Occ=Once!] ->
+              case ds1_saU0k of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitRead1
+                        GHC.Event.Internal.evtRead fd_saU0f GHC.Prim.void#;
+                0# ->
+                    case fd_saU0f of {
+                      GHC.Int.I32# x#_saU0n [Occ=Once] ->
+                          case waitRead# [x#_saU0n GHC.Prim.void#] of s'_saU0o {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitRead
+  :: System.Posix.Types.Fd -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitRead1 eta_B2 GHC.Prim.void#;
+
+GHC.Conc.IO.threadWaitReadSTM1
+  :: System.Posix.Types.Fd
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           (GHC.Conc.Sync.STM (), GHC.Types.IO ()) #)
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [fd_saU0p void_0E]
+        case __pkg_ccall base-4.11.0.0 [GHC.Prim.realWorld#] of {
+          Unit# ds1_saU0u [Occ=Once!] ->
+              case ds1_saU0u of {
+                __DEFAULT ->
+                    GHC.Event.Thread.threadWaitReadSTM1
+                        GHC.Event.Internal.evtRead fd_saU0p GHC.Prim.void#;
+                0# ->
+                    case newTVar# [GHC.Types.False GHC.Prim.void#] of {
+                      Unit# ipv1_saU0y ->
+                          let {
+                            sat_saU0I [Occ=Once] :: GHC.Types.IO ()
+                            [LclId] =
+                                [fd_saU0p ipv1_saU0y] \r [void_0E]
+                                    let {
+                                      sat_saU0H [Occ=Once]
+                                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                                      [LclId] =
+                                          [fd_saU0p ipv1_saU0y] \r [void_0E]
+                                              case fd_saU0p of {
+                                                GHC.Int.I32# x#_saU0C [Occ=Once] ->
+                                                    case
+                                                        waitRead# [x#_saU0C GHC.Prim.void#]
+                                                    of
+                                                    s'_saU0D
+                                                    { (##) ->
+                                                          let {
+                                                            sat_saU0G [Occ=Once]
+                                                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                                                 -> (# GHC.Prim.State#
+                                                                         GHC.Prim.RealWorld,
+                                                                       () #)
+                                                            [LclId] =
+                                                                [ipv1_saU0y] \r [void_0E]
+                                                                    case
+                                                                        writeTVar# [ipv1_saU0y
+                                                                                    GHC.Types.True
+                                                                                    GHC.Prim.void#]
+                                                                    of
+                                                                    s2#_saU0F
+                                                                    { (##) -> Unit# [GHC.Tuple.()];
+                                                                    };
+                                                          } in 
+                                                            atomically# [sat_saU0G GHC.Prim.void#];
+                                                    };
+                                              };
+                                    } in  catch# [sat_saU0H GHC.Conc.Sync.forkIO2 GHC.Prim.void#];
+                          } in 
+                            case fork# [sat_saU0I GHC.Prim.void#] of {
+                              Unit# ipv3_saU0L [Occ=Once] ->
+                                  let {
+                                    sat_saU0U [Occ=Once] :: GHC.Types.IO ()
+                                    [LclId] =
+                                        [ipv3_saU0L] \r [void_0E]
+                                            case
+                                                killThread# [ipv3_saU0L
+                                                             GHC.Conc.Sync.killThread2
+                                                             GHC.Prim.void#]
+                                            of
+                                            s1_saU0T
+                                            { (##) -> Unit# [GHC.Tuple.()];
+                                            }; } in
+                                  let {
+                                    sat_saU0R [Occ=Once] :: GHC.Conc.Sync.STM ()
+                                    [LclId] =
+                                        [ipv1_saU0y] \r [void_0E]
+                                            case readTVar# [ipv1_saU0y GHC.Prim.void#] of {
+                                              Unit# ipv5_saU0P [Occ=Once!] ->
+                                                  case ipv5_saU0P of {
+                                                    GHC.Types.False -> retry# [GHC.Prim.void#];
+                                                    GHC.Types.True -> Unit# [GHC.Tuple.()];
+                                                  };
+                                            }; } in
+                                  let {
+                                    sat_saU0V [Occ=Once] :: (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+                                    [LclId] =
+                                        CCCS (,)! [sat_saU0R sat_saU0U];
+                                  } in  Unit# [sat_saU0V];
+                            };
+                    };
+              };
+        };
+
+GHC.Conc.IO.threadWaitReadSTM
+  :: System.Posix.Types.Fd
+     -> GHC.Types.IO (GHC.Conc.Sync.STM (), GHC.Types.IO ())
+[GblId, Arity=2, Str=<L,U(U)><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Conc.IO.threadWaitReadSTM1 eta_B2 GHC.Prim.void#;
+

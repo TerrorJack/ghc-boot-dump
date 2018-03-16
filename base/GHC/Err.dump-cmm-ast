@@ -1,0 +1,1951 @@
+[ CmmData
+    (Section Data (CLabel "base_GHCziErr_error_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_error_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "base_GHCziErr_error_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876799
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "s2Tl_info"
+                        , cit_rep = HeapRep False 2 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 0 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "s2Tl_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876799
+      , g_graph =
+          [ ( L7133701809754876799
+            , BlockCC
+                (CmmEntry L7133701809754876799 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876800
+                  , cml_false = L7133701809754876801
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876800
+            , BlockCC
+                (CmmEntry L7133701809754876800 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876801
+            , BlockCC
+                (CmmEntry L7133701809754876801 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 3 VGcPtr))
+                    (CmmLoad
+                       (CmmRegOff (CmmGlobal (VanillaReg 1 VGcPtr)) 16) (CmmType "P64"))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmLoad
+                       (CmmRegOff (CmmGlobal (VanillaReg 1 VGcPtr)) 24) (CmmType "P64"))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel
+                             "base_GHCziException_errorCallWithCallStackException_closure")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_ap_pp_fast"))
+                  , cml_cont = Nothing
+                  , cml_args_regs =
+                      [ VanillaReg 3 VGcPtr , VanillaReg 2 VGcPtr , VanillaReg 1 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          ]
+      }
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876802
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "base_GHCziErr_error_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 2 (ArgSpec 15))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 0 3
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_GHCziErr_error_entry")
+    [ VanillaReg 2 VGcPtr , VanillaReg 3 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876802
+      , g_graph =
+          [ ( L7133701809754876802
+            , BlockCC
+                (CmmEntry L7133701809754876802 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 32) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809754876806
+                  , cml_false = L7133701809754876805
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876805
+            , BlockCC
+                (CmmEntry L7133701809754876805 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-24))
+                    (CmmLit (CmmLabel (CLabel "s2Tl_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-8))
+                    (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp)) (CmmReg (CmmGlobal (VanillaReg 3 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-24))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_raisezh"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876806
+            , BlockCC
+                (CmmEntry L7133701809754876806 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 32 W64))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 3 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 3 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "base_GHCziErr_error_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs =
+                      [ VanillaReg 3 VGcPtr , VanillaReg 2 VGcPtr , VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section Data (CLabel "r2T3_closure"))
+    (Statics
+       (CLabel "r2T3_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel "base_GHCziStackziTypes_FreezzeCallStack_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel "base_GHCziStackziTypes_EmptyCallStack_closure") 1)
+       , CmmStaticLit (CmmInt 3 W64)
+       ])
+, CmmData
+    (Section
+       Data (CLabel "base_GHCziErr_errorWithoutStackTrace_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_errorWithoutStackTrace_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziErr_errorWithoutStackTrace_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876816
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "s2Tn_info"
+                        , cit_rep = HeapRep False 1 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 0 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "s2Tn_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876816
+      , g_graph =
+          [ ( L7133701809754876816
+            , BlockCC
+                (CmmEntry L7133701809754876816 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876817
+                  , cml_false = L7133701809754876818
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876817
+            , BlockCC
+                (CmmEntry L7133701809754876817 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876818
+            , BlockCC
+                (CmmEntry L7133701809754876818 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 3 VGcPtr))
+                    (CmmLit (CmmLabelOff (CLabel "r2T3_closure") 3))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmLoad
+                       (CmmRegOff (CmmGlobal (VanillaReg 1 VGcPtr)) 16) (CmmType "P64"))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel
+                             "base_GHCziException_errorCallWithCallStackException_closure")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_ap_pp_fast"))
+                  , cml_cont = Nothing
+                  , cml_args_regs =
+                      [ VanillaReg 3 VGcPtr , VanillaReg 2 VGcPtr , VanillaReg 1 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          ]
+      }
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876819
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "base_GHCziErr_errorWithoutStackTrace_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 1 (ArgSpec 5))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 0 5
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_GHCziErr_errorWithoutStackTrace_entry")
+    [ VanillaReg 2 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876819
+      , g_graph =
+          [ ( L7133701809754876819
+            , BlockCC
+                (CmmEntry L7133701809754876819 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 24) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809754876823
+                  , cml_false = L7133701809754876822
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876822
+            , BlockCC
+                (CmmEntry L7133701809754876822 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-16))
+                    (CmmLit (CmmLabel (CLabel "s2Tn_info")))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp)) (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-16))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_raisezh"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876823
+            , BlockCC
+                (CmmEntry L7133701809754876823 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 24 W64))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabel (CLabel "base_GHCziErr_errorWithoutStackTrace_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VGcPtr , VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section CString (CLabel "r2T4_bytes"))
+    (Statics
+       (CLabel "r2T4_bytes")
+       [ CmmString
+           [ 79
+           , 111
+           , 112
+           , 115
+           , 33
+           , 32
+           , 84
+           , 104
+           , 101
+           , 32
+           , 112
+           , 114
+           , 111
+           , 103
+           , 114
+           , 97
+           , 109
+           , 32
+           , 104
+           , 97
+           , 115
+           , 32
+           , 101
+           , 110
+           , 116
+           , 101
+           , 114
+           , 101
+           , 100
+           , 32
+           , 97
+           , 110
+           , 32
+           , 96
+           , 97
+           , 98
+           , 115
+           , 101
+           , 110
+           , 116
+           , 39
+           , 32
+           , 97
+           , 114
+           , 103
+           , 117
+           , 109
+           , 101
+           , 110
+           , 116
+           , 33
+           , 10
+           ]
+       ])
+, CmmData
+    (Section Data (CLabel "r2T5_closure"))
+    (Statics
+       (CLabel "r2T5_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r2T5_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876830
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "r2T5_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "r2T5_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876830
+      , g_graph =
+          [ ( L7133701809754876828
+            , BlockCC
+                (CmmEntry L7133701809754876828 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2U3 (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r2T4_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876829
+            , BlockCC
+                (CmmEntry L7133701809754876829 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876830
+            , BlockCC
+                (CmmEntry L7133701809754876830 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876831
+                  , cml_false = L7133701809754876832
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876831
+            , BlockCC
+                (CmmEntry L7133701809754876831 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876832
+            , BlockCC
+                (CmmEntry L7133701809754876832 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2U3 (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2U3 (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876829
+                  , cml_false = L7133701809754876828
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section Data (CLabel "base_GHCziErr_absentErr_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_absentErr_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "base_GHCziErr_absentErr_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876839
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "base_GHCziErr_absentErr_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 2 3
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_GHCziErr_absentErr_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876839
+      , g_graph =
+          [ ( L7133701809754876837
+            , BlockCC
+                (CmmEntry L7133701809754876837 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2Uc (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r2T5_closure")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "base_GHCziErr_errorWithoutStackTrace_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876838
+            , BlockCC
+                (CmmEntry L7133701809754876838 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876839
+            , BlockCC
+                (CmmEntry L7133701809754876839 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876840
+                  , cml_false = L7133701809754876841
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876840
+            , BlockCC
+                (CmmEntry L7133701809754876840 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876841
+            , BlockCC
+                (CmmEntry L7133701809754876841 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2Uc (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2Uc (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876838
+                  , cml_false = L7133701809754876837
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section CString (CLabel "r2T6_bytes"))
+    (Statics
+       (CLabel "r2T6_bytes")
+       [ CmmString
+           [ 80
+           , 114
+           , 101
+           , 108
+           , 117
+           , 100
+           , 101
+           , 46
+           , 117
+           , 110
+           , 100
+           , 101
+           , 102
+           , 105
+           , 110
+           , 101
+           , 100
+           ]
+       ])
+, CmmData
+    (Section Data (CLabel "r2T7_closure"))
+    (Statics
+       (CLabel "r2T7_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r2T7_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876848
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "r2T7_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "r2T7_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876848
+      , g_graph =
+          [ ( L7133701809754876846
+            , BlockCC
+                (CmmEntry L7133701809754876846 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2Ul (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r2T6_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876847
+            , BlockCC
+                (CmmEntry L7133701809754876847 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876848
+            , BlockCC
+                (CmmEntry L7133701809754876848 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876849
+                  , cml_false = L7133701809754876850
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876849
+            , BlockCC
+                (CmmEntry L7133701809754876849 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876850
+            , BlockCC
+                (CmmEntry L7133701809754876850 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2Ul (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2Ul (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876847
+                  , cml_false = L7133701809754876846
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section CString (CLabel "r2T8_bytes"))
+    (Statics
+       (CLabel "r2T8_bytes")
+       [ CmmString [ 101 , 114 , 114 , 111 , 114 ] ])
+, CmmData
+    (Section Data (CLabel "r2T9_closure"))
+    (Statics
+       (CLabel "r2T9_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r2T9_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876857
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "r2T9_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "r2T9_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876857
+      , g_graph =
+          [ ( L7133701809754876855
+            , BlockCC
+                (CmmEntry L7133701809754876855 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2Uu (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r2T8_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876856
+            , BlockCC
+                (CmmEntry L7133701809754876856 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876857
+            , BlockCC
+                (CmmEntry L7133701809754876857 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876858
+                  , cml_false = L7133701809754876859
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876858
+            , BlockCC
+                (CmmEntry L7133701809754876858 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876859
+            , BlockCC
+                (CmmEntry L7133701809754876859 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2Uu (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2Uu (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876856
+                  , cml_false = L7133701809754876855
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section CString (CLabel "base_GHCziErr_zdtrModule4_bytes"))
+    (Statics
+       (CLabel "base_GHCziErr_zdtrModule4_bytes")
+       [ CmmString [ 98 , 97 , 115 , 101 ] ])
+, CmmData
+    (Section Data (CLabel "r2Ta_closure"))
+    (Statics
+       (CLabel "r2Ta_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r2Ta_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876866
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "r2Ta_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "r2Ta_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876866
+      , g_graph =
+          [ ( L7133701809754876864
+            , BlockCC
+                (CmmEntry L7133701809754876864 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2UD (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "base_GHCziErr_zdtrModule4_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876865
+            , BlockCC
+                (CmmEntry L7133701809754876865 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876866
+            , BlockCC
+                (CmmEntry L7133701809754876866 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876867
+                  , cml_false = L7133701809754876868
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876867
+            , BlockCC
+                (CmmEntry L7133701809754876867 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876868
+            , BlockCC
+                (CmmEntry L7133701809754876868 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2UD (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2UD (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876865
+                  , cml_false = L7133701809754876864
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section CString (CLabel "base_GHCziErr_zdtrModule2_bytes"))
+    (Statics
+       (CLabel "base_GHCziErr_zdtrModule2_bytes")
+       [ CmmString [ 71 , 72 , 67 , 46 , 69 , 114 , 114 ] ])
+, CmmData
+    (Section Data (CLabel "r2Tb_closure"))
+    (Statics
+       (CLabel "r2Tb_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r2Tb_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876875
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "r2Tb_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "r2Tb_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876875
+      , g_graph =
+          [ ( L7133701809754876873
+            , BlockCC
+                (CmmEntry L7133701809754876873 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2UM (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "base_GHCziErr_zdtrModule2_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876874
+            , BlockCC
+                (CmmEntry L7133701809754876874 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876875
+            , BlockCC
+                (CmmEntry L7133701809754876875 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876876
+                  , cml_false = L7133701809754876877
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876876
+            , BlockCC
+                (CmmEntry L7133701809754876876 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876877
+            , BlockCC
+                (CmmEntry L7133701809754876877 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2UM (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2UM (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876874
+                  , cml_false = L7133701809754876873
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section CString (CLabel "r2Tc_bytes"))
+    (Statics
+       (CLabel "r2Tc_bytes")
+       [ CmmString
+           [ 46 , 47 , 71 , 72 , 67 , 47 , 69 , 114 , 114 , 46 , 104 , 115 ]
+       ])
+, CmmData
+    (Section Data (CLabel "r2Td_closure"))
+    (Statics
+       (CLabel "r2Td_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "r2Td_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876884
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "r2Td_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "r2Td_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876884
+      , g_graph =
+          [ ( L7133701809754876882
+            , BlockCC
+                (CmmEntry L7133701809754876882 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c2UV (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r2Tc_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876883
+            , BlockCC
+                (CmmEntry L7133701809754876883 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876884
+            , BlockCC
+                (CmmEntry L7133701809754876884 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876885
+                  , cml_false = L7133701809754876886
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876885
+            , BlockCC
+                (CmmEntry L7133701809754876885 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876886
+            , BlockCC
+                (CmmEntry L7133701809754876886 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c2UV (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c2UV (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809754876883
+                  , cml_false = L7133701809754876882
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section Data (CLabel "r2Te_closure"))
+    (Statics
+       (CLabel "r2Te_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Izh_con_info"))
+       , CmmStaticLit (CmmInt 79 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "r2Tf_closure"))
+    (Statics
+       (CLabel "r2Tf_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Izh_con_info"))
+       , CmmStaticLit (CmmInt 14 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "r2Tg_closure"))
+    (Statics
+       (CLabel "r2Tg_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Izh_con_info"))
+       , CmmStaticLit (CmmInt 39 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "r2Th_closure"))
+    (Statics
+       (CLabel "r2Th_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziStackziTypes_SrcLoc_con_info"))
+       , CmmStaticLit (CmmLabel (CLabel "r2Ta_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "r2Tb_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "r2Td_closure"))
+       , CmmStaticLit (CmmLabelOff (CLabel "r2Te_closure") 1)
+       , CmmStaticLit (CmmLabelOff (CLabel "r2Tf_closure") 1)
+       , CmmStaticLit (CmmLabelOff (CLabel "r2Te_closure") 1)
+       , CmmStaticLit (CmmLabelOff (CLabel "r2Tg_closure") 1)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziErr_undefined_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_undefined_closure")
+       [ CmmStaticLit (CmmLabel (CLabel "base_GHCziErr_undefined_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876906
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "s2Tr_info"
+                        , cit_rep = HeapRep False 1 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 4 3
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "s2Tr_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876906
+      , g_graph =
+          [ ( L7133701809754876900
+            , BlockCC
+                (CmmEntry L7133701809754876900 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 8
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876906
+            , BlockCC
+                (CmmEntry L7133701809754876906 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-24) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876907
+                  , cml_false = L7133701809754876908
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876907
+            , BlockCC
+                (CmmEntry L7133701809754876907 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876908
+            , BlockCC
+                (CmmEntry L7133701809754876908 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-24))
+                    (CmmLit (CmmLabel (CLabel "c2Vd_info")))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLoad
+                       (CmmRegOff (CmmGlobal (VanillaReg 1 VGcPtr)) 16) (CmmType "P64"))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-24))
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Ne W64)
+                        [ CmmMachOp
+                            (MO_And W64)
+                            [ CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                            , CmmLit (CmmInt 7 W64)
+                            ]
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L8430738502437579766
+                  , cml_false = L7133701809754876900
+                  , cml_likely = Nothing
+                  }
+            )
+          , ( L8430738502437579766
+            , BlockCC
+                (CmmEntry L8430738502437579766 GlobalScope)
+                []
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel ".Lc2Vd"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 0
+                  , cml_ret_args = 0
+                  , cml_ret_off = 0
+                  }
+            )
+          ]
+      }
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876899
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "c2Vd_info"
+                        , cit_rep = StackRep []
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 4 3
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel ".Lc2Vd")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876899
+      , g_graph =
+          [ ( L7133701809754876899
+            , BlockCC
+                (CmmEntry L7133701809754876899 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmMachOp
+                            (MO_And W64)
+                            [ CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                            , CmmLit (CmmInt 7 W64)
+                            ]
+                        , CmmLit (CmmInt 3 W64)
+                        ]
+                  , cml_true = L7133701809754876904
+                  , cml_false = L7133701809754876903
+                  , cml_likely = Nothing
+                  }
+            )
+          , ( L7133701809754876903
+            , BlockCC
+                (CmmEntry L7133701809754876903 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 32) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809754876914
+                  , cml_false = L7133701809754876913
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876904
+            , BlockCC
+                (CmmEntry L7133701809754876904 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmMachOp
+                       (MO_And W64)
+                       [ CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                       , CmmLit (CmmInt (-8) W64)
+                       ])
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) 8)
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876913
+            , BlockCC
+                (CmmEntry L7133701809754876913 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-24))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel "base_GHCziStackziTypes_PushCallStack_con_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-16))
+                    (CmmLit (CmmLabel (CLabel "r2T9_closure")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-8))
+                    (CmmLit (CmmLabelOff (CLabel "r2Th_closure") 1))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp)) (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-22))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) 8)
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad (CmmReg (CmmGlobal Sp)) (CmmType "P64")) (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876914
+            , BlockCC
+                (CmmEntry L7133701809754876914 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 32 W64))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_gc_unpt_r1"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 8
+                  , cml_ret_off = 24
+                  }
+            )
+          ]
+      }
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876919
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "s2Ts_info"
+                        , cit_rep = HeapRep False 1 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 0 113
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "s2Ts_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876919
+      , g_graph =
+          [ ( L7133701809754876919
+            , BlockCC
+                (CmmEntry L7133701809754876919 GlobalScope)
+                [ CmmAssign
+                    (CmmLocal (LocalReg s2Ts (CmmType "P64")))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809754876920
+                  , cml_false = L7133701809754876921
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876920
+            , BlockCC
+                (CmmEntry L7133701809754876920 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmLocal (LocalReg s2Ts (CmmType "P64"))))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876921
+            , BlockCC
+                (CmmEntry L7133701809754876921 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 24) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809754876923
+                  , cml_false = L7133701809754876922
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876922
+            , BlockCC
+                (CmmEntry L7133701809754876922 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg s2Ts (CmmType "P64"))))
+                , CmmAssign
+                    (CmmLocal (LocalReg s2To (CmmType "P64")))
+                    (CmmLoad
+                       (CmmRegOff (CmmLocal (LocalReg s2Ts (CmmType "P64"))) 16)
+                       (CmmType "P64"))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-16))
+                    (CmmLit (CmmLabel (CLabel "s2Tr_info")))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp))
+                    (CmmReg (CmmLocal (LocalReg s2To (CmmType "P64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 3 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-16))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r2T7_closure")))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel
+                             "base_GHCziException_errorCallWithCallStackException_closure")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_ap_pp_fast"))
+                  , cml_cont = Nothing
+                  , cml_args_regs =
+                      [ VanillaReg 3 VGcPtr , VanillaReg 2 VGcPtr , VanillaReg 1 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809754876923
+            , BlockCC
+                (CmmEntry L7133701809754876923 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 24 W64)) ]
+                (CmmBranch L7133701809754876920)
+            )
+          ]
+      }
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809754876924
+                    , CmmInfoTable
+                        { cit_lbl = CLabel "base_GHCziErr_undefined_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 1 (ArgSpec 5))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "S2TJ_srt") 0 241
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_GHCziErr_undefined_entry")
+    [ VanillaReg 2 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809754876924
+      , g_graph =
+          [ ( L7133701809754876924
+            , BlockCC
+                (CmmEntry L7133701809754876924 GlobalScope)
+                [ CmmAssign (CmmGlobal Hp) (CmmRegOff (CmmGlobal Hp) 24) ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Gt W64) [ CmmReg (CmmGlobal Hp) , CmmReg (CmmGlobal HpLim) ]
+                  , cml_true = L7133701809754876928
+                  , cml_false = L7133701809754876927
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809754876927
+            , BlockCC
+                (CmmEntry L7133701809754876927 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Hp) (-16))
+                    (CmmLit (CmmLabel (CLabel "s2Ts_info")))
+                , CmmStore
+                    (CmmReg (CmmGlobal Hp)) (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr)) (CmmRegOff (CmmGlobal Hp) (-16))
+                ]
+                CmmCall
+                  { cml_target = CmmLit (CmmLabel (CLabel "stg_raisezh"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809754876928
+            , BlockCC
+                (CmmEntry L7133701809754876928 GlobalScope)
+                [ CmmAssign (CmmGlobal HpAlloc) (CmmLit (CmmInt 24 W64))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit (CmmLabel (CLabel "base_GHCziErr_undefined_closure")))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCFun)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VGcPtr , VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section Data (CLabel "base_GHCziErr_zdtrModule3_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_zdtrModule3_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziErr_zdtrModule4_bytes"))
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziErr_zdtrModule1_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_zdtrModule1_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziErr_zdtrModule2_bytes"))
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziErr_zdtrModule_closure"))
+    (Statics
+       (CLabel "base_GHCziErr_zdtrModule_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Module_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff (CLabel "base_GHCziErr_zdtrModule3_closure") 1)
+       , CmmStaticLit
+           (CmmLabelOff (CLabel "base_GHCziErr_zdtrModule1_closure") 1)
+       , CmmStaticLit (CmmInt 3 W64)
+       ])
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "S2TJ_srt"))
+    (Statics
+       (CLabel "S2TJ_srt")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel
+                 "base_GHCziException_errorCallWithCallStackException_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "base_GHCziErr_error_closure"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziErr_errorWithoutStackTrace_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "r2T5_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "r2T9_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "r2Th_closure"))
+       , CmmStaticLit (CmmLabel (CLabel "r2T7_closure"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziErr_undefined_closure"))
+       ])
+]

@@ -1,0 +1,395 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:56:32.092076468 UTC
+
+Result size of Tidy Core
+  = {terms: 155, types: 276, coercions: 44, joins: 0/0}
+
+-- RHS size: {terms: 14, types: 25, coercions: 0, joins: 0/0}
+GHC.STRef.$fEqSTRef_$c==
+  :: forall s a. STRef s a -> STRef s a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_a1KyQ)
+                 (@ a_a1KyR)
+                 (ds_d1Kzx [Occ=Once!] :: STRef s_a1KyQ a_a1KyR)
+                 (ds1_d1Kzy [Occ=Once!] :: STRef s_a1KyQ a_a1KyR) ->
+                 case ds_d1Kzx of { STRef v1#_a1KwP [Occ=Once] ->
+                 case ds1_d1Kzy of { STRef v2#_a1KwQ [Occ=Once] ->
+                 tagToEnum#
+                   @ Bool (sameMutVar# @ s_a1KyQ @ a_a1KyR v1#_a1KwP v2#_a1KwQ)
+                 }
+                 }}]
+GHC.STRef.$fEqSTRef_$c==
+  = \ (@ s_a1KyQ)
+      (@ a_a1KyR)
+      (ds_d1Kzx :: STRef s_a1KyQ a_a1KyR)
+      (ds1_d1Kzy :: STRef s_a1KyQ a_a1KyR) ->
+      case ds_d1Kzx of { STRef v1#_a1KwP ->
+      case ds1_d1Kzy of { STRef v2#_a1KwQ ->
+      tagToEnum#
+        @ Bool (sameMutVar# @ s_a1KyQ @ a_a1KyR v1#_a1KwP v2#_a1KwQ)
+      }
+      }
+
+-- RHS size: {terms: 18, types: 25, coercions: 0, joins: 0/0}
+GHC.STRef.$fEqSTRef_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a. STRef s a -> STRef s a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ s_a1KyQ)
+                 (@ a_a1KyR)
+                 (x_a22b [Occ=Once!] :: STRef s_a1KyQ a_a1KyR)
+                 (y_a22c [Occ=Once!] :: STRef s_a1KyQ a_a1KyR) ->
+                 case x_a22b of { STRef v1#_a1KwP [Occ=Once] ->
+                 case y_a22c of { STRef v2#_a1KwQ [Occ=Once] ->
+                 case sameMutVar# @ s_a1KyQ @ a_a1KyR v1#_a1KwP v2#_a1KwQ of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.STRef.$fEqSTRef_$c/=
+  = \ (@ s_a1KyQ)
+      (@ a_a1KyR)
+      (eta_B2 :: STRef s_a1KyQ a_a1KyR)
+      (eta1_B1 :: STRef s_a1KyQ a_a1KyR) ->
+      case eta_B2 of { STRef v1#_a1KwP ->
+      case eta1_B1 of { STRef v2#_a1KwQ ->
+      case sameMutVar# @ s_a1KyQ @ a_a1KyR v1#_a1KwP v2#_a1KwQ of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 5, types: 11, coercions: 0, joins: 0/0}
+GHC.STRef.$fEqSTRef [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. Eq (STRef s a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ s_a1KwN) (@ a_a1KwO) ->
+       GHC.Classes.C:Eq TYPE: STRef s_a1KwN a_a1KwO
+                        GHC.STRef.$fEqSTRef_$c== @ s_a1KwN @ a_a1KwO
+                        GHC.STRef.$fEqSTRef_$c/= @ s_a1KwN @ a_a1KwO]
+GHC.STRef.$fEqSTRef
+  = \ (@ s_a1KyQ) (@ a_a1KyR) ->
+      GHC.Classes.C:Eq
+        @ (STRef s_a1KyQ a_a1KyR)
+        (GHC.STRef.$fEqSTRef_$c== @ s_a1KyQ @ a_a1KyR)
+        (GHC.STRef.$fEqSTRef_$c/= @ s_a1KyQ @ a_a1KyR)
+
+-- RHS size: {terms: 13, types: 35, coercions: 0, joins: 0/0}
+GHC.STRef.newSTRef1
+  :: forall a s. a -> State# s -> (# State# s, STRef s a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a1KyD)
+                 (@ s_a1KyE)
+                 (init_a1KwX [Occ=Once] :: a_a1KyD)
+                 (s1#_a1KwY [Occ=Once] :: State# s_a1KyE) ->
+                 case newMutVar# @ a_a1KyD @ s_a1KyE init_a1KwX s1#_a1KwY of
+                 { (# ipv_s1KzP [Occ=Once], ipv1_s1KzQ [Occ=Once] #) ->
+                 (# ipv_s1KzP, GHC.STRef.STRef @ s_a1KyE @ a_a1KyD ipv1_s1KzQ #)
+                 }}]
+GHC.STRef.newSTRef1
+  = \ (@ a_a1KyD)
+      (@ s_a1KyE)
+      (init_a1KwX :: a_a1KyD)
+      (s1#_a1KwY :: State# s_a1KyE) ->
+      case newMutVar# @ a_a1KyD @ s_a1KyE init_a1KwX s1#_a1KwY of
+      { (# ipv_s1KzP, ipv1_s1KzQ #) ->
+      (# ipv_s1KzP, GHC.STRef.STRef @ s_a1KyE @ a_a1KyD ipv1_s1KzQ #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+newSTRef :: forall a s. a -> ST s (STRef s a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.STRef.newSTRef1
+               `cast` (forall (a :: <*>_N) (s :: <*>_N).
+                       <a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <STRef s a>_R)
+                       :: (forall a s. a -> STRep s (STRef s a) :: *)
+                          ~R# (forall a s. a -> ST s (STRef s a) :: *))}]
+newSTRef
+  = GHC.STRef.newSTRef1
+    `cast` (forall (a :: <*>_N) (s :: <*>_N).
+            <a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <STRef s a>_R)
+            :: (forall a s. a -> STRep s (STRef s a) :: *)
+               ~R# (forall a s. a -> ST s (STRef s a) :: *))
+
+-- RHS size: {terms: 10, types: 17, coercions: 0, joins: 0/0}
+GHC.STRef.readSTRef1
+  :: forall s a. STRef s a -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_a1Kyu)
+                 (@ a_a1Kyv)
+                 (ds_d1Kzl [Occ=Once!] :: STRef s_a1Kyu a_a1Kyv)
+                 (eta_B1 [Occ=Once] :: State# s_a1Kyu) ->
+                 case ds_d1Kzl of { STRef var#_a1Kx1 [Occ=Once] ->
+                 readMutVar# @ s_a1Kyu @ a_a1Kyv var#_a1Kx1 eta_B1
+                 }}]
+GHC.STRef.readSTRef1
+  = \ (@ s_a1Kyu)
+      (@ a_a1Kyv)
+      (ds_d1Kzl :: STRef s_a1Kyu a_a1Kyv)
+      (eta_B1 :: State# s_a1Kyu) ->
+      case ds_d1Kzl of { STRef var#_a1Kx1 ->
+      readMutVar# @ s_a1Kyu @ a_a1Kyv var#_a1Kx1 eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+readSTRef :: forall s a. STRef s a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.STRef.readSTRef1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <STRef s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a. STRef s a -> STRep s a :: *)
+                          ~R# (forall s a. STRef s a -> ST s a :: *))}]
+readSTRef
+  = GHC.STRef.readSTRef1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <STRef s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. STRef s a -> STRep s a :: *)
+               ~R# (forall s a. STRef s a -> ST s a :: *))
+
+-- RHS size: {terms: 17, types: 27, coercions: 0, joins: 0/0}
+GHC.STRef.writeSTRef1
+  :: forall s a. STRef s a -> a -> State# s -> (# State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_a1Kyj)
+                 (@ a_a1Kyk)
+                 (ds_d1Kzf [Occ=Once!] :: STRef s_a1Kyj a_a1Kyk)
+                 (val_a1Kx4 [Occ=Once] :: a_a1Kyk)
+                 (eta_B1 [Occ=Once] :: State# s_a1Kyj) ->
+                 case ds_d1Kzf of { STRef var#_a1Kx3 [Occ=Once] ->
+                 case writeMutVar# @ s_a1Kyj @ a_a1Kyk var#_a1Kx3 val_a1Kx4 eta_B1
+                 of s2#_a1Kx6
+                 { __DEFAULT ->
+                 (# s2#_a1Kx6, GHC.Tuple.() #)
+                 }
+                 }}]
+GHC.STRef.writeSTRef1
+  = \ (@ s_a1Kyj)
+      (@ a_a1Kyk)
+      (ds_d1Kzf :: STRef s_a1Kyj a_a1Kyk)
+      (val_a1Kx4 :: a_a1Kyk)
+      (eta_B1 :: State# s_a1Kyj) ->
+      case ds_d1Kzf of { STRef var#_a1Kx3 ->
+      case writeMutVar# @ s_a1Kyj @ a_a1Kyk var#_a1Kx3 val_a1Kx4 eta_B1
+      of s2#_a1Kx6
+      { __DEFAULT ->
+      (# s2#_a1Kx6, GHC.Tuple.() #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+writeSTRef :: forall s a. STRef s a -> a -> ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.STRef.writeSTRef1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <STRef s a>_R ->_R <a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <()>_R)
+                       :: (forall s a. STRef s a -> a -> STRep s () :: *)
+                          ~R# (forall s a. STRef s a -> a -> ST s () :: *))}]
+writeSTRef
+  = GHC.STRef.writeSTRef1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <STRef s a>_R ->_R <a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <()>_R)
+            :: (forall s a. STRef s a -> a -> STRep s () :: *)
+               ~R# (forall s a. STRef s a -> a -> ST s () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.STRef.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.STRef.$trModule3 = GHC.Types.TrNameS GHC.STRef.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.STRef.$trModule2 = "GHC.STRef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.STRef.$trModule1 = GHC.Types.TrNameS GHC.STRef.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.STRef.$trModule
+  = GHC.Types.Module GHC.STRef.$trModule3 GHC.STRef.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r1KCH :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r1KCH = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r1KCI :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r1KCI = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_r1KCJ :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r1KCJ
+  = GHC.Types.: @ KindRep $krep_r1KCH (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep3_r1KCK :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r1KCK = GHC.Types.: @ KindRep $krep1_r1KCI $krep2_r1KCJ
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r1KCL :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r1KCL
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcMutVar# $krep3_r1KCK
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tcSTRef2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.STRef.$tcSTRef2 = "STRef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tcSTRef1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.STRef.$tcSTRef1 = GHC.Types.TrNameS GHC.STRef.$tcSTRef2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tcSTRef :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.STRef.$tcSTRef
+  = GHC.Types.TyCon
+      12301805959212734792##
+      9407763519371677403##
+      GHC.STRef.$trModule
+      GHC.STRef.$tcSTRef1
+      0#
+      GHC.Types.krep$*->*->*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r1KCM :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_r1KCM
+  = GHC.Types.KindRepTyConApp GHC.STRef.$tcSTRef $krep3_r1KCK
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tc'STRef1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.STRef.$tc'STRef1
+  = GHC.Types.KindRepFun $krep4_r1KCL $krep5_r1KCM
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tc'STRef3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.STRef.$tc'STRef3 = "'STRef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tc'STRef2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.STRef.$tc'STRef2 = GHC.Types.TrNameS GHC.STRef.$tc'STRef3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.STRef.$tc'STRef :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.STRef.$tc'STRef
+  = GHC.Types.TyCon
+      18008618360073045522##
+      5182275770463432138##
+      GHC.STRef.$trModule
+      GHC.STRef.$tc'STRef2
+      2#
+      GHC.STRef.$tc'STRef1
+
+

@@ -1,0 +1,304 @@
+[ CmmData
+    (Section CString (CLabel "r9ldZ_bytes"))
+    (Statics
+       (CLabel "r9ldZ_bytes")
+       [ CmmString
+           [ 75
+           , 81
+           , 117
+           , 101
+           , 117
+           , 101
+           , 32
+           , 98
+           , 97
+           , 99
+           , 107
+           , 32
+           , 101
+           , 110
+           , 100
+           , 32
+           , 110
+           , 111
+           , 116
+           , 32
+           , 105
+           , 109
+           , 112
+           , 108
+           , 101
+           , 109
+           , 101
+           , 110
+           , 116
+           , 101
+           , 100
+           , 32
+           , 102
+           , 111
+           , 114
+           , 32
+           , 116
+           , 104
+           , 105
+           , 115
+           , 32
+           , 112
+           , 108
+           , 97
+           , 116
+           , 102
+           , 111
+           , 114
+           , 109
+           ]
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziEventziKQueue_new_closure"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_new_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziEventziKQueue_new_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel "base_GHCziEventziKQueue_new_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757092233
+      , g_graph =
+          [ ( L7133701809757092229
+            , BlockCC
+                (CmmEntry L7133701809757092229 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg c9lek (CmmType "I64"))))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-24))
+                    (CmmLit (CmmLabel (CLabel "c9len_info")))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit (CmmLabel (CLabel "r9ldZ_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-24))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 8
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809757092230
+            , BlockCC
+                (CmmEntry L7133701809757092230 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809757092233
+            , BlockCC
+                (CmmEntry L7133701809757092233 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-24) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809757092234
+                  , cml_false = L7133701809757092235
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809757092234
+            , BlockCC
+                (CmmEntry L7133701809757092234 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809757092235
+            , BlockCC
+                (CmmEntry L7133701809757092235 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg c9lek (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg c9lek (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809757092230
+                  , cml_false = L7133701809757092229
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       RelocatableReadOnlyData
+       (CLabel "base_GHCziEventziKQueue_new_info"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_new_info")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziEventziKQueue_new_entry"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 4294967317 W64)
+       , CmmStaticLit (CmmLabel (CLabel "S9leg_srt"))
+       ])
+, CmmProc
+    (LM (UM (fromList [])))
+    (CLabel ".Lc9len")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757092231
+      , g_graph =
+          [ ( L7133701809757092231
+            , BlockCC
+                (CmmEntry L7133701809757092231 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) 8)
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "base_GHCziErr_errorWithoutStackTrace_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "c9len_info"))
+    (Statics
+       (CLabel "c9len_info")
+       [ CmmStaticLit (CmmLabel (CLabel ".Lc9len"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 4294967326 W64)
+       , CmmStaticLit (CmmLabel (CLabel "S9leg_srt"))
+       ])
+, CmmData
+    (Section Data (CLabel "base_GHCziEventziKQueue_available_closure"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_available_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_False_con_info"))
+       ])
+, CmmData
+    (Section
+       CString (CLabel "base_GHCziEventziKQueue_zdtrModule4_bytes"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_zdtrModule4_bytes")
+       [ CmmString [ 98 , 97 , 115 , 101 ] ])
+, CmmData
+    (Section
+       Data (CLabel "base_GHCziEventziKQueue_zdtrModule3_closure"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_zdtrModule3_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziEventziKQueue_zdtrModule4_bytes"))
+       ])
+, CmmData
+    (Section
+       CString (CLabel "base_GHCziEventziKQueue_zdtrModule2_bytes"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_zdtrModule2_bytes")
+       [ CmmString
+           [ 71
+           , 72
+           , 67
+           , 46
+           , 69
+           , 118
+           , 101
+           , 110
+           , 116
+           , 46
+           , 75
+           , 81
+           , 117
+           , 101
+           , 117
+           , 101
+           ]
+       ])
+, CmmData
+    (Section
+       Data (CLabel "base_GHCziEventziKQueue_zdtrModule1_closure"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_zdtrModule1_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziEventziKQueue_zdtrModule2_bytes"))
+       ])
+, CmmData
+    (Section
+       Data (CLabel "base_GHCziEventziKQueue_zdtrModule_closure"))
+    (Statics
+       (CLabel "base_GHCziEventziKQueue_zdtrModule_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Module_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel "base_GHCziEventziKQueue_zdtrModule3_closure") 1)
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel "base_GHCziEventziKQueue_zdtrModule1_closure") 1)
+       , CmmStaticLit (CmmInt 3 W64)
+       ])
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "S9leg_srt"))
+    (Statics
+       (CLabel "S9leg_srt")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziErr_errorWithoutStackTrace_closure"))
+       ])
+]

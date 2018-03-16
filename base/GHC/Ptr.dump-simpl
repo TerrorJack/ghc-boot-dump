@@ -1,0 +1,1429 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:59:00.15371612 UTC
+
+Result size of Tidy Core
+  = {terms: 719, types: 861, coercions: 32, joins: 0/5}
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr4 :: Char
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$fShowFunPtr4 = GHC.Types.C# '0'#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr3 :: Char
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$fShowFunPtr3 = GHC.Types.C# 'x'#
+
+-- RHS size: {terms: 59, types: 31, coercions: 0, joins: 0/5}
+GHC.Ptr.$w$cshowsPrec [InlPrag=NOUSERINLINE[0]]
+  :: forall a. Addr# -> String -> (# Char, [Char] #)
+[GblId,
+ Arity=2,
+ Str=<L,U><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 353 30}]
+GHC.Ptr.$w$cshowsPrec
+  = \ (@ a_s47ls) (ww_s47ly :: Addr#) (w_s47lv :: String) ->
+      let {
+        ls_s4797 :: [Char]
+        [LclId]
+        ls_s4797
+          = Numeric.showIntAtBase
+              @ Integer
+              GHC.Real.$fIntegralInteger
+              GHC.Show.$fShowInteger
+              Numeric.showHex1
+              intToDigit
+              (wordToInteger (int2Word# (addr2Int# ww_s47ly)))
+              (GHC.Types.[] @ Char) } in
+      (# GHC.Ptr.$fShowFunPtr4,
+         GHC.Types.:
+           @ Char
+           GHC.Ptr.$fShowFunPtr3
+           (case GHC.List.$wlenAcc @ Char ls_s4797 0# of ww2_i3wsE
+            { __DEFAULT ->
+            let {
+              y_alNd [Dmd=<S,U>] :: Int#
+              [LclId]
+              y_alNd = -# 16# ww2_i3wsE } in
+            case <# 0# y_alNd of {
+              __DEFAULT -> ++ @ Char ls_s4797 w_s47lv;
+              1# ->
+                let {
+                  n_i2KC1 :: [Char]
+                  [LclId]
+                  n_i2KC1 = ++ @ Char ls_s4797 w_s47lv } in
+                let {
+                  lvl_s47sv :: [Char]
+                  [LclId, Unf=OtherCon []]
+                  lvl_s47sv = GHC.Types.: @ Char GHC.Ptr.$fShowFunPtr4 n_i2KC1 } in
+                letrec {
+                  $wxs_s47lr [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                    :: Int# -> [Char]
+                  [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+                  $wxs_s47lr
+                    = \ (ww1_s47lp :: Int#) ->
+                        case ww1_s47lp of ds1_i2KC9 {
+                          __DEFAULT ->
+                            GHC.Types.:
+                              @ Char GHC.Ptr.$fShowFunPtr4 ($wxs_s47lr (-# ds1_i2KC9 1#));
+                          1# -> lvl_s47sv
+                        }; } in
+                $wxs_s47lr y_alNd
+            }
+            }) #)
+
+-- RHS size: {terms: 15, types: 20, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr_$cshowsPrec [InlPrag=NOUSERINLINE[0]]
+  :: forall a. Int -> Ptr a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,A><S(S),1*U(U)><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s47ls)
+                 _ [Occ=Dead]
+                 (w1_s47lu [Occ=Once!] :: Ptr a_s47ls)
+                 (w2_s47lv [Occ=Once] :: String) ->
+                 case w1_s47lu of { Ptr ww1_s47ly [Occ=Once] ->
+                 case GHC.Ptr.$w$cshowsPrec @ a_s47ls ww1_s47ly w2_s47lv of
+                 { (# ww3_s47lE [Occ=Once], ww4_s47lF [Occ=Once] #) ->
+                 GHC.Types.: @ Char ww3_s47lE ww4_s47lF
+                 }
+                 }}]
+GHC.Ptr.$fShowFunPtr_$cshowsPrec
+  = \ (@ a_s47ls)
+      _ [Occ=Dead]
+      (w1_s47lu :: Ptr a_s47ls)
+      (w2_s47lv :: String) ->
+      case w1_s47lu of { Ptr ww1_s47ly ->
+      case GHC.Ptr.$w$cshowsPrec @ a_s47ls ww1_s47ly w2_s47lv of
+      { (# ww3_s47lE, ww4_s47lF #) ->
+      GHC.Types.: @ Char ww3_s47lE ww4_s47lF
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr2 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$fShowFunPtr2 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 13, types: 19, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowPtr_$cshow :: forall a. Ptr a -> String
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a474J) (x_i1Jj2 [Occ=Once] :: Ptr a_a474J) ->
+                 GHC.Ptr.$fShowFunPtr_$cshowsPrec
+                   @ a_a474J GHC.Ptr.$fShowFunPtr2 x_i1Jj2 (GHC.Types.[] @ Char)}]
+GHC.Ptr.$fShowPtr_$cshow
+  = \ (@ a_a474J) (x_i1Jj2 :: Ptr a_a474J) ->
+      case x_i1Jj2 of { Ptr ww1_s47ly ->
+      case GHC.Ptr.$w$cshowsPrec
+             @ a_a474J ww1_s47ly (GHC.Types.[] @ Char)
+      of
+      { (# ww3_s47lE, ww4_s47lF #) ->
+      GHC.Types.: @ Char ww3_s47lE ww4_s47lF
+      }
+      }
+
+-- RHS size: {terms: 14, types: 19, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowPtr1 :: forall a. Ptr a -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S(S),1*U(U)><L,1*U>m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 0] 60 30}]
+GHC.Ptr.$fShowPtr1
+  = \ (@ a_a474J) (w_s47lu :: Ptr a_a474J) (w1_s47lv :: String) ->
+      case w_s47lu of { Ptr ww1_s47ly ->
+      case GHC.Ptr.$w$cshowsPrec @ a_a474J ww1_s47ly w1_s47lv of
+      { (# ww3_s47lE, ww4_s47lF #) ->
+      GHC.Types.: @ Char ww3_s47lE ww4_s47lF
+      }
+      }
+
+-- RHS size: {terms: 7, types: 9, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowPtr_$cshowList :: forall a. [Ptr a] -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a474J)
+                 (ls_i1Mix [Occ=Once] :: [Ptr a_a474J])
+                 (s_i1Miy [Occ=Once] :: String) ->
+                 showList__
+                   @ (Ptr a_a474J) (GHC.Ptr.$fShowPtr1 @ a_a474J) ls_i1Mix s_i1Miy}]
+GHC.Ptr.$fShowPtr_$cshowList
+  = \ (@ a_a474J) (ls_i1Mix :: [Ptr a_a474J]) (s_i1Miy :: String) ->
+      showList__
+        @ (Ptr a_a474J) (GHC.Ptr.$fShowPtr1 @ a_a474J) ls_i1Mix s_i1Miy
+
+-- RHS size: {terms: 5, types: 7, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowPtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Show (Ptr a)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ a_a46WW) ->
+       GHC.Show.C:Show TYPE: Ptr a_a46WW
+                       GHC.Ptr.$fShowFunPtr_$cshowsPrec @ a_a46WW
+                       GHC.Ptr.$fShowPtr_$cshow @ a_a46WW
+                       GHC.Ptr.$fShowPtr_$cshowList @ a_a46WW]
+GHC.Ptr.$fShowPtr
+  = \ (@ a_a474J) ->
+      GHC.Show.C:Show
+        @ (Ptr a_a474J)
+        (GHC.Ptr.$fShowFunPtr_$cshowsPrec @ a_a474J)
+        (GHC.Ptr.$fShowPtr_$cshow @ a_a474J)
+        (GHC.Ptr.$fShowPtr_$cshowList @ a_a474J)
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$c< :: forall a. FunPtr a -> FunPtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (a1_a46Zg [Occ=Once!] :: FunPtr a_a473m)
+                 (b_a46Zh [Occ=Once!] :: FunPtr a_a473m) ->
+                 case a1_a46Zg of { FunPtr a2_a46Zi [Occ=Once] ->
+                 case b_a46Zh of { FunPtr b1_a46Zj [Occ=Once] ->
+                 tagToEnum# @ Bool (ltAddr# a2_a46Zi b1_a46Zj)
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$c<
+  = \ (@ a_a473m)
+      (a1_a46Zg :: FunPtr a_a473m)
+      (b_a46Zh :: FunPtr a_a473m) ->
+      case a1_a46Zg of { FunPtr a2_a46Zi ->
+      case b_a46Zh of { FunPtr b1_a46Zj ->
+      tagToEnum# @ Bool (ltAddr# a2_a46Zi b1_a46Zj)
+      }
+      }
+
+-- RHS size: {terms: 24, types: 14, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$ccompare
+  :: forall a. FunPtr a -> FunPtr a -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (a1_a46Zc [Occ=Once!] :: FunPtr a_a473m)
+                 (b_a46Zd [Occ=Once!] :: FunPtr a_a473m) ->
+                 case a1_a46Zc of { FunPtr a2_a46Ze ->
+                 case b_a46Zd of { FunPtr b1_a46Zf ->
+                 case ltAddr# a2_a46Ze b1_a46Zf of {
+                   __DEFAULT ->
+                     case eqAddr# a2_a46Ze b1_a46Zf of {
+                       __DEFAULT -> GHC.Types.GT;
+                       1# -> GHC.Types.EQ
+                     };
+                   1# -> GHC.Types.LT
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$ccompare
+  = \ (@ a_a473m)
+      (a1_a46Zc :: FunPtr a_a473m)
+      (b_a46Zd :: FunPtr a_a473m) ->
+      case a1_a46Zc of { FunPtr a2_a46Ze ->
+      case b_a46Zd of { FunPtr b1_a46Zf ->
+      case ltAddr# a2_a46Ze b1_a46Zf of {
+        __DEFAULT ->
+          case eqAddr# a2_a46Ze b1_a46Zf of {
+            __DEFAULT -> GHC.Types.GT;
+            1# -> GHC.Types.EQ
+          };
+        1# -> GHC.Types.LT
+      }
+      }
+      }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fEqFunPtr_$c== :: forall a. FunPtr a -> FunPtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473a)
+                 (ds_d476m [Occ=Once!] :: FunPtr a_a473a)
+                 (ds1_d476n [Occ=Once!] :: FunPtr a_a473a) ->
+                 case ds_d476m of { FunPtr a1_a46Za [Occ=Once] ->
+                 case ds1_d476n of { FunPtr b1_a46Zb [Occ=Once] ->
+                 tagToEnum# @ Bool (eqAddr# a1_a46Za b1_a46Zb)
+                 }
+                 }}]
+GHC.Ptr.$fEqFunPtr_$c==
+  = \ (@ a_a473a)
+      (ds_d476m :: FunPtr a_a473a)
+      (ds1_d476n :: FunPtr a_a473a) ->
+      case ds_d476m of { FunPtr a1_a46Za ->
+      case ds1_d476n of { FunPtr b1_a46Zb ->
+      tagToEnum# @ Bool (eqAddr# a1_a46Za b1_a46Zb)
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fEqFunPtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. FunPtr a -> FunPtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a473a)
+                 (x_a22b [Occ=Once!] :: FunPtr a_a473a)
+                 (y_a22c [Occ=Once!] :: FunPtr a_a473a) ->
+                 case x_a22b of { FunPtr a1_a46Za [Occ=Once] ->
+                 case y_a22c of { FunPtr b1_a46Zb [Occ=Once] ->
+                 case eqAddr# a1_a46Za b1_a46Zb of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fEqFunPtr_$c/=
+  = \ (@ a_a473a)
+      (eta_B2 :: FunPtr a_a473a)
+      (eta1_B1 :: FunPtr a_a473a) ->
+      case eta_B2 of { FunPtr a1_a46Za ->
+      case eta1_B1 of { FunPtr b1_a46Zb ->
+      case eqAddr# a1_a46Za b1_a46Zb of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.Ptr.$fEqFunPtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Eq (FunPtr a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_a46WS) ->
+       GHC.Classes.C:Eq TYPE: FunPtr a_a46WS
+                        GHC.Ptr.$fEqFunPtr_$c== @ a_a46WS
+                        GHC.Ptr.$fEqFunPtr_$c/= @ a_a46WS]
+GHC.Ptr.$fEqFunPtr
+  = \ (@ a_a473a) ->
+      GHC.Classes.C:Eq
+        @ (FunPtr a_a473a)
+        (GHC.Ptr.$fEqFunPtr_$c== @ a_a473a)
+        (GHC.Ptr.$fEqFunPtr_$c/= @ a_a473a)
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$c<= :: forall a. FunPtr a -> FunPtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (a1_a46Zk [Occ=Once!] :: FunPtr a_a473m)
+                 (b_a46Zl [Occ=Once!] :: FunPtr a_a473m) ->
+                 case b_a46Zl of { FunPtr a2_a46Zi [Occ=Once] ->
+                 case a1_a46Zk of { FunPtr b1_a46Zj [Occ=Once] ->
+                 case ltAddr# a2_a46Zi b1_a46Zj of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$c<=
+  = \ (@ a_a473m)
+      (a1_a46Zk :: FunPtr a_a473m)
+      (b_a46Zl :: FunPtr a_a473m) ->
+      case b_a46Zl of { FunPtr a2_a46Zi ->
+      case a1_a46Zk of { FunPtr b1_a46Zj ->
+      case ltAddr# a2_a46Zi b1_a46Zj of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$cmax
+  :: forall a. FunPtr a -> FunPtr a -> FunPtr a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (x_a55d [Occ=Once!] :: FunPtr a_a473m)
+                 (y_a55e [Occ=Once!] :: FunPtr a_a473m) ->
+                 case y_a55e of wild_XW { FunPtr a1_a46Zi [Occ=Once] ->
+                 case x_a55d of wild1_Xa { FunPtr b1_a46Zj [Occ=Once] ->
+                 case ltAddr# a1_a46Zi b1_a46Zj of {
+                   __DEFAULT -> wild_XW;
+                   1# -> wild1_Xa
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$cmax
+  = \ (@ a_a473m)
+      (x_a55d :: FunPtr a_a473m)
+      (y_a55e :: FunPtr a_a473m) ->
+      case y_a55e of wild_XW { FunPtr a1_a46Zi ->
+      case x_a55d of wild1_Xa { FunPtr b1_a46Zj ->
+      case ltAddr# a1_a46Zi b1_a46Zj of {
+        __DEFAULT -> wild_XW;
+        1# -> wild1_Xa
+      }
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$c>= :: forall a. FunPtr a -> FunPtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (a1_a46Zo [Occ=Once!] :: FunPtr a_a473m)
+                 (b_a46Zp [Occ=Once!] :: FunPtr a_a473m) ->
+                 case a1_a46Zo of { FunPtr a2_a46Zi [Occ=Once] ->
+                 case b_a46Zp of { FunPtr b1_a46Zj [Occ=Once] ->
+                 case ltAddr# a2_a46Zi b1_a46Zj of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$c>=
+  = \ (@ a_a473m)
+      (a1_a46Zo :: FunPtr a_a473m)
+      (b_a46Zp :: FunPtr a_a473m) ->
+      case a1_a46Zo of { FunPtr a2_a46Zi ->
+      case b_a46Zp of { FunPtr b1_a46Zj ->
+      case ltAddr# a2_a46Zi b1_a46Zj of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$c> :: forall a. FunPtr a -> FunPtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (a1_a46Zm [Occ=Once!] :: FunPtr a_a473m)
+                 (b_a46Zn [Occ=Once!] :: FunPtr a_a473m) ->
+                 case b_a46Zn of { FunPtr a2_a46Zi [Occ=Once] ->
+                 case a1_a46Zm of { FunPtr b1_a46Zj [Occ=Once] ->
+                 tagToEnum# @ Bool (ltAddr# a2_a46Zi b1_a46Zj)
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$c>
+  = \ (@ a_a473m)
+      (a1_a46Zm :: FunPtr a_a473m)
+      (b_a46Zn :: FunPtr a_a473m) ->
+      case b_a46Zn of { FunPtr a2_a46Zi ->
+      case a1_a46Zm of { FunPtr b1_a46Zj ->
+      tagToEnum# @ Bool (ltAddr# a2_a46Zi b1_a46Zj)
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr_$cmin
+  :: forall a. FunPtr a -> FunPtr a -> FunPtr a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a473m)
+                 (x_a55m [Occ=Once!] :: FunPtr a_a473m)
+                 (y_a55n [Occ=Once!] :: FunPtr a_a473m) ->
+                 case y_a55n of wild_XW { FunPtr a1_a46Zi [Occ=Once] ->
+                 case x_a55m of wild1_Xa { FunPtr b1_a46Zj [Occ=Once] ->
+                 case ltAddr# a1_a46Zi b1_a46Zj of {
+                   __DEFAULT -> wild1_Xa;
+                   1# -> wild_XW
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdFunPtr_$cmin
+  = \ (@ a_a473m)
+      (x_a55m :: FunPtr a_a473m)
+      (y_a55n :: FunPtr a_a473m) ->
+      case y_a55n of wild_XW { FunPtr a1_a46Zi ->
+      case x_a55m of wild1_Xa { FunPtr b1_a46Zj ->
+      case ltAddr# a1_a46Zi b1_a46Zj of {
+        __DEFAULT -> wild1_Xa;
+        1# -> wild_XW
+      }
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdFunPtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Ord (FunPtr a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_a46WS) ->
+       GHC.Classes.C:Ord TYPE: FunPtr a_a46WS
+                         GHC.Ptr.$fEqFunPtr @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$ccompare @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$c< @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$c<= @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$c> @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$c>= @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$cmax @ a_a46WS
+                         GHC.Ptr.$fOrdFunPtr_$cmin @ a_a46WS]
+GHC.Ptr.$fOrdFunPtr
+  = \ (@ a_a473m) ->
+      GHC.Classes.C:Ord
+        @ (FunPtr a_a473m)
+        (GHC.Ptr.$fEqFunPtr @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$ccompare @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$c< @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$c<= @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$c> @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$c>= @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$cmax @ a_a473m)
+        (GHC.Ptr.$fOrdFunPtr_$cmin @ a_a473m)
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$c< :: forall a. Ptr a -> Ptr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (a1_a46Z0 [Occ=Once!] :: Ptr a_a472b)
+                 (b_a46Z1 [Occ=Once!] :: Ptr a_a472b) ->
+                 case a1_a46Z0 of { Ptr a2_a46Z2 [Occ=Once] ->
+                 case b_a46Z1 of { Ptr b1_a46Z3 [Occ=Once] ->
+                 tagToEnum# @ Bool (ltAddr# a2_a46Z2 b1_a46Z3)
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$c<
+  = \ (@ a_a472b)
+      (a1_a46Z0 :: Ptr a_a472b)
+      (b_a46Z1 :: Ptr a_a472b) ->
+      case a1_a46Z0 of { Ptr a2_a46Z2 ->
+      case b_a46Z1 of { Ptr b1_a46Z3 ->
+      tagToEnum# @ Bool (ltAddr# a2_a46Z2 b1_a46Z3)
+      }
+      }
+
+-- RHS size: {terms: 24, types: 14, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$ccompare :: forall a. Ptr a -> Ptr a -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (a1_a46YW [Occ=Once!] :: Ptr a_a472b)
+                 (b_a46YX [Occ=Once!] :: Ptr a_a472b) ->
+                 case a1_a46YW of { Ptr a2_a46YY ->
+                 case b_a46YX of { Ptr b1_a46YZ ->
+                 case ltAddr# a2_a46YY b1_a46YZ of {
+                   __DEFAULT ->
+                     case eqAddr# a2_a46YY b1_a46YZ of {
+                       __DEFAULT -> GHC.Types.GT;
+                       1# -> GHC.Types.EQ
+                     };
+                   1# -> GHC.Types.LT
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$ccompare
+  = \ (@ a_a472b)
+      (a1_a46YW :: Ptr a_a472b)
+      (b_a46YX :: Ptr a_a472b) ->
+      case a1_a46YW of { Ptr a2_a46YY ->
+      case b_a46YX of { Ptr b1_a46YZ ->
+      case ltAddr# a2_a46YY b1_a46YZ of {
+        __DEFAULT ->
+          case eqAddr# a2_a46YY b1_a46YZ of {
+            __DEFAULT -> GHC.Types.GT;
+            1# -> GHC.Types.EQ
+          };
+        1# -> GHC.Types.LT
+      }
+      }
+      }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fEqPtr_$c== :: forall a. Ptr a -> Ptr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a471Z)
+                 (ds_d476g [Occ=Once!] :: Ptr a_a471Z)
+                 (ds1_d476h [Occ=Once!] :: Ptr a_a471Z) ->
+                 case ds_d476g of { Ptr a1_a46YU [Occ=Once] ->
+                 case ds1_d476h of { Ptr b1_a46YV [Occ=Once] ->
+                 tagToEnum# @ Bool (eqAddr# a1_a46YU b1_a46YV)
+                 }
+                 }}]
+GHC.Ptr.$fEqPtr_$c==
+  = \ (@ a_a471Z)
+      (ds_d476g :: Ptr a_a471Z)
+      (ds1_d476h :: Ptr a_a471Z) ->
+      case ds_d476g of { Ptr a1_a46YU ->
+      case ds1_d476h of { Ptr b1_a46YV ->
+      tagToEnum# @ Bool (eqAddr# a1_a46YU b1_a46YV)
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fEqPtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Ptr a -> Ptr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a471Z)
+                 (x_a22b [Occ=Once!] :: Ptr a_a471Z)
+                 (y_a22c [Occ=Once!] :: Ptr a_a471Z) ->
+                 case x_a22b of { Ptr a1_a46YU [Occ=Once] ->
+                 case y_a22c of { Ptr b1_a46YV [Occ=Once] ->
+                 case eqAddr# a1_a46YU b1_a46YV of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fEqPtr_$c/=
+  = \ (@ a_a471Z) (eta_B2 :: Ptr a_a471Z) (eta1_B1 :: Ptr a_a471Z) ->
+      case eta_B2 of { Ptr a1_a46YU ->
+      case eta1_B1 of { Ptr b1_a46YV ->
+      case eqAddr# a1_a46YU b1_a46YV of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.Ptr.$fEqPtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Eq (Ptr a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_a46WT) ->
+       GHC.Classes.C:Eq TYPE: Ptr a_a46WT
+                        GHC.Ptr.$fEqPtr_$c== @ a_a46WT
+                        GHC.Ptr.$fEqPtr_$c/= @ a_a46WT]
+GHC.Ptr.$fEqPtr
+  = \ (@ a_a471Z) ->
+      GHC.Classes.C:Eq
+        @ (Ptr a_a471Z)
+        (GHC.Ptr.$fEqPtr_$c== @ a_a471Z)
+        (GHC.Ptr.$fEqPtr_$c/= @ a_a471Z)
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$c<= :: forall a. Ptr a -> Ptr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (a1_a46Z4 [Occ=Once!] :: Ptr a_a472b)
+                 (b_a46Z5 [Occ=Once!] :: Ptr a_a472b) ->
+                 case b_a46Z5 of { Ptr a2_a46Z2 [Occ=Once] ->
+                 case a1_a46Z4 of { Ptr b1_a46Z3 [Occ=Once] ->
+                 case ltAddr# a2_a46Z2 b1_a46Z3 of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$c<=
+  = \ (@ a_a472b)
+      (a1_a46Z4 :: Ptr a_a472b)
+      (b_a46Z5 :: Ptr a_a472b) ->
+      case b_a46Z5 of { Ptr a2_a46Z2 ->
+      case a1_a46Z4 of { Ptr b1_a46Z3 ->
+      case ltAddr# a2_a46Z2 b1_a46Z3 of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$cmax :: forall a. Ptr a -> Ptr a -> Ptr a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (x_a55d [Occ=Once!] :: Ptr a_a472b)
+                 (y_a55e [Occ=Once!] :: Ptr a_a472b) ->
+                 case y_a55e of wild_X17 { Ptr a1_a46Z2 [Occ=Once] ->
+                 case x_a55d of wild1_Xl { Ptr b1_a46Z3 [Occ=Once] ->
+                 case ltAddr# a1_a46Z2 b1_a46Z3 of {
+                   __DEFAULT -> wild_X17;
+                   1# -> wild1_Xl
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$cmax
+  = \ (@ a_a472b) (x_a55d :: Ptr a_a472b) (y_a55e :: Ptr a_a472b) ->
+      case y_a55e of wild_X17 { Ptr a1_a46Z2 ->
+      case x_a55d of wild1_Xl { Ptr b1_a46Z3 ->
+      case ltAddr# a1_a46Z2 b1_a46Z3 of {
+        __DEFAULT -> wild_X17;
+        1# -> wild1_Xl
+      }
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$c>= :: forall a. Ptr a -> Ptr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (a1_a46Z8 [Occ=Once!] :: Ptr a_a472b)
+                 (b_a46Z9 [Occ=Once!] :: Ptr a_a472b) ->
+                 case a1_a46Z8 of { Ptr a2_a46Z2 [Occ=Once] ->
+                 case b_a46Z9 of { Ptr b1_a46Z3 [Occ=Once] ->
+                 case ltAddr# a2_a46Z2 b1_a46Z3 of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$c>=
+  = \ (@ a_a472b)
+      (a1_a46Z8 :: Ptr a_a472b)
+      (b_a46Z9 :: Ptr a_a472b) ->
+      case a1_a46Z8 of { Ptr a2_a46Z2 ->
+      case b_a46Z9 of { Ptr b1_a46Z3 ->
+      case ltAddr# a2_a46Z2 b1_a46Z3 of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$c> :: forall a. Ptr a -> Ptr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (a1_a46Z6 [Occ=Once!] :: Ptr a_a472b)
+                 (b_a46Z7 [Occ=Once!] :: Ptr a_a472b) ->
+                 case b_a46Z7 of { Ptr a2_a46Z2 [Occ=Once] ->
+                 case a1_a46Z6 of { Ptr b1_a46Z3 [Occ=Once] ->
+                 tagToEnum# @ Bool (ltAddr# a2_a46Z2 b1_a46Z3)
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$c>
+  = \ (@ a_a472b)
+      (a1_a46Z6 :: Ptr a_a472b)
+      (b_a46Z7 :: Ptr a_a472b) ->
+      case b_a46Z7 of { Ptr a2_a46Z2 ->
+      case a1_a46Z6 of { Ptr b1_a46Z3 ->
+      tagToEnum# @ Bool (ltAddr# a2_a46Z2 b1_a46Z3)
+      }
+      }
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr_$cmin :: forall a. Ptr a -> Ptr a -> Ptr a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a472b)
+                 (x_a55m [Occ=Once!] :: Ptr a_a472b)
+                 (y_a55n [Occ=Once!] :: Ptr a_a472b) ->
+                 case y_a55n of wild_X17 { Ptr a1_a46Z2 [Occ=Once] ->
+                 case x_a55m of wild1_Xl { Ptr b1_a46Z3 [Occ=Once] ->
+                 case ltAddr# a1_a46Z2 b1_a46Z3 of {
+                   __DEFAULT -> wild1_Xl;
+                   1# -> wild_X17
+                 }
+                 }
+                 }}]
+GHC.Ptr.$fOrdPtr_$cmin
+  = \ (@ a_a472b) (x_a55m :: Ptr a_a472b) (y_a55n :: Ptr a_a472b) ->
+      case y_a55n of wild_X17 { Ptr a1_a46Z2 ->
+      case x_a55m of wild1_Xl { Ptr b1_a46Z3 ->
+      case ltAddr# a1_a46Z2 b1_a46Z3 of {
+        __DEFAULT -> wild1_Xl;
+        1# -> wild_X17
+      }
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+GHC.Ptr.$fOrdPtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Ord (Ptr a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_a46WT) ->
+       GHC.Classes.C:Ord TYPE: Ptr a_a46WT
+                         GHC.Ptr.$fEqPtr @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$ccompare @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$c< @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$c<= @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$c> @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$c>= @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$cmax @ a_a46WT
+                         GHC.Ptr.$fOrdPtr_$cmin @ a_a46WT]
+GHC.Ptr.$fOrdPtr
+  = \ (@ a_a472b) ->
+      GHC.Classes.C:Ord
+        @ (Ptr a_a472b)
+        (GHC.Ptr.$fEqPtr @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$ccompare @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$c< @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$c<= @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$c> @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$c>= @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$cmax @ a_a472b)
+        (GHC.Ptr.$fOrdPtr_$cmin @ a_a472b)
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+nullPtr :: forall a. Ptr a
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+nullPtr = \ (@ a_a471W) -> GHC.Ptr.Ptr @ a_a471W __NULL
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.Ptr.castPtr1 :: forall a b. Ptr a -> Ptr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_a471P) (@ b_a471Q) (v_B2 [Occ=Once] :: Ptr a_a471P) ->
+                 v_B2}]
+GHC.Ptr.castPtr1
+  = \ (@ a_a471P) (@ b_a471Q) (v_B2 :: Ptr a_a471P) -> v_B2
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+castPtr :: forall a b. Ptr a -> Ptr b
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Ptr.castPtr1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <Ptr a>_R ->_R (Ptr Univ(phantom phantom <*>_N :: a, b))_R
+                       :: (forall a b. Ptr a -> Ptr a :: *)
+                          ~R# (forall a b. Ptr a -> Ptr b :: *))}]
+castPtr
+  = GHC.Ptr.castPtr1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <Ptr a>_R ->_R (Ptr Univ(phantom phantom <*>_N :: a, b))_R
+            :: (forall a b. Ptr a -> Ptr a :: *)
+               ~R# (forall a b. Ptr a -> Ptr b :: *))
+
+-- RHS size: {terms: 14, types: 13, coercions: 0, joins: 0/0}
+plusPtr :: forall a b. Ptr a -> Int -> Ptr b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a471L)
+                 (@ b_a471M)
+                 (ds_d4767 [Occ=Once!] :: Ptr a_a471L)
+                 (ds1_d4768 [Occ=Once!] :: Int) ->
+                 case ds_d4767 of { Ptr addr_a46Xg [Occ=Once] ->
+                 case ds1_d4768 of { I# d_a46Xh [Occ=Once] ->
+                 GHC.Ptr.Ptr @ b_a471M (plusAddr# addr_a46Xg d_a46Xh)
+                 }
+                 }}]
+plusPtr
+  = \ (@ a_a471L)
+      (@ b_a471M)
+      (ds_d4767 :: Ptr a_a471L)
+      (ds1_d4768 :: Int) ->
+      case ds_d4767 of { Ptr addr_a46Xg ->
+      case ds1_d4768 of { I# d_a46Xh ->
+      GHC.Ptr.Ptr @ b_a471M (plusAddr# addr_a46Xg d_a46Xh)
+      }
+      }
+
+-- RHS size: {terms: 22, types: 12, coercions: 0, joins: 0/0}
+alignPtr :: forall a. Ptr a -> Int -> Ptr a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a471G)
+                 (addr_a46Xi [Occ=Once!] :: Ptr a_a471G)
+                 (ds_d475W [Occ=Once!] :: Int) ->
+                 case addr_a46Xi of wild_X1p { Ptr a1_a46Xj ->
+                 case ds_d475W of { I# i_a46Xk ->
+                 case remAddr# a1_a46Xj i_a46Xk of ds1_X476z {
+                   __DEFAULT ->
+                     GHC.Ptr.Ptr @ a_a471G (plusAddr# a1_a46Xj (-# i_a46Xk ds1_X476z));
+                   0# -> wild_X1p
+                 }
+                 }
+                 }}]
+alignPtr
+  = \ (@ a_a471G) (addr_a46Xi :: Ptr a_a471G) (ds_d475W :: Int) ->
+      case addr_a46Xi of wild_X1p { Ptr a1_a46Xj ->
+      case ds_d475W of { I# i_a46Xk ->
+      case remAddr# a1_a46Xj i_a46Xk of ds1_X476z {
+        __DEFAULT ->
+          GHC.Ptr.Ptr @ a_a471G (plusAddr# a1_a46Xj (-# i_a46Xk ds1_X476z));
+        0# -> wild_X1p
+      }
+      }
+      }
+
+-- RHS size: {terms: 14, types: 14, coercions: 0, joins: 0/0}
+minusPtr :: forall a b. Ptr a -> Ptr b -> Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a471D)
+                 (@ b_a471E)
+                 (ds_d475P [Occ=Once!] :: Ptr a_a471D)
+                 (ds1_d475Q [Occ=Once!] :: Ptr b_a471E) ->
+                 case ds_d475P of { Ptr a1_a46Xm [Occ=Once] ->
+                 case ds1_d475Q of { Ptr a2_a46Xn [Occ=Once] ->
+                 GHC.Types.I# (minusAddr# a1_a46Xm a2_a46Xn)
+                 }
+                 }}]
+minusPtr
+  = \ (@ a_a471D)
+      (@ b_a471E)
+      (ds_d475P :: Ptr a_a471D)
+      (ds1_d475Q :: Ptr b_a471E) ->
+      case ds_d475P of { Ptr a1_a46Xm ->
+      case ds1_d475Q of { Ptr a2_a46Xn ->
+      GHC.Types.I# (minusAddr# a1_a46Xm a2_a46Xn)
+      }
+      }
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+nullFunPtr :: forall a. FunPtr a
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+nullFunPtr = \ (@ a_a471A) -> GHC.Ptr.FunPtr @ a_a471A __NULL
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.Ptr.castFunPtr1 :: forall a b. FunPtr a -> FunPtr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_a471t)
+                 (@ b_a471u)
+                 (v_X1t [Occ=Once] :: FunPtr a_a471t) ->
+                 v_X1t}]
+GHC.Ptr.castFunPtr1
+  = \ (@ a_a471t) (@ b_a471u) (v_X1t :: FunPtr a_a471t) -> v_X1t
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+castFunPtr :: forall a b. FunPtr a -> FunPtr b
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Ptr.castFunPtr1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <FunPtr a>_R ->_R (FunPtr Univ(phantom phantom <*>_N :: a, b))_R
+                       :: (forall a b. FunPtr a -> FunPtr a :: *)
+                          ~R# (forall a b. FunPtr a -> FunPtr b :: *))}]
+castFunPtr
+  = GHC.Ptr.castFunPtr1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <FunPtr a>_R ->_R (FunPtr Univ(phantom phantom <*>_N :: a, b))_R
+            :: (forall a b. FunPtr a -> FunPtr a :: *)
+               ~R# (forall a b. FunPtr a -> FunPtr b :: *))
+
+-- RHS size: {terms: 8, types: 10, coercions: 0, joins: 0/0}
+castFunPtrToPtr :: forall a b. FunPtr a -> Ptr b
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a471p)
+                 (@ b_a471q)
+                 (ds_d475J [Occ=Once!] :: FunPtr a_a471p) ->
+                 case ds_d475J of { FunPtr addr_a46Xo [Occ=Once] ->
+                 GHC.Ptr.Ptr @ b_a471q addr_a46Xo
+                 }}]
+castFunPtrToPtr
+  = \ (@ a_a471p) (@ b_a471q) (ds_d475J :: FunPtr a_a471p) ->
+      case ds_d475J of { FunPtr addr_a46Xo ->
+      GHC.Ptr.Ptr @ b_a471q addr_a46Xo
+      }
+
+-- RHS size: {terms: 15, types: 22, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr_$cshowsPrec1
+  :: forall a. Int -> FunPtr a -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,A><S(S),1*U(U)><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a474l)
+                 (p_a46WV [Occ=Once] :: Int)
+                 (x_i1Mhr [Occ=Once!] :: FunPtr a_a474l)
+                 (eta_B1 [Occ=Once] :: String) ->
+                 case x_i1Mhr of { FunPtr addr_a46Xo [Occ=Once] ->
+                 GHC.Ptr.$fShowFunPtr_$cshowsPrec
+                   @ Any p_a46WV (GHC.Ptr.Ptr @ Any addr_a46Xo) eta_B1
+                 }}]
+GHC.Ptr.$fShowFunPtr_$cshowsPrec1
+  = \ (@ a_a474l)
+      _ [Occ=Dead]
+      (x_i1Mhr :: FunPtr a_a474l)
+      (eta_B1 :: String) ->
+      case x_i1Mhr of { FunPtr addr_a46Xo ->
+      case GHC.Ptr.$w$cshowsPrec @ Any addr_a46Xo eta_B1 of
+      { (# ww1_s47lE, ww2_s47lF #) ->
+      GHC.Types.: @ Char ww1_s47lE ww2_s47lF
+      }
+      }
+
+-- RHS size: {terms: 13, types: 21, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr_$cshow :: forall a. FunPtr a -> String
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a474l) (x_i1Jj2 [Occ=Once!] :: FunPtr a_a474l) ->
+                 case x_i1Jj2 of { FunPtr addr_a46Xo [Occ=Once] ->
+                 GHC.Ptr.$fShowFunPtr_$cshowsPrec
+                   @ Any
+                   GHC.Ptr.$fShowFunPtr2
+                   (GHC.Ptr.Ptr @ Any addr_a46Xo)
+                   (GHC.Types.[] @ Char)
+                 }}]
+GHC.Ptr.$fShowFunPtr_$cshow
+  = \ (@ a_a474l) (x_i1Jj2 :: FunPtr a_a474l) ->
+      case x_i1Jj2 of { FunPtr addr_a46Xo ->
+      case GHC.Ptr.$w$cshowsPrec @ Any addr_a46Xo (GHC.Types.[] @ Char)
+      of
+      { (# ww1_s47lE, ww2_s47lF #) ->
+      GHC.Types.: @ Char ww1_s47lE ww2_s47lF
+      }
+      }
+
+-- RHS size: {terms: 14, types: 21, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr1 :: forall a. FunPtr a -> String -> String
+[GblId,
+ Arity=2,
+ Str=<S(S),1*U(U)><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a474l)
+                 (x_i1Mhr [Occ=Once!] :: FunPtr a_a474l)
+                 (eta_B1 [Occ=Once, OS=OneShot] :: String) ->
+                 case x_i1Mhr of { FunPtr addr_a46Xo [Occ=Once] ->
+                 GHC.Ptr.$fShowFunPtr_$cshowsPrec
+                   @ Any GHC.Ptr.$fShowFunPtr2 (GHC.Ptr.Ptr @ Any addr_a46Xo) eta_B1
+                 }}]
+GHC.Ptr.$fShowFunPtr1
+  = \ (@ a_a474l)
+      (x_i1Mhr :: FunPtr a_a474l)
+      (eta_B1 [OS=OneShot] :: String) ->
+      case x_i1Mhr of { FunPtr addr_a46Xo ->
+      case GHC.Ptr.$w$cshowsPrec @ Any addr_a46Xo eta_B1 of
+      { (# ww1_s47lE, ww2_s47lF #) ->
+      GHC.Types.: @ Char ww1_s47lE ww2_s47lF
+      }
+      }
+
+-- RHS size: {terms: 7, types: 9, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr_$cshowList :: forall a. [FunPtr a] -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a474l)
+                 (ls_i1Mix [Occ=Once] :: [FunPtr a_a474l])
+                 (s_i1Miy [Occ=Once] :: String) ->
+                 showList__
+                   @ (FunPtr a_a474l)
+                   (GHC.Ptr.$fShowFunPtr1 @ a_a474l)
+                   ls_i1Mix
+                   s_i1Miy}]
+GHC.Ptr.$fShowFunPtr_$cshowList
+  = \ (@ a_a474l)
+      (ls_i1Mix :: [FunPtr a_a474l])
+      (s_i1Miy :: String) ->
+      showList__
+        @ (FunPtr a_a474l)
+        (GHC.Ptr.$fShowFunPtr1 @ a_a474l)
+        ls_i1Mix
+        s_i1Miy
+
+-- RHS size: {terms: 5, types: 7, coercions: 0, joins: 0/0}
+GHC.Ptr.$fShowFunPtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Show (FunPtr a)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ a_a46WU) ->
+       GHC.Show.C:Show TYPE: FunPtr a_a46WU
+                       GHC.Ptr.$fShowFunPtr_$cshowsPrec1 @ a_a46WU
+                       GHC.Ptr.$fShowFunPtr_$cshow @ a_a46WU
+                       GHC.Ptr.$fShowFunPtr_$cshowList @ a_a46WU]
+GHC.Ptr.$fShowFunPtr
+  = \ (@ a_a474l) ->
+      GHC.Show.C:Show
+        @ (FunPtr a_a474l)
+        (GHC.Ptr.$fShowFunPtr_$cshowsPrec1 @ a_a474l)
+        (GHC.Ptr.$fShowFunPtr_$cshow @ a_a474l)
+        (GHC.Ptr.$fShowFunPtr_$cshowList @ a_a474l)
+
+-- RHS size: {terms: 8, types: 10, coercions: 0, joins: 0/0}
+castPtrToFunPtr :: forall a b. Ptr a -> FunPtr b
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a471l)
+                 (@ b_a471m)
+                 (ds_d475F [Occ=Once!] :: Ptr a_a471l) ->
+                 case ds_d475F of { Ptr addr_a46Xp [Occ=Once] ->
+                 GHC.Ptr.FunPtr @ b_a471m addr_a46Xp
+                 }}]
+castPtrToFunPtr
+  = \ (@ a_a471l) (@ b_a471m) (ds_d475F :: Ptr a_a471l) ->
+      case ds_d475F of { Ptr addr_a46Xp ->
+      GHC.Ptr.FunPtr @ b_a471m addr_a46Xp
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Ptr.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$trModule3 = GHC.Types.TrNameS GHC.Ptr.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Ptr.$trModule2 = "GHC.Ptr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$trModule1 = GHC.Types.TrNameS GHC.Ptr.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Ptr.$trModule
+  = GHC.Types.Module GHC.Ptr.$trModule3 GHC.Ptr.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r47xK :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r47xK = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_r47xL :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_r47xL
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcAddr# (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tcPtr2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Ptr.$tcPtr2 = "Ptr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tcPtr1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$tcPtr1 = GHC.Types.TrNameS GHC.Ptr.$tcPtr2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tcPtr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Ptr.$tcPtr
+  = GHC.Types.TyCon
+      13939499724423561315##
+      16316673677148652216##
+      GHC.Ptr.$trModule
+      GHC.Ptr.$tcPtr1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_r47xM :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r47xM
+  = GHC.Types.: @ KindRep $krep_r47xK (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r47xN :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r47xN
+  = GHC.Types.KindRepTyConApp GHC.Ptr.$tcPtr $krep2_r47xM
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'Ptr1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Ptr.$tc'Ptr1 = GHC.Types.KindRepFun $krep1_r47xL $krep3_r47xN
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'Ptr3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Ptr.$tc'Ptr3 = "'Ptr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'Ptr2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$tc'Ptr2 = GHC.Types.TrNameS GHC.Ptr.$tc'Ptr3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'Ptr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Ptr.$tc'Ptr
+  = GHC.Types.TyCon
+      2332306090346040376##
+      13491728187967991297##
+      GHC.Ptr.$trModule
+      GHC.Ptr.$tc'Ptr2
+      1#
+      GHC.Ptr.$tc'Ptr1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tcFunPtr2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Ptr.$tcFunPtr2 = "FunPtr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tcFunPtr1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$tcFunPtr1 = GHC.Types.TrNameS GHC.Ptr.$tcFunPtr2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tcFunPtr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Ptr.$tcFunPtr
+  = GHC.Types.TyCon
+      38956960673620606##
+      4307950889093819770##
+      GHC.Ptr.$trModule
+      GHC.Ptr.$tcFunPtr1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r47xO :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r47xO
+  = GHC.Types.KindRepTyConApp GHC.Ptr.$tcFunPtr $krep2_r47xM
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'FunPtr1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Ptr.$tc'FunPtr1
+  = GHC.Types.KindRepFun $krep1_r47xL $krep4_r47xO
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'FunPtr3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Ptr.$tc'FunPtr3 = "'FunPtr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'FunPtr2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Ptr.$tc'FunPtr2 = GHC.Types.TrNameS GHC.Ptr.$tc'FunPtr3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Ptr.$tc'FunPtr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Ptr.$tc'FunPtr
+  = GHC.Types.TyCon
+      15722333564603238588##
+      12100865307857439187##
+      GHC.Ptr.$trModule
+      GHC.Ptr.$tc'FunPtr2
+      1#
+      GHC.Ptr.$tc'FunPtr1
+
+

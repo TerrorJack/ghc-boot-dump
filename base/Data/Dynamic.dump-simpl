@@ -1,0 +1,1175 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:04:43.055926133 UTC
+
+Result size of Tidy Core
+  = {terms: 553, types: 1,083, coercions: 679, joins: 3/5}
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic3 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Dynamic.$fExceptionDynamic3 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Dynamic.$fExceptionDynamic4 = "<<"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Dynamic.$fExceptionDynamic2 = ">>"#
+
+-- RHS size: {terms: 15, types: 15, coercions: 0, joins: 0/1}
+Data.Dynamic.$w$cshowsPrec [InlPrag=NOUSERINLINE[0]]
+  :: Dynamic -> ShowS
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20] 140 60}]
+Data.Dynamic.$w$cshowsPrec
+  = \ (w_s9BcW :: Dynamic) ->
+      case w_s9BcW of { Dynamic @ a_a9AVl t_a9AQo ds_d9B1I ->
+      let {
+        f_s9B4T [Dmd=<L,C(U)>] :: String -> String
+        [LclId]
+        f_s9B4T
+          = Data.Typeable.Internal.showTypeable
+              @ * @ a_a9AVl Data.Dynamic.$fExceptionDynamic3 t_a9AQo } in
+      \ (x_X7RxY :: String) ->
+        unpackAppendCString#
+          Data.Dynamic.$fExceptionDynamic4
+          (f_s9B4T
+             (unpackAppendCString# Data.Dynamic.$fExceptionDynamic2 x_X7RxY))
+      }
+
+-- RHS size: {terms: 4, types: 2, coercions: 0, joins: 0/0}
+Data.Dynamic.$fShowDynamic_$cshowsPrec [InlPrag=NOUSERINLINE[0]]
+  :: Int -> Dynamic -> ShowS
+[GblId,
+ Arity=2,
+ Str=<L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ _ [Occ=Dead] (w1_s9BcW [Occ=Once] :: Dynamic) ->
+                 Data.Dynamic.$w$cshowsPrec w1_s9BcW}]
+Data.Dynamic.$fShowDynamic_$cshowsPrec
+  = \ _ [Occ=Dead] (w1_s9BcW :: Dynamic) ->
+      Data.Dynamic.$w$cshowsPrec w1_s9BcW
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+toDyn :: forall a. Typeable a => a -> Dynamic
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Dynamic.Dynamic
+               `cast` (forall (a :: <*>_N).
+                       Sym (Data.Typeable.Internal.N:Typeable[0]) <*>_N <a>_N
+                       ->_R <a -> Dynamic>_R
+                       :: (forall a. TypeRep a -> a -> Dynamic :: *)
+                          ~R# (forall a. Typeable a => a -> Dynamic :: *))}]
+toDyn
+  = Data.Dynamic.Dynamic
+    `cast` (forall (a :: <*>_N).
+            Sym (Data.Typeable.Internal.N:Typeable[0]) <*>_N <a>_N
+            ->_R <a -> Dynamic>_R
+            :: (forall a. TypeRep a -> a -> Dynamic :: *)
+               ~R# (forall a. Typeable a => a -> Dynamic :: *))
+
+-- RHS size: {terms: 15, types: 23, coercions: 8, joins: 0/0}
+fromDyn :: forall a. Typeable a => Dynamic -> a -> a
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a9AUq)
+                 ($dTypeable_a9AUs [Occ=Once] :: Typeable a_a9AUq)
+                 (ds_d9B19 [Occ=Once!] :: Dynamic)
+                 (def_a9AQv [Occ=Once] :: a_a9AUq) ->
+                 case ds_d9B19 of
+                 { Dynamic @ a1_a9AUt t_a9AQt [Occ=Once] v_a9AQu [Occ=Once] ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ *
+                        @ *
+                        @ a1_a9AUt
+                        @ a_a9AUq
+                        t_a9AQt
+                        ($dTypeable_a9AUs
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a9AUq>_N
+                                 :: (Typeable a_a9AUq :: Constraint) ~R# (TypeRep a_a9AUq :: *)))
+                 of {
+                   False -> def_a9AQv;
+                   True ->
+                     v_a9AQu
+                     `cast` (UnsafeCo representational a1_a9AUt a_a9AUq
+                             :: (a1_a9AUt :: *) ~R# (a_a9AUq :: *))
+                 }
+                 }}]
+fromDyn
+  = \ (@ a_a9AUq)
+      ($dTypeable_a9AUs :: Typeable a_a9AUq)
+      (ds_d9B19 :: Dynamic)
+      (def_a9AQv :: a_a9AUq) ->
+      case ds_d9B19 of { Dynamic @ a1_a9AUt t_a9AQt v_a9AQu ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ a1_a9AUt
+             @ a_a9AUq
+             t_a9AQt
+             ($dTypeable_a9AUs
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a9AUq>_N
+                      :: (Typeable a_a9AUq :: Constraint) ~R# (TypeRep a_a9AUq :: *)))
+      of {
+        False -> def_a9AQv;
+        True ->
+          v_a9AQu
+          `cast` (UnsafeCo representational a1_a9AUt a_a9AUq
+                  :: (a1_a9AUt :: *) ~R# (a_a9AUq :: *))
+      }
+      }
+
+-- RHS size: {terms: 15, types: 24, coercions: 9, joins: 0/0}
+fromDynamic :: forall a. Typeable a => Dynamic -> Maybe a
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a9ATX)
+                 ($dTypeable_a9ATZ [Occ=Once] :: Typeable a_a9ATX)
+                 (ds_d9B0N [Occ=Once!] :: Dynamic) ->
+                 case ds_d9B0N of
+                 { Dynamic @ a1_a9AU0 t_a9AQw [Occ=Once] v_a9AQx [Occ=Once] ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ *
+                        @ *
+                        @ a1_a9AU0
+                        @ a_a9ATX
+                        t_a9AQw
+                        ($dTypeable_a9ATZ
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a9ATX>_N
+                                 :: (Typeable a_a9ATX :: Constraint) ~R# (TypeRep a_a9ATX :: *)))
+                 of {
+                   False -> GHC.Base.Nothing @ a_a9ATX;
+                   True ->
+                     (GHC.Base.Just @ a1_a9AU0 v_a9AQx)
+                     `cast` ((Maybe (UnsafeCo representational a1_a9AU0 a_a9ATX))_R
+                             :: (Maybe a1_a9AU0 :: *) ~R# (Maybe a_a9ATX :: *))
+                 }
+                 }}]
+fromDynamic
+  = \ (@ a_a9ATX)
+      ($dTypeable_a9ATZ :: Typeable a_a9ATX)
+      (ds_d9B0N :: Dynamic) ->
+      case ds_d9B0N of { Dynamic @ a1_a9AU0 t_a9AQw v_a9AQx ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ a1_a9AU0
+             @ a_a9ATX
+             t_a9AQw
+             ($dTypeable_a9ATZ
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <a_a9ATX>_N
+                      :: (Typeable a_a9ATX :: Constraint) ~R# (TypeRep a_a9ATX :: *)))
+      of {
+        False -> GHC.Base.Nothing @ a_a9ATX;
+        True ->
+          (GHC.Base.Just @ a1_a9AU0 v_a9AQx)
+          `cast` ((Maybe (UnsafeCo representational a1_a9AU0 a_a9ATX))_R
+                  :: (Maybe a1_a9AU0 :: *) ~R# (Maybe a_a9ATX :: *))
+      }
+      }
+
+-- RHS size: {terms: 33, types: 71, coercions: 0, joins: 0/0}
+lvl_r9Bhp :: TypeRep *
+[GblId]
+lvl_r9Bhp
+  = case Data.Typeable.Internal.$wmkTrCon
+           @ (RuntimeRep -> *)
+           @ TYPE
+           16277905407886699876##
+           12502576999761269576##
+           GHC.Types.tr$ModuleGHCPrim
+           GHC.Types.$tcTYPE2
+           0#
+           GHC.Types.$tcTYPE1
+           (GHC.Types.[] @ SomeTypeRep)
+    of
+    { (# ww8_i8htw, ww9_i8htx, ww10_i8hty, ww11_i8htz, ww12_i8htA #) ->
+    case Data.Typeable.Internal.$wmkTrCon
+           @ RuntimeRep
+           @ 'LiftedRep
+           16105171405184389724##
+           5595830777317938557##
+           GHC.Types.tr$ModuleGHCPrim
+           GHC.Types.$tc'LiftedRep1
+           0#
+           GHC.Types.$tc'AddrRep1
+           (GHC.Types.[] @ SomeTypeRep)
+    of
+    { (# ww2_X8huy, ww3_X8huA, ww4_X8huC, ww5_X8huE, ww6_X8huG #) ->
+    Data.Typeable.Internal.mkTrApp
+      @ RuntimeRep
+      @ *
+      @ TYPE
+      @ 'LiftedRep
+      (Data.Typeable.Internal.TrTyCon
+         @ (RuntimeRep -> *)
+         @ TYPE
+         ww8_i8htw
+         ww9_i8htx
+         ww10_i8hty
+         ww11_i8htz
+         ww12_i8htA)
+      (Data.Typeable.Internal.TrTyCon
+         @ RuntimeRep
+         @ 'LiftedRep
+         ww2_X8huy
+         ww3_X8huA
+         ww4_X8huC
+         ww5_X8huE
+         ww6_X8huG)
+    }
+    }
+
+-- RHS size: {terms: 250, types: 720, coercions: 637, joins: 3/3}
+dynApply :: Dynamic -> Dynamic -> Maybe Dynamic
+[GblId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []]
+dynApply
+  = \ (ds_d9AWk :: Dynamic) (ds1_d9AWl :: Dynamic) ->
+      case ds_d9AWk of { Dynamic @ a_a9ASA ds2_d9B05 f_a9AQB ->
+      case ds2_d9B05 of {
+        __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+        Data.Typeable.Internal.TrFun @ r1_i9B0u @ r2_i9B0v @ a1_i9B0w
+                                     @ b_i9B0x co_i9B0y [Dmd=<L,A>] co1_i9B0z dt_i9B0A dt1_i9B0B
+                                     ds3_i9B0C ds4_i9B0D ->
+          case ds1_d9AWl of { Dynamic @ a2_a9ASX ta'_a9AQC x_a9AQD ->
+          case Data.Typeable.Internal.sameTypeRep
+                 @ (TYPE r1_i9B0u) @ * @ a1_i9B0w @ a2_a9ASX ds3_i9B0C ta'_a9AQC
+          of {
+            False -> GHC.Base.Nothing @ Dynamic;
+            True ->
+              case ds4_i9B0D of wild4_i9AWy {
+                Data.Typeable.Internal.TrType co2_i9AWA co3_i9AWB ->
+                  join {
+                    $j_i8hyP [Dmd=<C(C(S)),1*C1(C1(U))>]
+                      :: Word# -> Word# -> Maybe Dynamic
+                    [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>, Unf=OtherCon []]
+                    $j_i8hyP (dt2_i8hyQ [OS=OneShot] :: Word#)
+                             (dt3_i8hyR [OS=OneShot] :: Word#)
+                      = case Data.Typeable.Internal.fpTYPELiftedRep of
+                        { GHC.Fingerprint.Type.Fingerprint dt4_i8hyZ dt5_i8hz0 ->
+                        case eqWord# dt2_i8hyQ dt4_i8hyZ of {
+                          __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                          1# ->
+                            case eqWord# dt3_i8hyR dt5_i8hz0 of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                GHC.Base.Just
+                                  @ Dynamic
+                                  (Data.Dynamic.Dynamic
+                                     @ (b_i9B0x |> Sym (TYPE
+                                                          (Sym (Nth:0
+                                                                    (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                  r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                     (wild4_i9AWy
+                                      `cast` ((TypeRep
+                                                 (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                 (Sym (Coh <b_i9B0x>_N
+                                                           (TYPE
+                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                              :: (TypeRep b_i9B0x :: *)
+                                                 ~R# (TypeRep
+                                                        (b_i9B0x |> (TYPE
+                                                                       (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                     ((f_a9AQB
+                                       `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                          (TYPE
+                                                                             (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                              (TYPE
+                                                                                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                    (TYPE
+                                                                                                                                       (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                         (TYPE
+                                                                                                                                                                                            (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                ->_R Sym (Coh <b_i9B0x>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                 (TYPE
+                                                                                                                                                    (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                       (TYPE
+                                                                                                                                          (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                               :: (a_a9ASA :: *)
+                                                  ~R# (a2_a9ASX
+                                                       -> (b_i9B0x |> (TYPE
+                                                                         (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                        x_a9AQD))
+                            }
+                        }
+                        } } in
+                  case lvl_r9Bhp of {
+                    Data.Typeable.Internal.TrType co4_i8hzE [Dmd=<L,A>]
+                                                  co5_i8hzF [Dmd=<L,A>] ->
+                      case Data.Typeable.Internal.fpTYPELiftedRep of
+                      { GHC.Fingerprint.Type.Fingerprint dt2_i8hzH dt3_i8hzI ->
+                      jump $j_i8hyP dt2_i8hzH dt3_i8hzI
+                      };
+                    Data.Typeable.Internal.TrTyCon dt2_i8hzL dt3_i8hzM ds5_i8hzN
+                                                   ds6_i8hzO ds7_i8hzP ->
+                      jump $j_i8hyP dt2_i8hzL dt3_i8hzM;
+                    Data.Typeable.Internal.TrApp @ k4_i8hzS @ a3_i8hzT @ b2_i8hzU
+                                                 co4_i8hzV [Dmd=<L,A>] dt2_i8hzW dt3_i8hzX ds5_i8hzY
+                                                 ds6_i8hzZ ds7_i8hA0 ->
+                      jump $j_i8hyP dt2_i8hzW dt3_i8hzX
+                  };
+                Data.Typeable.Internal.TrTyCon dt2_i9AWE dt3_i9AWF ds5_i9AWG
+                                               ds6_i9AWH ds7_i9AWI ->
+                  join {
+                    $j_i8hyP [Dmd=<C(C(S)),1*C1(C1(U))>]
+                      :: Word# -> Word# -> Maybe Dynamic
+                    [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>, Unf=OtherCon []]
+                    $j_i8hyP (dt4_i8hyQ [OS=OneShot] :: Word#)
+                             (dt5_i8hyR [OS=OneShot] :: Word#)
+                      = case ds7_i9AWI of {
+                          Data.Typeable.Internal.TrType co2_i8hyW [Dmd=<L,A>]
+                                                        co3_i8hyX [Dmd=<L,A>] ->
+                            case Data.Typeable.Internal.fpTYPELiftedRep of
+                            { GHC.Fingerprint.Type.Fingerprint dt6_i8hyZ dt7_i8hz0 ->
+                            case eqWord# dt4_i8hyQ dt6_i8hyZ of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                case eqWord# dt5_i8hyR dt7_i8hz0 of {
+                                  __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                                  1# ->
+                                    GHC.Base.Just
+                                      @ Dynamic
+                                      (Data.Dynamic.Dynamic
+                                         @ (b_i9B0x |> Sym (TYPE
+                                                              (Sym (Nth:0
+                                                                        (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                      r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                         (wild4_i9AWy
+                                          `cast` ((TypeRep
+                                                     (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                     (Sym (Coh <b_i9B0x>_N
+                                                               (TYPE
+                                                                  (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                                  :: (TypeRep b_i9B0x :: *)
+                                                     ~R# (TypeRep
+                                                            (b_i9B0x |> (TYPE
+                                                                           (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                         ((f_a9AQB
+                                           `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                                  (TYPE
+                                                                                                                                                     (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                        (TYPE
+                                                                                                                                           (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                             (TYPE
+                                                                                                                                                                                                (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                    ->_R Sym (Coh <b_i9B0x>_R
+                                                                                  (TYPE
+                                                                                     (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                     (TYPE
+                                                                                                                                                        (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                           (TYPE
+                                                                                                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                   :: (a_a9ASA :: *)
+                                                      ~R# (a2_a9ASX
+                                                           -> (b_i9B0x |> (TYPE
+                                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                            x_a9AQD))
+                                }
+                            }
+                            };
+                          Data.Typeable.Internal.TrTyCon dt6_i8hz4 dt7_i8hz5 ds8_i8hz6
+                                                         ds9_i8hz7 ds10_i8hz8 ->
+                            case eqWord# dt4_i8hyQ dt6_i8hz4 of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                case eqWord# dt5_i8hyR dt7_i8hz5 of {
+                                  __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                                  1# ->
+                                    GHC.Base.Just
+                                      @ Dynamic
+                                      (Data.Dynamic.Dynamic
+                                         @ (b_i9B0x |> Sym (TYPE
+                                                              (Sym (Nth:0
+                                                                        (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                      r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                         (wild4_i9AWy
+                                          `cast` ((TypeRep
+                                                     (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                     (Sym (Coh <b_i9B0x>_N
+                                                               (TYPE
+                                                                  (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                                  :: (TypeRep b_i9B0x :: *)
+                                                     ~R# (TypeRep
+                                                            (b_i9B0x |> (TYPE
+                                                                           (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                         ((f_a9AQB
+                                           `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                                  (TYPE
+                                                                                                                                                     (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                        (TYPE
+                                                                                                                                           (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                             (TYPE
+                                                                                                                                                                                                (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                    ->_R Sym (Coh <b_i9B0x>_R
+                                                                                  (TYPE
+                                                                                     (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                     (TYPE
+                                                                                                                                                        (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                           (TYPE
+                                                                                                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                   :: (a_a9ASA :: *)
+                                                      ~R# (a2_a9ASX
+                                                           -> (b_i9B0x |> (TYPE
+                                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                            x_a9AQD))
+                                }
+                            };
+                          Data.Typeable.Internal.TrApp @ k4_i8hzc @ a3_i8hzd @ b2_i8hze
+                                                       co2_i8hzf [Dmd=<L,A>] dt6_i8hzg dt7_i8hzh
+                                                       ds8_i8hzi ds9_i8hzj ds10_i8hzk ->
+                            case eqWord# dt4_i8hyQ dt6_i8hzg of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                case eqWord# dt5_i8hyR dt7_i8hzh of {
+                                  __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                                  1# ->
+                                    GHC.Base.Just
+                                      @ Dynamic
+                                      (Data.Dynamic.Dynamic
+                                         @ (b_i9B0x |> Sym (TYPE
+                                                              (Sym (Nth:0
+                                                                        (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                      r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                         (wild4_i9AWy
+                                          `cast` ((TypeRep
+                                                     (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                     (Sym (Coh <b_i9B0x>_N
+                                                               (TYPE
+                                                                  (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                                  :: (TypeRep b_i9B0x :: *)
+                                                     ~R# (TypeRep
+                                                            (b_i9B0x |> (TYPE
+                                                                           (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                         ((f_a9AQB
+                                           `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                                  (TYPE
+                                                                                                                                                     (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                        (TYPE
+                                                                                                                                           (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                             (TYPE
+                                                                                                                                                                                                (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                    ->_R Sym (Coh <b_i9B0x>_R
+                                                                                  (TYPE
+                                                                                     (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                     (TYPE
+                                                                                                                                                        (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                           (TYPE
+                                                                                                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                   :: (a_a9ASA :: *)
+                                                      ~R# (a2_a9ASX
+                                                           -> (b_i9B0x |> (TYPE
+                                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                            x_a9AQD))
+                                }
+                            }
+                        } } in
+                  case lvl_r9Bhp of {
+                    Data.Typeable.Internal.TrType co2_i8hzE [Dmd=<L,A>]
+                                                  co3_i8hzF [Dmd=<L,A>] ->
+                      case Data.Typeable.Internal.fpTYPELiftedRep of
+                      { GHC.Fingerprint.Type.Fingerprint dt4_i8hzH dt5_i8hzI ->
+                      jump $j_i8hyP dt4_i8hzH dt5_i8hzI
+                      };
+                    Data.Typeable.Internal.TrTyCon dt4_i8hzL dt5_i8hzM ds8_i8hzN
+                                                   ds9_i8hzO ds10_i8hzP ->
+                      jump $j_i8hyP dt4_i8hzL dt5_i8hzM;
+                    Data.Typeable.Internal.TrApp @ k4_i8hzS @ a3_i8hzT @ b2_i8hzU
+                                                 co2_i8hzV [Dmd=<L,A>] dt4_i8hzW dt5_i8hzX ds8_i8hzY
+                                                 ds9_i8hzZ ds10_i8hA0 ->
+                      jump $j_i8hyP dt4_i8hzW dt5_i8hzX
+                  };
+                Data.Typeable.Internal.TrApp @ k1_i9AWL @ a3_i9AWM @ b1_i9AWN
+                                             co2_i9AWO dt2_i9AWP dt3_i9AWQ ds5_i9AWR ds6_i9AWS
+                                             ds7_i9AWT ->
+                  join {
+                    $j_i8hyP [Dmd=<C(C(S)),1*C1(C1(U))>]
+                      :: Word# -> Word# -> Maybe Dynamic
+                    [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>, Unf=OtherCon []]
+                    $j_i8hyP (dt4_i8hyQ [OS=OneShot] :: Word#)
+                             (dt5_i8hyR [OS=OneShot] :: Word#)
+                      = case ds7_i9AWT of {
+                          Data.Typeable.Internal.TrType co3_i8hyW [Dmd=<L,A>]
+                                                        co4_i8hyX [Dmd=<L,A>] ->
+                            case Data.Typeable.Internal.fpTYPELiftedRep of
+                            { GHC.Fingerprint.Type.Fingerprint dt6_i8hyZ dt7_i8hz0 ->
+                            case eqWord# dt4_i8hyQ dt6_i8hyZ of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                case eqWord# dt5_i8hyR dt7_i8hz0 of {
+                                  __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                                  1# ->
+                                    GHC.Base.Just
+                                      @ Dynamic
+                                      (Data.Dynamic.Dynamic
+                                         @ (b_i9B0x |> Sym (TYPE
+                                                              (Sym (Nth:0
+                                                                        (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                      r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                         (wild4_i9AWy
+                                          `cast` ((TypeRep
+                                                     (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                     (Sym (Coh <b_i9B0x>_N
+                                                               (TYPE
+                                                                  (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                                  :: (TypeRep b_i9B0x :: *)
+                                                     ~R# (TypeRep
+                                                            (b_i9B0x |> (TYPE
+                                                                           (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                         ((f_a9AQB
+                                           `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                                  (TYPE
+                                                                                                                                                     (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                        (TYPE
+                                                                                                                                           (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                             (TYPE
+                                                                                                                                                                                                (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                    ->_R Sym (Coh <b_i9B0x>_R
+                                                                                  (TYPE
+                                                                                     (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                     (TYPE
+                                                                                                                                                        (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                           (TYPE
+                                                                                                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                   :: (a_a9ASA :: *)
+                                                      ~R# (a2_a9ASX
+                                                           -> (b_i9B0x |> (TYPE
+                                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                            x_a9AQD))
+                                }
+                            }
+                            };
+                          Data.Typeable.Internal.TrTyCon dt6_i8hz4 dt7_i8hz5 ds8_i8hz6
+                                                         ds9_i8hz7 ds10_i8hz8 ->
+                            case eqWord# dt4_i8hyQ dt6_i8hz4 of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                case eqWord# dt5_i8hyR dt7_i8hz5 of {
+                                  __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                                  1# ->
+                                    GHC.Base.Just
+                                      @ Dynamic
+                                      (Data.Dynamic.Dynamic
+                                         @ (b_i9B0x |> Sym (TYPE
+                                                              (Sym (Nth:0
+                                                                        (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                      r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                         (wild4_i9AWy
+                                          `cast` ((TypeRep
+                                                     (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                     (Sym (Coh <b_i9B0x>_N
+                                                               (TYPE
+                                                                  (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                                  :: (TypeRep b_i9B0x :: *)
+                                                     ~R# (TypeRep
+                                                            (b_i9B0x |> (TYPE
+                                                                           (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                         ((f_a9AQB
+                                           `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                                  (TYPE
+                                                                                                                                                     (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                        (TYPE
+                                                                                                                                           (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                             (TYPE
+                                                                                                                                                                                                (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                    ->_R Sym (Coh <b_i9B0x>_R
+                                                                                  (TYPE
+                                                                                     (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                     (TYPE
+                                                                                                                                                        (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                           (TYPE
+                                                                                                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                   :: (a_a9ASA :: *)
+                                                      ~R# (a2_a9ASX
+                                                           -> (b_i9B0x |> (TYPE
+                                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                            x_a9AQD))
+                                }
+                            };
+                          Data.Typeable.Internal.TrApp @ k4_i8hzc @ a4_i8hzd @ b2_i8hze
+                                                       co3_i8hzf [Dmd=<L,A>] dt6_i8hzg dt7_i8hzh
+                                                       ds8_i8hzi ds9_i8hzj ds10_i8hzk ->
+                            case eqWord# dt4_i8hyQ dt6_i8hzg of {
+                              __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                              1# ->
+                                case eqWord# dt5_i8hyR dt7_i8hzh of {
+                                  __DEFAULT -> GHC.Base.Nothing @ Dynamic;
+                                  1# ->
+                                    GHC.Base.Just
+                                      @ Dynamic
+                                      (Data.Dynamic.Dynamic
+                                         @ (b_i9B0x |> Sym (TYPE
+                                                              (Sym (Nth:0
+                                                                        (Sym (UnsafeCo nominal Any (TYPE
+                                                                                                      r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                                         (wild4_i9AWy
+                                          `cast` ((TypeRep
+                                                     (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                                     (Sym (Coh <b_i9B0x>_N
+                                                               (TYPE
+                                                                  (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                                  :: (TypeRep b_i9B0x :: *)
+                                                     ~R# (TypeRep
+                                                            (b_i9B0x |> (TYPE
+                                                                           (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                         ((f_a9AQB
+                                           `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                              (TYPE
+                                                                                 (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                                  (TYPE
+                                                                                                                                                     (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                                        (TYPE
+                                                                                                                                           (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                                             (TYPE
+                                                                                                                                                                                                (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                                    ->_R Sym (Coh <b_i9B0x>_R
+                                                                                  (TYPE
+                                                                                     (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                                     (TYPE
+                                                                                                                                                        (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                                           (TYPE
+                                                                                                                                              (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                   :: (a_a9ASA :: *)
+                                                      ~R# (a2_a9ASX
+                                                           -> (b_i9B0x |> (TYPE
+                                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                                            x_a9AQD))
+                                }
+                            }
+                        } } in
+                  case lvl_r9Bhp of {
+                    Data.Typeable.Internal.TrType co3_i8hzE [Dmd=<L,A>]
+                                                  co4_i8hzF [Dmd=<L,A>] ->
+                      case Data.Typeable.Internal.fpTYPELiftedRep of
+                      { GHC.Fingerprint.Type.Fingerprint dt4_i8hzH dt5_i8hzI ->
+                      jump $j_i8hyP dt4_i8hzH dt5_i8hzI
+                      };
+                    Data.Typeable.Internal.TrTyCon dt4_i8hzL dt5_i8hzM ds8_i8hzN
+                                                   ds9_i8hzO ds10_i8hzP ->
+                      jump $j_i8hyP dt4_i8hzL dt5_i8hzM;
+                    Data.Typeable.Internal.TrApp @ k4_i8hzS @ a4_i8hzT @ b2_i8hzU
+                                                 co3_i8hzV [Dmd=<L,A>] dt4_i8hzW dt5_i8hzX ds8_i8hzY
+                                                 ds9_i8hzZ ds10_i8hA0 ->
+                      jump $j_i8hyP dt4_i8hzW dt5_i8hzX
+                  };
+                Data.Typeable.Internal.TrFun @ r4_i9AWX @ r5_i9AWY @ a3_i9AWZ
+                                             @ b1_i9AX0 co2_i9AX1 co3_i9AX2 dt2_i9AX3 dt3_i9AX4
+                                             ds5_i9AX5 ds6_i9AX6 ->
+                  case Data.Typeable.Internal.sameTypeRep
+                         @ *
+                         @ *
+                         @ *
+                         @ (TYPE r2_i9B0v)
+                         lvl_r9Bhp
+                         (Data.Typeable.Internal.$mApp1
+                          `cast` ((TypeRep <*>_N (Sym co2_i9AX1))_R
+                                  :: (TypeRep * :: *) ~R# (TypeRep (TYPE r2_i9B0v) :: *)))
+                  of {
+                    False -> GHC.Base.Nothing @ Dynamic;
+                    True ->
+                      GHC.Base.Just
+                        @ Dynamic
+                        (Data.Dynamic.Dynamic
+                           @ (b_i9B0x |> Sym (TYPE
+                                                (Sym (Nth:0
+                                                          (Sym (UnsafeCo nominal Any (TYPE
+                                                                                        r2_i9B0v)) ; UnsafeCo nominal Any *))))_N)
+                           (wild4_i9AWy
+                            `cast` ((TypeRep
+                                       (TYPE (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N
+                                       (Sym (Coh <b_i9B0x>_N
+                                                 (TYPE
+                                                    (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N)))_R
+                                    :: (TypeRep b_i9B0x :: *)
+                                       ~R# (TypeRep
+                                              (b_i9B0x |> (TYPE
+                                                             (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                           ((f_a9AQB
+                             `cast` (Sub co1_i9B0z ; ((Sym (Coh <a1_i9B0w>_R
+                                                                (TYPE
+                                                                   (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Sym (Coh (Sym (Coh <a1_i9B0w>_R
+                                                                                                                                    (TYPE
+                                                                                                                                       (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N))
+                                                                                                                          (TYPE
+                                                                                                                             (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N) ; (Coh <a1_i9B0w>_R
+                                                                                                                                                                               (TYPE
+                                                                                                                                                                                  (UnsafeCo nominal r1_i9B0u 'LiftedRep))_N ; UnsafeCo representational a1_i9B0w a2_a9ASX)))
+                                                      ->_R Sym (Coh <b_i9B0x>_R
+                                                                    (TYPE
+                                                                       (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) ; Sym (Coh (Sym (Coh <b_i9B0x>_R
+                                                                                                                                       (TYPE
+                                                                                                                                          (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                                                                                                             (TYPE
+                                                                                                                                (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N))
+                                     :: (a_a9ASA :: *)
+                                        ~R# (a2_a9ASX
+                                             -> (b_i9B0x |> (TYPE
+                                                               (UnsafeCo nominal r2_i9B0v 'LiftedRep))_N) :: *)))
+                              x_a9AQD))
+                  }
+              }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 6, types: 12, coercions: 0, joins: 0/0}
+dynTypeRep :: Dynamic -> SomeTypeRep
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9AWb [Occ=Once!] :: Dynamic) ->
+                 case ds_d9AWb of
+                 { Dynamic @ a_a9ASu tr_a9AQH [Occ=Once] _ [Occ=Dead] ->
+                 Data.Typeable.Internal.$WSomeTypeRep @ * @ a_a9ASu tr_a9AQH
+                 }}]
+dynTypeRep
+  = \ (ds_d9AWb :: Dynamic) ->
+      case ds_d9AWb of { Dynamic @ a_a9ASu tr_a9AQH ds1_d9AWj ->
+      Data.Typeable.Internal.$WSomeTypeRep @ * @ a_a9ASu tr_a9AQH
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Dynamic.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Dynamic.$trModule3 = GHC.Types.TrNameS Data.Dynamic.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Dynamic.$trModule2 = "Data.Dynamic"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Dynamic.$trModule1 = GHC.Types.TrNameS Data.Dynamic.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Dynamic.$trModule
+  = GHC.Types.Module Data.Dynamic.$trModule3 Data.Dynamic.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r9Bhq :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r9Bhq = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep1_r9Bhr :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r9Bhr
+  = GHC.Types.: @ KindRep $krep_r9Bhq (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep2_r9Bhs :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r9Bhs = GHC.Types.: @ KindRep GHC.Types.krep$* $krep1_r9Bhr
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r9Bht :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r9Bht
+  = GHC.Types.KindRepTyConApp
+      Data.Typeable.Internal.$tcTypeRep $krep2_r9Bhs
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic7 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Data.Dynamic.$fExceptionDynamic7 = "Dynamic"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic6 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Dynamic.$fExceptionDynamic6
+  = GHC.Types.TrNameS Data.Dynamic.$fExceptionDynamic7
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$tcDynamic :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.Dynamic.$tcDynamic
+  = GHC.Types.TyCon
+      12333845116585145369##
+      13454739855111402131##
+      Data.Dynamic.$trModule
+      Data.Dynamic.$fExceptionDynamic6
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep4_r9Bhu :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r9Bhu
+  = GHC.Types.KindRepTyConApp
+      Data.Dynamic.$tcDynamic (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r9Bhv :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep5_r9Bhv = GHC.Types.KindRepFun $krep_r9Bhq $krep4_r9Bhu
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$tc'Dynamic1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Data.Dynamic.$tc'Dynamic1
+  = GHC.Types.KindRepFun $krep3_r9Bht $krep5_r9Bhv
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$tc'Dynamic3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Data.Dynamic.$tc'Dynamic3 = "'Dynamic"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$tc'Dynamic2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Dynamic.$tc'Dynamic2
+  = GHC.Types.TrNameS Data.Dynamic.$tc'Dynamic3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$tc'Dynamic :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.Dynamic.$tc'Dynamic
+  = GHC.Types.TyCon
+      11394777848779697579##
+      644307381671950132##
+      Data.Dynamic.$trModule
+      Data.Dynamic.$tc'Dynamic2
+      1#
+      Data.Dynamic.$tc'Dynamic1
+
+-- RHS size: {terms: 16, types: 33, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic5 :: TypeRep Dynamic
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 100 60}]
+Data.Dynamic.$fExceptionDynamic5
+  = case Data.Typeable.Internal.$wmkTrCon
+           @ *
+           @ Dynamic
+           12333845116585145369##
+           13454739855111402131##
+           Data.Dynamic.$trModule
+           Data.Dynamic.$fExceptionDynamic6
+           0#
+           GHC.Types.krep$*
+           (GHC.Types.[] @ SomeTypeRep)
+    of
+    { (# ww8_i8htw, ww9_i8htx, ww10_i8hty, ww11_i8htz, ww12_i8htA #) ->
+    Data.Typeable.Internal.TrTyCon
+      @ * @ Dynamic ww8_i8htw ww9_i8htx ww10_i8hty ww11_i8htz ww12_i8htA
+    }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic1 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Dynamic.$fExceptionDynamic1
+  = unpackCString# Data.Dynamic.$fExceptionDynamic2
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic_$cshow :: Dynamic -> String
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20] 80 0}]
+Data.Dynamic.$fExceptionDynamic_$cshow
+  = \ (x_i7Jay :: Dynamic) ->
+      case x_i7Jay of { Dynamic @ a_a9AVl t_a9AQo ds_d9B1I ->
+      unpackAppendCString#
+        Data.Dynamic.$fExceptionDynamic4
+        (Data.Typeable.Internal.showTypeable
+           @ *
+           @ a_a9AVl
+           Data.Dynamic.$fExceptionDynamic3
+           t_a9AQo
+           Data.Dynamic.$fExceptionDynamic1)
+      }
+
+-- RHS size: {terms: 15, types: 15, coercions: 0, joins: 0/1}
+Data.Dynamic.$fShowDynamic1 :: Dynamic -> ShowS
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20] 140 60}]
+Data.Dynamic.$fShowDynamic1
+  = \ (ds_d9B1z :: Dynamic) ->
+      case ds_d9B1z of { Dynamic @ a_a9AVl t_a9AQo ds1_d9B1I ->
+      let {
+        f_s9B4T [Dmd=<L,C(U)>] :: String -> String
+        [LclId]
+        f_s9B4T
+          = Data.Typeable.Internal.showTypeable
+              @ * @ a_a9AVl Data.Dynamic.$fExceptionDynamic3 t_a9AQo } in
+      \ (x_X7RxY :: String) ->
+        unpackAppendCString#
+          Data.Dynamic.$fExceptionDynamic4
+          (f_s9B4T
+             (unpackAppendCString# Data.Dynamic.$fExceptionDynamic2 x_X7RxY))
+      }
+
+-- RHS size: {terms: 6, types: 4, coercions: 0, joins: 0/0}
+Data.Dynamic.$fShowDynamic_$cshowList :: [Dynamic] -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ls_i7JaB [Occ=Once] :: [Dynamic])
+                 (s_i7JaC [Occ=Once] :: String) ->
+                 showList__ @ Dynamic Data.Dynamic.$fShowDynamic1 ls_i7JaB s_i7JaC}]
+Data.Dynamic.$fShowDynamic_$cshowList
+  = \ (ls_i7JaB :: [Dynamic]) (s_i7JaC :: String) ->
+      showList__ @ Dynamic Data.Dynamic.$fShowDynamic1 ls_i7JaB s_i7JaC
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+Data.Dynamic.$fShowDynamic [InlPrag=NOUSERINLINE CONLIKE]
+  :: Show Dynamic
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Show.C:Show TYPE: Dynamic
+                       Data.Dynamic.$fShowDynamic_$cshowsPrec
+                       Data.Dynamic.$fExceptionDynamic_$cshow
+                       Data.Dynamic.$fShowDynamic_$cshowList]
+Data.Dynamic.$fShowDynamic
+  = GHC.Show.C:Show
+      @ Dynamic
+      Data.Dynamic.$fShowDynamic_$cshowsPrec
+      Data.Dynamic.$fExceptionDynamic_$cshow
+      Data.Dynamic.$fShowDynamic_$cshowList
+
+-- RHS size: {terms: 14, types: 17, coercions: 9, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic_$cfromException
+  :: SomeException -> Maybe Dynamic
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20] 90 30}]
+Data.Dynamic.$fExceptionDynamic_$cfromException
+  = \ (ds_i8hqT :: SomeException) ->
+      case ds_i8hqT of
+      { SomeException @ e1_i8hqW $dException1_i8hqX e2_i8hqY ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ e1_i8hqW
+             @ Dynamic
+             ((GHC.Exception.$p1Exception @ e1_i8hqW $dException1_i8hqX)
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e1_i8hqW>_N
+                      :: (Typeable e1_i8hqW :: Constraint) ~R# (TypeRep e1_i8hqW :: *)))
+             Data.Dynamic.$fExceptionDynamic5
+      of {
+        False -> GHC.Base.Nothing @ Dynamic;
+        True ->
+          (GHC.Base.Just @ e1_i8hqW e2_i8hqY)
+          `cast` ((Maybe (UnsafeCo representational e1_i8hqW Dynamic))_R
+                  :: (Maybe e1_i8hqW :: *) ~R# (Maybe Dynamic :: *))
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 6, types: 1, coercions: 5, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic [InlPrag=NOUSERINLINE CONLIKE]
+  :: Exception Dynamic
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Exception.C:Exception TYPE: Dynamic
+                                 Data.Dynamic.$fExceptionDynamic5
+                                 `cast` (Sym (Data.Typeable.Internal.N:Typeable[0]) <*>_N <Dynamic>_N
+                                         :: (TypeRep Dynamic :: *)
+                                            ~R# (Typeable Dynamic :: Constraint))
+                                 Data.Dynamic.$fShowDynamic
+                                 Data.Dynamic.$fExceptionDynamic_$ctoException
+                                 Data.Dynamic.$fExceptionDynamic_$cfromException
+                                 Data.Dynamic.$fExceptionDynamic_$cshow]
+Data.Dynamic.$fExceptionDynamic
+  = GHC.Exception.C:Exception
+      @ Dynamic
+      (Data.Dynamic.$fExceptionDynamic5
+       `cast` (Sym (Data.Typeable.Internal.N:Typeable[0]) <*>_N <Dynamic>_N
+               :: (TypeRep Dynamic :: *) ~R# (Typeable Dynamic :: Constraint)))
+      Data.Dynamic.$fShowDynamic
+      Data.Dynamic.$fExceptionDynamic_$ctoException
+      Data.Dynamic.$fExceptionDynamic_$cfromException
+      Data.Dynamic.$fExceptionDynamic_$cshow
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+Data.Dynamic.$fExceptionDynamic_$ctoException [Occ=LoopBreaker]
+  :: Dynamic -> SomeException
+[GblId, Arity=1, Unf=OtherCon []]
+Data.Dynamic.$fExceptionDynamic_$ctoException
+  = GHC.Exception.SomeException
+      @ Dynamic Data.Dynamic.$fExceptionDynamic
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_r9Bhw :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_r9Bhw = "Type error in dynamic application.\n"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_r9Bhx :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_r9Bhx = "Can't apply function "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl3_r9Bhy :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl3_r9Bhy = " to argument "#
+
+-- RHS size: {terms: 28, types: 27, coercions: 0, joins: 0/0}
+Data.Dynamic.dynApp1 :: Dynamic -> Dynamic -> Dynamic
+[GblId, Arity=2, Str=<B,1*U><B,1*U>x, Unf=OtherCon []]
+Data.Dynamic.dynApp1
+  = \ (x_a9AQF :: Dynamic) (f_a9AQE :: Dynamic) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ Dynamic
+        (unpackAppendCString#
+           lvl1_r9Bhw
+           (unpackAppendCString#
+              lvl2_r9Bhx
+              (case f_a9AQE of { Dynamic @ a_a9AVl t_a9AQo ds_d9B1I ->
+               unpackAppendCString#
+                 Data.Dynamic.$fExceptionDynamic4
+                 (++
+                    @ Char
+                    (Data.Typeable.Internal.showTypeable
+                       @ *
+                       @ a_a9AVl
+                       Data.Dynamic.$fExceptionDynamic3
+                       t_a9AQo
+                       Data.Dynamic.$fExceptionDynamic1)
+                    (unpackAppendCString#
+                       lvl3_r9Bhy
+                       (case x_a9AQF of { Dynamic @ a1_X9AWQ t1_X9ARU ds1_X9B3f ->
+                        unpackAppendCString#
+                          Data.Dynamic.$fExceptionDynamic4
+                          (Data.Typeable.Internal.showTypeable
+                             @ *
+                             @ a1_X9AWQ
+                             Data.Dynamic.$fExceptionDynamic3
+                             t1_X9ARU
+                             Data.Dynamic.$fExceptionDynamic1)
+                        })))
+               })))
+
+-- RHS size: {terms: 12, types: 5, coercions: 0, joins: 0/0}
+dynApp :: Dynamic -> Dynamic -> Dynamic
+[GblId,
+ Arity=2,
+ Str=<S,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (f_a9AQE :: Dynamic) (x_a9AQF :: Dynamic) ->
+                 case dynApply f_a9AQE x_a9AQF of {
+                   Nothing -> Data.Dynamic.dynApp1 x_a9AQF f_a9AQE;
+                   Just r_a9AQG [Occ=Once] -> r_a9AQG
+                 }}]
+dynApp
+  = \ (f_a9AQE :: Dynamic) (x_a9AQF :: Dynamic) ->
+      case dynApply f_a9AQE x_a9AQF of {
+        Nothing -> Data.Dynamic.dynApp1 x_a9AQF f_a9AQE;
+        Just r_a9AQG -> r_a9AQG
+      }
+
+

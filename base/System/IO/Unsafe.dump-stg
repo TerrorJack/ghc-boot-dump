@@ -1,0 +1,264 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:04:59.620361728 UTC
+
+System.IO.Unsafe.unsafeFixIO2 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        GHC.Exception.throw
+            Control.Exception.Base.$fExceptionNonTermination
+            Control.Exception.Base.NonTermination;
+
+System.IO.Unsafe.unsafeFixIO1
+  :: forall a.
+     (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [k_s9UeM s_s9UeN]
+        case newMutVar# [System.IO.Unsafe.unsafeFixIO2 s_s9UeN] of {
+          (#,#) ipv_s9UeP [Occ=Once] ipv1_s9UeQ ->
+              let {
+                sat_s9UeS [Occ=Once] :: GHC.Types.IO a_a9UcP
+                [LclId] =
+                    [ipv1_s9UeQ] \r [eta_s9UeR] readMutVar# [ipv1_s9UeQ eta_s9UeR];
+              } in 
+                case
+                    GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_s9UeS ipv_s9UeP
+                of
+                { (#,#) ipv2_s9UeU [Occ=Once] ipv3_s9UeV [Occ=Once] ->
+                      case k_s9UeM ipv3_s9UeV ipv2_s9UeU of {
+                        (#,#) ipv4_s9UeX [Occ=Once] ipv5_s9UeY ->
+                            case writeMutVar# [ipv1_s9UeQ ipv5_s9UeY ipv4_s9UeX] of s2#_s9UeZ {
+                              __DEFAULT -> (#,#) [s2#_s9UeZ ipv5_s9UeY];
+                            };
+                      };
+                };
+        };
+
+System.IO.Unsafe.unsafeFixIO
+  :: forall a. (a -> GHC.Types.IO a) -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] System.IO.Unsafe.unsafeFixIO1 eta_B2 eta_B1;
+
+System.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule4];
+
+System.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.IO.Unsafe"#;
+
+System.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule2];
+
+System.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.IO.Unsafe.$trModule3
+                                     System.IO.Unsafe.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:04:59.621870931 UTC
+
+System.IO.Unsafe.unsafeFixIO2 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        GHC.Exception.throw
+            Control.Exception.Base.$fExceptionNonTermination
+            Control.Exception.Base.NonTermination;
+
+System.IO.Unsafe.unsafeFixIO1
+  :: forall a.
+     (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [k_s9UeM void_0E]
+        case newMutVar# [System.IO.Unsafe.unsafeFixIO2 GHC.Prim.void#] of {
+          Unit# ipv1_s9UeQ ->
+              let {
+                sat_s9UeS [Occ=Once] :: GHC.Types.IO a_a9UcP
+                [LclId] =
+                    [ipv1_s9UeQ] \r [void_0E] readMutVar# [ipv1_s9UeQ GHC.Prim.void#];
+              } in 
+                case
+                    GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_s9UeS GHC.Prim.void#
+                of
+                { Unit# ipv3_s9UeV [Occ=Once] ->
+                      case k_s9UeM ipv3_s9UeV GHC.Prim.void# of {
+                        Unit# ipv5_s9UeY ->
+                            case
+                                writeMutVar# [ipv1_s9UeQ ipv5_s9UeY GHC.Prim.void#]
+                            of
+                            s2#_s9UeZ
+                            { (##) -> Unit# [ipv5_s9UeY];
+                            };
+                      };
+                };
+        };
+
+System.IO.Unsafe.unsafeFixIO
+  :: forall a. (a -> GHC.Types.IO a) -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        System.IO.Unsafe.unsafeFixIO1 eta_B2 GHC.Prim.void#;
+
+System.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule4];
+
+System.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.IO.Unsafe"#;
+
+System.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule2];
+
+System.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.IO.Unsafe.$trModule3
+                                     System.IO.Unsafe.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:04:59.707328475 UTC
+
+System.IO.Unsafe.unsafeFixIO2 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        GHC.Exception.throw
+            Control.Exception.Base.$fExceptionNonTermination
+            Control.Exception.Base.NonTermination;
+
+System.IO.Unsafe.unsafeFixIO1
+  :: forall a.
+     (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [k_s9UhR s_s9UhS]
+        case newMutVar# [System.IO.Unsafe.unsafeFixIO2 s_s9UhS] of {
+          (#,#) ipv_s9UhU [Occ=Once] ipv1_s9UhV ->
+              let {
+                sat_s9UhX [Occ=Once] :: GHC.Types.IO a_a9UcP
+                [LclId] =
+                    [ipv1_s9UhV] \r [eta_s9UhW] readMutVar# [ipv1_s9UhV eta_s9UhW];
+              } in 
+                case
+                    GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_s9UhX ipv_s9UhU
+                of
+                { (#,#) ipv2_s9UhZ [Occ=Once] ipv3_s9Ui0 [Occ=Once] ->
+                      case k_s9UhR ipv3_s9Ui0 ipv2_s9UhZ of {
+                        (#,#) ipv4_s9Ui2 [Occ=Once] ipv5_s9Ui3 ->
+                            case writeMutVar# [ipv1_s9UhV ipv5_s9Ui3 ipv4_s9Ui2] of s2#_s9Ui4 {
+                              __DEFAULT -> (#,#) [s2#_s9Ui4 ipv5_s9Ui3];
+                            };
+                      };
+                };
+        };
+
+System.IO.Unsafe.unsafeFixIO
+  :: forall a. (a -> GHC.Types.IO a) -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] System.IO.Unsafe.unsafeFixIO1 eta_B2 eta_B1;
+
+System.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule4];
+
+System.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.IO.Unsafe"#;
+
+System.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule2];
+
+System.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.IO.Unsafe.$trModule3
+                                     System.IO.Unsafe.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:04:59.70896385 UTC
+
+System.IO.Unsafe.unsafeFixIO2 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        GHC.Exception.throw
+            Control.Exception.Base.$fExceptionNonTermination
+            Control.Exception.Base.NonTermination;
+
+System.IO.Unsafe.unsafeFixIO1
+  :: forall a.
+     (a -> GHC.Types.IO a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [k_s9UhR void_0E]
+        case newMutVar# [System.IO.Unsafe.unsafeFixIO2 GHC.Prim.void#] of {
+          Unit# ipv1_s9UhV ->
+              let {
+                sat_s9UhX [Occ=Once] :: GHC.Types.IO a_a9UcP
+                [LclId] =
+                    [ipv1_s9UhV] \r [void_0E] readMutVar# [ipv1_s9UhV GHC.Prim.void#];
+              } in 
+                case
+                    GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_s9UhX GHC.Prim.void#
+                of
+                { Unit# ipv3_s9Ui0 [Occ=Once] ->
+                      case k_s9UhR ipv3_s9Ui0 GHC.Prim.void# of {
+                        Unit# ipv5_s9Ui3 ->
+                            case
+                                writeMutVar# [ipv1_s9UhV ipv5_s9Ui3 GHC.Prim.void#]
+                            of
+                            s2#_s9Ui4
+                            { (##) -> Unit# [ipv5_s9Ui3];
+                            };
+                      };
+                };
+        };
+
+System.IO.Unsafe.unsafeFixIO
+  :: forall a. (a -> GHC.Types.IO a) -> GHC.Types.IO a
+[GblId, Arity=2, Str=<L,1*C1(C1(U(U,U)))><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        System.IO.Unsafe.unsafeFixIO1 eta_B2 GHC.Prim.void#;
+
+System.IO.Unsafe.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.IO.Unsafe.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule4];
+
+System.IO.Unsafe.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.IO.Unsafe"#;
+
+System.IO.Unsafe.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.IO.Unsafe.$trModule2];
+
+System.IO.Unsafe.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.IO.Unsafe.$trModule3
+                                     System.IO.Unsafe.$trModule1];
+

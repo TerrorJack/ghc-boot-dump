@@ -1,0 +1,1378 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:03.94358777 UTC
+
+GHC.Float.ConversionUtils.zeroCountArr
+  :: GHC.Float.ConversionUtils.BA
+[GblId] =
+    [] \u []
+        case newByteArray# [256# GHC.Prim.realWorld#] of {
+          (#,#) ipv_sqs6 [Occ=Once] ipv1_sqs7 ->
+              case writeInt8Array# [ipv1_sqs7 0# 8# ipv_sqs6] of s2_sqs8 {
+                __DEFAULT ->
+                    let-no-escape {
+                      $j_sqs9 [Occ=OnceL!T[1], Dmd=<C(S),C(U(U))>]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> GHC.Float.ConversionUtils.BA
+                      [LclId[JoinId(1)], Arity=1, Str=<S,U>m, Unf=OtherCon []] =
+                          sat-only [ipv1_sqs7] \r [s3_sqsa]
+                              case unsafeFreezeByteArray# [ipv1_sqs7 s3_sqsa] of {
+                                (#,#) _ [Occ=Dead] ipv3_sqsd [Occ=Once] ->
+                                    GHC.Float.ConversionUtils.BA [ipv3_sqsd];
+                              };
+                    } in 
+                      let-no-escape {
+                        fillA_sqse [Occ=LoopBreakerT[4]]
+                          :: GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.State# GHC.Prim.RealWorld
+                             -> GHC.Float.ConversionUtils.BA
+                        [LclId[JoinId(4)],
+                         Arity=4,
+                         Str=<S,U><L,U><S,U><S,U>m,
+                         Unf=OtherCon []] =
+                            sat-only [ipv1_sqs7 $j_sqs9 fillA_sqse] \r [step_sqsf
+                                                                        val_sqsg
+                                                                        idx_sqsh
+                                                                        st_sqsi]
+                                case <# [idx_sqsh 256#] of {
+                                  __DEFAULT ->
+                                      case <# [step_sqsf 256#] of {
+                                        __DEFAULT -> $j_sqs9 st_sqsi;
+                                        1# ->
+                                            case +# [val_sqsg 1#] of sat_sqsm {
+                                              __DEFAULT ->
+                                                  case *# [2# step_sqsf] of sat_sqsl {
+                                                    __DEFAULT ->
+                                                        fillA_sqse
+                                                            sat_sqsl sat_sqsm step_sqsf st_sqsi;
+                                                  };
+                                            };
+                                      };
+                                  1# ->
+                                      case
+                                          writeInt8Array# [ipv1_sqs7 idx_sqsh val_sqsg st_sqsi]
+                                      of
+                                      nx_sqsn
+                                      { __DEFAULT ->
+                                            case +# [idx_sqsh step_sqsf] of sat_sqso {
+                                              __DEFAULT ->
+                                                  fillA_sqse step_sqsf val_sqsg sat_sqso nx_sqsn;
+                                            };
+                                      };
+                                };
+                      } in  fillA_sqse 2# 0# 1# s2_sqs8;
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInt#
+  :: GHC.Prim.Int#
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [n_sqsp e_sqsq]
+        case GHC.Float.ConversionUtils.zeroCountArr of {
+          GHC.Float.ConversionUtils.BA ba_sqss ->
+              case int2Word# [n_sqsp] of sat_sqst {
+                __DEFAULT ->
+                    case and# [255## sat_sqst] of sat_sqsu {
+                      __DEFAULT ->
+                          case word2Int# [sat_sqsu] of sat_sqsv {
+                            __DEFAULT ->
+                                case indexInt8Array# [ba_sqss sat_sqsv] of t_sqsw {
+                                  __DEFAULT ->
+                                      case <=# [e_sqsq t_sqsw] of {
+                                        __DEFAULT ->
+                                            case <# [t_sqsw 8#] of {
+                                              __DEFAULT ->
+                                                  case -# [e_sqsq 8#] of sat_sqsQ {
+                                                    __DEFAULT ->
+                                                        case
+                                                            uncheckedIShiftRA# [n_sqsp 8#]
+                                                        of
+                                                        sat_sqsP
+                                                        { __DEFAULT ->
+                                                              let-no-escape {
+                                                                elimZerosInt#1_sqsz [Occ=LoopBreakerT[2]]
+                                                                  :: GHC.Prim.Int#
+                                                                     -> GHC.Prim.Int#
+                                                                     -> (# GHC.Integer.Type.Integer,
+                                                                           GHC.Prim.Int# #)
+                                                                [LclId[JoinId(2)],
+                                                                 Arity=2,
+                                                                 Str=<S,U><S,U>,
+                                                                 Unf=OtherCon []] =
+                                                                    sat-only [ba_sqss
+                                                                              elimZerosInt#1_sqsz] \r [n1_sqsA
+                                                                                                       e1_sqsB]
+                                                                        case
+                                                                            int2Word# [n1_sqsA]
+                                                                        of
+                                                                        sat_sqsC
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  and# [255##
+                                                                                        sat_sqsC]
+                                                                              of
+                                                                              sat_sqsD
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        word2Int# [sat_sqsD]
+                                                                                    of
+                                                                                    sat_sqsE
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              indexInt8Array# [ba_sqss
+                                                                                                               sat_sqsE]
+                                                                                          of
+                                                                                          t1_sqsF
+                                                                                          { __DEFAULT ->
+                                                                                                case
+                                                                                                    <=# [e1_sqsB
+                                                                                                         t1_sqsF]
+                                                                                                of
+                                                                                                { __DEFAULT ->
+                                                                                                      case
+                                                                                                          <# [t1_sqsF
+                                                                                                              8#]
+                                                                                                      of
+                                                                                                      { __DEFAULT ->
+                                                                                                            case
+                                                                                                                -# [e1_sqsB
+                                                                                                                    8#]
+                                                                                                            of
+                                                                                                            sat_sqsJ
+                                                                                                            { __DEFAULT ->
+                                                                                                                  case
+                                                                                                                      uncheckedIShiftRA# [n1_sqsA
+                                                                                                                                          8#]
+                                                                                                                  of
+                                                                                                                  sat_sqsI
+                                                                                                                  { __DEFAULT ->
+                                                                                                                        elimZerosInt#1_sqsz
+                                                                                                                            sat_sqsI
+                                                                                                                            sat_sqsJ;
+                                                                                                                  };
+                                                                                                            };
+                                                                                                        1# ->
+                                                                                                            case
+                                                                                                                -# [e1_sqsB
+                                                                                                                    t1_sqsF]
+                                                                                                            of
+                                                                                                            sat_sqsM
+                                                                                                            { __DEFAULT ->
+                                                                                                                  let {
+                                                                                                                    sat_sqsL [Occ=Once]
+                                                                                                                      :: GHC.Integer.Type.Integer
+                                                                                                                    [LclId] =
+                                                                                                                        [n1_sqsA
+                                                                                                                         t1_sqsF] \u []
+                                                                                                                            case
+                                                                                                                                uncheckedIShiftRA# [n1_sqsA
+                                                                                                                                                    t1_sqsF]
+                                                                                                                            of
+                                                                                                                            sat_sqsK
+                                                                                                                            { __DEFAULT ->
+                                                                                                                                  GHC.Integer.Type.smallInteger
+                                                                                                                                      sat_sqsK;
+                                                                                                                            };
+                                                                                                                  } in 
+                                                                                                                    (#,#) [sat_sqsL
+                                                                                                                           sat_sqsM];
+                                                                                                            };
+                                                                                                      };
+                                                                                                  1# ->
+                                                                                                      let {
+                                                                                                        sat_sqsO [Occ=Once]
+                                                                                                          :: GHC.Integer.Type.Integer
+                                                                                                        [LclId] =
+                                                                                                            [n1_sqsA
+                                                                                                             e1_sqsB] \u []
+                                                                                                                case
+                                                                                                                    uncheckedIShiftRA# [n1_sqsA
+                                                                                                                                        e1_sqsB]
+                                                                                                                of
+                                                                                                                sat_sqsN
+                                                                                                                { __DEFAULT ->
+                                                                                                                      GHC.Integer.Type.smallInteger
+                                                                                                                          sat_sqsN;
+                                                                                                                };
+                                                                                                      } in 
+                                                                                                        (#,#) [sat_sqsO
+                                                                                                               0#];
+                                                                                                };
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                              } in 
+                                                                elimZerosInt#1_sqsz
+                                                                    sat_sqsP sat_sqsQ;
+                                                        };
+                                                  };
+                                              1# ->
+                                                  case -# [e_sqsq t_sqsw] of sat_sqsT {
+                                                    __DEFAULT ->
+                                                        let {
+                                                          sat_sqsS [Occ=Once]
+                                                            :: GHC.Integer.Type.Integer
+                                                          [LclId] =
+                                                              [n_sqsp t_sqsw] \u []
+                                                                  case
+                                                                      uncheckedIShiftRA# [n_sqsp
+                                                                                          t_sqsw]
+                                                                  of
+                                                                  sat_sqsR
+                                                                  { __DEFAULT ->
+                                                                        GHC.Integer.Type.smallInteger
+                                                                            sat_sqsR;
+                                                                  };
+                                                        } in  (#,#) [sat_sqsS sat_sqsT];
+                                                  };
+                                            };
+                                        1# ->
+                                            let {
+                                              sat_sqsV [Occ=Once] :: GHC.Integer.Type.Integer
+                                              [LclId] =
+                                                  [n_sqsp e_sqsq] \u []
+                                                      case
+                                                          uncheckedIShiftRA# [n_sqsp e_sqsq]
+                                                      of
+                                                      sat_sqsU
+                                                      { __DEFAULT ->
+                                                            GHC.Integer.Type.smallInteger sat_sqsU;
+                                                      };
+                                            } in  (#,#) [sat_sqsV 0#];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInteger [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Integer.Type.Integer
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [m_sqsW e_sqsX]
+        case GHC.Integer.Type.integerToInt m_sqsW of wild_sqsY {
+          __DEFAULT ->
+              GHC.Float.ConversionUtils.elimZerosInt# wild_sqsY e_sqsX;
+        };
+
+GHC.Float.ConversionUtils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Float.ConversionUtils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule4];
+
+GHC.Float.ConversionUtils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Float.ConversionUtils"#;
+
+GHC.Float.ConversionUtils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule2];
+
+GHC.Float.ConversionUtils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Float.ConversionUtils.$trModule3
+                                     GHC.Float.ConversionUtils.$trModule1];
+
+$krep_rqs2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tcBA2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "BA"#;
+
+GHC.Float.ConversionUtils.$tcBA1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tcBA2];
+
+GHC.Float.ConversionUtils.$tcBA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2744518186030791563##
+                                    15983957619153370905##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tcBA1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_rqs3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Float.ConversionUtils.$tcBA
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tc'BA1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rqs2 $krep1_rqs3];
+
+GHC.Float.ConversionUtils.$tc'BA3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'BA"#;
+
+GHC.Float.ConversionUtils.$tc'BA2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tc'BA3];
+
+GHC.Float.ConversionUtils.$tc'BA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2662423355322146026##
+                                    17541892848942326139##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tc'BA2
+                                    0#
+                                    GHC.Float.ConversionUtils.$tc'BA1];
+
+GHC.Float.ConversionUtils.BA
+  :: GHC.Prim.ByteArray# -> GHC.Float.ConversionUtils.BA
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Float.ConversionUtils.BA [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:03.950692236 UTC
+
+GHC.Float.ConversionUtils.zeroCountArr
+  :: GHC.Float.ConversionUtils.BA
+[GblId] =
+    [] \u []
+        case newByteArray# [256# GHC.Prim.realWorld#] of {
+          Unit# ipv1_sqs7 ->
+              case writeInt8Array# [ipv1_sqs7 0# 8# GHC.Prim.void#] of s2_sqs8 {
+                (##) ->
+                    let-no-escape {
+                      $j_sqs9 [Occ=OnceL!T[1], Dmd=<C(S),C(U(U))>]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> GHC.Float.ConversionUtils.BA
+                      [LclId[JoinId(1)], Arity=1, Str=<S,U>m, Unf=OtherCon []] =
+                          sat-only [ipv1_sqs7] \r [void_0E]
+                              case unsafeFreezeByteArray# [ipv1_sqs7 GHC.Prim.void#] of {
+                                Unit# ipv3_sqsd [Occ=Once] ->
+                                    GHC.Float.ConversionUtils.BA [ipv3_sqsd];
+                              };
+                    } in 
+                      let-no-escape {
+                        fillA_sqse [Occ=LoopBreakerT[4]]
+                          :: GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.State# GHC.Prim.RealWorld
+                             -> GHC.Float.ConversionUtils.BA
+                        [LclId[JoinId(4)],
+                         Arity=4,
+                         Str=<S,U><L,U><S,U><S,U>m,
+                         Unf=OtherCon []] =
+                            sat-only [ipv1_sqs7 $j_sqs9 fillA_sqse] \r [step_sqsf
+                                                                        val_sqsg
+                                                                        idx_sqsh
+                                                                        void_0E]
+                                case <# [idx_sqsh 256#] of {
+                                  __DEFAULT ->
+                                      case <# [step_sqsf 256#] of {
+                                        __DEFAULT -> $j_sqs9 GHC.Prim.void#;
+                                        1# ->
+                                            case +# [val_sqsg 1#] of sat_sqsm {
+                                              __DEFAULT ->
+                                                  case *# [2# step_sqsf] of sat_sqsl {
+                                                    __DEFAULT ->
+                                                        fillA_sqse
+                                                            sat_sqsl
+                                                            sat_sqsm
+                                                            step_sqsf
+                                                            GHC.Prim.void#;
+                                                  };
+                                            };
+                                      };
+                                  1# ->
+                                      case
+                                          writeInt8Array# [ipv1_sqs7
+                                                           idx_sqsh
+                                                           val_sqsg
+                                                           GHC.Prim.void#]
+                                      of
+                                      nx_sqsn
+                                      { (##) ->
+                                            case +# [idx_sqsh step_sqsf] of sat_sqso {
+                                              __DEFAULT ->
+                                                  fillA_sqse
+                                                      step_sqsf val_sqsg sat_sqso GHC.Prim.void#;
+                                            };
+                                      };
+                                };
+                      } in  fillA_sqse 2# 0# 1# GHC.Prim.void#;
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInt#
+  :: GHC.Prim.Int#
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [n_sqsp e_sqsq]
+        case GHC.Float.ConversionUtils.zeroCountArr of {
+          GHC.Float.ConversionUtils.BA ba_sqss ->
+              case int2Word# [n_sqsp] of sat_sqst {
+                __DEFAULT ->
+                    case and# [255## sat_sqst] of sat_sqsu {
+                      __DEFAULT ->
+                          case word2Int# [sat_sqsu] of sat_sqsv {
+                            __DEFAULT ->
+                                case indexInt8Array# [ba_sqss sat_sqsv] of t_sqsw {
+                                  __DEFAULT ->
+                                      case <=# [e_sqsq t_sqsw] of {
+                                        __DEFAULT ->
+                                            case <# [t_sqsw 8#] of {
+                                              __DEFAULT ->
+                                                  case -# [e_sqsq 8#] of sat_sqsQ {
+                                                    __DEFAULT ->
+                                                        case
+                                                            uncheckedIShiftRA# [n_sqsp 8#]
+                                                        of
+                                                        sat_sqsP
+                                                        { __DEFAULT ->
+                                                              let-no-escape {
+                                                                elimZerosInt#1_sqsz [Occ=LoopBreakerT[2]]
+                                                                  :: GHC.Prim.Int#
+                                                                     -> GHC.Prim.Int#
+                                                                     -> (# GHC.Integer.Type.Integer,
+                                                                           GHC.Prim.Int# #)
+                                                                [LclId[JoinId(2)],
+                                                                 Arity=2,
+                                                                 Str=<S,U><S,U>,
+                                                                 Unf=OtherCon []] =
+                                                                    sat-only [ba_sqss
+                                                                              elimZerosInt#1_sqsz] \r [n1_sqsA
+                                                                                                       e1_sqsB]
+                                                                        case
+                                                                            int2Word# [n1_sqsA]
+                                                                        of
+                                                                        sat_sqsC
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  and# [255##
+                                                                                        sat_sqsC]
+                                                                              of
+                                                                              sat_sqsD
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        word2Int# [sat_sqsD]
+                                                                                    of
+                                                                                    sat_sqsE
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              indexInt8Array# [ba_sqss
+                                                                                                               sat_sqsE]
+                                                                                          of
+                                                                                          t1_sqsF
+                                                                                          { __DEFAULT ->
+                                                                                                case
+                                                                                                    <=# [e1_sqsB
+                                                                                                         t1_sqsF]
+                                                                                                of
+                                                                                                { __DEFAULT ->
+                                                                                                      case
+                                                                                                          <# [t1_sqsF
+                                                                                                              8#]
+                                                                                                      of
+                                                                                                      { __DEFAULT ->
+                                                                                                            case
+                                                                                                                -# [e1_sqsB
+                                                                                                                    8#]
+                                                                                                            of
+                                                                                                            sat_sqsJ
+                                                                                                            { __DEFAULT ->
+                                                                                                                  case
+                                                                                                                      uncheckedIShiftRA# [n1_sqsA
+                                                                                                                                          8#]
+                                                                                                                  of
+                                                                                                                  sat_sqsI
+                                                                                                                  { __DEFAULT ->
+                                                                                                                        elimZerosInt#1_sqsz
+                                                                                                                            sat_sqsI
+                                                                                                                            sat_sqsJ;
+                                                                                                                  };
+                                                                                                            };
+                                                                                                        1# ->
+                                                                                                            case
+                                                                                                                -# [e1_sqsB
+                                                                                                                    t1_sqsF]
+                                                                                                            of
+                                                                                                            sat_sqsM
+                                                                                                            { __DEFAULT ->
+                                                                                                                  let {
+                                                                                                                    sat_sqsL [Occ=Once]
+                                                                                                                      :: GHC.Integer.Type.Integer
+                                                                                                                    [LclId] =
+                                                                                                                        [n1_sqsA
+                                                                                                                         t1_sqsF] \u []
+                                                                                                                            case
+                                                                                                                                uncheckedIShiftRA# [n1_sqsA
+                                                                                                                                                    t1_sqsF]
+                                                                                                                            of
+                                                                                                                            sat_sqsK
+                                                                                                                            { __DEFAULT ->
+                                                                                                                                  GHC.Integer.Type.smallInteger
+                                                                                                                                      sat_sqsK;
+                                                                                                                            };
+                                                                                                                  } in 
+                                                                                                                    (#,#) [sat_sqsL
+                                                                                                                           sat_sqsM];
+                                                                                                            };
+                                                                                                      };
+                                                                                                  1# ->
+                                                                                                      let {
+                                                                                                        sat_sqsO [Occ=Once]
+                                                                                                          :: GHC.Integer.Type.Integer
+                                                                                                        [LclId] =
+                                                                                                            [n1_sqsA
+                                                                                                             e1_sqsB] \u []
+                                                                                                                case
+                                                                                                                    uncheckedIShiftRA# [n1_sqsA
+                                                                                                                                        e1_sqsB]
+                                                                                                                of
+                                                                                                                sat_sqsN
+                                                                                                                { __DEFAULT ->
+                                                                                                                      GHC.Integer.Type.smallInteger
+                                                                                                                          sat_sqsN;
+                                                                                                                };
+                                                                                                      } in 
+                                                                                                        (#,#) [sat_sqsO
+                                                                                                               0#];
+                                                                                                };
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                              } in 
+                                                                elimZerosInt#1_sqsz
+                                                                    sat_sqsP sat_sqsQ;
+                                                        };
+                                                  };
+                                              1# ->
+                                                  case -# [e_sqsq t_sqsw] of sat_sqsT {
+                                                    __DEFAULT ->
+                                                        let {
+                                                          sat_sqsS [Occ=Once]
+                                                            :: GHC.Integer.Type.Integer
+                                                          [LclId] =
+                                                              [n_sqsp t_sqsw] \u []
+                                                                  case
+                                                                      uncheckedIShiftRA# [n_sqsp
+                                                                                          t_sqsw]
+                                                                  of
+                                                                  sat_sqsR
+                                                                  { __DEFAULT ->
+                                                                        GHC.Integer.Type.smallInteger
+                                                                            sat_sqsR;
+                                                                  };
+                                                        } in  (#,#) [sat_sqsS sat_sqsT];
+                                                  };
+                                            };
+                                        1# ->
+                                            let {
+                                              sat_sqsV [Occ=Once] :: GHC.Integer.Type.Integer
+                                              [LclId] =
+                                                  [n_sqsp e_sqsq] \u []
+                                                      case
+                                                          uncheckedIShiftRA# [n_sqsp e_sqsq]
+                                                      of
+                                                      sat_sqsU
+                                                      { __DEFAULT ->
+                                                            GHC.Integer.Type.smallInteger sat_sqsU;
+                                                      };
+                                            } in  (#,#) [sat_sqsV 0#];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInteger [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Integer.Type.Integer
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [m_sqsW e_sqsX]
+        case GHC.Integer.Type.integerToInt m_sqsW of wild_sqsY {
+          __DEFAULT ->
+              GHC.Float.ConversionUtils.elimZerosInt# wild_sqsY e_sqsX;
+        };
+
+GHC.Float.ConversionUtils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Float.ConversionUtils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule4];
+
+GHC.Float.ConversionUtils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Float.ConversionUtils"#;
+
+GHC.Float.ConversionUtils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule2];
+
+GHC.Float.ConversionUtils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Float.ConversionUtils.$trModule3
+                                     GHC.Float.ConversionUtils.$trModule1];
+
+$krep_rqs2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tcBA2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "BA"#;
+
+GHC.Float.ConversionUtils.$tcBA1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tcBA2];
+
+GHC.Float.ConversionUtils.$tcBA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2744518186030791563##
+                                    15983957619153370905##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tcBA1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_rqs3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Float.ConversionUtils.$tcBA
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tc'BA1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rqs2 $krep1_rqs3];
+
+GHC.Float.ConversionUtils.$tc'BA3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'BA"#;
+
+GHC.Float.ConversionUtils.$tc'BA2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tc'BA3];
+
+GHC.Float.ConversionUtils.$tc'BA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2662423355322146026##
+                                    17541892848942326139##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tc'BA2
+                                    0#
+                                    GHC.Float.ConversionUtils.$tc'BA1];
+
+GHC.Float.ConversionUtils.BA
+  :: GHC.Prim.ByteArray# -> GHC.Float.ConversionUtils.BA
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Float.ConversionUtils.BA [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:04.232502029 UTC
+
+GHC.Float.ConversionUtils.zeroCountArr
+  :: GHC.Float.ConversionUtils.BA
+[GblId] =
+    [] \u []
+        case newByteArray# [256# GHC.Prim.realWorld#] of {
+          (#,#) ipv_sqEt [Occ=Once] ipv1_sqEu ->
+              case writeInt8Array# [ipv1_sqEu 0# 8# ipv_sqEt] of s2_sqEv {
+                __DEFAULT ->
+                    let-no-escape {
+                      $j_sqEw [Occ=OnceL!T[1], Dmd=<C(S),C(U(U))>]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> GHC.Float.ConversionUtils.BA
+                      [LclId[JoinId(1)], Arity=1, Str=<S,U>m, Unf=OtherCon []] =
+                          sat-only [ipv1_sqEu] \r [s3_sqEx]
+                              case unsafeFreezeByteArray# [ipv1_sqEu s3_sqEx] of {
+                                (#,#) _ [Occ=Dead] ipv3_sqEA [Occ=Once] ->
+                                    GHC.Float.ConversionUtils.BA [ipv3_sqEA];
+                              };
+                    } in 
+                      let-no-escape {
+                        fillA_sqEB [Occ=LoopBreakerT[4]]
+                          :: GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.State# GHC.Prim.RealWorld
+                             -> GHC.Float.ConversionUtils.BA
+                        [LclId[JoinId(4)],
+                         Arity=4,
+                         Str=<S,U><L,U><S,U><S,U>m,
+                         Unf=OtherCon []] =
+                            sat-only [ipv1_sqEu $j_sqEw fillA_sqEB] \r [step_sqEC
+                                                                        val_sqED
+                                                                        idx_sqEE
+                                                                        st_sqEF]
+                                case <# [idx_sqEE 256#] of {
+                                  __DEFAULT ->
+                                      case <# [step_sqEC 256#] of {
+                                        __DEFAULT -> $j_sqEw st_sqEF;
+                                        1# ->
+                                            case +# [val_sqED 1#] of sat_sqEJ {
+                                              __DEFAULT ->
+                                                  case *# [2# step_sqEC] of sat_sqEI {
+                                                    __DEFAULT ->
+                                                        fillA_sqEB
+                                                            sat_sqEI sat_sqEJ step_sqEC st_sqEF;
+                                                  };
+                                            };
+                                      };
+                                  1# ->
+                                      case
+                                          writeInt8Array# [ipv1_sqEu idx_sqEE val_sqED st_sqEF]
+                                      of
+                                      nx_sqEK
+                                      { __DEFAULT ->
+                                            case +# [idx_sqEE step_sqEC] of sat_sqEL {
+                                              __DEFAULT ->
+                                                  fillA_sqEB step_sqEC val_sqED sat_sqEL nx_sqEK;
+                                            };
+                                      };
+                                };
+                      } in  fillA_sqEB 2# 0# 1# s2_sqEv;
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInt#
+  :: GHC.Prim.Int#
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [n_sqEM e_sqEN]
+        case GHC.Float.ConversionUtils.zeroCountArr of {
+          GHC.Float.ConversionUtils.BA ba_sqEP ->
+              case int2Word# [n_sqEM] of sat_sqEQ {
+                __DEFAULT ->
+                    case and# [255## sat_sqEQ] of sat_sqER {
+                      __DEFAULT ->
+                          case word2Int# [sat_sqER] of sat_sqES {
+                            __DEFAULT ->
+                                case indexInt8Array# [ba_sqEP sat_sqES] of t_sqET {
+                                  __DEFAULT ->
+                                      case <=# [e_sqEN t_sqET] of {
+                                        __DEFAULT ->
+                                            case <# [t_sqET 8#] of {
+                                              __DEFAULT ->
+                                                  case -# [e_sqEN 8#] of sat_sqFd {
+                                                    __DEFAULT ->
+                                                        case
+                                                            uncheckedIShiftRA# [n_sqEM 8#]
+                                                        of
+                                                        sat_sqFc
+                                                        { __DEFAULT ->
+                                                              let-no-escape {
+                                                                elimZerosInt#1_sqEW [Occ=LoopBreakerT[2]]
+                                                                  :: GHC.Prim.Int#
+                                                                     -> GHC.Prim.Int#
+                                                                     -> (# GHC.Integer.Type.Integer,
+                                                                           GHC.Prim.Int# #)
+                                                                [LclId[JoinId(2)],
+                                                                 Arity=2,
+                                                                 Str=<S,U><S,U>,
+                                                                 Unf=OtherCon []] =
+                                                                    sat-only [ba_sqEP
+                                                                              elimZerosInt#1_sqEW] \r [n1_sqEX
+                                                                                                       e1_sqEY]
+                                                                        case
+                                                                            int2Word# [n1_sqEX]
+                                                                        of
+                                                                        sat_sqEZ
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  and# [255##
+                                                                                        sat_sqEZ]
+                                                                              of
+                                                                              sat_sqF0
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        word2Int# [sat_sqF0]
+                                                                                    of
+                                                                                    sat_sqF1
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              indexInt8Array# [ba_sqEP
+                                                                                                               sat_sqF1]
+                                                                                          of
+                                                                                          t1_sqF2
+                                                                                          { __DEFAULT ->
+                                                                                                case
+                                                                                                    <=# [e1_sqEY
+                                                                                                         t1_sqF2]
+                                                                                                of
+                                                                                                { __DEFAULT ->
+                                                                                                      case
+                                                                                                          <# [t1_sqF2
+                                                                                                              8#]
+                                                                                                      of
+                                                                                                      { __DEFAULT ->
+                                                                                                            case
+                                                                                                                -# [e1_sqEY
+                                                                                                                    8#]
+                                                                                                            of
+                                                                                                            sat_sqF6
+                                                                                                            { __DEFAULT ->
+                                                                                                                  case
+                                                                                                                      uncheckedIShiftRA# [n1_sqEX
+                                                                                                                                          8#]
+                                                                                                                  of
+                                                                                                                  sat_sqF5
+                                                                                                                  { __DEFAULT ->
+                                                                                                                        elimZerosInt#1_sqEW
+                                                                                                                            sat_sqF5
+                                                                                                                            sat_sqF6;
+                                                                                                                  };
+                                                                                                            };
+                                                                                                        1# ->
+                                                                                                            case
+                                                                                                                -# [e1_sqEY
+                                                                                                                    t1_sqF2]
+                                                                                                            of
+                                                                                                            sat_sqF9
+                                                                                                            { __DEFAULT ->
+                                                                                                                  let {
+                                                                                                                    sat_sqF8 [Occ=Once]
+                                                                                                                      :: GHC.Integer.Type.Integer
+                                                                                                                    [LclId] =
+                                                                                                                        [n1_sqEX
+                                                                                                                         t1_sqF2] \u []
+                                                                                                                            case
+                                                                                                                                uncheckedIShiftRA# [n1_sqEX
+                                                                                                                                                    t1_sqF2]
+                                                                                                                            of
+                                                                                                                            sat_sqF7
+                                                                                                                            { __DEFAULT ->
+                                                                                                                                  GHC.Integer.Type.smallInteger
+                                                                                                                                      sat_sqF7;
+                                                                                                                            };
+                                                                                                                  } in 
+                                                                                                                    (#,#) [sat_sqF8
+                                                                                                                           sat_sqF9];
+                                                                                                            };
+                                                                                                      };
+                                                                                                  1# ->
+                                                                                                      let {
+                                                                                                        sat_sqFb [Occ=Once]
+                                                                                                          :: GHC.Integer.Type.Integer
+                                                                                                        [LclId] =
+                                                                                                            [n1_sqEX
+                                                                                                             e1_sqEY] \u []
+                                                                                                                case
+                                                                                                                    uncheckedIShiftRA# [n1_sqEX
+                                                                                                                                        e1_sqEY]
+                                                                                                                of
+                                                                                                                sat_sqFa
+                                                                                                                { __DEFAULT ->
+                                                                                                                      GHC.Integer.Type.smallInteger
+                                                                                                                          sat_sqFa;
+                                                                                                                };
+                                                                                                      } in 
+                                                                                                        (#,#) [sat_sqFb
+                                                                                                               0#];
+                                                                                                };
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                              } in 
+                                                                elimZerosInt#1_sqEW
+                                                                    sat_sqFc sat_sqFd;
+                                                        };
+                                                  };
+                                              1# ->
+                                                  case -# [e_sqEN t_sqET] of sat_sqFg {
+                                                    __DEFAULT ->
+                                                        let {
+                                                          sat_sqFf [Occ=Once]
+                                                            :: GHC.Integer.Type.Integer
+                                                          [LclId] =
+                                                              [n_sqEM t_sqET] \u []
+                                                                  case
+                                                                      uncheckedIShiftRA# [n_sqEM
+                                                                                          t_sqET]
+                                                                  of
+                                                                  sat_sqFe
+                                                                  { __DEFAULT ->
+                                                                        GHC.Integer.Type.smallInteger
+                                                                            sat_sqFe;
+                                                                  };
+                                                        } in  (#,#) [sat_sqFf sat_sqFg];
+                                                  };
+                                            };
+                                        1# ->
+                                            let {
+                                              sat_sqFi [Occ=Once] :: GHC.Integer.Type.Integer
+                                              [LclId] =
+                                                  [n_sqEM e_sqEN] \u []
+                                                      case
+                                                          uncheckedIShiftRA# [n_sqEM e_sqEN]
+                                                      of
+                                                      sat_sqFh
+                                                      { __DEFAULT ->
+                                                            GHC.Integer.Type.smallInteger sat_sqFh;
+                                                      };
+                                            } in  (#,#) [sat_sqFi 0#];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInteger [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Integer.Type.Integer
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [m_sqFj e_sqFk]
+        case GHC.Integer.Type.integerToInt m_sqFj of wild_sqFl {
+          __DEFAULT ->
+              GHC.Float.ConversionUtils.elimZerosInt# wild_sqFl e_sqFk;
+        };
+
+GHC.Float.ConversionUtils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Float.ConversionUtils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule4];
+
+GHC.Float.ConversionUtils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Float.ConversionUtils"#;
+
+GHC.Float.ConversionUtils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule2];
+
+GHC.Float.ConversionUtils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Float.ConversionUtils.$trModule3
+                                     GHC.Float.ConversionUtils.$trModule1];
+
+$krep_rqs2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tcBA2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "BA"#;
+
+GHC.Float.ConversionUtils.$tcBA1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tcBA2];
+
+GHC.Float.ConversionUtils.$tcBA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2744518186030791563##
+                                    15983957619153370905##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tcBA1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_rqs3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Float.ConversionUtils.$tcBA
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tc'BA1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rqs2 $krep1_rqs3];
+
+GHC.Float.ConversionUtils.$tc'BA3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'BA"#;
+
+GHC.Float.ConversionUtils.$tc'BA2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tc'BA3];
+
+GHC.Float.ConversionUtils.$tc'BA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2662423355322146026##
+                                    17541892848942326139##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tc'BA2
+                                    0#
+                                    GHC.Float.ConversionUtils.$tc'BA1];
+
+GHC.Float.ConversionUtils.BA
+  :: GHC.Prim.ByteArray# -> GHC.Float.ConversionUtils.BA
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Float.ConversionUtils.BA [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:04.239737846 UTC
+
+GHC.Float.ConversionUtils.zeroCountArr
+  :: GHC.Float.ConversionUtils.BA
+[GblId] =
+    [] \u []
+        case newByteArray# [256# GHC.Prim.realWorld#] of {
+          Unit# ipv1_sqEu ->
+              case writeInt8Array# [ipv1_sqEu 0# 8# GHC.Prim.void#] of s2_sqEv {
+                (##) ->
+                    let-no-escape {
+                      $j_sqEw [Occ=OnceL!T[1], Dmd=<C(S),C(U(U))>]
+                        :: GHC.Prim.State# GHC.Prim.RealWorld
+                           -> GHC.Float.ConversionUtils.BA
+                      [LclId[JoinId(1)], Arity=1, Str=<S,U>m, Unf=OtherCon []] =
+                          sat-only [ipv1_sqEu] \r [void_0E]
+                              case unsafeFreezeByteArray# [ipv1_sqEu GHC.Prim.void#] of {
+                                Unit# ipv3_sqEA [Occ=Once] ->
+                                    GHC.Float.ConversionUtils.BA [ipv3_sqEA];
+                              };
+                    } in 
+                      let-no-escape {
+                        fillA_sqEB [Occ=LoopBreakerT[4]]
+                          :: GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.Int#
+                             -> GHC.Prim.State# GHC.Prim.RealWorld
+                             -> GHC.Float.ConversionUtils.BA
+                        [LclId[JoinId(4)],
+                         Arity=4,
+                         Str=<S,U><L,U><S,U><S,U>m,
+                         Unf=OtherCon []] =
+                            sat-only [ipv1_sqEu $j_sqEw fillA_sqEB] \r [step_sqEC
+                                                                        val_sqED
+                                                                        idx_sqEE
+                                                                        void_0E]
+                                case <# [idx_sqEE 256#] of {
+                                  __DEFAULT ->
+                                      case <# [step_sqEC 256#] of {
+                                        __DEFAULT -> $j_sqEw GHC.Prim.void#;
+                                        1# ->
+                                            case +# [val_sqED 1#] of sat_sqEJ {
+                                              __DEFAULT ->
+                                                  case *# [2# step_sqEC] of sat_sqEI {
+                                                    __DEFAULT ->
+                                                        fillA_sqEB
+                                                            sat_sqEI
+                                                            sat_sqEJ
+                                                            step_sqEC
+                                                            GHC.Prim.void#;
+                                                  };
+                                            };
+                                      };
+                                  1# ->
+                                      case
+                                          writeInt8Array# [ipv1_sqEu
+                                                           idx_sqEE
+                                                           val_sqED
+                                                           GHC.Prim.void#]
+                                      of
+                                      nx_sqEK
+                                      { (##) ->
+                                            case +# [idx_sqEE step_sqEC] of sat_sqEL {
+                                              __DEFAULT ->
+                                                  fillA_sqEB
+                                                      step_sqEC val_sqED sat_sqEL GHC.Prim.void#;
+                                            };
+                                      };
+                                };
+                      } in  fillA_sqEB 2# 0# 1# GHC.Prim.void#;
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInt#
+  :: GHC.Prim.Int#
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [n_sqEM e_sqEN]
+        case GHC.Float.ConversionUtils.zeroCountArr of {
+          GHC.Float.ConversionUtils.BA ba_sqEP ->
+              case int2Word# [n_sqEM] of sat_sqEQ {
+                __DEFAULT ->
+                    case and# [255## sat_sqEQ] of sat_sqER {
+                      __DEFAULT ->
+                          case word2Int# [sat_sqER] of sat_sqES {
+                            __DEFAULT ->
+                                case indexInt8Array# [ba_sqEP sat_sqES] of t_sqET {
+                                  __DEFAULT ->
+                                      case <=# [e_sqEN t_sqET] of {
+                                        __DEFAULT ->
+                                            case <# [t_sqET 8#] of {
+                                              __DEFAULT ->
+                                                  case -# [e_sqEN 8#] of sat_sqFd {
+                                                    __DEFAULT ->
+                                                        case
+                                                            uncheckedIShiftRA# [n_sqEM 8#]
+                                                        of
+                                                        sat_sqFc
+                                                        { __DEFAULT ->
+                                                              let-no-escape {
+                                                                elimZerosInt#1_sqEW [Occ=LoopBreakerT[2]]
+                                                                  :: GHC.Prim.Int#
+                                                                     -> GHC.Prim.Int#
+                                                                     -> (# GHC.Integer.Type.Integer,
+                                                                           GHC.Prim.Int# #)
+                                                                [LclId[JoinId(2)],
+                                                                 Arity=2,
+                                                                 Str=<S,U><S,U>,
+                                                                 Unf=OtherCon []] =
+                                                                    sat-only [ba_sqEP
+                                                                              elimZerosInt#1_sqEW] \r [n1_sqEX
+                                                                                                       e1_sqEY]
+                                                                        case
+                                                                            int2Word# [n1_sqEX]
+                                                                        of
+                                                                        sat_sqEZ
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  and# [255##
+                                                                                        sat_sqEZ]
+                                                                              of
+                                                                              sat_sqF0
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        word2Int# [sat_sqF0]
+                                                                                    of
+                                                                                    sat_sqF1
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              indexInt8Array# [ba_sqEP
+                                                                                                               sat_sqF1]
+                                                                                          of
+                                                                                          t1_sqF2
+                                                                                          { __DEFAULT ->
+                                                                                                case
+                                                                                                    <=# [e1_sqEY
+                                                                                                         t1_sqF2]
+                                                                                                of
+                                                                                                { __DEFAULT ->
+                                                                                                      case
+                                                                                                          <# [t1_sqF2
+                                                                                                              8#]
+                                                                                                      of
+                                                                                                      { __DEFAULT ->
+                                                                                                            case
+                                                                                                                -# [e1_sqEY
+                                                                                                                    8#]
+                                                                                                            of
+                                                                                                            sat_sqF6
+                                                                                                            { __DEFAULT ->
+                                                                                                                  case
+                                                                                                                      uncheckedIShiftRA# [n1_sqEX
+                                                                                                                                          8#]
+                                                                                                                  of
+                                                                                                                  sat_sqF5
+                                                                                                                  { __DEFAULT ->
+                                                                                                                        elimZerosInt#1_sqEW
+                                                                                                                            sat_sqF5
+                                                                                                                            sat_sqF6;
+                                                                                                                  };
+                                                                                                            };
+                                                                                                        1# ->
+                                                                                                            case
+                                                                                                                -# [e1_sqEY
+                                                                                                                    t1_sqF2]
+                                                                                                            of
+                                                                                                            sat_sqF9
+                                                                                                            { __DEFAULT ->
+                                                                                                                  let {
+                                                                                                                    sat_sqF8 [Occ=Once]
+                                                                                                                      :: GHC.Integer.Type.Integer
+                                                                                                                    [LclId] =
+                                                                                                                        [n1_sqEX
+                                                                                                                         t1_sqF2] \u []
+                                                                                                                            case
+                                                                                                                                uncheckedIShiftRA# [n1_sqEX
+                                                                                                                                                    t1_sqF2]
+                                                                                                                            of
+                                                                                                                            sat_sqF7
+                                                                                                                            { __DEFAULT ->
+                                                                                                                                  GHC.Integer.Type.smallInteger
+                                                                                                                                      sat_sqF7;
+                                                                                                                            };
+                                                                                                                  } in 
+                                                                                                                    (#,#) [sat_sqF8
+                                                                                                                           sat_sqF9];
+                                                                                                            };
+                                                                                                      };
+                                                                                                  1# ->
+                                                                                                      let {
+                                                                                                        sat_sqFb [Occ=Once]
+                                                                                                          :: GHC.Integer.Type.Integer
+                                                                                                        [LclId] =
+                                                                                                            [n1_sqEX
+                                                                                                             e1_sqEY] \u []
+                                                                                                                case
+                                                                                                                    uncheckedIShiftRA# [n1_sqEX
+                                                                                                                                        e1_sqEY]
+                                                                                                                of
+                                                                                                                sat_sqFa
+                                                                                                                { __DEFAULT ->
+                                                                                                                      GHC.Integer.Type.smallInteger
+                                                                                                                          sat_sqFa;
+                                                                                                                };
+                                                                                                      } in 
+                                                                                                        (#,#) [sat_sqFb
+                                                                                                               0#];
+                                                                                                };
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                              } in 
+                                                                elimZerosInt#1_sqEW
+                                                                    sat_sqFc sat_sqFd;
+                                                        };
+                                                  };
+                                              1# ->
+                                                  case -# [e_sqEN t_sqET] of sat_sqFg {
+                                                    __DEFAULT ->
+                                                        let {
+                                                          sat_sqFf [Occ=Once]
+                                                            :: GHC.Integer.Type.Integer
+                                                          [LclId] =
+                                                              [n_sqEM t_sqET] \u []
+                                                                  case
+                                                                      uncheckedIShiftRA# [n_sqEM
+                                                                                          t_sqET]
+                                                                  of
+                                                                  sat_sqFe
+                                                                  { __DEFAULT ->
+                                                                        GHC.Integer.Type.smallInteger
+                                                                            sat_sqFe;
+                                                                  };
+                                                        } in  (#,#) [sat_sqFf sat_sqFg];
+                                                  };
+                                            };
+                                        1# ->
+                                            let {
+                                              sat_sqFi [Occ=Once] :: GHC.Integer.Type.Integer
+                                              [LclId] =
+                                                  [n_sqEM e_sqEN] \u []
+                                                      case
+                                                          uncheckedIShiftRA# [n_sqEM e_sqEN]
+                                                      of
+                                                      sat_sqFh
+                                                      { __DEFAULT ->
+                                                            GHC.Integer.Type.smallInteger sat_sqFh;
+                                                      };
+                                            } in  (#,#) [sat_sqFi 0#];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+GHC.Float.ConversionUtils.elimZerosInteger [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Integer.Type.Integer
+     -> GHC.Prim.Int# -> (# GHC.Integer.Type.Integer, GHC.Prim.Int# #)
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [m_sqFj e_sqFk]
+        case GHC.Integer.Type.integerToInt m_sqFj of wild_sqFl {
+          __DEFAULT ->
+              GHC.Float.ConversionUtils.elimZerosInt# wild_sqFl e_sqFk;
+        };
+
+GHC.Float.ConversionUtils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Float.ConversionUtils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule4];
+
+GHC.Float.ConversionUtils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Float.ConversionUtils"#;
+
+GHC.Float.ConversionUtils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$trModule2];
+
+GHC.Float.ConversionUtils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Float.ConversionUtils.$trModule3
+                                     GHC.Float.ConversionUtils.$trModule1];
+
+$krep_rqs2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tcBA2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "BA"#;
+
+GHC.Float.ConversionUtils.$tcBA1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tcBA2];
+
+GHC.Float.ConversionUtils.$tcBA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2744518186030791563##
+                                    15983957619153370905##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tcBA1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_rqs3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Float.ConversionUtils.$tcBA
+                                              GHC.Types.[]];
+
+GHC.Float.ConversionUtils.$tc'BA1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rqs2 $krep1_rqs3];
+
+GHC.Float.ConversionUtils.$tc'BA3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'BA"#;
+
+GHC.Float.ConversionUtils.$tc'BA2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Float.ConversionUtils.$tc'BA3];
+
+GHC.Float.ConversionUtils.$tc'BA :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2662423355322146026##
+                                    17541892848942326139##
+                                    GHC.Float.ConversionUtils.$trModule
+                                    GHC.Float.ConversionUtils.$tc'BA2
+                                    0#
+                                    GHC.Float.ConversionUtils.$tc'BA1];
+
+GHC.Float.ConversionUtils.BA
+  :: GHC.Prim.ByteArray# -> GHC.Float.ConversionUtils.BA
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Float.ConversionUtils.BA [eta_B1];
+

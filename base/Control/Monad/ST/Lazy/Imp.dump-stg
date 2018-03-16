@@ -1,0 +1,3216 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:32.744426245 UTC
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+  :: forall s a.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>m, Unf=OtherCon []] =
+    [] \r [a1_scDJi s1_scDJj] (,) [a1_scDJi s1_scDJj];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail
+  :: forall s a. GHC.Base.String -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [s1_scDJk] GHC.Err.errorWithoutStackTrace s1_scDJk;
+
+Control.Monad.ST.Lazy.Imp.unST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scDJl] ds_scDJl;
+
+Control.Monad.ST.Lazy.Imp.unST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId[[RecSel]],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Monad.ST.Lazy.Imp.unST1 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadST1
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> (a -> Control.Monad.ST.Lazy.Imp.ST s b)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(C(S)),1*C1(C1(U(U,U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scDJm k_scDJn s1_scDJo]
+        let {
+          res_scDJp [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_acDkc, Control.Monad.ST.Lazy.Imp.State s_acDk4)
+          [LclId] =
+              [m_scDJm s1_scDJo] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT -> m_scDJm s1_scDJo;
+                  }; } in
+        let {
+          sat_scDJy [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDk4
+          [LclId] =
+              [res_scDJp] \u []
+                  case res_scDJp of {
+                    (,) _ [Occ=Dead] new_s_scDJx [Occ=Once] -> new_s_scDJx;
+                  }; } in
+        let {
+          sat_scDJu [Occ=Once] :: a_acDkc
+          [LclId] =
+              [res_scDJp] \u []
+                  case res_scDJp of {
+                    (,) r_scDJs [Occ=Once] _ [Occ=Dead] -> r_scDJs;
+                  };
+        } in  k_scDJn sat_scDJu sat_scDJy;
+
+Control.Monad.ST.Lazy.Imp.$w$c<*> [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# b, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scDJz w1_scDJA w2_scDJB]
+        let-no-escape {
+          res1_scDJC [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# b_scDBg, Control.Monad.ST.Lazy.Imp.State s_scDBe #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scDJz w1_scDJA w2_scDJB] \r []
+                  case w_scDJz w2_scDJB of res2_scDJD {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scDJD of {
+                          (,) f_scDJI [Occ=Once!] s'_scDJJ [Occ=Once] ->
+                              let {
+                                res4_scDJK [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+                                  :: (a_scDBf, Control.Monad.ST.Lazy.Imp.State s_scDBe)
+                                [LclId] =
+                                    [w1_scDJA s'_scDJJ] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          __DEFAULT -> w1_scDJA s'_scDJJ;
+                                        }; } in
+                              let {
+                                sat_scDJU [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBe
+                                [LclId] =
+                                    [res4_scDJK] \u []
+                                        case res4_scDJK of {
+                                          (,) _ [Occ=Dead] s''_scDJT [Occ=Once] -> s''_scDJT;
+                                        }; } in
+                              let {
+                                sat_scDJQ [Occ=Once] :: b_scDBg
+                                [LclId] =
+                                    [f_scDJI res4_scDJK] \u []
+                                        let {
+                                          sat_scDJP [Occ=Once] :: a_scDBf
+                                          [LclId] =
+                                              [res4_scDJK] \u []
+                                                  case res4_scDJK of {
+                                                    (,) x_scDJN [Occ=Once] _ [Occ=Dead] -> x_scDJN;
+                                                  };
+                                        } in  f_scDJI sat_scDJP;
+                              } in  (#,#) [sat_scDJQ sat_scDJU];
+                        };
+                  };
+        } in  res1_scDJC;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST4 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDJV w1_scDJW w2_scDJX]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<*> w_scDJV w1_scDJW w2_scDJX
+        of
+        { (#,#) ww1_scDJZ [Occ=Once] ww2_scDK0 [Occ=Once] ->
+              (,) [ww1_scDJZ ww2_scDK0];
+        };
+
+Control.Monad.ST.Lazy.Imp.$w$cliftA2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# c, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scDK1 w1_scDK2 w2_scDK3 w3_scDK4]
+        let {
+          res1_scDK5 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBp, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w1_scDK2 w3_scDK4] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT -> w1_scDK2 w3_scDK4;
+                  }; } in
+        let {
+          res2_scDK7 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (b_scDBq, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w2_scDK3 res1_scDK5] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_scDKc [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+                          [LclId] =
+                              [res1_scDK5] \u []
+                                  case res1_scDK5 of {
+                                    (,) _ [Occ=Dead] s'_scDKb [Occ=Once] -> s'_scDKb;
+                                  };
+                        } in  w2_scDK3 sat_scDKc;
+                  }; } in
+        let {
+          sat_scDKp [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+          [LclId] =
+              [res2_scDK7] \u []
+                  case res2_scDK7 of {
+                    (,) _ [Occ=Dead] s''_scDKo [Occ=Once] -> s''_scDKo;
+                  }; } in
+        let {
+          sat_scDKl [Occ=Once] :: c_scDBr
+          [LclId] =
+              [w_scDK1 res1_scDK5 res2_scDK7] \u []
+                  let {
+                    sat_scDKk [Occ=Once] :: b_scDBq
+                    [LclId] =
+                        [res2_scDK7] \u []
+                            case res2_scDK7 of {
+                              (,) y_scDKi [Occ=Once] _ [Occ=Dead] -> y_scDKi;
+                            }; } in
+                  let {
+                    sat_scDKg [Occ=Once] :: a_scDBp
+                    [LclId] =
+                        [res1_scDK5] \u []
+                            case res1_scDK5 of {
+                              (,) x_scDKe [Occ=Once] _ [Occ=Dead] -> x_scDKe;
+                            };
+                  } in  w_scDK1 sat_scDKg sat_scDKk;
+        } in  (#,#) [sat_scDKl sat_scDKp];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST3 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (c, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDKq w1_scDKr w2_scDKs w3_scDKt]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$cliftA2
+                w_scDKq w1_scDKr w2_scDKs w3_scDKt
+        of
+        { (#,#) ww1_scDKv [Occ=Once] ww2_scDKw [Occ=Once] ->
+              (,) [ww1_scDKv ww2_scDKw];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><C(S),1*C1(U(U,U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scDKx n_scDKy s1_scDKz]
+        let {
+          s'_scDKA [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDms
+          [LclId] =
+              [m_scDKx s1_scDKz] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT ->
+                        case m_scDKx s1_scDKz of {
+                          (,) _ [Occ=Dead] y_scDKE [Occ=Once] -> y_scDKE;
+                        };
+                  };
+        } in  n_scDKy s'_scDKA;
+
+Control.Monad.ST.Lazy.Imp.$w$c<* [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# a, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scDKF w1_scDKG w2_scDKH]
+        let-no-escape {
+          res1_scDKI [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# a_scDBB, Control.Monad.ST.Lazy.Imp.State s_scDBA #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scDKF w1_scDKG w2_scDKH] \r []
+                  case w_scDKF w2_scDKH of res2_scDKJ {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scDKJ of {
+                          (,) mr_scDKO [Occ=Once] s'_scDKP [Occ=Once] ->
+                              let {
+                                s''_scDKQ [InlPrag=NOINLINE, Occ=Once]
+                                  :: Control.Monad.ST.Lazy.Imp.State s_scDBA
+                                [LclId] =
+                                    [w1_scDKG s'_scDKP] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          __DEFAULT ->
+                                              case w1_scDKG s'_scDKP of {
+                                                (,) _ [Occ=Dead] y_scDKU [Occ=Once] -> y_scDKU;
+                                              };
+                                        };
+                              } in  (#,#) [mr_scDKO s''_scDKQ];
+                        };
+                  };
+        } in  res1_scDKI;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDKV w1_scDKW w2_scDKX]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<* w_scDKV w1_scDKW w2_scDKX
+        of
+        { (#,#) ww1_scDKZ [Occ=Once] ww2_scDL0 [Occ=Once] ->
+              (,) [ww1_scDKZ ww2_scDL0];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDL1 w1_scDL2 w2_scDL3]
+        let {
+          res_scDL4 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBL, Control.Monad.ST.Lazy.Imp.State s_scDBK)
+          [LclId] =
+              [w1_scDL2 w2_scDL3] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT -> w1_scDL2 w2_scDL3;
+                  }; } in
+        let {
+          sat_scDLe [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBK
+          [LclId] =
+              [res_scDL4] \u []
+                  case res_scDL4 of {
+                    (,) _ [Occ=Dead] new_s_scDLd [Occ=Once] -> new_s_scDLd;
+                  }; } in
+        let {
+          sat_scDLa [Occ=Once] :: b_scDBM
+          [LclId] =
+              [w_scDL1 res_scDL4] \u []
+                  let {
+                    sat_scDL9 [Occ=Once] :: a_scDBL
+                    [LclId] =
+                        [res_scDL4] \u []
+                            case res_scDL4 of {
+                              (,) r_scDL7 [Occ=Once] _ [Occ=Dead] -> r_scDL7;
+                            };
+                  } in  w_scDL1 sat_scDL9;
+        } in  (,) [sat_scDLa sat_scDLe];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST1
+  :: forall s a b.
+     a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_scDLf m_scDLg s1_scDLh]
+        let {
+          s'_scDLi [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDq9
+          [LclId] =
+              [m_scDLg s1_scDLh] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT ->
+                        case m_scDLg s1_scDLh of {
+                          (,) _ [Occ=Dead] y_scDLm [Occ=Once] -> y_scDLm;
+                        };
+                  };
+        } in  (,) [x_scDLf s'_scDLi];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Monad.ST.Lazy.Imp.$fFunctorST2
+                                       Control.Monad.ST.Lazy.Imp.$fFunctorST1];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [Control.Monad.ST.Lazy.Imp.$fFunctorST
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST4
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST3
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST1];
+
+Control.Monad.ST.Lazy.Imp.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [Control.Monad.ST.Lazy.Imp.$fApplicativeST
+                                     Control.Monad.ST.Lazy.Imp.$fMonadST1
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                     Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fail.MonadFail (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                   Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.runST
+  :: forall a. (forall s. Control.Monad.ST.Lazy.Imp.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(1*U,A))>,
+ Unf=OtherCon []] =
+    [] \r [ds_scDLn]
+        let {
+          sat_scDLo [Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State GHC.Prim.RealWorld
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [GHC.Prim.realWorld#];
+        } in 
+          case ds_scDLn sat_scDLo of {
+            (,) r_scDLq [Occ=Once] _ [Occ=Dead] -> r_scDLq;
+          };
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [m_scDLs s1_scDLt]
+        let {
+          ds_scDLu [Occ=LoopBreaker]
+            :: ((a_acDiW, Control.Monad.ST.Lazy.Imp.State s_acDiX), a_acDiW,
+                Control.Monad.ST.Lazy.Imp.State s_acDiX)
+          [LclId] =
+              [m_scDLs s1_scDLt ds_scDLu] \u []
+                  let {
+                    sat_scDLz [Occ=Once] :: a_acDiW
+                    [LclId] =
+                        [ds_scDLu] \u []
+                            case ds_scDLu of {
+                              (,,) _ [Occ=Dead] r_scDLx [Occ=Once] _ [Occ=Dead] -> r_scDLx;
+                            };
+                  } in 
+                    case m_scDLs sat_scDLz s1_scDLt of wild_scDLA {
+                      (,) r_scDLB [Occ=Once] _s'_scDLC [Occ=Once] ->
+                          (,,) [wild_scDLA r_scDLB _s'_scDLC];
+                    };
+        } in 
+          case ds_scDLu of {
+            (,,) q_scDLE [Occ=Once] _ [Occ=Dead] _ [Occ=Dead] -> q_scDLE;
+          };
+
+Control.Monad.ST.Lazy.Imp.fixST
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.$fMonadFixST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fix.MonadFix (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                 Control.Monad.ST.Lazy.Imp.$fMonadFixST1];
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST1
+  :: forall s a.
+     GHC.ST.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_scDLH ds1_scDLI]
+        case ds1_scDLI of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scDLK [Occ=Once] ->
+              case ds_scDLH s1_scDLK of {
+                (#,#) ipv_scDLM [Occ=Once] ipv1_scDLN [Occ=Once] ->
+                    let {
+                      sat_scDLO [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDih
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scDLM];
+                    } in  (,) [ipv1_scDLN sat_scDLO];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST
+  :: forall s a. GHC.ST.ST s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.strictToLazyST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+  :: forall a s.
+     GHC.Types.IO a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scDLP eta_scDLQ]
+        case eta_scDLQ of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scDLS [Occ=Once] ->
+              case x_scDLP s1_scDLS of {
+                (#,#) ipv_scDLU [Occ=Once] ipv1_scDLV [Occ=Once] ->
+                    let {
+                      sat_scDLW [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDiK
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scDLU];
+                    } in  (,) [ipv1_scDLV sat_scDLW];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST
+  :: forall a s. GHC.Types.IO a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeIOToST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_scDLX s1_scDLY]
+        let {
+          sat_scDLZ [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDhX
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [s1_scDLY];
+        } in 
+          case ds_scDLX sat_scDLZ of {
+            (,) a1_scDM1 [Occ=Once] ds1_scDM2 [Occ=Once!] ->
+                case ds1_scDM2 of {
+                  Control.Monad.ST.Lazy.Imp.S# s'_scDM4 [Occ=Once] ->
+                      (#,#) [s'_scDM4 a1_scDM1];
+                };
+          };
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST
+  :: forall s a. Control.Monad.ST.Lazy.Imp.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.stToIO
+  :: forall a.
+     Control.Monad.ST.Lazy.Imp.ST GHC.Prim.RealWorld a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDM5 w1_scDM6]
+        case w1_scDM6 of {
+          Control.Monad.ST.Lazy.Imp.S# ww1_scDM8 [Occ=Once] ->
+              let {
+                sat_scDMh [Occ=Once] :: GHC.ST.ST s_scDBU a_scDBV
+                [LclId] =
+                    [w_scDM5] \r [s1_scDM9]
+                        case noDuplicate# [s1_scDM9] of wild_scDMa {
+                          __DEFAULT ->
+                              let {
+                                sat_scDMb [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                                [LclId] =
+                                    CCCS Control.Monad.ST.Lazy.Imp.S#! [wild_scDMa];
+                              } in 
+                                case w_scDM5 sat_scDMb of {
+                                  (,) a1_scDMd [Occ=Once] ds_scDMe [Occ=Once!] ->
+                                      case ds_scDMe of {
+                                        Control.Monad.ST.Lazy.Imp.S# s'_scDMg [Occ=Once] ->
+                                            (#,#) [s'_scDMg a1_scDMd];
+                                      };
+                                };
+                        };
+              } in 
+                case GHC.ST.unsafeDupableInterleaveST sat_scDMh ww1_scDM8 of {
+                  (#,#) ipv_scDMj [Occ=Once] ipv1_scDMk [Occ=Once] ->
+                      let {
+                        sat_scDMl [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                        [LclId] =
+                            CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scDMj];
+                      } in  (,) [ipv1_scDMk sat_scDMl];
+                };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule4];
+
+Control.Monad.ST.Lazy.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.ST.Lazy.Imp"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule2];
+
+Control.Monad.ST.Lazy.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.ST.Lazy.Imp.$trModule3
+                                     Control.Monad.ST.Lazy.Imp.$trModule1];
+
+$krep_rcDJ5 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_rcDJ6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rcDJ7 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 GHC.Types.[]];
+
+$krep3_rcDJ8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tcState2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "State"#;
+
+Control.Monad.ST.Lazy.Imp.$tcState1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcState2];
+
+Control.Monad.ST.Lazy.Imp.$tcState :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [220923881781706094##
+                                    12630832853168782158##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcState1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep4_rcDJ9 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcState
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_rcDJ8 $krep4_rcDJ9];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'S#"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'S#2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'S#3];
+
+Control.Monad.ST.Lazy.Imp.$tc'S# :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12704778602275544086##
+                                    1928505377508739254##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#2
+                                    1#
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#1];
+
+$krep5_rcDJa :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rcDJ9 GHC.Types.[]];
+
+$krep6_rcDJb :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 $krep5_rcDJa];
+
+$krep7_rcDJc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Tuple.$tc(,)
+                                              $krep6_rcDJb];
+
+$krep8_rcDJd :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rcDJ9 $krep7_rcDJc];
+
+Control.Monad.ST.Lazy.Imp.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcST2];
+
+Control.Monad.ST.Lazy.Imp.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9758985700159114765##
+                                    4154811637844139714##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep9_rcDJe :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 GHC.Types.[]];
+
+$krep10_rcDJf :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 $krep9_rcDJe];
+
+$krep11_rcDJg :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcST
+                                              $krep10_rcDJf];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep8_rcDJd $krep11_rcDJg];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'ST3];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5656684040178075861##
+                                    6626797926801395533##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST2
+                                    2#
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST1];
+
+Control.Monad.ST.Lazy.Imp.S#
+  :: forall s. GHC.Prim.State# s -> Control.Monad.ST.Lazy.Imp.State s
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Monad.ST.Lazy.Imp.S# [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:32.756329387 UTC
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+  :: forall s a.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>m, Unf=OtherCon []] =
+    [] \r [a1_scDJi s1_scDJj] (,) [a1_scDJi s1_scDJj];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail
+  :: forall s a. GHC.Base.String -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [s1_scDJk] GHC.Err.errorWithoutStackTrace s1_scDJk;
+
+Control.Monad.ST.Lazy.Imp.unST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scDJl] ds_scDJl;
+
+Control.Monad.ST.Lazy.Imp.unST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId[[RecSel]],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Monad.ST.Lazy.Imp.unST1 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadST1
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> (a -> Control.Monad.ST.Lazy.Imp.ST s b)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(C(S)),1*C1(C1(U(U,U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scDJm k_scDJn s1_scDJo]
+        let {
+          res_scDJp [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_acDkc, Control.Monad.ST.Lazy.Imp.State s_acDk4)
+          [LclId] =
+              [m_scDJm s1_scDJo] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) -> m_scDJm s1_scDJo;
+                  }; } in
+        let {
+          sat_scDJy [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDk4
+          [LclId] =
+              [res_scDJp] \u []
+                  case res_scDJp of {
+                    (,) _ [Occ=Dead] new_s_scDJx [Occ=Once] -> new_s_scDJx;
+                  }; } in
+        let {
+          sat_scDJu [Occ=Once] :: a_acDkc
+          [LclId] =
+              [res_scDJp] \u []
+                  case res_scDJp of {
+                    (,) r_scDJs [Occ=Once] _ [Occ=Dead] -> r_scDJs;
+                  };
+        } in  k_scDJn sat_scDJu sat_scDJy;
+
+Control.Monad.ST.Lazy.Imp.$w$c<*> [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# b, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scDJz w1_scDJA w2_scDJB]
+        let-no-escape {
+          res1_scDJC [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# b_scDBg, Control.Monad.ST.Lazy.Imp.State s_scDBe #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scDJz w1_scDJA w2_scDJB] \r []
+                  case w_scDJz w2_scDJB of res2_scDJD {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scDJD of {
+                          (,) f_scDJI [Occ=Once!] s'_scDJJ [Occ=Once] ->
+                              let {
+                                res4_scDJK [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+                                  :: (a_scDBf, Control.Monad.ST.Lazy.Imp.State s_scDBe)
+                                [LclId] =
+                                    [w1_scDJA s'_scDJJ] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          (##) -> w1_scDJA s'_scDJJ;
+                                        }; } in
+                              let {
+                                sat_scDJU [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBe
+                                [LclId] =
+                                    [res4_scDJK] \u []
+                                        case res4_scDJK of {
+                                          (,) _ [Occ=Dead] s''_scDJT [Occ=Once] -> s''_scDJT;
+                                        }; } in
+                              let {
+                                sat_scDJQ [Occ=Once] :: b_scDBg
+                                [LclId] =
+                                    [f_scDJI res4_scDJK] \u []
+                                        let {
+                                          sat_scDJP [Occ=Once] :: a_scDBf
+                                          [LclId] =
+                                              [res4_scDJK] \u []
+                                                  case res4_scDJK of {
+                                                    (,) x_scDJN [Occ=Once] _ [Occ=Dead] -> x_scDJN;
+                                                  };
+                                        } in  f_scDJI sat_scDJP;
+                              } in  (#,#) [sat_scDJQ sat_scDJU];
+                        };
+                  };
+        } in  res1_scDJC;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST4 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDJV w1_scDJW w2_scDJX]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<*> w_scDJV w1_scDJW w2_scDJX
+        of
+        { (#,#) ww1_scDJZ [Occ=Once] ww2_scDK0 [Occ=Once] ->
+              (,) [ww1_scDJZ ww2_scDK0];
+        };
+
+Control.Monad.ST.Lazy.Imp.$w$cliftA2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# c, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scDK1 w1_scDK2 w2_scDK3 w3_scDK4]
+        let {
+          res1_scDK5 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBp, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w1_scDK2 w3_scDK4] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) -> w1_scDK2 w3_scDK4;
+                  }; } in
+        let {
+          res2_scDK7 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (b_scDBq, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w2_scDK3 res1_scDK5] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) ->
+                        let {
+                          sat_scDKc [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+                          [LclId] =
+                              [res1_scDK5] \u []
+                                  case res1_scDK5 of {
+                                    (,) _ [Occ=Dead] s'_scDKb [Occ=Once] -> s'_scDKb;
+                                  };
+                        } in  w2_scDK3 sat_scDKc;
+                  }; } in
+        let {
+          sat_scDKp [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+          [LclId] =
+              [res2_scDK7] \u []
+                  case res2_scDK7 of {
+                    (,) _ [Occ=Dead] s''_scDKo [Occ=Once] -> s''_scDKo;
+                  }; } in
+        let {
+          sat_scDKl [Occ=Once] :: c_scDBr
+          [LclId] =
+              [w_scDK1 res1_scDK5 res2_scDK7] \u []
+                  let {
+                    sat_scDKk [Occ=Once] :: b_scDBq
+                    [LclId] =
+                        [res2_scDK7] \u []
+                            case res2_scDK7 of {
+                              (,) y_scDKi [Occ=Once] _ [Occ=Dead] -> y_scDKi;
+                            }; } in
+                  let {
+                    sat_scDKg [Occ=Once] :: a_scDBp
+                    [LclId] =
+                        [res1_scDK5] \u []
+                            case res1_scDK5 of {
+                              (,) x_scDKe [Occ=Once] _ [Occ=Dead] -> x_scDKe;
+                            };
+                  } in  w_scDK1 sat_scDKg sat_scDKk;
+        } in  (#,#) [sat_scDKl sat_scDKp];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST3 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (c, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDKq w1_scDKr w2_scDKs w3_scDKt]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$cliftA2
+                w_scDKq w1_scDKr w2_scDKs w3_scDKt
+        of
+        { (#,#) ww1_scDKv [Occ=Once] ww2_scDKw [Occ=Once] ->
+              (,) [ww1_scDKv ww2_scDKw];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><C(S),1*C1(U(U,U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scDKx n_scDKy s1_scDKz]
+        let {
+          s'_scDKA [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDms
+          [LclId] =
+              [m_scDKx s1_scDKz] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) ->
+                        case m_scDKx s1_scDKz of {
+                          (,) _ [Occ=Dead] y_scDKE [Occ=Once] -> y_scDKE;
+                        };
+                  };
+        } in  n_scDKy s'_scDKA;
+
+Control.Monad.ST.Lazy.Imp.$w$c<* [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# a, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scDKF w1_scDKG w2_scDKH]
+        let-no-escape {
+          res1_scDKI [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# a_scDBB, Control.Monad.ST.Lazy.Imp.State s_scDBA #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scDKF w1_scDKG w2_scDKH] \r []
+                  case w_scDKF w2_scDKH of res2_scDKJ {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scDKJ of {
+                          (,) mr_scDKO [Occ=Once] s'_scDKP [Occ=Once] ->
+                              let {
+                                s''_scDKQ [InlPrag=NOINLINE, Occ=Once]
+                                  :: Control.Monad.ST.Lazy.Imp.State s_scDBA
+                                [LclId] =
+                                    [w1_scDKG s'_scDKP] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          (##) ->
+                                              case w1_scDKG s'_scDKP of {
+                                                (,) _ [Occ=Dead] y_scDKU [Occ=Once] -> y_scDKU;
+                                              };
+                                        };
+                              } in  (#,#) [mr_scDKO s''_scDKQ];
+                        };
+                  };
+        } in  res1_scDKI;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDKV w1_scDKW w2_scDKX]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<* w_scDKV w1_scDKW w2_scDKX
+        of
+        { (#,#) ww1_scDKZ [Occ=Once] ww2_scDL0 [Occ=Once] ->
+              (,) [ww1_scDKZ ww2_scDL0];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDL1 w1_scDL2 w2_scDL3]
+        let {
+          res_scDL4 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBL, Control.Monad.ST.Lazy.Imp.State s_scDBK)
+          [LclId] =
+              [w1_scDL2 w2_scDL3] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) -> w1_scDL2 w2_scDL3;
+                  }; } in
+        let {
+          sat_scDLe [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBK
+          [LclId] =
+              [res_scDL4] \u []
+                  case res_scDL4 of {
+                    (,) _ [Occ=Dead] new_s_scDLd [Occ=Once] -> new_s_scDLd;
+                  }; } in
+        let {
+          sat_scDLa [Occ=Once] :: b_scDBM
+          [LclId] =
+              [w_scDL1 res_scDL4] \u []
+                  let {
+                    sat_scDL9 [Occ=Once] :: a_scDBL
+                    [LclId] =
+                        [res_scDL4] \u []
+                            case res_scDL4 of {
+                              (,) r_scDL7 [Occ=Once] _ [Occ=Dead] -> r_scDL7;
+                            };
+                  } in  w_scDL1 sat_scDL9;
+        } in  (,) [sat_scDLa sat_scDLe];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST1
+  :: forall s a b.
+     a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_scDLf m_scDLg s1_scDLh]
+        let {
+          s'_scDLi [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDq9
+          [LclId] =
+              [m_scDLg s1_scDLh] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) ->
+                        case m_scDLg s1_scDLh of {
+                          (,) _ [Occ=Dead] y_scDLm [Occ=Once] -> y_scDLm;
+                        };
+                  };
+        } in  (,) [x_scDLf s'_scDLi];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Monad.ST.Lazy.Imp.$fFunctorST2
+                                       Control.Monad.ST.Lazy.Imp.$fFunctorST1];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [Control.Monad.ST.Lazy.Imp.$fFunctorST
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST4
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST3
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST1];
+
+Control.Monad.ST.Lazy.Imp.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [Control.Monad.ST.Lazy.Imp.$fApplicativeST
+                                     Control.Monad.ST.Lazy.Imp.$fMonadST1
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                     Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fail.MonadFail (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                   Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.runST
+  :: forall a. (forall s. Control.Monad.ST.Lazy.Imp.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(1*U,A))>,
+ Unf=OtherCon []] =
+    [] \r [ds_scDLn]
+        let {
+          sat_scDLo [Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State GHC.Prim.RealWorld
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+        } in 
+          case ds_scDLn sat_scDLo of {
+            (,) r_scDLq [Occ=Once] _ [Occ=Dead] -> r_scDLq;
+          };
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [m_scDLs s1_scDLt]
+        let {
+          ds_scDLu [Occ=LoopBreaker]
+            :: ((a_acDiW, Control.Monad.ST.Lazy.Imp.State s_acDiX), a_acDiW,
+                Control.Monad.ST.Lazy.Imp.State s_acDiX)
+          [LclId] =
+              [m_scDLs s1_scDLt ds_scDLu] \u []
+                  let {
+                    sat_scDLz [Occ=Once] :: a_acDiW
+                    [LclId] =
+                        [ds_scDLu] \u []
+                            case ds_scDLu of {
+                              (,,) _ [Occ=Dead] r_scDLx [Occ=Once] _ [Occ=Dead] -> r_scDLx;
+                            };
+                  } in 
+                    case m_scDLs sat_scDLz s1_scDLt of wild_scDLA {
+                      (,) r_scDLB [Occ=Once] _s'_scDLC [Occ=Once] ->
+                          (,,) [wild_scDLA r_scDLB _s'_scDLC];
+                    };
+        } in 
+          case ds_scDLu of {
+            (,,) q_scDLE [Occ=Once] _ [Occ=Dead] _ [Occ=Dead] -> q_scDLE;
+          };
+
+Control.Monad.ST.Lazy.Imp.fixST
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.$fMonadFixST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fix.MonadFix (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                 Control.Monad.ST.Lazy.Imp.$fMonadFixST1];
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST1
+  :: forall s a.
+     GHC.ST.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_scDLH ds1_scDLI]
+        case ds1_scDLI of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case ds_scDLH GHC.Prim.void# of {
+                Unit# ipv1_scDLN [Occ=Once] ->
+                    let {
+                      sat_scDLO [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDih
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                    } in  (,) [ipv1_scDLN sat_scDLO];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST
+  :: forall s a. GHC.ST.ST s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.strictToLazyST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+  :: forall a s.
+     GHC.Types.IO a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scDLP eta_scDLQ]
+        case eta_scDLQ of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case x_scDLP GHC.Prim.void# of {
+                Unit# ipv1_scDLV [Occ=Once] ->
+                    let {
+                      sat_scDLW [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDiK
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                    } in  (,) [ipv1_scDLV sat_scDLW];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST
+  :: forall a s. GHC.Types.IO a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeIOToST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_scDLX void_0E]
+        let {
+          sat_scDLZ [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDhX
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+        } in 
+          case ds_scDLX sat_scDLZ of {
+            (,) a1_scDM1 [Occ=Once] ds1_scDM2 [Occ=Once!] ->
+                case ds1_scDM2 of {
+                  Control.Monad.ST.Lazy.Imp.S# -> Unit# [a1_scDM1];
+                };
+          };
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST
+  :: forall s a. Control.Monad.ST.Lazy.Imp.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 GHC.Prim.void#;
+
+Control.Monad.ST.Lazy.Imp.stToIO
+  :: forall a.
+     Control.Monad.ST.Lazy.Imp.ST GHC.Prim.RealWorld a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 GHC.Prim.void#;
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [w_scDM5 w1_scDM6]
+        case w1_scDM6 of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              let {
+                sat_scDMh [Occ=Once] :: GHC.ST.ST s_scDBU a_scDBV
+                [LclId] =
+                    [w_scDM5] \r [void_0E]
+                        case noDuplicate# [GHC.Prim.void#] of wild_scDMa {
+                          (##) ->
+                              let {
+                                sat_scDMb [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                                [LclId] =
+                                    CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                              } in 
+                                case w_scDM5 sat_scDMb of {
+                                  (,) a1_scDMd [Occ=Once] ds_scDMe [Occ=Once!] ->
+                                      case ds_scDMe of {
+                                        Control.Monad.ST.Lazy.Imp.S# -> Unit# [a1_scDMd];
+                                      };
+                                };
+                        };
+              } in 
+                case GHC.ST.unsafeDupableInterleaveST sat_scDMh GHC.Prim.void# of {
+                  Unit# ipv1_scDMk [Occ=Once] ->
+                      let {
+                        sat_scDMl [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                        [LclId] =
+                            CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                      } in  (,) [ipv1_scDMk sat_scDMl];
+                };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule4];
+
+Control.Monad.ST.Lazy.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.ST.Lazy.Imp"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule2];
+
+Control.Monad.ST.Lazy.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.ST.Lazy.Imp.$trModule3
+                                     Control.Monad.ST.Lazy.Imp.$trModule1];
+
+$krep_rcDJ5 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_rcDJ6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rcDJ7 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 GHC.Types.[]];
+
+$krep3_rcDJ8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tcState2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "State"#;
+
+Control.Monad.ST.Lazy.Imp.$tcState1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcState2];
+
+Control.Monad.ST.Lazy.Imp.$tcState :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [220923881781706094##
+                                    12630832853168782158##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcState1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep4_rcDJ9 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcState
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_rcDJ8 $krep4_rcDJ9];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'S#"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'S#2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'S#3];
+
+Control.Monad.ST.Lazy.Imp.$tc'S# :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12704778602275544086##
+                                    1928505377508739254##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#2
+                                    1#
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#1];
+
+$krep5_rcDJa :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rcDJ9 GHC.Types.[]];
+
+$krep6_rcDJb :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 $krep5_rcDJa];
+
+$krep7_rcDJc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Tuple.$tc(,)
+                                              $krep6_rcDJb];
+
+$krep8_rcDJd :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rcDJ9 $krep7_rcDJc];
+
+Control.Monad.ST.Lazy.Imp.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcST2];
+
+Control.Monad.ST.Lazy.Imp.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9758985700159114765##
+                                    4154811637844139714##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep9_rcDJe :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 GHC.Types.[]];
+
+$krep10_rcDJf :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 $krep9_rcDJe];
+
+$krep11_rcDJg :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcST
+                                              $krep10_rcDJf];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep8_rcDJd $krep11_rcDJg];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'ST3];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5656684040178075861##
+                                    6626797926801395533##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST2
+                                    2#
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST1];
+
+Control.Monad.ST.Lazy.Imp.S#
+  :: forall s. GHC.Prim.State# s -> Control.Monad.ST.Lazy.Imp.State s
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [void_0E] Control.Monad.ST.Lazy.Imp.S# [];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:33.601823889 UTC
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+  :: forall s a.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>m, Unf=OtherCon []] =
+    [] \r [a1_scEhu s1_scEhv] (,) [a1_scEhu s1_scEhv];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail
+  :: forall s a. GHC.Base.String -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [s1_scEhw] GHC.Err.errorWithoutStackTrace s1_scEhw;
+
+Control.Monad.ST.Lazy.Imp.unST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scEhx] ds_scEhx;
+
+Control.Monad.ST.Lazy.Imp.unST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId[[RecSel]],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Monad.ST.Lazy.Imp.unST1 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadST1
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> (a -> Control.Monad.ST.Lazy.Imp.ST s b)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(C(S)),1*C1(C1(U(U,U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scEhy k_scEhz s1_scEhA]
+        let {
+          res_scEhB [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_acDkc, Control.Monad.ST.Lazy.Imp.State s_acDk4)
+          [LclId] =
+              [m_scEhy s1_scEhA] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT -> m_scEhy s1_scEhA;
+                  }; } in
+        let {
+          sat_scEhK [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDk4
+          [LclId] =
+              [res_scEhB] \u []
+                  case res_scEhB of {
+                    (,) _ [Occ=Dead] new_s_scEhJ [Occ=Once] -> new_s_scEhJ;
+                  }; } in
+        let {
+          sat_scEhG [Occ=Once] :: a_acDkc
+          [LclId] =
+              [res_scEhB] \u []
+                  case res_scEhB of {
+                    (,) r_scEhE [Occ=Once] _ [Occ=Dead] -> r_scEhE;
+                  };
+        } in  k_scEhz sat_scEhG sat_scEhK;
+
+Control.Monad.ST.Lazy.Imp.$w$c<*> [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# b, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scEhL w1_scEhM w2_scEhN]
+        let-no-escape {
+          res1_scEhO [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# b_scDBg, Control.Monad.ST.Lazy.Imp.State s_scDBe #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scEhL w1_scEhM w2_scEhN] \r []
+                  case w_scEhL w2_scEhN of res2_scEhP {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scEhP of {
+                          (,) f_scEhU [Occ=Once!] s'_scEhV [Occ=Once] ->
+                              let {
+                                res4_scEhW [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+                                  :: (a_scDBf, Control.Monad.ST.Lazy.Imp.State s_scDBe)
+                                [LclId] =
+                                    [w1_scEhM s'_scEhV] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          __DEFAULT -> w1_scEhM s'_scEhV;
+                                        }; } in
+                              let {
+                                sat_scEi6 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBe
+                                [LclId] =
+                                    [res4_scEhW] \u []
+                                        case res4_scEhW of {
+                                          (,) _ [Occ=Dead] s''_scEi5 [Occ=Once] -> s''_scEi5;
+                                        }; } in
+                              let {
+                                sat_scEi2 [Occ=Once] :: b_scDBg
+                                [LclId] =
+                                    [f_scEhU res4_scEhW] \u []
+                                        let {
+                                          sat_scEi1 [Occ=Once] :: a_scDBf
+                                          [LclId] =
+                                              [res4_scEhW] \u []
+                                                  case res4_scEhW of {
+                                                    (,) x_scEhZ [Occ=Once] _ [Occ=Dead] -> x_scEhZ;
+                                                  };
+                                        } in  f_scEhU sat_scEi1;
+                              } in  (#,#) [sat_scEi2 sat_scEi6];
+                        };
+                  };
+        } in  res1_scEhO;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST4 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEi7 w1_scEi8 w2_scEi9]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<*> w_scEi7 w1_scEi8 w2_scEi9
+        of
+        { (#,#) ww1_scEib [Occ=Once] ww2_scEic [Occ=Once] ->
+              (,) [ww1_scEib ww2_scEic];
+        };
+
+Control.Monad.ST.Lazy.Imp.$w$cliftA2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# c, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scEid w1_scEie w2_scEif w3_scEig]
+        let {
+          res1_scEih [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBp, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w1_scEie w3_scEig] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT -> w1_scEie w3_scEig;
+                  }; } in
+        let {
+          res2_scEij [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (b_scDBq, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w2_scEif res1_scEih] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_scEio [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+                          [LclId] =
+                              [res1_scEih] \u []
+                                  case res1_scEih of {
+                                    (,) _ [Occ=Dead] s'_scEin [Occ=Once] -> s'_scEin;
+                                  };
+                        } in  w2_scEif sat_scEio;
+                  }; } in
+        let {
+          sat_scEiB [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+          [LclId] =
+              [res2_scEij] \u []
+                  case res2_scEij of {
+                    (,) _ [Occ=Dead] s''_scEiA [Occ=Once] -> s''_scEiA;
+                  }; } in
+        let {
+          sat_scEix [Occ=Once] :: c_scDBr
+          [LclId] =
+              [w_scEid res1_scEih res2_scEij] \u []
+                  let {
+                    sat_scEiw [Occ=Once] :: b_scDBq
+                    [LclId] =
+                        [res2_scEij] \u []
+                            case res2_scEij of {
+                              (,) y_scEiu [Occ=Once] _ [Occ=Dead] -> y_scEiu;
+                            }; } in
+                  let {
+                    sat_scEis [Occ=Once] :: a_scDBp
+                    [LclId] =
+                        [res1_scEih] \u []
+                            case res1_scEih of {
+                              (,) x_scEiq [Occ=Once] _ [Occ=Dead] -> x_scEiq;
+                            };
+                  } in  w_scEid sat_scEis sat_scEiw;
+        } in  (#,#) [sat_scEix sat_scEiB];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST3 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (c, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEiC w1_scEiD w2_scEiE w3_scEiF]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$cliftA2
+                w_scEiC w1_scEiD w2_scEiE w3_scEiF
+        of
+        { (#,#) ww1_scEiH [Occ=Once] ww2_scEiI [Occ=Once] ->
+              (,) [ww1_scEiH ww2_scEiI];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><C(S),1*C1(U(U,U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scEiJ n_scEiK s1_scEiL]
+        let {
+          s'_scEiM [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDms
+          [LclId] =
+              [m_scEiJ s1_scEiL] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT ->
+                        case m_scEiJ s1_scEiL of {
+                          (,) _ [Occ=Dead] y_scEiQ [Occ=Once] -> y_scEiQ;
+                        };
+                  };
+        } in  n_scEiK s'_scEiM;
+
+Control.Monad.ST.Lazy.Imp.$w$c<* [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# a, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scEiR w1_scEiS w2_scEiT]
+        let-no-escape {
+          res1_scEiU [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# a_scDBB, Control.Monad.ST.Lazy.Imp.State s_scDBA #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scEiR w1_scEiS w2_scEiT] \r []
+                  case w_scEiR w2_scEiT of res2_scEiV {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scEiV of {
+                          (,) mr_scEj0 [Occ=Once] s'_scEj1 [Occ=Once] ->
+                              let {
+                                s''_scEj2 [InlPrag=NOINLINE, Occ=Once]
+                                  :: Control.Monad.ST.Lazy.Imp.State s_scDBA
+                                [LclId] =
+                                    [w1_scEiS s'_scEj1] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          __DEFAULT ->
+                                              case w1_scEiS s'_scEj1 of {
+                                                (,) _ [Occ=Dead] y_scEj6 [Occ=Once] -> y_scEj6;
+                                              };
+                                        };
+                              } in  (#,#) [mr_scEj0 s''_scEj2];
+                        };
+                  };
+        } in  res1_scEiU;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEj7 w1_scEj8 w2_scEj9]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<* w_scEj7 w1_scEj8 w2_scEj9
+        of
+        { (#,#) ww1_scEjb [Occ=Once] ww2_scEjc [Occ=Once] ->
+              (,) [ww1_scEjb ww2_scEjc];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEjd w1_scEje w2_scEjf]
+        let {
+          res_scEjg [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBL, Control.Monad.ST.Lazy.Imp.State s_scDBK)
+          [LclId] =
+              [w1_scEje w2_scEjf] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT -> w1_scEje w2_scEjf;
+                  }; } in
+        let {
+          sat_scEjq [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBK
+          [LclId] =
+              [res_scEjg] \u []
+                  case res_scEjg of {
+                    (,) _ [Occ=Dead] new_s_scEjp [Occ=Once] -> new_s_scEjp;
+                  }; } in
+        let {
+          sat_scEjm [Occ=Once] :: b_scDBM
+          [LclId] =
+              [w_scEjd res_scEjg] \u []
+                  let {
+                    sat_scEjl [Occ=Once] :: a_scDBL
+                    [LclId] =
+                        [res_scEjg] \u []
+                            case res_scEjg of {
+                              (,) r_scEjj [Occ=Once] _ [Occ=Dead] -> r_scEjj;
+                            };
+                  } in  w_scEjd sat_scEjl;
+        } in  (,) [sat_scEjm sat_scEjq];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST1
+  :: forall s a b.
+     a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEjr m_scEjs s1_scEjt]
+        let {
+          s'_scEju [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDq9
+          [LclId] =
+              [m_scEjs s1_scEjt] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    __DEFAULT ->
+                        case m_scEjs s1_scEjt of {
+                          (,) _ [Occ=Dead] y_scEjy [Occ=Once] -> y_scEjy;
+                        };
+                  };
+        } in  (,) [x_scEjr s'_scEju];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Monad.ST.Lazy.Imp.$fFunctorST2
+                                       Control.Monad.ST.Lazy.Imp.$fFunctorST1];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [Control.Monad.ST.Lazy.Imp.$fFunctorST
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST4
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST3
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST1];
+
+Control.Monad.ST.Lazy.Imp.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [Control.Monad.ST.Lazy.Imp.$fApplicativeST
+                                     Control.Monad.ST.Lazy.Imp.$fMonadST1
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                     Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fail.MonadFail (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                   Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.runST
+  :: forall a. (forall s. Control.Monad.ST.Lazy.Imp.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(1*U,A))>,
+ Unf=OtherCon []] =
+    [] \r [ds_scEjz]
+        let {
+          sat_scEjA [Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State GHC.Prim.RealWorld
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [GHC.Prim.realWorld#];
+        } in 
+          case ds_scEjz sat_scEjA of {
+            (,) r_scEjC [Occ=Once] _ [Occ=Dead] -> r_scEjC;
+          };
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [m_scEjE s1_scEjF]
+        let {
+          ds_scEjG [Occ=LoopBreaker]
+            :: ((a_acDiW, Control.Monad.ST.Lazy.Imp.State s_acDiX), a_acDiW,
+                Control.Monad.ST.Lazy.Imp.State s_acDiX)
+          [LclId] =
+              [m_scEjE s1_scEjF ds_scEjG] \u []
+                  let {
+                    sat_scEjL [Occ=Once] :: a_acDiW
+                    [LclId] =
+                        [ds_scEjG] \u []
+                            case ds_scEjG of {
+                              (,,) _ [Occ=Dead] r_scEjJ [Occ=Once] _ [Occ=Dead] -> r_scEjJ;
+                            };
+                  } in 
+                    case m_scEjE sat_scEjL s1_scEjF of wild_scEjM {
+                      (,) r_scEjN [Occ=Once] _s'_scEjO [Occ=Once] ->
+                          (,,) [wild_scEjM r_scEjN _s'_scEjO];
+                    };
+        } in 
+          case ds_scEjG of {
+            (,,) q_scEjQ [Occ=Once] _ [Occ=Dead] _ [Occ=Dead] -> q_scEjQ;
+          };
+
+Control.Monad.ST.Lazy.Imp.fixST
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.$fMonadFixST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fix.MonadFix (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                 Control.Monad.ST.Lazy.Imp.$fMonadFixST1];
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST1
+  :: forall s a.
+     GHC.ST.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_scEjT ds1_scEjU]
+        case ds1_scEjU of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEjW [Occ=Once] ->
+              case ds_scEjT s1_scEjW of {
+                (#,#) ipv_scEjY [Occ=Once] ipv1_scEjZ [Occ=Once] ->
+                    let {
+                      sat_scEk0 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDih
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEjY];
+                    } in  (,) [ipv1_scEjZ sat_scEk0];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST
+  :: forall s a. GHC.ST.ST s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.strictToLazyST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+  :: forall a s.
+     GHC.Types.IO a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEk1 eta_scEk2]
+        case eta_scEk2 of {
+          Control.Monad.ST.Lazy.Imp.S# s1_scEk4 [Occ=Once] ->
+              case x_scEk1 s1_scEk4 of {
+                (#,#) ipv_scEk6 [Occ=Once] ipv1_scEk7 [Occ=Once] ->
+                    let {
+                      sat_scEk8 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDiK
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEk6];
+                    } in  (,) [ipv1_scEk7 sat_scEk8];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST
+  :: forall a s. GHC.Types.IO a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeIOToST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_scEk9 s1_scEka]
+        let {
+          sat_scEkb [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDhX
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [s1_scEka];
+        } in 
+          case ds_scEk9 sat_scEkb of {
+            (,) a1_scEkd [Occ=Once] ds1_scEke [Occ=Once!] ->
+                case ds1_scEke of {
+                  Control.Monad.ST.Lazy.Imp.S# s'_scEkg [Occ=Once] ->
+                      (#,#) [s'_scEkg a1_scEkd];
+                };
+          };
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST
+  :: forall s a. Control.Monad.ST.Lazy.Imp.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.stToIO
+  :: forall a.
+     Control.Monad.ST.Lazy.Imp.ST GHC.Prim.RealWorld a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEkh w1_scEki]
+        case w1_scEki of {
+          Control.Monad.ST.Lazy.Imp.S# ww1_scEkk [Occ=Once] ->
+              let {
+                sat_scEkt [Occ=Once] :: GHC.ST.ST s_scDBU a_scDBV
+                [LclId] =
+                    [w_scEkh] \r [s1_scEkl]
+                        case noDuplicate# [s1_scEkl] of wild_scEkm {
+                          __DEFAULT ->
+                              let {
+                                sat_scEkn [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                                [LclId] =
+                                    CCCS Control.Monad.ST.Lazy.Imp.S#! [wild_scEkm];
+                              } in 
+                                case w_scEkh sat_scEkn of {
+                                  (,) a1_scEkp [Occ=Once] ds_scEkq [Occ=Once!] ->
+                                      case ds_scEkq of {
+                                        Control.Monad.ST.Lazy.Imp.S# s'_scEks [Occ=Once] ->
+                                            (#,#) [s'_scEks a1_scEkp];
+                                      };
+                                };
+                        };
+              } in 
+                case GHC.ST.unsafeDupableInterleaveST sat_scEkt ww1_scEkk of {
+                  (#,#) ipv_scEkv [Occ=Once] ipv1_scEkw [Occ=Once] ->
+                      let {
+                        sat_scEkx [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                        [LclId] =
+                            CCCS Control.Monad.ST.Lazy.Imp.S#! [ipv_scEkv];
+                      } in  (,) [ipv1_scEkw sat_scEkx];
+                };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule4];
+
+Control.Monad.ST.Lazy.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.ST.Lazy.Imp"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule2];
+
+Control.Monad.ST.Lazy.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.ST.Lazy.Imp.$trModule3
+                                     Control.Monad.ST.Lazy.Imp.$trModule1];
+
+$krep_rcDJ5 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_rcDJ6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rcDJ7 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 GHC.Types.[]];
+
+$krep3_rcDJ8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tcState2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "State"#;
+
+Control.Monad.ST.Lazy.Imp.$tcState1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcState2];
+
+Control.Monad.ST.Lazy.Imp.$tcState :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [220923881781706094##
+                                    12630832853168782158##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcState1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep4_rcDJ9 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcState
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_rcDJ8 $krep4_rcDJ9];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'S#"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'S#2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'S#3];
+
+Control.Monad.ST.Lazy.Imp.$tc'S# :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12704778602275544086##
+                                    1928505377508739254##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#2
+                                    1#
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#1];
+
+$krep5_rcDJa :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rcDJ9 GHC.Types.[]];
+
+$krep6_rcDJb :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 $krep5_rcDJa];
+
+$krep7_rcDJc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Tuple.$tc(,)
+                                              $krep6_rcDJb];
+
+$krep8_rcDJd :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rcDJ9 $krep7_rcDJc];
+
+Control.Monad.ST.Lazy.Imp.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcST2];
+
+Control.Monad.ST.Lazy.Imp.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9758985700159114765##
+                                    4154811637844139714##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep9_rcDJe :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 GHC.Types.[]];
+
+$krep10_rcDJf :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 $krep9_rcDJe];
+
+$krep11_rcDJg :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcST
+                                              $krep10_rcDJf];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep8_rcDJd $krep11_rcDJg];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'ST3];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5656684040178075861##
+                                    6626797926801395533##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST2
+                                    2#
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST1];
+
+Control.Monad.ST.Lazy.Imp.S#
+  :: forall s. GHC.Prim.State# s -> Control.Monad.ST.Lazy.Imp.State s
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Monad.ST.Lazy.Imp.S# [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:33.614938542 UTC
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+  :: forall s a.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>m, Unf=OtherCon []] =
+    [] \r [a1_scEhu s1_scEhv] (,) [a1_scEhu s1_scEhv];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail
+  :: forall s a. GHC.Base.String -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [s1_scEhw] GHC.Err.errorWithoutStackTrace s1_scEhw;
+
+Control.Monad.ST.Lazy.Imp.unST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_scEhx] ds_scEhx;
+
+Control.Monad.ST.Lazy.Imp.unST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId[[RecSel]],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Monad.ST.Lazy.Imp.unST1 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadST1
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> (a -> Control.Monad.ST.Lazy.Imp.ST s b)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(C(S)),1*C1(C1(U(U,U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scEhy k_scEhz s1_scEhA]
+        let {
+          res_scEhB [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_acDkc, Control.Monad.ST.Lazy.Imp.State s_acDk4)
+          [LclId] =
+              [m_scEhy s1_scEhA] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) -> m_scEhy s1_scEhA;
+                  }; } in
+        let {
+          sat_scEhK [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDk4
+          [LclId] =
+              [res_scEhB] \u []
+                  case res_scEhB of {
+                    (,) _ [Occ=Dead] new_s_scEhJ [Occ=Once] -> new_s_scEhJ;
+                  }; } in
+        let {
+          sat_scEhG [Occ=Once] :: a_acDkc
+          [LclId] =
+              [res_scEhB] \u []
+                  case res_scEhB of {
+                    (,) r_scEhE [Occ=Once] _ [Occ=Dead] -> r_scEhE;
+                  };
+        } in  k_scEhz sat_scEhG sat_scEhK;
+
+Control.Monad.ST.Lazy.Imp.$w$c<*> [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# b, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scEhL w1_scEhM w2_scEhN]
+        let-no-escape {
+          res1_scEhO [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# b_scDBg, Control.Monad.ST.Lazy.Imp.State s_scDBe #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scEhL w1_scEhM w2_scEhN] \r []
+                  case w_scEhL w2_scEhN of res2_scEhP {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scEhP of {
+                          (,) f_scEhU [Occ=Once!] s'_scEhV [Occ=Once] ->
+                              let {
+                                res4_scEhW [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+                                  :: (a_scDBf, Control.Monad.ST.Lazy.Imp.State s_scDBe)
+                                [LclId] =
+                                    [w1_scEhM s'_scEhV] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          (##) -> w1_scEhM s'_scEhV;
+                                        }; } in
+                              let {
+                                sat_scEi6 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBe
+                                [LclId] =
+                                    [res4_scEhW] \u []
+                                        case res4_scEhW of {
+                                          (,) _ [Occ=Dead] s''_scEi5 [Occ=Once] -> s''_scEi5;
+                                        }; } in
+                              let {
+                                sat_scEi2 [Occ=Once] :: b_scDBg
+                                [LclId] =
+                                    [f_scEhU res4_scEhW] \u []
+                                        let {
+                                          sat_scEi1 [Occ=Once] :: a_scDBf
+                                          [LclId] =
+                                              [res4_scEhW] \u []
+                                                  case res4_scEhW of {
+                                                    (,) x_scEhZ [Occ=Once] _ [Occ=Dead] -> x_scEhZ;
+                                                  };
+                                        } in  f_scEhU sat_scEi1;
+                              } in  (#,#) [sat_scEi2 sat_scEi6];
+                        };
+                  };
+        } in  res1_scEhO;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST4 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEi7 w1_scEi8 w2_scEi9]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<*> w_scEi7 w1_scEi8 w2_scEi9
+        of
+        { (#,#) ww1_scEib [Occ=Once] ww2_scEic [Occ=Once] ->
+              (,) [ww1_scEib ww2_scEic];
+        };
+
+Control.Monad.ST.Lazy.Imp.$w$cliftA2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# c, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scEid w1_scEie w2_scEif w3_scEig]
+        let {
+          res1_scEih [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBp, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w1_scEie w3_scEig] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) -> w1_scEie w3_scEig;
+                  }; } in
+        let {
+          res2_scEij [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (b_scDBq, Control.Monad.ST.Lazy.Imp.State s_scDBo)
+          [LclId] =
+              [w2_scEif res1_scEih] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) ->
+                        let {
+                          sat_scEio [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+                          [LclId] =
+                              [res1_scEih] \u []
+                                  case res1_scEih of {
+                                    (,) _ [Occ=Dead] s'_scEin [Occ=Once] -> s'_scEin;
+                                  };
+                        } in  w2_scEif sat_scEio;
+                  }; } in
+        let {
+          sat_scEiB [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBo
+          [LclId] =
+              [res2_scEij] \u []
+                  case res2_scEij of {
+                    (,) _ [Occ=Dead] s''_scEiA [Occ=Once] -> s''_scEiA;
+                  }; } in
+        let {
+          sat_scEix [Occ=Once] :: c_scDBr
+          [LclId] =
+              [w_scEid res1_scEih res2_scEij] \u []
+                  let {
+                    sat_scEiw [Occ=Once] :: b_scDBq
+                    [LclId] =
+                        [res2_scEij] \u []
+                            case res2_scEij of {
+                              (,) y_scEiu [Occ=Once] _ [Occ=Dead] -> y_scEiu;
+                            }; } in
+                  let {
+                    sat_scEis [Occ=Once] :: a_scDBp
+                    [LclId] =
+                        [res1_scEih] \u []
+                            case res1_scEih of {
+                              (,) x_scEiq [Occ=Once] _ [Occ=Dead] -> x_scEiq;
+                            };
+                  } in  w_scEid sat_scEis sat_scEiw;
+        } in  (#,#) [sat_scEix sat_scEiB];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST3 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (c, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEiC w1_scEiD w2_scEiE w3_scEiF]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$cliftA2
+                w_scEiC w1_scEiD w2_scEiE w3_scEiF
+        of
+        { (#,#) ww1_scEiH [Occ=Once] ww2_scEiI [Occ=Once] ->
+              (,) [ww1_scEiH ww2_scEiI];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><C(S),1*C1(U(U,U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [m_scEiJ n_scEiK s1_scEiL]
+        let {
+          s'_scEiM [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDms
+          [LclId] =
+              [m_scEiJ s1_scEiL] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) ->
+                        case m_scEiJ s1_scEiL of {
+                          (,) _ [Occ=Dead] y_scEiQ [Occ=Once] -> y_scEiQ;
+                        };
+                  };
+        } in  n_scEiK s'_scEiM;
+
+Control.Monad.ST.Lazy.Imp.$w$c<* [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (# a, Control.Monad.ST.Lazy.Imp.State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_scEiR w1_scEiS w2_scEiT]
+        let-no-escape {
+          res1_scEiU [InlPrag=NOINLINE, Occ=OnceT[0], Dmd=<S,1*U(U,U)>]
+            :: (# a_scDBB, Control.Monad.ST.Lazy.Imp.State s_scDBA #)
+          [LclId[JoinId(0)], Unf=OtherCon []] =
+              [w_scEiR w1_scEiS w2_scEiT] \r []
+                  case w_scEiR w2_scEiT of res2_scEiV {
+                    (,) _ [Occ=Dead] _ [Occ=Dead] ->
+                        case res2_scEiV of {
+                          (,) mr_scEj0 [Occ=Once] s'_scEj1 [Occ=Once] ->
+                              let {
+                                s''_scEj2 [InlPrag=NOINLINE, Occ=Once]
+                                  :: Control.Monad.ST.Lazy.Imp.State s_scDBA
+                                [LclId] =
+                                    [w1_scEiS s'_scEj1] \u []
+                                        case noDuplicate# [GHC.Prim.realWorld#] of {
+                                          (##) ->
+                                              case w1_scEiS s'_scEj1 of {
+                                                (,) _ [Occ=Dead] y_scEj6 [Occ=Once] -> y_scEj6;
+                                              };
+                                        };
+                              } in  (#,#) [mr_scEj0 s''_scEj2];
+                        };
+                  };
+        } in  res1_scEiU;
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEj7 w1_scEj8 w2_scEj9]
+        case
+            Control.Monad.ST.Lazy.Imp.$w$c<* w_scEj7 w1_scEj8 w2_scEj9
+        of
+        { (#,#) ww1_scEjb [Occ=Once] ww2_scEjc [Occ=Once] ->
+              (,) [ww1_scEjb ww2_scEjc];
+        };
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     (a -> b)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (b, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEjd w1_scEje w2_scEjf]
+        let {
+          res_scEjg [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+            :: (a_scDBL, Control.Monad.ST.Lazy.Imp.State s_scDBK)
+          [LclId] =
+              [w1_scEje w2_scEjf] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) -> w1_scEje w2_scEjf;
+                  }; } in
+        let {
+          sat_scEjq [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBK
+          [LclId] =
+              [res_scEjg] \u []
+                  case res_scEjg of {
+                    (,) _ [Occ=Dead] new_s_scEjp [Occ=Once] -> new_s_scEjp;
+                  }; } in
+        let {
+          sat_scEjm [Occ=Once] :: b_scDBM
+          [LclId] =
+              [w_scEjd res_scEjg] \u []
+                  let {
+                    sat_scEjl [Occ=Once] :: a_scDBL
+                    [LclId] =
+                        [res_scEjg] \u []
+                            case res_scEjg of {
+                              (,) r_scEjj [Occ=Once] _ [Occ=Dead] -> r_scEjj;
+                            };
+                  } in  w_scEjd sat_scEjl;
+        } in  (,) [sat_scEjm sat_scEjq];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST1
+  :: forall s a b.
+     a
+     -> Control.Monad.ST.Lazy.Imp.ST s b
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEjr m_scEjs s1_scEjt]
+        let {
+          s'_scEju [InlPrag=NOINLINE, Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State s_XcDq9
+          [LclId] =
+              [m_scEjs s1_scEjt] \u []
+                  case noDuplicate# [GHC.Prim.realWorld#] of {
+                    (##) ->
+                        case m_scEjs s1_scEjt of {
+                          (,) _ [Occ=Dead] y_scEjy [Occ=Once] -> y_scEjy;
+                        };
+                  };
+        } in  (,) [x_scEjr s'_scEju];
+
+Control.Monad.ST.Lazy.Imp.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Monad.ST.Lazy.Imp.$fFunctorST2
+                                       Control.Monad.ST.Lazy.Imp.$fFunctorST1];
+
+Control.Monad.ST.Lazy.Imp.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [Control.Monad.ST.Lazy.Imp.$fFunctorST
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST4
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST3
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                           Control.Monad.ST.Lazy.Imp.$fApplicativeST1];
+
+Control.Monad.ST.Lazy.Imp.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [Control.Monad.ST.Lazy.Imp.$fApplicativeST
+                                     Control.Monad.ST.Lazy.Imp.$fMonadST1
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+                                     Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+                                     Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fail.MonadFail (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                   Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail];
+
+Control.Monad.ST.Lazy.Imp.runST
+  :: forall a. (forall s. Control.Monad.ST.Lazy.Imp.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(1*U,A))>,
+ Unf=OtherCon []] =
+    [] \r [ds_scEjz]
+        let {
+          sat_scEjA [Occ=Once]
+            :: Control.Monad.ST.Lazy.Imp.State GHC.Prim.RealWorld
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+        } in 
+          case ds_scEjz sat_scEjA of {
+            (,) r_scEjC [Occ=Once] _ [Occ=Dead] -> r_scEjC;
+          };
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [m_scEjE s1_scEjF]
+        let {
+          ds_scEjG [Occ=LoopBreaker]
+            :: ((a_acDiW, Control.Monad.ST.Lazy.Imp.State s_acDiX), a_acDiW,
+                Control.Monad.ST.Lazy.Imp.State s_acDiX)
+          [LclId] =
+              [m_scEjE s1_scEjF ds_scEjG] \u []
+                  let {
+                    sat_scEjL [Occ=Once] :: a_acDiW
+                    [LclId] =
+                        [ds_scEjG] \u []
+                            case ds_scEjG of {
+                              (,,) _ [Occ=Dead] r_scEjJ [Occ=Once] _ [Occ=Dead] -> r_scEjJ;
+                            };
+                  } in 
+                    case m_scEjE sat_scEjL s1_scEjF of wild_scEjM {
+                      (,) r_scEjN [Occ=Once] _s'_scEjO [Occ=Once] ->
+                          (,,) [wild_scEjM r_scEjN _s'_scEjO];
+                    };
+        } in 
+          case ds_scEjG of {
+            (,,) q_scEjQ [Occ=Once] _ [Occ=Dead] _ [Occ=Dead] -> q_scEjQ;
+          };
+
+Control.Monad.ST.Lazy.Imp.fixST
+  :: forall a s.
+     (a -> Control.Monad.ST.Lazy.Imp.ST s a)
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.$fMonadFixST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s.
+     Control.Monad.Fix.MonadFix (Control.Monad.ST.Lazy.Imp.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Control.Monad.ST.Lazy.Imp.$fMonadST
+                                                 Control.Monad.ST.Lazy.Imp.$fMonadFixST1];
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST1
+  :: forall s a.
+     GHC.ST.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_scEjT ds1_scEjU]
+        case ds1_scEjU of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case ds_scEjT GHC.Prim.void# of {
+                Unit# ipv1_scEjZ [Occ=Once] ->
+                    let {
+                      sat_scEk0 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDih
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                    } in  (,) [ipv1_scEjZ sat_scEk0];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.strictToLazyST
+  :: forall s a. GHC.ST.ST s a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.strictToLazyST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+  :: forall a s.
+     GHC.Types.IO a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [x_scEk1 eta_scEk2]
+        case eta_scEk2 of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              case x_scEk1 GHC.Prim.void# of {
+                Unit# ipv1_scEk7 [Occ=Once] ->
+                    let {
+                      sat_scEk8 [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDiK
+                      [LclId] =
+                          CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                    } in  (,) [ipv1_scEk7 sat_scEk8];
+              };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeIOToST
+  :: forall a s. GHC.Types.IO a -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeIOToST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_scEk9 void_0E]
+        let {
+          sat_scEkb [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_acDhX
+          [LclId] =
+              CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+        } in 
+          case ds_scEk9 sat_scEkb of {
+            (,) a1_scEkd [Occ=Once] ds1_scEke [Occ=Once!] ->
+                case ds1_scEke of {
+                  Control.Monad.ST.Lazy.Imp.S# -> Unit# [a1_scEkd];
+                };
+          };
+
+Control.Monad.ST.Lazy.Imp.lazyToStrictST
+  :: forall s a. Control.Monad.ST.Lazy.Imp.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 GHC.Prim.void#;
+
+Control.Monad.ST.Lazy.Imp.stToIO
+  :: forall a.
+     Control.Monad.ST.Lazy.Imp.ST GHC.Prim.RealWorld a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Monad.ST.Lazy.Imp.lazyToStrictST1 eta_B2 GHC.Prim.void#;
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [w_scEkh w1_scEki]
+        case w1_scEki of {
+          Control.Monad.ST.Lazy.Imp.S# ->
+              let {
+                sat_scEkt [Occ=Once] :: GHC.ST.ST s_scDBU a_scDBV
+                [LclId] =
+                    [w_scEkh] \r [void_0E]
+                        case noDuplicate# [GHC.Prim.void#] of wild_scEkm {
+                          (##) ->
+                              let {
+                                sat_scEkn [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                                [LclId] =
+                                    CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                              } in 
+                                case w_scEkh sat_scEkn of {
+                                  (,) a1_scEkp [Occ=Once] ds_scEkq [Occ=Once!] ->
+                                      case ds_scEkq of {
+                                        Control.Monad.ST.Lazy.Imp.S# -> Unit# [a1_scEkp];
+                                      };
+                                };
+                        };
+              } in 
+                case GHC.ST.unsafeDupableInterleaveST sat_scEkt GHC.Prim.void# of {
+                  Unit# ipv1_scEkw [Occ=Once] ->
+                      let {
+                        sat_scEkx [Occ=Once] :: Control.Monad.ST.Lazy.Imp.State s_scDBU
+                        [LclId] =
+                            CCCS Control.Monad.ST.Lazy.Imp.S#! [];
+                      } in  (,) [ipv1_scEkw sat_scEkx];
+                };
+        };
+
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST
+  :: forall s a.
+     Control.Monad.ST.Lazy.Imp.ST s a
+     -> Control.Monad.ST.Lazy.Imp.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 eta_B2 eta_B1;
+
+Control.Monad.ST.Lazy.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule4];
+
+Control.Monad.ST.Lazy.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.ST.Lazy.Imp"#;
+
+Control.Monad.ST.Lazy.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$trModule2];
+
+Control.Monad.ST.Lazy.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.ST.Lazy.Imp.$trModule3
+                                     Control.Monad.ST.Lazy.Imp.$trModule1];
+
+$krep_rcDJ5 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_rcDJ6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rcDJ7 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 GHC.Types.[]];
+
+$krep3_rcDJ8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tcState2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "State"#;
+
+Control.Monad.ST.Lazy.Imp.$tcState1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcState2];
+
+Control.Monad.ST.Lazy.Imp.$tcState :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [220923881781706094##
+                                    12630832853168782158##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcState1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep4_rcDJ9 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcState
+                                              $krep2_rcDJ7];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep3_rcDJ8 $krep4_rcDJ9];
+
+Control.Monad.ST.Lazy.Imp.$tc'S#3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'S#"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'S#2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'S#3];
+
+Control.Monad.ST.Lazy.Imp.$tc'S# :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12704778602275544086##
+                                    1928505377508739254##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#2
+                                    1#
+                                    Control.Monad.ST.Lazy.Imp.$tc'S#1];
+
+$krep5_rcDJa :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rcDJ9 GHC.Types.[]];
+
+$krep6_rcDJb :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 $krep5_rcDJa];
+
+$krep7_rcDJc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Tuple.$tc(,)
+                                              $krep6_rcDJb];
+
+$krep8_rcDJd :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rcDJ9 $krep7_rcDJc];
+
+Control.Monad.ST.Lazy.Imp.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tcST2];
+
+Control.Monad.ST.Lazy.Imp.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9758985700159114765##
+                                    4154811637844139714##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep9_rcDJe :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rcDJ5 GHC.Types.[]];
+
+$krep10_rcDJf :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rcDJ6 $krep9_rcDJe];
+
+$krep11_rcDJg :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Monad.ST.Lazy.Imp.$tcST
+                                              $krep10_rcDJf];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep8_rcDJd $krep11_rcDJg];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+Control.Monad.ST.Lazy.Imp.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.ST.Lazy.Imp.$tc'ST3];
+
+Control.Monad.ST.Lazy.Imp.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5656684040178075861##
+                                    6626797926801395533##
+                                    Control.Monad.ST.Lazy.Imp.$trModule
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST2
+                                    2#
+                                    Control.Monad.ST.Lazy.Imp.$tc'ST1];
+
+Control.Monad.ST.Lazy.Imp.S#
+  :: forall s. GHC.Prim.State# s -> Control.Monad.ST.Lazy.Imp.State s
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [void_0E] Control.Monad.ST.Lazy.Imp.S# [];
+

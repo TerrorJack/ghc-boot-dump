@@ -1,0 +1,567 @@
+[ CmmData
+    (Section
+       CString
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR4_bytes"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR4_bytes")
+       [ CmmString
+           [ 60 , 102 , 117 , 110 , 99 , 116 , 105 , 111 , 110 , 62 ]
+       ])
+, CmmData
+    (Section
+       Data
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809757757681
+                    , CmmInfoTable
+                        { cit_lbl =
+                            CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_info"
+                        , cit_rep = HeapRep True 0 0 Thunk
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = NoC_SRT
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_entry")
+    [ VanillaReg 1 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757757681
+      , g_graph =
+          [ ( L7133701809757757679
+            , BlockCC
+                (CmmEntry L7133701809757757679 GlobalScope)
+                [ CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-16))
+                    (CmmLit (CmmLabel (CLabel "stg_bh_upd_frame_info")))
+                , CmmStore
+                    (CmmRegOff (CmmGlobal Sp) (-8))
+                    (CmmReg (CmmLocal (LocalReg cc8lo (CmmType "I64"))))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VNonGcPtr))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR4_bytes")))
+                , CmmAssign (CmmGlobal Sp) (CmmRegOff (CmmGlobal Sp) (-16))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel (CLabel "ghczmprim_GHCziCString_unpackCStringzh_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VNonGcPtr ]
+                  , cml_args = 24
+                  , cml_ret_args = 0
+                  , cml_ret_off = 24
+                  }
+            )
+          , ( L7133701809757757680
+            , BlockCC
+                (CmmEntry L7133701809757757680 GlobalScope)
+                []
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = []
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809757757681
+            , BlockCC
+                (CmmEntry L7133701809757757681 GlobalScope)
+                []
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_U_Lt W64)
+                        [ CmmRegOff (CmmGlobal Sp) (-16) , CmmReg (CmmGlobal SpLim) ]
+                  , cml_true = L7133701809757757682
+                  , cml_false = L7133701809757757683
+                  , cml_likely = Just False
+                  }
+            )
+          , ( L7133701809757757682
+            , BlockCC
+                (CmmEntry L7133701809757757682 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target = CmmReg (CmmGlobal GCEnter1)
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          , ( L7133701809757757683
+            , BlockCC
+                (CmmEntry L7133701809757757683 GlobalScope)
+                [ CmmUnsafeForeignCall
+                    (ForeignTarget
+                       (CmmLit (CmmLabel (CLabel "newCAF")))
+                       (ForeignConvention
+                          CCallConv [ AddrHint , AddrHint ] [ AddrHint ] CmmMayReturn))
+                    [ LocalReg cc8lo (CmmType "I64") ]
+                    [ CmmReg (CmmGlobal BaseReg)
+                    , CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))
+                    ]
+                ]
+                CmmCondBranch
+                  { cml_pred =
+                      CmmMachOp
+                        (MO_Eq W64)
+                        [ CmmReg (CmmLocal (LocalReg cc8lo (CmmType "I64")))
+                        , CmmLit (CmmInt 0 W64)
+                        ]
+                  , cml_true = L7133701809757757680
+                  , cml_false = L7133701809757757679
+                  , cml_likely = Nothing
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       Data
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809757757688
+                    , CmmInfoTable
+                        { cit_lbl =
+                            CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 1 (ArgSpec 5))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "Sc8lB_srt") 0 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_entry")
+    [ VanillaReg 2 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757757688
+      , g_graph =
+          [ ( L7133701809757757688
+            , BlockCC
+                (CmmEntry L7133701809757757688 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 3 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_closure")))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit (CmmLabel (CLabel "base_GHCziBase_zpzp_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 3 VGcPtr , VanillaReg 2 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       Data
+       (CLabel
+          "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowsPrec_closure"))
+    (Statics
+       (CLabel
+          "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowsPrec_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel
+                 "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowsPrec_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809757757696
+                    , CmmInfoTable
+                        { cit_lbl =
+                            CLabel
+                              "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowsPrec_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 3 (ArgSpec 23))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "Sc8lB_srt") 1 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel
+       "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowsPrec_entry")
+    [ VanillaReg 4 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757757696
+      , g_graph =
+          [ ( L7133701809757757696
+            , BlockCC
+                (CmmEntry L7133701809757757696 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 4 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel
+                           (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       Data
+       (CLabel
+          "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshow_closure"))
+    (Statics
+       (CLabel
+          "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshow_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel
+                 "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshow_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809757757703
+                    , CmmInfoTable
+                        { cit_lbl =
+                            CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshow_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 1 (ArgSpec 5))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "Sc8lB_srt") 0 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel
+       "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshow_entry")
+    []
+    CmmGraph
+      { g_entry = L7133701809757757703
+      , g_graph =
+          [ ( L7133701809757757703
+            , BlockCC
+                (CmmEntry L7133701809757757703 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 1 VGcPtr))
+                    (CmmLit
+                       (CmmLabel
+                          (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_closure")))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLoad
+                        (CmmLoad
+                           (CmmReg (CmmGlobal (VanillaReg 1 VGcPtr))) (CmmType "I64"))
+                        (CmmType "I64")
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 1 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       Data
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809757757710
+                    , CmmInfoTable
+                        { cit_lbl =
+                            CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 2 (ArgSpec 15))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "Sc8lB_srt") 1 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_entry")
+    [ VanillaReg 3 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757757710
+      , g_graph =
+          [ ( L7133701809757757710
+            , BlockCC
+                (CmmEntry L7133701809757757710 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 3 VGcPtr)))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit
+                        (CmmLabel
+                           (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs = [ VanillaReg 2 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       Data
+       (CLabel
+          "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowList_closure"))
+    (Statics
+       (CLabel
+          "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowList_closure")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel
+                 "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowList_info"))
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmProc
+    TopInfo
+      { info_tbls =
+          LM
+            (UM
+               (fromList
+                  [ ( 7133701809757757717
+                    , CmmInfoTable
+                        { cit_lbl =
+                            CLabel
+                              "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowList_info"
+                        , cit_rep = HeapRep True 0 0 (Fun 2 (ArgSpec 15))
+                        , cit_prof = NoProfilingInfo
+                        , cit_srt = C_SRT (CLabel "Sc8lB_srt") 2 1
+                        }
+                    )
+                  ]))
+      , stack_info =
+          StackInfo
+            { arg_space = 0 , updfr_space = Nothing , do_layout = True }
+      }
+    (CLabel
+       "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowList_entry")
+    [ VanillaReg 2 VGcPtr , VanillaReg 3 VGcPtr ]
+    CmmGraph
+      { g_entry = L7133701809757757717
+      , g_graph =
+          [ ( L7133701809757757717
+            , BlockCC
+                (CmmEntry L7133701809757757717 GlobalScope)
+                [ CmmAssign
+                    (CmmGlobal (VanillaReg 4 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 3 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 3 VGcPtr))
+                    (CmmReg (CmmGlobal (VanillaReg 2 VGcPtr)))
+                , CmmAssign
+                    (CmmGlobal (VanillaReg 2 VGcPtr))
+                    (CmmLit
+                       (CmmLabelOff
+                          (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_closure") 2))
+                ]
+                CmmCall
+                  { cml_target =
+                      CmmLit (CmmLabel (CLabel "base_GHCziShow_showListzuzu_entry"))
+                  , cml_cont = Nothing
+                  , cml_args_regs =
+                      [ VanillaReg 4 VGcPtr , VanillaReg 3 VGcPtr , VanillaReg 2 VGcPtr ]
+                  , cml_args = 8
+                  , cml_ret_args = 0
+                  , cml_ret_off = 8
+                  }
+            )
+          ]
+      }
+, CmmData
+    (Section
+       Data (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "base_GHCziShow_CZCShow_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel
+                 "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowsPrec_closure")
+              3)
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel
+                 "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshow_closure")
+              1)
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel
+                 "base_TextziShowziFunctions_zdfShowZLzmzgZRzuzdcshowList_closure")
+              2)
+       , CmmStaticLit (CmmInt 0 W64)
+       ])
+, CmmData
+    (Section
+       CString (CLabel "base_TextziShowziFunctions_zdtrModule4_bytes"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdtrModule4_bytes")
+       [ CmmString [ 98 , 97 , 115 , 101 ] ])
+, CmmData
+    (Section
+       Data (CLabel "base_TextziShowziFunctions_zdtrModule3_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdtrModule3_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_TextziShowziFunctions_zdtrModule4_bytes"))
+       ])
+, CmmData
+    (Section
+       CString (CLabel "base_TextziShowziFunctions_zdtrModule2_bytes"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdtrModule2_bytes")
+       [ CmmString
+           [ 84
+           , 101
+           , 120
+           , 116
+           , 46
+           , 83
+           , 104
+           , 111
+           , 119
+           , 46
+           , 70
+           , 117
+           , 110
+           , 99
+           , 116
+           , 105
+           , 111
+           , 110
+           , 115
+           ]
+       ])
+, CmmData
+    (Section
+       Data (CLabel "base_TextziShowziFunctions_zdtrModule1_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdtrModule1_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_TrNameS_con_info"))
+       , CmmStaticLit
+           (CmmLabel (CLabel "base_TextziShowziFunctions_zdtrModule2_bytes"))
+       ])
+, CmmData
+    (Section
+       Data (CLabel "base_TextziShowziFunctions_zdtrModule_closure"))
+    (Statics
+       (CLabel "base_TextziShowziFunctions_zdtrModule_closure")
+       [ CmmStaticLit
+           (CmmLabel (CLabel "ghczmprim_GHCziTypes_Module_con_info"))
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel "base_TextziShowziFunctions_zdtrModule3_closure") 1)
+       , CmmStaticLit
+           (CmmLabelOff
+              (CLabel "base_TextziShowziFunctions_zdtrModule1_closure") 1)
+       , CmmStaticLit (CmmInt 3 W64)
+       ])
+, CmmData
+    (Section RelocatableReadOnlyData (CLabel "Sc8lB_srt"))
+    (Statics
+       (CLabel "Sc8lB_srt")
+       [ CmmStaticLit
+           (CmmLabel
+              (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR3_closure"))
+       , CmmStaticLit
+           (CmmLabel
+              (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR2_closure"))
+       , CmmStaticLit
+           (CmmLabel
+              (CLabel "base_TextziShowziFunctions_zdfShowZLzmzgZR1_closure"))
+       ])
+]

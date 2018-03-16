@@ -1,0 +1,489 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:57:07.617066734 UTC
+
+Result size of Tidy Core
+  = {terms: 179, types: 329, coercions: 50, joins: 1/2}
+
+-- RHS size: {terms: 31, types: 67, coercions: 2, joins: 0/0}
+GHC.Weak.mkWeak1
+  :: forall k v.
+     k
+     -> v
+     -> Maybe (IO ())
+     -> State# RealWorld
+     -> (# State# RealWorld, Weak v #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a2nAM)
+                 (@ v_a2nAN)
+                 (key_a2nyg [Occ=Once*] :: k_a2nAM)
+                 (val_a2nyh [Occ=Once*] :: v_a2nAN)
+                 (ds_d2nCc [Occ=Once!] :: Maybe (IO ()))
+                 (eta_B1 [Occ=Once*] :: State# RealWorld) ->
+                 case ds_d2nCc of {
+                   Nothing ->
+                     case mkWeakNoFinalizer#
+                            @ 'LiftedRep @ k_a2nAM @ v_a2nAN key_a2nyg val_a2nyh eta_B1
+                     of
+                     { (# ipv_s2nCA [Occ=Once], ipv1_s2nCB [Occ=Once] #) ->
+                     (# ipv_s2nCA, GHC.Weak.Weak @ v_a2nAN ipv1_s2nCB #)
+                     };
+                   Just ds1_d2nCv [Occ=Once] ->
+                     case mkWeak#
+                            @ 'LiftedRep
+                            @ k_a2nAM
+                            @ v_a2nAN
+                            @ ()
+                            key_a2nyg
+                            val_a2nyh
+                            (ds1_d2nCv
+                             `cast` (GHC.Types.N:IO[0] <()>_R
+                                     :: (IO () :: *)
+                                        ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                            eta_B1
+                     of
+                     { (# ipv_s2nCE [Occ=Once], ipv1_s2nCF [Occ=Once] #) ->
+                     (# ipv_s2nCE, GHC.Weak.Weak @ v_a2nAN ipv1_s2nCF #)
+                     }
+                 }}]
+GHC.Weak.mkWeak1
+  = \ (@ k_a2nAM)
+      (@ v_a2nAN)
+      (key_a2nyg :: k_a2nAM)
+      (val_a2nyh :: v_a2nAN)
+      (ds_d2nCc :: Maybe (IO ()))
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d2nCc of {
+        Nothing ->
+          case mkWeakNoFinalizer#
+                 @ 'LiftedRep @ k_a2nAM @ v_a2nAN key_a2nyg val_a2nyh eta_B1
+          of
+          { (# ipv_s2nCA, ipv1_s2nCB #) ->
+          (# ipv_s2nCA, GHC.Weak.Weak @ v_a2nAN ipv1_s2nCB #)
+          };
+        Just ds1_d2nCv ->
+          case mkWeak#
+                 @ 'LiftedRep
+                 @ k_a2nAM
+                 @ v_a2nAN
+                 @ ()
+                 key_a2nyg
+                 val_a2nyh
+                 (ds1_d2nCv
+                  `cast` (GHC.Types.N:IO[0] <()>_R
+                          :: (IO () :: *)
+                             ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                 eta_B1
+          of
+          { (# ipv_s2nCE, ipv1_s2nCF #) ->
+          (# ipv_s2nCE, GHC.Weak.Weak @ v_a2nAN ipv1_s2nCF #)
+          }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 18, joins: 0/0}
+mkWeak :: forall k v. k -> v -> Maybe (IO ()) -> IO (Weak v)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Weak.mkWeak1
+               `cast` (forall (k :: <*>_N) (v :: <*>_N).
+                       <k>_R
+                       ->_R <v>_R
+                       ->_R <Maybe (IO ())>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Weak v>_R)
+                       :: (forall k v.
+                           k
+                           -> v
+                           -> Maybe (IO ())
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Weak v #) :: *)
+                          ~R# (forall k v. k -> v -> Maybe (IO ()) -> IO (Weak v) :: *))}]
+mkWeak
+  = GHC.Weak.mkWeak1
+    `cast` (forall (k :: <*>_N) (v :: <*>_N).
+            <k>_R
+            ->_R <v>_R
+            ->_R <Maybe (IO ())>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Weak v>_R)
+            :: (forall k v.
+                k
+                -> v
+                -> Maybe (IO ())
+                -> State# RealWorld
+                -> (# State# RealWorld, Weak v #) :: *)
+               ~R# (forall k v. k -> v -> Maybe (IO ()) -> IO (Weak v) :: *))
+
+-- RHS size: {terms: 22, types: 44, coercions: 0, joins: 0/0}
+GHC.Weak.deRefWeak1
+  :: forall v.
+     Weak v -> State# RealWorld -> (# State# RealWorld, Maybe v #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ v_a2nAA)
+                 (ds_d2nBV [Occ=Once!] :: Weak v_a2nAA)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d2nBV of { Weak w_a2nyr [Occ=Once] ->
+                 case deRefWeak# @ v_a2nAA w_a2nyr eta_B1 of
+                 { (# ipv_s2nCJ [Occ=Once*], ipv1_s2nCK [Occ=Once!],
+                      ipv2_s2nCL [Occ=Once] #) ->
+                 case ipv1_s2nCK of {
+                   __DEFAULT -> (# ipv_s2nCJ, GHC.Base.Just @ v_a2nAA ipv2_s2nCL #);
+                   0# -> (# ipv_s2nCJ, GHC.Base.Nothing @ v_a2nAA #)
+                 }
+                 }
+                 }}]
+GHC.Weak.deRefWeak1
+  = \ (@ v_a2nAA)
+      (ds_d2nBV :: Weak v_a2nAA)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d2nBV of { Weak w_a2nyr ->
+      case deRefWeak# @ v_a2nAA w_a2nyr eta_B1 of
+      { (# ipv_s2nCJ, ipv1_s2nCK, ipv2_s2nCL #) ->
+      case ipv1_s2nCK of {
+        __DEFAULT -> (# ipv_s2nCJ, GHC.Base.Just @ v_a2nAA ipv2_s2nCL #);
+        0# -> (# ipv_s2nCJ, GHC.Base.Nothing @ v_a2nAA #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+deRefWeak :: forall v. Weak v -> IO (Maybe v)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Weak.deRefWeak1
+               `cast` (forall (v :: <*>_N).
+                       <Weak v>_R ->_R Sym (GHC.Types.N:IO[0] <Maybe v>_R)
+                       :: (forall v.
+                           Weak v -> State# RealWorld -> (# State# RealWorld, Maybe v #) :: *)
+                          ~R# (forall v. Weak v -> IO (Maybe v) :: *))}]
+deRefWeak
+  = GHC.Weak.deRefWeak1
+    `cast` (forall (v :: <*>_N).
+            <Weak v>_R ->_R Sym (GHC.Types.N:IO[0] <Maybe v>_R)
+            :: (forall v.
+                Weak v -> State# RealWorld -> (# State# RealWorld, Maybe v #) :: *)
+               ~R# (forall v. Weak v -> IO (Maybe v) :: *))
+
+-- RHS size: {terms: 20, types: 52, coercions: 0, joins: 0/0}
+GHC.Weak.finalize1
+  :: forall v.
+     Weak v -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ v_a2nAr)
+                 (ds_d2nBC [Occ=Once!] :: Weak v_a2nAr)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d2nBC of { Weak w_a2nyw [Occ=Once] ->
+                 case finalizeWeak# @ v_a2nAr @ () w_a2nyw eta_B1 of
+                 { (# ipv_s2nCQ [Occ=Once*], ipv1_s2nCR [Occ=Once!],
+                      ipv2_s2nCS [Occ=Once!] #) ->
+                 case ipv1_s2nCR of {
+                   __DEFAULT -> ipv2_s2nCS ipv_s2nCQ;
+                   0# -> (# ipv_s2nCQ, GHC.Tuple.() #)
+                 }
+                 }
+                 }}]
+GHC.Weak.finalize1
+  = \ (@ v_a2nAr)
+      (ds_d2nBC :: Weak v_a2nAr)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d2nBC of { Weak w_a2nyw ->
+      case finalizeWeak# @ v_a2nAr @ () w_a2nyw eta_B1 of
+      { (# ipv_s2nCQ, ipv1_s2nCR, ipv2_s2nCS #) ->
+      case ipv1_s2nCR of {
+        __DEFAULT -> ipv2_s2nCS ipv_s2nCQ;
+        0# -> (# ipv_s2nCQ, GHC.Tuple.() #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+finalize :: forall v. Weak v -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Weak.finalize1
+               `cast` (forall (v :: <*>_N).
+                       <Weak v>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall v.
+                           Weak v -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall v. Weak v -> IO () :: *))}]
+finalize
+  = GHC.Weak.finalize1
+    `cast` (forall (v :: <*>_N).
+            <Weak v>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall v.
+                Weak v -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall v. Weak v -> IO () :: *))
+
+-- RHS size: {terms: 35, types: 49, coercions: 0, joins: 1/2}
+GHC.Weak.runFinalizerBatch1
+  :: Int
+     -> Array# (State# RealWorld -> State# RealWorld)
+     -> State# RealWorld
+     -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d2nBh [Occ=Once!] :: Int)
+                 (arr_a2nyC [Occ=OnceL]
+                    :: Array# (State# RealWorld -> State# RealWorld))
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d2nBh of { I# n_a2nyB [Occ=Once] ->
+                 joinrec {
+                   go_s2nDM [Occ=LoopBreakerT[2]]
+                     :: Int# -> State# RealWorld -> (# State# RealWorld, () #)
+                   [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                   go_s2nDM (m_a2nyE [Occ=Once!] :: Int#)
+                            (s_a2nyF [Occ=Once*] :: State# RealWorld)
+                     = case m_a2nyE of ds1_d2nBi {
+                         __DEFAULT ->
+                           let {
+                             m'_s2nDO :: Int#
+                             [LclId]
+                             m'_s2nDO = -# ds1_d2nBi 1# } in
+                           case indexArray#
+                                  @ (State# RealWorld -> State# RealWorld) arr_a2nyC m'_s2nDO
+                           of
+                           { (# ipv_s2nCY [Occ=Once!] #) ->
+                           case ipv_s2nCY s_a2nyF of s'_a2nyI { __DEFAULT ->
+                           jump go_s2nDM m'_s2nDO s'_a2nyI
+                           }
+                           };
+                         0# -> (# s_a2nyF, GHC.Tuple.() #)
+                       }; } in
+                 jump go_s2nDM n_a2nyB eta_B1
+                 }}]
+GHC.Weak.runFinalizerBatch1
+  = \ (ds_d2nBh :: Int)
+      (arr_a2nyC :: Array# (State# RealWorld -> State# RealWorld))
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d2nBh of { I# n_a2nyB ->
+      joinrec {
+        go_s2nDM [Occ=LoopBreaker]
+          :: Int# -> State# RealWorld -> (# State# RealWorld, () #)
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []]
+        go_s2nDM (m_a2nyE :: Int#) (s_a2nyF :: State# RealWorld)
+          = case m_a2nyE of ds1_d2nBi {
+              __DEFAULT ->
+                let {
+                  m'_s2nDO [Dmd=<S,U>] :: Int#
+                  [LclId]
+                  m'_s2nDO = -# ds1_d2nBi 1# } in
+                case indexArray#
+                       @ (State# RealWorld -> State# RealWorld) arr_a2nyC m'_s2nDO
+                of
+                { (# ipv_s2nCY #) ->
+                case ipv_s2nCY s_a2nyF of s'_a2nyI { __DEFAULT ->
+                jump go_s2nDM m'_s2nDO s'_a2nyI
+                }
+                };
+              0# -> (# s_a2nyF, GHC.Tuple.() #)
+            }; } in
+      jump go_s2nDM n_a2nyB eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+runFinalizerBatch
+  :: Int -> Array# (State# RealWorld -> State# RealWorld) -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Weak.runFinalizerBatch1
+               `cast` (<Int>_R
+                       ->_R <Array# (State# RealWorld -> State# RealWorld)>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (Int
+                           -> Array# (State# RealWorld -> State# RealWorld)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, () #) :: *)
+                          ~R# (Int
+                               -> Array# (State# RealWorld -> State# RealWorld) -> IO () :: *))}]
+runFinalizerBatch
+  = GHC.Weak.runFinalizerBatch1
+    `cast` (<Int>_R
+            ->_R <Array# (State# RealWorld -> State# RealWorld)>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (Int
+                -> Array# (State# RealWorld -> State# RealWorld)
+                -> State# RealWorld
+                -> (# State# RealWorld, () #) :: *)
+               ~R# (Int
+                    -> Array# (State# RealWorld -> State# RealWorld) -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Weak.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Weak.$trModule3 = GHC.Types.TrNameS GHC.Weak.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Weak.$trModule2 = "GHC.Weak"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Weak.$trModule1 = GHC.Types.TrNameS GHC.Weak.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Weak.$trModule
+  = GHC.Types.Module GHC.Weak.$trModule3 GHC.Weak.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r2nGG :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r2nGG = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep1_r2nGH :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r2nGH
+  = GHC.Types.: @ KindRep $krep_r2nGG (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep2_r2nGI :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep2_r2nGI
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcWeak# $krep1_r2nGH
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tcWeak2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Weak.$tcWeak2 = "Weak"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tcWeak1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Weak.$tcWeak1 = GHC.Types.TrNameS GHC.Weak.$tcWeak2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tcWeak :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Weak.$tcWeak
+  = GHC.Types.TyCon
+      16083706323098193819##
+      16670279643231176950##
+      GHC.Weak.$trModule
+      GHC.Weak.$tcWeak1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r2nGJ :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r2nGJ
+  = GHC.Types.KindRepTyConApp GHC.Weak.$tcWeak $krep1_r2nGH
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tc'Weak1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Weak.$tc'Weak1 = GHC.Types.KindRepFun $krep2_r2nGI $krep3_r2nGJ
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tc'Weak3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Weak.$tc'Weak3 = "'Weak"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tc'Weak2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Weak.$tc'Weak2 = GHC.Types.TrNameS GHC.Weak.$tc'Weak3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Weak.$tc'Weak :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Weak.$tc'Weak
+  = GHC.Types.TyCon
+      3879909390682789585##
+      9243676412269356154##
+      GHC.Weak.$trModule
+      GHC.Weak.$tc'Weak2
+      1#
+      GHC.Weak.$tc'Weak1
+
+

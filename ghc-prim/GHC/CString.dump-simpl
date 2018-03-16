@@ -1,0 +1,216 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:49:39.664264737 UTC
+
+Result size of Tidy Core
+  = {terms: 269, types: 92, coercions: 0, joins: 1/5}
+
+-- RHS size: {terms: 19, types: 8, coercions: 0, joins: 0/1}
+unpackCString# [InlPrag=NOINLINE CONLIKE] :: Addr# -> [Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+unpackCString#
+  = \ (addr_ajCF :: Addr#) ->
+      letrec {
+        unpack_sjJk [Occ=LoopBreaker] :: Int# -> [Char]
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        unpack_sjJk
+          = \ (nh_ajCH :: Int#) ->
+              case indexCharOffAddr# addr_ajCF nh_ajCH of ch_ajGk {
+                __DEFAULT ->
+                  GHC.Types.:
+                    @ Char (GHC.Types.C# ch_ajGk) (unpack_sjJk (+# nh_ajCH 1#));
+                '\NUL'# -> GHC.Types.[] @ Char
+              }; } in
+      unpack_sjJk 0#
+
+-- RHS size: {terms: 20, types: 9, coercions: 0, joins: 0/1}
+unpackAppendCString# [InlPrag=NOINLINE]
+  :: Addr# -> [Char] -> [Char]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []]
+unpackAppendCString#
+  = \ (addr_ajCJ :: Addr#) (rest_ajCK :: [Char]) ->
+      letrec {
+        unpack_sjJi [Occ=LoopBreaker] :: Int# -> [Char]
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        unpack_sjJi
+          = \ (nh_ajCM :: Int#) ->
+              case indexCharOffAddr# addr_ajCJ nh_ajCM of ch_ajFT {
+                __DEFAULT ->
+                  GHC.Types.:
+                    @ Char (GHC.Types.C# ch_ajFT) (unpack_sjJi (+# nh_ajCM 1#));
+                '\NUL'# -> rest_ajCK
+              }; } in
+      unpack_sjJi 0#
+
+-- RHS size: {terms: 22, types: 11, coercions: 0, joins: 0/1}
+unpackFoldrCString# [InlPrag=NOINLINE]
+  :: forall a. Addr# -> (Char -> a -> a) -> a -> a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><L,U>,
+ Unf=OtherCon []]
+unpackFoldrCString#
+  = \ (@ a_ajFd)
+      (addr_ajCO :: Addr#)
+      (f_ajCP :: Char -> a_ajFd -> a_ajFd)
+      (z_ajCQ :: a_ajFd) ->
+      letrec {
+        unpack_sjJg [Occ=LoopBreaker] :: Int# -> a_ajFd
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        unpack_sjJg
+          = \ (nh_ajCS :: Int#) ->
+              case indexCharOffAddr# addr_ajCO nh_ajCS of ch_ajFt {
+                __DEFAULT ->
+                  f_ajCP (GHC.Types.C# ch_ajFt) (unpack_sjJg (+# nh_ajCS 1#));
+                '\NUL'# -> z_ajCQ
+              }; } in
+      unpack_sjJg 0#
+
+-- RHS size: {terms: 154, types: 20, coercions: 0, joins: 0/1}
+unpackCStringUtf8# [InlPrag=NOINLINE CONLIKE] :: Addr# -> [Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+unpackCStringUtf8#
+  = \ (addr_ajCU :: Addr#) ->
+      letrec {
+        unpack_sjJe [Occ=LoopBreaker] :: Int# -> [Char]
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        unpack_sjJe
+          = \ (nh_ajCW :: Int#) ->
+              case indexCharOffAddr# addr_ajCU nh_ajCW of ch_ajEC {
+                __DEFAULT ->
+                  case leChar# ch_ajEC '\DEL'# of {
+                    __DEFAULT ->
+                      case leChar# ch_ajEC '\223'# of {
+                        __DEFAULT ->
+                          case leChar# ch_ajEC '\239'# of {
+                            __DEFAULT ->
+                              case indexCharOffAddr# addr_ajCU (+# nh_ajCW 3#) of wild_Xc
+                              { __DEFAULT ->
+                              case indexCharOffAddr# addr_ajCU (+# nh_ajCW 2#) of wild1_Xd
+                              { __DEFAULT ->
+                              case indexCharOffAddr# addr_ajCU (+# nh_ajCW 1#) of wild2_Xe
+                              { __DEFAULT ->
+                              GHC.Types.:
+                                @ Char
+                                (GHC.Types.C#
+                                   (chr#
+                                      (+#
+                                         (+#
+                                            (+#
+                                               (uncheckedIShiftL# (-# (ord# ch_ajEC) 240#) 18#)
+                                               (uncheckedIShiftL# (-# (ord# wild2_Xe) 128#) 12#))
+                                            (uncheckedIShiftL# (-# (ord# wild1_Xd) 128#) 6#))
+                                         (-# (ord# wild_Xc) 128#))))
+                                (unpack_sjJe (+# nh_ajCW 4#))
+                              }
+                              }
+                              };
+                            1# ->
+                              case indexCharOffAddr# addr_ajCU (+# nh_ajCW 2#) of wild_Xc
+                              { __DEFAULT ->
+                              case indexCharOffAddr# addr_ajCU (+# nh_ajCW 1#) of wild1_Xd
+                              { __DEFAULT ->
+                              GHC.Types.:
+                                @ Char
+                                (GHC.Types.C#
+                                   (chr#
+                                      (+#
+                                         (+#
+                                            (uncheckedIShiftL# (-# (ord# ch_ajEC) 224#) 12#)
+                                            (uncheckedIShiftL# (-# (ord# wild1_Xd) 128#) 6#))
+                                         (-# (ord# wild_Xc) 128#))))
+                                (unpack_sjJe (+# nh_ajCW 3#))
+                              }
+                              }
+                          };
+                        1# ->
+                          case indexCharOffAddr# addr_ajCU (+# nh_ajCW 1#) of wild_Xb
+                          { __DEFAULT ->
+                          GHC.Types.:
+                            @ Char
+                            (GHC.Types.C#
+                               (chr#
+                                  (+#
+                                     (uncheckedIShiftL# (-# (ord# ch_ajEC) 192#) 6#)
+                                     (-# (ord# wild_Xb) 128#))))
+                            (unpack_sjJe (+# nh_ajCW 2#))
+                          }
+                      };
+                    1# ->
+                      GHC.Types.:
+                        @ Char (GHC.Types.C# ch_ajEC) (unpack_sjJe (+# nh_ajCW 1#))
+                  };
+                '\NUL'# -> GHC.Types.[] @ Char
+              }; } in
+      unpack_sjJe 0#
+
+-- RHS size: {terms: 35, types: 16, coercions: 0, joins: 1/1}
+unpackNBytes# [InlPrag=NOINLINE] :: Addr# -> Int# -> [Char]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,1*U>, Unf=OtherCon []]
+unpackNBytes#
+  = \ (_addr_ajD1 :: Addr#) (ds_djGA :: Int#) ->
+      case ds_djGA of ds1_XjGH {
+        __DEFAULT ->
+          joinrec {
+            unpack_sjJc [Occ=LoopBreaker] :: [Char] -> Int# -> [Char]
+            [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>, Unf=OtherCon []]
+            unpack_sjJc (acc_ajD5 :: [Char]) (i#_ajD6 :: Int#)
+              = case <# i#_ajD6 0# of {
+                  __DEFAULT ->
+                    case indexCharOffAddr# _addr_ajD1 i#_ajD6 of ch_ajD7 { __DEFAULT ->
+                    jump unpack_sjJc
+                      (GHC.Types.: @ Char (GHC.Types.C# ch_ajD7) acc_ajD5)
+                      (-# i#_ajD6 1#)
+                    };
+                  1# -> acc_ajD5
+                }; } in
+          jump unpack_sjJc (GHC.Types.[] @ Char) (-# ds1_XjGH 1#);
+        0# -> GHC.Types.[] @ Char
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.CString.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.CString.$trModule4 = "ghc-prim"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.CString.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.CString.$trModule3 = GHC.Types.TrNameS GHC.CString.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.CString.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.CString.$trModule2 = "GHC.CString"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.CString.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.CString.$trModule1 = GHC.Types.TrNameS GHC.CString.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.CString.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.CString.$trModule
+  = GHC.Types.Module GHC.CString.$trModule3 GHC.CString.$trModule1
+
+

@@ -1,0 +1,160 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:15.719348107 UTC
+
+Result size of Tidy Core
+  = {terms: 62, types: 44, coercions: 0, joins: 0/0}
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Info.os1 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+System.Info.os1 = "linux"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+os :: String
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+os = GHC.CString.unpackCString# System.Info.os1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Info.arch1 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+System.Info.arch1 = "x86_64"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+arch :: String
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+arch = GHC.CString.unpackCString# System.Info.arch1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Info.compilerName1 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.Info.compilerName1 = "ghc"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+compilerName :: String
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+compilerName = GHC.CString.unpackCString# System.Info.compilerName1
+
+-- RHS size: {terms: 10, types: 9, coercions: 0, joins: 0/0}
+System.Info.compilerVersion4 :: (Int, Int)
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 31 30}]
+System.Info.compilerVersion4
+  = case GHC.Prim.quotRemInt# 805# 100# of
+    { (# ipv_icmAR, ipv1_icmAS #) ->
+    (GHC.Types.I# ipv_icmAR, GHC.Types.I# ipv1_icmAS)
+    }
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+System.Info.compilerVersion5 :: Int
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=True, Expandable=False, Guidance=IF_ARGS [] 10 0}]
+System.Info.compilerVersion5
+  = case System.Info.compilerVersion4 of
+    { (major_acmzM, minor_acmzO) ->
+    major_acmzM
+    }
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+System.Info.compilerVersion3 :: Int
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=True, Expandable=False, Guidance=IF_ARGS [] 10 0}]
+System.Info.compilerVersion3
+  = case System.Info.compilerVersion4 of
+    { (major_acmzM, minor_acmzO) ->
+    minor_acmzO
+    }
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+System.Info.compilerVersion2 :: [Int]
+[GblId,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.Info.compilerVersion2
+  = GHC.Types.:
+      @ Int System.Info.compilerVersion3 (GHC.Types.[] @ Int)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+System.Info.compilerVersion1 :: [Int]
+[GblId,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.Info.compilerVersion1
+  = GHC.Types.:
+      @ Int System.Info.compilerVersion5 System.Info.compilerVersion2
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+compilerVersion :: Version
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+compilerVersion
+  = Data.Version.Version
+      System.Info.compilerVersion1 (GHC.Types.[] @ String)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Info.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.Info.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Info.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Info.$trModule3 = GHC.Types.TrNameS System.Info.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Info.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+System.Info.$trModule2 = "System.Info"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Info.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Info.$trModule1 = GHC.Types.TrNameS System.Info.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.Info.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.Info.$trModule
+  = GHC.Types.Module System.Info.$trModule3 System.Info.$trModule1
+
+

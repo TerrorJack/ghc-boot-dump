@@ -1,0 +1,333 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:14.990525841 UTC
+
+Result size of Tidy Core
+  = {terms: 79, types: 219, coercions: 48, joins: 0/0}
+
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+System.Mem.Weak.mkWeakPtr1
+  :: forall k.
+     k
+     -> Maybe (IO ())
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Weak k #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_aclWt)
+                 (key_aclVu :: k_aclWt)
+                 (finalizer_aclVv [Occ=Once] :: Maybe (IO ())) ->
+                 GHC.Weak.mkWeak1
+                   @ k_aclWt @ k_aclWt key_aclVu key_aclVu finalizer_aclVv}]
+System.Mem.Weak.mkWeakPtr1
+  = \ (@ k_aclWt)
+      (key_aclVu :: k_aclWt)
+      (finalizer_aclVv :: Maybe (IO ())) ->
+      GHC.Weak.mkWeak1
+        @ k_aclWt @ k_aclWt key_aclVu key_aclVu finalizer_aclVv
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+mkWeakPtr :: forall k. k -> Maybe (IO ()) -> IO (Weak k)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.Mem.Weak.mkWeakPtr1
+               `cast` (forall (k :: <*>_N).
+                       <k>_R
+                       ->_R <Maybe (IO ())>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Weak k>_R)
+                       :: (forall k.
+                           k
+                           -> Maybe (IO ())
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, Weak k #) :: *)
+                          ~R# (forall k. k -> Maybe (IO ()) -> IO (Weak k) :: *))}]
+mkWeakPtr
+  = System.Mem.Weak.mkWeakPtr1
+    `cast` (forall (k :: <*>_N).
+            <k>_R
+            ->_R <Maybe (IO ())>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Weak k>_R)
+            :: (forall k.
+                k
+                -> Maybe (IO ())
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, Weak k #) :: *)
+               ~R# (forall k. k -> Maybe (IO ()) -> IO (Weak k) :: *))
+
+-- RHS size: {terms: 14, types: 31, coercions: 2, joins: 0/0}
+System.Mem.Weak.addFinalizer1
+  :: forall key.
+     key
+     -> IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ key_aclWx)
+                 (key1_aclVw :: key_aclWx)
+                 (finalizer_aclVx [Occ=Once] :: IO ())
+                 (s_i7IAv [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case GHC.Prim.mkWeak#
+                        @ 'GHC.Types.LiftedRep
+                        @ key_aclWx
+                        @ key_aclWx
+                        @ ()
+                        key1_aclVw
+                        key1_aclVw
+                        (finalizer_aclVx
+                         `cast` (GHC.Types.N:IO[0] <()>_R
+                                 :: (IO () :: *)
+                                    ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                         -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)))
+                        s_i7IAv
+                 of
+                 { (# ipv_iclXg [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv_iclXg, GHC.Tuple.() #)
+                 }}]
+System.Mem.Weak.addFinalizer1
+  = \ (@ key_aclWx)
+      (key1_aclVw :: key_aclWx)
+      (finalizer_aclVx :: IO ())
+      (s_i7IAv :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case GHC.Prim.mkWeak#
+             @ 'GHC.Types.LiftedRep
+             @ key_aclWx
+             @ key_aclWx
+             @ ()
+             key1_aclVw
+             key1_aclVw
+             (finalizer_aclVx
+              `cast` (GHC.Types.N:IO[0] <()>_R
+                      :: (IO () :: *)
+                         ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)))
+             s_i7IAv
+      of
+      { (# ipv_iclXg, ipv1_iclXh #) ->
+      (# ipv_iclXg, GHC.Tuple.() #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+addFinalizer :: forall key. key -> IO () -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.Mem.Weak.addFinalizer1
+               `cast` (forall (key :: <*>_N).
+                       <key>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall key.
+                           key
+                           -> IO ()
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)
+                          ~R# (forall key. key -> IO () -> IO () :: *))}]
+addFinalizer
+  = System.Mem.Weak.addFinalizer1
+    `cast` (forall (key :: <*>_N).
+            <key>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall key.
+                key
+                -> IO ()
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)
+               ~R# (forall key. key -> IO () -> IO () :: *))
+
+-- RHS size: {terms: 35, types: 91, coercions: 2, joins: 0/0}
+System.Mem.Weak.mkWeakPair1
+  :: forall k v.
+     k
+     -> v
+     -> Maybe (IO ())
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Weak (k, v) #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_aclWj)
+                 (@ v_aclWk)
+                 (key_aclVy :: k_aclWj)
+                 (val_aclVz [Occ=Once*] :: v_aclWk)
+                 (finalizer_aclVA [Occ=Once!] :: Maybe (IO ()))
+                 (eta_iclX2 [Occ=Once*] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case finalizer_aclVA of {
+                   Nothing ->
+                     case GHC.Prim.mkWeakNoFinalizer#
+                            @ 'GHC.Types.LiftedRep
+                            @ k_aclWj
+                            @ (k_aclWj, v_aclWk)
+                            key_aclVy
+                            (key_aclVy, val_aclVz)
+                            eta_iclX2
+                     of
+                     { (# ipv_iclX8 [Occ=Once], ipv1_iclX9 [Occ=Once] #) ->
+                     (# ipv_iclX8, GHC.Weak.Weak @ (k_aclWj, v_aclWk) ipv1_iclX9 #)
+                     };
+                   Just ds1_iclXc [Occ=Once] ->
+                     case GHC.Prim.mkWeak#
+                            @ 'GHC.Types.LiftedRep
+                            @ k_aclWj
+                            @ (k_aclWj, v_aclWk)
+                            @ ()
+                            key_aclVy
+                            (key_aclVy, val_aclVz)
+                            (ds1_iclXc
+                             `cast` (GHC.Types.N:IO[0] <()>_R
+                                     :: (IO () :: *)
+                                        ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                             -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)))
+                            eta_iclX2
+                     of
+                     { (# ipv_iclXg [Occ=Once], ipv1_iclXh [Occ=Once] #) ->
+                     (# ipv_iclXg, GHC.Weak.Weak @ (k_aclWj, v_aclWk) ipv1_iclXh #)
+                     }
+                 }}]
+System.Mem.Weak.mkWeakPair1
+  = \ (@ k_aclWj)
+      (@ v_aclWk)
+      (key_aclVy :: k_aclWj)
+      (val_aclVz :: v_aclWk)
+      (finalizer_aclVA :: Maybe (IO ()))
+      (eta_iclX2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case finalizer_aclVA of {
+        Nothing ->
+          case GHC.Prim.mkWeakNoFinalizer#
+                 @ 'GHC.Types.LiftedRep
+                 @ k_aclWj
+                 @ (k_aclWj, v_aclWk)
+                 key_aclVy
+                 (key_aclVy, val_aclVz)
+                 eta_iclX2
+          of
+          { (# ipv_iclX8, ipv1_iclX9 #) ->
+          (# ipv_iclX8, GHC.Weak.Weak @ (k_aclWj, v_aclWk) ipv1_iclX9 #)
+          };
+        Just ds1_iclXc ->
+          case GHC.Prim.mkWeak#
+                 @ 'GHC.Types.LiftedRep
+                 @ k_aclWj
+                 @ (k_aclWj, v_aclWk)
+                 @ ()
+                 key_aclVy
+                 (key_aclVy, val_aclVz)
+                 (ds1_iclXc
+                  `cast` (GHC.Types.N:IO[0] <()>_R
+                          :: (IO () :: *)
+                             ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                  -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)))
+                 eta_iclX2
+          of
+          { (# ipv_iclXg, ipv1_iclXh #) ->
+          (# ipv_iclXg, GHC.Weak.Weak @ (k_aclWj, v_aclWk) ipv1_iclXh #)
+          }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 20, joins: 0/0}
+mkWeakPair
+  :: forall k v. k -> v -> Maybe (IO ()) -> IO (Weak (k, v))
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.Mem.Weak.mkWeakPair1
+               `cast` (forall (k :: <*>_N) (v :: <*>_N).
+                       <k>_R
+                       ->_R <v>_R
+                       ->_R <Maybe (IO ())>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Weak (k, v)>_R)
+                       :: (forall k v.
+                           k
+                           -> v
+                           -> Maybe (IO ())
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, Weak (k, v) #) :: *)
+                          ~R# (forall k v.
+                               k -> v -> Maybe (IO ()) -> IO (Weak (k, v)) :: *))}]
+mkWeakPair
+  = System.Mem.Weak.mkWeakPair1
+    `cast` (forall (k :: <*>_N) (v :: <*>_N).
+            <k>_R
+            ->_R <v>_R
+            ->_R <Maybe (IO ())>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Weak (k, v)>_R)
+            :: (forall k v.
+                k
+                -> v
+                -> Maybe (IO ())
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, Weak (k, v) #) :: *)
+               ~R# (forall k v. k -> v -> Maybe (IO ()) -> IO (Weak (k, v)) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Mem.Weak.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.Mem.Weak.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Mem.Weak.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Mem.Weak.$trModule3
+  = GHC.Types.TrNameS System.Mem.Weak.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Mem.Weak.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+System.Mem.Weak.$trModule2 = "System.Mem.Weak"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Mem.Weak.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Mem.Weak.$trModule1
+  = GHC.Types.TrNameS System.Mem.Weak.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.Mem.Weak.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.Mem.Weak.$trModule
+  = GHC.Types.Module
+      System.Mem.Weak.$trModule3 System.Mem.Weak.$trModule1
+
+

@@ -1,0 +1,3248 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:56:30.587531808 UTC
+
+GHC.ST.$fFunctorST2
+  :: forall s a b.
+     (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1JzX ds_s1JzY s1_s1JzZ]
+        case ds_s1JzY s1_s1JzZ of {
+          (#,#) ipv_s1JA1 [Occ=Once] ipv1_s1JA2 [Occ=Once] ->
+              let {
+                sat_s1JA3 [Occ=Once] :: b_a1Jh6
+                [LclId] =
+                    [f_s1JzX ipv1_s1JA2] \u [] f_s1JzX ipv1_s1JA2;
+              } in  (#,#) [ipv_s1JA1 sat_s1JA3];
+        };
+
+GHC.ST.$fFunctorST1
+  :: forall a s b.
+     a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [x_s1JA4 ds_s1JA5 s1_s1JA6]
+        case ds_s1JA5 s1_s1JA6 of {
+          (#,#) ipv_s1JA8 [Occ=Once] _ [Occ=Dead] ->
+              (#,#) [ipv_s1JA8 x_s1JA4];
+        };
+
+GHC.ST.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [GHC.ST.$fFunctorST2
+                                       GHC.ST.$fFunctorST1];
+
+$cpure_r1Jzx
+  :: forall s a. a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    sat-only [] \r [x_s1JAa s1_s1JAb] (#,#) [s1_s1JAb x_s1JAa];
+
+GHC.ST.$fApplicativeST_$cpure [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. a -> GHC.ST.ST s a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] $cpure_r1Jzx eta_B2 eta_B1;
+
+$c>>=_r1Jzy
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> (a -> GHC.ST.ST s b)
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s1JAc k_s1JAd s1_s1JAe]
+        case ds_s1JAc s1_s1JAe of {
+          (#,#) ipv_s1JAg [Occ=Once] ipv1_s1JAh [Occ=Once] ->
+              k_s1JAd ipv1_s1JAh ipv_s1JAg;
+        };
+
+GHC.ST.$fMonadST_$c>>= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b.
+     GHC.ST.ST s a -> (a -> GHC.ST.ST s b) -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1] $c>>=_r1Jzy eta_B3 eta_B2 eta_B1;
+
+GHC.ST.$fApplicativeST2
+  :: forall c s b a.
+     (a -> b -> c)
+     -> GHC.ST.ST s a
+     -> GHC.ST.ST s b
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, c #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1JAi m1_s1JAj m2_s1JAk s1_s1JAl]
+        case m1_s1JAj s1_s1JAl of {
+          (#,#) ipv_s1JAn [Occ=Once] ipv1_s1JAo [Occ=Once] ->
+              case m2_s1JAk ipv_s1JAn of {
+                (#,#) ipv2_s1JAq [Occ=Once] ipv3_s1JAr [Occ=Once] ->
+                    let {
+                      sat_s1JAs [Occ=Once] :: c_a1Jgr
+                      [LclId] =
+                          [f_s1JAi ipv1_s1JAo ipv3_s1JAr] \u []
+                              f_s1JAi ipv1_s1JAo ipv3_s1JAr;
+                    } in  (#,#) [ipv2_s1JAq sat_s1JAs];
+              };
+        };
+
+GHC.ST.$fApplicativeST1
+  :: forall a s b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1JAt m2_s1JAu s1_s1JAv]
+        case m1_s1JAt s1_s1JAv of {
+          (#,#) ipv_s1JAx [Occ=Once] ipv1_s1JAy [Occ=Once] ->
+              case m2_s1JAu ipv_s1JAx of {
+                (#,#) ipv2_s1JAA [Occ=Once] _ [Occ=Dead] ->
+                    (#,#) [ipv2_s1JAA ipv1_s1JAy];
+              };
+        };
+
+GHC.ST.$fApplicativeST3
+  :: forall b s a.
+     GHC.ST.ST s (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,1*C1(U)))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1JAC m2_s1JAD s1_s1JAE]
+        case m1_s1JAC s1_s1JAE of {
+          (#,#) ipv_s1JAG [Occ=Once] ipv1_s1JAH [Occ=Once!] ->
+              case m2_s1JAD ipv_s1JAG of {
+                (#,#) ipv2_s1JAJ [Occ=Once] ipv3_s1JAK [Occ=Once] ->
+                    let {
+                      sat_s1JAL [Occ=Once] :: b_a1Jgb
+                      [LclId] =
+                          [ipv1_s1JAH ipv3_s1JAK] \u [] ipv1_s1JAH ipv3_s1JAK;
+                    } in  (#,#) [ipv2_s1JAJ sat_s1JAL];
+              };
+        };
+
+$c*>_r1Jzz
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1JAM eta1_s1JAN s1_s1JAO]
+        case eta_s1JAM s1_s1JAO of {
+          (#,#) ipv_s1JAQ [Occ=Once] _ [Occ=Dead] -> eta1_s1JAN ipv_s1JAQ;
+        };
+
+GHC.ST.$fApplicativeST_$c*> [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b. GHC.ST.ST s a -> GHC.ST.ST s b -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1] $c*>_r1Jzz eta_B3 eta_B2 eta_B1;
+
+GHC.ST.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [GHC.ST.$fFunctorST
+                                           GHC.ST.$fApplicativeST_$cpure
+                                           GHC.ST.$fApplicativeST3
+                                           GHC.ST.$fApplicativeST2
+                                           GHC.ST.$fApplicativeST_$c*>
+                                           GHC.ST.$fApplicativeST1];
+
+GHC.ST.$fMonadFailST1
+  :: forall s a. [GHC.Types.Char] -> GHC.ST.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_s1JAS] GHC.Err.errorWithoutStackTrace eta_s1JAS;
+
+GHC.ST.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [GHC.ST.$fApplicativeST
+                                     GHC.ST.$fMonadST_$c>>=
+                                     GHC.ST.$fApplicativeST_$c*>
+                                     GHC.ST.$fApplicativeST_$cpure
+                                     GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fail.MonadFail (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [GHC.ST.$fMonadST
+                                                   GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fSemigroupST2
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C1(U)),A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1JAT eta_s1JAU eta1_s1JAV eta2_s1JAW]
+        case eta_s1JAU eta2_s1JAW of {
+          (#,#) ipv_s1JAY [Occ=Once] ipv1_s1JAZ [Occ=Once] ->
+              case eta1_s1JAV ipv_s1JAY of {
+                (#,#) ipv2_s1JB1 [Occ=Once] ipv3_s1JB2 [Occ=Once] ->
+                    let {
+                      sat_s1JB3 [Occ=Once] :: a_a1Jei
+                      [LclId] =
+                          [$dSemigroup_s1JAT ipv1_s1JAZ ipv3_s1JB2] \u []
+                              GHC.Base.<> $dSemigroup_s1JAT ipv1_s1JAZ ipv3_s1JB2;
+                    } in  (#,#) [ipv2_s1JB1 sat_s1JB3];
+              };
+        };
+
+GHC.ST.$w$csconcat [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> [GHC.ST.ST s a]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><C(S),1*C1(U(U,U))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1JB4 ww_s1JB5 ww1_s1JB6 w1_s1JB7]
+        let {
+          go_s1JB8 [Occ=LoopBreaker]
+            :: GHC.ST.ST s_s1JuP a_s1JuO
+               -> [GHC.ST.ST s_s1JuP a_s1JuO]
+               -> GHC.Prim.State# s_s1JuP
+               -> (# GHC.Prim.State# s_s1JuP, a_s1JuO #)
+          [LclId,
+           Arity=3,
+           Str=<C(S),1*C1(U(U,U))><S,1*U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [w_s1JB4 go_s1JB8] \r [b_s1JB9 ds1_s1JBa eta_s1JBb]
+                  case ds1_s1JBa of {
+                    [] -> b_s1JB9 eta_s1JBb;
+                    : c_s1JBd [Occ=Once] cs_s1JBe [Occ=Once] ->
+                        case b_s1JB9 eta_s1JBb of {
+                          (#,#) ipv_s1JBg [Occ=Once] ipv1_s1JBh [Occ=Once] ->
+                              case go_s1JB8 c_s1JBd cs_s1JBe ipv_s1JBg of {
+                                (#,#) ipv2_s1JBj [Occ=Once] ipv3_s1JBk [Occ=Once] ->
+                                    let {
+                                      sat_s1JBl [Occ=Once] :: a_s1JuO
+                                      [LclId] =
+                                          [w_s1JB4 ipv1_s1JBh ipv3_s1JBk] \u []
+                                              GHC.Base.<> w_s1JB4 ipv1_s1JBh ipv3_s1JBk;
+                                    } in  (#,#) [ipv2_s1JBj sat_s1JBl];
+                              };
+                        };
+                  };
+        } in  go_s1JB8 ww_s1JB5 ww1_s1JB6 w1_s1JB7;
+
+GHC.ST.$fSemigroupST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.NonEmpty (GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><S(C(S)S),1*U(1*C1(U(U,U)),1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1JBm w1_s1JBn w2_s1JBo]
+        case w1_s1JBn of {
+          GHC.Base.:| ww1_s1JBq [Occ=Once] ww2_s1JBr [Occ=Once] ->
+              GHC.ST.$w$csconcat w_s1JBm ww1_s1JBq ww2_s1JBr w2_s1JBo;
+        };
+
+GHC.ST.$fSemigroupST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(C(C1(U)),A,A)>m] =
+    [] \r [$dSemigroup_s1JBs]
+        let {
+          sat_s1JBv [Occ=Once]
+            :: forall b.
+               GHC.Real.Integral b =>
+               b -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1JBs] \r [eta_B1]
+                  GHC.ST.$fSemigroupST_$cstimes $dSemigroup_s1JBs eta_B1; } in
+        let {
+          sat_s1JBu [Occ=Once]
+            :: GHC.Base.NonEmpty (GHC.ST.ST s_X1Jgj a_X1Jgh)
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1JBs] \r [eta_B2 eta_B1]
+                  GHC.ST.$fSemigroupST1 $dSemigroup_s1JBs eta_B2 eta_B1; } in
+        let {
+          sat_s1JBt [Occ=Once]
+            :: GHC.ST.ST s_X1Jgj a_X1Jgh
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1JBs] \r [eta_B3 eta_B2 eta_B1]
+                  GHC.ST.$fSemigroupST2 $dSemigroup_s1JBs eta_B3 eta_B2 eta_B1;
+        } in  GHC.Base.C:Semigroup [sat_s1JBt sat_s1JBu sat_s1JBv];
+GHC.ST.$fSemigroupST_$cstimes [Occ=LoopBreaker]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     forall b.
+     GHC.Real.Integral b =>
+     b -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId, Arity=2, Str=<L,U(C(C1(U)),A,A)><L,U>, Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1JBw $dIntegral_s1JBx]
+        let {
+          sat_s1JBy [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jgk a_X1Jgi)
+          [LclId] =
+              [$dSemigroup_s1JBw] \u [] GHC.ST.$fSemigroupST $dSemigroup_s1JBw;
+        } in 
+          Data.Semigroup.Internal.stimesDefault $dIntegral_s1JBx sat_s1JBy;
+
+GHC.ST.$fMonoidST_$cp1Monoid
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(C(C1(U)),A,A),A,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1JBz]
+        let {
+          sat_s1JBA [Occ=Once, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1Jfz
+          [LclId] =
+              [$dMonoid_s1JBz] \u [] GHC.Base.$p1Monoid $dMonoid_s1JBz;
+        } in  GHC.ST.$fSemigroupST sat_s1JBA;
+
+$cmappend_r1JzA
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [$dMonoid_s1JBB eta_s1JBC eta1_s1JBD eta2_s1JBE]
+        case eta_s1JBC eta2_s1JBE of {
+          (#,#) ipv_s1JBG [Occ=Once] ipv1_s1JBH [Occ=Once] ->
+              case eta1_s1JBD ipv_s1JBG of {
+                (#,#) ipv2_s1JBJ [Occ=Once] ipv3_s1JBK [Occ=Once] ->
+                    let {
+                      sat_s1JBM [Occ=Once] :: a_X1JfB
+                      [LclId] =
+                          [$dMonoid_s1JBB ipv1_s1JBH ipv3_s1JBK] \u []
+                              case GHC.Base.$p1Monoid $dMonoid_s1JBB of sat_s1JBL {
+                                __DEFAULT -> GHC.Base.<> sat_s1JBL ipv1_s1JBH ipv3_s1JBK;
+                              };
+                    } in  (#,#) [ipv2_s1JBJ sat_s1JBM];
+              };
+        };
+
+GHC.ST.$fMonoidST_$cmappend [InlPrag=INLINE (sat-args=0)]
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        $cmappend_r1JzA eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.ST.$fMonoidST1
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     [GHC.ST.ST s a] -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(C(C1(U)),A,A),1*U,A,A)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1JBN eta_s1JBO eta1_s1JBP]
+        let {
+          $dSemigroup_s1JBQ [Occ=OnceL, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1JfC
+          [LclId] =
+              [$dMonoid_s1JBN] \u [] GHC.Base.$p1Monoid $dMonoid_s1JBN; } in
+        let {
+          lvl_s1JBR [Occ=OnceL] :: a_X1JfC
+          [LclId] =
+              [$dMonoid_s1JBN] \u [] GHC.Base.mempty $dMonoid_s1JBN; } in
+        let {
+          go_s1JBS [Occ=LoopBreaker]
+            :: [GHC.ST.ST s_X1JfE a_X1JfC]
+               -> GHC.Prim.State# s_X1JfE
+               -> (# GHC.Prim.State# s_X1JfE, a_X1JfC #)
+          [LclId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [$dSemigroup_s1JBQ lvl_s1JBR go_s1JBS] \r [ds_s1JBT
+                                                                  eta2_s1JBU]
+                  case ds_s1JBT of {
+                    [] -> (#,#) [eta2_s1JBU lvl_s1JBR];
+                    : y_s1JBW [Occ=Once] ys_s1JBX [Occ=Once] ->
+                        case y_s1JBW eta2_s1JBU of {
+                          (#,#) ipv_s1JBZ [Occ=Once] ipv1_s1JC0 [Occ=Once] ->
+                              case go_s1JBS ys_s1JBX ipv_s1JBZ of {
+                                (#,#) ipv2_s1JC2 [Occ=Once] ipv3_s1JC3 [Occ=Once] ->
+                                    let {
+                                      sat_s1JC4 [Occ=Once] :: a_X1JfC
+                                      [LclId] =
+                                          [$dSemigroup_s1JBQ ipv1_s1JC0 ipv3_s1JC3] \u []
+                                              GHC.Base.<> $dSemigroup_s1JBQ ipv1_s1JC0 ipv3_s1JC3;
+                                    } in  (#,#) [ipv2_s1JC2 sat_s1JC4];
+                              };
+                        };
+                  };
+        } in  go_s1JBS eta_s1JBO eta1_s1JBP;
+
+GHC.ST.$fMonoidST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s. GHC.Base.Monoid a => GHC.Base.Monoid (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(U(C(C1(U)),A,A),U,A,A)>m] =
+    [] \r [$dMonoid_s1JC5]
+        let {
+          sat_s1JCb [Occ=Once]
+            :: [GHC.ST.ST s_X1Jhz a_X1JfA] -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1JC5] \r [eta_B2 eta_B1]
+                  GHC.ST.$fMonoidST1 $dMonoid_s1JC5 eta_B2 eta_B1; } in
+        let {
+          sat_s1JCa [Occ=Once]
+            :: GHC.ST.ST s_X1Jhz a_X1JfA
+               -> GHC.ST.ST s_X1Jhz a_X1JfA -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1JC5] \r [eta_B3 eta_B2 eta_B1]
+                  GHC.ST.$fMonoidST_$cmappend
+                      $dMonoid_s1JC5 eta_B3 eta_B2 eta_B1; } in
+        let {
+          sat_s1JC9 [Occ=Once] :: GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1JC5] \r [s1_s1JC7]
+                  let {
+                    sat_s1JC8 [Occ=Once] :: a_X1JfA
+                    [LclId] =
+                        [$dMonoid_s1JC5] \u [] GHC.Base.mempty $dMonoid_s1JC5;
+                  } in  (#,#) [s1_s1JC7 sat_s1JC8]; } in
+        let {
+          sat_s1JC6 [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jhz a_X1JfA)
+          [LclId] =
+              [$dMonoid_s1JC5] \u [] GHC.ST.$fMonoidST_$cp1Monoid $dMonoid_s1JC5;
+        } in  GHC.Base.C:Monoid [sat_s1JC6 sat_s1JC9 sat_s1JCa sat_s1JCb];
+
+GHC.ST.$fShowST4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "<<ST action>>"#;
+
+GHC.ST.$fShowST3 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# GHC.ST.$fShowST4;
+
+GHC.ST.$fShowST2 :: [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Base.++ GHC.ST.$fShowST3 eta_B1;
+
+GHC.ST.$fShowST_$cshowsPrec
+  :: forall s a. GHC.Types.Int -> GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=3, Str=<L,A><L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1JCc ds1_s1JCd eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshow
+  :: forall s a. GHC.ST.ST s a -> GHC.Base.String
+[GblId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [x_s1JCe] GHC.ST.$fShowST3;
+
+GHC.ST.$fShowST1 :: forall a s. GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1JCf eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshowList
+  :: forall s a. [GHC.ST.ST s a] -> GHC.Show.ShowS
+[GblId, Arity=2, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Show.showList__ GHC.ST.$fShowST1 eta_B2 eta_B1;
+
+GHC.ST.$fShowST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Show.Show (GHC.ST.ST s a)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.ST.$fShowST_$cshowsPrec
+                                    GHC.ST.$fShowST_$cshow
+                                    GHC.ST.$fShowST_$cshowList];
+
+GHC.ST.liftST
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> GHC.ST.STret s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s1JCg s1_s1JCh]
+        case ds_s1JCg s1_s1JCh of {
+          (#,#) ipv_s1JCj [Occ=Once] ipv1_s1JCk [Occ=Once] ->
+              GHC.ST.STret [ipv_s1JCj ipv1_s1JCk];
+        };
+
+GHC.ST.fixST1
+  :: forall a s.
+     (a -> GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [k_s1JCl s1_s1JCm]
+        let {
+          ans_s1JCn [Occ=LoopBreaker] :: GHC.ST.STret s_a1JcZ a_a1JcY
+          [LclId] =
+              [k_s1JCl s1_s1JCm ans_s1JCn] \u []
+                  let {
+                    sat_s1JCr [Occ=Once] :: a_a1JcY
+                    [LclId] =
+                        [ans_s1JCn] \u []
+                            case ans_s1JCn of {
+                              GHC.ST.STret _ [Occ=Dead] r_s1JCq [Occ=Once] -> r_s1JCq;
+                            };
+                  } in 
+                    case k_s1JCl sat_s1JCr s1_s1JCm of {
+                      (#,#) ipv_s1JCt [Occ=Once] ipv1_s1JCu [Occ=Once] ->
+                          GHC.ST.STret [ipv_s1JCt ipv1_s1JCu];
+                    };
+        } in 
+          case ans_s1JCn of {
+            GHC.ST.STret s'_s1JCw [Occ=Once] x_s1JCx [Occ=Once] ->
+                (#,#) [s'_s1JCw x_s1JCx];
+          };
+
+GHC.ST.fixST :: forall a s. (a -> GHC.ST.ST s a) -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.ST.fixST1 eta_B2 eta_B1;
+
+GHC.ST.unsafeDupableInterleaveST1
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1JCy s1_s1JCz]
+        let {
+          sat_s1JCD [Occ=Once] :: a_a1Jch
+          [LclId] =
+              [ds_s1JCy s1_s1JCz] \u []
+                  case ds_s1JCy s1_s1JCz of {
+                    (#,#) _ [Occ=Dead] ipv1_s1JCC [Occ=Once] -> ipv1_s1JCC;
+                  };
+        } in  (#,#) [s1_s1JCz sat_s1JCD];
+
+GHC.ST.unsafeDupableInterleaveST [InlPrag=NOINLINE]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.ST.unsafeDupableInterleaveST1 eta_B2 eta_B1;
+
+unsafeInterleaveST1_r1JzB
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1JCE eta1_s1JCF]
+        let {
+          sat_s1JCI [Occ=Once] :: GHC.ST.ST s_a1JcE a_a1JcF
+          [LclId] =
+              [eta_s1JCE] \r [s1_s1JCG]
+                  case noDuplicate# [s1_s1JCG] of wild_s1JCH {
+                    __DEFAULT -> eta_s1JCE wild_s1JCH;
+                  };
+        } in  GHC.ST.unsafeDupableInterleaveST sat_s1JCI eta1_s1JCF;
+
+GHC.ST.unsafeInterleaveST [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] unsafeInterleaveST1_r1JzB eta_B2 eta_B1;
+
+GHC.ST.runST [InlPrag=INLINE (sat-args=1)]
+  :: forall a. (forall s. GHC.ST.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1JCJ]
+        case ds_s1JCJ GHC.Prim.realWorld# of {
+          (#,#) _ [Occ=Dead] ipv1_s1JCM [Occ=Once] -> ipv1_s1JCM;
+        };
+
+GHC.ST.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ST.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule4];
+
+GHC.ST.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ST"#;
+
+GHC.ST.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule2];
+
+GHC.ST.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ST.$trModule3
+                                     GHC.ST.$trModule1];
+
+$krep_r1JzC :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'LiftedRep
+                                              GHC.Types.[]];
+
+$krep1_r1JzD :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRuntimeRep
+                                              GHC.Types.[]];
+
+$krep2_r1JzE :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep3_r1JzF :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r1JzG :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF GHC.Types.[]];
+
+$krep5_r1JzH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep4_r1JzG];
+
+$krep6_r1JzI :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1JzD GHC.Types.[]];
+
+$krep7_r1JzJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'[]
+                                              $krep6_r1JzI];
+
+$krep8_r1JzK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r1JzJ GHC.Types.[]];
+
+$krep9_r1JzL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'TupleRep
+                                              $krep8_r1JzK];
+
+$krep10_r1JzM :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r1JzE GHC.Types.[]];
+
+$krep11_r1JzN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep5_r1JzH $krep10_r1JzM];
+
+$krep12_r1JzO :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1JzC $krep11_r1JzN];
+
+$krep13_r1JzP :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep9_r1JzL $krep12_r1JzO];
+
+$krep14_r1JzQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc(#,#)
+                                              $krep13_r1JzP];
+
+$krep15_r1JzR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep14_r1JzQ];
+
+GHC.ST.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+GHC.ST.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcST2];
+
+GHC.ST.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6436416558974291297##
+                                    634350057185658725##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep16_r1JzS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF $krep10_r1JzM];
+
+$krep17_r1JzT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcST
+                                              $krep16_r1JzS];
+
+GHC.ST.$tc'ST1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep15_r1JzR $krep17_r1JzT];
+
+GHC.ST.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+GHC.ST.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'ST3];
+
+GHC.ST.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [13769291328326942007##
+                                    10130644975726413154##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'ST2
+                                    2#
+                                    GHC.ST.$tc'ST1];
+
+GHC.ST.$tcSTret2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STret"#;
+
+GHC.ST.$tcSTret1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcSTret2];
+
+GHC.ST.$tcSTret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18266429679521839845##
+                                    6736124203785980802##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcSTret1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep18_r1JzU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcSTret
+                                              $krep16_r1JzS];
+
+$krep19_r1JzV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r1JzE $krep18_r1JzU];
+
+GHC.ST.$tc'STret1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep19_r1JzV];
+
+GHC.ST.$tc'STret3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STret"#;
+
+GHC.ST.$tc'STret2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'STret3];
+
+GHC.ST.$tc'STret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12272761794237483025##
+                                    16570602352537544279##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'STret2
+                                    2#
+                                    GHC.ST.$tc'STret1];
+
+GHC.ST.STret
+  :: forall s a. GHC.Prim.State# s -> a -> GHC.ST.STret s a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.ST.STret [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:56:30.602042059 UTC
+
+GHC.ST.$fFunctorST2
+  :: forall s a b.
+     (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1JzX ds_s1JzY void_0E]
+        case ds_s1JzY GHC.Prim.void# of {
+          Unit# ipv1_s1JA2 [Occ=Once] ->
+              let {
+                sat_s1JA3 [Occ=Once] :: b_a1Jh6
+                [LclId] =
+                    [f_s1JzX ipv1_s1JA2] \u [] f_s1JzX ipv1_s1JA2;
+              } in  Unit# [sat_s1JA3];
+        };
+
+GHC.ST.$fFunctorST1
+  :: forall a s b.
+     a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [x_s1JA4 ds_s1JA5 void_0E]
+        case ds_s1JA5 GHC.Prim.void# of {
+          Unit# _ [Occ=Dead] -> Unit# [x_s1JA4];
+        };
+
+GHC.ST.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [GHC.ST.$fFunctorST2
+                                       GHC.ST.$fFunctorST1];
+
+$cpure_r1Jzx
+  :: forall s a. a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    sat-only [] \r [x_s1JAa void_0E] Unit# [x_s1JAa];
+
+GHC.ST.$fApplicativeST_$cpure [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. a -> GHC.ST.ST s a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] $cpure_r1Jzx eta_B2 GHC.Prim.void#;
+
+$c>>=_r1Jzy
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> (a -> GHC.ST.ST s b)
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s1JAc k_s1JAd void_0E]
+        case ds_s1JAc GHC.Prim.void# of {
+          Unit# ipv1_s1JAh [Occ=Once] -> k_s1JAd ipv1_s1JAh GHC.Prim.void#;
+        };
+
+GHC.ST.$fMonadST_$c>>= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b.
+     GHC.ST.ST s a -> (a -> GHC.ST.ST s b) -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        $c>>=_r1Jzy eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.ST.$fApplicativeST2
+  :: forall c s b a.
+     (a -> b -> c)
+     -> GHC.ST.ST s a
+     -> GHC.ST.ST s b
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, c #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1JAi m1_s1JAj m2_s1JAk void_0E]
+        case m1_s1JAj GHC.Prim.void# of {
+          Unit# ipv1_s1JAo [Occ=Once] ->
+              case m2_s1JAk GHC.Prim.void# of {
+                Unit# ipv3_s1JAr [Occ=Once] ->
+                    let {
+                      sat_s1JAs [Occ=Once] :: c_a1Jgr
+                      [LclId] =
+                          [f_s1JAi ipv1_s1JAo ipv3_s1JAr] \u []
+                              f_s1JAi ipv1_s1JAo ipv3_s1JAr;
+                    } in  Unit# [sat_s1JAs];
+              };
+        };
+
+GHC.ST.$fApplicativeST1
+  :: forall a s b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1JAt m2_s1JAu void_0E]
+        case m1_s1JAt GHC.Prim.void# of {
+          Unit# ipv1_s1JAy [Occ=Once] ->
+              case m2_s1JAu GHC.Prim.void# of {
+                Unit# _ [Occ=Dead] -> Unit# [ipv1_s1JAy];
+              };
+        };
+
+GHC.ST.$fApplicativeST3
+  :: forall b s a.
+     GHC.ST.ST s (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,1*C1(U)))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1JAC m2_s1JAD void_0E]
+        case m1_s1JAC GHC.Prim.void# of {
+          Unit# ipv1_s1JAH [Occ=Once!] ->
+              case m2_s1JAD GHC.Prim.void# of {
+                Unit# ipv3_s1JAK [Occ=Once] ->
+                    let {
+                      sat_s1JAL [Occ=Once] :: b_a1Jgb
+                      [LclId] =
+                          [ipv1_s1JAH ipv3_s1JAK] \u [] ipv1_s1JAH ipv3_s1JAK;
+                    } in  Unit# [sat_s1JAL];
+              };
+        };
+
+$c*>_r1Jzz
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1JAM eta1_s1JAN void_0E]
+        case eta_s1JAM GHC.Prim.void# of {
+          Unit# _ [Occ=Dead] -> eta1_s1JAN GHC.Prim.void#;
+        };
+
+GHC.ST.$fApplicativeST_$c*> [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b. GHC.ST.ST s a -> GHC.ST.ST s b -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        $c*>_r1Jzz eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.ST.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [GHC.ST.$fFunctorST
+                                           GHC.ST.$fApplicativeST_$cpure
+                                           GHC.ST.$fApplicativeST3
+                                           GHC.ST.$fApplicativeST2
+                                           GHC.ST.$fApplicativeST_$c*>
+                                           GHC.ST.$fApplicativeST1];
+
+GHC.ST.$fMonadFailST1
+  :: forall s a. [GHC.Types.Char] -> GHC.ST.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_s1JAS] GHC.Err.errorWithoutStackTrace eta_s1JAS;
+
+GHC.ST.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [GHC.ST.$fApplicativeST
+                                     GHC.ST.$fMonadST_$c>>=
+                                     GHC.ST.$fApplicativeST_$c*>
+                                     GHC.ST.$fApplicativeST_$cpure
+                                     GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fail.MonadFail (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [GHC.ST.$fMonadST
+                                                   GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fSemigroupST2
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C1(U)),A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1JAT eta_s1JAU eta1_s1JAV void_0E]
+        case eta_s1JAU GHC.Prim.void# of {
+          Unit# ipv1_s1JAZ [Occ=Once] ->
+              case eta1_s1JAV GHC.Prim.void# of {
+                Unit# ipv3_s1JB2 [Occ=Once] ->
+                    let {
+                      sat_s1JB3 [Occ=Once] :: a_a1Jei
+                      [LclId] =
+                          [$dSemigroup_s1JAT ipv1_s1JAZ ipv3_s1JB2] \u []
+                              GHC.Base.<> $dSemigroup_s1JAT ipv1_s1JAZ ipv3_s1JB2;
+                    } in  Unit# [sat_s1JB3];
+              };
+        };
+
+GHC.ST.$w$csconcat [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> [GHC.ST.ST s a]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><C(S),1*C1(U(U,U))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1JB4 ww_s1JB5 ww1_s1JB6 void_0E]
+        let {
+          go_s1JB8 [Occ=LoopBreaker]
+            :: GHC.ST.ST s_s1JuP a_s1JuO
+               -> [GHC.ST.ST s_s1JuP a_s1JuO]
+               -> GHC.Prim.State# s_s1JuP
+               -> (# GHC.Prim.State# s_s1JuP, a_s1JuO #)
+          [LclId,
+           Arity=3,
+           Str=<C(S),1*C1(U(U,U))><S,1*U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [w_s1JB4 go_s1JB8] \r [b_s1JB9 ds1_s1JBa void_0E]
+                  case ds1_s1JBa of {
+                    [] -> b_s1JB9 GHC.Prim.void#;
+                    : c_s1JBd [Occ=Once] cs_s1JBe [Occ=Once] ->
+                        case b_s1JB9 GHC.Prim.void# of {
+                          Unit# ipv1_s1JBh [Occ=Once] ->
+                              case go_s1JB8 c_s1JBd cs_s1JBe GHC.Prim.void# of {
+                                Unit# ipv3_s1JBk [Occ=Once] ->
+                                    let {
+                                      sat_s1JBl [Occ=Once] :: a_s1JuO
+                                      [LclId] =
+                                          [w_s1JB4 ipv1_s1JBh ipv3_s1JBk] \u []
+                                              GHC.Base.<> w_s1JB4 ipv1_s1JBh ipv3_s1JBk;
+                                    } in  Unit# [sat_s1JBl];
+                              };
+                        };
+                  };
+        } in  go_s1JB8 ww_s1JB5 ww1_s1JB6 GHC.Prim.void#;
+
+GHC.ST.$fSemigroupST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.NonEmpty (GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><S(C(S)S),1*U(1*C1(U(U,U)),1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1JBm w1_s1JBn void_0E]
+        case w1_s1JBn of {
+          GHC.Base.:| ww1_s1JBq [Occ=Once] ww2_s1JBr [Occ=Once] ->
+              GHC.ST.$w$csconcat w_s1JBm ww1_s1JBq ww2_s1JBr GHC.Prim.void#;
+        };
+
+GHC.ST.$fSemigroupST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(C(C1(U)),A,A)>m] =
+    [] \r [$dSemigroup_s1JBs]
+        let {
+          sat_s1JBv [Occ=Once]
+            :: forall b.
+               GHC.Real.Integral b =>
+               b -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1JBs] \r [eta_B1]
+                  GHC.ST.$fSemigroupST_$cstimes $dSemigroup_s1JBs eta_B1; } in
+        let {
+          sat_s1JBu [Occ=Once]
+            :: GHC.Base.NonEmpty (GHC.ST.ST s_X1Jgj a_X1Jgh)
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1JBs] \r [eta_B2 void_0E]
+                  GHC.ST.$fSemigroupST1 $dSemigroup_s1JBs eta_B2 GHC.Prim.void#; } in
+        let {
+          sat_s1JBt [Occ=Once]
+            :: GHC.ST.ST s_X1Jgj a_X1Jgh
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1JBs] \r [eta_B3 eta_B2 void_0E]
+                  GHC.ST.$fSemigroupST2
+                      $dSemigroup_s1JBs eta_B3 eta_B2 GHC.Prim.void#;
+        } in  GHC.Base.C:Semigroup [sat_s1JBt sat_s1JBu sat_s1JBv];
+GHC.ST.$fSemigroupST_$cstimes [Occ=LoopBreaker]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     forall b.
+     GHC.Real.Integral b =>
+     b -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId, Arity=2, Str=<L,U(C(C1(U)),A,A)><L,U>, Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1JBw $dIntegral_s1JBx]
+        let {
+          sat_s1JBy [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jgk a_X1Jgi)
+          [LclId] =
+              [$dSemigroup_s1JBw] \u [] GHC.ST.$fSemigroupST $dSemigroup_s1JBw;
+        } in 
+          Data.Semigroup.Internal.stimesDefault $dIntegral_s1JBx sat_s1JBy;
+
+GHC.ST.$fMonoidST_$cp1Monoid
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(C(C1(U)),A,A),A,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1JBz]
+        let {
+          sat_s1JBA [Occ=Once, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1Jfz
+          [LclId] =
+              [$dMonoid_s1JBz] \u [] GHC.Base.$p1Monoid $dMonoid_s1JBz;
+        } in  GHC.ST.$fSemigroupST sat_s1JBA;
+
+$cmappend_r1JzA
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [$dMonoid_s1JBB eta_s1JBC eta1_s1JBD void_0E]
+        case eta_s1JBC GHC.Prim.void# of {
+          Unit# ipv1_s1JBH [Occ=Once] ->
+              case eta1_s1JBD GHC.Prim.void# of {
+                Unit# ipv3_s1JBK [Occ=Once] ->
+                    let {
+                      sat_s1JBM [Occ=Once] :: a_X1JfB
+                      [LclId] =
+                          [$dMonoid_s1JBB ipv1_s1JBH ipv3_s1JBK] \u []
+                              case GHC.Base.$p1Monoid $dMonoid_s1JBB of sat_s1JBL {
+                                __DEFAULT -> GHC.Base.<> sat_s1JBL ipv1_s1JBH ipv3_s1JBK;
+                              };
+                    } in  Unit# [sat_s1JBM];
+              };
+        };
+
+GHC.ST.$fMonoidST_$cmappend [InlPrag=INLINE (sat-args=0)]
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        $cmappend_r1JzA eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.ST.$fMonoidST1
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     [GHC.ST.ST s a] -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(C(C1(U)),A,A),1*U,A,A)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1JBN eta_s1JBO void_0E]
+        let {
+          $dSemigroup_s1JBQ [Occ=OnceL, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1JfC
+          [LclId] =
+              [$dMonoid_s1JBN] \u [] GHC.Base.$p1Monoid $dMonoid_s1JBN; } in
+        let {
+          lvl_s1JBR [Occ=OnceL] :: a_X1JfC
+          [LclId] =
+              [$dMonoid_s1JBN] \u [] GHC.Base.mempty $dMonoid_s1JBN; } in
+        let {
+          go_s1JBS [Occ=LoopBreaker]
+            :: [GHC.ST.ST s_X1JfE a_X1JfC]
+               -> GHC.Prim.State# s_X1JfE
+               -> (# GHC.Prim.State# s_X1JfE, a_X1JfC #)
+          [LclId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [$dSemigroup_s1JBQ lvl_s1JBR go_s1JBS] \r [ds_s1JBT
+                                                                  void_0E]
+                  case ds_s1JBT of {
+                    [] -> Unit# [lvl_s1JBR];
+                    : y_s1JBW [Occ=Once] ys_s1JBX [Occ=Once] ->
+                        case y_s1JBW GHC.Prim.void# of {
+                          Unit# ipv1_s1JC0 [Occ=Once] ->
+                              case go_s1JBS ys_s1JBX GHC.Prim.void# of {
+                                Unit# ipv3_s1JC3 [Occ=Once] ->
+                                    let {
+                                      sat_s1JC4 [Occ=Once] :: a_X1JfC
+                                      [LclId] =
+                                          [$dSemigroup_s1JBQ ipv1_s1JC0 ipv3_s1JC3] \u []
+                                              GHC.Base.<> $dSemigroup_s1JBQ ipv1_s1JC0 ipv3_s1JC3;
+                                    } in  Unit# [sat_s1JC4];
+                              };
+                        };
+                  };
+        } in  go_s1JBS eta_s1JBO GHC.Prim.void#;
+
+GHC.ST.$fMonoidST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s. GHC.Base.Monoid a => GHC.Base.Monoid (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(U(C(C1(U)),A,A),U,A,A)>m] =
+    [] \r [$dMonoid_s1JC5]
+        let {
+          sat_s1JCb [Occ=Once]
+            :: [GHC.ST.ST s_X1Jhz a_X1JfA] -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1JC5] \r [eta_B2 void_0E]
+                  GHC.ST.$fMonoidST1 $dMonoid_s1JC5 eta_B2 GHC.Prim.void#; } in
+        let {
+          sat_s1JCa [Occ=Once]
+            :: GHC.ST.ST s_X1Jhz a_X1JfA
+               -> GHC.ST.ST s_X1Jhz a_X1JfA -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1JC5] \r [eta_B3 eta_B2 void_0E]
+                  GHC.ST.$fMonoidST_$cmappend
+                      $dMonoid_s1JC5 eta_B3 eta_B2 GHC.Prim.void#; } in
+        let {
+          sat_s1JC9 [Occ=Once] :: GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1JC5] \r [void_0E]
+                  let {
+                    sat_s1JC8 [Occ=Once] :: a_X1JfA
+                    [LclId] =
+                        [$dMonoid_s1JC5] \u [] GHC.Base.mempty $dMonoid_s1JC5;
+                  } in  Unit# [sat_s1JC8]; } in
+        let {
+          sat_s1JC6 [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jhz a_X1JfA)
+          [LclId] =
+              [$dMonoid_s1JC5] \u [] GHC.ST.$fMonoidST_$cp1Monoid $dMonoid_s1JC5;
+        } in  GHC.Base.C:Monoid [sat_s1JC6 sat_s1JC9 sat_s1JCa sat_s1JCb];
+
+GHC.ST.$fShowST4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "<<ST action>>"#;
+
+GHC.ST.$fShowST3 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# GHC.ST.$fShowST4;
+
+GHC.ST.$fShowST2 :: [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Base.++ GHC.ST.$fShowST3 eta_B1;
+
+GHC.ST.$fShowST_$cshowsPrec
+  :: forall s a. GHC.Types.Int -> GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=3, Str=<L,A><L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1JCc ds1_s1JCd eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshow
+  :: forall s a. GHC.ST.ST s a -> GHC.Base.String
+[GblId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [x_s1JCe] GHC.ST.$fShowST3;
+
+GHC.ST.$fShowST1 :: forall a s. GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1JCf eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshowList
+  :: forall s a. [GHC.ST.ST s a] -> GHC.Show.ShowS
+[GblId, Arity=2, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Show.showList__ GHC.ST.$fShowST1 eta_B2 eta_B1;
+
+GHC.ST.$fShowST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Show.Show (GHC.ST.ST s a)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.ST.$fShowST_$cshowsPrec
+                                    GHC.ST.$fShowST_$cshow
+                                    GHC.ST.$fShowST_$cshowList];
+
+GHC.ST.liftST
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> GHC.ST.STret s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s1JCg void_0E]
+        case ds_s1JCg GHC.Prim.void# of {
+          Unit# ipv1_s1JCk [Occ=Once] -> GHC.ST.STret [ipv1_s1JCk];
+        };
+
+GHC.ST.fixST1
+  :: forall a s.
+     (a -> GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [k_s1JCl void_0E]
+        let {
+          ans_s1JCn [Occ=LoopBreaker] :: GHC.ST.STret s_a1JcZ a_a1JcY
+          [LclId] =
+              [k_s1JCl ans_s1JCn] \u []
+                  let {
+                    sat_s1JCr [Occ=Once] :: a_a1JcY
+                    [LclId] =
+                        [ans_s1JCn] \u []
+                            case ans_s1JCn of { GHC.ST.STret r_s1JCq [Occ=Once] -> r_s1JCq; };
+                  } in 
+                    case k_s1JCl sat_s1JCr GHC.Prim.void# of {
+                      Unit# ipv1_s1JCu [Occ=Once] -> GHC.ST.STret [ipv1_s1JCu];
+                    };
+        } in 
+          case ans_s1JCn of {
+            GHC.ST.STret x_s1JCx [Occ=Once] -> Unit# [x_s1JCx];
+          };
+
+GHC.ST.fixST :: forall a s. (a -> GHC.ST.ST s a) -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.ST.fixST1 eta_B2 GHC.Prim.void#;
+
+GHC.ST.unsafeDupableInterleaveST1
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1JCy void_0E]
+        let {
+          sat_s1JCD [Occ=Once] :: a_a1Jch
+          [LclId] =
+              [ds_s1JCy] \u []
+                  case ds_s1JCy GHC.Prim.void# of {
+                    Unit# ipv1_s1JCC [Occ=Once] -> ipv1_s1JCC;
+                  };
+        } in  Unit# [sat_s1JCD];
+
+GHC.ST.unsafeDupableInterleaveST [InlPrag=NOINLINE]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.ST.unsafeDupableInterleaveST1 eta_B2 GHC.Prim.void#;
+
+unsafeInterleaveST1_r1JzB
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1JCE void_0E]
+        let {
+          sat_s1JCI [Occ=Once] :: GHC.ST.ST s_a1JcE a_a1JcF
+          [LclId] =
+              [eta_s1JCE] \r [void_0E]
+                  case noDuplicate# [GHC.Prim.void#] of wild_s1JCH {
+                    (##) -> eta_s1JCE GHC.Prim.void#;
+                  };
+        } in  GHC.ST.unsafeDupableInterleaveST sat_s1JCI GHC.Prim.void#;
+
+GHC.ST.unsafeInterleaveST [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        unsafeInterleaveST1_r1JzB eta_B2 GHC.Prim.void#;
+
+GHC.ST.runST [InlPrag=INLINE (sat-args=1)]
+  :: forall a. (forall s. GHC.ST.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1JCJ]
+        case ds_s1JCJ GHC.Prim.realWorld# of {
+          Unit# ipv1_s1JCM [Occ=Once] -> ipv1_s1JCM;
+        };
+
+GHC.ST.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ST.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule4];
+
+GHC.ST.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ST"#;
+
+GHC.ST.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule2];
+
+GHC.ST.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ST.$trModule3
+                                     GHC.ST.$trModule1];
+
+$krep_r1JzC :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'LiftedRep
+                                              GHC.Types.[]];
+
+$krep1_r1JzD :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRuntimeRep
+                                              GHC.Types.[]];
+
+$krep2_r1JzE :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep3_r1JzF :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r1JzG :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF GHC.Types.[]];
+
+$krep5_r1JzH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep4_r1JzG];
+
+$krep6_r1JzI :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1JzD GHC.Types.[]];
+
+$krep7_r1JzJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'[]
+                                              $krep6_r1JzI];
+
+$krep8_r1JzK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r1JzJ GHC.Types.[]];
+
+$krep9_r1JzL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'TupleRep
+                                              $krep8_r1JzK];
+
+$krep10_r1JzM :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r1JzE GHC.Types.[]];
+
+$krep11_r1JzN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep5_r1JzH $krep10_r1JzM];
+
+$krep12_r1JzO :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1JzC $krep11_r1JzN];
+
+$krep13_r1JzP :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep9_r1JzL $krep12_r1JzO];
+
+$krep14_r1JzQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc(#,#)
+                                              $krep13_r1JzP];
+
+$krep15_r1JzR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep14_r1JzQ];
+
+GHC.ST.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+GHC.ST.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcST2];
+
+GHC.ST.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6436416558974291297##
+                                    634350057185658725##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep16_r1JzS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF $krep10_r1JzM];
+
+$krep17_r1JzT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcST
+                                              $krep16_r1JzS];
+
+GHC.ST.$tc'ST1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep15_r1JzR $krep17_r1JzT];
+
+GHC.ST.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+GHC.ST.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'ST3];
+
+GHC.ST.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [13769291328326942007##
+                                    10130644975726413154##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'ST2
+                                    2#
+                                    GHC.ST.$tc'ST1];
+
+GHC.ST.$tcSTret2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STret"#;
+
+GHC.ST.$tcSTret1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcSTret2];
+
+GHC.ST.$tcSTret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18266429679521839845##
+                                    6736124203785980802##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcSTret1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep18_r1JzU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcSTret
+                                              $krep16_r1JzS];
+
+$krep19_r1JzV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r1JzE $krep18_r1JzU];
+
+GHC.ST.$tc'STret1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep19_r1JzV];
+
+GHC.ST.$tc'STret3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STret"#;
+
+GHC.ST.$tc'STret2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'STret3];
+
+GHC.ST.$tc'STret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12272761794237483025##
+                                    16570602352537544279##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'STret2
+                                    2#
+                                    GHC.ST.$tc'STret1];
+
+GHC.ST.STret
+  :: forall s a. GHC.Prim.State# s -> a -> GHC.ST.STret s a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [void_0E eta_B1] GHC.ST.STret [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:56:31.674406438 UTC
+
+GHC.ST.$fFunctorST2
+  :: forall s a b.
+     (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1Kc9 ds_s1Kca s1_s1Kcb]
+        case ds_s1Kca s1_s1Kcb of {
+          (#,#) ipv_s1Kcd [Occ=Once] ipv1_s1Kce [Occ=Once] ->
+              let {
+                sat_s1Kcf [Occ=Once] :: b_a1Jh6
+                [LclId] =
+                    [f_s1Kc9 ipv1_s1Kce] \u [] f_s1Kc9 ipv1_s1Kce;
+              } in  (#,#) [ipv_s1Kcd sat_s1Kcf];
+        };
+
+GHC.ST.$fFunctorST1
+  :: forall a s b.
+     a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [x_s1Kcg ds_s1Kch s1_s1Kci]
+        case ds_s1Kch s1_s1Kci of {
+          (#,#) ipv_s1Kck [Occ=Once] _ [Occ=Dead] ->
+              (#,#) [ipv_s1Kck x_s1Kcg];
+        };
+
+GHC.ST.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [GHC.ST.$fFunctorST2
+                                       GHC.ST.$fFunctorST1];
+
+$cpure_r1Jzx
+  :: forall s a. a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    sat-only [] \r [x_s1Kcm s1_s1Kcn] (#,#) [s1_s1Kcn x_s1Kcm];
+
+GHC.ST.$fApplicativeST_$cpure [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. a -> GHC.ST.ST s a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] $cpure_r1Jzx eta_B2 eta_B1;
+
+$c>>=_r1Jzy
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> (a -> GHC.ST.ST s b)
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s1Kco k_s1Kcp s1_s1Kcq]
+        case ds_s1Kco s1_s1Kcq of {
+          (#,#) ipv_s1Kcs [Occ=Once] ipv1_s1Kct [Occ=Once] ->
+              k_s1Kcp ipv1_s1Kct ipv_s1Kcs;
+        };
+
+GHC.ST.$fMonadST_$c>>= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b.
+     GHC.ST.ST s a -> (a -> GHC.ST.ST s b) -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1] $c>>=_r1Jzy eta_B3 eta_B2 eta_B1;
+
+GHC.ST.$fApplicativeST2
+  :: forall c s b a.
+     (a -> b -> c)
+     -> GHC.ST.ST s a
+     -> GHC.ST.ST s b
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, c #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1Kcu m1_s1Kcv m2_s1Kcw s1_s1Kcx]
+        case m1_s1Kcv s1_s1Kcx of {
+          (#,#) ipv_s1Kcz [Occ=Once] ipv1_s1KcA [Occ=Once] ->
+              case m2_s1Kcw ipv_s1Kcz of {
+                (#,#) ipv2_s1KcC [Occ=Once] ipv3_s1KcD [Occ=Once] ->
+                    let {
+                      sat_s1KcE [Occ=Once] :: c_a1Jgr
+                      [LclId] =
+                          [f_s1Kcu ipv1_s1KcA ipv3_s1KcD] \u []
+                              f_s1Kcu ipv1_s1KcA ipv3_s1KcD;
+                    } in  (#,#) [ipv2_s1KcC sat_s1KcE];
+              };
+        };
+
+GHC.ST.$fApplicativeST1
+  :: forall a s b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1KcF m2_s1KcG s1_s1KcH]
+        case m1_s1KcF s1_s1KcH of {
+          (#,#) ipv_s1KcJ [Occ=Once] ipv1_s1KcK [Occ=Once] ->
+              case m2_s1KcG ipv_s1KcJ of {
+                (#,#) ipv2_s1KcM [Occ=Once] _ [Occ=Dead] ->
+                    (#,#) [ipv2_s1KcM ipv1_s1KcK];
+              };
+        };
+
+GHC.ST.$fApplicativeST3
+  :: forall b s a.
+     GHC.ST.ST s (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,1*C1(U)))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1KcO m2_s1KcP s1_s1KcQ]
+        case m1_s1KcO s1_s1KcQ of {
+          (#,#) ipv_s1KcS [Occ=Once] ipv1_s1KcT [Occ=Once!] ->
+              case m2_s1KcP ipv_s1KcS of {
+                (#,#) ipv2_s1KcV [Occ=Once] ipv3_s1KcW [Occ=Once] ->
+                    let {
+                      sat_s1KcX [Occ=Once] :: b_a1Jgb
+                      [LclId] =
+                          [ipv1_s1KcT ipv3_s1KcW] \u [] ipv1_s1KcT ipv3_s1KcW;
+                    } in  (#,#) [ipv2_s1KcV sat_s1KcX];
+              };
+        };
+
+$c*>_r1Jzz
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1KcY eta1_s1KcZ s1_s1Kd0]
+        case eta_s1KcY s1_s1Kd0 of {
+          (#,#) ipv_s1Kd2 [Occ=Once] _ [Occ=Dead] -> eta1_s1KcZ ipv_s1Kd2;
+        };
+
+GHC.ST.$fApplicativeST_$c*> [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b. GHC.ST.ST s a -> GHC.ST.ST s b -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1] $c*>_r1Jzz eta_B3 eta_B2 eta_B1;
+
+GHC.ST.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [GHC.ST.$fFunctorST
+                                           GHC.ST.$fApplicativeST_$cpure
+                                           GHC.ST.$fApplicativeST3
+                                           GHC.ST.$fApplicativeST2
+                                           GHC.ST.$fApplicativeST_$c*>
+                                           GHC.ST.$fApplicativeST1];
+
+GHC.ST.$fMonadFailST1
+  :: forall s a. [GHC.Types.Char] -> GHC.ST.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_s1Kd4] GHC.Err.errorWithoutStackTrace eta_s1Kd4;
+
+GHC.ST.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [GHC.ST.$fApplicativeST
+                                     GHC.ST.$fMonadST_$c>>=
+                                     GHC.ST.$fApplicativeST_$c*>
+                                     GHC.ST.$fApplicativeST_$cpure
+                                     GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fail.MonadFail (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [GHC.ST.$fMonadST
+                                                   GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fSemigroupST2
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C1(U)),A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1Kd5 eta_s1Kd6 eta1_s1Kd7 eta2_s1Kd8]
+        case eta_s1Kd6 eta2_s1Kd8 of {
+          (#,#) ipv_s1Kda [Occ=Once] ipv1_s1Kdb [Occ=Once] ->
+              case eta1_s1Kd7 ipv_s1Kda of {
+                (#,#) ipv2_s1Kdd [Occ=Once] ipv3_s1Kde [Occ=Once] ->
+                    let {
+                      sat_s1Kdf [Occ=Once] :: a_a1Jei
+                      [LclId] =
+                          [$dSemigroup_s1Kd5 ipv1_s1Kdb ipv3_s1Kde] \u []
+                              GHC.Base.<> $dSemigroup_s1Kd5 ipv1_s1Kdb ipv3_s1Kde;
+                    } in  (#,#) [ipv2_s1Kdd sat_s1Kdf];
+              };
+        };
+
+GHC.ST.$w$csconcat [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> [GHC.ST.ST s a]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><C(S),1*C1(U(U,U))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1Kdg ww_s1Kdh ww1_s1Kdi w1_s1Kdj]
+        let {
+          go_s1Kdk [Occ=LoopBreaker]
+            :: GHC.ST.ST s_s1JuP a_s1JuO
+               -> [GHC.ST.ST s_s1JuP a_s1JuO]
+               -> GHC.Prim.State# s_s1JuP
+               -> (# GHC.Prim.State# s_s1JuP, a_s1JuO #)
+          [LclId,
+           Arity=3,
+           Str=<C(S),1*C1(U(U,U))><S,1*U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [w_s1Kdg go_s1Kdk] \r [b_s1Kdl ds1_s1Kdm eta_s1Kdn]
+                  case ds1_s1Kdm of {
+                    [] -> b_s1Kdl eta_s1Kdn;
+                    : c_s1Kdp [Occ=Once] cs_s1Kdq [Occ=Once] ->
+                        case b_s1Kdl eta_s1Kdn of {
+                          (#,#) ipv_s1Kds [Occ=Once] ipv1_s1Kdt [Occ=Once] ->
+                              case go_s1Kdk c_s1Kdp cs_s1Kdq ipv_s1Kds of {
+                                (#,#) ipv2_s1Kdv [Occ=Once] ipv3_s1Kdw [Occ=Once] ->
+                                    let {
+                                      sat_s1Kdx [Occ=Once] :: a_s1JuO
+                                      [LclId] =
+                                          [w_s1Kdg ipv1_s1Kdt ipv3_s1Kdw] \u []
+                                              GHC.Base.<> w_s1Kdg ipv1_s1Kdt ipv3_s1Kdw;
+                                    } in  (#,#) [ipv2_s1Kdv sat_s1Kdx];
+                              };
+                        };
+                  };
+        } in  go_s1Kdk ww_s1Kdh ww1_s1Kdi w1_s1Kdj;
+
+GHC.ST.$fSemigroupST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.NonEmpty (GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><S(C(S)S),1*U(1*C1(U(U,U)),1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1Kdy w1_s1Kdz w2_s1KdA]
+        case w1_s1Kdz of {
+          GHC.Base.:| ww1_s1KdC [Occ=Once] ww2_s1KdD [Occ=Once] ->
+              GHC.ST.$w$csconcat w_s1Kdy ww1_s1KdC ww2_s1KdD w2_s1KdA;
+        };
+
+GHC.ST.$fSemigroupST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(C(C1(U)),A,A)>m] =
+    [] \r [$dSemigroup_s1KdE]
+        let {
+          sat_s1KdH [Occ=Once]
+            :: forall b.
+               GHC.Real.Integral b =>
+               b -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1KdE] \r [eta_B1]
+                  GHC.ST.$fSemigroupST_$cstimes $dSemigroup_s1KdE eta_B1; } in
+        let {
+          sat_s1KdG [Occ=Once]
+            :: GHC.Base.NonEmpty (GHC.ST.ST s_X1Jgj a_X1Jgh)
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1KdE] \r [eta_B2 eta_B1]
+                  GHC.ST.$fSemigroupST1 $dSemigroup_s1KdE eta_B2 eta_B1; } in
+        let {
+          sat_s1KdF [Occ=Once]
+            :: GHC.ST.ST s_X1Jgj a_X1Jgh
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1KdE] \r [eta_B3 eta_B2 eta_B1]
+                  GHC.ST.$fSemigroupST2 $dSemigroup_s1KdE eta_B3 eta_B2 eta_B1;
+        } in  GHC.Base.C:Semigroup [sat_s1KdF sat_s1KdG sat_s1KdH];
+GHC.ST.$fSemigroupST_$cstimes [Occ=LoopBreaker]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     forall b.
+     GHC.Real.Integral b =>
+     b -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId, Arity=2, Str=<L,U(C(C1(U)),A,A)><L,U>, Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1KdI $dIntegral_s1KdJ]
+        let {
+          sat_s1KdK [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jgk a_X1Jgi)
+          [LclId] =
+              [$dSemigroup_s1KdI] \u [] GHC.ST.$fSemigroupST $dSemigroup_s1KdI;
+        } in 
+          Data.Semigroup.Internal.stimesDefault $dIntegral_s1KdJ sat_s1KdK;
+
+GHC.ST.$fMonoidST_$cp1Monoid
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(C(C1(U)),A,A),A,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1KdL]
+        let {
+          sat_s1KdM [Occ=Once, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1Jfz
+          [LclId] =
+              [$dMonoid_s1KdL] \u [] GHC.Base.$p1Monoid $dMonoid_s1KdL;
+        } in  GHC.ST.$fSemigroupST sat_s1KdM;
+
+$cmappend_r1JzA
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [$dMonoid_s1KdN eta_s1KdO eta1_s1KdP eta2_s1KdQ]
+        case eta_s1KdO eta2_s1KdQ of {
+          (#,#) ipv_s1KdS [Occ=Once] ipv1_s1KdT [Occ=Once] ->
+              case eta1_s1KdP ipv_s1KdS of {
+                (#,#) ipv2_s1KdV [Occ=Once] ipv3_s1KdW [Occ=Once] ->
+                    let {
+                      sat_s1KdY [Occ=Once] :: a_X1JfB
+                      [LclId] =
+                          [$dMonoid_s1KdN ipv1_s1KdT ipv3_s1KdW] \u []
+                              case GHC.Base.$p1Monoid $dMonoid_s1KdN of sat_s1KdX {
+                                __DEFAULT -> GHC.Base.<> sat_s1KdX ipv1_s1KdT ipv3_s1KdW;
+                              };
+                    } in  (#,#) [ipv2_s1KdV sat_s1KdY];
+              };
+        };
+
+GHC.ST.$fMonoidST_$cmappend [InlPrag=INLINE (sat-args=0)]
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        $cmappend_r1JzA eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.ST.$fMonoidST1
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     [GHC.ST.ST s a] -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(C(C1(U)),A,A),1*U,A,A)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1KdZ eta_s1Ke0 eta1_s1Ke1]
+        let {
+          $dSemigroup_s1Ke2 [Occ=OnceL, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1JfC
+          [LclId] =
+              [$dMonoid_s1KdZ] \u [] GHC.Base.$p1Monoid $dMonoid_s1KdZ; } in
+        let {
+          lvl_s1Ke3 [Occ=OnceL] :: a_X1JfC
+          [LclId] =
+              [$dMonoid_s1KdZ] \u [] GHC.Base.mempty $dMonoid_s1KdZ; } in
+        let {
+          go_s1Ke4 [Occ=LoopBreaker]
+            :: [GHC.ST.ST s_X1JfE a_X1JfC]
+               -> GHC.Prim.State# s_X1JfE
+               -> (# GHC.Prim.State# s_X1JfE, a_X1JfC #)
+          [LclId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [$dSemigroup_s1Ke2 lvl_s1Ke3 go_s1Ke4] \r [ds_s1Ke5
+                                                                  eta2_s1Ke6]
+                  case ds_s1Ke5 of {
+                    [] -> (#,#) [eta2_s1Ke6 lvl_s1Ke3];
+                    : y_s1Ke8 [Occ=Once] ys_s1Ke9 [Occ=Once] ->
+                        case y_s1Ke8 eta2_s1Ke6 of {
+                          (#,#) ipv_s1Keb [Occ=Once] ipv1_s1Kec [Occ=Once] ->
+                              case go_s1Ke4 ys_s1Ke9 ipv_s1Keb of {
+                                (#,#) ipv2_s1Kee [Occ=Once] ipv3_s1Kef [Occ=Once] ->
+                                    let {
+                                      sat_s1Keg [Occ=Once] :: a_X1JfC
+                                      [LclId] =
+                                          [$dSemigroup_s1Ke2 ipv1_s1Kec ipv3_s1Kef] \u []
+                                              GHC.Base.<> $dSemigroup_s1Ke2 ipv1_s1Kec ipv3_s1Kef;
+                                    } in  (#,#) [ipv2_s1Kee sat_s1Keg];
+                              };
+                        };
+                  };
+        } in  go_s1Ke4 eta_s1Ke0 eta1_s1Ke1;
+
+GHC.ST.$fMonoidST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s. GHC.Base.Monoid a => GHC.Base.Monoid (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(U(C(C1(U)),A,A),U,A,A)>m] =
+    [] \r [$dMonoid_s1Keh]
+        let {
+          sat_s1Ken [Occ=Once]
+            :: [GHC.ST.ST s_X1Jhz a_X1JfA] -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1Keh] \r [eta_B2 eta_B1]
+                  GHC.ST.$fMonoidST1 $dMonoid_s1Keh eta_B2 eta_B1; } in
+        let {
+          sat_s1Kem [Occ=Once]
+            :: GHC.ST.ST s_X1Jhz a_X1JfA
+               -> GHC.ST.ST s_X1Jhz a_X1JfA -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1Keh] \r [eta_B3 eta_B2 eta_B1]
+                  GHC.ST.$fMonoidST_$cmappend
+                      $dMonoid_s1Keh eta_B3 eta_B2 eta_B1; } in
+        let {
+          sat_s1Kel [Occ=Once] :: GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1Keh] \r [s1_s1Kej]
+                  let {
+                    sat_s1Kek [Occ=Once] :: a_X1JfA
+                    [LclId] =
+                        [$dMonoid_s1Keh] \u [] GHC.Base.mempty $dMonoid_s1Keh;
+                  } in  (#,#) [s1_s1Kej sat_s1Kek]; } in
+        let {
+          sat_s1Kei [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jhz a_X1JfA)
+          [LclId] =
+              [$dMonoid_s1Keh] \u [] GHC.ST.$fMonoidST_$cp1Monoid $dMonoid_s1Keh;
+        } in  GHC.Base.C:Monoid [sat_s1Kei sat_s1Kel sat_s1Kem sat_s1Ken];
+
+GHC.ST.$fShowST4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "<<ST action>>"#;
+
+GHC.ST.$fShowST3 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# GHC.ST.$fShowST4;
+
+GHC.ST.$fShowST2 :: [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Base.++ GHC.ST.$fShowST3 eta_B1;
+
+GHC.ST.$fShowST_$cshowsPrec
+  :: forall s a. GHC.Types.Int -> GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=3, Str=<L,A><L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1Keo ds1_s1Kep eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshow
+  :: forall s a. GHC.ST.ST s a -> GHC.Base.String
+[GblId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [x_s1Keq] GHC.ST.$fShowST3;
+
+GHC.ST.$fShowST1 :: forall a s. GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1Ker eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshowList
+  :: forall s a. [GHC.ST.ST s a] -> GHC.Show.ShowS
+[GblId, Arity=2, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Show.showList__ GHC.ST.$fShowST1 eta_B2 eta_B1;
+
+GHC.ST.$fShowST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Show.Show (GHC.ST.ST s a)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.ST.$fShowST_$cshowsPrec
+                                    GHC.ST.$fShowST_$cshow
+                                    GHC.ST.$fShowST_$cshowList];
+
+GHC.ST.liftST
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> GHC.ST.STret s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s1Kes s1_s1Ket]
+        case ds_s1Kes s1_s1Ket of {
+          (#,#) ipv_s1Kev [Occ=Once] ipv1_s1Kew [Occ=Once] ->
+              GHC.ST.STret [ipv_s1Kev ipv1_s1Kew];
+        };
+
+GHC.ST.fixST1
+  :: forall a s.
+     (a -> GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [k_s1Kex s1_s1Key]
+        let {
+          ans_s1Kez [Occ=LoopBreaker] :: GHC.ST.STret s_a1JcZ a_a1JcY
+          [LclId] =
+              [k_s1Kex s1_s1Key ans_s1Kez] \u []
+                  let {
+                    sat_s1KeD [Occ=Once] :: a_a1JcY
+                    [LclId] =
+                        [ans_s1Kez] \u []
+                            case ans_s1Kez of {
+                              GHC.ST.STret _ [Occ=Dead] r_s1KeC [Occ=Once] -> r_s1KeC;
+                            };
+                  } in 
+                    case k_s1Kex sat_s1KeD s1_s1Key of {
+                      (#,#) ipv_s1KeF [Occ=Once] ipv1_s1KeG [Occ=Once] ->
+                          GHC.ST.STret [ipv_s1KeF ipv1_s1KeG];
+                    };
+        } in 
+          case ans_s1Kez of {
+            GHC.ST.STret s'_s1KeI [Occ=Once] x_s1KeJ [Occ=Once] ->
+                (#,#) [s'_s1KeI x_s1KeJ];
+          };
+
+GHC.ST.fixST :: forall a s. (a -> GHC.ST.ST s a) -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.ST.fixST1 eta_B2 eta_B1;
+
+GHC.ST.unsafeDupableInterleaveST1
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KeK s1_s1KeL]
+        let {
+          sat_s1KeP [Occ=Once] :: a_a1Jch
+          [LclId] =
+              [ds_s1KeK s1_s1KeL] \u []
+                  case ds_s1KeK s1_s1KeL of {
+                    (#,#) _ [Occ=Dead] ipv1_s1KeO [Occ=Once] -> ipv1_s1KeO;
+                  };
+        } in  (#,#) [s1_s1KeL sat_s1KeP];
+
+GHC.ST.unsafeDupableInterleaveST [InlPrag=NOINLINE]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.ST.unsafeDupableInterleaveST1 eta_B2 eta_B1;
+
+unsafeInterleaveST1_r1JzB
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1KeQ eta1_s1KeR]
+        let {
+          sat_s1KeU [Occ=Once] :: GHC.ST.ST s_a1JcE a_a1JcF
+          [LclId] =
+              [eta_s1KeQ] \r [s1_s1KeS]
+                  case noDuplicate# [s1_s1KeS] of wild_s1KeT {
+                    __DEFAULT -> eta_s1KeQ wild_s1KeT;
+                  };
+        } in  GHC.ST.unsafeDupableInterleaveST sat_s1KeU eta1_s1KeR;
+
+GHC.ST.unsafeInterleaveST [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] unsafeInterleaveST1_r1JzB eta_B2 eta_B1;
+
+GHC.ST.runST [InlPrag=INLINE (sat-args=1)]
+  :: forall a. (forall s. GHC.ST.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KeV]
+        case ds_s1KeV GHC.Prim.realWorld# of {
+          (#,#) _ [Occ=Dead] ipv1_s1KeY [Occ=Once] -> ipv1_s1KeY;
+        };
+
+GHC.ST.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ST.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule4];
+
+GHC.ST.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ST"#;
+
+GHC.ST.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule2];
+
+GHC.ST.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ST.$trModule3
+                                     GHC.ST.$trModule1];
+
+$krep_r1JzC :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'LiftedRep
+                                              GHC.Types.[]];
+
+$krep1_r1JzD :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRuntimeRep
+                                              GHC.Types.[]];
+
+$krep2_r1JzE :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep3_r1JzF :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r1JzG :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF GHC.Types.[]];
+
+$krep5_r1JzH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep4_r1JzG];
+
+$krep6_r1JzI :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1JzD GHC.Types.[]];
+
+$krep7_r1JzJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'[]
+                                              $krep6_r1JzI];
+
+$krep8_r1JzK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r1JzJ GHC.Types.[]];
+
+$krep9_r1JzL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'TupleRep
+                                              $krep8_r1JzK];
+
+$krep10_r1JzM :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r1JzE GHC.Types.[]];
+
+$krep11_r1JzN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep5_r1JzH $krep10_r1JzM];
+
+$krep12_r1JzO :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1JzC $krep11_r1JzN];
+
+$krep13_r1JzP :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep9_r1JzL $krep12_r1JzO];
+
+$krep14_r1JzQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc(#,#)
+                                              $krep13_r1JzP];
+
+$krep15_r1JzR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep14_r1JzQ];
+
+GHC.ST.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+GHC.ST.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcST2];
+
+GHC.ST.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6436416558974291297##
+                                    634350057185658725##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep16_r1JzS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF $krep10_r1JzM];
+
+$krep17_r1JzT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcST
+                                              $krep16_r1JzS];
+
+GHC.ST.$tc'ST1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep15_r1JzR $krep17_r1JzT];
+
+GHC.ST.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+GHC.ST.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'ST3];
+
+GHC.ST.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [13769291328326942007##
+                                    10130644975726413154##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'ST2
+                                    2#
+                                    GHC.ST.$tc'ST1];
+
+GHC.ST.$tcSTret2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STret"#;
+
+GHC.ST.$tcSTret1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcSTret2];
+
+GHC.ST.$tcSTret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18266429679521839845##
+                                    6736124203785980802##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcSTret1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep18_r1JzU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcSTret
+                                              $krep16_r1JzS];
+
+$krep19_r1JzV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r1JzE $krep18_r1JzU];
+
+GHC.ST.$tc'STret1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep19_r1JzV];
+
+GHC.ST.$tc'STret3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STret"#;
+
+GHC.ST.$tc'STret2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'STret3];
+
+GHC.ST.$tc'STret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12272761794237483025##
+                                    16570602352537544279##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'STret2
+                                    2#
+                                    GHC.ST.$tc'STret1];
+
+GHC.ST.STret
+  :: forall s a. GHC.Prim.State# s -> a -> GHC.ST.STret s a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.ST.STret [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:56:31.690825877 UTC
+
+GHC.ST.$fFunctorST2
+  :: forall s a b.
+     (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1Kc9 ds_s1Kca void_0E]
+        case ds_s1Kca GHC.Prim.void# of {
+          Unit# ipv1_s1Kce [Occ=Once] ->
+              let {
+                sat_s1Kcf [Occ=Once] :: b_a1Jh6
+                [LclId] =
+                    [f_s1Kc9 ipv1_s1Kce] \u [] f_s1Kc9 ipv1_s1Kce;
+              } in  Unit# [sat_s1Kcf];
+        };
+
+GHC.ST.$fFunctorST1
+  :: forall a s b.
+     a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [x_s1Kcg ds_s1Kch void_0E]
+        case ds_s1Kch GHC.Prim.void# of {
+          Unit# _ [Occ=Dead] -> Unit# [x_s1Kcg];
+        };
+
+GHC.ST.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Functor (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [GHC.ST.$fFunctorST2
+                                       GHC.ST.$fFunctorST1];
+
+$cpure_r1Jzx
+  :: forall s a. a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    sat-only [] \r [x_s1Kcm void_0E] Unit# [x_s1Kcm];
+
+GHC.ST.$fApplicativeST_$cpure [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. a -> GHC.ST.ST s a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] $cpure_r1Jzx eta_B2 GHC.Prim.void#;
+
+$c>>=_r1Jzy
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> (a -> GHC.ST.ST s b)
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s1Kco k_s1Kcp void_0E]
+        case ds_s1Kco GHC.Prim.void# of {
+          Unit# ipv1_s1Kct [Occ=Once] -> k_s1Kcp ipv1_s1Kct GHC.Prim.void#;
+        };
+
+GHC.ST.$fMonadST_$c>>= [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b.
+     GHC.ST.ST s a -> (a -> GHC.ST.ST s b) -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(C(S)),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        $c>>=_r1Jzy eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.ST.$fApplicativeST2
+  :: forall c s b a.
+     (a -> b -> c)
+     -> GHC.ST.ST s a
+     -> GHC.ST.ST s b
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, c #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_s1Kcu m1_s1Kcv m2_s1Kcw void_0E]
+        case m1_s1Kcv GHC.Prim.void# of {
+          Unit# ipv1_s1KcA [Occ=Once] ->
+              case m2_s1Kcw GHC.Prim.void# of {
+                Unit# ipv3_s1KcD [Occ=Once] ->
+                    let {
+                      sat_s1KcE [Occ=Once] :: c_a1Jgr
+                      [LclId] =
+                          [f_s1Kcu ipv1_s1KcA ipv3_s1KcD] \u []
+                              f_s1Kcu ipv1_s1KcA ipv3_s1KcD;
+                    } in  Unit# [sat_s1KcE];
+              };
+        };
+
+GHC.ST.$fApplicativeST1
+  :: forall a s b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1KcF m2_s1KcG void_0E]
+        case m1_s1KcF GHC.Prim.void# of {
+          Unit# ipv1_s1KcK [Occ=Once] ->
+              case m2_s1KcG GHC.Prim.void# of {
+                Unit# _ [Occ=Dead] -> Unit# [ipv1_s1KcK];
+              };
+        };
+
+GHC.ST.$fApplicativeST3
+  :: forall b s a.
+     GHC.ST.ST s (a -> b)
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,1*C1(U)))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [m1_s1KcO m2_s1KcP void_0E]
+        case m1_s1KcO GHC.Prim.void# of {
+          Unit# ipv1_s1KcT [Occ=Once!] ->
+              case m2_s1KcP GHC.Prim.void# of {
+                Unit# ipv3_s1KcW [Occ=Once] ->
+                    let {
+                      sat_s1KcX [Occ=Once] :: b_a1Jgb
+                      [LclId] =
+                          [ipv1_s1KcT ipv3_s1KcW] \u [] ipv1_s1KcT ipv3_s1KcW;
+                    } in  Unit# [sat_s1KcX];
+              };
+        };
+
+$c*>_r1Jzz
+  :: forall s a b.
+     GHC.ST.ST s a
+     -> GHC.ST.ST s b -> GHC.Prim.State# s -> (# GHC.Prim.State# s, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1KcY eta1_s1KcZ void_0E]
+        case eta_s1KcY GHC.Prim.void# of {
+          Unit# _ [Occ=Dead] -> eta1_s1KcZ GHC.Prim.void#;
+        };
+
+GHC.ST.$fApplicativeST_$c*> [InlPrag=INLINE (sat-args=2)]
+  :: forall s a b. GHC.ST.ST s a -> GHC.ST.ST s b -> GHC.ST.ST s b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><C(S),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        $c*>_r1Jzz eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.ST.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Applicative (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Applicative! [GHC.ST.$fFunctorST
+                                           GHC.ST.$fApplicativeST_$cpure
+                                           GHC.ST.$fApplicativeST3
+                                           GHC.ST.$fApplicativeST2
+                                           GHC.ST.$fApplicativeST_$c*>
+                                           GHC.ST.$fApplicativeST1];
+
+GHC.ST.$fMonadFailST1
+  :: forall s a. [GHC.Types.Char] -> GHC.ST.ST s a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [eta_s1Kd4] GHC.Err.errorWithoutStackTrace eta_s1Kd4;
+
+GHC.ST.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. GHC.Base.Monad (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Monad! [GHC.ST.$fApplicativeST
+                                     GHC.ST.$fMonadST_$c>>=
+                                     GHC.ST.$fApplicativeST_$c*>
+                                     GHC.ST.$fApplicativeST_$cpure
+                                     GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fail.MonadFail (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fail.C:MonadFail! [GHC.ST.$fMonadST
+                                                   GHC.ST.$fMonadFailST1];
+
+GHC.ST.$fSemigroupST2
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C1(U)),A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1Kd5 eta_s1Kd6 eta1_s1Kd7 void_0E]
+        case eta_s1Kd6 GHC.Prim.void# of {
+          Unit# ipv1_s1Kdb [Occ=Once] ->
+              case eta1_s1Kd7 GHC.Prim.void# of {
+                Unit# ipv3_s1Kde [Occ=Once] ->
+                    let {
+                      sat_s1Kdf [Occ=Once] :: a_a1Jei
+                      [LclId] =
+                          [$dSemigroup_s1Kd5 ipv1_s1Kdb ipv3_s1Kde] \u []
+                              GHC.Base.<> $dSemigroup_s1Kd5 ipv1_s1Kdb ipv3_s1Kde;
+                    } in  Unit# [sat_s1Kdf];
+              };
+        };
+
+GHC.ST.$w$csconcat [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.ST.ST s a
+     -> [GHC.ST.ST s a]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><C(S),1*C1(U(U,U))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1Kdg ww_s1Kdh ww1_s1Kdi void_0E]
+        let {
+          go_s1Kdk [Occ=LoopBreaker]
+            :: GHC.ST.ST s_s1JuP a_s1JuO
+               -> [GHC.ST.ST s_s1JuP a_s1JuO]
+               -> GHC.Prim.State# s_s1JuP
+               -> (# GHC.Prim.State# s_s1JuP, a_s1JuO #)
+          [LclId,
+           Arity=3,
+           Str=<C(S),1*C1(U(U,U))><S,1*U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [w_s1Kdg go_s1Kdk] \r [b_s1Kdl ds1_s1Kdm void_0E]
+                  case ds1_s1Kdm of {
+                    [] -> b_s1Kdl GHC.Prim.void#;
+                    : c_s1Kdp [Occ=Once] cs_s1Kdq [Occ=Once] ->
+                        case b_s1Kdl GHC.Prim.void# of {
+                          Unit# ipv1_s1Kdt [Occ=Once] ->
+                              case go_s1Kdk c_s1Kdp cs_s1Kdq GHC.Prim.void# of {
+                                Unit# ipv3_s1Kdw [Occ=Once] ->
+                                    let {
+                                      sat_s1Kdx [Occ=Once] :: a_s1JuO
+                                      [LclId] =
+                                          [w_s1Kdg ipv1_s1Kdt ipv3_s1Kdw] \u []
+                                              GHC.Base.<> w_s1Kdg ipv1_s1Kdt ipv3_s1Kdw;
+                                    } in  Unit# [sat_s1Kdx];
+                              };
+                        };
+                  };
+        } in  go_s1Kdk ww_s1Kdh ww1_s1Kdi GHC.Prim.void#;
+
+GHC.ST.$fSemigroupST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.NonEmpty (GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A,A)><S(C(S)S),1*U(1*C1(U(U,U)),1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s1Kdy w1_s1Kdz void_0E]
+        case w1_s1Kdz of {
+          GHC.Base.:| ww1_s1KdC [Occ=Once] ww2_s1KdD [Occ=Once] ->
+              GHC.ST.$w$csconcat w_s1Kdy ww1_s1KdC ww2_s1KdD GHC.Prim.void#;
+        };
+
+GHC.ST.$fSemigroupST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(C(C1(U)),A,A)>m] =
+    [] \r [$dSemigroup_s1KdE]
+        let {
+          sat_s1KdH [Occ=Once]
+            :: forall b.
+               GHC.Real.Integral b =>
+               b -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1KdE] \r [eta_B1]
+                  GHC.ST.$fSemigroupST_$cstimes $dSemigroup_s1KdE eta_B1; } in
+        let {
+          sat_s1KdG [Occ=Once]
+            :: GHC.Base.NonEmpty (GHC.ST.ST s_X1Jgj a_X1Jgh)
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1KdE] \r [eta_B2 void_0E]
+                  GHC.ST.$fSemigroupST1 $dSemigroup_s1KdE eta_B2 GHC.Prim.void#; } in
+        let {
+          sat_s1KdF [Occ=Once]
+            :: GHC.ST.ST s_X1Jgj a_X1Jgh
+               -> GHC.ST.ST s_X1Jgj a_X1Jgh -> GHC.ST.ST s_X1Jgj a_X1Jgh
+          [LclId] =
+              [$dSemigroup_s1KdE] \r [eta_B3 eta_B2 void_0E]
+                  GHC.ST.$fSemigroupST2
+                      $dSemigroup_s1KdE eta_B3 eta_B2 GHC.Prim.void#;
+        } in  GHC.Base.C:Semigroup [sat_s1KdF sat_s1KdG sat_s1KdH];
+GHC.ST.$fSemigroupST_$cstimes [Occ=LoopBreaker]
+  :: forall a s.
+     GHC.Base.Semigroup a =>
+     forall b.
+     GHC.Real.Integral b =>
+     b -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId, Arity=2, Str=<L,U(C(C1(U)),A,A)><L,U>, Unf=OtherCon []] =
+    [] \r [$dSemigroup_s1KdI $dIntegral_s1KdJ]
+        let {
+          sat_s1KdK [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jgk a_X1Jgi)
+          [LclId] =
+              [$dSemigroup_s1KdI] \u [] GHC.ST.$fSemigroupST $dSemigroup_s1KdI;
+        } in 
+          Data.Semigroup.Internal.stimesDefault $dIntegral_s1KdJ sat_s1KdK;
+
+GHC.ST.$fMonoidST_$cp1Monoid
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.Base.Semigroup (GHC.ST.ST s a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(C(C1(U)),A,A),A,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1KdL]
+        let {
+          sat_s1KdM [Occ=Once, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1Jfz
+          [LclId] =
+              [$dMonoid_s1KdL] \u [] GHC.Base.$p1Monoid $dMonoid_s1KdL;
+        } in  GHC.ST.$fSemigroupST sat_s1KdM;
+
+$cmappend_r1JzA
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a
+     -> GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [$dMonoid_s1KdN eta_s1KdO eta1_s1KdP void_0E]
+        case eta_s1KdO GHC.Prim.void# of {
+          Unit# ipv1_s1KdT [Occ=Once] ->
+              case eta1_s1KdP GHC.Prim.void# of {
+                Unit# ipv3_s1KdW [Occ=Once] ->
+                    let {
+                      sat_s1KdY [Occ=Once] :: a_X1JfB
+                      [LclId] =
+                          [$dMonoid_s1KdN ipv1_s1KdT ipv3_s1KdW] \u []
+                              case GHC.Base.$p1Monoid $dMonoid_s1KdN of sat_s1KdX {
+                                __DEFAULT -> GHC.Base.<> sat_s1KdX ipv1_s1KdT ipv3_s1KdW;
+                              };
+                    } in  Unit# [sat_s1KdY];
+              };
+        };
+
+GHC.ST.$fMonoidST_$cmappend [InlPrag=INLINE (sat-args=0)]
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     GHC.ST.ST s a -> GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*C1(C1(U)),A,A),A,A,A)><C(S(SL)),1*C1(U(U,U))><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        $cmappend_r1JzA eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.ST.$fMonoidST1
+  :: forall a s.
+     GHC.Base.Monoid a =>
+     [GHC.ST.ST s a] -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(C(C1(U)),A,A),1*U,A,A)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonoid_s1KdZ eta_s1Ke0 void_0E]
+        let {
+          $dSemigroup_s1Ke2 [Occ=OnceL, Dmd=<L,U(C(C1(U)),A,A)>]
+            :: GHC.Base.Semigroup a_X1JfC
+          [LclId] =
+              [$dMonoid_s1KdZ] \u [] GHC.Base.$p1Monoid $dMonoid_s1KdZ; } in
+        let {
+          lvl_s1Ke3 [Occ=OnceL] :: a_X1JfC
+          [LclId] =
+              [$dMonoid_s1KdZ] \u [] GHC.Base.mempty $dMonoid_s1KdZ; } in
+        let {
+          go_s1Ke4 [Occ=LoopBreaker]
+            :: [GHC.ST.ST s_X1JfE a_X1JfC]
+               -> GHC.Prim.State# s_X1JfE
+               -> (# GHC.Prim.State# s_X1JfE, a_X1JfC #)
+          [LclId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [$dSemigroup_s1Ke2 lvl_s1Ke3 go_s1Ke4] \r [ds_s1Ke5
+                                                                  void_0E]
+                  case ds_s1Ke5 of {
+                    [] -> Unit# [lvl_s1Ke3];
+                    : y_s1Ke8 [Occ=Once] ys_s1Ke9 [Occ=Once] ->
+                        case y_s1Ke8 GHC.Prim.void# of {
+                          Unit# ipv1_s1Kec [Occ=Once] ->
+                              case go_s1Ke4 ys_s1Ke9 GHC.Prim.void# of {
+                                Unit# ipv3_s1Kef [Occ=Once] ->
+                                    let {
+                                      sat_s1Keg [Occ=Once] :: a_X1JfC
+                                      [LclId] =
+                                          [$dSemigroup_s1Ke2 ipv1_s1Kec ipv3_s1Kef] \u []
+                                              GHC.Base.<> $dSemigroup_s1Ke2 ipv1_s1Kec ipv3_s1Kef;
+                                    } in  Unit# [sat_s1Keg];
+                              };
+                        };
+                  };
+        } in  go_s1Ke4 eta_s1Ke0 GHC.Prim.void#;
+
+GHC.ST.$fMonoidST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a s. GHC.Base.Monoid a => GHC.Base.Monoid (GHC.ST.ST s a)
+[GblId[DFunId], Arity=1, Str=<L,U(U(C(C1(U)),A,A),U,A,A)>m] =
+    [] \r [$dMonoid_s1Keh]
+        let {
+          sat_s1Ken [Occ=Once]
+            :: [GHC.ST.ST s_X1Jhz a_X1JfA] -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1Keh] \r [eta_B2 void_0E]
+                  GHC.ST.$fMonoidST1 $dMonoid_s1Keh eta_B2 GHC.Prim.void#; } in
+        let {
+          sat_s1Kem [Occ=Once]
+            :: GHC.ST.ST s_X1Jhz a_X1JfA
+               -> GHC.ST.ST s_X1Jhz a_X1JfA -> GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1Keh] \r [eta_B3 eta_B2 void_0E]
+                  GHC.ST.$fMonoidST_$cmappend
+                      $dMonoid_s1Keh eta_B3 eta_B2 GHC.Prim.void#; } in
+        let {
+          sat_s1Kel [Occ=Once] :: GHC.ST.ST s_X1Jhz a_X1JfA
+          [LclId] =
+              [$dMonoid_s1Keh] \r [void_0E]
+                  let {
+                    sat_s1Kek [Occ=Once] :: a_X1JfA
+                    [LclId] =
+                        [$dMonoid_s1Keh] \u [] GHC.Base.mempty $dMonoid_s1Keh;
+                  } in  Unit# [sat_s1Kek]; } in
+        let {
+          sat_s1Kei [Occ=Once]
+            :: GHC.Base.Semigroup (GHC.ST.ST s_X1Jhz a_X1JfA)
+          [LclId] =
+              [$dMonoid_s1Keh] \u [] GHC.ST.$fMonoidST_$cp1Monoid $dMonoid_s1Keh;
+        } in  GHC.Base.C:Monoid [sat_s1Kei sat_s1Kel sat_s1Kem sat_s1Ken];
+
+GHC.ST.$fShowST4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "<<ST action>>"#;
+
+GHC.ST.$fShowST3 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# GHC.ST.$fShowST4;
+
+GHC.ST.$fShowST2 :: [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Base.++ GHC.ST.$fShowST3 eta_B1;
+
+GHC.ST.$fShowST_$cshowsPrec
+  :: forall s a. GHC.Types.Int -> GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=3, Str=<L,A><L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1Keo ds1_s1Kep eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshow
+  :: forall s a. GHC.ST.ST s a -> GHC.Base.String
+[GblId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [x_s1Keq] GHC.ST.$fShowST3;
+
+GHC.ST.$fShowST1 :: forall a s. GHC.ST.ST s a -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s1Ker eta_B1] GHC.ST.$fShowST2 eta_B1;
+
+GHC.ST.$fShowST_$cshowList
+  :: forall s a. [GHC.ST.ST s a] -> GHC.Show.ShowS
+[GblId, Arity=2, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Show.showList__ GHC.ST.$fShowST1 eta_B2 eta_B1;
+
+GHC.ST.$fShowST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s a. GHC.Show.Show (GHC.ST.ST s a)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.ST.$fShowST_$cshowsPrec
+                                    GHC.ST.$fShowST_$cshow
+                                    GHC.ST.$fShowST_$cshowList];
+
+GHC.ST.liftST
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> GHC.ST.STret s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s1Kes void_0E]
+        case ds_s1Kes GHC.Prim.void# of {
+          Unit# ipv1_s1Kew [Occ=Once] -> GHC.ST.STret [ipv1_s1Kew];
+        };
+
+GHC.ST.fixST1
+  :: forall a s.
+     (a -> GHC.ST.ST s a)
+     -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [k_s1Kex void_0E]
+        let {
+          ans_s1Kez [Occ=LoopBreaker] :: GHC.ST.STret s_a1JcZ a_a1JcY
+          [LclId] =
+              [k_s1Kex ans_s1Kez] \u []
+                  let {
+                    sat_s1KeD [Occ=Once] :: a_a1JcY
+                    [LclId] =
+                        [ans_s1Kez] \u []
+                            case ans_s1Kez of { GHC.ST.STret r_s1KeC [Occ=Once] -> r_s1KeC; };
+                  } in 
+                    case k_s1Kex sat_s1KeD GHC.Prim.void# of {
+                      Unit# ipv1_s1KeG [Occ=Once] -> GHC.ST.STret [ipv1_s1KeG];
+                    };
+        } in 
+          case ans_s1Kez of {
+            GHC.ST.STret x_s1KeJ [Occ=Once] -> Unit# [x_s1KeJ];
+          };
+
+GHC.ST.fixST :: forall a s. (a -> GHC.ST.ST s a) -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S(SL))),C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.ST.fixST1 eta_B2 GHC.Prim.void#;
+
+GHC.ST.unsafeDupableInterleaveST1
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KeK void_0E]
+        let {
+          sat_s1KeP [Occ=Once] :: a_a1Jch
+          [LclId] =
+              [ds_s1KeK] \u []
+                  case ds_s1KeK GHC.Prim.void# of {
+                    Unit# ipv1_s1KeO [Occ=Once] -> ipv1_s1KeO;
+                  };
+        } in  Unit# [sat_s1KeP];
+
+GHC.ST.unsafeDupableInterleaveST [InlPrag=NOINLINE]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.ST.unsafeDupableInterleaveST1 eta_B2 GHC.Prim.void#;
+
+unsafeInterleaveST1_r1JzB
+  :: forall s a.
+     GHC.ST.ST s a -> GHC.Prim.State# s -> (# GHC.Prim.State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [eta_s1KeQ void_0E]
+        let {
+          sat_s1KeU [Occ=Once] :: GHC.ST.ST s_a1JcE a_a1JcF
+          [LclId] =
+              [eta_s1KeQ] \r [void_0E]
+                  case noDuplicate# [GHC.Prim.void#] of wild_s1KeT {
+                    (##) -> eta_s1KeQ GHC.Prim.void#;
+                  };
+        } in  GHC.ST.unsafeDupableInterleaveST sat_s1KeU GHC.Prim.void#;
+
+GHC.ST.unsafeInterleaveST [InlPrag=INLINE (sat-args=1)]
+  :: forall s a. GHC.ST.ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        unsafeInterleaveST1_r1JzB eta_B2 GHC.Prim.void#;
+
+GHC.ST.runST [InlPrag=INLINE (sat-args=1)]
+  :: forall a. (forall s. GHC.ST.ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s1KeV]
+        case ds_s1KeV GHC.Prim.realWorld# of {
+          Unit# ipv1_s1KeY [Occ=Once] -> ipv1_s1KeY;
+        };
+
+GHC.ST.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ST.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule4];
+
+GHC.ST.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ST"#;
+
+GHC.ST.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$trModule2];
+
+GHC.ST.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ST.$trModule3
+                                     GHC.ST.$trModule1];
+
+$krep_r1JzC :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'LiftedRep
+                                              GHC.Types.[]];
+
+$krep1_r1JzD :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRuntimeRep
+                                              GHC.Types.[]];
+
+$krep2_r1JzE :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep3_r1JzF :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r1JzG :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF GHC.Types.[]];
+
+$krep5_r1JzH :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcState#
+                                              $krep4_r1JzG];
+
+$krep6_r1JzI :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r1JzD GHC.Types.[]];
+
+$krep7_r1JzJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'[]
+                                              $krep6_r1JzI];
+
+$krep8_r1JzK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep7_r1JzJ GHC.Types.[]];
+
+$krep9_r1JzL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc'TupleRep
+                                              $krep8_r1JzK];
+
+$krep10_r1JzM :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r1JzE GHC.Types.[]];
+
+$krep11_r1JzN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep5_r1JzH $krep10_r1JzM];
+
+$krep12_r1JzO :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r1JzC $krep11_r1JzN];
+
+$krep13_r1JzP :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep9_r1JzL $krep12_r1JzO];
+
+$krep14_r1JzQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tc(#,#)
+                                              $krep13_r1JzP];
+
+$krep15_r1JzR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep14_r1JzQ];
+
+GHC.ST.$tcST2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ST"#;
+
+GHC.ST.$tcST1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcST2];
+
+GHC.ST.$tcST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6436416558974291297##
+                                    634350057185658725##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcST1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep16_r1JzS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r1JzF $krep10_r1JzM];
+
+$krep17_r1JzT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcST
+                                              $krep16_r1JzS];
+
+GHC.ST.$tc'ST1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep15_r1JzR $krep17_r1JzT];
+
+GHC.ST.$tc'ST3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ST"#;
+
+GHC.ST.$tc'ST2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'ST3];
+
+GHC.ST.$tc'ST :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [13769291328326942007##
+                                    10130644975726413154##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'ST2
+                                    2#
+                                    GHC.ST.$tc'ST1];
+
+GHC.ST.$tcSTret2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "STret"#;
+
+GHC.ST.$tcSTret1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tcSTret2];
+
+GHC.ST.$tcSTret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18266429679521839845##
+                                    6736124203785980802##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tcSTret1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep18_r1JzU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.ST.$tcSTret
+                                              $krep16_r1JzS];
+
+$krep19_r1JzV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r1JzE $krep18_r1JzU];
+
+GHC.ST.$tc'STret1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep5_r1JzH $krep19_r1JzV];
+
+GHC.ST.$tc'STret3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'STret"#;
+
+GHC.ST.$tc'STret2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ST.$tc'STret3];
+
+GHC.ST.$tc'STret :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [12272761794237483025##
+                                    16570602352537544279##
+                                    GHC.ST.$trModule
+                                    GHC.ST.$tc'STret2
+                                    2#
+                                    GHC.ST.$tc'STret1];
+
+GHC.ST.STret
+  :: forall s a. GHC.Prim.State# s -> a -> GHC.ST.STret s a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [void_0E eta_B1] GHC.ST.STret [eta_B1];
+

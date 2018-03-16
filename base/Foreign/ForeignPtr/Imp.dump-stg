@@ -1,0 +1,1618 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:02:53.85461889 UTC
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtr [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=3, Str=<S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7N4b ww1_s7N4c w_s7N4d]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers w_s7N4d] of {
+          (#,#) ipv_s7N4f [Occ=Once] ipv1_s7N4g ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7N4g ww_s7N4b 0# __NULL ww1_s7N4c GHC.Tuple.() ipv_s7N4f
+              of
+              { (#,#) ipv2_s7N4i [Occ=Once] _ [Occ=Dead] ->
+                    let {
+                      sat_s7N4k [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7N4g]; } in
+                    let {
+                      sat_s7N4l [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1i
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww1_s7N4c sat_s7N4k];
+                    } in  (#,#) [ipv2_s7N4i sat_s7N4l];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N4m w1_s7N4n w2_s7N4o]
+        case w_s7N4m of {
+          GHC.Ptr.FunPtr ww1_s7N4q [Occ=Once] ->
+              case w1_s7N4n of {
+                GHC.Ptr.Ptr ww3_s7N4s [Occ=Once] ->
+                    Foreign.ForeignPtr.Imp.$wnewForeignPtr
+                        ww1_s7N4q ww3_s7N4s w2_s7N4o;
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.newForeignPtr1 eta_B3 eta_B2 eta_B1;
+
+Foreign.ForeignPtr.Imp.withForeignPtr1
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [fo_s7N4t io_s7N4u s_s7N4v]
+        let {
+          sat_s7N4w [Occ=Once] :: GHC.Ptr.Ptr a_a7MVy
+          [LclId] =
+              [fo_s7N4t] \u [] GHC.ForeignPtr.unsafeForeignPtrToPtr fo_s7N4t;
+        } in 
+          case io_s7N4u sat_s7N4w s_s7N4v of {
+            (#,#) ipv_s7N4y [Occ=Once] ipv1_s7N4z [Occ=Once] ->
+                case fo_s7N4t of {
+                  GHC.ForeignPtr.ForeignPtr _ [Occ=Dead] r_s7N4C [Occ=Once] ->
+                      case touch# [r_s7N4C ipv_s7N4y] of s'_s7N4D {
+                        __DEFAULT -> (#,#) [s'_s7N4D ipv1_s7N4z];
+                      };
+                };
+          };
+
+Foreign.ForeignPtr.Imp.withForeignPtr
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.withForeignPtr1 eta_B3 eta_B2 eta_B1;
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=4, Str=<S,U><S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7N4E ww1_s7N4F ww2_s7N4G w_s7N4H]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers w_s7N4H] of {
+          (#,#) ipv_s7N4J [Occ=Once] ipv1_s7N4K ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7N4K ww_s7N4E 1# ww1_s7N4F ww2_s7N4G GHC.Tuple.() ipv_s7N4J
+              of
+              { (#,#) ipv2_s7N4M [Occ=Once] _ [Occ=Dead] ->
+                    let {
+                      sat_s7N4O [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7N4K]; } in
+                    let {
+                      sat_s7N4P [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1w
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww2_s7N4G sat_s7N4O];
+                    } in  (#,#) [ipv2_s7N4M sat_s7N4P];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv1 [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N4Q w1_s7N4R w2_s7N4S w3_s7N4T]
+        case w_s7N4Q of {
+          GHC.Ptr.FunPtr ww1_s7N4V [Occ=Once] ->
+              case w1_s7N4R of {
+                GHC.Ptr.Ptr ww3_s7N4X [Occ=Once] ->
+                    case w2_s7N4S of {
+                      GHC.Ptr.Ptr ww5_s7N4Z [Occ=Once] ->
+                          Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+                              ww1_s7N4V ww3_s7N4X ww5_s7N4Z w3_s7N4T;
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+            eta_B4 eta_B3 eta_B2 eta_B1;
+
+lvl_r7N3Z :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r7N40 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r7N3Z;
+
+Foreign.ForeignPtr.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r7N41 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule4;
+
+Foreign.ForeignPtr.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.ForeignPtr.Imp"#;
+
+lvl3_r7N42 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule2;
+
+lvl4_r7N43 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/ForeignPtr/Imp.hs"#;
+
+lvl5_r7N44 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl4_r7N43;
+
+lvl6_r7N45 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [110#];
+
+lvl7_r7N46 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [35#];
+
+lvl8_r7N47 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [44#];
+
+lvl9_r7N48 :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r7N41
+                                           lvl3_r7N42
+                                           lvl5_r7N44
+                                           lvl6_r7N45
+                                           lvl7_r7N46
+                                           lvl6_r7N45
+                                           lvl8_r7N47];
+
+lvl10_r7N49 :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r7N40
+                                                  lvl9_r7N48
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl10_r7N49;
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s7N50]
+        let {
+          lvl11_s7N51 [Occ=OnceL!, Dmd=<L,U(U)>] :: GHC.Types.Int
+          [LclId] =
+              [$dStorable_s7N50] \u []
+                  Foreign.Storable.sizeOf
+                      $dStorable_s7N50
+                      Foreign.ForeignPtr.Imp.mallocForeignPtrArray1; } in
+        let {
+          sat_s7N5k [Occ=Once]
+            :: GHC.Types.Int
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                     GHC.ForeignPtr.ForeignPtr a_a7MUx #)
+          [LclId] =
+              [lvl11_s7N51] \r [size_s7N52 eta_s7N53]
+                  case size_s7N52 of {
+                    GHC.Types.I# x_s7N55 [Occ=Once] ->
+                        case lvl11_s7N51 of {
+                          GHC.Types.I# y_s7N57 [Occ=Once] ->
+                              case *# [x_s7N55 y_s7N57] of x1_s7N58 [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case <# [x1_s7N58 0#] of {
+                                      __DEFAULT ->
+                                          case
+                                              newMutVar# [GHC.ForeignPtr.NoFinalizers eta_s7N53]
+                                          of
+                                          { (#,#) ipv_s7N5b [Occ=Once] ipv1_s7N5c [Occ=Once] ->
+                                                case newPinnedByteArray# [x1_s7N58 ipv_s7N5b] of {
+                                                  (#,#) ipv2_s7N5e [Occ=Once] ipv3_s7N5f ->
+                                                      let {
+                                                        sat_s7N5h [Occ=Once]
+                                                          :: GHC.ForeignPtr.ForeignPtrContents
+                                                        [LclId] =
+                                                            CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7N5f
+                                                                                            ipv1_s7N5c];
+                                                      } in 
+                                                        case
+                                                            byteArrayContents# [ipv3_s7N5f]
+                                                        of
+                                                        sat_s7N5g
+                                                        { __DEFAULT ->
+                                                              let {
+                                                                sat_s7N5i [Occ=Once]
+                                                                  :: GHC.ForeignPtr.ForeignPtr
+                                                                       a_a7MUx
+                                                                [LclId] =
+                                                                    CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7N5g
+                                                                                                     sat_s7N5h];
+                                                              } in  (#,#) [ipv2_s7N5e sat_s7N5i];
+                                                        };
+                                                };
+                                          };
+                                      1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                                    };
+                              };
+                        };
+                  };
+        } in  sat_s7N5k;
+
+Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Prim.Int#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N5l ww_s7N5m w1_s7N5n]
+        case
+            Foreign.Storable.sizeOf
+                w_s7N5l Foreign.ForeignPtr.Imp.mallocForeignPtrArray1
+        of
+        { GHC.Types.I# y_s7N5p [Occ=Once] ->
+              case +# [ww_s7N5m 1#] of sat_s7N5r {
+                __DEFAULT ->
+                    case *# [sat_s7N5r y_s7N5p] of x_s7N5q [Dmd=<S,U>] {
+                      __DEFAULT ->
+                          case <# [x_s7N5q 0#] of {
+                            __DEFAULT ->
+                                case newMutVar# [GHC.ForeignPtr.NoFinalizers w1_s7N5n] of {
+                                  (#,#) ipv_s7N5u [Occ=Once] ipv1_s7N5v [Occ=Once] ->
+                                      case newPinnedByteArray# [x_s7N5q ipv_s7N5u] of {
+                                        (#,#) ipv2_s7N5x [Occ=Once] ipv3_s7N5y ->
+                                            let {
+                                              sat_s7N5A [Occ=Once]
+                                                :: GHC.ForeignPtr.ForeignPtrContents
+                                              [LclId] =
+                                                  CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7N5y
+                                                                                  ipv1_s7N5v];
+                                            } in 
+                                              case byteArrayContents# [ipv3_s7N5y] of sat_s7N5z {
+                                                __DEFAULT ->
+                                                    let {
+                                                      sat_s7N5B [Occ=Once]
+                                                        :: GHC.ForeignPtr.ForeignPtr a_s7N1Q
+                                                      [LclId] =
+                                                          CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7N5z
+                                                                                           sat_s7N5A];
+                                                    } in  (#,#) [ipv2_s7N5x sat_s7N5B];
+                                              };
+                                      };
+                                };
+                            1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                          };
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N5D w1_s7N5E w2_s7N5F]
+        case w1_s7N5E of {
+          GHC.Types.I# ww1_s7N5H [Occ=Once] ->
+              Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+                  w_s7N5D ww1_s7N5H w2_s7N5F;
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray0
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 eta_B3 eta_B2 eta_B1;
+
+Foreign.ForeignPtr.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule4];
+
+Foreign.ForeignPtr.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule2];
+
+Foreign.ForeignPtr.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.ForeignPtr.Imp.$trModule3
+                                     Foreign.ForeignPtr.Imp.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:02:53.863129183 UTC
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtr [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=3, Str=<S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7N4b ww1_s7N4c void_0E]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers GHC.Prim.void#] of {
+          Unit# ipv1_s7N4g ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7N4g ww_s7N4b 0# __NULL ww1_s7N4c GHC.Tuple.() GHC.Prim.void#
+              of
+              { Unit# _ [Occ=Dead] ->
+                    let {
+                      sat_s7N4k [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7N4g]; } in
+                    let {
+                      sat_s7N4l [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1i
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww1_s7N4c sat_s7N4k];
+                    } in  Unit# [sat_s7N4l];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N4m w1_s7N4n void_0E]
+        case w_s7N4m of {
+          GHC.Ptr.FunPtr ww1_s7N4q [Occ=Once] ->
+              case w1_s7N4n of {
+                GHC.Ptr.Ptr ww3_s7N4s [Occ=Once] ->
+                    Foreign.ForeignPtr.Imp.$wnewForeignPtr
+                        ww1_s7N4q ww3_s7N4s GHC.Prim.void#;
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.newForeignPtr1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.ForeignPtr.Imp.withForeignPtr1
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [fo_s7N4t io_s7N4u void_0E]
+        let {
+          sat_s7N4w [Occ=Once] :: GHC.Ptr.Ptr a_a7MVy
+          [LclId] =
+              [fo_s7N4t] \u [] GHC.ForeignPtr.unsafeForeignPtrToPtr fo_s7N4t;
+        } in 
+          case io_s7N4u sat_s7N4w GHC.Prim.void# of {
+            Unit# ipv1_s7N4z [Occ=Once] ->
+                case fo_s7N4t of {
+                  GHC.ForeignPtr.ForeignPtr _ [Occ=Dead] r_s7N4C [Occ=Once] ->
+                      case touch# [r_s7N4C GHC.Prim.void#] of s'_s7N4D {
+                        (##) -> Unit# [ipv1_s7N4z];
+                      };
+                };
+          };
+
+Foreign.ForeignPtr.Imp.withForeignPtr
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.withForeignPtr1
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=4, Str=<S,U><S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7N4E ww1_s7N4F ww2_s7N4G void_0E]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers GHC.Prim.void#] of {
+          Unit# ipv1_s7N4K ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7N4K
+                      ww_s7N4E
+                      1#
+                      ww1_s7N4F
+                      ww2_s7N4G
+                      GHC.Tuple.()
+                      GHC.Prim.void#
+              of
+              { Unit# _ [Occ=Dead] ->
+                    let {
+                      sat_s7N4O [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7N4K]; } in
+                    let {
+                      sat_s7N4P [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1w
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww2_s7N4G sat_s7N4O];
+                    } in  Unit# [sat_s7N4P];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv1 [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N4Q w1_s7N4R w2_s7N4S void_0E]
+        case w_s7N4Q of {
+          GHC.Ptr.FunPtr ww1_s7N4V [Occ=Once] ->
+              case w1_s7N4R of {
+                GHC.Ptr.Ptr ww3_s7N4X [Occ=Once] ->
+                    case w2_s7N4S of {
+                      GHC.Ptr.Ptr ww5_s7N4Z [Occ=Once] ->
+                          Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+                              ww1_s7N4V ww3_s7N4X ww5_s7N4Z GHC.Prim.void#;
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+lvl_r7N3Z :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r7N40 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r7N3Z;
+
+Foreign.ForeignPtr.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r7N41 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule4;
+
+Foreign.ForeignPtr.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.ForeignPtr.Imp"#;
+
+lvl3_r7N42 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule2;
+
+lvl4_r7N43 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/ForeignPtr/Imp.hs"#;
+
+lvl5_r7N44 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl4_r7N43;
+
+lvl6_r7N45 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [110#];
+
+lvl7_r7N46 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [35#];
+
+lvl8_r7N47 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [44#];
+
+lvl9_r7N48 :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r7N41
+                                           lvl3_r7N42
+                                           lvl5_r7N44
+                                           lvl6_r7N45
+                                           lvl7_r7N46
+                                           lvl6_r7N45
+                                           lvl8_r7N47];
+
+lvl10_r7N49 :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r7N40
+                                                  lvl9_r7N48
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl10_r7N49;
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s7N50]
+        let {
+          lvl11_s7N51 [Occ=OnceL!, Dmd=<L,U(U)>] :: GHC.Types.Int
+          [LclId] =
+              [$dStorable_s7N50] \u []
+                  Foreign.Storable.sizeOf
+                      $dStorable_s7N50
+                      Foreign.ForeignPtr.Imp.mallocForeignPtrArray1; } in
+        let {
+          sat_s7N5k [Occ=Once]
+            :: GHC.Types.Int
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                     GHC.ForeignPtr.ForeignPtr a_a7MUx #)
+          [LclId] =
+              [lvl11_s7N51] \r [size_s7N52 void_0E]
+                  case size_s7N52 of {
+                    GHC.Types.I# x_s7N55 [Occ=Once] ->
+                        case lvl11_s7N51 of {
+                          GHC.Types.I# y_s7N57 [Occ=Once] ->
+                              case *# [x_s7N55 y_s7N57] of x1_s7N58 [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case <# [x1_s7N58 0#] of {
+                                      __DEFAULT ->
+                                          case
+                                              newMutVar# [GHC.ForeignPtr.NoFinalizers
+                                                          GHC.Prim.void#]
+                                          of
+                                          { Unit# ipv1_s7N5c [Occ=Once] ->
+                                                case
+                                                    newPinnedByteArray# [x1_s7N58 GHC.Prim.void#]
+                                                of
+                                                { Unit# ipv3_s7N5f ->
+                                                      let {
+                                                        sat_s7N5h [Occ=Once]
+                                                          :: GHC.ForeignPtr.ForeignPtrContents
+                                                        [LclId] =
+                                                            CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7N5f
+                                                                                            ipv1_s7N5c];
+                                                      } in 
+                                                        case
+                                                            byteArrayContents# [ipv3_s7N5f]
+                                                        of
+                                                        sat_s7N5g
+                                                        { __DEFAULT ->
+                                                              let {
+                                                                sat_s7N5i [Occ=Once]
+                                                                  :: GHC.ForeignPtr.ForeignPtr
+                                                                       a_a7MUx
+                                                                [LclId] =
+                                                                    CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7N5g
+                                                                                                     sat_s7N5h];
+                                                              } in  Unit# [sat_s7N5i];
+                                                        };
+                                                };
+                                          };
+                                      1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                                    };
+                              };
+                        };
+                  };
+        } in  sat_s7N5k;
+
+Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Prim.Int#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N5l ww_s7N5m void_0E]
+        case
+            Foreign.Storable.sizeOf
+                w_s7N5l Foreign.ForeignPtr.Imp.mallocForeignPtrArray1
+        of
+        { GHC.Types.I# y_s7N5p [Occ=Once] ->
+              case +# [ww_s7N5m 1#] of sat_s7N5r {
+                __DEFAULT ->
+                    case *# [sat_s7N5r y_s7N5p] of x_s7N5q [Dmd=<S,U>] {
+                      __DEFAULT ->
+                          case <# [x_s7N5q 0#] of {
+                            __DEFAULT ->
+                                case newMutVar# [GHC.ForeignPtr.NoFinalizers GHC.Prim.void#] of {
+                                  Unit# ipv1_s7N5v [Occ=Once] ->
+                                      case newPinnedByteArray# [x_s7N5q GHC.Prim.void#] of {
+                                        Unit# ipv3_s7N5y ->
+                                            let {
+                                              sat_s7N5A [Occ=Once]
+                                                :: GHC.ForeignPtr.ForeignPtrContents
+                                              [LclId] =
+                                                  CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7N5y
+                                                                                  ipv1_s7N5v];
+                                            } in 
+                                              case byteArrayContents# [ipv3_s7N5y] of sat_s7N5z {
+                                                __DEFAULT ->
+                                                    let {
+                                                      sat_s7N5B [Occ=Once]
+                                                        :: GHC.ForeignPtr.ForeignPtr a_s7N1Q
+                                                      [LclId] =
+                                                          CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7N5z
+                                                                                           sat_s7N5A];
+                                                    } in  Unit# [sat_s7N5B];
+                                              };
+                                      };
+                                };
+                            1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                          };
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7N5D w1_s7N5E void_0E]
+        case w1_s7N5E of {
+          GHC.Types.I# ww1_s7N5H [Occ=Once] ->
+              Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+                  w_s7N5D ww1_s7N5H GHC.Prim.void#;
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray0
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.mallocForeignPtrArray2
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.ForeignPtr.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule4];
+
+Foreign.ForeignPtr.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule2];
+
+Foreign.ForeignPtr.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.ForeignPtr.Imp.$trModule3
+                                     Foreign.ForeignPtr.Imp.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:02:54.557473575 UTC
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtr [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=3, Str=<S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7Nng ww1_s7Nnh w_s7Nni]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers w_s7Nni] of {
+          (#,#) ipv_s7Nnk [Occ=Once] ipv1_s7Nnl ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7Nnl ww_s7Nng 0# __NULL ww1_s7Nnh GHC.Tuple.() ipv_s7Nnk
+              of
+              { (#,#) ipv2_s7Nnn [Occ=Once] _ [Occ=Dead] ->
+                    let {
+                      sat_s7Nnp [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7Nnl]; } in
+                    let {
+                      sat_s7Nnq [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1i
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww1_s7Nnh sat_s7Nnp];
+                    } in  (#,#) [ipv2_s7Nnn sat_s7Nnq];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7Nnr w1_s7Nns w2_s7Nnt]
+        case w_s7Nnr of {
+          GHC.Ptr.FunPtr ww1_s7Nnv [Occ=Once] ->
+              case w1_s7Nns of {
+                GHC.Ptr.Ptr ww3_s7Nnx [Occ=Once] ->
+                    Foreign.ForeignPtr.Imp.$wnewForeignPtr
+                        ww1_s7Nnv ww3_s7Nnx w2_s7Nnt;
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.newForeignPtr1 eta_B3 eta_B2 eta_B1;
+
+Foreign.ForeignPtr.Imp.withForeignPtr1
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [fo_s7Nny io_s7Nnz s_s7NnA]
+        let {
+          sat_s7NnB [Occ=Once] :: GHC.Ptr.Ptr a_a7MVy
+          [LclId] =
+              [fo_s7Nny] \u [] GHC.ForeignPtr.unsafeForeignPtrToPtr fo_s7Nny;
+        } in 
+          case io_s7Nnz sat_s7NnB s_s7NnA of {
+            (#,#) ipv_s7NnD [Occ=Once] ipv1_s7NnE [Occ=Once] ->
+                case fo_s7Nny of {
+                  GHC.ForeignPtr.ForeignPtr _ [Occ=Dead] r_s7NnH [Occ=Once] ->
+                      case touch# [r_s7NnH ipv_s7NnD] of s'_s7NnI {
+                        __DEFAULT -> (#,#) [s'_s7NnI ipv1_s7NnE];
+                      };
+                };
+          };
+
+Foreign.ForeignPtr.Imp.withForeignPtr
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.withForeignPtr1 eta_B3 eta_B2 eta_B1;
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=4, Str=<S,U><S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7NnJ ww1_s7NnK ww2_s7NnL w_s7NnM]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers w_s7NnM] of {
+          (#,#) ipv_s7NnO [Occ=Once] ipv1_s7NnP ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7NnP ww_s7NnJ 1# ww1_s7NnK ww2_s7NnL GHC.Tuple.() ipv_s7NnO
+              of
+              { (#,#) ipv2_s7NnR [Occ=Once] _ [Occ=Dead] ->
+                    let {
+                      sat_s7NnT [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7NnP]; } in
+                    let {
+                      sat_s7NnU [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1w
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww2_s7NnL sat_s7NnT];
+                    } in  (#,#) [ipv2_s7NnR sat_s7NnU];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv1 [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7NnV w1_s7NnW w2_s7NnX w3_s7NnY]
+        case w_s7NnV of {
+          GHC.Ptr.FunPtr ww1_s7No0 [Occ=Once] ->
+              case w1_s7NnW of {
+                GHC.Ptr.Ptr ww3_s7No2 [Occ=Once] ->
+                    case w2_s7NnX of {
+                      GHC.Ptr.Ptr ww5_s7No4 [Occ=Once] ->
+                          Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+                              ww1_s7No0 ww3_s7No2 ww5_s7No4 w3_s7NnY;
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+            eta_B4 eta_B3 eta_B2 eta_B1;
+
+lvl_r7N3Z :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r7N40 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r7N3Z;
+
+Foreign.ForeignPtr.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r7N41 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule4;
+
+Foreign.ForeignPtr.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.ForeignPtr.Imp"#;
+
+lvl3_r7N42 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule2;
+
+lvl4_r7N43 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/ForeignPtr/Imp.hs"#;
+
+lvl5_r7N44 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl4_r7N43;
+
+lvl6_r7N45 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [110#];
+
+lvl7_r7N46 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [35#];
+
+lvl8_r7N47 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [44#];
+
+lvl9_r7N48 :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r7N41
+                                           lvl3_r7N42
+                                           lvl5_r7N44
+                                           lvl6_r7N45
+                                           lvl7_r7N46
+                                           lvl6_r7N45
+                                           lvl8_r7N47];
+
+lvl10_r7N49 :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r7N40
+                                                  lvl9_r7N48
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl10_r7N49;
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s7No5]
+        let {
+          lvl11_s7No6 [Occ=OnceL!, Dmd=<L,U(U)>] :: GHC.Types.Int
+          [LclId] =
+              [$dStorable_s7No5] \u []
+                  Foreign.Storable.sizeOf
+                      $dStorable_s7No5
+                      Foreign.ForeignPtr.Imp.mallocForeignPtrArray1; } in
+        let {
+          sat_s7Nop [Occ=Once]
+            :: GHC.Types.Int
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                     GHC.ForeignPtr.ForeignPtr a_a7MUx #)
+          [LclId] =
+              [lvl11_s7No6] \r [size_s7No7 eta_s7No8]
+                  case size_s7No7 of {
+                    GHC.Types.I# x_s7Noa [Occ=Once] ->
+                        case lvl11_s7No6 of {
+                          GHC.Types.I# y_s7Noc [Occ=Once] ->
+                              case *# [x_s7Noa y_s7Noc] of x1_s7Nod [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case <# [x1_s7Nod 0#] of {
+                                      __DEFAULT ->
+                                          case
+                                              newMutVar# [GHC.ForeignPtr.NoFinalizers eta_s7No8]
+                                          of
+                                          { (#,#) ipv_s7Nog [Occ=Once] ipv1_s7Noh [Occ=Once] ->
+                                                case newPinnedByteArray# [x1_s7Nod ipv_s7Nog] of {
+                                                  (#,#) ipv2_s7Noj [Occ=Once] ipv3_s7Nok ->
+                                                      let {
+                                                        sat_s7Nom [Occ=Once]
+                                                          :: GHC.ForeignPtr.ForeignPtrContents
+                                                        [LclId] =
+                                                            CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7Nok
+                                                                                            ipv1_s7Noh];
+                                                      } in 
+                                                        case
+                                                            byteArrayContents# [ipv3_s7Nok]
+                                                        of
+                                                        sat_s7Nol
+                                                        { __DEFAULT ->
+                                                              let {
+                                                                sat_s7Non [Occ=Once]
+                                                                  :: GHC.ForeignPtr.ForeignPtr
+                                                                       a_a7MUx
+                                                                [LclId] =
+                                                                    CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7Nol
+                                                                                                     sat_s7Nom];
+                                                              } in  (#,#) [ipv2_s7Noj sat_s7Non];
+                                                        };
+                                                };
+                                          };
+                                      1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                                    };
+                              };
+                        };
+                  };
+        } in  sat_s7Nop;
+
+Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Prim.Int#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7Noq ww_s7Nor w1_s7Nos]
+        case
+            Foreign.Storable.sizeOf
+                w_s7Noq Foreign.ForeignPtr.Imp.mallocForeignPtrArray1
+        of
+        { GHC.Types.I# y_s7Nou [Occ=Once] ->
+              case +# [ww_s7Nor 1#] of sat_s7Now {
+                __DEFAULT ->
+                    case *# [sat_s7Now y_s7Nou] of x_s7Nov [Dmd=<S,U>] {
+                      __DEFAULT ->
+                          case <# [x_s7Nov 0#] of {
+                            __DEFAULT ->
+                                case newMutVar# [GHC.ForeignPtr.NoFinalizers w1_s7Nos] of {
+                                  (#,#) ipv_s7Noz [Occ=Once] ipv1_s7NoA [Occ=Once] ->
+                                      case newPinnedByteArray# [x_s7Nov ipv_s7Noz] of {
+                                        (#,#) ipv2_s7NoC [Occ=Once] ipv3_s7NoD ->
+                                            let {
+                                              sat_s7NoF [Occ=Once]
+                                                :: GHC.ForeignPtr.ForeignPtrContents
+                                              [LclId] =
+                                                  CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7NoD
+                                                                                  ipv1_s7NoA];
+                                            } in 
+                                              case byteArrayContents# [ipv3_s7NoD] of sat_s7NoE {
+                                                __DEFAULT ->
+                                                    let {
+                                                      sat_s7NoG [Occ=Once]
+                                                        :: GHC.ForeignPtr.ForeignPtr a_s7N1Q
+                                                      [LclId] =
+                                                          CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7NoE
+                                                                                           sat_s7NoF];
+                                                    } in  (#,#) [ipv2_s7NoC sat_s7NoG];
+                                              };
+                                      };
+                                };
+                            1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                          };
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7NoI w1_s7NoJ w2_s7NoK]
+        case w1_s7NoJ of {
+          GHC.Types.I# ww1_s7NoM [Occ=Once] ->
+              Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+                  w_s7NoI ww1_s7NoM w2_s7NoK;
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray0
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 eta_B3 eta_B2 eta_B1;
+
+Foreign.ForeignPtr.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule4];
+
+Foreign.ForeignPtr.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule2];
+
+Foreign.ForeignPtr.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.ForeignPtr.Imp.$trModule3
+                                     Foreign.ForeignPtr.Imp.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:02:54.565085552 UTC
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtr [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=3, Str=<S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7Nng ww1_s7Nnh void_0E]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers GHC.Prim.void#] of {
+          Unit# ipv1_s7Nnl ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7Nnl ww_s7Nng 0# __NULL ww1_s7Nnh GHC.Tuple.() GHC.Prim.void#
+              of
+              { Unit# _ [Occ=Dead] ->
+                    let {
+                      sat_s7Nnp [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7Nnl]; } in
+                    let {
+                      sat_s7Nnq [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1i
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww1_s7Nnh sat_s7Nnp];
+                    } in  Unit# [sat_s7Nnq];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7Nnr w1_s7Nns void_0E]
+        case w_s7Nnr of {
+          GHC.Ptr.FunPtr ww1_s7Nnv [Occ=Once] ->
+              case w1_s7Nns of {
+                GHC.Ptr.Ptr ww3_s7Nnx [Occ=Once] ->
+                    Foreign.ForeignPtr.Imp.$wnewForeignPtr
+                        ww1_s7Nnv ww3_s7Nnx GHC.Prim.void#;
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtr
+  :: forall a.
+     GHC.ForeignPtr.FinalizerPtr a
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.newForeignPtr1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.ForeignPtr.Imp.withForeignPtr1
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [fo_s7Nny io_s7Nnz void_0E]
+        let {
+          sat_s7NnB [Occ=Once] :: GHC.Ptr.Ptr a_a7MVy
+          [LclId] =
+              [fo_s7Nny] \u [] GHC.ForeignPtr.unsafeForeignPtrToPtr fo_s7Nny;
+        } in 
+          case io_s7Nnz sat_s7NnB GHC.Prim.void# of {
+            Unit# ipv1_s7NnE [Occ=Once] ->
+                case fo_s7Nny of {
+                  GHC.ForeignPtr.ForeignPtr _ [Occ=Dead] r_s7NnH [Occ=Once] ->
+                      case touch# [r_s7NnH GHC.Prim.void#] of s'_s7NnI {
+                        (##) -> Unit# [ipv1_s7NnE];
+                      };
+                };
+          };
+
+Foreign.ForeignPtr.Imp.withForeignPtr
+  :: forall a b.
+     GHC.ForeignPtr.ForeignPtr a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.withForeignPtr1
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.Addr#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId, Arity=4, Str=<S,U><S,U><S,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_s7NnJ ww1_s7NnK ww2_s7NnL void_0E]
+        case newMutVar# [GHC.ForeignPtr.NoFinalizers GHC.Prim.void#] of {
+          Unit# ipv1_s7NnP ->
+              case
+                  GHC.ForeignPtr.$winsertCFinalizer
+                      ipv1_s7NnP
+                      ww_s7NnJ
+                      1#
+                      ww1_s7NnK
+                      ww2_s7NnL
+                      GHC.Tuple.()
+                      GHC.Prim.void#
+              of
+              { Unit# _ [Occ=Dead] ->
+                    let {
+                      sat_s7NnT [Occ=Once] :: GHC.ForeignPtr.ForeignPtrContents
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.PlainForeignPtr! [ipv1_s7NnP]; } in
+                    let {
+                      sat_s7NnU [Occ=Once] :: GHC.ForeignPtr.ForeignPtr a_s7N1w
+                      [LclId] =
+                          CCCS GHC.ForeignPtr.ForeignPtr! [ww2_s7NnL sat_s7NnT];
+                    } in  Unit# [sat_s7NnU];
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv1 [InlPrag=NOUSERINLINE[0]]
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7NnV w1_s7NnW w2_s7NnX void_0E]
+        case w_s7NnV of {
+          GHC.Ptr.FunPtr ww1_s7No0 [Occ=Once] ->
+              case w1_s7NnW of {
+                GHC.Ptr.Ptr ww3_s7No2 [Occ=Once] ->
+                    case w2_s7NnX of {
+                      GHC.Ptr.Ptr ww5_s7No4 [Occ=Once] ->
+                          Foreign.ForeignPtr.Imp.$wnewForeignPtrEnv
+                              ww1_s7No0 ww3_s7No2 ww5_s7No4 GHC.Prim.void#;
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.newForeignPtrEnv
+  :: forall env a.
+     GHC.ForeignPtr.FinalizerEnvPtr env a
+     -> GHC.Ptr.Ptr env
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=4,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.newForeignPtrEnv1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+lvl_r7N3Z :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r7N40 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r7N3Z;
+
+Foreign.ForeignPtr.Imp.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r7N41 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule4;
+
+Foreign.ForeignPtr.Imp.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.ForeignPtr.Imp"#;
+
+lvl3_r7N42 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.ForeignPtr.Imp.$trModule2;
+
+lvl4_r7N43 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/ForeignPtr/Imp.hs"#;
+
+lvl5_r7N44 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl4_r7N43;
+
+lvl6_r7N45 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [110#];
+
+lvl7_r7N46 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [35#];
+
+lvl8_r7N47 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [44#];
+
+lvl9_r7N48 :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r7N41
+                                           lvl3_r7N42
+                                           lvl5_r7N44
+                                           lvl6_r7N45
+                                           lvl7_r7N46
+                                           lvl6_r7N45
+                                           lvl8_r7N47];
+
+lvl10_r7N49 :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r7N40
+                                                  lvl9_r7N48
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray1 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl10_r7N49;
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s7No5]
+        let {
+          lvl11_s7No6 [Occ=OnceL!, Dmd=<L,U(U)>] :: GHC.Types.Int
+          [LclId] =
+              [$dStorable_s7No5] \u []
+                  Foreign.Storable.sizeOf
+                      $dStorable_s7No5
+                      Foreign.ForeignPtr.Imp.mallocForeignPtrArray1; } in
+        let {
+          sat_s7Nop [Occ=Once]
+            :: GHC.Types.Int
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                     GHC.ForeignPtr.ForeignPtr a_a7MUx #)
+          [LclId] =
+              [lvl11_s7No6] \r [size_s7No7 void_0E]
+                  case size_s7No7 of {
+                    GHC.Types.I# x_s7Noa [Occ=Once] ->
+                        case lvl11_s7No6 of {
+                          GHC.Types.I# y_s7Noc [Occ=Once] ->
+                              case *# [x_s7Noa y_s7Noc] of x1_s7Nod [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case <# [x1_s7Nod 0#] of {
+                                      __DEFAULT ->
+                                          case
+                                              newMutVar# [GHC.ForeignPtr.NoFinalizers
+                                                          GHC.Prim.void#]
+                                          of
+                                          { Unit# ipv1_s7Noh [Occ=Once] ->
+                                                case
+                                                    newPinnedByteArray# [x1_s7Nod GHC.Prim.void#]
+                                                of
+                                                { Unit# ipv3_s7Nok ->
+                                                      let {
+                                                        sat_s7Nom [Occ=Once]
+                                                          :: GHC.ForeignPtr.ForeignPtrContents
+                                                        [LclId] =
+                                                            CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7Nok
+                                                                                            ipv1_s7Noh];
+                                                      } in 
+                                                        case
+                                                            byteArrayContents# [ipv3_s7Nok]
+                                                        of
+                                                        sat_s7Nol
+                                                        { __DEFAULT ->
+                                                              let {
+                                                                sat_s7Non [Occ=Once]
+                                                                  :: GHC.ForeignPtr.ForeignPtr
+                                                                       a_a7MUx
+                                                                [LclId] =
+                                                                    CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7Nol
+                                                                                                     sat_s7Nom];
+                                                              } in  Unit# [sat_s7Non];
+                                                        };
+                                                };
+                                          };
+                                      1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                                    };
+                              };
+                        };
+                  };
+        } in  sat_s7Nop;
+
+Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Prim.Int#
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7Noq ww_s7Nor void_0E]
+        case
+            Foreign.Storable.sizeOf
+                w_s7Noq Foreign.ForeignPtr.Imp.mallocForeignPtrArray1
+        of
+        { GHC.Types.I# y_s7Nou [Occ=Once] ->
+              case +# [ww_s7Nor 1#] of sat_s7Now {
+                __DEFAULT ->
+                    case *# [sat_s7Now y_s7Nou] of x_s7Nov [Dmd=<S,U>] {
+                      __DEFAULT ->
+                          case <# [x_s7Nov 0#] of {
+                            __DEFAULT ->
+                                case newMutVar# [GHC.ForeignPtr.NoFinalizers GHC.Prim.void#] of {
+                                  Unit# ipv1_s7NoA [Occ=Once] ->
+                                      case newPinnedByteArray# [x_s7Nov GHC.Prim.void#] of {
+                                        Unit# ipv3_s7NoD ->
+                                            let {
+                                              sat_s7NoF [Occ=Once]
+                                                :: GHC.ForeignPtr.ForeignPtrContents
+                                              [LclId] =
+                                                  CCCS GHC.ForeignPtr.MallocPtr! [ipv3_s7NoD
+                                                                                  ipv1_s7NoA];
+                                            } in 
+                                              case byteArrayContents# [ipv3_s7NoD] of sat_s7NoE {
+                                                __DEFAULT ->
+                                                    let {
+                                                      sat_s7NoG [Occ=Once]
+                                                        :: GHC.ForeignPtr.ForeignPtr a_s7N1Q
+                                                      [LclId] =
+                                                          CCCS GHC.ForeignPtr.ForeignPtr! [sat_s7NoE
+                                                                                           sat_s7NoF];
+                                                    } in  Unit# [sat_s7NoG];
+                                              };
+                                      };
+                                };
+                            1# -> GHC.ForeignPtr.mallocForeignPtrBytes2;
+                          };
+                    };
+              };
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.ForeignPtr.ForeignPtr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_s7NoI w1_s7NoJ void_0E]
+        case w1_s7NoJ of {
+          GHC.Types.I# ww1_s7NoM [Occ=Once] ->
+              Foreign.ForeignPtr.Imp.$wmallocForeignPtrArray0
+                  w_s7NoI ww1_s7NoM GHC.Prim.void#;
+        };
+
+Foreign.ForeignPtr.Imp.mallocForeignPtrArray0
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     GHC.Types.Int -> GHC.Types.IO (GHC.ForeignPtr.ForeignPtr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.ForeignPtr.Imp.mallocForeignPtrArray2
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.ForeignPtr.Imp.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule4];
+
+Foreign.ForeignPtr.Imp.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.ForeignPtr.Imp.$trModule2];
+
+Foreign.ForeignPtr.Imp.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.ForeignPtr.Imp.$trModule3
+                                     Foreign.ForeignPtr.Imp.$trModule1];
+

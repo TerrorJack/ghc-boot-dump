@@ -1,0 +1,1090 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:03:56.090954724 UTC
+
+Foreign.Marshal.Error.throwIf2
+  :: forall a.
+     a
+     -> (a -> GHC.Base.String)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,U><B,1*C1(U)><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8Med msgfct_s8Mee eta_s8Mef]
+        let {
+          sat_s8Mei [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8Med msgfct_s8Mee] \u []
+                  let {
+                    sat_s8Meg [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [x_s8Med msgfct_s8Mee] \u [] msgfct_s8Mee x_s8Med; } in
+                  let {
+                    sat_s8Meh [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        sat_s8Meg
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8Meh;
+        } in  raiseIO# [sat_s8Mei eta_s8Mef];
+
+Foreign.Marshal.Error.throwIf1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [pred_s8Mej msgfct_s8Mek act_s8Mel s_s8Mem]
+        case act_s8Mel s_s8Mem of ds1_s8Men {
+          (#,#) ipv_s8Meo [Occ=Once] ipv1_s8Mep ->
+              case pred_s8Mej ipv1_s8Mep of {
+                GHC.Types.False -> ds1_s8Men;
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2 ipv1_s8Mep msgfct_s8Mek ipv_s8Meo;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Error.throwIf1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.throwIfNeg1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+Foreign.Marshal.Error.throwIfNeg
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8Mer $dNum_s8Mes]
+        let {
+          ds_s8Met [Occ=OnceL] :: a_a8M9r
+          [LclId] =
+              [$dNum_s8Mes] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Mes Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8MeB [Occ=Once]
+            :: (a_a8M9r -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9r
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a8M9r #)
+          [LclId] =
+              [$dOrd_s8Mer ds_s8Met] \r [msgfct_s8Meu act_s8Mev s_s8Mew]
+                  case act_s8Mev s_s8Mew of ds1_s8Mex {
+                    (#,#) ipv_s8Mey [Occ=Once] ipv1_s8Mez ->
+                        case GHC.Classes.< $dOrd_s8Mer ipv1_s8Mez ds_s8Met of {
+                          GHC.Types.False -> ds1_s8Mex;
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2 ipv1_s8Mez msgfct_s8Meu ipv_s8Mey;
+                        };
+                  };
+        } in  sat_s8MeB;
+
+Foreign.Marshal.Error.throwIfNull2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8MeC eta_s8MeD]
+        let {
+          sat_s8MeF [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8MeC] \u []
+                  let {
+                    sat_s8MeE [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        x_s8MeC
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8MeE;
+        } in  raiseIO# [sat_s8MeF eta_s8MeD];
+
+Foreign.Marshal.Error.throwIfNull1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_s8MeG eta_s8MeH eta1_s8MeI]
+        case eta_s8MeH eta1_s8MeI of ds1_s8MeJ {
+          (#,#) ipv_s8MeK [Occ=Once] ipv1_s8MeL [Occ=Once!] ->
+              case ipv1_s8MeL of {
+                GHC.Ptr.Ptr a1_s8MeN [Occ=Once] ->
+                    case eqAddr# [a1_s8MeN __NULL] of {
+                      __DEFAULT -> ds1_s8MeJ;
+                      1# -> Foreign.Marshal.Error.throwIfNull2 x_s8MeG ipv_s8MeK;
+                    };
+              };
+        };
+
+Foreign.Marshal.Error.throwIfNull
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a) -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Error.throwIfNull1 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.void1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [act_s8MeP s_s8MeQ]
+        case act_s8MeP s_s8MeQ of {
+          (#,#) ipv_s8MeS [Occ=Once] _ [Occ=Dead] ->
+              (#,#) [ipv_s8MeS GHC.Tuple.()];
+        };
+
+Foreign.Marshal.Error.void
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Foreign.Marshal.Error.void1 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.throwIf_1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [pred_s8MeU msgfct_s8MeV act_s8MeW s_s8MeX]
+        case act_s8MeW s_s8MeX of {
+          (#,#) ipv_s8MeZ [Occ=Once*] ipv1_s8Mf0 ->
+              case pred_s8MeU ipv1_s8Mf0 of {
+                GHC.Types.False -> (#,#) [ipv_s8MeZ GHC.Tuple.()];
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2 ipv1_s8Mf0 msgfct_s8MeV ipv_s8MeZ;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf_
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Error.throwIf_1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.throwIfNeg_
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8Mf3 $dNum_s8Mf4]
+        let {
+          ds_s8Mf5 [Occ=OnceL] :: a_a8M9h
+          [LclId] =
+              [$dNum_s8Mf4] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Mf4 Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8Mfe [Occ=Once]
+            :: (a_a8M9h -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9h
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId] =
+              [$dOrd_s8Mf3 ds_s8Mf5] \r [msgfct_s8Mf6 act_s8Mf7 s_s8Mf8]
+                  case act_s8Mf7 s_s8Mf8 of {
+                    (#,#) ipv_s8Mfa [Occ=Once*] ipv1_s8Mfb ->
+                        case GHC.Classes.< $dOrd_s8Mf3 ipv1_s8Mfb ds_s8Mf5 of {
+                          GHC.Types.False -> (#,#) [ipv_s8Mfa GHC.Tuple.()];
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2 ipv1_s8Mfb msgfct_s8Mf6 ipv_s8Mfa;
+                        };
+                  };
+        } in  sat_s8Mfe;
+
+Foreign.Marshal.Error.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Foreign.Marshal.Error.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule4];
+
+Foreign.Marshal.Error.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Error"#;
+
+Foreign.Marshal.Error.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule2];
+
+Foreign.Marshal.Error.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Error.$trModule3
+                                     Foreign.Marshal.Error.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:03:56.095563235 UTC
+
+Foreign.Marshal.Error.throwIf2
+  :: forall a.
+     a
+     -> (a -> GHC.Base.String)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,U><B,1*C1(U)><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8Med msgfct_s8Mee void_0E]
+        let {
+          sat_s8Mei [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8Med msgfct_s8Mee] \u []
+                  let {
+                    sat_s8Meg [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [x_s8Med msgfct_s8Mee] \u [] msgfct_s8Mee x_s8Med; } in
+                  let {
+                    sat_s8Meh [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        sat_s8Meg
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8Meh;
+        } in  raiseIO# [sat_s8Mei GHC.Prim.void#];
+
+Foreign.Marshal.Error.throwIf1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [pred_s8Mej msgfct_s8Mek act_s8Mel void_0E]
+        case act_s8Mel GHC.Prim.void# of ds1_s8Men {
+          Unit# ipv1_s8Mep ->
+              case pred_s8Mej ipv1_s8Mep of {
+                GHC.Types.False -> Unit# [ipv1_s8Mep];
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2
+                        ipv1_s8Mep msgfct_s8Mek GHC.Prim.void#;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Error.throwIf1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.throwIfNeg1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+Foreign.Marshal.Error.throwIfNeg
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8Mer $dNum_s8Mes]
+        let {
+          ds_s8Met [Occ=OnceL] :: a_a8M9r
+          [LclId] =
+              [$dNum_s8Mes] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Mes Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8MeB [Occ=Once]
+            :: (a_a8M9r -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9r
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a8M9r #)
+          [LclId] =
+              [$dOrd_s8Mer ds_s8Met] \r [msgfct_s8Meu act_s8Mev void_0E]
+                  case act_s8Mev GHC.Prim.void# of ds1_s8Mex {
+                    Unit# ipv1_s8Mez ->
+                        case GHC.Classes.< $dOrd_s8Mer ipv1_s8Mez ds_s8Met of {
+                          GHC.Types.False -> Unit# [ipv1_s8Mez];
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2
+                                  ipv1_s8Mez msgfct_s8Meu GHC.Prim.void#;
+                        };
+                  };
+        } in  sat_s8MeB;
+
+Foreign.Marshal.Error.throwIfNull2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8MeC void_0E]
+        let {
+          sat_s8MeF [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8MeC] \u []
+                  let {
+                    sat_s8MeE [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        x_s8MeC
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8MeE;
+        } in  raiseIO# [sat_s8MeF GHC.Prim.void#];
+
+Foreign.Marshal.Error.throwIfNull1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_s8MeG eta_s8MeH void_0E]
+        case eta_s8MeH GHC.Prim.void# of ds1_s8MeJ {
+          Unit# ipv1_s8MeL [Occ=Once!] ->
+              case ipv1_s8MeL of {
+                GHC.Ptr.Ptr a1_s8MeN [Occ=Once] ->
+                    case eqAddr# [a1_s8MeN __NULL] of {
+                      __DEFAULT -> Unit# [ipv1_s8MeL];
+                      1# -> Foreign.Marshal.Error.throwIfNull2 x_s8MeG GHC.Prim.void#;
+                    };
+              };
+        };
+
+Foreign.Marshal.Error.throwIfNull
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a) -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Error.throwIfNull1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.void1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [act_s8MeP void_0E]
+        case act_s8MeP GHC.Prim.void# of {
+          Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+        };
+
+Foreign.Marshal.Error.void
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Foreign.Marshal.Error.void1 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.throwIf_1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [pred_s8MeU msgfct_s8MeV act_s8MeW void_0E]
+        case act_s8MeW GHC.Prim.void# of {
+          Unit# ipv1_s8Mf0 ->
+              case pred_s8MeU ipv1_s8Mf0 of {
+                GHC.Types.False -> Unit# [GHC.Tuple.()];
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2
+                        ipv1_s8Mf0 msgfct_s8MeV GHC.Prim.void#;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf_
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Error.throwIf_1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.throwIfNeg_
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8Mf3 $dNum_s8Mf4]
+        let {
+          ds_s8Mf5 [Occ=OnceL] :: a_a8M9h
+          [LclId] =
+              [$dNum_s8Mf4] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Mf4 Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8Mfe [Occ=Once]
+            :: (a_a8M9h -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9h
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId] =
+              [$dOrd_s8Mf3 ds_s8Mf5] \r [msgfct_s8Mf6 act_s8Mf7 void_0E]
+                  case act_s8Mf7 GHC.Prim.void# of {
+                    Unit# ipv1_s8Mfb ->
+                        case GHC.Classes.< $dOrd_s8Mf3 ipv1_s8Mfb ds_s8Mf5 of {
+                          GHC.Types.False -> Unit# [GHC.Tuple.()];
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2
+                                  ipv1_s8Mfb msgfct_s8Mf6 GHC.Prim.void#;
+                        };
+                  };
+        } in  sat_s8Mfe;
+
+Foreign.Marshal.Error.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Foreign.Marshal.Error.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule4];
+
+Foreign.Marshal.Error.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Error"#;
+
+Foreign.Marshal.Error.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule2];
+
+Foreign.Marshal.Error.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Error.$trModule3
+                                     Foreign.Marshal.Error.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:03:56.442513284 UTC
+
+Foreign.Marshal.Error.throwIf2
+  :: forall a.
+     a
+     -> (a -> GHC.Base.String)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,U><B,1*C1(U)><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8MsI msgfct_s8MsJ eta_s8MsK]
+        let {
+          sat_s8MsN [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8MsI msgfct_s8MsJ] \u []
+                  let {
+                    sat_s8MsL [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [x_s8MsI msgfct_s8MsJ] \u [] msgfct_s8MsJ x_s8MsI; } in
+                  let {
+                    sat_s8MsM [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        sat_s8MsL
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8MsM;
+        } in  raiseIO# [sat_s8MsN eta_s8MsK];
+
+Foreign.Marshal.Error.throwIf1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [pred_s8MsO msgfct_s8MsP act_s8MsQ s_s8MsR]
+        case act_s8MsQ s_s8MsR of ds1_s8MsS {
+          (#,#) ipv_s8MsT [Occ=Once] ipv1_s8MsU ->
+              case pred_s8MsO ipv1_s8MsU of {
+                GHC.Types.False -> ds1_s8MsS;
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2 ipv1_s8MsU msgfct_s8MsP ipv_s8MsT;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Error.throwIf1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.throwIfNeg1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+Foreign.Marshal.Error.throwIfNeg
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8MsW $dNum_s8MsX]
+        let {
+          ds_s8MsY [Occ=OnceL] :: a_a8M9r
+          [LclId] =
+              [$dNum_s8MsX] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8MsX Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8Mt6 [Occ=Once]
+            :: (a_a8M9r -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9r
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a8M9r #)
+          [LclId] =
+              [$dOrd_s8MsW ds_s8MsY] \r [msgfct_s8MsZ act_s8Mt0 s_s8Mt1]
+                  case act_s8Mt0 s_s8Mt1 of ds1_s8Mt2 {
+                    (#,#) ipv_s8Mt3 [Occ=Once] ipv1_s8Mt4 ->
+                        case GHC.Classes.< $dOrd_s8MsW ipv1_s8Mt4 ds_s8MsY of {
+                          GHC.Types.False -> ds1_s8Mt2;
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2 ipv1_s8Mt4 msgfct_s8MsZ ipv_s8Mt3;
+                        };
+                  };
+        } in  sat_s8Mt6;
+
+Foreign.Marshal.Error.throwIfNull2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8Mt7 eta_s8Mt8]
+        let {
+          sat_s8Mta [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8Mt7] \u []
+                  let {
+                    sat_s8Mt9 [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        x_s8Mt7
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8Mt9;
+        } in  raiseIO# [sat_s8Mta eta_s8Mt8];
+
+Foreign.Marshal.Error.throwIfNull1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_s8Mtb eta_s8Mtc eta1_s8Mtd]
+        case eta_s8Mtc eta1_s8Mtd of ds1_s8Mte {
+          (#,#) ipv_s8Mtf [Occ=Once] ipv1_s8Mtg [Occ=Once!] ->
+              case ipv1_s8Mtg of {
+                GHC.Ptr.Ptr a1_s8Mti [Occ=Once] ->
+                    case eqAddr# [a1_s8Mti __NULL] of {
+                      __DEFAULT -> ds1_s8Mte;
+                      1# -> Foreign.Marshal.Error.throwIfNull2 x_s8Mtb ipv_s8Mtf;
+                    };
+              };
+        };
+
+Foreign.Marshal.Error.throwIfNull
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a) -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Error.throwIfNull1 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.void1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [act_s8Mtk s_s8Mtl]
+        case act_s8Mtk s_s8Mtl of {
+          (#,#) ipv_s8Mtn [Occ=Once] _ [Occ=Dead] ->
+              (#,#) [ipv_s8Mtn GHC.Tuple.()];
+        };
+
+Foreign.Marshal.Error.void
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Foreign.Marshal.Error.void1 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.throwIf_1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [pred_s8Mtp msgfct_s8Mtq act_s8Mtr s_s8Mts]
+        case act_s8Mtr s_s8Mts of {
+          (#,#) ipv_s8Mtu [Occ=Once*] ipv1_s8Mtv ->
+              case pred_s8Mtp ipv1_s8Mtv of {
+                GHC.Types.False -> (#,#) [ipv_s8Mtu GHC.Tuple.()];
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2 ipv1_s8Mtv msgfct_s8Mtq ipv_s8Mtu;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf_
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Error.throwIf_1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Error.throwIfNeg_
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8Mty $dNum_s8Mtz]
+        let {
+          ds_s8MtA [Occ=OnceL] :: a_a8M9h
+          [LclId] =
+              [$dNum_s8Mtz] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Mtz Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8MtJ [Occ=Once]
+            :: (a_a8M9h -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9h
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId] =
+              [$dOrd_s8Mty ds_s8MtA] \r [msgfct_s8MtB act_s8MtC s_s8MtD]
+                  case act_s8MtC s_s8MtD of {
+                    (#,#) ipv_s8MtF [Occ=Once*] ipv1_s8MtG ->
+                        case GHC.Classes.< $dOrd_s8Mty ipv1_s8MtG ds_s8MtA of {
+                          GHC.Types.False -> (#,#) [ipv_s8MtF GHC.Tuple.()];
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2 ipv1_s8MtG msgfct_s8MtB ipv_s8MtF;
+                        };
+                  };
+        } in  sat_s8MtJ;
+
+Foreign.Marshal.Error.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Foreign.Marshal.Error.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule4];
+
+Foreign.Marshal.Error.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Error"#;
+
+Foreign.Marshal.Error.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule2];
+
+Foreign.Marshal.Error.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Error.$trModule3
+                                     Foreign.Marshal.Error.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:03:56.447553178 UTC
+
+Foreign.Marshal.Error.throwIf2
+  :: forall a.
+     a
+     -> (a -> GHC.Base.String)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<B,U><B,1*C1(U)><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8MsI msgfct_s8MsJ void_0E]
+        let {
+          sat_s8MsN [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8MsI msgfct_s8MsJ] \u []
+                  let {
+                    sat_s8MsL [Occ=Once] :: GHC.Base.String
+                    [LclId] =
+                        [x_s8MsI msgfct_s8MsJ] \u [] msgfct_s8MsJ x_s8MsI; } in
+                  let {
+                    sat_s8MsM [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        sat_s8MsL
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8MsM;
+        } in  raiseIO# [sat_s8MsN GHC.Prim.void#];
+
+Foreign.Marshal.Error.throwIf1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [pred_s8MsO msgfct_s8MsP act_s8MsQ void_0E]
+        case act_s8MsQ GHC.Prim.void# of ds1_s8MsS {
+          Unit# ipv1_s8MsU ->
+              case pred_s8MsO ipv1_s8MsU of {
+                GHC.Types.False -> Unit# [ipv1_s8MsU];
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2
+                        ipv1_s8MsU msgfct_s8MsP GHC.Prim.void#;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Error.throwIf1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.throwIfNeg1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+Foreign.Marshal.Error.throwIfNeg
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8MsW $dNum_s8MsX]
+        let {
+          ds_s8MsY [Occ=OnceL] :: a_a8M9r
+          [LclId] =
+              [$dNum_s8MsX] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8MsX Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8Mt6 [Occ=Once]
+            :: (a_a8M9r -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9r
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a8M9r #)
+          [LclId] =
+              [$dOrd_s8MsW ds_s8MsY] \r [msgfct_s8MsZ act_s8Mt0 void_0E]
+                  case act_s8Mt0 GHC.Prim.void# of ds1_s8Mt2 {
+                    Unit# ipv1_s8Mt4 ->
+                        case GHC.Classes.< $dOrd_s8MsW ipv1_s8Mt4 ds_s8MsY of {
+                          GHC.Types.False -> Unit# [ipv1_s8Mt4];
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2
+                                  ipv1_s8Mt4 msgfct_s8MsZ GHC.Prim.void#;
+                        };
+                  };
+        } in  sat_s8Mt6;
+
+Foreign.Marshal.Error.throwIfNull2
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [x_s8Mt7 void_0E]
+        let {
+          sat_s8Mta [Occ=Once] :: GHC.Exception.SomeException
+          [LclId] =
+              [x_s8Mt7] \u []
+                  let {
+                    sat_s8Mt9 [Occ=Once] :: GHC.IO.Exception.IOException
+                    [LclId] =
+                        CCCS GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                                        GHC.IO.Exception.UserError
+                                                        GHC.Types.[]
+                                                        x_s8Mt7
+                                                        GHC.Base.Nothing
+                                                        GHC.Base.Nothing];
+                  } in 
+                    GHC.IO.Exception.$fExceptionIOException_$ctoException sat_s8Mt9;
+        } in  raiseIO# [sat_s8Mta GHC.Prim.void#];
+
+Foreign.Marshal.Error.throwIfNull1
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [x_s8Mtb eta_s8Mtc void_0E]
+        case eta_s8Mtc GHC.Prim.void# of ds1_s8Mte {
+          Unit# ipv1_s8Mtg [Occ=Once!] ->
+              case ipv1_s8Mtg of {
+                GHC.Ptr.Ptr a1_s8Mti [Occ=Once] ->
+                    case eqAddr# [a1_s8Mti __NULL] of {
+                      __DEFAULT -> Unit# [ipv1_s8Mtg];
+                      1# -> Foreign.Marshal.Error.throwIfNull2 x_s8Mtb GHC.Prim.void#;
+                    };
+              };
+        };
+
+Foreign.Marshal.Error.throwIfNull
+  :: forall a.
+     GHC.Base.String
+     -> GHC.Types.IO (GHC.Ptr.Ptr a) -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Error.throwIfNull1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.void1
+  :: forall a.
+     GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [act_s8Mtk void_0E]
+        case act_s8Mtk GHC.Prim.void# of {
+          Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+        };
+
+Foreign.Marshal.Error.void
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Foreign.Marshal.Error.void1 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.throwIf_1
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String)
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [pred_s8Mtp msgfct_s8Mtq act_s8Mtr void_0E]
+        case act_s8Mtr GHC.Prim.void# of {
+          Unit# ipv1_s8Mtv ->
+              case pred_s8Mtp ipv1_s8Mtv of {
+                GHC.Types.False -> Unit# [GHC.Tuple.()];
+                GHC.Types.True ->
+                    Foreign.Marshal.Error.throwIf2
+                        ipv1_s8Mtv msgfct_s8Mtq GHC.Prim.void#;
+              };
+        };
+
+Foreign.Marshal.Error.throwIf_
+  :: forall a.
+     (a -> GHC.Types.Bool)
+     -> (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Error.throwIf_1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Error.throwIfNeg_
+  :: forall a.
+     (GHC.Classes.Ord a, GHC.Num.Num a) =>
+     (a -> GHC.Base.String) -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dOrd_s8Mty $dNum_s8Mtz]
+        let {
+          ds_s8MtA [Occ=OnceL] :: a_a8M9h
+          [LclId] =
+              [$dNum_s8Mtz] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Mtz Foreign.Marshal.Error.throwIfNeg1; } in
+        let {
+          sat_s8MtJ [Occ=Once]
+            :: (a_a8M9h -> GHC.Base.String)
+               -> GHC.Types.IO a_a8M9h
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId] =
+              [$dOrd_s8Mty ds_s8MtA] \r [msgfct_s8MtB act_s8MtC void_0E]
+                  case act_s8MtC GHC.Prim.void# of {
+                    Unit# ipv1_s8MtG ->
+                        case GHC.Classes.< $dOrd_s8Mty ipv1_s8MtG ds_s8MtA of {
+                          GHC.Types.False -> Unit# [GHC.Tuple.()];
+                          GHC.Types.True ->
+                              Foreign.Marshal.Error.throwIf2
+                                  ipv1_s8MtG msgfct_s8MtB GHC.Prim.void#;
+                        };
+                  };
+        } in  sat_s8MtJ;
+
+Foreign.Marshal.Error.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Foreign.Marshal.Error.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule4];
+
+Foreign.Marshal.Error.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Error"#;
+
+Foreign.Marshal.Error.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Error.$trModule2];
+
+Foreign.Marshal.Error.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Error.$trModule3
+                                     Foreign.Marshal.Error.$trModule1];
+

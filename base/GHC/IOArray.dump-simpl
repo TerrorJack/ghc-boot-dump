@@ -1,0 +1,642 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:03:07.936518785 UTC
+
+Result size of Tidy Core
+  = {terms: 191, types: 330, coercions: 149, joins: 0/0}
+
+-- RHS size: {terms: 18, types: 33, coercions: 6, joins: 0/0}
+GHC.IOArray.$fEqIOArray_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall i e. IOArray i e -> IOArray i e -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(LLLS),1*U(A,A,A,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ i_a80oz)
+                 (@ e_a80oA)
+                 (x_a22b [Occ=Once] :: IOArray i_a80oz e_a80oA)
+                 (y_a22c [Occ=Once] :: IOArray i_a80oz e_a80oA) ->
+                 case x_a22b
+                      `cast` (GHC.IOArray.N:IOArray[0] <i_a80oz>_N <e_a80oA>_N
+                              :: (IOArray i_a80oz e_a80oA :: *)
+                                 ~R# (STArray RealWorld i_a80oz e_a80oA :: *))
+                 of
+                 { STArray _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead]
+                           arr1#_i80sj [Occ=Once] ->
+                 case y_a22c
+                      `cast` (GHC.IOArray.N:IOArray[0] <i_a80oz>_N <e_a80oA>_N
+                              :: (IOArray i_a80oz e_a80oA :: *)
+                                 ~R# (STArray RealWorld i_a80oz e_a80oA :: *))
+                 of
+                 { STArray _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead]
+                           arr2#_i80sq [Occ=Once] ->
+                 case sameMutableArray#
+                        @ RealWorld @ e_a80oA arr1#_i80sj arr2#_i80sq
+                 of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.IOArray.$fEqIOArray_$c/=
+  = \ (@ i_a80oz)
+      (@ e_a80oA)
+      (eta_B2 :: IOArray i_a80oz e_a80oA)
+      (eta1_B1 :: IOArray i_a80oz e_a80oA) ->
+      case eta_B2
+           `cast` (GHC.IOArray.N:IOArray[0] <i_a80oz>_N <e_a80oA>_N
+                   :: (IOArray i_a80oz e_a80oA :: *)
+                      ~R# (STArray RealWorld i_a80oz e_a80oA :: *))
+      of
+      { STArray ds2_i80sg ds3_i80sh dt_i80si arr1#_i80sj ->
+      case eta1_B1
+           `cast` (GHC.IOArray.N:IOArray[0] <i_a80oz>_N <e_a80oA>_N
+                   :: (IOArray i_a80oz e_a80oA :: *)
+                      ~R# (STArray RealWorld i_a80oz e_a80oA :: *))
+      of
+      { STArray ds4_i80sn ds5_i80so dt1_i80sp arr2#_i80sq ->
+      case sameMutableArray#
+             @ RealWorld @ e_a80oA arr1#_i80sj arr2#_i80sq
+      of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 5, types: 12, coercions: 11, joins: 0/0}
+GHC.IOArray.$fEqIOArray [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall i e. Eq (IOArray i e)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ i_a80i3) (@ e_a80i4) ->
+       GHC.Classes.C:Eq TYPE: IOArray i_a80i3 e_a80i4
+                        (GHC.Arr.$fEqSTArray_$c== @ RealWorld @ i_a80i3 @ e_a80i4)
+                        `cast` (Sym (GHC.IOArray.N:IOArray[0]) <i_a80i3>_N <e_a80i4>_N
+                                ->_R Sym (GHC.IOArray.N:IOArray[0]) <i_a80i3>_N <e_a80i4>_N
+                                ->_R <Bool>_R
+                                :: (STArray RealWorld i_a80i3 e_a80i4
+                                    -> STArray RealWorld i_a80i3 e_a80i4 -> Bool :: *)
+                                   ~R# (IOArray i_a80i3 e_a80i4
+                                        -> IOArray i_a80i3 e_a80i4 -> Bool :: *))
+                        GHC.IOArray.$fEqIOArray_$c/= @ i_a80i3 @ e_a80i4]
+GHC.IOArray.$fEqIOArray
+  = \ (@ i_a80oz) (@ e_a80oA) ->
+      GHC.Classes.C:Eq
+        @ (IOArray i_a80oz e_a80oA)
+        ((GHC.Arr.$fEqSTArray_$c== @ RealWorld @ i_a80oz @ e_a80oA)
+         `cast` (Sym (GHC.IOArray.N:IOArray[0]) <i_a80oz>_N <e_a80oA>_N
+                 ->_R Sym (GHC.IOArray.N:IOArray[0]) <i_a80oz>_N <e_a80oA>_N
+                 ->_R <Bool>_R
+                 :: (STArray RealWorld i_a80oz e_a80oA
+                     -> STArray RealWorld i_a80oz e_a80oA -> Bool :: *)
+                    ~R# (IOArray i_a80oz e_a80oA
+                         -> IOArray i_a80oz e_a80oA -> Bool :: *)))
+        (GHC.IOArray.$fEqIOArray_$c/= @ i_a80oz @ e_a80oA)
+
+-- RHS size: {terms: 41, types: 49, coercions: 4, joins: 0/0}
+$wnewIOArray_r80wT
+  :: forall i e.
+     Ix i =>
+     i
+     -> i
+     -> e
+     -> State# RealWorld
+     -> (# State# RealWorld, IOArray i e #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><L,U><L,U><L,U><S,U>,
+ Unf=OtherCon []]
+$wnewIOArray_r80wT
+  = \ (@ i_s80vr)
+      (@ e_s80vs)
+      (w_s80vt :: Ix i_s80vr)
+      (ww_s80vz :: i_s80vr)
+      (ww1_s80vA :: i_s80vr)
+      (w1_s80vv :: e_s80vs)
+      (w2_s80vw :: State# RealWorld) ->
+      case rangeSize @ i_s80vr w_s80vt (ww_s80vz, ww1_s80vA) of
+      { I# x_alN9 ->
+      case <# x_alN9 0# of {
+        __DEFAULT ->
+          case newArray# @ e_s80vs @ RealWorld x_alN9 w1_s80vv w2_s80vw of
+          { (# ipv_i80rv, ipv1_i80rw #) ->
+          (# ipv_i80rv,
+             case ww_s80vz of dt_X80pv { __DEFAULT ->
+             case ww1_s80vA of dt1_X80px { __DEFAULT ->
+             (GHC.Arr.STArray
+                @ RealWorld
+                @ i_s80vr
+                @ e_s80vs
+                dt_X80pv
+                dt1_X80px
+                x_alN9
+                ipv1_i80rw)
+             `cast` (Sym (GHC.IOArray.N:IOArray[0]) <i_s80vr>_N <e_s80vs>_N
+                     :: (STArray RealWorld i_s80vr e_s80vs :: *)
+                        ~R# (IOArray i_s80vr e_s80vs :: *))
+             }
+             } #)
+          };
+        1# -> case negRange of wild1_00 { }
+      }
+      }
+
+-- RHS size: {terms: 15, types: 19, coercions: 0, joins: 0/0}
+newIOArray1_r80wU
+  :: forall i e.
+     Ix i =>
+     (i, i)
+     -> e -> State# RealWorld -> (# State# RealWorld, IOArray i e #)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []]
+newIOArray1_r80wU
+  = \ (@ i_s80vr)
+      (@ e_s80vs)
+      (w_s80vt :: Ix i_s80vr)
+      (w1_s80vu :: (i_s80vr, i_s80vr))
+      (w2_s80vv :: e_s80vs)
+      (w3_s80vw :: State# RealWorld) ->
+      case w1_s80vu of { (ww1_s80vz, ww2_s80vA) ->
+      $wnewIOArray_r80wT
+        @ i_s80vr @ e_s80vs w_s80vt ww1_s80vz ww2_s80vA w2_s80vv w3_s80vw
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 20, joins: 0/0}
+newIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e. Ix i => (i, i) -> e -> IO (IOArray i e)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ i_X80oC)
+                  (@ e_X80oE)
+                  ($dIx_X80oH [Occ=Once] :: Ix i_X80oC)
+                  (lu_a80ij [Occ=Once!] :: (i_X80oC, i_X80oC))
+                  (initial_a80ik [Occ=Once] :: e_X80oE)
+                  (s1_i80sB [Occ=Once] :: State# RealWorld) ->
+                  case lu_a80ij of { (l_i80rj, u_i80rk) ->
+                  let {
+                    r_i80ri :: Int
+                    [LclId]
+                    r_i80ri = rangeSize @ i_X80oC $dIx_X80oH (l_i80rj, u_i80rk) } in
+                  case ltInt r_i80ri (GHC.Types.I# 0#) of {
+                    False ->
+                      case r_i80ri of wild2_i80rp { I# n#_i80rr [Occ=Once] ->
+                      case newArray#
+                             @ e_X80oE @ RealWorld n#_i80rr initial_a80ik s1_i80sB
+                      of
+                      { (# ipv_i80rv [Occ=Once], ipv1_i80rw [Occ=Once] #) ->
+                      (# ipv_i80rv,
+                         (GHC.Arr.$WSTArray
+                            @ RealWorld
+                            @ i_X80oC
+                            @ e_X80oE
+                            l_i80rj
+                            u_i80rk
+                            wild2_i80rp
+                            ipv1_i80rw)
+                         `cast` (Sym (GHC.IOArray.N:IOArray[0]) <i_X80oC>_N <e_X80oE>_N
+                                 :: (STArray RealWorld i_X80oC e_X80oE :: *)
+                                    ~R# (IOArray i_X80oC e_X80oE :: *)) #)
+                      }
+                      };
+                    True -> case negRange of { }
+                  }
+                  })
+               `cast` (forall (i :: <*>_N) (e :: <*>_N).
+                       <Ix i>_R
+                       ->_R <(i, i)>_R
+                       ->_R <e>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <IOArray i e>_R)
+                       :: (forall i e.
+                           Ix i =>
+                           (i, i)
+                           -> e
+                           -> State# RealWorld
+                           -> (# State# RealWorld, IOArray i e #) :: *)
+                          ~R# (forall i e. Ix i => (i, i) -> e -> IO (IOArray i e) :: *))}]
+newIOArray
+  = newIOArray1_r80wU
+    `cast` (forall (i :: <*>_N) (e :: <*>_N).
+            <Ix i>_R
+            ->_R <(i, i)>_R
+            ->_R <e>_R
+            ->_R Sym (GHC.Types.N:IO[0] <IOArray i e>_R)
+            :: (forall i e.
+                Ix i =>
+                (i, i)
+                -> e
+                -> State# RealWorld
+                -> (# State# RealWorld, IOArray i e #) :: *)
+               ~R# (forall i e. Ix i => (i, i) -> e -> IO (IOArray i e) :: *))
+
+-- RHS size: {terms: 1, types: 1, coercions: 20, joins: 0/0}
+unsafeReadIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e. IOArray i e -> Int -> IO e
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=True)
+         Tmpl= (unsafeReadSTArray @ RealWorld)
+               `cast` (forall (i :: <*>_N) (e :: <*>_N).
+                       Sym (GHC.IOArray.N:IOArray[0]) <i>_N <e>_N
+                       ->_R <Int>_R
+                       ->_R GHC.ST.N:ST[0] <RealWorld>_N <e>_R ; Sym (GHC.Types.N:IO[0]
+                                                                          <e>_R)
+                       :: (forall i e.
+                           STArray RealWorld i e -> Int -> GHC.ST.ST RealWorld e :: *)
+                          ~R# (forall i e. IOArray i e -> Int -> IO e :: *))}]
+unsafeReadIOArray
+  = (unsafeReadSTArray @ RealWorld)
+    `cast` (forall (i :: <*>_N) (e :: <*>_N).
+            Sym (GHC.IOArray.N:IOArray[0]) <i>_N <e>_N
+            ->_R <Int>_R
+            ->_R GHC.ST.N:ST[0] <RealWorld>_N <e>_R ; Sym (GHC.Types.N:IO[0]
+                                                               <e>_R)
+            :: (forall i e.
+                STArray RealWorld i e -> Int -> GHC.ST.ST RealWorld e :: *)
+               ~R# (forall i e. IOArray i e -> Int -> IO e :: *))
+
+-- RHS size: {terms: 1, types: 1, coercions: 22, joins: 0/0}
+unsafeWriteIOArray [InlPrag=INLINE (sat-args=3)]
+  :: forall i e. IOArray i e -> Int -> e -> IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=True)
+         Tmpl= (unsafeWriteSTArray @ RealWorld)
+               `cast` (forall (i :: <*>_N) (e :: <*>_N).
+                       Sym (GHC.IOArray.N:IOArray[0]) <i>_N <e>_N
+                       ->_R <Int>_R
+                       ->_R <e>_R
+                       ->_R GHC.ST.N:ST[0] <RealWorld>_N <()>_R ; Sym (GHC.Types.N:IO[0]
+                                                                           <()>_R)
+                       :: (forall i e.
+                           STArray RealWorld i e -> Int -> e -> GHC.ST.ST RealWorld () :: *)
+                          ~R# (forall i e. IOArray i e -> Int -> e -> IO () :: *))}]
+unsafeWriteIOArray
+  = (unsafeWriteSTArray @ RealWorld)
+    `cast` (forall (i :: <*>_N) (e :: <*>_N).
+            Sym (GHC.IOArray.N:IOArray[0]) <i>_N <e>_N
+            ->_R <Int>_R
+            ->_R <e>_R
+            ->_R GHC.ST.N:ST[0] <RealWorld>_N <()>_R ; Sym (GHC.Types.N:IO[0]
+                                                                <()>_R)
+            :: (forall i e.
+                STArray RealWorld i e -> Int -> e -> GHC.ST.ST RealWorld () :: *)
+               ~R# (forall i e. IOArray i e -> Int -> e -> IO () :: *))
+
+-- RHS size: {terms: 9, types: 13, coercions: 3, joins: 0/0}
+GHC.IOArray.readIOArray1
+  :: forall i e. Ix i => IOArray i e -> i -> GHC.ST.ST RealWorld e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ i_a80nA)
+                 (@ e_a80nB)
+                 ($dIx_a80nD [Occ=Once] :: Ix i_a80nA)
+                 (ds_d80q3 [Occ=Once] :: IOArray i_a80nA e_a80nB)
+                 (i1_a80is [Occ=Once] :: i_a80nA) ->
+                 readSTArray
+                   @ i_a80nA
+                   @ RealWorld
+                   @ e_a80nB
+                   $dIx_a80nD
+                   (ds_d80q3
+                    `cast` (GHC.IOArray.N:IOArray[0] <i_a80nA>_N <e_a80nB>_N
+                            :: (IOArray i_a80nA e_a80nB :: *)
+                               ~R# (STArray RealWorld i_a80nA e_a80nB :: *)))
+                   i1_a80is}]
+GHC.IOArray.readIOArray1
+  = \ (@ i_a80nA)
+      (@ e_a80nB)
+      ($dIx_a80nD :: Ix i_a80nA)
+      (ds_d80q3 :: IOArray i_a80nA e_a80nB)
+      (i1_a80is :: i_a80nA) ->
+      readSTArray
+        @ i_a80nA
+        @ RealWorld
+        @ e_a80nB
+        $dIx_a80nD
+        (ds_d80q3
+         `cast` (GHC.IOArray.N:IOArray[0] <i_a80nA>_N <e_a80nB>_N
+                 :: (IOArray i_a80nA e_a80nB :: *)
+                    ~R# (STArray RealWorld i_a80nA e_a80nB :: *)))
+        i1_a80is
+
+-- RHS size: {terms: 1, types: 0, coercions: 22, joins: 0/0}
+readIOArray :: forall i e. Ix i => IOArray i e -> i -> IO e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IOArray.readIOArray1
+               `cast` (forall (i :: <*>_N) (e :: <*>_N).
+                       <Ix i>_R
+                       ->_R <IOArray i e>_R
+                       ->_R <i>_R
+                       ->_R GHC.ST.N:ST[0] <RealWorld>_N <e>_R ; Sym (GHC.Types.N:IO[0]
+                                                                          <e>_R)
+                       :: (forall i e.
+                           Ix i =>
+                           IOArray i e -> i -> GHC.ST.ST RealWorld e :: *)
+                          ~R# (forall i e. Ix i => IOArray i e -> i -> IO e :: *))}]
+readIOArray
+  = GHC.IOArray.readIOArray1
+    `cast` (forall (i :: <*>_N) (e :: <*>_N).
+            <Ix i>_R
+            ->_R <IOArray i e>_R
+            ->_R <i>_R
+            ->_R GHC.ST.N:ST[0] <RealWorld>_N <e>_R ; Sym (GHC.Types.N:IO[0]
+                                                               <e>_R)
+            :: (forall i e.
+                Ix i =>
+                IOArray i e -> i -> GHC.ST.ST RealWorld e :: *)
+               ~R# (forall i e. Ix i => IOArray i e -> i -> IO e :: *))
+
+-- RHS size: {terms: 11, types: 14, coercions: 3, joins: 0/0}
+GHC.IOArray.writeIOArray1
+  :: forall i e.
+     Ix i =>
+     IOArray i e -> i -> e -> GHC.ST.ST RealWorld ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ i_a80nm)
+                 (@ e_a80nn)
+                 ($dIx_a80np [Occ=Once] :: Ix i_a80nm)
+                 (ds_d80pB [Occ=Once] :: IOArray i_a80nm e_a80nn)
+                 (i1_a80iu [Occ=Once] :: i_a80nm)
+                 (e1_a80iv [Occ=Once] :: e_a80nn) ->
+                 writeSTArray
+                   @ i_a80nm
+                   @ RealWorld
+                   @ e_a80nn
+                   $dIx_a80np
+                   (ds_d80pB
+                    `cast` (GHC.IOArray.N:IOArray[0] <i_a80nm>_N <e_a80nn>_N
+                            :: (IOArray i_a80nm e_a80nn :: *)
+                               ~R# (STArray RealWorld i_a80nm e_a80nn :: *)))
+                   i1_a80iu
+                   e1_a80iv}]
+GHC.IOArray.writeIOArray1
+  = \ (@ i_a80nm)
+      (@ e_a80nn)
+      ($dIx_a80np :: Ix i_a80nm)
+      (ds_d80pB :: IOArray i_a80nm e_a80nn)
+      (i1_a80iu :: i_a80nm)
+      (e1_a80iv :: e_a80nn) ->
+      writeSTArray
+        @ i_a80nm
+        @ RealWorld
+        @ e_a80nn
+        $dIx_a80np
+        (ds_d80pB
+         `cast` (GHC.IOArray.N:IOArray[0] <i_a80nm>_N <e_a80nn>_N
+                 :: (IOArray i_a80nm e_a80nn :: *)
+                    ~R# (STArray RealWorld i_a80nm e_a80nn :: *)))
+        i1_a80iu
+        e1_a80iv
+
+-- RHS size: {terms: 1, types: 0, coercions: 24, joins: 0/0}
+writeIOArray :: forall i e. Ix i => IOArray i e -> i -> e -> IO ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IOArray.writeIOArray1
+               `cast` (forall (i :: <*>_N) (e :: <*>_N).
+                       <Ix i>_R
+                       ->_R <IOArray i e>_R
+                       ->_R <i>_R
+                       ->_R <e>_R
+                       ->_R GHC.ST.N:ST[0] <RealWorld>_N <()>_R ; Sym (GHC.Types.N:IO[0]
+                                                                           <()>_R)
+                       :: (forall i e.
+                           Ix i =>
+                           IOArray i e -> i -> e -> GHC.ST.ST RealWorld () :: *)
+                          ~R# (forall i e. Ix i => IOArray i e -> i -> e -> IO () :: *))}]
+writeIOArray
+  = GHC.IOArray.writeIOArray1
+    `cast` (forall (i :: <*>_N) (e :: <*>_N).
+            <Ix i>_R
+            ->_R <IOArray i e>_R
+            ->_R <i>_R
+            ->_R <e>_R
+            ->_R GHC.ST.N:ST[0] <RealWorld>_N <()>_R ; Sym (GHC.Types.N:IO[0]
+                                                                <()>_R)
+            :: (forall i e.
+                Ix i =>
+                IOArray i e -> i -> e -> GHC.ST.ST RealWorld () :: *)
+               ~R# (forall i e. Ix i => IOArray i e -> i -> e -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 1, coercions: 14, joins: 0/0}
+boundsIOArray [InlPrag=INLINE (sat-args=1)]
+  :: forall i e. IOArray i e -> (i, i)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SSLL),1*U(U,U,A,A)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=True)
+         Tmpl= (boundsSTArray @ RealWorld)
+               `cast` (forall (i :: <*>_N) (e :: <*>_N).
+                       Sym (GHC.IOArray.N:IOArray[0]) <i>_N <e>_N ->_R <(i, i)>_R
+                       :: (forall i e. STArray RealWorld i e -> (i, i) :: *)
+                          ~R# (forall i e. IOArray i e -> (i, i) :: *))}]
+boundsIOArray
+  = (boundsSTArray @ RealWorld)
+    `cast` (forall (i :: <*>_N) (e :: <*>_N).
+            Sym (GHC.IOArray.N:IOArray[0]) <i>_N <e>_N ->_R <(i, i)>_R
+            :: (forall i e. STArray RealWorld i e -> (i, i) :: *)
+               ~R# (forall i e. IOArray i e -> (i, i) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.IOArray.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IOArray.$trModule3 = GHC.Types.TrNameS GHC.IOArray.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.IOArray.$trModule2 = "GHC.IOArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IOArray.$trModule1 = GHC.Types.TrNameS GHC.IOArray.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.IOArray.$trModule
+  = GHC.Types.Module GHC.IOArray.$trModule3 GHC.IOArray.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r80wV :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r80wV
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcRealWorld (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r80wW :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r80wW = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep2_r80wX :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r80wX = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep3_r80wY :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r80wY
+  = GHC.Types.: @ KindRep $krep1_r80wW (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep4_r80wZ :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep4_r80wZ = GHC.Types.: @ KindRep $krep2_r80wX $krep3_r80wY
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep5_r80x0 :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep5_r80x0 = GHC.Types.: @ KindRep $krep_r80wV $krep4_r80wZ
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep6_r80x1 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep6_r80x1
+  = GHC.Types.KindRepTyConApp GHC.Arr.$tcSTArray $krep5_r80x0
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tcIOArray2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.IOArray.$tcIOArray2 = "IOArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tcIOArray1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IOArray.$tcIOArray1 = GHC.Types.TrNameS GHC.IOArray.$tcIOArray2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tcIOArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.IOArray.$tcIOArray
+  = GHC.Types.TyCon
+      5233307069339228571##
+      18318902734717728881##
+      GHC.IOArray.$trModule
+      GHC.IOArray.$tcIOArray1
+      0#
+      GHC.Types.krep$*->*->*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep7_r80x2 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep7_r80x2
+  = GHC.Types.KindRepTyConApp GHC.IOArray.$tcIOArray $krep4_r80wZ
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tc'IOArray1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.IOArray.$tc'IOArray1
+  = GHC.Types.KindRepFun $krep6_r80x1 $krep7_r80x2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tc'IOArray3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.IOArray.$tc'IOArray3 = "'IOArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tc'IOArray2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IOArray.$tc'IOArray2
+  = GHC.Types.TrNameS GHC.IOArray.$tc'IOArray3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.IOArray.$tc'IOArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.IOArray.$tc'IOArray
+  = GHC.Types.TyCon
+      3384482173433764395##
+      11270226801258228404##
+      GHC.IOArray.$trModule
+      GHC.IOArray.$tc'IOArray2
+      2#
+      GHC.IOArray.$tc'IOArray1
+
+

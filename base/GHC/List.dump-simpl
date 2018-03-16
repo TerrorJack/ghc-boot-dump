@@ -1,0 +1,3708 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:06.080368562 UTC
+
+Result size of Tidy Core
+  = {terms: 1,986, types: 3,264, coercions: 0, joins: 4/24}
+
+Rec {
+-- RHS size: {terms: 18, types: 13, coercions: 0, joins: 0/0}
+$wunsafeDrop_ru8P :: forall a. Int# -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=OtherCon []]
+$wunsafeDrop_ru8P
+  = \ (@ a_stMV) (ww_stN0 :: Int#) (w_stMX :: [a_stMV]) ->
+      case w_stMX of {
+        [] -> GHC.Types.[] @ a_stMV;
+        : ipv_st11 ipv1_st12 ->
+          case ww_stN0 of ds_XsVo {
+            __DEFAULT -> $wunsafeDrop_ru8P @ a_stMV (-# ds_XsVo 1#) ipv1_st12;
+            1# -> ipv1_st12
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 16, types: 9, coercions: 0, joins: 0/0}
+drop [InlPrag=INLINE (sat-args=2)] :: forall a. Int -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asqQ)
+                 (n_arUD :: Int)
+                 (ls_arUE [Occ=Once*] :: [a_asqQ]) ->
+                 letrec {
+                   unsafeDrop_arUF [Occ=LoopBreaker] :: forall a1. Int -> [a1] -> [a1]
+                   [LclId, Arity=2, Unf=OtherCon []]
+                   unsafeDrop_arUF
+                     = \ (@ a1_asr5)
+                         (ds_dsUV [Occ=Once!] :: Int)
+                         (ds1_dsUW [Occ=Once!] :: [a1_asr5]) ->
+                         case ds_dsUV of { I# ipv_st1m [Occ=Once!] ->
+                         case ds1_dsUW of {
+                           [] -> GHC.Types.[] @ a1_asr5;
+                           : _ [Occ=Dead] ipv2_st1q [Occ=Once*] ->
+                             case ipv_st1m of ds3_XsVi {
+                               __DEFAULT ->
+                                 unsafeDrop_arUF
+                                   @ a1_asr5 (GHC.Types.I# (-# ds3_XsVi 1#)) ipv2_st1q;
+                               1# -> ipv2_st1q
+                             }
+                         }
+                         }; } in
+                 case leInt n_arUD (GHC.Types.I# 0#) of {
+                   False -> unsafeDrop_arUF @ a_asqQ n_arUD ls_arUE;
+                   True -> ls_arUE
+                 }}]
+drop
+  = \ (@ a_asqQ) (eta_B2 :: Int) (eta1_B1 :: [a_asqQ]) ->
+      case eta_B2 of { I# x_at1e ->
+      case <=# x_at1e 0# of {
+        __DEFAULT -> $wunsafeDrop_ru8P @ a_asqQ x_at1e eta1_B1;
+        1# -> eta1_B1
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 45, types: 75, coercions: 0, joins: 0/1}
+GHC.List.$wsplitAt' [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a. Int -> [a] -> (# [a], [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U)><S,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wsplitAt'
+  = \ (@ a_stMO) (w_stMP :: Int) (w1_stMQ :: [a_stMO]) ->
+      case w1_stMQ of {
+        [] -> (# GHC.Types.[] @ a_stMO, GHC.Types.[] @ a_stMO #);
+        : ipv_st1v ipv1_st1w ->
+          case w_stMP of { I# ds_dsUB ->
+          case ds_dsUB of ds1_XsXI {
+            __DEFAULT ->
+              let {
+                ds2_stcO [Dmd=<L,U(1*U,1*U)>] :: ([a_stMO], [a_stMO])
+                [LclId]
+                ds2_stcO
+                  = case GHC.List.$wsplitAt'
+                           @ a_stMO (GHC.Types.I# (-# ds1_XsXI 1#)) ipv1_st1w
+                    of
+                    { (# ww1_stNv, ww2_stNw #) ->
+                    (ww1_stNv, ww2_stNw)
+                    } } in
+              (# GHC.Types.:
+                   @ a_stMO
+                   ipv_st1v
+                   (case ds2_stcO of { (xs'_asqv, xs''_asqx) -> xs'_asqv }),
+                 case ds2_stcO of { (xs'_asqv, xs''_asqx) -> xs''_asqx } #);
+            1# ->
+              (# GHC.Types.: @ a_stMO ipv_st1v (GHC.Types.[] @ a_stMO),
+                 ipv1_st1w #)
+          }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 11, types: 21, coercions: 0, joins: 0/0}
+GHC.List.splitAt_splitAt' [InlPrag=NOUSERINLINE[0]]
+  :: forall a. Int -> [a] -> ([a], [a])
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U)><S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stMO)
+                 (w_stMP [Occ=Once] :: Int)
+                 (w1_stMQ [Occ=Once] :: [a_stMO]) ->
+                 case GHC.List.$wsplitAt' @ a_stMO w_stMP w1_stMQ of
+                 { (# ww1_stNv [Occ=Once], ww2_stNw [Occ=Once] #) ->
+                 (ww1_stNv, ww2_stNw)
+                 }}]
+GHC.List.splitAt_splitAt'
+  = \ (@ a_stMO) (w_stMP :: Int) (w1_stMQ :: [a_stMO]) ->
+      case GHC.List.$wsplitAt' @ a_stMO w_stMP w1_stMQ of
+      { (# ww1_stNv, ww2_stNw #) ->
+      (ww1_stNv, ww2_stNw)
+      }
+
+-- RHS size: {terms: 23, types: 29, coercions: 0, joins: 0/0}
+splitAt :: forall a. Int -> [a] -> ([a], [a])
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_asq2)
+                 (n_arUK [Occ=Once!] :: Int)
+                 (ls_arUL [Occ=Once*] :: [a_asq2]) ->
+                 case n_arUK of wild_at1c { I# x_at1e [Occ=Once] ->
+                 case <=# x_at1e 0# of {
+                   __DEFAULT -> GHC.List.splitAt_splitAt' @ a_asq2 wild_at1c ls_arUL;
+                   1# -> (GHC.Types.[] @ a_asq2, ls_arUL)
+                 }
+                 }}]
+splitAt
+  = \ (@ a_asq2) (n_arUK :: Int) (ls_arUL :: [a_asq2]) ->
+      case n_arUK of wild_at1c { I# x_at1e ->
+      case <=# x_at1e 0# of {
+        __DEFAULT ->
+          case GHC.List.$wsplitAt' @ a_asq2 wild_at1c ls_arUL of
+          { (# ww1_stNv, ww2_stNw #) ->
+          (ww1_stNv, ww2_stNw)
+          };
+        1# -> (GHC.Types.[] @ a_asq2, ls_arUL)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.List.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.List.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.List.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.List.$trModule3 = GHC.Types.TrNameS GHC.List.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.List.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.List.$trModule2 = "GHC.List"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.List.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.List.$trModule1 = GHC.Types.TrNameS GHC.List.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.List.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.List.$trModule
+  = GHC.Types.Module GHC.List.$trModule3 GHC.List.$trModule1
+
+Rec {
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.List.init1 [Occ=LoopBreaker] :: forall a. a -> [a] -> [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,1*U>, Unf=OtherCon []]
+GHC.List.init1
+  = \ (@ a_aszc) (ds_dsZP :: a_aszc) (ds1_dsZQ :: [a_aszc]) ->
+      case ds1_dsZQ of {
+        [] -> GHC.Types.[] @ a_aszc;
+        : z_arSh zs_arSi ->
+          GHC.Types.:
+            @ a_aszc ds_dsZP (GHC.List.init1 @ a_aszc z_arSh zs_arSi)
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_ru8Q :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_ru8Q = ": empty list"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl1_ru8R :: [Char]
+[GblId]
+lvl1_ru8R = unpackCString# lvl_ru8Q
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.List.!!4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.List.!!4 = "Prelude."#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+prel_list_str :: String
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+prel_list_str = unpackCString# GHC.List.!!4
+
+-- RHS size: {terms: 8, types: 7, coercions: 0, joins: 0/0}
+errorEmptyList :: forall a. String -> a
+[GblId, Arity=1, Str=<B,1*U>x, Unf=OtherCon []]
+errorEmptyList
+  = \ (@ a_askR) (fun_arWI :: String) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ a_askR
+        (++ @ Char prel_list_str (++ @ Char fun_arWI lvl1_ru8R))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_ru8S :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_ru8S = "!!: negative index"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl3_ru8T :: [Char]
+[GblId]
+lvl3_ru8T = unpackCString# lvl2_ru8S
+
+-- RHS size: {terms: 5, types: 5, coercions: 0, joins: 0/0}
+negIndex :: forall a. a
+[GblId, Str=x]
+negIndex
+  = \ (@ a_asnu) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_asnu (++ @ Char prel_list_str lvl3_ru8T)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.List.!!3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+GHC.List.!!3 = "!!: index too large"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.List.!!2 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.List.!!2 = unpackCString# GHC.List.!!3
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.List.!!1 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 30 0}]
+GHC.List.!!1 = ++ @ Char prel_list_str GHC.List.!!2
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+tooLarge :: forall a. Int -> a
+[GblId,
+ Arity=1,
+ Str=<B,A>x,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_asnB) _ [Occ=Dead] ->
+                 errorWithoutStackTrace @ 'LiftedRep @ a_asnB GHC.List.!!1}]
+tooLarge
+  = \ (@ a_asnB) _ [Occ=Dead] ->
+      errorWithoutStackTrace @ 'LiftedRep @ a_asnB GHC.List.!!1
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+poly_exit_ru8U :: forall a. a
+[GblId, Str=x]
+poly_exit_ru8U
+  = \ (@ a_stLU) ->
+      errorWithoutStackTrace @ 'LiftedRep @ a_stLU GHC.List.!!1
+
+Rec {
+-- RHS size: {terms: 18, types: 13, coercions: 0, joins: 0/0}
+poly_$wgo_ru8V :: forall a. [a] -> Int# -> a
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+poly_$wgo_ru8V
+  = \ (@ a_stLU) (w_stLN :: [a_stLU]) (ww_stLR :: Int#) ->
+      case w_stLN of {
+        [] -> poly_exit_ru8U @ a_stLU;
+        : y_irio ys_irip ->
+          case ww_stLR of ds_XsTM {
+            __DEFAULT -> poly_$wgo_ru8V @ a_stLU ys_irip (-# ds_XsTM 1#);
+            0# -> y_irio
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 13, types: 8, coercions: 0, joins: 0/0}
+GHC.List.$w!! [InlPrag=INLINABLE[0]] :: forall a. [a] -> Int# -> a
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 202 0
+         Tmpl= \ (@ a_stLU)
+                 (w_stLV [Occ=Once] :: [a_stLU])
+                 (ww_stLZ :: Int#) ->
+                 case <# ww_stLZ 0# of {
+                   __DEFAULT ->
+                     letrec {
+                       go2_irii [Occ=LoopBreaker] :: [a_stLU] -> Int -> a_stLU
+                       [LclId, Arity=1, Unf=OtherCon []]
+                       go2_irii
+                         = \ (ds_irij [Occ=Once!] :: [a_stLU]) ->
+                             case ds_irij of {
+                               [] -> tooLarge @ a_stLU;
+                               : y_irio [Occ=OnceL] ys_irip [Occ=Once] ->
+                                 let {
+                                   r_arVE [Occ=OnceL!] :: Int -> a_stLU
+                                   [LclId]
+                                   r_arVE = go2_irii ys_irip } in
+                                 \ (k_arVF [Occ=Once!] :: Int) ->
+                                   case k_arVF of { I# ds1_dsSq [Occ=Once!] ->
+                                   case ds1_dsSq of ds2_XsSA {
+                                     __DEFAULT -> r_arVE (GHC.Types.I# (-# ds2_XsSA 1#));
+                                     0# -> y_irio
+                                   }
+                                   }
+                             }; } in
+                     go2_irii w_stLV (GHC.Types.I# ww_stLZ);
+                   1# -> negIndex @ a_stLU
+                 }}]
+GHC.List.$w!!
+  = \ (@ a_stLU) (w_stLV :: [a_stLU]) (ww_stLZ :: Int#) ->
+      case <# ww_stLZ 0# of {
+        __DEFAULT -> poly_$wgo_ru8V @ a_stLU w_stLV ww_stLZ;
+        1# -> negIndex @ a_stLU
+      }
+
+-- RHS size: {terms: 9, types: 8, coercions: 0, joins: 0/0}
+!! [InlPrag=NOUSERINLINE[0]] :: forall a. [a] -> Int -> a
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stLU)
+                 (w_stLV [Occ=Once] :: [a_stLU])
+                 (w1_stLW [Occ=Once!] :: Int) ->
+                 case w1_stLW of { I# ww1_stLZ [Occ=Once] ->
+                 GHC.List.$w!! @ a_stLU w_stLV ww1_stLZ
+                 }}]
+!!
+  = \ (@ a_stLU) (w_stLV :: [a_stLU]) (w1_stLW :: Int) ->
+      case w1_stLW of { I# ww1_stLZ ->
+      GHC.List.$w!! @ a_stLU w_stLV ww1_stLZ
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl4_ru8W :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl4_ru8W = "cycle"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl5_ru8X :: [Char]
+[GblId]
+lvl5_ru8X = unpackCString# lvl4_ru8W
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+GHC.List.cycle1 :: forall a. [a]
+[GblId, Str=x]
+GHC.List.cycle1
+  = \ (@ a_ass8) -> errorEmptyList @ [a_ass8] lvl5_ru8X
+
+-- RHS size: {terms: 12, types: 13, coercions: 0, joins: 0/1}
+cycle :: forall a. [a] -> [a]
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ass8) (ds_dsW9 [Occ=Once!] :: [a_ass8]) ->
+                 case ds_dsW9 of wild_X1x {
+                   [] -> GHC.List.cycle1 @ a_ass8;
+                   : _ [Occ=Dead] _ [Occ=Dead] ->
+                     letrec {
+                       xs'_stcY [Occ=LoopBreaker] :: [a_ass8]
+                       [LclId]
+                       xs'_stcY
+                         = augment
+                             @ a_ass8
+                             (\ (@ b_it1L)
+                                (c_it1M [Occ=Once, OS=OneShot] :: a_ass8 -> b_it1L -> b_it1L)
+                                (n_it1N [Occ=Once, OS=OneShot] :: b_it1L) ->
+                                foldr @ a_ass8 @ b_it1L c_it1M n_it1N wild_X1x)
+                             xs'_stcY; } in
+                     xs'_stcY
+                 }}]
+cycle
+  = \ (@ a_ass8) (ds_dsW9 :: [a_ass8]) ->
+      case ds_dsW9 of wild_X1x {
+        [] -> GHC.List.cycle1 @ a_ass8;
+        : ipv_st20 ipv1_st21 ->
+          letrec {
+            xs'_stcY [Occ=LoopBreaker] :: [a_ass8]
+            [LclId]
+            xs'_stcY = ++ @ a_ass8 wild_X1x xs'_stcY; } in
+          xs'_stcY
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl6_ru8Y :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl6_ru8Y = "foldr1"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_ru8Z :: [Char]
+[GblId]
+lvl7_ru8Z = unpackCString# lvl6_ru8Y
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+lvl8_ru90 :: forall a. a
+[GblId, Str=x]
+lvl8_ru90 = \ (@ a_asug) -> errorEmptyList @ a_asug lvl7_ru8Z
+
+-- RHS size: {terms: 21, types: 23, coercions: 0, joins: 0/1}
+foldr1 [InlPrag=INLINE[0] (sat-args=1)]
+  :: forall a. (a -> a -> a) -> [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asug)
+                 (f_arTm [Occ=OnceL!] :: a_asug -> a_asug -> a_asug) ->
+                 letrec {
+                   go2_asuk [Occ=LoopBreaker] :: [a_asug] -> a_asug
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   go2_asuk
+                     = \ (ds_dsXC [Occ=Once!] :: [a_asug]) ->
+                         case ds_dsXC of {
+                           [] -> errorEmptyList @ a_asug (unpackCString# "foldr1"#);
+                           : x_arTo [Occ=Once*] ds1_dsXM [Occ=Once!] ->
+                             case ds1_dsXM of wild1_X8 {
+                               [] -> x_arTo;
+                               : _ [Occ=Dead] _ [Occ=Dead] -> f_arTm x_arTo (go2_asuk wild1_X8)
+                             }
+                         }; } in
+                 go2_asuk}]
+foldr1
+  = \ (@ a_asug)
+      (f_arTm :: a_asug -> a_asug -> a_asug)
+      (eta_B1 :: [a_asug]) ->
+      letrec {
+        go2_stcW [Occ=LoopBreaker] :: [a_asug] -> a_asug
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go2_stcW
+          = \ (ds_dsXC :: [a_asug]) ->
+              case ds_dsXC of {
+                [] -> lvl8_ru90 @ a_asug;
+                : x_arTo ds1_dsXM ->
+                  case ds1_dsXM of wild1_X16 {
+                    [] -> x_arTo;
+                    : ipv_st25 ipv1_st26 -> f_arTm x_arTo (go2_stcW wild1_X16)
+                  }
+              }; } in
+      go2_stcW eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl9_ru91 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl9_ru91 = "init"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl10_ru92 :: [Char]
+[GblId]
+lvl10_ru92 = unpackCString# lvl9_ru91
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+GHC.List.init2 :: forall a. [a]
+[GblId, Str=x]
+GHC.List.init2
+  = \ (@ a_aszc) -> errorEmptyList @ [a_aszc] lvl10_ru92
+
+-- RHS size: {terms: 10, types: 11, coercions: 0, joins: 0/0}
+init :: forall a. [a] -> [a]
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aszc) (ds_dsZJ [Occ=Once!] :: [a_aszc]) ->
+                 case ds_dsZJ of {
+                   [] -> GHC.List.init2 @ a_aszc;
+                   : x_arSd [Occ=Once] xs_arSe [Occ=Once] ->
+                     GHC.List.init1 @ a_aszc x_arSd xs_arSe
+                 }}]
+init
+  = \ (@ a_aszc) (ds_dsZJ :: [a_aszc]) ->
+      case ds_dsZJ of {
+        [] -> GHC.List.init2 @ a_aszc;
+        : x_arSd xs_arSe -> GHC.List.init1 @ a_aszc x_arSd xs_arSe
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl11_ru93 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl11_ru93 = "last"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl12_ru94 :: [Char]
+[GblId]
+lvl12_ru94 = unpackCString# lvl11_ru93
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+lastError :: forall a. a
+[GblId, Str=x]
+lastError = \ (@ a_aszI) -> errorEmptyList @ a_aszI lvl12_ru94
+
+Rec {
+-- RHS size: {terms: 11, types: 11, coercions: 0, joins: 0/0}
+poly_go_ru95 :: forall a. [a] -> a -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=OtherCon []]
+poly_go_ru95
+  = \ (@ a_aszL) (ds_irij :: [a_aszL]) (eta_B1 :: a_aszL) ->
+      case ds_irij of {
+        [] -> eta_B1;
+        : y_irio ys_irip -> poly_go_ru95 @ a_aszL ys_irip y_irio
+      }
+end Rec }
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+last [InlPrag=INLINE (sat-args=1)] :: forall a. [a] -> a
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_aszL) (xs_arSb [Occ=Once] :: [a_aszL]) ->
+                 foldr
+                   @ a_aszL
+                   @ (a_aszL -> a_aszL)
+                   (\ (ds_dsYz [Occ=Once] :: a_aszL)
+                      (ds1_dsYA [Occ=Once!, OS=OneShot] :: a_aszL -> a_aszL)
+                      _ [Occ=Dead, OS=OneShot] ->
+                      ds1_dsYA ds_dsYz)
+                   (id @ a_aszL)
+                   xs_arSb
+                   (lastError @ a_aszL)}]
+last
+  = \ (@ a_aszL) (xs_arSb :: [a_aszL]) ->
+      poly_go_ru95 @ a_aszL xs_arSb (lastError @ a_aszL)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl13_ru96 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl13_ru96 = "tail"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl14_ru97 :: [Char]
+[GblId]
+lvl14_ru97 = unpackCString# lvl13_ru96
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+GHC.List.scanl2 :: forall a. [a]
+[GblId, Str=x]
+GHC.List.scanl2
+  = \ (@ a_aszQ) -> errorEmptyList @ [a_aszQ] lvl14_ru97
+
+-- RHS size: {terms: 8, types: 10, coercions: 0, joins: 0/0}
+tail :: forall a. [a] -> [a]
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aszQ) (ds_dt02 [Occ=Once!] :: [a_aszQ]) ->
+                 case ds_dt02 of {
+                   [] -> GHC.List.scanl2 @ a_aszQ;
+                   : _ [Occ=Dead] xs_arSa [Occ=Once] -> xs_arSa
+                 }}]
+tail
+  = \ (@ a_aszQ) (ds_dt02 :: [a_aszQ]) ->
+      case ds_dt02 of {
+        [] -> GHC.List.scanl2 @ a_aszQ;
+        : ds1_dt09 xs_arSa -> xs_arSa
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl15_ru98 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl15_ru98 = "head"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl16_ru99 :: [Char]
+[GblId]
+lvl16_ru99 = unpackCString# lvl15_ru98
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+badHead :: forall a. a
+[GblId, Str=x]
+badHead = \ (@ a_aszZ) -> errorEmptyList @ a_aszZ lvl16_ru99
+
+Rec {
+-- RHS size: {terms: 8, types: 10, coercions: 0, joins: 0/0}
+head [InlPrag=NOINLINE[1], Occ=LoopBreaker!] :: forall a. [a] -> a
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_asA2) (ds_dt0h [Occ=Once!] :: [a_asA2]) ->
+                 case ds_dt0h of {
+                   [] -> badHead @ a_asA2;
+                   : x_arS7 [Occ=Once] _ [Occ=Dead] -> x_arS7
+                 }}]
+head
+  = \ (@ a_asA2) (ds_dt0h :: [a_asA2]) ->
+      case ds_dt0h of {
+        [] -> badHead @ a_asA2;
+        : x_arS7 ds1_dt0o -> x_arS7
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl17_ru9a :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl17_ru9a = "maximum"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl18_ru9b :: [Char]
+[GblId]
+lvl18_ru9b = unpackCString# lvl17_ru9a
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.List.maximum1 :: Integer
+[GblId, Str=x]
+GHC.List.maximum1 = errorEmptyList @ Integer lvl18_ru9b
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.List.maximum2 :: Int
+[GblId, Str=x]
+GHC.List.maximum2 = errorEmptyList @ Int lvl18_ru9b
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+lvl19_ru9c :: forall a. a
+[GblId, Str=x]
+lvl19_ru9c = \ (@ a_asxy) -> errorEmptyList @ a_asxy lvl18_ru9b
+
+Rec {
+-- RHS size: {terms: 19, types: 9, coercions: 0, joins: 0/0}
+GHC.List.maximum_go [Occ=LoopBreaker]
+  :: [Integer] -> Integer -> Integer
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><S,U>, Unf=OtherCon []]
+GHC.List.maximum_go
+  = \ (ds_irij :: [Integer]) (eta_B1 :: Integer) ->
+      case ds_irij of {
+        [] -> eta_B1;
+        : y_irio ys_irip ->
+          case integer-simple-0.1.1.1:GHC.Integer.Type.leInteger#
+                 eta_B1 y_irio
+          of {
+            __DEFAULT -> GHC.List.maximum_go ys_irip eta_B1;
+            1# -> GHC.List.maximum_go ys_irip y_irio
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 7, coercions: 0, joins: 0/0}
+GHC.List.maximum_$smaximum [InlPrag=INLINABLE]
+  :: [Integer] -> Integer
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30] 50 0}]
+GHC.List.maximum_$smaximum
+  = \ (ds_dsYM :: [Integer]) ->
+      case ds_dsYM of {
+        [] -> GHC.List.maximum1;
+        : ipv_st4L ipv1_st4M -> GHC.List.maximum_go ipv1_st4M ipv_st4L
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl20_ru9d :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl20_ru9d = "minimum"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl21_ru9e :: [Char]
+[GblId]
+lvl21_ru9e = unpackCString# lvl20_ru9d
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.List.minimum1 :: Integer
+[GblId, Str=x]
+GHC.List.minimum1 = errorEmptyList @ Integer lvl21_ru9e
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+GHC.List.minimum2 :: Int
+[GblId, Str=x]
+GHC.List.minimum2 = errorEmptyList @ Int lvl21_ru9e
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+lvl22_ru9f :: forall a. a
+[GblId, Str=x]
+lvl22_ru9f = \ (@ a_asxY) -> errorEmptyList @ a_asxY lvl21_ru9e
+
+Rec {
+-- RHS size: {terms: 19, types: 9, coercions: 0, joins: 0/0}
+GHC.List.minimum_go [Occ=LoopBreaker]
+  :: [Integer] -> Integer -> Integer
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><S,U>, Unf=OtherCon []]
+GHC.List.minimum_go
+  = \ (ds_irij :: [Integer]) (eta_B1 :: Integer) ->
+      case ds_irij of {
+        [] -> eta_B1;
+        : y_irio ys_irip ->
+          case integer-simple-0.1.1.1:GHC.Integer.Type.leInteger#
+                 eta_B1 y_irio
+          of {
+            __DEFAULT -> GHC.List.minimum_go ys_irip y_irio;
+            1# -> GHC.List.minimum_go ys_irip eta_B1
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 7, coercions: 0, joins: 0/0}
+GHC.List.minimum_$sminimum [InlPrag=INLINABLE]
+  :: [Integer] -> Integer
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30] 50 0}]
+GHC.List.minimum_$sminimum
+  = \ (ds_dsYX :: [Integer]) ->
+      case ds_dsYX of {
+        [] -> GHC.List.minimum1;
+        : ipv_st4S ipv1_st4T -> GHC.List.minimum_go ipv1_st4T ipv_st4S
+      }
+
+Rec {
+-- RHS size: {terms: 22, types: 11, coercions: 0, joins: 0/0}
+GHC.List.$wgo [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: [Int] -> Int# -> Int#
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><S,U>, Unf=OtherCon []]
+GHC.List.$wgo
+  = \ (w_stMd :: [Int]) (ww_stMh :: Int#) ->
+      case w_stMd of {
+        [] -> ww_stMh;
+        : y_irio ys_irip ->
+          case y_irio of { I# y1_at5a ->
+          case <=# ww_stMh y1_at5a of {
+            __DEFAULT -> GHC.List.$wgo ys_irip ww_stMh;
+            1# -> GHC.List.$wgo ys_irip y1_at5a
+          }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 16, types: 10, coercions: 0, joins: 0/0}
+GHC.List.maximum_$smaximum1 [InlPrag=NOUSERINLINE[0]]
+  :: [Int] -> Int
+[GblId,
+ Arity=1,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_stMk [Occ=Once!] :: [Int]) ->
+                 case w_stMk of {
+                   [] -> GHC.List.maximum2;
+                   : ipv_st4Z [Occ=Once!] ipv1_st50 [Occ=Once] ->
+                     case ipv_st4Z of { I# ww1_stMh [Occ=Once] ->
+                     case GHC.List.$wgo ipv1_st50 ww1_stMh of ww2_stMn { __DEFAULT ->
+                     GHC.Types.I# ww2_stMn
+                     }
+                     }
+                 }}]
+GHC.List.maximum_$smaximum1
+  = \ (w_stMk :: [Int]) ->
+      case w_stMk of {
+        [] -> GHC.List.maximum2;
+        : ipv_st4Z ipv1_st50 ->
+          case ipv_st4Z of { I# ww1_stMh ->
+          case GHC.List.$wgo ipv1_st50 ww1_stMh of ww2_stMn { __DEFAULT ->
+          GHC.Types.I# ww2_stMn
+          }
+          }
+      }
+
+-- RHS size: {terms: 25, types: 25, coercions: 0, joins: 1/1}
+maximum [InlPrag=INLINABLE] :: forall a. Ord a => [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,A,A,A,A,C(C1(U)),A)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 100] 250 0
+         Tmpl= \ (@ a_asxy)
+                 ($dOrd_asxA [Occ=OnceL] :: Ord a_asxy)
+                 (ds_dsYM [Occ=Once!] :: [a_asxy]) ->
+                 case ds_dsYM of {
+                   [] ->
+                     errorEmptyList
+                       @ a_asxy
+                       (build
+                          @ Char (\ (@ b_irkh) -> unpackFoldrCString# @ b_irkh "maximum"#));
+                   : ipv_st5i [Occ=Once] ipv1_st5j [Occ=Once] ->
+                     let {
+                       k_arSx [Occ=OnceL!] :: a_asxy -> a_asxy -> a_asxy
+                       [LclId]
+                       k_arSx = max @ a_asxy $dOrd_asxA } in
+                     foldr
+                       @ a_asxy
+                       @ (a_asxy -> a_asxy)
+                       (\ (ds1_dsYz [Occ=Once] :: a_asxy)
+                          (ds2_dsYA [Occ=Once!, OS=OneShot] :: a_asxy -> a_asxy)
+                          (v_B2 [Occ=Once, OS=OneShot] :: a_asxy) ->
+                          ds2_dsYA (k_arSx v_B2 ds1_dsYz))
+                       (id @ a_asxy)
+                       ipv1_st5j
+                       ipv_st5i
+                 }}]
+maximum
+  = \ (@ a_asxy) ($dOrd_asxA :: Ord a_asxy) (ds_dsYM :: [a_asxy]) ->
+      case ds_dsYM of {
+        [] -> lvl19_ru9c @ a_asxy;
+        : ipv_st5e ipv1_st5f ->
+          joinrec {
+            go2_irii [Occ=LoopBreaker] :: [a_asxy] -> a_asxy -> a_asxy
+            [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+            go2_irii (ds1_irij :: [a_asxy]) (eta_B1 :: a_asxy)
+              = case ds1_irij of {
+                  [] -> eta_B1;
+                  : y_irio ys_irip ->
+                    jump go2_irii ys_irip (max @ a_asxy $dOrd_asxA eta_B1 y_irio)
+                }; } in
+          jump go2_irii ipv1_st5f ipv_st5e
+      }
+
+Rec {
+-- RHS size: {terms: 22, types: 11, coercions: 0, joins: 0/0}
+GHC.List.$wgo1 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: [Int] -> Int# -> Int#
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><S,U>, Unf=OtherCon []]
+GHC.List.$wgo1
+  = \ (w_stMp :: [Int]) (ww_stMt :: Int#) ->
+      case w_stMp of {
+        [] -> ww_stMt;
+        : y_irio ys_irip ->
+          case y_irio of { I# y1_at5x ->
+          case <=# ww_stMt y1_at5x of {
+            __DEFAULT -> GHC.List.$wgo1 ys_irip y1_at5x;
+            1# -> GHC.List.$wgo1 ys_irip ww_stMt
+          }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 16, types: 10, coercions: 0, joins: 0/0}
+GHC.List.minimum_$sminimum1 [InlPrag=NOUSERINLINE[0]]
+  :: [Int] -> Int
+[GblId,
+ Arity=1,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_stMw [Occ=Once!] :: [Int]) ->
+                 case w_stMw of {
+                   [] -> GHC.List.minimum2;
+                   : ipv_st5m [Occ=Once!] ipv1_st5n [Occ=Once] ->
+                     case ipv_st5m of { I# ww1_stMt [Occ=Once] ->
+                     case GHC.List.$wgo1 ipv1_st5n ww1_stMt of ww2_stMz { __DEFAULT ->
+                     GHC.Types.I# ww2_stMz
+                     }
+                     }
+                 }}]
+GHC.List.minimum_$sminimum1
+  = \ (w_stMw :: [Int]) ->
+      case w_stMw of {
+        [] -> GHC.List.minimum2;
+        : ipv_st5m ipv1_st5n ->
+          case ipv_st5m of { I# ww1_stMt ->
+          case GHC.List.$wgo1 ipv1_st5n ww1_stMt of ww2_stMz { __DEFAULT ->
+          GHC.Types.I# ww2_stMz
+          }
+          }
+      }
+
+-- RHS size: {terms: 25, types: 25, coercions: 0, joins: 1/1}
+minimum [InlPrag=INLINABLE] :: forall a. Ord a => [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,A,A,A,A,A,C(C1(U)))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 100] 250 0
+         Tmpl= \ (@ a_asxY)
+                 ($dOrd_asy0 [Occ=OnceL] :: Ord a_asxY)
+                 (ds_dsYX [Occ=Once!] :: [a_asxY]) ->
+                 case ds_dsYX of {
+                   [] ->
+                     errorEmptyList
+                       @ a_asxY
+                       (build
+                          @ Char (\ (@ b_irkh) -> unpackFoldrCString# @ b_irkh "minimum"#));
+                   : ipv_st5F [Occ=Once] ipv1_st5G [Occ=Once] ->
+                     let {
+                       k_arSx [Occ=OnceL!] :: a_asxY -> a_asxY -> a_asxY
+                       [LclId]
+                       k_arSx = min @ a_asxY $dOrd_asy0 } in
+                     foldr
+                       @ a_asxY
+                       @ (a_asxY -> a_asxY)
+                       (\ (ds1_dsYz [Occ=Once] :: a_asxY)
+                          (ds2_dsYA [Occ=Once!, OS=OneShot] :: a_asxY -> a_asxY)
+                          (v_B2 [Occ=Once, OS=OneShot] :: a_asxY) ->
+                          ds2_dsYA (k_arSx v_B2 ds1_dsYz))
+                       (id @ a_asxY)
+                       ipv1_st5G
+                       ipv_st5F
+                 }}]
+minimum
+  = \ (@ a_asxY) ($dOrd_asy0 :: Ord a_asxY) (ds_dsYX :: [a_asxY]) ->
+      case ds_dsYX of {
+        [] -> lvl22_ru9f @ a_asxY;
+        : ipv_st5B ipv1_st5C ->
+          joinrec {
+            go2_irii [Occ=LoopBreaker] :: [a_asxY] -> a_asxY -> a_asxY
+            [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+            go2_irii (ds1_irij :: [a_asxY]) (eta_B1 :: a_asxY)
+              = case ds1_irij of {
+                  [] -> eta_B1;
+                  : y_irio ys_irip ->
+                    jump go2_irii ys_irip (min @ a_asxY $dOrd_asy0 eta_B1 y_irio)
+                }; } in
+          jump go2_irii ipv1_st5C ipv_st5B
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl23_ru9g :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl23_ru9g = "foldl1'"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl24_ru9h :: [Char]
+[GblId]
+lvl24_ru9h = unpackCString# lvl23_ru9g
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+GHC.List.foldl1'1 :: forall a. a
+[GblId, Str=x]
+GHC.List.foldl1'1
+  = \ (@ a_aswW) -> errorEmptyList @ a_aswW lvl24_ru9h
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl25_ru9i :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl25_ru9i = "foldl1"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl26_ru9j :: [Char]
+[GblId]
+lvl26_ru9j = unpackCString# lvl25_ru9i
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+GHC.List.foldl2 :: forall a. a
+[GblId, Str=x]
+GHC.List.foldl2
+  = \ (@ a_asxt) -> errorEmptyList @ a_asxt lvl26_ru9j
+
+Rec {
+-- RHS size: {terms: 43, types: 127, coercions: 0, joins: 0/1}
+$wgo2_ru9k :: forall a b c. [(a, b, c)] -> (# [a], [b], [c] #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+$wgo2_ru9k
+  = \ (@ a_stLF)
+      (@ b_stLG)
+      (@ c_stLH)
+      (w_stLI :: [(a_stLF, b_stLG, c_stLH)]) ->
+      case w_stLI of {
+        [] ->
+          (# GHC.Types.[] @ a_stLF, GHC.Types.[] @ b_stLG,
+             GHC.Types.[] @ c_stLH #);
+        : y_irio ys_irip ->
+          case y_irio of { (a1_arWC, b1_arWD, c1_arWE) ->
+          let {
+            ds_dsPV [Dmd=<L,U(1*U,1*U,1*U)>] :: ([a_stLF], [b_stLG], [c_stLH])
+            [LclId]
+            ds_dsPV
+              = case $wgo2_ru9k @ a_stLF @ b_stLG @ c_stLH ys_irip of
+                { (# ww1_stNr, ww2_stNs, ww3_stNt #) ->
+                (ww1_stNr, ww2_stNs, ww3_stNt)
+                } } in
+          (# GHC.Types.:
+               @ a_stLF
+               a1_arWC
+               (case ds_dsPV of { (as_arWF, bs_arWG, cs_arWH) -> as_arWF }),
+             GHC.Types.:
+               @ b_stLG
+               b1_arWD
+               (case ds_dsPV of { (as_arWF, bs_arWG, cs_arWH) -> bs_arWG }),
+             GHC.Types.:
+               @ c_stLH
+               c1_arWE
+               (case ds_dsPV of { (as_arWF, bs_arWG, cs_arWH) -> cs_arWH }) #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 12, types: 36, coercions: 0, joins: 0/0}
+go_ru9l :: forall a b c. [(a, b, c)] -> ([a], [b], [c])
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>m, Unf=OtherCon []]
+go_ru9l
+  = \ (@ a_stLF)
+      (@ b_stLG)
+      (@ c_stLH)
+      (w_stLI :: [(a_stLF, b_stLG, c_stLH)]) ->
+      case $wgo2_ru9k @ a_stLF @ b_stLG @ c_stLH w_stLI of
+      { (# ww1_stNr, ww2_stNs, ww3_stNt #) ->
+      (ww1_stNr, ww2_stNs, ww3_stNt)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+unzip3 [InlPrag=INLINE (sat-args=0)]
+  :: forall a b c. [(a, b, c)] -> ([a], [b], [c])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_askX) (@ b_askY) (@ c_askZ) ->
+                 foldr
+                   @ (a_askX, b_askY, c_askZ)
+                   @ ([a_askX], [b_askY], [c_askZ])
+                   (\ (ds_dsPU [Occ=Once!] :: (a_askX, b_askY, c_askZ))
+                      (ds1_dsPV :: ([a_askX], [b_askY], [c_askZ])) ->
+                      case ds_dsPU of
+                      { (a1_arWC [Occ=Once], b1_arWD [Occ=Once], c1_arWE [Occ=Once]) ->
+                      (GHC.Types.:
+                         @ a_askX
+                         a1_arWC
+                         (case ds1_dsPV of
+                          { (as_arWF [Occ=Once], _ [Occ=Dead], _ [Occ=Dead]) ->
+                          as_arWF
+                          }),
+                       GHC.Types.:
+                         @ b_askY
+                         b1_arWD
+                         (case ds1_dsPV of
+                          { (_ [Occ=Dead], bs_arWG [Occ=Once], _ [Occ=Dead]) ->
+                          bs_arWG
+                          }),
+                       GHC.Types.:
+                         @ c_askZ
+                         c1_arWE
+                         (case ds1_dsPV of
+                          { (_ [Occ=Dead], _ [Occ=Dead], cs_arWH [Occ=Once]) ->
+                          cs_arWH
+                          }))
+                      })
+                   (GHC.Types.[] @ a_askX, GHC.Types.[] @ b_askY,
+                    GHC.Types.[] @ c_askZ)}]
+unzip3 = go_ru9l
+
+Rec {
+-- RHS size: {terms: 34, types: 80, coercions: 0, joins: 0/1}
+$wgo3_ru9m :: forall a b. [(a, b)] -> (# [a], [b] #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+$wgo3_ru9m
+  = \ (@ a_stLy) (@ b_stLz) (w_stLA :: [(a_stLy, b_stLz)]) ->
+      case w_stLA of {
+        [] -> (# GHC.Types.[] @ a_stLy, GHC.Types.[] @ b_stLz #);
+        : y_irio ys_irip ->
+          case y_irio of { (a1_arWy, b1_arWz) ->
+          let {
+            ds_dsQk [Dmd=<L,U(1*U,1*U)>] :: ([a_stLy], [b_stLz])
+            [LclId]
+            ds_dsQk
+              = case $wgo3_ru9m @ a_stLy @ b_stLz ys_irip of
+                { (# ww1_stNo, ww2_stNp #) ->
+                (ww1_stNo, ww2_stNp)
+                } } in
+          (# GHC.Types.:
+               @ a_stLy
+               a1_arWy
+               (case ds_dsQk of { (as_arWA, bs_arWB) -> as_arWA }),
+             GHC.Types.:
+               @ b_stLz
+               b1_arWz
+               (case ds_dsQk of { (as_arWA, bs_arWB) -> bs_arWB }) #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 10, types: 25, coercions: 0, joins: 0/0}
+go1_ru9n :: forall a b. [(a, b)] -> ([a], [b])
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>m, Unf=OtherCon []]
+go1_ru9n
+  = \ (@ a_stLy) (@ b_stLz) (w_stLA :: [(a_stLy, b_stLz)]) ->
+      case $wgo3_ru9m @ a_stLy @ b_stLz w_stLA of
+      { (# ww1_stNo, ww2_stNp #) ->
+      (ww1_stNo, ww2_stNp)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+unzip [InlPrag=INLINE (sat-args=0)]
+  :: forall a b. [(a, b)] -> ([a], [b])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_aslc) (@ b_asld) ->
+                 foldr
+                   @ (a_aslc, b_asld)
+                   @ ([a_aslc], [b_asld])
+                   (\ (ds_dsQj [Occ=Once!] :: (a_aslc, b_asld))
+                      (ds1_dsQk :: ([a_aslc], [b_asld])) ->
+                      case ds_dsQj of { (a1_arWy [Occ=Once], b1_arWz [Occ=Once]) ->
+                      (GHC.Types.:
+                         @ a_aslc
+                         a1_arWy
+                         (case ds1_dsQk of { (as_arWA [Occ=Once], _ [Occ=Dead]) ->
+                          as_arWA
+                          }),
+                       GHC.Types.:
+                         @ b_asld
+                         b1_arWz
+                         (case ds1_dsQk of { (_ [Occ=Dead], bs_arWB [Occ=Once]) ->
+                          bs_arWB
+                          }))
+                      })
+                   (GHC.Types.[] @ a_aslc, GHC.Types.[] @ b_asld)}]
+unzip = go1_ru9n
+
+-- RHS size: {terms: 40, types: 51, coercions: 0, joins: 0/1}
+zipWith3
+  :: forall a b c d. (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U)))><S,1*U><L,1*U><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0 0 0] 230 0}]
+zipWith3
+  = \ (@ a_asln)
+      (@ b_aslo)
+      (@ c_aslp)
+      (@ d_aslq)
+      (z_arWq :: a_asln -> b_aslo -> c_aslp -> d_aslq)
+      (eta_B3 :: [a_asln])
+      (eta1_B2 :: [b_aslo])
+      (eta2_B1 :: [c_aslp]) ->
+      letrec {
+        go2_std0 [Occ=LoopBreaker]
+          :: [a_asln] -> [b_aslo] -> [c_aslp] -> [d_aslq]
+        [LclId, Arity=3, Str=<S,1*U><L,1*U><L,1*U>, Unf=OtherCon []]
+        go2_std0
+          = \ (ds_dsQB :: [a_asln])
+              (ds1_dsQC :: [b_aslo])
+              (ds2_dsQD :: [c_aslp]) ->
+              case ds_dsQB of {
+                [] -> GHC.Types.[] @ d_aslq;
+                : a1_arWs as_arWt ->
+                  case ds1_dsQC of {
+                    [] -> GHC.Types.[] @ d_aslq;
+                    : b1_arWu bs_arWv ->
+                      case ds2_dsQD of {
+                        [] -> GHC.Types.[] @ d_aslq;
+                        : c1_arWw cs_arWx ->
+                          GHC.Types.:
+                            @ d_aslq
+                            (z_arWq a1_arWs b1_arWu c1_arWw)
+                            (go2_std0 as_arWt bs_arWv cs_arWx)
+                      }
+                  }
+              }; } in
+      go2_std0 eta_B3 eta1_B2 eta2_B1
+
+-- RHS size: {terms: 15, types: 19, coercions: 0, joins: 0/0}
+zipWithFB [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall a b c d e.
+     (a -> b -> c) -> (d -> e -> a) -> d -> e -> b -> c
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_aslZ)
+                 (@ b_asm0)
+                 (@ c_asm1)
+                 (@ d_asm2)
+                 (@ e_asm3)
+                 (c1_arWl [Occ=Once!] :: a_aslZ -> b_asm0 -> c_asm1)
+                 (f_arWm [Occ=Once!] :: d_asm2 -> e_asm3 -> a_aslZ)
+                 (x_arWn [Occ=Once] :: d_asm2)
+                 (y_arWo [Occ=Once] :: e_asm3)
+                 (r_arWp [Occ=Once] :: b_asm0) ->
+                 c1_arWl (f_arWm x_arWn y_arWo) r_arWp}]
+zipWithFB
+  = \ (@ a_aslZ)
+      (@ b_asm0)
+      (@ c_asm1)
+      (@ d_asm2)
+      (@ e_asm3)
+      (c1_arWl :: a_aslZ -> b_asm0 -> c_asm1)
+      (f_arWm :: d_asm2 -> e_asm3 -> a_aslZ)
+      (x_arWn :: d_asm2)
+      (y_arWo :: e_asm3)
+      (r_arWp :: b_asm0) ->
+      c1_arWl (f_arWm x_arWn y_arWo) r_arWp
+
+Rec {
+-- RHS size: {terms: 30, types: 49, coercions: 0, joins: 0/0}
+zip3 [Occ=LoopBreaker]
+  :: forall a b c. [a] -> [b] -> [c] -> [(a, b, c)]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U><L,1*U>,
+ Unf=OtherCon []]
+zip3
+  = \ (@ a_asmz)
+      (@ b_asmA)
+      (@ c_asmB)
+      (ds_dsRi :: [a_asmz])
+      (ds1_dsRj :: [b_asmA])
+      (ds2_dsRk :: [c_asmB]) ->
+      case ds_dsRi of {
+        [] -> GHC.Types.[] @ (a_asmz, b_asmA, c_asmB);
+        : a1_arW9 as_arWa ->
+          case ds1_dsRj of {
+            [] -> GHC.Types.[] @ (a_asmz, b_asmA, c_asmB);
+            : b1_arWb bs_arWc ->
+              case ds2_dsRk of {
+                [] -> GHC.Types.[] @ (a_asmz, b_asmA, c_asmB);
+                : c1_arWd cs_arWe ->
+                  GHC.Types.:
+                    @ (a_asmz, b_asmA, c_asmB)
+                    (a1_arW9, b1_arWb, c1_arWd)
+                    (zip3 @ a_asmz @ b_asmA @ c_asmB as_arWa bs_arWc cs_arWe)
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 13, types: 18, coercions: 0, joins: 0/0}
+zipFB [InlPrag=INLINE[0] (sat-args=1)]
+  :: forall a b c d. ((a, b) -> c -> d) -> a -> b -> c -> d
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asmK)
+                 (@ b_asmL)
+                 (@ c_asmM)
+                 (@ d_asmN)
+                 (c1_arW5 [Occ=Once!] :: (a_asmK, b_asmL) -> c_asmM -> d_asmN)
+                 (x_arW6 [Occ=Once] :: a_asmK)
+                 (y_arW7 [Occ=Once] :: b_asmL)
+                 (r_arW8 [Occ=Once] :: c_asmM) ->
+                 c1_arW5 (x_arW6, y_arW7) r_arW8}]
+zipFB
+  = \ (@ a_asmK)
+      (@ b_asmL)
+      (@ c_asmM)
+      (@ d_asmN)
+      (c1_arW5 :: (a_asmK, b_asmL) -> c_asmM -> d_asmN)
+      (x_arW6 :: a_asmK)
+      (y_arW7 :: b_asmL)
+      (r_arW8 :: c_asmM) ->
+      c1_arW5 (x_arW6, y_arW7) r_arW8
+
+-- RHS size: {terms: 19, types: 24, coercions: 0, joins: 0/0}
+foldr2_left
+  :: forall a b c d.
+     (a -> b -> c -> d) -> d -> a -> ([b] -> c) -> [b] -> d
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(C1(U)))><L,1*U><L,U><L,1*C1(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=5,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_asmX)
+                 (@ b_asmY)
+                 (@ c_asmZ)
+                 (@ d_asn0)
+                 (_k_arVP [Occ=Once!] :: a_asmX -> b_asmY -> c_asmZ -> d_asn0)
+                 (z_arVQ [Occ=Once] :: d_asn0)
+                 (_x_arVR [Occ=Once] :: a_asmX)
+                 (_r_arVS [Occ=Once!] :: [b_asmY] -> c_asmZ)
+                 (ds_dsRV [Occ=Once!] :: [b_asmY]) ->
+                 case ds_dsRV of {
+                   [] -> z_arVQ;
+                   : y_arVX [Occ=Once] ys_arVY [Occ=Once] ->
+                     _k_arVP _x_arVR y_arVX (_r_arVS ys_arVY)
+                 }}]
+foldr2_left
+  = \ (@ a_asmX)
+      (@ b_asmY)
+      (@ c_asmZ)
+      (@ d_asn0)
+      (_k_arVP :: a_asmX -> b_asmY -> c_asmZ -> d_asn0)
+      (z_arVQ :: d_asn0)
+      (_x_arVR :: a_asmX)
+      (_r_arVS :: [b_asmY] -> c_asmZ)
+      (ds_dsRV :: [b_asmY]) ->
+      case ds_dsRV of {
+        [] -> z_arVQ;
+        : y_arVX ys_arVY -> _k_arVP _x_arVR y_arVX (_r_arVS ys_arVY)
+      }
+
+Rec {
+-- RHS size: {terms: 21, types: 31, coercions: 0, joins: 0/0}
+zip [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. [a] -> [b] -> [(a, b)]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=OtherCon []]
+zip
+  = \ (@ a_asmP)
+      (@ b_asmQ)
+      (ds_dsRF :: [a_asmP])
+      (_bs_arVZ :: [b_asmQ]) ->
+      case ds_dsRF of {
+        [] -> GHC.Types.[] @ (a_asmP, b_asmQ);
+        : ipv_st3l ipv1_st3m ->
+          case _bs_arVZ of {
+            [] -> GHC.Types.[] @ (a_asmP, b_asmQ);
+            : ipv2_st3p ipv3_st3q ->
+              GHC.Types.:
+                @ (a_asmP, b_asmQ)
+                (ipv_st3l, ipv2_st3p)
+                (zip @ a_asmP @ b_asmQ ipv1_st3m ipv3_st3q)
+          }
+      }
+
+-- RHS size: {terms: 29, types: 36, coercions: 0, joins: 0/1}
+zipWith [InlPrag=NOINLINE[1], Occ=LoopBreaker!]
+  :: forall a b c. (a -> b -> c) -> [a] -> [b] -> [c]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0 0] 170 0}]
+zipWith
+  = \ (@ a_asm5)
+      (@ b_asm6)
+      (@ c_asm7)
+      (f_arWf :: a_asm5 -> b_asm6 -> c_asm7)
+      (eta_B2 :: [a_asm5])
+      (eta1_B1 :: [b_asm6]) ->
+      letrec {
+        go2_std4 [Occ=LoopBreaker] :: [a_asm5] -> [b_asm6] -> [c_asm7]
+        [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []]
+        go2_std4
+          = \ (ds_dsQZ :: [a_asm5]) (ds1_dsR0 :: [b_asm6]) ->
+              case ds_dsQZ of {
+                [] -> GHC.Types.[] @ c_asm7;
+                : ipv_st2X ipv1_st2Y ->
+                  case ds1_dsR0 of {
+                    [] -> GHC.Types.[] @ c_asm7;
+                    : ipv2_st31 ipv3_st32 ->
+                      GHC.Types.:
+                        @ c_asm7 (f_arWf ipv_st2X ipv2_st31) (go2_std4 ipv1_st2Y ipv3_st32)
+                  }
+              }; } in
+      go2_std4 eta_B2 eta1_B1
+
+-- RHS size: {terms: 29, types: 34, coercions: 0, joins: 0/1}
+foldr2 [InlPrag=INLINE[0] (sat-args=2), Occ=LoopBreaker!]
+  :: forall a b c. (a -> b -> c -> c) -> c -> [a] -> [b] -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U)))><L,U><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asn2)
+                 (@ b_asn3)
+                 (@ c_asn4)
+                 (k_arVG [Occ=OnceL!] :: a_asn2 -> b_asn3 -> c_asn4 -> c_asn4)
+                 (z_arVH [Occ=OnceL*] :: c_asn4) ->
+                 letrec {
+                   go2_asn8 [Occ=LoopBreaker] :: [a_asn2] -> [b_asn3] -> c_asn4
+                   [LclId, Arity=2, Unf=OtherCon []]
+                   go2_asn8
+                     = \ (ds_dsS2 [Occ=Once!] :: [a_asn2])
+                         (_ys_arVJ [Occ=Once!] :: [b_asn3]) ->
+                         case ds_dsS2 of {
+                           [] -> z_arVH;
+                           : ipv_st3d [Occ=Once] ipv1_st3e [Occ=Once] ->
+                             case _ys_arVJ of {
+                               [] -> z_arVH;
+                               : ipv2_st3h [Occ=Once] ipv3_st3i [Occ=Once] ->
+                                 k_arVG ipv_st3d ipv2_st3h (go2_asn8 ipv1_st3e ipv3_st3i)
+                             }
+                         }; } in
+                 go2_asn8}]
+foldr2
+  = \ (@ a_asn2)
+      (@ b_asn3)
+      (@ c_asn4)
+      (k_arVG :: a_asn2 -> b_asn3 -> c_asn4 -> c_asn4)
+      (z_arVH :: c_asn4)
+      (eta_B2 :: [a_asn2])
+      (eta1_B1 :: [b_asn3]) ->
+      letrec {
+        go2_std2 [Occ=LoopBreaker] :: [a_asn2] -> [b_asn3] -> c_asn4
+        [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []]
+        go2_std2
+          = \ (ds_dsS2 :: [a_asn2]) (_ys_arVJ :: [b_asn3]) ->
+              case ds_dsS2 of {
+                [] -> z_arVH;
+                : ipv_st35 ipv1_st36 ->
+                  case _ys_arVJ of {
+                    [] -> z_arVH;
+                    : ipv2_st39 ipv3_st3a ->
+                      k_arVG ipv_st35 ipv2_st39 (go2_std2 ipv1_st36 ipv3_st3a)
+                  }
+              }; } in
+      go2_std2 eta_B2 eta1_B1
+end Rec }
+
+Rec {
+-- RHS size: {terms: 11, types: 16, coercions: 0, joins: 0/0}
+GHC.List.concat_go [Occ=LoopBreaker] :: forall a. [[a]] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+GHC.List.concat_go
+  = \ (@ a_asob) (ds_irij :: [[a_asob]]) ->
+      case ds_irij of {
+        [] -> GHC.Types.[] @ a_asob;
+        : y_irio ys_irip ->
+          ++ @ a_asob y_irio (GHC.List.concat_go @ a_asob ys_irip)
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+concat [InlPrag=NOINLINE[1]] :: forall a. [[a]] -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.List.concat_go}]
+concat = GHC.List.concat_go
+
+-- RHS size: {terms: 18, types: 22, coercions: 0, joins: 0/1}
+concatMap [InlPrag=NOINLINE[1]]
+  :: forall a b. (a -> [b]) -> [a] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0] 130 0}]
+concatMap
+  = \ (@ a_asog)
+      (@ b_asoh)
+      (f_arVA :: a_asog -> [b_asoh])
+      (eta_B1 :: [a_asog]) ->
+      letrec {
+        go2_irii [Occ=LoopBreaker] :: [a_asog] -> [b_asoh]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go2_irii
+          = \ (ds_irij :: [a_asog]) ->
+              case ds_irij of {
+                [] -> GHC.Types.[] @ b_asoh;
+                : y_irio ys_irip -> ++ @ b_asoh (f_arVA y_irio) (go2_irii ys_irip)
+              }; } in
+      go2_irii eta_B1
+
+Rec {
+-- RHS size: {terms: 26, types: 33, coercions: 0, joins: 0/0}
+lookup [Occ=LoopBreaker]
+  :: forall a b. Eq a => a -> [(a, b)] -> Maybe b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A)><L,U><S,1*U>,
+ Unf=OtherCon []]
+lookup
+  = \ (@ a_asop)
+      (@ b_asoq)
+      ($dEq_asos :: Eq a_asop)
+      (_key_arVv :: a_asop)
+      (ds_dsSz :: [(a_asop, b_asoq)]) ->
+      case ds_dsSz of {
+        [] -> GHC.Base.Nothing @ b_asoq;
+        : ds1_dsSI xys_arVz ->
+          case ds1_dsSI of { (x_arVx, y_arVy) ->
+          case == @ a_asop $dEq_asos _key_arVv x_arVx of {
+            False -> lookup @ a_asop @ b_asoq $dEq_asos _key_arVv xys_arVz;
+            True -> GHC.Base.Just @ b_asoq y_arVy
+          }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 21, types: 15, coercions: 0, joins: 0/0}
+notElem [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. Eq a => a -> [a] -> Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(C1(U)))><L,U><S,1*U>,
+ Unf=OtherCon []]
+notElem
+  = \ (@ a_asoB)
+      ($dEq_asoD :: Eq a_asoB)
+      (ds_dsSL :: a_asoB)
+      (ds1_dsSM :: [a_asoB]) ->
+      case ds1_dsSM of {
+        [] -> GHC.Types.True;
+        : y_arVt ys_arVu ->
+          case /= @ a_asoB $dEq_asoD ds_dsSL y_arVt of {
+            False -> GHC.Types.False;
+            True -> notElem @ a_asoB $dEq_asoD ds_dsSL ys_arVu
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 21, types: 15, coercions: 0, joins: 0/0}
+elem [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. Eq a => a -> [a] -> Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A)><L,U><S,1*U>,
+ Unf=OtherCon []]
+elem
+  = \ (@ a_asoJ)
+      ($dEq_asoL :: Eq a_asoJ)
+      (ds_dsST :: a_asoJ)
+      (ds1_dsSU :: [a_asoJ]) ->
+      case ds1_dsSU of {
+        [] -> GHC.Types.False;
+        : y_arVq ys_arVr ->
+          case == @ a_asoJ $dEq_asoL ds_dsST y_arVq of {
+            False -> elem @ a_asoJ $dEq_asoL ds_dsST ys_arVr;
+            True -> GHC.Types.True
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+all [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. (a -> Bool) -> [a] -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+all
+  = \ (@ a_asoS)
+      (ds_dsT7 :: a_asoS -> Bool)
+      (ds1_dsT8 :: [a_asoS]) ->
+      case ds1_dsT8 of {
+        [] -> GHC.Types.True;
+        : x_arVn xs_arVo ->
+          case ds_dsT7 x_arVn of {
+            False -> GHC.Types.False;
+            True -> all @ a_asoS ds_dsT7 xs_arVo
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+any [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. (a -> Bool) -> [a] -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+any
+  = \ (@ a_asoV)
+      (ds_dsTf :: a_asoV -> Bool)
+      (ds1_dsTg :: [a_asoV]) ->
+      case ds1_dsTg of {
+        [] -> GHC.Types.False;
+        : x_arVk xs_arVl ->
+          case ds_dsTf x_arVk of {
+            False -> any @ a_asoV ds_dsTf xs_arVl;
+            True -> GHC.Types.True
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 13, types: 8, coercions: 0, joins: 0/0}
+or [InlPrag=NOINLINE[1], Occ=LoopBreaker] :: [Bool] -> Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+or
+  = \ (ds_dsTn :: [Bool]) ->
+      case ds_dsTn of {
+        [] -> GHC.Types.False;
+        : x_arVh xs_arVi ->
+          case x_arVh of {
+            False -> or xs_arVi;
+            True -> GHC.Types.True
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 13, types: 8, coercions: 0, joins: 0/0}
+and [InlPrag=NOINLINE[1], Occ=LoopBreaker] :: [Bool] -> Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+and
+  = \ (ds_dsTt :: [Bool]) ->
+      case ds_dsTt of {
+        [] -> GHC.Types.True;
+        : x_arVf xs_arVg ->
+          case x_arVf of {
+            False -> GHC.Types.False;
+            True -> and xs_arVg
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+GHC.List.reverse1 [Occ=LoopBreaker] :: forall a. [a] -> [a] -> [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+GHC.List.reverse1
+  = \ (@ a_asp0) (ds_dsTA :: [a_asp0]) (a1_arVb :: [a_asp0]) ->
+      case ds_dsTA of {
+        [] -> a1_arVb;
+        : x_arVc xs_arVd ->
+          GHC.List.reverse1
+            @ a_asp0 xs_arVd (GHC.Types.: @ a_asp0 x_arVc a1_arVb)
+      }
+end Rec }
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+reverse :: forall a. [a] -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_asp0) (l_arV9 [Occ=Once] :: [a_asp0]) ->
+                 GHC.List.reverse1 @ a_asp0 l_arV9 (GHC.Types.[] @ a_asp0)}]
+reverse
+  = \ (@ a_asp0) (l_arV9 :: [a_asp0]) ->
+      GHC.List.reverse1 @ a_asp0 l_arV9 (GHC.Types.[] @ a_asp0)
+
+Rec {
+-- RHS size: {terms: 38, types: 73, coercions: 0, joins: 0/1}
+GHC.List.$wbreak [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a. (a -> Bool) -> [a] -> (# [a], [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wbreak
+  = \ (@ a_stKr) (w_stKs :: a_stKr -> Bool) (w1_stKt :: [a_stKr]) ->
+      case w1_stKt of wild_X2i {
+        [] -> (# GHC.Types.[] @ a_stKr, GHC.Types.[] @ a_stKr #);
+        : x_arV5 xs'_arV6 ->
+          case w_stKs x_arV5 of {
+            False ->
+              let {
+                ds_std8 [Dmd=<L,U(1*U,1*U)>] :: ([a_stKr], [a_stKr])
+                [LclId]
+                ds_std8
+                  = case GHC.List.$wbreak @ a_stKr w_stKs xs'_arV6 of
+                    { (# ww1_stNl, ww2_stNm #) ->
+                    (ww1_stNl, ww2_stNm)
+                    } } in
+              (# GHC.Types.:
+                   @ a_stKr
+                   x_arV5
+                   (case ds_std8 of { (ys_aspC, zs_aspE) -> ys_aspC }),
+                 case ds_std8 of { (ys_aspC, zs_aspE) -> zs_aspE } #);
+            True -> (# GHC.Types.[] @ a_stKr, wild_X2i #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 11, types: 22, coercions: 0, joins: 0/0}
+break [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> Bool) -> [a] -> ([a], [a])
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stKr)
+                 (w_stKs [Occ=Once] :: a_stKr -> Bool)
+                 (w1_stKt [Occ=Once] :: [a_stKr]) ->
+                 case GHC.List.$wbreak @ a_stKr w_stKs w1_stKt of
+                 { (# ww1_stNl [Occ=Once], ww2_stNm [Occ=Once] #) ->
+                 (ww1_stNl, ww2_stNm)
+                 }}]
+break
+  = \ (@ a_stKr) (w_stKs :: a_stKr -> Bool) (w1_stKt :: [a_stKr]) ->
+      case GHC.List.$wbreak @ a_stKr w_stKs w1_stKt of
+      { (# ww1_stNl, ww2_stNm #) ->
+      (ww1_stNl, ww2_stNm)
+      }
+
+Rec {
+-- RHS size: {terms: 38, types: 73, coercions: 0, joins: 0/1}
+GHC.List.$wspan [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a. (a -> Bool) -> [a] -> (# [a], [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wspan
+  = \ (@ a_stKk) (w_stKl :: a_stKk -> Bool) (w1_stKm :: [a_stKk]) ->
+      case w1_stKm of wild_X2j {
+        [] -> (# GHC.Types.[] @ a_stKk, GHC.Types.[] @ a_stKk #);
+        : x_arUY xs'_arUZ ->
+          case w_stKl x_arUY of {
+            False -> (# GHC.Types.[] @ a_stKk, wild_X2j #);
+            True ->
+              let {
+                ds_stda [Dmd=<L,U(1*U,1*U)>] :: ([a_stKk], [a_stKk])
+                [LclId]
+                ds_stda
+                  = case GHC.List.$wspan @ a_stKk w_stKl xs'_arUZ of
+                    { (# ww1_stNi, ww2_stNj #) ->
+                    (ww1_stNi, ww2_stNj)
+                    } } in
+              (# GHC.Types.:
+                   @ a_stKk
+                   x_arUY
+                   (case ds_stda of { (ys_aspT, zs_aspV) -> ys_aspT }),
+                 case ds_stda of { (ys_aspT, zs_aspV) -> zs_aspV } #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 11, types: 22, coercions: 0, joins: 0/0}
+span [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> Bool) -> [a] -> ([a], [a])
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stKk)
+                 (w_stKl [Occ=Once] :: a_stKk -> Bool)
+                 (w1_stKm [Occ=Once] :: [a_stKk]) ->
+                 case GHC.List.$wspan @ a_stKk w_stKl w1_stKm of
+                 { (# ww1_stNi [Occ=Once], ww2_stNj [Occ=Once] #) ->
+                 (ww1_stNi, ww2_stNj)
+                 }}]
+span
+  = \ (@ a_stKk) (w_stKl :: a_stKk -> Bool) (w1_stKm :: [a_stKk]) ->
+      case GHC.List.$wspan @ a_stKk w_stKl w1_stKm of
+      { (# ww1_stNi, ww2_stNj #) ->
+      (ww1_stNi, ww2_stNj)
+      }
+
+-- RHS size: {terms: 24, types: 15, coercions: 0, joins: 0/0}
+takeFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall a b. (a -> b -> b) -> b -> a -> (Int -> b) -> Int -> b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U><L,1*C1(U)><S(S),1*U(1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asrn)
+                 (@ b_asro)
+                 (c_arUy [Occ=Once*!] :: a_asrn -> b_asro -> b_asro)
+                 (n_arUz [Occ=Once] :: b_asro)
+                 (x_arUA [Occ=Once*] :: a_asrn)
+                 (xs_arUB [Occ=Once!] :: Int -> b_asro)
+                 (m_arUC [Occ=Once!] :: Int) ->
+                 case m_arUC of { I# ds_dsVi [Occ=Once!] ->
+                 case ds_dsVi of ds1_XsVs {
+                   __DEFAULT ->
+                     c_arUy x_arUA (xs_arUB (GHC.Types.I# (-# ds1_XsVs 1#)));
+                   1# -> c_arUy x_arUA n_arUz
+                 }
+                 }}]
+takeFB
+  = \ (@ a_asrn)
+      (@ b_asro)
+      (eta_B4 :: a_asrn -> b_asro -> b_asro)
+      (eta1_B3 :: b_asro)
+      (eta2_B2 :: a_asrn)
+      (eta3_B1 :: Int -> b_asro)
+      (m_arUC :: Int) ->
+      case m_arUC of { I# ds_dsVi ->
+      case ds_dsVi of ds1_XsVw {
+        __DEFAULT ->
+          eta_B4 eta2_B2 (eta3_B1 (GHC.Types.I# (-# ds1_XsVw 1#)));
+        1# -> eta_B4 eta2_B2 eta1_B3
+      }
+      }
+
+-- RHS size: {terms: 7, types: 6, coercions: 0, joins: 0/0}
+flipSeqTake [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall a. a -> Int -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asrB)
+                 (x_arUw [Occ=Once] :: a_asrB)
+                 (_n_arUx [Occ=Once!] :: Int) ->
+                 case _n_arUx of { I# _ [Occ=Dead] -> x_arUw }}]
+flipSeqTake
+  = \ (@ a_asrB) (x_arUw :: a_asrB) (_n_arUx :: Int) ->
+      case _n_arUx of { I# ipv_st3W -> x_arUw }
+
+Rec {
+-- RHS size: {terms: 22, types: 16, coercions: 0, joins: 0/0}
+GHC.List.$wunsafeTake [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. Int# -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wunsafeTake
+  = \ (@ a_stK6) (ww_stKb :: Int#) (w_stK8 :: [a_stK6]) ->
+      case w_stK8 of {
+        [] -> GHC.Types.[] @ a_stK6;
+        : ipv_st45 ipv1_st46 ->
+          case ww_stKb of ds_XsWh {
+            __DEFAULT ->
+              GHC.Types.:
+                @ a_stK6
+                ipv_st45
+                (GHC.List.$wunsafeTake @ a_stK6 (-# ds_XsWh 1#) ipv1_st46);
+            1# -> GHC.Types.: @ a_stK6 ipv_st45 (GHC.Types.[] @ a_stK6)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 8, coercions: 0, joins: 0/0}
+unsafeTake [InlPrag=NOUSERINLINE[0]] :: forall a. Int -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stK6)
+                 (w_stK7 [Occ=Once!] :: Int)
+                 (w1_stK8 [Occ=Once] :: [a_stK6]) ->
+                 case w_stK7 of { I# ww1_stKb [Occ=Once] ->
+                 GHC.List.$wunsafeTake @ a_stK6 ww1_stKb w1_stK8
+                 }}]
+unsafeTake
+  = \ (@ a_stK6) (w_stK7 :: Int) (w1_stK8 :: [a_stK6]) ->
+      case w_stK7 of { I# ww1_stKb ->
+      GHC.List.$wunsafeTake @ a_stK6 ww1_stKb w1_stK8
+      }
+
+-- RHS size: {terms: 16, types: 10, coercions: 0, joins: 0/0}
+take [InlPrag=INLINE[1] (sat-args=2)]
+  :: forall a. Int -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asrQ)
+                 (n_arUq [Occ=Once!] :: Int)
+                 (xs_arUr [Occ=Once] :: [a_asrQ]) ->
+                 case n_arUq of wild1_alNb { I# y_alNd [Occ=Once] ->
+                 case <# 0# y_alNd of {
+                   __DEFAULT -> GHC.Types.[] @ a_asrQ;
+                   1# -> unsafeTake @ a_asrQ wild1_alNb xs_arUr
+                 }
+                 }}]
+take
+  = \ (@ a_asrQ) (eta_B2 :: Int) (eta1_B1 :: [a_asrQ]) ->
+      case eta_B2 of { I# y_alNd ->
+      case <# 0# y_alNd of {
+        __DEFAULT -> GHC.Types.[] @ a_asrQ;
+        1# -> GHC.List.$wunsafeTake @ a_asrQ y_alNd eta1_B1
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 17, types: 14, coercions: 0, joins: 0/0}
+dropWhile [Occ=LoopBreaker] :: forall a. (a -> Bool) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+dropWhile
+  = \ (@ a_asrY)
+      (ds_dsVM :: a_asrY -> Bool)
+      (ds1_dsVN :: [a_asrY]) ->
+      case ds1_dsVN of wild_X2p {
+        [] -> GHC.Types.[] @ a_asrY;
+        : x_arUo xs'_arUp ->
+          case ds_dsVM x_arUo of {
+            False -> wild_X2p;
+            True -> dropWhile @ a_asrY ds_dsVM xs'_arUp
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 16, types: 13, coercions: 0, joins: 0/0}
+takeWhileFB [InlPrag=INLINE[0] (sat-args=3), Occ=LoopBreaker!]
+  :: forall a b. (a -> Bool) -> (a -> b -> b) -> b -> a -> b -> b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)><L,1*C1(C1(U))><L,1*U><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_ass1)
+                 (@ b_ass2)
+                 (p_arUh [Occ=Once!] :: a_ass1 -> Bool)
+                 (c_arUi [Occ=Once!] :: a_ass1 -> b_ass2 -> b_ass2)
+                 (n_arUj [Occ=Once] :: b_ass2)
+                 (x_arUk :: a_ass1)
+                 (r_arUl [Occ=Once] :: b_ass2) ->
+                 case p_arUh x_arUk of {
+                   False -> n_arUj;
+                   True -> c_arUi x_arUk r_arUl
+                 }}]
+takeWhileFB
+  = \ (@ a_ass1)
+      (@ b_ass2)
+      (p_arUh :: a_ass1 -> Bool)
+      (c_arUi :: a_ass1 -> b_ass2 -> b_ass2)
+      (n_arUj :: b_ass2)
+      (x_arUk :: a_ass1)
+      (r_arUl :: b_ass2) ->
+      case p_arUh x_arUk of {
+        False -> n_arUj;
+        True -> c_arUi x_arUk r_arUl
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 19, types: 16, coercions: 0, joins: 0/0}
+takeWhile [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. (a -> Bool) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+takeWhile
+  = \ (@ a_ass4)
+      (ds_dsVZ :: a_ass4 -> Bool)
+      (ds1_dsW0 :: [a_ass4]) ->
+      case ds1_dsW0 of {
+        [] -> GHC.Types.[] @ a_ass4;
+        : x_arUf xs_arUg ->
+          case ds_dsVZ x_arUf of {
+            False -> GHC.Types.[] @ a_ass4;
+            True ->
+              GHC.Types.: @ a_ass4 x_arUf (takeWhile @ a_ass4 ds_dsVZ xs_arUg)
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 7, types: 6, coercions: 0, joins: 0/1}
+repeat [InlPrag=INLINE[0] (sat-args=1), Occ=LoopBreaker!]
+  :: forall a. a -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_assp) (x_arU5 [Occ=OnceL] :: a_assp) ->
+                 letrec {
+                   xs_asst [Occ=LoopBreaker] :: [a_assp]
+                   [LclId, Unf=OtherCon []]
+                   xs_asst = GHC.Types.: @ a_assp x_arU5 xs_asst; } in
+                 xs_asst}]
+repeat
+  = \ (@ a_assp) (x_arU5 :: a_assp) ->
+      letrec {
+        xs_stdc [Occ=LoopBreaker] :: [a_assp]
+        [LclId, Unf=OtherCon []]
+        xs_stdc = GHC.Types.: @ a_assp x_arU5 xs_stdc; } in
+      xs_stdc
+
+-- RHS size: {terms: 9, types: 9, coercions: 0, joins: 0/1}
+repeatFB [InlPrag=INLINE[0] (sat-args=2), Occ=LoopBreaker!]
+  :: forall a b. (a -> b -> b) -> a -> b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_assh)
+                 (@ b_assi)
+                 (c_arU7 [Occ=Once!] :: a_assh -> b_assi -> b_assi)
+                 (x_arU8 [Occ=Once] :: a_assh) ->
+                 letrec {
+                   xs_assm [Occ=LoopBreaker] :: b_assi
+                   [LclId]
+                   xs_assm = c_arU7 x_arU8 xs_assm; } in
+                 xs_assm}]
+repeatFB
+  = \ (@ a_assh)
+      (@ b_assi)
+      (c_arU7 :: a_assh -> b_assi -> b_assi)
+      (x_arU8 :: a_assh) ->
+      letrec {
+        xs_stde [Occ=LoopBreaker] :: b_assi
+        [LclId]
+        xs_stde = c_arU7 x_arU8 xs_stde; } in
+      xs_stde
+end Rec }
+
+-- RHS size: {terms: 32, types: 18, coercions: 0, joins: 0/2}
+replicate [InlPrag=INLINE (sat-args=2)]
+  :: forall a. Int -> a -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_assx) (n_arUa :: Int) (x_arUb [Occ=Once] :: a_assx) ->
+                 build
+                   @ a_assx
+                   (\ (@ b_asI0)
+                      (c_arXA [Occ=Once, OS=OneShot] :: a_assx -> b_asI0 -> b_asI0)
+                      (nil_arXB [Occ=Once*, OS=OneShot] :: b_asI0) ->
+                      case ltInt (GHC.Types.I# 0#) n_arUa of {
+                        False -> nil_arXB;
+                        True ->
+                          repeatFB
+                            @ a_assx
+                            @ (Int -> b_asI0)
+                            (takeFB @ a_assx @ b_asI0 c_arXA nil_arXB)
+                            x_arUb
+                            n_arUa
+                      })}]
+replicate
+  = \ (@ a_assx) (n_arUa :: Int) (x_arUb :: a_assx) ->
+      case n_arUa of { I# y_alNd ->
+      case <# 0# y_alNd of {
+        __DEFAULT -> GHC.Types.[] @ a_assx;
+        1# ->
+          let {
+            lvl31_stZr :: [a_assx]
+            [LclId, Unf=OtherCon []]
+            lvl31_stZr
+              = GHC.Types.: @ a_assx x_arUb (GHC.Types.[] @ a_assx) } in
+          letrec {
+            $wxs_stKj [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+              :: Int# -> [a_assx]
+            [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+            $wxs_stKj
+              = \ (ww_stKh :: Int#) ->
+                  case ww_stKh of ds_XsVs {
+                    __DEFAULT ->
+                      GHC.Types.: @ a_assx x_arUb ($wxs_stKj (-# ds_XsVs 1#));
+                    1# -> lvl31_stZr
+                  }; } in
+          $wxs_stKj y_alNd
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 17, types: 22, coercions: 0, joins: 0/0}
+GHC.List.$witerate' [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. (a -> a) -> a -> (# a, [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),C(U)><L,U>,
+ Unf=OtherCon []]
+GHC.List.$witerate'
+  = \ (@ a_stJT) (w_stJU :: a_stJT -> a_stJT) (w1_stJV :: a_stJT) ->
+      case w_stJU w1_stJV of x'_arTY { __DEFAULT ->
+      (# w1_stJV,
+         case GHC.List.$witerate' @ a_stJT w_stJU x'_arTY of
+         { (# ww1_XtRA, ww2_XtRC #) ->
+         GHC.Types.: @ a_stJT ww1_XtRA ww2_XtRC
+         } #)
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 17, types: 14, coercions: 0, joins: 0/1}
+iterate'FB [InlPrag=INLINE[0] (sat-args=3), Occ=LoopBreaker!]
+  :: forall a b. (a -> b -> b) -> (a -> a) -> a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><C(S),C(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_assB)
+                 (@ b_assC)
+                 (c_arTZ [Occ=OnceL!] :: a_assB -> b_assC -> b_assC)
+                 (f_arU0 [Occ=OnceL!] :: a_assB -> a_assB)
+                 (x0_arU1 [Occ=Once] :: a_assB) ->
+                 letrec {
+                   go2_assG [Occ=LoopBreaker] :: a_assB -> b_assC
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   go2_assG
+                     = \ (x_arU3 :: a_assB) ->
+                         case f_arU0 x_arU3 of x'_arU4 { __DEFAULT ->
+                         c_arTZ x_arU3 (go2_assG x'_arU4)
+                         }; } in
+                 go2_assG x0_arU1}]
+iterate'FB
+  = \ (@ a_assB)
+      (@ b_assC)
+      (c_arTZ :: a_assB -> b_assC -> b_assC)
+      (f_arU0 :: a_assB -> a_assB)
+      (x0_arU1 :: a_assB) ->
+      letrec {
+        go2_stdg [Occ=LoopBreaker] :: a_assB -> b_assC
+        [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+        go2_stdg
+          = \ (x_arU3 :: a_assB) ->
+              case f_arU0 x_arU3 of x'_arU4 { __DEFAULT ->
+              c_arTZ x_arU3 (go2_stdg x'_arU4)
+              }; } in
+      go2_stdg x0_arU1
+
+-- RHS size: {terms: 11, types: 16, coercions: 0, joins: 0/0}
+iterate' [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker!]
+  :: forall a. (a -> a) -> a -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),C(U)><L,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stJT)
+                 (w_stJU [Occ=Once] :: a_stJT -> a_stJT)
+                 (w1_stJV [Occ=Once] :: a_stJT) ->
+                 case GHC.List.$witerate' @ a_stJT w_stJU w1_stJV of
+                 { (# ww1_stNf [Occ=Once], ww2_stNg [Occ=Once] #) ->
+                 GHC.Types.: @ a_stJT ww1_stNf ww2_stNg
+                 }}]
+iterate'
+  = \ (@ a_stJT) (w_stJU :: a_stJT -> a_stJT) (w1_stJV :: a_stJT) ->
+      case GHC.List.$witerate' @ a_stJT w_stJU w1_stJV of
+      { (# ww1_stNf, ww2_stNg #) ->
+      GHC.Types.: @ a_stJT ww1_stNf ww2_stNg
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 14, types: 21, coercions: 0, joins: 0/0}
+GHC.List.$witerate [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. (a -> a) -> a -> (# a, [a] #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,C(U)><L,U>, Unf=OtherCon []]
+GHC.List.$witerate
+  = \ (@ a_stJL) (w_stJM :: a_stJL -> a_stJL) (w1_stJN :: a_stJL) ->
+      (# w1_stJN,
+         case GHC.List.$witerate @ a_stJL w_stJM (w_stJM w1_stJN) of
+         { (# ww1_stNc, ww2_stNd #) ->
+         GHC.Types.: @ a_stJL ww1_stNc ww2_stNd
+         } #)
+end Rec }
+
+Rec {
+-- RHS size: {terms: 14, types: 13, coercions: 0, joins: 0/1}
+iterateFB [InlPrag=INLINE[0] (sat-args=3), Occ=LoopBreaker!]
+  :: forall a b. (a -> b -> b) -> (a -> a) -> a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><L,C(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_astf)
+                 (@ b_astg)
+                 (c_arTR [Occ=OnceL!] :: a_astf -> b_astg -> b_astg)
+                 (f_arTS [Occ=OnceL!] :: a_astf -> a_astf)
+                 (x0_arTT [Occ=Once] :: a_astf) ->
+                 letrec {
+                   go2_astk [Occ=LoopBreaker] :: a_astf -> b_astg
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   go2_astk
+                     = \ (x_arTV :: a_astf) ->
+                         c_arTR x_arTV (go2_astk (f_arTS x_arTV)); } in
+                 go2_astk x0_arTT}]
+iterateFB
+  = \ (@ a_astf)
+      (@ b_astg)
+      (c_arTR :: a_astf -> b_astg -> b_astg)
+      (f_arTS :: a_astf -> a_astf)
+      (x0_arTT :: a_astf) ->
+      letrec {
+        go2_stdi [Occ=LoopBreaker] :: a_astf -> b_astg
+        [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+        go2_stdi
+          = \ (x_arTV :: a_astf) ->
+              c_arTR x_arTV (go2_stdi (f_arTS x_arTV)); } in
+      go2_stdi x0_arTT
+
+-- RHS size: {terms: 11, types: 16, coercions: 0, joins: 0/0}
+iterate [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker!]
+  :: forall a. (a -> a) -> a -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><L,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stJL)
+                 (w_stJM [Occ=Once] :: a_stJL -> a_stJL)
+                 (w1_stJN [Occ=Once] :: a_stJL) ->
+                 case GHC.List.$witerate @ a_stJL w_stJM w1_stJN of
+                 { (# ww1_stNc [Occ=Once], ww2_stNd [Occ=Once] #) ->
+                 GHC.Types.: @ a_stJL ww1_stNc ww2_stNd
+                 }}]
+iterate
+  = \ (@ a_stJL) (w_stJM :: a_stJL -> a_stJL) (w1_stJN :: a_stJL) ->
+      case GHC.List.$witerate @ a_stJL w_stJM w1_stJN of
+      { (# ww1_stNc, ww2_stNd #) ->
+      GHC.Types.: @ a_stJL ww1_stNc ww2_stNd
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl27_ru9o :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl27_ru9o = "GHC/List.hs:411:34-55|qs@(q : _)"#
+
+-- RHS size: {terms: 3, types: 7, coercions: 0, joins: 0/0}
+lvl28_ru9p :: forall a. ([a], a)
+[GblId, Str=x]
+lvl28_ru9p
+  = \ (@ a_astA) ->
+      Control.Exception.Base.patError
+        @ 'LiftedRep @ ([a_astA], a_astA) lvl27_ru9o
+
+Rec {
+-- RHS size: {terms: 37, types: 49, coercions: 0, joins: 0/1}
+scanr1 [Occ=LoopBreaker] :: forall a. (a -> a -> a) -> [a] -> [a]
+[GblId, Arity=2, Str=<L,C(C1(U))><S,1*U>, Unf=OtherCon []]
+scanr1
+  = \ (@ a_astA)
+      (ds_dsWv :: a_astA -> a_astA -> a_astA)
+      (ds1_dsWw :: [a_astA]) ->
+      case ds1_dsWw of {
+        [] -> GHC.Types.[] @ a_astA;
+        : x_arTH ds2_dsWM ->
+          case ds2_dsWM of wild1_Xu {
+            [] -> GHC.Types.: @ a_astA x_arTH (GHC.Types.[] @ a_astA);
+            : ipv_st4n ipv1_st4o ->
+              let {
+                ds3_stdk [Dmd=<L,U(1*U,1*U)>] :: ([a_astA], a_astA)
+                [LclId]
+                ds3_stdk
+                  = case scanr1 @ a_astA ds_dsWv wild1_Xu of wild2_Xv {
+                      [] -> lvl28_ru9p @ a_astA;
+                      : q_astI ds4_dsWW -> (wild2_Xv, q_astI)
+                    } } in
+              GHC.Types.:
+                @ a_astA
+                (ds_dsWv x_arTH (case ds3_stdk of { (qs_astF, q_astI) -> q_astI }))
+                (case ds3_stdk of { (qs_astF, q_astI) -> qs_astF })
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 17, types: 23, coercions: 0, joins: 0/0}
+scanrFB [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall a b c.
+     (a -> b -> b) -> (b -> c -> c) -> a -> (b, c) -> (b, c)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(C1(U))><L,U><S,1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_astP)
+                 (@ b_astQ)
+                 (@ c_astR)
+                 (f_arTC [Occ=Once!] :: a_astP -> b_astQ -> b_astQ)
+                 (c1_arTD [Occ=Once!] :: b_astQ -> c_astR -> c_astR)
+                 (x_arTE [Occ=Once] :: a_astP)
+                 (ds_dsX1 [Occ=Once!] :: (b_astQ, c_astR)) ->
+                 case ds_dsX1 of { (r_arTF, est_arTG [Occ=Once]) ->
+                 (f_arTC x_arTE r_arTF, c1_arTD r_arTF est_arTG)
+                 }}]
+scanrFB
+  = \ (@ a_astP)
+      (@ b_astQ)
+      (@ c_astR)
+      (f_arTC :: a_astP -> b_astQ -> b_astQ)
+      (c1_arTD :: b_astQ -> c_astR -> c_astR)
+      (x_arTE :: a_astP)
+      (ds_dsX1 :: (b_astQ, c_astR)) ->
+      case ds_dsX1 of { (r_arTF, est_arTG) ->
+      (f_arTC x_arTE r_arTF, c1_arTD r_arTF est_arTG)
+      }
+
+Rec {
+-- RHS size: {terms: 35, types: 59, coercions: 0, joins: 0/1}
+GHC.List.$wscanr [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. (a -> b -> b) -> b -> [a] -> (# b, [b] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wscanr
+  = \ (@ a_stJy)
+      (@ b_stJz)
+      (w_stJA :: a_stJy -> b_stJz -> b_stJz)
+      (w1_stJB :: b_stJz)
+      (w2_stJC :: [a_stJy]) ->
+      case w2_stJC of {
+        [] -> (# w1_stJB, GHC.Types.[] @ b_stJz #);
+        : x_arTu xs_arTv ->
+          let {
+            ds_stdm [Dmd=<L,U(1*U,1*U)>] :: ([b_stJz], b_stJz)
+            [LclId]
+            ds_stdm
+              = case GHC.List.$wscanr @ a_stJy @ b_stJz w_stJA w1_stJB xs_arTv of
+                { (# ww1_stN9, ww2_stNa #) ->
+                (GHC.Types.: @ b_stJz ww1_stN9 ww2_stNa, ww1_stN9)
+                } } in
+          (# w_stJA x_arTu (case ds_stdm of { (qs_asu5, q_asu8) -> q_asu8 }),
+             case ds_stdm of { (qs_asu5, q_asu8) -> qs_asu5 } #)
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 11, types: 17, coercions: 0, joins: 0/0}
+strictUncurryScanr [InlPrag=INLINE[0] (sat-args=2),
+                    Occ=LoopBreaker!]
+  :: forall a b c. (a -> b -> c) -> (a, b) -> c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><S,1*U(U,U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_astT)
+                 (@ b_astU)
+                 (@ c_astV)
+                 (f_arTy [Occ=Once!] :: a_astT -> b_astU -> c_astV)
+                 (pair_arTz [Occ=Once!] :: (a_astT, b_astU)) ->
+                 case pair_arTz of { (x_arTA [Occ=Once], y_arTB [Occ=Once]) ->
+                 f_arTy x_arTA y_arTB
+                 }}]
+strictUncurryScanr
+  = \ (@ a_astT)
+      (@ b_astU)
+      (@ c_astV)
+      (f_arTy :: a_astT -> b_astU -> c_astV)
+      (pair_arTz :: (a_astT, b_astU)) ->
+      case pair_arTz of { (x_arTA, y_arTB) -> f_arTy x_arTA y_arTB }
+
+-- RHS size: {terms: 14, types: 22, coercions: 0, joins: 0/0}
+scanr [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker!]
+  :: forall a b. (a -> b -> b) -> b -> [a] -> [b]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stJy)
+                 (@ b_stJz)
+                 (w_stJA [Occ=Once] :: a_stJy -> b_stJz -> b_stJz)
+                 (w1_stJB [Occ=Once] :: b_stJz)
+                 (w2_stJC [Occ=Once] :: [a_stJy]) ->
+                 case GHC.List.$wscanr @ a_stJy @ b_stJz w_stJA w1_stJB w2_stJC of
+                 { (# ww1_stN9 [Occ=Once], ww2_stNa [Occ=Once] #) ->
+                 GHC.Types.: @ b_stJz ww1_stN9 ww2_stNa
+                 }}]
+scanr
+  = \ (@ a_stJy)
+      (@ b_stJz)
+      (w_stJA :: a_stJy -> b_stJz -> b_stJz)
+      (w1_stJB :: b_stJz)
+      (w2_stJC :: [a_stJy]) ->
+      case GHC.List.$wscanr @ a_stJy @ b_stJz w_stJA w1_stJB w2_stJC of
+      { (# ww1_stN9, ww2_stNa #) ->
+      GHC.Types.: @ b_stJz ww1_stN9 ww2_stNa
+      }
+end Rec }
+
+-- RHS size: {terms: 8, types: 7, coercions: 0, joins: 0/0}
+flipSeqScanl' [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall a b. a -> b -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asuz)
+                 (@ b_asuA)
+                 (a1_arTk [Occ=Once] :: a_asuz)
+                 (_b_arTl [Occ=Once] :: b_asuA) ->
+                 case _b_arTl of { __DEFAULT -> a1_arTk }}]
+flipSeqScanl'
+  = \ (@ a_asuz)
+      (@ b_asuA)
+      (a1_arTk :: a_asuz)
+      (_b_arTl :: b_asuA) ->
+      case _b_arTl of { __DEFAULT -> a1_arTk }
+
+-- RHS size: {terms: 17, types: 17, coercions: 0, joins: 0/0}
+scanlFB' [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall b a c.
+     (b -> a -> b) -> (b -> c -> c) -> a -> (b -> c) -> b -> c
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,1*C1(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ b_asuC)
+                 (@ a_asuD)
+                 (@ c_asuE)
+                 (f_arTe [Occ=Once!] :: b_asuC -> a_asuD -> b_asuC)
+                 (c1_arTf [Occ=Once!] :: b_asuC -> c_asuE -> c_asuE)
+                 (b1_arTg [Occ=Once] :: a_asuD)
+                 (g_arTh [Occ=Once!] :: b_asuC -> c_asuE)
+                 (v_B2 [Occ=Once, OS=OneShot] :: b_asuC) ->
+                 case f_arTe v_B2 b1_arTg of b'_arTj { __DEFAULT ->
+                 c1_arTf b'_arTj (g_arTh b'_arTj)
+                 }}]
+scanlFB'
+  = \ (@ b_asuC)
+      (@ a_asuD)
+      (@ c_asuE)
+      (f_arTe :: b_asuC -> a_asuD -> b_asuC)
+      (c1_arTf :: b_asuC -> c_asuE -> c_asuE)
+      (b1_arTg :: a_asuD)
+      (g_arTh :: b_asuC -> c_asuE)
+      (v_B2 [OS=OneShot] :: b_asuC) ->
+      case f_arTe v_B2 b1_arTg of b'_arTj { __DEFAULT ->
+      c1_arTf b'_arTj (g_arTh b'_arTj)
+      }
+
+Rec {
+-- RHS size: {terms: 28, types: 40, coercions: 0, joins: 0/0}
+GHC.List.$wscanlGo' [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall b1 a1 b2 a2.
+     (b2 -> a2 -> b2) -> b2 -> [a2] -> (# b2, [b2] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wscanlGo'
+  = \ (@ b_stJn)
+      (@ a_stJo)
+      (@ b1_stJp)
+      (@ a1_stJq)
+      (w_stJr :: b1_stJp -> a1_stJq -> b1_stJp)
+      (w1_stJs :: b1_stJp)
+      (w2_stJt :: [a1_stJq]) ->
+      case w1_stJs of q_XrTB { __DEFAULT ->
+      (# q_XrTB,
+         case w2_stJt of {
+           [] -> GHC.Types.[] @ b1_stJp;
+           : x_arTc xs_arTd ->
+             case GHC.List.$wscanlGo'
+                    @ b_stJn
+                    @ a_stJo
+                    @ b1_stJp
+                    @ a1_stJq
+                    w_stJr
+                    (w_stJr q_XrTB x_arTc)
+                    xs_arTd
+             of
+             { (# ww1_stN6, ww2_stN7 #) ->
+             GHC.Types.: @ b1_stJp ww1_stN6 ww2_stN7
+             }
+         } #)
+      }
+end Rec }
+
+-- RHS size: {terms: 16, types: 28, coercions: 0, joins: 0/0}
+GHC.List.scanl'_scanlGo' [InlPrag=NOUSERINLINE[0]]
+  :: forall b1 a1 b2 a2. (b2 -> a2 -> b2) -> b2 -> [a2] -> [b2]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_stJn)
+                 (@ a_stJo)
+                 (@ b1_stJp)
+                 (@ a1_stJq)
+                 (w_stJr [Occ=Once] :: b1_stJp -> a1_stJq -> b1_stJp)
+                 (w1_stJs [Occ=Once] :: b1_stJp)
+                 (w2_stJt [Occ=Once] :: [a1_stJq]) ->
+                 case GHC.List.$wscanlGo'
+                        @ b_stJn @ a_stJo @ b1_stJp @ a1_stJq w_stJr w1_stJs w2_stJt
+                 of
+                 { (# ww1_stN6 [Occ=Once], ww2_stN7 [Occ=Once] #) ->
+                 GHC.Types.: @ b1_stJp ww1_stN6 ww2_stN7
+                 }}]
+GHC.List.scanl'_scanlGo'
+  = \ (@ b_stJn)
+      (@ a_stJo)
+      (@ b1_stJp)
+      (@ a1_stJq)
+      (w_stJr :: b1_stJp -> a1_stJq -> b1_stJp)
+      (w1_stJs :: b1_stJp)
+      (w2_stJt :: [a1_stJq]) ->
+      case GHC.List.$wscanlGo'
+             @ b_stJn @ a_stJo @ b1_stJp @ a1_stJq w_stJr w1_stJs w2_stJt
+      of
+      { (# ww1_stN6, ww2_stN7 #) ->
+      GHC.Types.: @ b1_stJp ww1_stN6 ww2_stN7
+      }
+
+-- RHS size: {terms: 3, types: 8, coercions: 0, joins: 0/0}
+scanl' [InlPrag=NOINLINE[1]]
+  :: forall b a. (b -> a -> b) -> b -> [a] -> [b]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_asuU) (@ a_asuV) ->
+                 GHC.List.scanl'_scanlGo' @ b_asuU @ a_asuV @ b_asuU @ a_asuV}]
+scanl'
+  = \ (@ b_asuU) (@ a_asuV) ->
+      GHC.List.scanl'_scanlGo' @ b_asuU @ a_asuV @ b_asuU @ a_asuV
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+constScanl [InlPrag=INLINE[0] (sat-args=0)]
+  :: forall a b. a -> b -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= const}]
+constScanl = const
+
+-- RHS size: {terms: 16, types: 17, coercions: 0, joins: 0/1}
+scanlFB [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall b a c.
+     (b -> a -> b) -> (b -> c -> c) -> a -> (b -> c) -> b -> c
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,1*C1(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ b_asvy)
+                 (@ a_asvz)
+                 (@ c_asvA)
+                 (f_arSX [Occ=Once!] :: b_asvy -> a_asvz -> b_asvy)
+                 (c1_arSY [Occ=Once!] :: b_asvy -> c_asvA -> c_asvA)
+                 (b1_arSZ [Occ=Once] :: a_asvz)
+                 (g_arT0 [Occ=Once!] :: b_asvy -> c_asvA)
+                 (v_B2 [Occ=Once, OS=OneShot] :: b_asvy) ->
+                 let {
+                   b'_arT2 :: b_asvy
+                   [LclId]
+                   b'_arT2 = f_arSX v_B2 b1_arSZ } in
+                 c1_arSY b'_arT2 (g_arT0 b'_arT2)}]
+scanlFB
+  = \ (@ b_asvy)
+      (@ a_asvz)
+      (@ c_asvA)
+      (f_arSX :: b_asvy -> a_asvz -> b_asvy)
+      (c1_arSY :: b_asvy -> c_asvA -> c_asvA)
+      (b1_arSZ :: a_asvz)
+      (g_arT0 :: b_asvy -> c_asvA)
+      (v_B2 [OS=OneShot] :: b_asvy) ->
+      let {
+        b'_stdo :: b_asvy
+        [LclId]
+        b'_stdo = f_arSX v_B2 b1_arSZ } in
+      c1_arSY b'_stdo (g_arT0 b'_stdo)
+
+Rec {
+-- RHS size: {terms: 25, types: 39, coercions: 0, joins: 0/0}
+GHC.List.$wscanlGo [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall b1 a1 b2 a2.
+     (b2 -> a2 -> b2) -> b2 -> [a2] -> (# b2, [b2] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><L,1*U>,
+ Unf=OtherCon []]
+GHC.List.$wscanlGo
+  = \ (@ b_stJc)
+      (@ a_stJd)
+      (@ b1_stJe)
+      (@ a1_stJf)
+      (w_stJg :: b1_stJe -> a1_stJf -> b1_stJe)
+      (w1_stJh :: b1_stJe)
+      (w2_stJi :: [a1_stJf]) ->
+      (# w1_stJh,
+         case w2_stJi of {
+           [] -> GHC.Types.[] @ b1_stJe;
+           : x_arSV xs_arSW ->
+             case GHC.List.$wscanlGo
+                    @ b_stJc
+                    @ a_stJd
+                    @ b1_stJe
+                    @ a1_stJf
+                    w_stJg
+                    (w_stJg w1_stJh x_arSV)
+                    xs_arSW
+             of
+             { (# ww1_stN3, ww2_stN4 #) ->
+             GHC.Types.: @ b1_stJe ww1_stN3 ww2_stN4
+             }
+         } #)
+end Rec }
+
+-- RHS size: {terms: 16, types: 28, coercions: 0, joins: 0/0}
+GHC.List.scanl_scanlGo [InlPrag=NOUSERINLINE[0]]
+  :: forall b1 a1 b2 a2. (b2 -> a2 -> b2) -> b2 -> [a2] -> [b2]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_stJc)
+                 (@ a_stJd)
+                 (@ b1_stJe)
+                 (@ a1_stJf)
+                 (w_stJg [Occ=Once] :: b1_stJe -> a1_stJf -> b1_stJe)
+                 (w1_stJh [Occ=Once] :: b1_stJe)
+                 (w2_stJi [Occ=Once] :: [a1_stJf]) ->
+                 case GHC.List.$wscanlGo
+                        @ b_stJc @ a_stJd @ b1_stJe @ a1_stJf w_stJg w1_stJh w2_stJi
+                 of
+                 { (# ww1_stN3 [Occ=Once], ww2_stN4 [Occ=Once] #) ->
+                 GHC.Types.: @ b1_stJe ww1_stN3 ww2_stN4
+                 }}]
+GHC.List.scanl_scanlGo
+  = \ (@ b_stJc)
+      (@ a_stJd)
+      (@ b1_stJe)
+      (@ a1_stJf)
+      (w_stJg :: b1_stJe -> a1_stJf -> b1_stJe)
+      (w1_stJh :: b1_stJe)
+      (w2_stJi :: [a1_stJf]) ->
+      case GHC.List.$wscanlGo
+             @ b_stJc @ a_stJd @ b1_stJe @ a1_stJf w_stJg w1_stJh w2_stJi
+      of
+      { (# ww1_stN3, ww2_stN4 #) ->
+      GHC.Types.: @ b1_stJe ww1_stN3 ww2_stN4
+      }
+
+-- RHS size: {terms: 3, types: 8, coercions: 0, joins: 0/0}
+scanl [InlPrag=NOINLINE[1]]
+  :: forall b a. (b -> a -> b) -> b -> [a] -> [b]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_asvQ) (@ a_asvR) ->
+                 GHC.List.scanl_scanlGo @ b_asvQ @ a_asvR @ b_asvQ @ a_asvR}]
+scanl
+  = \ (@ b_asvQ) (@ a_asvR) ->
+      GHC.List.scanl_scanlGo @ b_asvQ @ a_asvR @ b_asvQ @ a_asvR
+
+-- RHS size: {terms: 17, types: 27, coercions: 0, joins: 0/0}
+scanl1 :: forall a. (a -> a -> a) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aswp)
+                 (f_arT3 [Occ=Once] :: a_aswp -> a_aswp -> a_aswp)
+                 (ds_dsYf [Occ=Once!] :: [a_aswp]) ->
+                 case ds_dsYf of {
+                   [] -> GHC.Types.[] @ a_aswp;
+                   : x_arT4 xs_arT5 [Occ=Once] ->
+                     GHC.Types.:
+                       @ a_aswp
+                       x_arT4
+                       (case GHC.List.scanl_scanlGo
+                               @ a_aswp @ a_aswp @ a_aswp @ a_aswp f_arT3 x_arT4 xs_arT5
+                        of {
+                          [] -> GHC.List.scanl2 @ a_aswp;
+                          : _ [Occ=Dead] xs1_arSa [Occ=Once] -> xs1_arSa
+                        })
+                 }}]
+scanl1
+  = \ (@ a_aswp)
+      (f_arT3 :: a_aswp -> a_aswp -> a_aswp)
+      (ds_dsYf :: [a_aswp]) ->
+      case ds_dsYf of {
+        [] -> GHC.Types.[] @ a_aswp;
+        : x_arT4 xs_arT5 ->
+          GHC.Types.:
+            @ a_aswp
+            x_arT4
+            (case GHC.List.$wscanlGo
+                    @ a_aswp @ a_aswp @ a_aswp @ a_aswp f_arT3 x_arT4 xs_arT5
+             of
+             { (# ww1_stN3, ww2_stN4 #) ->
+             ww2_stN4
+             })
+      }
+
+-- RHS size: {terms: 24, types: 23, coercions: 0, joins: 1/1}
+foldl' [InlPrag=INLINE (sat-args=3)]
+  :: forall a b. (b -> a -> b) -> b -> [a] -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_aswt)
+                 (@ b_aswu)
+                 (k_arSD [Occ=OnceL!] :: b_aswu -> a_aswt -> b_aswu)
+                 (z0_arSE [Occ=Once] :: b_aswu)
+                 (xs_arSF [Occ=Once] :: [a_aswt]) ->
+                 foldr
+                   @ a_aswt
+                   @ (b_aswu -> b_aswu)
+                   (\ (ds_dsYm [Occ=Once] :: a_aswt)
+                      (ds1_dsYn [Occ=Once!, OS=OneShot] :: b_aswu -> b_aswu)
+                      (v_B2 [Occ=Once, OS=OneShot] :: b_aswu) ->
+                      case v_B2 of z_arSI { __DEFAULT ->
+                      ds1_dsYn (k_arSD z_arSI ds_dsYm)
+                      })
+                   (id @ b_aswu)
+                   xs_arSF
+                   z0_arSE}]
+foldl'
+  = \ (@ a_aswt)
+      (@ b_aswu)
+      (k_arSD :: b_aswu -> a_aswt -> b_aswu)
+      (z0_arSE :: b_aswu)
+      (xs_arSF :: [a_aswt]) ->
+      joinrec {
+        go2_irii [Occ=LoopBreaker] :: [a_aswt] -> b_aswu -> b_aswu
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+        go2_irii (ds_irij :: [a_aswt]) (eta_B1 :: b_aswu)
+          = case ds_irij of {
+              [] -> eta_B1;
+              : y_irio ys_irip ->
+                case eta_B1 of z_arSI { __DEFAULT ->
+                jump go2_irii ys_irip (k_arSD z_arSI y_irio)
+                }
+            }; } in
+      jump go2_irii xs_arSF z0_arSE
+
+-- RHS size: {terms: 12, types: 15, coercions: 0, joins: 0/0}
+foldl1' :: forall a. (a -> a -> a) -> [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aswW)
+                 (f_arSM [Occ=Once] :: a_aswW -> a_aswW -> a_aswW)
+                 (ds_dsYs [Occ=Once!] :: [a_aswW]) ->
+                 case ds_dsYs of {
+                   [] -> GHC.List.foldl1'1 @ a_aswW;
+                   : x_arSN [Occ=Once] xs_arSO [Occ=Once] ->
+                     foldl' @ a_aswW @ a_aswW f_arSM x_arSN xs_arSO
+                 }}]
+foldl1'
+  = \ (@ a_aswW)
+      (f_arSM :: a_aswW -> a_aswW -> a_aswW)
+      (ds_dsYs :: [a_aswW]) ->
+      case ds_dsYs of {
+        [] -> GHC.List.foldl1'1 @ a_aswW;
+        : x_arSN xs_arSO -> foldl' @ a_aswW @ a_aswW f_arSM x_arSN xs_arSO
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl29_ru9q :: Integer
+[GblId, Unf=OtherCon []]
+lvl29_ru9q = 1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl30_ru9r :: Integer
+[GblId, Unf=OtherCon []]
+lvl30_ru9r = 0
+
+-- RHS size: {terms: 21, types: 22, coercions: 0, joins: 1/1}
+foldl [InlPrag=INLINE (sat-args=3)]
+  :: forall a b. (b -> a -> b) -> b -> [a] -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asx1)
+                 (@ b_asx2)
+                 (k_arSx [Occ=OnceL!] :: b_asx2 -> a_asx1 -> b_asx2)
+                 (z0_arSy [Occ=Once] :: b_asx2)
+                 (xs_arSz [Occ=Once] :: [a_asx1]) ->
+                 foldr
+                   @ a_asx1
+                   @ (b_asx2 -> b_asx2)
+                   (\ (ds_dsYz [Occ=Once] :: a_asx1)
+                      (ds1_dsYA [Occ=Once!, OS=OneShot] :: b_asx2 -> b_asx2)
+                      (v_B2 [Occ=Once, OS=OneShot] :: b_asx2) ->
+                      ds1_dsYA (k_arSx v_B2 ds_dsYz))
+                   (id @ b_asx2)
+                   xs_arSz
+                   z0_arSy}]
+foldl
+  = \ (@ a_asx1)
+      (@ b_asx2)
+      (k_arSx :: b_asx2 -> a_asx1 -> b_asx2)
+      (z0_arSy :: b_asx2)
+      (xs_arSz :: [a_asx1]) ->
+      joinrec {
+        go2_irii [Occ=LoopBreaker] :: [a_asx1] -> b_asx2 -> b_asx2
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        go2_irii (ds_irij :: [a_asx1]) (eta_B1 :: b_asx2)
+          = case ds_irij of {
+              [] -> eta_B1;
+              : y_irio ys_irip -> jump go2_irii ys_irip (k_arSx eta_B1 y_irio)
+            }; } in
+      jump go2_irii xs_arSz z0_arSy
+
+-- RHS size: {terms: 8, types: 8, coercions: 0, joins: 0/0}
+sum [InlPrag=INLINE (sat-args=0)] :: forall a. Num a => [a] -> a
+[GblId,
+ Arity=1,
+ Str=<L,U(1*C(C1(U)),A,A,A,A,A,1*C1(U))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asyo) ($dNum_asyq :: Num a_asyo) ->
+                 foldl
+                   @ a_asyo
+                   @ a_asyo
+                   (+ @ a_asyo $dNum_asyq)
+                   (fromInteger @ a_asyo $dNum_asyq 0)}]
+sum
+  = \ (@ a_asyo) ($dNum_asyq :: Num a_asyo) ->
+      foldl
+        @ a_asyo
+        @ a_asyo
+        (+ @ a_asyo $dNum_asyq)
+        (fromInteger @ a_asyo $dNum_asyq lvl30_ru9r)
+
+-- RHS size: {terms: 8, types: 8, coercions: 0, joins: 0/0}
+product [InlPrag=INLINE (sat-args=0)]
+  :: forall a. Num a => [a] -> a
+[GblId,
+ Arity=1,
+ Str=<L,U(A,A,1*C(C1(U)),A,A,A,1*C1(U))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asyy) ($dNum_asyA :: Num a_asyy) ->
+                 foldl
+                   @ a_asyy
+                   @ a_asyy
+                   (* @ a_asyy $dNum_asyA)
+                   (fromInteger @ a_asyy $dNum_asyA 1)}]
+product
+  = \ (@ a_asyy) ($dNum_asyA :: Num a_asyy) ->
+      foldl
+        @ a_asyy
+        @ a_asyy
+        (* @ a_asyy $dNum_asyA)
+        (fromInteger @ a_asyy $dNum_asyA lvl29_ru9q)
+
+-- RHS size: {terms: 12, types: 15, coercions: 0, joins: 0/0}
+foldl1 :: forall a. (a -> a -> a) -> [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_asxt)
+                 (f_arSJ [Occ=Once] :: a_asxt -> a_asxt -> a_asxt)
+                 (ds_dsYF [Occ=Once!] :: [a_asxt]) ->
+                 case ds_dsYF of {
+                   [] -> GHC.List.foldl2 @ a_asxt;
+                   : x_arSK [Occ=Once] xs_arSL [Occ=Once] ->
+                     foldl @ a_asxt @ a_asxt f_arSJ x_arSK xs_arSL
+                 }}]
+foldl1
+  = \ (@ a_asxt)
+      (f_arSJ :: a_asxt -> a_asxt -> a_asxt)
+      (ds_dsYF :: [a_asxt]) ->
+      case ds_dsYF of {
+        [] -> GHC.List.foldl2 @ a_asxt;
+        : x_arSK xs_arSL -> foldl @ a_asxt @ a_asxt f_arSJ x_arSK xs_arSL
+      }
+
+Rec {
+-- RHS size: {terms: 15, types: 12, coercions: 0, joins: 0/0}
+filterFB [InlPrag=INLINE[0] (sat-args=4), Occ=LoopBreaker!]
+  :: forall a b. (a -> b -> b) -> (a -> Bool) -> a -> b -> b
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S),1*C1(U)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_asyI)
+                 (@ b_asyJ)
+                 (c_arSt [Occ=Once!] :: a_asyI -> b_asyJ -> b_asyJ)
+                 (p_arSu [Occ=Once!] :: a_asyI -> Bool)
+                 (x_arSv :: a_asyI)
+                 (r_arSw [Occ=Once*] :: b_asyJ) ->
+                 case p_arSu x_arSv of {
+                   False -> r_arSw;
+                   True -> c_arSt x_arSv r_arSw
+                 }}]
+filterFB
+  = \ (@ a_asyI)
+      (@ b_asyJ)
+      (c_arSt :: a_asyI -> b_asyJ -> b_asyJ)
+      (p_arSu :: a_asyI -> Bool)
+      (x_arSv :: a_asyI)
+      (r_arSw :: b_asyJ) ->
+      case p_arSu x_arSv of {
+        False -> r_arSw;
+        True -> c_arSt x_arSv r_arSw
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 21, types: 16, coercions: 0, joins: 0/0}
+filter [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a. (a -> Bool) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+filter
+  = \ (@ a_asyL)
+      (_pred_arSp :: a_asyL -> Bool)
+      (ds_dsZd :: [a_asyL]) ->
+      case ds_dsZd of {
+        [] -> GHC.Types.[] @ a_asyL;
+        : x_arSr xs_arSs ->
+          case _pred_arSp x_arSr of {
+            False -> filter @ a_asyL _pred_arSp xs_arSs;
+            True ->
+              GHC.Types.: @ a_asyL x_arSr (filter @ a_asyL _pred_arSp xs_arSs)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 1, coercions: 0, joins: 0/0}
+idLength [InlPrag=INLINE[0] (sat-args=0)] :: Int -> Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= id @ Int}]
+idLength = id @ Int
+
+-- RHS size: {terms: 12, types: 8, coercions: 0, joins: 0/0}
+lengthFB [InlPrag=INLINE[0] (sat-args=2)]
+  :: forall x. x -> (Int -> Int) -> Int -> Int
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,A><C(S),1*C1(U(U))><S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ x_asyS)
+                 _ [Occ=Dead]
+                 (r_arSn [Occ=Once!] :: Int -> Int)
+                 (a_arSo [Occ=Once!] :: Int) ->
+                 case a_arSo of { I# ipv_st5Q [Occ=Once] ->
+                 r_arSn (GHC.Types.I# (+# ipv_st5Q 1#))
+                 }}]
+lengthFB
+  = \ (@ x_asyS)
+      _ [Occ=Dead]
+      (eta1_B1 :: Int -> Int)
+      (a_arSo :: Int) ->
+      case a_arSo of { I# ipv_st5N ->
+      eta1_B1 (GHC.Types.I# (+# ipv_st5N 1#))
+      }
+
+Rec {
+-- RHS size: {terms: 13, types: 11, coercions: 0, joins: 0/0}
+GHC.List.$wlenAcc [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a. [a] -> Int# -> Int#
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><S,U>, Unf=OtherCon []]
+GHC.List.$wlenAcc
+  = \ (@ a_stIO) (w_stIP :: [a_stIO]) (ww_stIT :: Int#) ->
+      case w_stIP of {
+        [] -> ww_stIT;
+        : ds_dsZx ys_arSl ->
+          GHC.List.$wlenAcc @ a_stIO ys_arSl (+# ww_stIT 1#)
+      }
+end Rec }
+
+-- RHS size: {terms: 13, types: 9, coercions: 0, joins: 0/0}
+lenAcc [InlPrag=NOUSERINLINE[0]] :: forall a. [a] -> Int -> Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stIO)
+                 (w_stIP [Occ=Once] :: [a_stIO])
+                 (w1_stIQ [Occ=Once!] :: Int) ->
+                 case w1_stIQ of { I# ww1_stIT [Occ=Once] ->
+                 case GHC.List.$wlenAcc @ a_stIO w_stIP ww1_stIT of ww2_stIX
+                 { __DEFAULT ->
+                 GHC.Types.I# ww2_stIX
+                 }
+                 }}]
+lenAcc
+  = \ (@ a_stIO) (w_stIP :: [a_stIO]) (w1_stIQ :: Int) ->
+      case w1_stIQ of { I# ww1_stIT ->
+      case GHC.List.$wlenAcc @ a_stIO w_stIP ww1_stIT of ww2_stIX
+      { __DEFAULT ->
+      GHC.Types.I# ww2_stIX
+      }
+      }
+
+-- RHS size: {terms: 9, types: 6, coercions: 0, joins: 0/0}
+length [InlPrag=NOUSERINLINE[0]] :: forall a. [a] -> Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_stIZ) (w_stJ0 [Occ=Once] :: [a_stIZ]) ->
+                 case GHC.List.$wlenAcc @ a_stIZ w_stJ0 0# of ww_stJ3 { __DEFAULT ->
+                 GHC.Types.I# ww_stJ3
+                 }}]
+length
+  = \ (@ a_stIZ) (w_stJ0 :: [a_stIZ]) ->
+      case GHC.List.$wlenAcc @ a_stIZ w_stJ0 0# of ww_stJ3 { __DEFAULT ->
+      GHC.Types.I# ww_stJ3
+      }
+
+-- RHS size: {terms: 8, types: 9, coercions: 0, joins: 0/0}
+null :: forall a. [a] -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_asza) (ds_dsZz [Occ=Once!] :: [a_asza]) ->
+                 case ds_dsZz of {
+                   [] -> GHC.Types.True;
+                   : _ [Occ=Dead] _ [Occ=Dead] -> GHC.Types.False
+                 }}]
+null
+  = \ (@ a_asza) (ds_dsZz :: [a_asza]) ->
+      case ds_dsZz of {
+        [] -> GHC.Types.True;
+        : ds1_dsZH ds2_dsZI -> GHC.Types.False
+      }
+
+-- RHS size: {terms: 11, types: 20, coercions: 0, joins: 0/0}
+uncons :: forall a. [a] -> Maybe (a, [a])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aszT) (ds_dt0a [Occ=Once!] :: [a_aszT]) ->
+                 case ds_dt0a of {
+                   [] -> GHC.Base.Nothing @ (a_aszT, [a_aszT]);
+                   : x_arS8 [Occ=Once] xs_arS9 [Occ=Once] ->
+                     GHC.Base.Just @ (a_aszT, [a_aszT]) (x_arS8, xs_arS9)
+                 }}]
+uncons
+  = \ (@ a_aszT) (ds_dt0a :: [a_aszT]) ->
+      case ds_dt0a of {
+        [] -> GHC.Base.Nothing @ (a_aszT, [a_aszT]);
+        : x_arS8 xs_arS9 ->
+          GHC.Base.Just @ (a_aszT, [a_aszT]) (x_arS8, xs_arS9)
+      }
+
+
+------ Local rules for imported ids --------
+"head/augment"
+    forall (@ a_arYE)
+           (xs_arYC :: [a_arYE])
+           (g_arYD :: forall b. (a_arYE -> b -> b) -> b -> b).
+      head @ a_arYE (augment @ a_arYE g_arYD xs_arYC)
+      = g_arYD
+          @ a_arYE
+          (\ (x_arYG :: a_arYE) _ [Occ=Dead] -> x_arYG)
+          (head @ a_arYE xs_arYC)
+"head/build"
+    forall (@ a_arYz)
+           (g_arYy :: forall b. (a_arYz -> b -> b) -> b -> b).
+      head @ a_arYz (build @ a_arYz g_arYy)
+      = g_arYy
+          @ a_arYz
+          (\ (x_arYB :: a_arYz) _ [Occ=Dead] -> x_arYB)
+          (badHead @ a_arYz)
+"SPEC maximum"
+    forall ($dOrd_asxO :: Ord Int).
+      maximum @ Int $dOrd_asxO
+      = GHC.List.maximum_$smaximum1
+"SPEC maximum"
+    forall ($dOrd_asxX :: Ord Integer).
+      maximum @ Integer $dOrd_asxX
+      = GHC.List.maximum_$smaximum
+"SPEC minimum"
+    forall ($dOrd_asye :: Ord Int).
+      minimum @ Int $dOrd_asye
+      = GHC.List.minimum_$sminimum1
+"SPEC minimum"
+    forall ($dOrd_asyn :: Ord Integer).
+      minimum @ Integer $dOrd_asyn
+      = GHC.List.minimum_$sminimum
+"zip" [~1]
+    forall (@ a_asAS)
+           (@ b_asAT)
+           (xs_arWP :: [a_asAS])
+           (ys_arWQ :: [b_asAT]).
+      zip @ a_asAS @ b_asAT xs_arWP ys_arWQ
+      = build
+          @ (a_asAS, b_asAT)
+          (\ (@ b1_asAX)
+             (c_arWR [OS=OneShot] :: (a_asAS, b_asAT) -> b1_asAX -> b1_asAX)
+             (n_arWS [OS=OneShot] :: b1_asAX) ->
+             foldr2
+               @ a_asAS
+               @ b_asAT
+               @ b1_asAX
+               (zipFB @ a_asAS @ b_asAT @ b1_asAX @ b1_asAX c_arWR)
+               n_arWS
+               xs_arWP
+               ys_arWQ)
+"zipWith" [~1]
+    forall (@ c_asAe)
+           (@ a_asAc)
+           (@ b_asAd)
+           (f_arWJ :: a_asAc -> b_asAd -> c_asAe)
+           (xs_arWK :: [a_asAc])
+           (ys_arWL :: [b_asAd]).
+      zipWith @ a_asAc @ b_asAd @ c_asAe f_arWJ xs_arWK ys_arWL
+      = build
+          @ c_asAe
+          (\ (@ b1_asAi)
+             (c1_arWM [OS=OneShot] :: c_asAe -> b1_asAi -> b1_asAi)
+             (n_arWN [OS=OneShot] :: b1_asAi) ->
+             foldr2
+               @ a_asAc
+               @ b_asAd
+               @ b1_asAi
+               (zipWithFB
+                  @ c_asAe @ b1_asAi @ b1_asAi @ a_asAc @ b_asAd c1_arWM f_arWJ)
+               n_arWN
+               xs_arWK
+               ys_arWL)
+"foldr2/left"
+    forall (@ d_asC6)
+           (@ a_arWX)
+           (@ b_asBL)
+           (k_arWT :: a_arWX -> b_asBL -> d_asC6 -> d_asC6)
+           (z_arWU :: d_asC6)
+           (ys_arWV :: [b_asBL])
+           (g_arWW :: forall b1. (a_arWX -> b1 -> b1) -> b1 -> b1).
+      foldr2 @ a_arWX
+             @ b_asBL
+             @ d_asC6
+             k_arWT
+             z_arWU
+             (build @ a_arWX g_arWW)
+             ys_arWV
+      = g_arWW
+          @ ([b_asBL] -> d_asC6)
+          (foldr2_left @ a_arWX @ b_asBL @ d_asC6 @ d_asC6 k_arWT z_arWU)
+          (\ _ [Occ=Dead] -> z_arWU)
+          ys_arWV
+"zipList" [1]
+    forall (@ a_asBe) (@ b_asBf).
+      foldr2 @ a_asBe
+             @ b_asBf
+             @ [(a_asBe, b_asBf)]
+             (zipFB
+                @ a_asBe
+                @ b_asBf
+                @ [(a_asBe, b_asBf)]
+                @ [(a_asBe, b_asBf)]
+                (GHC.Types.: @ (a_asBe, b_asBf)))
+             (GHC.Types.[] @ (a_asBe, b_asBf))
+      = zip @ a_asBe @ b_asBf
+"zipWithList" [1]
+    forall (@ d_asAF)
+           (@ e_asAG)
+           (@ c_asAL)
+           (f_arWO :: d_asAF -> e_asAG -> c_asAL).
+      foldr2 @ d_asAF
+             @ e_asAG
+             @ [c_asAL]
+             (zipWithFB
+                @ c_asAL
+                @ [c_asAL]
+                @ [c_asAL]
+                @ d_asAF
+                @ e_asAG
+                (GHC.Types.: @ c_asAL)
+                f_arWO)
+             (GHC.Types.[] @ c_asAL)
+      = zipWith @ d_asAF @ e_asAG @ c_asAL f_arWO
+"concat"
+    forall (@ a_asCl) (xs_arWZ :: [[a_asCl]]).
+      concat @ a_asCl xs_arWZ
+      = build
+          @ a_asCl
+          (\ (@ b_asCp)
+             (c_arX0 [OS=OneShot] :: a_asCl -> b_asCp -> b_asCp)
+             (n_arX1 [OS=OneShot] :: b_asCp) ->
+             foldr
+               @ [a_asCl]
+               @ b_asCp
+               (\ (x_arX2 :: [a_asCl]) (y_arX3 [OS=OneShot] :: b_asCp) ->
+                  foldr @ a_asCl @ b_asCp c_arX0 y_arX3 x_arX2)
+               n_arX1
+               xs_arWZ)
+"concatMap"
+    forall (@ b_asCF)
+           (@ a_asCE)
+           (f_arX4 :: a_asCE -> [b_asCF])
+           (xs_arX5 :: [a_asCE]).
+      concatMap @ a_asCE @ b_asCF f_arX4 xs_arX5
+      = build
+          @ b_asCF
+          (\ (@ b1_asCJ)
+             (c_arX6 [OS=OneShot] :: b_asCF -> b1_asCJ -> b1_asCJ)
+             (n_arX7 [OS=OneShot] :: b1_asCJ) ->
+             foldr
+               @ a_asCE
+               @ b1_asCJ
+               (\ (x_arX8 :: a_asCE) (b2_arX9 [OS=OneShot] :: b1_asCJ) ->
+                  foldr @ b_asCF @ b1_asCJ c_arX6 b2_arX9 (f_arX4 x_arX8))
+               n_arX7
+               xs_arX5)
+"notElem/build"
+    forall (@ a_arXc)
+           ($dEq_asDh :: Eq a_arXc)
+           ($dEq1_asDm :: Eq a_arXc)
+           (x_arXa :: a_arXc)
+           (g_arXb :: forall b. Eq a_arXc => (a_arXc -> b -> b) -> b -> b).
+      notElem @ a_arXc
+              $dEq_asDh
+              x_arXa
+              (build @ a_arXc (\ (@ b_asDk) -> g_arXb @ b_asDk $dEq1_asDm))
+      = g_arXb
+          @ Bool
+          $dEq_asDh
+          (\ (y_arXe :: a_arXc) (r_arXf :: Bool) ->
+             && (/= @ a_arXc $dEq_asDh x_arXa y_arXe) r_arXf)
+          GHC.Types.True
+"elem/build"
+    forall (@ a_arXi)
+           ($dEq_asEg :: Eq a_arXi)
+           ($dEq1_asEl :: Eq a_arXi)
+           (x_arXg :: a_arXi)
+           (g_arXh :: forall b. Eq a_arXi => (a_arXi -> b -> b) -> b -> b).
+      elem @ a_arXi
+           $dEq_asEg
+           x_arXg
+           (build @ a_arXi (\ (@ b_asEj) -> g_arXh @ b_asEj $dEq1_asEl))
+      = g_arXh
+          @ Bool
+          $dEq_asEg
+          (\ (y_arXk :: a_arXi) (r_arXl :: Bool) ->
+             || (== @ a_arXi $dEq_asEg x_arXg y_arXk) r_arXl)
+          GHC.Types.False
+"all/build"
+    forall (@ a_arXo)
+           (p_arXm :: a_arXo -> Bool)
+           (g_arXn :: forall b. (a_arXo -> b -> b) -> b -> b).
+      all @ a_arXo p_arXm (build @ a_arXo g_arXn)
+      = g_arXn
+          @ Bool
+          (. @ Bool @ (Bool -> Bool) @ a_arXo && p_arXm)
+          GHC.Types.True
+"any/build"
+    forall (@ a_arXs)
+           (p_arXq :: a_arXs -> Bool)
+           (g_arXr :: forall b. (a_arXs -> b -> b) -> b -> b).
+      any @ a_arXs p_arXq (build @ a_arXs g_arXr)
+      = g_arXr
+          @ Bool
+          (. @ Bool @ (Bool -> Bool) @ a_arXs || p_arXq)
+          GHC.Types.False
+"or/build"
+    forall (g_arXu :: forall b. (Bool -> b -> b) -> b -> b).
+      or (build @ Bool g_arXu)
+      = g_arXu @ Bool || GHC.Types.False
+"and/build"
+    forall (g_arXw :: forall b. (Bool -> b -> b) -> b -> b).
+      and (build @ Bool g_arXw)
+      = g_arXw @ Bool && GHC.Types.True
+"take" [~1]
+    forall (@ a_asHW) (n_arXy :: Int) (xs_arXz :: [a_asHW]).
+      take @ a_asHW n_arXy xs_arXz
+      = build
+          @ a_asHW
+          (\ (@ b_asI0)
+             (c_arXA [OS=OneShot] :: a_asHW -> b_asI0 -> b_asI0)
+             (nil_arXB [OS=OneShot] :: b_asI0) ->
+             case ltInt (GHC.Types.I# 0#) n_arXy of {
+               False -> nil_arXB;
+               True ->
+                 foldr
+                   @ a_asHW
+                   @ (Int -> b_asI0)
+                   (takeFB @ a_asHW @ b_asI0 c_arXA nil_arXB)
+                   (flipSeqTake @ b_asI0 nil_arXB)
+                   xs_arXz
+                   n_arXy
+             })
+"takeWhileFB"
+    forall (@ a_asJb)
+           (@ b_asJf)
+           (c_arXJ :: a_asJb -> b_asJf -> b_asJf)
+           (n_arXK :: b_asJf)
+           (p_arXL :: a_asJb -> Bool)
+           (q_arXM :: a_asJb -> Bool).
+      takeWhileFB @ a_asJb
+                  @ b_asJf
+                  q_arXM
+                  (takeWhileFB @ a_asJb @ b_asJf p_arXL c_arXJ n_arXK)
+                  n_arXK
+      = takeWhileFB
+          @ a_asJb
+          @ b_asJf
+          (\ (x_arXN :: a_asJb) -> && (q_arXM x_arXN) (p_arXL x_arXN))
+          c_arXJ
+          n_arXK
+"takeWhile" [~1]
+    forall (@ a_asIB) (p_arXE :: a_asIB -> Bool) (xs_arXF :: [a_asIB]).
+      takeWhile @ a_asIB p_arXE xs_arXF
+      = build
+          @ a_asIB
+          (\ (@ b_asIF)
+             (c_arXG [OS=OneShot] :: a_asIB -> b_asIF -> b_asIF)
+             (n_arXH [OS=OneShot] :: b_asIF) ->
+             foldr
+               @ a_asIB
+               @ b_asIF
+               (takeWhileFB @ a_asIB @ b_asIF p_arXE c_arXG n_arXH)
+               n_arXH
+               xs_arXF)
+"repeat" [~1]
+    forall (@ a_asJk) (x_arXO :: a_asJk).
+      repeat @ a_asJk x_arXO
+      = build
+          @ a_asJk
+          (\ (@ b_asJo)
+             (c_arXP [OS=OneShot] :: a_asJk -> b_asJo -> b_asJo)
+             _ [Occ=Dead, OS=OneShot] ->
+             repeatFB @ a_asJk @ b_asJo c_arXP x_arXO)
+"repeatFB" [1]
+    forall (@ a_asJz).
+      repeatFB @ a_asJz @ [a_asJz] (GHC.Types.: @ a_asJz)
+      = repeat @ a_asJz
+"iterate'FB" [1]
+    forall (@ a_asK1).
+      iterate'FB @ a_asK1 @ [a_asK1] (GHC.Types.: @ a_asK1)
+      = iterate' @ a_asK1
+"iterate'" [~1]
+    forall (@ a_asJI) (f_arXR :: a_asJI -> a_asJI) (x_arXS :: a_asJI).
+      iterate' @ a_asJI f_arXR x_arXS
+      = build
+          @ a_asJI
+          (\ (@ b_asJM)
+             (c_arXT [OS=OneShot] :: a_asJI -> b_asJM -> b_asJM)
+             _ [Occ=Dead, OS=OneShot] ->
+             iterate'FB @ a_asJI @ b_asJM c_arXT f_arXR x_arXS)
+"iterateFB" [1]
+    forall (@ a_asKt).
+      iterateFB @ a_asKt @ [a_asKt] (GHC.Types.: @ a_asKt)
+      = iterate @ a_asKt
+"iterate" [~1]
+    forall (@ a_asKa) (f_arXV :: a_asKa -> a_asKa) (x_arXW :: a_asKa).
+      iterate @ a_asKa f_arXV x_arXW
+      = build
+          @ a_asKa
+          (\ (@ b_asKe)
+             (c_arXX [OS=OneShot] :: a_asKa -> b_asKe -> b_asKe)
+             _ [Occ=Dead, OS=OneShot] ->
+             iterateFB @ a_asKa @ b_asKe c_arXX f_arXV x_arXW)
+"scanrList" [1]
+    forall (@ b_asLi)
+           (@ a_asLc)
+           (f_arY4 :: a_asLc -> b_asLi -> b_asLi)
+           (q0_arY5 :: b_asLi)
+           (ls_arY6 :: [a_asLc]).
+      strictUncurryScanr @ b_asLi
+                         @ [b_asLi]
+                         @ [b_asLi]
+                         (GHC.Types.: @ b_asLi)
+                         (foldr
+                            @ a_asLc
+                            @ (b_asLi, [b_asLi])
+                            (scanrFB
+                               @ a_asLc @ b_asLi @ [b_asLi] f_arY4 (GHC.Types.: @ b_asLi))
+                            (q0_arY5, GHC.Types.[] @ b_asLi)
+                            ls_arY6)
+      = scanr @ a_asLc @ b_asLi f_arY4 q0_arY5 ls_arY6
+"scanr" [~1]
+    forall (@ b_asKF)
+           (@ a_asKE)
+           (f_arXZ :: a_asKE -> b_asKF -> b_asKF)
+           (q0_arY0 :: b_asKF)
+           (ls_arY1 :: [a_asKE]).
+      scanr @ a_asKE @ b_asKF f_arXZ q0_arY0 ls_arY1
+      = build
+          @ b_asKF
+          (\ (@ b1_asKJ)
+             (c_arY2 [OS=OneShot] :: b_asKF -> b1_asKJ -> b1_asKJ)
+             (n_arY3 [OS=OneShot] :: b1_asKJ) ->
+             strictUncurryScanr
+               @ b_asKF
+               @ b1_asKJ
+               @ b1_asKJ
+               c_arY2
+               (foldr
+                  @ a_asKE
+                  @ (b_asKF, b1_asKJ)
+                  (scanrFB @ a_asKE @ b_asKF @ b1_asKJ f_arXZ c_arY2)
+                  (q0_arY0, n_arY3)
+                  ls_arY1))
+"scanl'" [~1]
+    forall (@ b_asLr)
+           (@ a_asLs)
+           (f_arY7 :: b_asLr -> a_asLs -> b_asLr)
+           (a1_arY8 :: b_asLr)
+           (bs_arY9 :: [a_asLs]).
+      scanl' @ b_asLr @ a_asLs f_arY7 a1_arY8 bs_arY9
+      = build
+          @ b_asLr
+          (\ (@ b1_asLw)
+             (c_arYa [OS=OneShot] :: b_asLr -> b1_asLw -> b1_asLw)
+             (n_arYb [OS=OneShot] :: b1_asLw) ->
+             c_arYa
+               a1_arY8
+               (foldr
+                  @ a_asLs
+                  @ (b_asLr -> b1_asLw)
+                  (scanlFB' @ b_asLr @ a_asLs @ b1_asLw f_arY7 c_arYa)
+                  (flipSeqScanl' @ b1_asLw @ b_asLr n_arYb)
+                  bs_arY9
+                  a1_arY8))
+"scanl" [~1]
+    forall (@ b_asMd)
+           (@ a_asMe)
+           (f_arYf :: b_asMd -> a_asMe -> b_asMd)
+           (a1_arYg :: b_asMd)
+           (bs_arYh :: [a_asMe]).
+      scanl @ b_asMd @ a_asMe f_arYf a1_arYg bs_arYh
+      = build
+          @ b_asMd
+          (\ (@ b1_asMi)
+             (c_arYi [OS=OneShot] :: b_asMd -> b1_asMi -> b1_asMi)
+             (n_arYj [OS=OneShot] :: b1_asMi) ->
+             c_arYi
+               a1_arYg
+               (foldr
+                  @ a_asMe
+                  @ (b_asMd -> b1_asMi)
+                  (scanlFB @ b_asMd @ a_asMe @ b1_asMi f_arYf c_arYi)
+                  (constScanl @ b1_asMi @ b_asMd n_arYj)
+                  bs_arYh
+                  a1_arYg))
+"filterFB"
+    forall (@ a_asNz)
+           (@ b_asND)
+           (c_arYt :: a_asNz -> b_asND -> b_asND)
+           (p_arYu :: a_asNz -> Bool)
+           (q_arYv :: a_asNz -> Bool).
+      filterFB @ a_asNz
+               @ b_asND
+               (filterFB @ a_asNz @ b_asND c_arYt p_arYu)
+               q_arYv
+      = filterFB
+          @ a_asNz
+          @ b_asND
+          c_arYt
+          (\ (x_arYw :: a_asNz) -> && (q_arYv x_arYw) (p_arYu x_arYw))
+"filter" [~1]
+    forall (@ a_asMZ) (p_arYo :: a_asMZ -> Bool) (xs_arYp :: [a_asMZ]).
+      filter @ a_asMZ p_arYo xs_arYp
+      = build
+          @ a_asMZ
+          (\ (@ b_asN3)
+             (c_arYq [OS=OneShot] :: a_asMZ -> b_asN3 -> b_asN3)
+             (n_arYr [OS=OneShot] :: b_asN3) ->
+             foldr
+               @ a_asMZ
+               @ b_asN3
+               (filterFB @ a_asMZ @ b_asN3 c_arYq p_arYo)
+               n_arYr
+               xs_arYp)
+"length" [~1]
+    forall (@ x_asNM) (xs_arYx :: [x_asNM]).
+      length @ x_asNM xs_arYx
+      = foldr
+          @ x_asNM
+          @ (Int -> Int)
+          (lengthFB @ x_asNM)
+          idLength
+          xs_arYx
+          (GHC.Types.I# 0#)
+"unsafeTakeList" [1]
+    forall (@ a_asIu) (n_arXC :: Int) (xs_arXD :: [a_asIu]).
+      foldr @ a_asIu
+            @ (Int -> [a_asIu])
+            (takeFB
+               @ a_asIu @ [a_asIu] (GHC.Types.: @ a_asIu) (GHC.Types.[] @ a_asIu))
+            (flipSeqTake @ [a_asIu] (GHC.Types.[] @ a_asIu))
+            xs_arXD
+            n_arXC
+      = unsafeTake @ a_asIu n_arXC xs_arXD
+"takeWhileList" [1]
+    forall (@ a_asIW) (p_arXI :: a_asIW -> Bool).
+      foldr @ a_asIW
+            @ [a_asIW]
+            (takeWhileFB
+               @ a_asIW
+               @ [a_asIW]
+               p_arXI
+               (GHC.Types.: @ a_asIW)
+               (GHC.Types.[] @ a_asIW))
+            (GHC.Types.[] @ a_asIW)
+      = takeWhile @ a_asIW p_arXI
+"scanlList'" [1]
+    forall (@ a_asM2)
+           (@ a1_asLV)
+           (f_arYc :: a_asM2 -> a1_asLV -> a_asM2)
+           (a2_arYd :: a_asM2)
+           (bs_arYe :: [a1_asLV]).
+      foldr @ a1_asLV
+            @ (a_asM2 -> [a_asM2])
+            (scanlFB'
+               @ a_asM2 @ a1_asLV @ [a_asM2] f_arYc (GHC.Types.: @ a_asM2))
+            (flipSeqScanl' @ [a_asM2] @ a_asM2 (GHC.Types.[] @ a_asM2))
+            bs_arYe
+            a2_arYd
+      = tail @ a_asM2 (scanl' @ a_asM2 @ a1_asLV f_arYc a2_arYd bs_arYe)
+"scanlList" [1]
+    forall (@ a_arYn)
+           (@ a1_asMJ)
+           (f_arYk :: a_arYn -> a1_asMJ -> a_arYn)
+           (a2_arYl :: a_arYn)
+           (bs_arYm :: [a1_asMJ]).
+      foldr @ a1_asMJ
+            @ (a_arYn -> [a_arYn])
+            (scanlFB
+               @ a_arYn @ a1_asMJ @ [a_arYn] f_arYk (GHC.Types.: @ a_arYn))
+            (constScanl @ [a_arYn] @ a_arYn (GHC.Types.[] @ a_arYn))
+            bs_arYm
+            a2_arYl
+      = tail @ a_arYn (scanl @ a_arYn @ a1_asMJ f_arYk a2_arYl bs_arYm)
+"filterList" [1]
+    forall (@ a_asNm) (p_arYs :: a_asNm -> Bool).
+      foldr @ a_asNm
+            @ [a_asNm]
+            (filterFB @ a_asNm @ [a_asNm] (GHC.Types.: @ a_asNm) p_arYs)
+            (GHC.Types.[] @ a_asNm)
+      = filter @ a_asNm p_arYs
+"lengthList" [1]
+    forall (@ a_asNT).
+      foldr @ a_asNT @ (Int -> Int) (lengthFB @ a_asNT) idLength
+      = lenAcc @ a_asNT
+

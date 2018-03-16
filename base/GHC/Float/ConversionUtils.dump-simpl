@@ -1,0 +1,268 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:03.936504928 UTC
+
+Result size of Tidy Core
+  = {terms: 224, types: 119, coercions: 0, joins: 3/3}
+
+-- RHS size: {terms: 68, types: 50, coercions: 0, joins: 2/2}
+zeroCountArr :: BA
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 97 0}]
+zeroCountArr
+  = case newByteArray# @ RealWorld 256# realWorld# of
+    { (# ipv_sqnU, ipv1_sqnV #) ->
+    case writeInt8Array# @ RealWorld ipv1_sqnV 0# 8# ipv_sqnU
+    of s2_aqkB
+    { __DEFAULT ->
+    join {
+      $j_sqq3 [Dmd=<C(S),C(U(U))>] :: State# RealWorld -> BA
+      [LclId[JoinId(1)], Arity=1, Str=<S,U>m]
+      $j_sqq3 (s3_aqkI [OS=OneShot]
+                 :: State# RealWorld
+                 Unf=OtherCon [])
+        = case unsafeFreezeByteArray# @ RealWorld ipv1_sqnV s3_aqkI of
+          { (# ipv2_sqo5, ipv3_sqo6 #) ->
+          GHC.Float.ConversionUtils.BA ipv3_sqo6
+          } } in
+    joinrec {
+      fillA_sqoY [Occ=LoopBreaker]
+        :: Int# -> Int# -> Int# -> State# RealWorld -> BA
+      [LclId[JoinId(4)],
+       Arity=4,
+       Str=<S,U><L,U><S,U><S,U>m,
+       Unf=OtherCon []]
+      fillA_sqoY (step_aqkD :: Int#)
+                 (val_aqkE :: Int#)
+                 (idx_aqkF :: Int#)
+                 (st_aqkG :: State# RealWorld)
+        = case <# idx_aqkF 256# of {
+            __DEFAULT ->
+              case <# step_aqkD 256# of {
+                __DEFAULT -> jump $j_sqq3 st_aqkG;
+                1# ->
+                  jump fillA_sqoY
+                    (*# 2# step_aqkD) (+# val_aqkE 1#) step_aqkD st_aqkG
+              };
+            1# ->
+              case writeInt8Array#
+                     @ RealWorld ipv1_sqnV idx_aqkF val_aqkE st_aqkG
+              of nx_aqkH
+              { __DEFAULT ->
+              jump fillA_sqoY step_aqkD val_aqkE (+# idx_aqkF step_aqkD) nx_aqkH
+              }
+          }; } in
+    jump fillA_sqoY 2# 0# 1# s2_aqkB
+    }
+    }
+
+-- RHS size: {terms: 92, types: 35, coercions: 0, joins: 1/1}
+elimZerosInt# :: Int# -> Int# -> (# Integer, Int# #)
+[GblId,
+ Arity=2,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 200 60}]
+elimZerosInt#
+  = \ (n_aqkr :: Int#) (e_aqks :: Int#) ->
+      case zeroCountArr of { BA ba_aqkv ->
+      case indexInt8Array#
+             ba_aqkv (word2Int# (and# 255## (int2Word# n_aqkr)))
+      of t_aqkt
+      { __DEFAULT ->
+      case <=# e_aqks t_aqkt of {
+        __DEFAULT ->
+          case <# t_aqkt 8# of {
+            __DEFAULT ->
+              joinrec {
+                elimZerosInt#1_XqkU [Occ=LoopBreaker]
+                  :: Int# -> Int# -> (# Integer, Int# #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+                elimZerosInt#1_XqkU (n1_Xql2 :: Int#) (e1_Xql4 :: Int#)
+                  = case indexInt8Array#
+                           ba_aqkv (word2Int# (and# 255## (int2Word# n1_Xql2)))
+                    of t1_Xql7
+                    { __DEFAULT ->
+                    case <=# e1_Xql4 t1_Xql7 of {
+                      __DEFAULT ->
+                        case <# t1_Xql7 8# of {
+                          __DEFAULT ->
+                            jump elimZerosInt#1_XqkU
+                              (uncheckedIShiftRA# n1_Xql2 8#) (-# e1_Xql4 8#);
+                          1# ->
+                            (# smallInteger (uncheckedIShiftRA# n1_Xql2 t1_Xql7),
+                               -# e1_Xql4 t1_Xql7 #)
+                        };
+                      1# -> (# smallInteger (uncheckedIShiftRA# n1_Xql2 e1_Xql4), 0# #)
+                    }
+                    }; } in
+              jump elimZerosInt#1_XqkU
+                (uncheckedIShiftRA# n_aqkr 8#) (-# e_aqks 8#);
+            1# ->
+              (# smallInteger (uncheckedIShiftRA# n_aqkr t_aqkt),
+                 -# e_aqks t_aqkt #)
+          };
+        1# -> (# smallInteger (uncheckedIShiftRA# n_aqkr e_aqks), 0# #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 9, types: 3, coercions: 0, joins: 0/0}
+elimZerosInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Int# -> (# Integer, Int# #)
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (m_aqkp [Occ=Once] :: Integer)
+                 (e_aqkq [Occ=Once] :: Int#) ->
+                 case integerToInt m_aqkp of wild_Xh { __DEFAULT ->
+                 elimZerosInt# wild_Xh e_aqkq
+                 }}]
+elimZerosInteger
+  = \ (m_aqkp :: Integer) (e_aqkq :: Int#) ->
+      case integerToInt m_aqkp of wild_Xh { __DEFAULT ->
+      elimZerosInt# wild_Xh e_aqkq
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Float.ConversionUtils.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Float.ConversionUtils.$trModule3
+  = GHC.Types.TrNameS GHC.Float.ConversionUtils.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 80 0}]
+GHC.Float.ConversionUtils.$trModule2 = "GHC.Float.ConversionUtils"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Float.ConversionUtils.$trModule1
+  = GHC.Types.TrNameS GHC.Float.ConversionUtils.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Float.ConversionUtils.$trModule
+  = GHC.Types.Module
+      GHC.Float.ConversionUtils.$trModule3
+      GHC.Float.ConversionUtils.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rqs2 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rqs2
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcByteArray# (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tcBA2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Float.ConversionUtils.$tcBA2 = "BA"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tcBA1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Float.ConversionUtils.$tcBA1
+  = GHC.Types.TrNameS GHC.Float.ConversionUtils.$tcBA2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tcBA :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Float.ConversionUtils.$tcBA
+  = GHC.Types.TyCon
+      2744518186030791563##
+      15983957619153370905##
+      GHC.Float.ConversionUtils.$trModule
+      GHC.Float.ConversionUtils.$tcBA1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_rqs3 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_rqs3
+  = GHC.Types.KindRepTyConApp
+      GHC.Float.ConversionUtils.$tcBA (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tc'BA1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Float.ConversionUtils.$tc'BA1
+  = GHC.Types.KindRepFun $krep_rqs2 $krep1_rqs3
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tc'BA3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Float.ConversionUtils.$tc'BA3 = "'BA"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tc'BA2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Float.ConversionUtils.$tc'BA2
+  = GHC.Types.TrNameS GHC.Float.ConversionUtils.$tc'BA3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Float.ConversionUtils.$tc'BA :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Float.ConversionUtils.$tc'BA
+  = GHC.Types.TyCon
+      2662423355322146026##
+      17541892848942326139##
+      GHC.Float.ConversionUtils.$trModule
+      GHC.Float.ConversionUtils.$tc'BA2
+      0#
+      GHC.Float.ConversionUtils.$tc'BA1
+
+

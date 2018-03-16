@@ -1,0 +1,1734 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:00.673622295 UTC
+
+GHC.MVar.$fEqMVar_$c==
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_smV4 ds1_smV5]
+        case ds_smV4 of {
+          GHC.MVar.MVar mvar1#_smV7 [Occ=Once] ->
+              case ds1_smV5 of {
+                GHC.MVar.MVar mvar2#_smV9 [Occ=Once] ->
+                    case sameMVar# [mvar1#_smV7 mvar2#_smV9] of sat_smVa {
+                      __DEFAULT -> tagToEnum# [sat_smVa];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_smVb eta1_smVc]
+        case eta_smVb of {
+          GHC.MVar.MVar mvar1#_smVe [Occ=Once] ->
+              case eta1_smVc of {
+                GHC.MVar.MVar mvar2#_smVg [Occ=Once] ->
+                    case sameMVar# [mvar1#_smVe mvar2#_smVg] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.MVar.MVar a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.MVar.$fEqMVar_$c==
+                                     GHC.MVar.$fEqMVar_$c/=];
+
+GHC.MVar.newEmptyMVar1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s#_smVi]
+        case newMVar# [s#_smVi] of {
+          (#,#) ipv_smVk [Occ=Once] ipv1_smVl [Occ=Once] ->
+              let {
+                sat_smVm [Occ=Once] :: GHC.MVar.MVar a_amJZ
+                [LclId] =
+                    CCCS GHC.MVar.MVar! [ipv1_smVl];
+              } in  (#,#) [ipv_smVk sat_smVm];
+        };
+
+GHC.MVar.newEmptyMVar :: forall a. GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.MVar.newEmptyMVar1 eta_B1;
+
+GHC.MVar.takeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVn eta_smVo]
+        case ds_smVn of {
+          GHC.MVar.MVar mvar#_smVq [Occ=Once] ->
+              takeMVar# [mvar#_smVq eta_smVo];
+        };
+
+GHC.MVar.takeMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.takeMVar1 eta_B2 eta_B1;
+
+GHC.MVar.readMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVr eta_smVs]
+        case ds_smVr of {
+          GHC.MVar.MVar mvar#_smVu [Occ=Once] ->
+              readMVar# [mvar#_smVu eta_smVs];
+        };
+
+GHC.MVar.readMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.readMVar1 eta_B2 eta_B1;
+
+GHC.MVar.putMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVv x_smVw eta_smVx]
+        case ds_smVv of {
+          GHC.MVar.MVar mvar#_smVz [Occ=Once] ->
+              case putMVar# [mvar#_smVz x_smVw eta_smVx] of s2#_smVA {
+                __DEFAULT -> (#,#) [s2#_smVA GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.putMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.putMVar1 eta_B3 eta_B2 eta_B1;
+
+GHC.MVar.newMVar1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [value_smVB s_smVC]
+        case newMVar# [s_smVC] of {
+          (#,#) ipv_smVE [Occ=Once] ipv1_smVF ->
+              case putMVar# [ipv1_smVF value_smVB ipv_smVE] of s2#_smVG {
+                __DEFAULT ->
+                    let {
+                      sat_smVH [Occ=Once] :: GHC.MVar.MVar a_amK9
+                      [LclId] =
+                          CCCS GHC.MVar.MVar! [ipv1_smVF];
+                    } in  (#,#) [s2#_smVG sat_smVH];
+              };
+        };
+
+GHC.MVar.newMVar :: forall a. a -> GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.newMVar1 eta_B2 eta_B1;
+
+GHC.MVar.tryTakeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVI eta_smVJ]
+        case ds_smVI of {
+          GHC.MVar.MVar m_smVL [Occ=Once] ->
+              case tryTakeMVar# [m_smVL eta_smVJ] of {
+                (#,,#) ipv_smVN [Occ=Once*]
+                       ipv1_smVO [Occ=Once!]
+                       ipv2_smVP [Occ=Once] ->
+                    case ipv1_smVO of {
+                      __DEFAULT ->
+                          let {
+                            sat_smVR [Occ=Once] :: GHC.Base.Maybe a_amJr
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_smVP];
+                          } in  (#,#) [ipv_smVN sat_smVR];
+                      0# -> (#,#) [ipv_smVN GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryTakeMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.tryTakeMVar1 eta_B2 eta_B1;
+
+GHC.MVar.tryPutMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVS x_smVT eta_smVU]
+        case ds_smVS of {
+          GHC.MVar.MVar mvar#_smVW [Occ=Once] ->
+              case tryPutMVar# [mvar#_smVW x_smVT eta_smVU] of {
+                (#,#) ipv_smVY [Occ=Once*] ipv1_smVZ [Occ=Once!] ->
+                    case ipv1_smVZ of {
+                      __DEFAULT -> (#,#) [ipv_smVY GHC.Types.True];
+                      0# -> (#,#) [ipv_smVY GHC.Types.False];
+                    };
+              };
+        };
+
+GHC.MVar.tryPutMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.tryPutMVar1 eta_B3 eta_B2 eta_B1;
+
+GHC.MVar.tryReadMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smW1 eta_smW2]
+        case ds_smW1 of {
+          GHC.MVar.MVar m_smW4 [Occ=Once] ->
+              case tryReadMVar# [m_smW4 eta_smW2] of {
+                (#,,#) ipv_smW6 [Occ=Once*]
+                       ipv1_smW7 [Occ=Once!]
+                       ipv2_smW8 [Occ=Once] ->
+                    case ipv1_smW7 of {
+                      __DEFAULT ->
+                          let {
+                            sat_smWa [Occ=Once] :: GHC.Base.Maybe a_amJ7
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_smW8];
+                          } in  (#,#) [ipv_smW6 sat_smWa];
+                      0# -> (#,#) [ipv_smW6 GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryReadMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.tryReadMVar1 eta_B2 eta_B1;
+
+GHC.MVar.isEmptyMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smWb eta_smWc]
+        case ds_smWb of {
+          GHC.MVar.MVar mv#_smWe [Occ=Once] ->
+              case isEmptyMVar# [mv#_smWe eta_smWc] of {
+                (#,#) ipv_smWg [Occ=Once] ipv1_smWh [Occ=Once!] ->
+                    let {
+                      sat_smWj [Occ=Once] :: GHC.Types.Bool
+                      [LclId] =
+                          [ipv1_smWh] \u []
+                              case ipv1_smWh of {
+                                __DEFAULT -> GHC.Types.True [];
+                                0# -> GHC.Types.False [];
+                              };
+                    } in  (#,#) [ipv_smWg sat_smWj];
+              };
+        };
+
+GHC.MVar.isEmptyMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.isEmptyMVar1 eta_B2 eta_B1;
+
+GHC.MVar.addMVarFinalizer1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smWk ds1_smWl eta_smWm]
+        case ds_smWk of {
+          GHC.MVar.MVar m_smWo [Occ=Once] ->
+              case mkWeak# [m_smWo GHC.Tuple.() ds1_smWl eta_smWm] of {
+                (#,#) ipv_smWq [Occ=Once] _ [Occ=Dead] ->
+                    (#,#) [ipv_smWq GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 eta_B1;
+
+GHC.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule4];
+
+GHC.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.MVar"#;
+
+GHC.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule2];
+
+GHC.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.MVar.$trModule3
+                                     GHC.MVar.$trModule1];
+
+$krep_rmUX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rmUY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rmUZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rmUY GHC.Types.[]];
+
+$krep3_rmV0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rmUX $krep2_rmUZ];
+
+$krep4_rmV1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMVar#
+                                              $krep3_rmV0];
+
+GHC.MVar.$tcMVar2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MVar"#;
+
+GHC.MVar.$tcMVar1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tcMVar2];
+
+GHC.MVar.$tcMVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4036113818353836845##
+                                    5005913288165264115##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tcMVar1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rmV2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep2_rmUZ];
+
+GHC.MVar.$tc'MVar1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rmV1 $krep5_rmV2];
+
+GHC.MVar.$tc'MVar3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MVar"#;
+
+GHC.MVar.$tc'MVar2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tc'MVar3];
+
+GHC.MVar.$tc'MVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [1422225975627779673##
+                                    4396512866399833428##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tc'MVar2
+                                    1#
+                                    GHC.MVar.$tc'MVar1];
+
+GHC.MVar.MVar
+  :: forall a. GHC.Prim.MVar# GHC.Prim.RealWorld a -> GHC.MVar.MVar a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.MVar.MVar [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:00.68027011 UTC
+
+GHC.MVar.$fEqMVar_$c==
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_smV4 ds1_smV5]
+        case ds_smV4 of {
+          GHC.MVar.MVar mvar1#_smV7 [Occ=Once] ->
+              case ds1_smV5 of {
+                GHC.MVar.MVar mvar2#_smV9 [Occ=Once] ->
+                    case sameMVar# [mvar1#_smV7 mvar2#_smV9] of sat_smVa {
+                      __DEFAULT -> tagToEnum# [sat_smVa];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_smVb eta1_smVc]
+        case eta_smVb of {
+          GHC.MVar.MVar mvar1#_smVe [Occ=Once] ->
+              case eta1_smVc of {
+                GHC.MVar.MVar mvar2#_smVg [Occ=Once] ->
+                    case sameMVar# [mvar1#_smVe mvar2#_smVg] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.MVar.MVar a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.MVar.$fEqMVar_$c==
+                                     GHC.MVar.$fEqMVar_$c/=];
+
+GHC.MVar.newEmptyMVar1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_smVl [Occ=Once] ->
+              let {
+                sat_smVm [Occ=Once] :: GHC.MVar.MVar a_amJZ
+                [LclId] =
+                    CCCS GHC.MVar.MVar! [ipv1_smVl];
+              } in  Unit# [sat_smVm];
+        };
+
+GHC.MVar.newEmptyMVar :: forall a. GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.MVar.newEmptyMVar1 GHC.Prim.void#;
+
+GHC.MVar.takeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVn void_0E]
+        case ds_smVn of {
+          GHC.MVar.MVar mvar#_smVq [Occ=Once] ->
+              takeMVar# [mvar#_smVq GHC.Prim.void#];
+        };
+
+GHC.MVar.takeMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.takeMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.readMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVr void_0E]
+        case ds_smVr of {
+          GHC.MVar.MVar mvar#_smVu [Occ=Once] ->
+              readMVar# [mvar#_smVu GHC.Prim.void#];
+        };
+
+GHC.MVar.readMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.readMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.putMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVv x_smVw void_0E]
+        case ds_smVv of {
+          GHC.MVar.MVar mvar#_smVz [Occ=Once] ->
+              case putMVar# [mvar#_smVz x_smVw GHC.Prim.void#] of s2#_smVA {
+                (##) -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.putMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.putMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.newMVar1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [value_smVB void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_smVF ->
+              case putMVar# [ipv1_smVF value_smVB GHC.Prim.void#] of s2#_smVG {
+                (##) ->
+                    let {
+                      sat_smVH [Occ=Once] :: GHC.MVar.MVar a_amK9
+                      [LclId] =
+                          CCCS GHC.MVar.MVar! [ipv1_smVF];
+                    } in  Unit# [sat_smVH];
+              };
+        };
+
+GHC.MVar.newMVar :: forall a. a -> GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.newMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.tryTakeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVI void_0E]
+        case ds_smVI of {
+          GHC.MVar.MVar m_smVL [Occ=Once] ->
+              case tryTakeMVar# [m_smVL GHC.Prim.void#] of {
+                (#,#) ipv1_smVO [Occ=Once!] ipv2_smVP [Occ=Once] ->
+                    case ipv1_smVO of {
+                      __DEFAULT ->
+                          let {
+                            sat_smVR [Occ=Once] :: GHC.Base.Maybe a_amJr
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_smVP];
+                          } in  Unit# [sat_smVR];
+                      0# -> Unit# [GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryTakeMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.tryTakeMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.tryPutMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smVS x_smVT void_0E]
+        case ds_smVS of {
+          GHC.MVar.MVar mvar#_smVW [Occ=Once] ->
+              case tryPutMVar# [mvar#_smVW x_smVT GHC.Prim.void#] of {
+                Unit# ipv1_smVZ [Occ=Once!] ->
+                    case ipv1_smVZ of {
+                      __DEFAULT -> Unit# [GHC.Types.True];
+                      0# -> Unit# [GHC.Types.False];
+                    };
+              };
+        };
+
+GHC.MVar.tryPutMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.tryPutMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.tryReadMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smW1 void_0E]
+        case ds_smW1 of {
+          GHC.MVar.MVar m_smW4 [Occ=Once] ->
+              case tryReadMVar# [m_smW4 GHC.Prim.void#] of {
+                (#,#) ipv1_smW7 [Occ=Once!] ipv2_smW8 [Occ=Once] ->
+                    case ipv1_smW7 of {
+                      __DEFAULT ->
+                          let {
+                            sat_smWa [Occ=Once] :: GHC.Base.Maybe a_amJ7
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_smW8];
+                          } in  Unit# [sat_smWa];
+                      0# -> Unit# [GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryReadMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.tryReadMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.isEmptyMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smWb void_0E]
+        case ds_smWb of {
+          GHC.MVar.MVar mv#_smWe [Occ=Once] ->
+              case isEmptyMVar# [mv#_smWe GHC.Prim.void#] of {
+                Unit# ipv1_smWh [Occ=Once!] ->
+                    let {
+                      sat_smWj [Occ=Once] :: GHC.Types.Bool
+                      [LclId] =
+                          [ipv1_smWh] \u []
+                              case ipv1_smWh of {
+                                __DEFAULT -> GHC.Types.True [];
+                                0# -> GHC.Types.False [];
+                              };
+                    } in  Unit# [sat_smWj];
+              };
+        };
+
+GHC.MVar.isEmptyMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.isEmptyMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.addMVarFinalizer1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_smWk ds1_smWl void_0E]
+        case ds_smWk of {
+          GHC.MVar.MVar m_smWo [Occ=Once] ->
+              case mkWeak# [m_smWo GHC.Tuple.() ds1_smWl GHC.Prim.void#] of {
+                Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule4];
+
+GHC.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.MVar"#;
+
+GHC.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule2];
+
+GHC.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.MVar.$trModule3
+                                     GHC.MVar.$trModule1];
+
+$krep_rmUX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rmUY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rmUZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rmUY GHC.Types.[]];
+
+$krep3_rmV0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rmUX $krep2_rmUZ];
+
+$krep4_rmV1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMVar#
+                                              $krep3_rmV0];
+
+GHC.MVar.$tcMVar2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MVar"#;
+
+GHC.MVar.$tcMVar1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tcMVar2];
+
+GHC.MVar.$tcMVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4036113818353836845##
+                                    5005913288165264115##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tcMVar1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rmV2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep2_rmUZ];
+
+GHC.MVar.$tc'MVar1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rmV1 $krep5_rmV2];
+
+GHC.MVar.$tc'MVar3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MVar"#;
+
+GHC.MVar.$tc'MVar2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tc'MVar3];
+
+GHC.MVar.$tc'MVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [1422225975627779673##
+                                    4396512866399833428##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tc'MVar2
+                                    1#
+                                    GHC.MVar.$tc'MVar1];
+
+GHC.MVar.MVar
+  :: forall a. GHC.Prim.MVar# GHC.Prim.RealWorld a -> GHC.MVar.MVar a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.MVar.MVar [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:55:01.174913894 UTC
+
+GHC.MVar.$fEqMVar_$c==
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_sngJ ds1_sngK]
+        case ds_sngJ of {
+          GHC.MVar.MVar mvar1#_sngM [Occ=Once] ->
+              case ds1_sngK of {
+                GHC.MVar.MVar mvar2#_sngO [Occ=Once] ->
+                    case sameMVar# [mvar1#_sngM mvar2#_sngO] of sat_sngP {
+                      __DEFAULT -> tagToEnum# [sat_sngP];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_sngQ eta1_sngR]
+        case eta_sngQ of {
+          GHC.MVar.MVar mvar1#_sngT [Occ=Once] ->
+              case eta1_sngR of {
+                GHC.MVar.MVar mvar2#_sngV [Occ=Once] ->
+                    case sameMVar# [mvar1#_sngT mvar2#_sngV] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.MVar.MVar a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.MVar.$fEqMVar_$c==
+                                     GHC.MVar.$fEqMVar_$c/=];
+
+GHC.MVar.newEmptyMVar1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s#_sngX]
+        case newMVar# [s#_sngX] of {
+          (#,#) ipv_sngZ [Occ=Once] ipv1_snh0 [Occ=Once] ->
+              let {
+                sat_snh1 [Occ=Once] :: GHC.MVar.MVar a_amJZ
+                [LclId] =
+                    CCCS GHC.MVar.MVar! [ipv1_snh0];
+              } in  (#,#) [ipv_sngZ sat_snh1];
+        };
+
+GHC.MVar.newEmptyMVar :: forall a. GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.MVar.newEmptyMVar1 eta_B1;
+
+GHC.MVar.takeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snh2 eta_snh3]
+        case ds_snh2 of {
+          GHC.MVar.MVar mvar#_snh5 [Occ=Once] ->
+              takeMVar# [mvar#_snh5 eta_snh3];
+        };
+
+GHC.MVar.takeMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.takeMVar1 eta_B2 eta_B1;
+
+GHC.MVar.readMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snh6 eta_snh7]
+        case ds_snh6 of {
+          GHC.MVar.MVar mvar#_snh9 [Occ=Once] ->
+              readMVar# [mvar#_snh9 eta_snh7];
+        };
+
+GHC.MVar.readMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.readMVar1 eta_B2 eta_B1;
+
+GHC.MVar.putMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snha x_snhb eta_snhc]
+        case ds_snha of {
+          GHC.MVar.MVar mvar#_snhe [Occ=Once] ->
+              case putMVar# [mvar#_snhe x_snhb eta_snhc] of s2#_snhf {
+                __DEFAULT -> (#,#) [s2#_snhf GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.putMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.putMVar1 eta_B3 eta_B2 eta_B1;
+
+GHC.MVar.newMVar1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [value_snhg s_snhh]
+        case newMVar# [s_snhh] of {
+          (#,#) ipv_snhj [Occ=Once] ipv1_snhk ->
+              case putMVar# [ipv1_snhk value_snhg ipv_snhj] of s2#_snhl {
+                __DEFAULT ->
+                    let {
+                      sat_snhm [Occ=Once] :: GHC.MVar.MVar a_amK9
+                      [LclId] =
+                          CCCS GHC.MVar.MVar! [ipv1_snhk];
+                    } in  (#,#) [s2#_snhl sat_snhm];
+              };
+        };
+
+GHC.MVar.newMVar :: forall a. a -> GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.newMVar1 eta_B2 eta_B1;
+
+GHC.MVar.tryTakeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhn eta_snho]
+        case ds_snhn of {
+          GHC.MVar.MVar m_snhq [Occ=Once] ->
+              case tryTakeMVar# [m_snhq eta_snho] of {
+                (#,,#) ipv_snhs [Occ=Once*]
+                       ipv1_snht [Occ=Once!]
+                       ipv2_snhu [Occ=Once] ->
+                    case ipv1_snht of {
+                      __DEFAULT ->
+                          let {
+                            sat_snhw [Occ=Once] :: GHC.Base.Maybe a_amJr
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_snhu];
+                          } in  (#,#) [ipv_snhs sat_snhw];
+                      0# -> (#,#) [ipv_snhs GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryTakeMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.tryTakeMVar1 eta_B2 eta_B1;
+
+GHC.MVar.tryPutMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhx x_snhy eta_snhz]
+        case ds_snhx of {
+          GHC.MVar.MVar mvar#_snhB [Occ=Once] ->
+              case tryPutMVar# [mvar#_snhB x_snhy eta_snhz] of {
+                (#,#) ipv_snhD [Occ=Once*] ipv1_snhE [Occ=Once!] ->
+                    case ipv1_snhE of {
+                      __DEFAULT -> (#,#) [ipv_snhD GHC.Types.True];
+                      0# -> (#,#) [ipv_snhD GHC.Types.False];
+                    };
+              };
+        };
+
+GHC.MVar.tryPutMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.tryPutMVar1 eta_B3 eta_B2 eta_B1;
+
+GHC.MVar.tryReadMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhG eta_snhH]
+        case ds_snhG of {
+          GHC.MVar.MVar m_snhJ [Occ=Once] ->
+              case tryReadMVar# [m_snhJ eta_snhH] of {
+                (#,,#) ipv_snhL [Occ=Once*]
+                       ipv1_snhM [Occ=Once!]
+                       ipv2_snhN [Occ=Once] ->
+                    case ipv1_snhM of {
+                      __DEFAULT ->
+                          let {
+                            sat_snhP [Occ=Once] :: GHC.Base.Maybe a_amJ7
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_snhN];
+                          } in  (#,#) [ipv_snhL sat_snhP];
+                      0# -> (#,#) [ipv_snhL GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryReadMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.tryReadMVar1 eta_B2 eta_B1;
+
+GHC.MVar.isEmptyMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhQ eta_snhR]
+        case ds_snhQ of {
+          GHC.MVar.MVar mv#_snhT [Occ=Once] ->
+              case isEmptyMVar# [mv#_snhT eta_snhR] of {
+                (#,#) ipv_snhV [Occ=Once] ipv1_snhW [Occ=Once!] ->
+                    let {
+                      sat_snhY [Occ=Once] :: GHC.Types.Bool
+                      [LclId] =
+                          [ipv1_snhW] \u []
+                              case ipv1_snhW of {
+                                __DEFAULT -> GHC.Types.True [];
+                                0# -> GHC.Types.False [];
+                              };
+                    } in  (#,#) [ipv_snhV sat_snhY];
+              };
+        };
+
+GHC.MVar.isEmptyMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.MVar.isEmptyMVar1 eta_B2 eta_B1;
+
+GHC.MVar.addMVarFinalizer1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhZ ds1_sni0 eta_sni1]
+        case ds_snhZ of {
+          GHC.MVar.MVar m_sni3 [Occ=Once] ->
+              case mkWeak# [m_sni3 GHC.Tuple.() ds1_sni0 eta_sni1] of {
+                (#,#) ipv_sni5 [Occ=Once] _ [Occ=Dead] ->
+                    (#,#) [ipv_sni5 GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 eta_B1;
+
+GHC.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule4];
+
+GHC.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.MVar"#;
+
+GHC.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule2];
+
+GHC.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.MVar.$trModule3
+                                     GHC.MVar.$trModule1];
+
+$krep_rmUX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rmUY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rmUZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rmUY GHC.Types.[]];
+
+$krep3_rmV0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rmUX $krep2_rmUZ];
+
+$krep4_rmV1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMVar#
+                                              $krep3_rmV0];
+
+GHC.MVar.$tcMVar2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MVar"#;
+
+GHC.MVar.$tcMVar1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tcMVar2];
+
+GHC.MVar.$tcMVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4036113818353836845##
+                                    5005913288165264115##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tcMVar1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rmV2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep2_rmUZ];
+
+GHC.MVar.$tc'MVar1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rmV1 $krep5_rmV2];
+
+GHC.MVar.$tc'MVar3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MVar"#;
+
+GHC.MVar.$tc'MVar2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tc'MVar3];
+
+GHC.MVar.$tc'MVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [1422225975627779673##
+                                    4396512866399833428##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tc'MVar2
+                                    1#
+                                    GHC.MVar.$tc'MVar1];
+
+GHC.MVar.MVar
+  :: forall a. GHC.Prim.MVar# GHC.Prim.RealWorld a -> GHC.MVar.MVar a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.MVar.MVar [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:55:01.182516995 UTC
+
+GHC.MVar.$fEqMVar_$c==
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_sngJ ds1_sngK]
+        case ds_sngJ of {
+          GHC.MVar.MVar mvar1#_sngM [Occ=Once] ->
+              case ds1_sngK of {
+                GHC.MVar.MVar mvar2#_sngO [Occ=Once] ->
+                    case sameMVar# [mvar1#_sngM mvar2#_sngO] of sat_sngP {
+                      __DEFAULT -> tagToEnum# [sat_sngP];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. GHC.MVar.MVar a -> GHC.MVar.MVar a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_sngQ eta1_sngR]
+        case eta_sngQ of {
+          GHC.MVar.MVar mvar1#_sngT [Occ=Once] ->
+              case eta1_sngR of {
+                GHC.MVar.MVar mvar2#_sngV [Occ=Once] ->
+                    case sameMVar# [mvar1#_sngT mvar2#_sngV] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.MVar.$fEqMVar [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.MVar.MVar a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.MVar.$fEqMVar_$c==
+                                     GHC.MVar.$fEqMVar_$c/=];
+
+GHC.MVar.newEmptyMVar1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_snh0 [Occ=Once] ->
+              let {
+                sat_snh1 [Occ=Once] :: GHC.MVar.MVar a_amJZ
+                [LclId] =
+                    CCCS GHC.MVar.MVar! [ipv1_snh0];
+              } in  Unit# [sat_snh1];
+        };
+
+GHC.MVar.newEmptyMVar :: forall a. GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.MVar.newEmptyMVar1 GHC.Prim.void#;
+
+GHC.MVar.takeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snh2 void_0E]
+        case ds_snh2 of {
+          GHC.MVar.MVar mvar#_snh5 [Occ=Once] ->
+              takeMVar# [mvar#_snh5 GHC.Prim.void#];
+        };
+
+GHC.MVar.takeMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.takeMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.readMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snh6 void_0E]
+        case ds_snh6 of {
+          GHC.MVar.MVar mvar#_snh9 [Occ=Once] ->
+              readMVar# [mvar#_snh9 GHC.Prim.void#];
+        };
+
+GHC.MVar.readMVar :: forall a. GHC.MVar.MVar a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.readMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.putMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snha x_snhb void_0E]
+        case ds_snha of {
+          GHC.MVar.MVar mvar#_snhe [Occ=Once] ->
+              case putMVar# [mvar#_snhe x_snhb GHC.Prim.void#] of s2#_snhf {
+                (##) -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.putMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.putMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.newMVar1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.MVar.MVar a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [value_snhg void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_snhk ->
+              case putMVar# [ipv1_snhk value_snhg GHC.Prim.void#] of s2#_snhl {
+                (##) ->
+                    let {
+                      sat_snhm [Occ=Once] :: GHC.MVar.MVar a_amK9
+                      [LclId] =
+                          CCCS GHC.MVar.MVar! [ipv1_snhk];
+                    } in  Unit# [sat_snhm];
+              };
+        };
+
+GHC.MVar.newMVar :: forall a. a -> GHC.Types.IO (GHC.MVar.MVar a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.newMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.tryTakeMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhn void_0E]
+        case ds_snhn of {
+          GHC.MVar.MVar m_snhq [Occ=Once] ->
+              case tryTakeMVar# [m_snhq GHC.Prim.void#] of {
+                (#,#) ipv1_snht [Occ=Once!] ipv2_snhu [Occ=Once] ->
+                    case ipv1_snht of {
+                      __DEFAULT ->
+                          let {
+                            sat_snhw [Occ=Once] :: GHC.Base.Maybe a_amJr
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_snhu];
+                          } in  Unit# [sat_snhw];
+                      0# -> Unit# [GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryTakeMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.tryTakeMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.tryPutMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhx x_snhy void_0E]
+        case ds_snhx of {
+          GHC.MVar.MVar mvar#_snhB [Occ=Once] ->
+              case tryPutMVar# [mvar#_snhB x_snhy GHC.Prim.void#] of {
+                Unit# ipv1_snhE [Occ=Once!] ->
+                    case ipv1_snhE of {
+                      __DEFAULT -> Unit# [GHC.Types.True];
+                      0# -> Unit# [GHC.Types.False];
+                    };
+              };
+        };
+
+GHC.MVar.tryPutMVar
+  :: forall a. GHC.MVar.MVar a -> a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.tryPutMVar1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.tryReadMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhG void_0E]
+        case ds_snhG of {
+          GHC.MVar.MVar m_snhJ [Occ=Once] ->
+              case tryReadMVar# [m_snhJ GHC.Prim.void#] of {
+                (#,#) ipv1_snhM [Occ=Once!] ipv2_snhN [Occ=Once] ->
+                    case ipv1_snhM of {
+                      __DEFAULT ->
+                          let {
+                            sat_snhP [Occ=Once] :: GHC.Base.Maybe a_amJ7
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_snhN];
+                          } in  Unit# [sat_snhP];
+                      0# -> Unit# [GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.MVar.tryReadMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO (GHC.Base.Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.tryReadMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.isEmptyMVar1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Types.Bool #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhQ void_0E]
+        case ds_snhQ of {
+          GHC.MVar.MVar mv#_snhT [Occ=Once] ->
+              case isEmptyMVar# [mv#_snhT GHC.Prim.void#] of {
+                Unit# ipv1_snhW [Occ=Once!] ->
+                    let {
+                      sat_snhY [Occ=Once] :: GHC.Types.Bool
+                      [LclId] =
+                          [ipv1_snhW] \u []
+                              case ipv1_snhW of {
+                                __DEFAULT -> GHC.Types.True [];
+                                0# -> GHC.Types.False [];
+                              };
+                    } in  Unit# [sat_snhY];
+              };
+        };
+
+GHC.MVar.isEmptyMVar
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.MVar.isEmptyMVar1 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.addMVarFinalizer1
+  :: forall a.
+     GHC.MVar.MVar a
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_snhZ ds1_sni0 void_0E]
+        case ds_snhZ of {
+          GHC.MVar.MVar m_sni3 [Occ=Once] ->
+              case mkWeak# [m_sni3 GHC.Tuple.() ds1_sni0 GHC.Prim.void#] of {
+                Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.MVar.addMVarFinalizer
+  :: forall a. GHC.MVar.MVar a -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.MVar.addMVarFinalizer1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.MVar.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.MVar.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule4];
+
+GHC.MVar.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.MVar"#;
+
+GHC.MVar.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$trModule2];
+
+GHC.MVar.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.MVar.$trModule3
+                                     GHC.MVar.$trModule1];
+
+$krep_rmUX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_rmUY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_rmUZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_rmUY GHC.Types.[]];
+
+$krep3_rmV0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rmUX $krep2_rmUZ];
+
+$krep4_rmV1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMVar#
+                                              $krep3_rmV0];
+
+GHC.MVar.$tcMVar2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MVar"#;
+
+GHC.MVar.$tcMVar1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tcMVar2];
+
+GHC.MVar.$tcMVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4036113818353836845##
+                                    5005913288165264115##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tcMVar1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_rmV2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep2_rmUZ];
+
+GHC.MVar.$tc'MVar1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rmV1 $krep5_rmV2];
+
+GHC.MVar.$tc'MVar3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MVar"#;
+
+GHC.MVar.$tc'MVar2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.MVar.$tc'MVar3];
+
+GHC.MVar.$tc'MVar :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [1422225975627779673##
+                                    4396512866399833428##
+                                    GHC.MVar.$trModule
+                                    GHC.MVar.$tc'MVar2
+                                    1#
+                                    GHC.MVar.$tc'MVar1];
+
+GHC.MVar.MVar
+  :: forall a. GHC.Prim.MVar# GHC.Prim.RealWorld a -> GHC.MVar.MVar a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.MVar.MVar [eta_B1];
+

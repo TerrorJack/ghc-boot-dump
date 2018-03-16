@@ -1,0 +1,3775 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:03:02.42435313 UTC
+
+Result size of Tidy Core
+  = {terms: 2,397, types: 3,007, coercions: 434, joins: 9/63}
+
+-- RHS size: {terms: 17, types: 13, coercions: 0, joins: 0/0}
+GHC.Event.Array.$WAC [InlPrag=INLINE[2]]
+  :: forall a. ForeignPtr a -> Int -> Int -> AC a
+[GblId[DataConWrapper],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UxU)
+                 (dt_a7UBI [Occ=Once] :: ForeignPtr a_a7UxU[sk:1])
+                 (dt_a7UBJ [Occ=Once!] :: Int)
+                 (dt_a7UBK [Occ=Once!] :: Int) ->
+                 case dt_a7UBI of dt_X7UBN { __DEFAULT ->
+                 case dt_a7UBJ of { I# dt_a7UBL [Occ=Once] ->
+                 case dt_a7UBK of { I# dt_a7UBM [Occ=Once] ->
+                 GHC.Event.Array.AC @ a_a7UxU dt_X7UBN dt_a7UBL dt_a7UBM
+                 }
+                 }
+                 }}]
+GHC.Event.Array.$WAC
+  = \ (@ a_a7UxU)
+      (dt_a7UBI [Occ=Once] :: ForeignPtr a_a7UxU[sk:1])
+      (dt_a7UBJ [Occ=Once!] :: Int)
+      (dt_a7UBK [Occ=Once!] :: Int) ->
+      case dt_a7UBI of dt_X7UBN { __DEFAULT ->
+      case dt_a7UBJ of { I# dt_a7UBL [Occ=Once] ->
+      case dt_a7UBK of { I# dt_a7UBM [Occ=Once] ->
+      GHC.Event.Array.AC @ a_a7UxU dt_X7UBN dt_a7UBL dt_a7UBM
+      }
+      }
+      }
+
+-- RHS size: {terms: 22, types: 54, coercions: 8, joins: 0/0}
+GHC.Event.Array.empty1
+  :: forall a. State# RealWorld -> (# State# RealWorld, Array a #)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7V39) (s_X7IBg [Occ=Once] :: State# RealWorld) ->
+                 case newMutVar#
+                        @ GHC.ForeignPtr.Finalizers
+                        @ RealWorld
+                        GHC.ForeignPtr.NoFinalizers
+                        s_X7IBg
+                 of
+                 { (# ipv_i7IAN [Occ=Once], ipv1_i7IAO [Occ=Once] #) ->
+                 case newMutVar#
+                        @ (AC a_a7V39)
+                        @ RealWorld
+                        (GHC.Event.Array.AC
+                           @ a_a7V39
+                           (GHC.ForeignPtr.ForeignPtr
+                              @ a_a7V39 __NULL (GHC.ForeignPtr.PlainForeignPtr ipv1_i7IAO))
+                           0#
+                           0#)
+                        ipv_i7IAN
+                 of
+                 { (# ipv2_X7IFr [Occ=Once], ipv3_X7IFt [Occ=Once] #) ->
+                 (# ipv2_X7IFr,
+                    (GHC.STRef.STRef @ RealWorld @ (AC a_a7V39) ipv3_X7IFt)
+                    `cast` (Sym (GHC.IORef.N:IORef[0]) <AC
+                                                          a_a7V39>_N ; Sym (GHC.Event.Array.N:Array[0]
+                                                                                <a_a7V39>_P)
+                            :: (GHC.STRef.STRef RealWorld (AC a_a7V39) :: *)
+                               ~R# (Array a_a7V39 :: *)) #)
+                 }
+                 }}]
+GHC.Event.Array.empty1
+  = \ (@ a_a7V39) (s_X7IBg :: State# RealWorld) ->
+      case newMutVar#
+             @ GHC.ForeignPtr.Finalizers
+             @ RealWorld
+             GHC.ForeignPtr.NoFinalizers
+             s_X7IBg
+      of
+      { (# ipv_i7IAN, ipv1_i7IAO #) ->
+      case newMutVar#
+             @ (AC a_a7V39)
+             @ RealWorld
+             (GHC.Event.Array.AC
+                @ a_a7V39
+                (GHC.ForeignPtr.ForeignPtr
+                   @ a_a7V39 __NULL (GHC.ForeignPtr.PlainForeignPtr ipv1_i7IAO))
+                0#
+                0#)
+             ipv_i7IAN
+      of
+      { (# ipv2_X7IFr, ipv3_X7IFt #) ->
+      (# ipv2_X7IFr,
+         (GHC.STRef.STRef @ RealWorld @ (AC a_a7V39) ipv3_X7IFt)
+         `cast` (Sym (GHC.IORef.N:IORef[0]) <AC
+                                               a_a7V39>_N ; Sym (GHC.Event.Array.N:Array[0]
+                                                                     <a_a7V39>_P)
+                 :: (GHC.STRef.STRef RealWorld (AC a_a7V39) :: *)
+                    ~R# (Array a_a7V39 :: *)) #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+empty :: forall a. IO (Array a)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.empty1
+               `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <Array a>_R)
+                       :: (forall a.
+                           State# RealWorld -> (# State# RealWorld, Array a #) :: *)
+                          ~R# (forall a. IO (Array a) :: *))}]
+empty
+  = GHC.Event.Array.empty1
+    `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <Array a>_R)
+            :: (forall a.
+                State# RealWorld -> (# State# RealWorld, Array a #) :: *)
+               ~R# (forall a. IO (Array a) :: *))
+
+-- RHS size: {terms: 18, types: 43, coercions: 6, joins: 0/0}
+GHC.Event.Array.length1
+  :: forall a.
+     Array a -> State# RealWorld -> (# State# RealWorld, Int #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UV8)
+                 (ds_d7V6C [Occ=Once] :: Array a_a7UV8)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7V6C
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7UV8>_P ; GHC.IORef.N:IORef[0] <AC a_a7UV8>_N
+                              :: (Array a_a7UV8 :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7UV8) :: *))
+                 of
+                 { GHC.STRef.STRef var#_i7IB3 [Occ=Once] ->
+                 case readMutVar# @ RealWorld @ (AC a_a7UV8) var#_i7IB3 s_i7IAv of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once!] #) ->
+                 case ipv1_i7IAz of
+                 { AC _ [Occ=Dead] dt_d7Vak [Occ=Once] _ [Occ=Dead] ->
+                 (# ipv_i7IAy, GHC.Types.I# dt_d7Vak #)
+                 }
+                 }
+                 }}]
+GHC.Event.Array.length1
+  = \ (@ a_a7UV8)
+      (ds_d7V6C :: Array a_a7UV8)
+      (s_i7IAv :: State# RealWorld) ->
+      case ds_d7V6C
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7UV8>_P ; GHC.IORef.N:IORef[0] <AC a_a7UV8>_N
+                   :: (Array a_a7UV8 :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7UV8) :: *))
+      of
+      { GHC.STRef.STRef var#_i7IB3 ->
+      case readMutVar# @ RealWorld @ (AC a_a7UV8) var#_i7IB3 s_i7IAv of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC ds2_d7V6L dt_d7Vak dt1_d7Val ->
+      (# ipv_i7IAy, GHC.Types.I# dt_d7Vak #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+length :: forall a. Array a -> IO Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.length1
+               `cast` (forall (a :: <*>_N).
+                       <Array a>_R ->_R Sym (GHC.Types.N:IO[0] <Int>_R)
+                       :: (forall a.
+                           Array a -> State# RealWorld -> (# State# RealWorld, Int #) :: *)
+                          ~R# (forall a. Array a -> IO Int :: *))}]
+length
+  = GHC.Event.Array.length1
+    `cast` (forall (a :: <*>_N).
+            <Array a>_R ->_R Sym (GHC.Types.N:IO[0] <Int>_R)
+            :: (forall a.
+                Array a -> State# RealWorld -> (# State# RealWorld, Int #) :: *)
+               ~R# (forall a. Array a -> IO Int :: *))
+
+-- RHS size: {terms: 18, types: 43, coercions: 6, joins: 0/0}
+GHC.Event.Array.capacity1
+  :: forall a.
+     Array a -> State# RealWorld -> (# State# RealWorld, Int #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UUX)
+                 (ds_d7V6n [Occ=Once] :: Array a_a7UUX)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7V6n
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7UUX>_P ; GHC.IORef.N:IORef[0] <AC a_a7UUX>_N
+                              :: (Array a_a7UUX :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7UUX) :: *))
+                 of
+                 { GHC.STRef.STRef var#_i7IB3 [Occ=Once] ->
+                 case readMutVar# @ RealWorld @ (AC a_a7UUX) var#_i7IB3 s_i7IAv of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once!] #) ->
+                 case ipv1_i7IAz of
+                 { AC _ [Occ=Dead] _ [Occ=Dead] dt1_d7Vaj [Occ=Once] ->
+                 (# ipv_i7IAy, GHC.Types.I# dt1_d7Vaj #)
+                 }
+                 }
+                 }}]
+GHC.Event.Array.capacity1
+  = \ (@ a_a7UUX)
+      (ds_d7V6n :: Array a_a7UUX)
+      (s_i7IAv :: State# RealWorld) ->
+      case ds_d7V6n
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7UUX>_P ; GHC.IORef.N:IORef[0] <AC a_a7UUX>_N
+                   :: (Array a_a7UUX :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7UUX) :: *))
+      of
+      { GHC.STRef.STRef var#_i7IB3 ->
+      case readMutVar# @ RealWorld @ (AC a_a7UUX) var#_i7IB3 s_i7IAv of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC ds2_d7V6w dt_d7Vai dt1_d7Vaj ->
+      (# ipv_i7IAy, GHC.Types.I# dt1_d7Vaj #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+capacity :: forall a. Array a -> IO Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.capacity1
+               `cast` (forall (a :: <*>_N).
+                       <Array a>_R ->_R Sym (GHC.Types.N:IO[0] <Int>_R)
+                       :: (forall a.
+                           Array a -> State# RealWorld -> (# State# RealWorld, Int #) :: *)
+                          ~R# (forall a. Array a -> IO Int :: *))}]
+capacity
+  = GHC.Event.Array.capacity1
+    `cast` (forall (a :: <*>_N).
+            <Array a>_R ->_R Sym (GHC.Types.N:IO[0] <Int>_R)
+            :: (forall a.
+                Array a -> State# RealWorld -> (# State# RealWorld, Int #) :: *)
+               ~R# (forall a. Array a -> IO Int :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r7WM4 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_r7WM4 = "GHC.Event.Array."#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_r7WM5 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_r7WM5 = "unsafeRead"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_r7WM6 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_r7WM6 = ": bounds error, index "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl3_r7WM7 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl3_r7WM7 = ", capacity "#
+
+-- RHS size: {terms: 31, types: 30, coercions: 0, joins: 0/0}
+GHC.Event.Array.$wlvl1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a. Int# -> Int# -> IO a
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []]
+GHC.Event.Array.$wlvl1
+  = \ (@ a_s7Wkd) (ww_s7Wki :: Int#) (ww1_s7Wkm :: Int#) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ (IO a_s7Wkd)
+        (unpackAppendCString#
+           lvl_r7WM4
+           (unpackAppendCString#
+              lvl1_r7WM5
+              (unpackAppendCString#
+                 lvl2_r7WM6
+                 (case GHC.Show.$wshowSignedInt 0# ww1_s7Wkm (GHC.Types.[] @ Char)
+                  of
+                  { (# ww5_i7NVe, ww6_i7NVf #) ->
+                  ++
+                    @ Char
+                    (GHC.Types.: @ Char ww5_i7NVe ww6_i7NVf)
+                    (unpackAppendCString#
+                       lvl3_r7WM7
+                       (case GHC.Show.$wshowSignedInt 0# ww_s7Wki (GHC.Types.[] @ Char) of
+                        { (# ww3_X7NX8, ww7_X7NXa #) ->
+                        GHC.Types.: @ Char ww3_X7NX8 ww7_X7NXa
+                        }))
+                  }))))
+
+-- RHS size: {terms: 53, types: 69, coercions: 2, joins: 0/0}
+GHC.Event.Array.$wunsafeRead [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     MutVar# RealWorld (AC a)
+     -> Int# -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<S(LLC(C(C(S(SL))))LLLLL),1*U(A,A,1*C1(C1(C1(U(U,U)))),A,A,A,A,A)><S,U><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 0 0 0] 203 30}]
+GHC.Event.Array.$wunsafeRead
+  = \ (@ a_s7Wkp)
+      (w_s7Wkq :: Storable a_s7Wkp)
+      (ww_s7Wkw :: MutVar# RealWorld (AC a_s7Wkp))
+      (ww1_s7WkA :: Int#)
+      (w1_s7Wkt :: State# RealWorld) ->
+      case readMutVar# @ RealWorld @ (AC a_s7Wkp) ww_s7Wkw w1_s7Wkt of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC es_a7UyV dt_d7Vag dt1_d7Vah ->
+      case es_a7UyV of { GHC.ForeignPtr.ForeignPtr ds2_s7WAi r_s7WAj ->
+      case <# ww1_s7WkA 0# of {
+        __DEFAULT ->
+          case >=# ww1_s7WkA dt1_d7Vah of {
+            __DEFAULT ->
+              case ((peekElemOff
+                       @ a_s7Wkp
+                       w_s7Wkq
+                       (GHC.Ptr.Ptr @ a_s7Wkp ds2_s7WAi)
+                       (GHC.Types.I# ww1_s7WkA))
+                    `cast` (GHC.Types.N:IO[0] <a_s7Wkp>_R
+                            :: (IO a_s7Wkp :: *)
+                               ~R# (State# RealWorld -> (# State# RealWorld, a_s7Wkp #) :: *)))
+                     ipv_i7IAy
+              of
+              { (# ipv2_X7IBQ, ipv3_X7IBS #) ->
+              case touch#
+                     @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents r_s7WAj ipv2_X7IBQ
+              of s'_a7ILd
+              { __DEFAULT ->
+              (# s'_a7ILd, ipv3_X7IBS #)
+              }
+              };
+            1# ->
+              case GHC.Event.Array.$wlvl1 @ a_s7Wkp dt1_d7Vah ww1_s7WkA
+              of wild2_00 {
+              }
+          };
+        1# ->
+          case GHC.Event.Array.$wlvl1 @ a_s7Wkp dt1_d7Vah ww1_s7WkA
+          of wild2_00 {
+          }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 20, coercions: 6, joins: 0/0}
+GHC.Event.Array.unsafeRead1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Array a -> Int -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<S(LLC(C(C(S(SL))))LLLLL),1*U(A,A,1*C1(C1(C1(U(U,U)))),A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7Wkp)
+                 (w_s7Wkq [Occ=Once] :: Storable a_s7Wkp)
+                 (w1_s7Wkr [Occ=Once] :: Array a_s7Wkp)
+                 (w2_s7Wks [Occ=Once!] :: Int)
+                 (w3_s7Wkt [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7Wkr
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_s7Wkp>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wkp>_N
+                              :: (Array a_s7Wkp :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wkp) :: *))
+                 of
+                 { GHC.STRef.STRef ww1_s7Wkw [Occ=Once] ->
+                 case w2_s7Wks of { I# ww3_s7WkA [Occ=Once] ->
+                 GHC.Event.Array.$wunsafeRead
+                   @ a_s7Wkp w_s7Wkq ww1_s7Wkw ww3_s7WkA w3_s7Wkt
+                 }
+                 }}]
+GHC.Event.Array.unsafeRead1
+  = \ (@ a_s7Wkp)
+      (w_s7Wkq :: Storable a_s7Wkp)
+      (w1_s7Wkr :: Array a_s7Wkp)
+      (w2_s7Wks :: Int)
+      (w3_s7Wkt :: State# RealWorld) ->
+      case w1_s7Wkr
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_s7Wkp>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wkp>_N
+                   :: (Array a_s7Wkp :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wkp) :: *))
+      of
+      { GHC.STRef.STRef ww1_s7Wkw ->
+      case w2_s7Wks of { I# ww3_s7WkA ->
+      GHC.Event.Array.$wunsafeRead
+        @ a_s7Wkp w_s7Wkq ww1_s7Wkw ww3_s7WkA w3_s7Wkt
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+unsafeRead :: forall a. Storable a => Array a -> Int -> IO a
+[GblId,
+ Arity=4,
+ Str=<S(LLC(C(C(S(SL))))LLLLL),1*U(A,A,1*C1(C1(C1(U(U,U)))),A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.unsafeRead1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Array a>_R
+                       ->_R <Int>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Array a
+                           -> Int -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. Storable a => Array a -> Int -> IO a :: *))}]
+unsafeRead
+  = GHC.Event.Array.unsafeRead1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Array a>_R
+            ->_R <Int>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                Storable a =>
+                Array a
+                -> Int -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. Storable a => Array a -> Int -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl4_r7WM8 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl4_r7WM8 = "unsafeWrite'"#
+
+-- RHS size: {terms: 30, types: 28, coercions: 0, joins: 0/0}
+GHC.Event.Array.$wlvl [InlPrag=NOUSERINLINE[0]]
+  :: Int# -> Int# -> IO ()
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []]
+GHC.Event.Array.$wlvl
+  = \ (ww_s7WkH :: Int#) (ww1_s7WkL :: Int#) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ (IO ())
+        (unpackAppendCString#
+           lvl_r7WM4
+           (unpackAppendCString#
+              lvl4_r7WM8
+              (unpackAppendCString#
+                 lvl2_r7WM6
+                 (case GHC.Show.$wshowSignedInt 0# ww1_s7WkL (GHC.Types.[] @ Char)
+                  of
+                  { (# ww5_i7NVe, ww6_i7NVf #) ->
+                  ++
+                    @ Char
+                    (GHC.Types.: @ Char ww5_i7NVe ww6_i7NVf)
+                    (unpackAppendCString#
+                       lvl3_r7WM7
+                       (case GHC.Show.$wshowSignedInt 0# ww_s7WkH (GHC.Types.[] @ Char) of
+                        { (# ww3_X7NXa, ww7_X7NXc #) ->
+                        GHC.Types.: @ Char ww3_X7NXa ww7_X7NXc
+                        }))
+                  }))))
+
+-- RHS size: {terms: 46, types: 41, coercions: 2, joins: 0/0}
+GHC.Event.Array.$wunsafeWrite' [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Addr#
+     -> GHC.ForeignPtr.ForeignPtrContents
+     -> Int#
+     -> Int#
+     -> a
+     -> State# RealWorld
+     -> (# State# RealWorld, () #)
+[GblId,
+ Arity=7,
+ Str=<S(LLLC(C(C(C(S(SL)))))LLLL),1*U(A,A,A,1*C1(C1(C1(C1(U(U,U))))),A,A,A,A)><L,U><L,U><S,U><S,U><L,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 0 0 0 0 0 0] 192 30}]
+GHC.Event.Array.$wunsafeWrite'
+  = \ (@ a_s7WkO)
+      (w_s7WkP :: Storable a_s7WkO)
+      (ww_s7WkZ :: Addr#)
+      (ww1_s7Wl0 :: GHC.ForeignPtr.ForeignPtrContents)
+      (ww2_s7Wl3 :: Int#)
+      (ww3_s7Wl7 :: Int#)
+      (w1_s7WkS :: a_s7WkO)
+      (w2_s7WkT :: State# RealWorld) ->
+      case <# ww3_s7Wl7 0# of {
+        __DEFAULT ->
+          case >=# ww3_s7Wl7 ww2_s7Wl3 of {
+            __DEFAULT ->
+              case ((pokeElemOff
+                       @ a_s7WkO
+                       w_s7WkP
+                       (GHC.Ptr.Ptr @ a_s7WkO ww_s7WkZ)
+                       (GHC.Types.I# ww3_s7Wl7)
+                       w1_s7WkS)
+                    `cast` (GHC.Types.N:IO[0] <()>_R
+                            :: (IO () :: *)
+                               ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                     w2_s7WkT
+              of
+              { (# ipv_i7IAy, ipv1_i7IAz #) ->
+              case touch#
+                     @ 'LiftedRep
+                     @ GHC.ForeignPtr.ForeignPtrContents
+                     ww1_s7Wl0
+                     ipv_i7IAy
+              of s'_a7ILd
+              { __DEFAULT ->
+              (# s'_a7ILd, ipv1_i7IAz #)
+              }
+              };
+            1# -> case GHC.Event.Array.$wlvl ww2_s7Wl3 ww3_s7Wl7 of wild_00 { }
+          };
+        1# -> case GHC.Event.Array.$wlvl ww2_s7Wl3 ww3_s7Wl7 of wild_00 { }
+      }
+
+-- RHS size: {terms: 23, types: 23, coercions: 0, joins: 0/0}
+GHC.Event.Array.unsafeWrite2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     AC a -> Int -> a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLC(C(C(C(S(SL)))))LLLL),1*U(A,A,A,1*C1(C1(C1(C1(U(U,U))))),A,A,A,A)><S(S(SL)LS),1*U(U(U,U),A,U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=5,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7WkO)
+                 (w_s7WkP [Occ=Once] :: Storable a_s7WkO)
+                 (w1_s7WkQ [Occ=Once!] :: AC a_s7WkO)
+                 (w2_s7WkR [Occ=Once!] :: Int)
+                 (w3_s7WkS [Occ=Once] :: a_s7WkO)
+                 (w4_s7WkT [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7WkQ of
+                 { AC ww1_s7WkW [Occ=Once!] _ [Occ=Dead] ww3_s7Wl3 [Occ=Once] ->
+                 case ww1_s7WkW of
+                 { GHC.ForeignPtr.ForeignPtr ww5_s7WkZ [Occ=Once]
+                                             ww6_s7Wl0 [Occ=Once] ->
+                 case w2_s7WkR of { I# ww8_s7Wl7 [Occ=Once] ->
+                 GHC.Event.Array.$wunsafeWrite'
+                   @ a_s7WkO
+                   w_s7WkP
+                   ww5_s7WkZ
+                   ww6_s7Wl0
+                   ww3_s7Wl3
+                   ww8_s7Wl7
+                   w3_s7WkS
+                   w4_s7WkT
+                 }
+                 }
+                 }}]
+GHC.Event.Array.unsafeWrite2
+  = \ (@ a_s7WkO)
+      (w_s7WkP :: Storable a_s7WkO)
+      (w1_s7WkQ :: AC a_s7WkO)
+      (w2_s7WkR :: Int)
+      (w3_s7WkS :: a_s7WkO)
+      (w4_s7WkT :: State# RealWorld) ->
+      case w1_s7WkQ of { AC ww1_s7WkW ww2_s7Wl2 ww3_s7Wl3 ->
+      case ww1_s7WkW of
+      { GHC.ForeignPtr.ForeignPtr ww5_s7WAq ww6_s7WAr ->
+      case w2_s7WkR of { I# ww8_s7Wl7 ->
+      GHC.Event.Array.$wunsafeWrite'
+        @ a_s7WkO
+        w_s7WkP
+        ww5_s7WAq
+        ww6_s7WAr
+        ww3_s7Wl3
+        ww8_s7Wl7
+        w3_s7WkS
+        w4_s7WkT
+      }
+      }
+      }
+
+-- RHS size: {terms: 20, types: 35, coercions: 6, joins: 0/0}
+GHC.Event.Array.unsafeWrite1
+  :: forall a.
+     Storable a =>
+     Array a
+     -> Int -> a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLC(C(C(C(S(SL)))))LLLL),1*U(A,A,A,1*C1(C1(C1(C1(U(U,U))))),A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=5,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UUg)
+                 ($dStorable_a7UUi [Occ=Once] :: Storable a_a7UUg)
+                 (ds_d7V64 [Occ=Once] :: Array a_a7UUg)
+                 (ix_a7UyZ [Occ=Once] :: Int)
+                 (a1_a7Uz0 [Occ=Once] :: a_a7UUg)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7V64
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7UUg>_P ; GHC.IORef.N:IORef[0] <AC a_a7UUg>_N
+                              :: (Array a_a7UUg :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7UUg) :: *))
+                 of
+                 { GHC.STRef.STRef var#_i7IB3 [Occ=Once] ->
+                 case readMutVar# @ RealWorld @ (AC a_a7UUg) var#_i7IB3 s_i7IAv of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                 GHC.Event.Array.unsafeWrite2
+                   @ a_a7UUg $dStorable_a7UUi ipv1_i7IAz ix_a7UyZ a1_a7Uz0 ipv_i7IAy
+                 }
+                 }}]
+GHC.Event.Array.unsafeWrite1
+  = \ (@ a_a7UUg)
+      ($dStorable_a7UUi :: Storable a_a7UUg)
+      (ds_d7V64 :: Array a_a7UUg)
+      (ix_a7UyZ :: Int)
+      (a1_a7Uz0 :: a_a7UUg)
+      (s_i7IAv :: State# RealWorld) ->
+      case ds_d7V64
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7UUg>_P ; GHC.IORef.N:IORef[0] <AC a_a7UUg>_N
+                   :: (Array a_a7UUg :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7UUg) :: *))
+      of
+      { GHC.STRef.STRef var#_i7IB3 ->
+      case readMutVar# @ RealWorld @ (AC a_a7UUg) var#_i7IB3 s_i7IAv of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      GHC.Event.Array.unsafeWrite2
+        @ a_a7UUg $dStorable_a7UUi ipv1_i7IAz ix_a7UyZ a1_a7Uz0 ipv_i7IAy
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+unsafeWrite :: forall a. Storable a => Array a -> Int -> a -> IO ()
+[GblId,
+ Arity=5,
+ Str=<S(LLLC(C(C(C(S(SL)))))LLLL),1*U(A,A,A,1*C1(C1(C1(C1(U(U,U))))),A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.unsafeWrite1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Array a>_R
+                       ->_R <Int>_R
+                       ->_R <a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Array a
+                           -> Int -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. Storable a => Array a -> Int -> a -> IO () :: *))}]
+unsafeWrite
+  = GHC.Event.Array.unsafeWrite1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Array a>_R
+            ->_R <Int>_R
+            ->_R <a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Storable a =>
+                Array a
+                -> Int -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Storable a => Array a -> Int -> a -> IO () :: *))
+
+-- RHS size: {terms: 43, types: 70, coercions: 2, joins: 0/0}
+GHC.Event.Array.$wunsafeLoad [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     MutVar# RealWorld (AC a)
+     -> (Ptr a -> Int -> IO Int)
+     -> State# RealWorld
+     -> (# State# RealWorld, Int #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><C(C(C(S(SL)))),1*C1(C1(C1(U(U,U(U)))))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 60 0] 105 30}]
+GHC.Event.Array.$wunsafeLoad
+  = \ (@ a_s7Wla)
+      (ww_s7Wlg :: MutVar# RealWorld (AC a_s7Wla))
+      (w_s7Wlc :: Ptr a_s7Wla -> Int -> IO Int)
+      (w1_s7Wld :: State# RealWorld) ->
+      case readMutVar# @ RealWorld @ (AC a_s7Wla) ww_s7Wlg w1_s7Wld of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC es_a7Uz9 dt_d7Vac dt1_d7Vad ->
+      case es_a7Uz9 of wild1_s7WAt
+      { GHC.ForeignPtr.ForeignPtr ds2_s7WAu r_s7WAv ->
+      case ((w_s7Wlc
+               (GHC.Ptr.Ptr @ a_s7Wla ds2_s7WAu) (GHC.Types.I# dt1_d7Vad))
+            `cast` (GHC.Types.N:IO[0] <Int>_R
+                    :: (IO Int :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, Int #) :: *)))
+             ipv_i7IAy
+      of
+      { (# ipv2_X7IC0, ipv3_X7IC2 #) ->
+      case touch#
+             @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents r_s7WAv ipv2_X7IC0
+      of s'_a7ILd
+      { __DEFAULT ->
+      case writeMutVar#
+             @ RealWorld
+             @ (AC a_s7Wla)
+             ww_s7Wlg
+             (case ipv3_X7IC2 of { I# dt3_a7UBL ->
+              GHC.Event.Array.AC @ a_s7Wla wild1_s7WAt dt3_a7UBL dt1_d7Vad
+              })
+             s'_a7ILd
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (# s2#_i7IBe, ipv3_X7IC2 #)
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 11, types: 20, coercions: 6, joins: 0/0}
+GHC.Event.Array.unsafeLoad1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Array a
+     -> (Ptr a -> Int -> IO Int)
+     -> State# RealWorld
+     -> (# State# RealWorld, Int #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(C(C(S(SL)))),1*C1(C1(C1(U(U,U(U)))))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7Wla)
+                 (w_s7Wlb [Occ=Once] :: Array a_s7Wla)
+                 (w1_s7Wlc [Occ=Once] :: Ptr a_s7Wla -> Int -> IO Int)
+                 (w2_s7Wld [Occ=Once] :: State# RealWorld) ->
+                 case w_s7Wlb
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_s7Wla>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wla>_N
+                              :: (Array a_s7Wla :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wla) :: *))
+                 of
+                 { GHC.STRef.STRef ww1_s7Wlg [Occ=Once] ->
+                 GHC.Event.Array.$wunsafeLoad @ a_s7Wla ww1_s7Wlg w1_s7Wlc w2_s7Wld
+                 }}]
+GHC.Event.Array.unsafeLoad1
+  = \ (@ a_s7Wla)
+      (w_s7Wlb :: Array a_s7Wla)
+      (w1_s7Wlc :: Ptr a_s7Wla -> Int -> IO Int)
+      (w2_s7Wld :: State# RealWorld) ->
+      case w_s7Wlb
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_s7Wla>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wla>_N
+                   :: (Array a_s7Wla :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wla) :: *))
+      of
+      { GHC.STRef.STRef ww1_s7Wlg ->
+      GHC.Event.Array.$wunsafeLoad @ a_s7Wla ww1_s7Wlg w1_s7Wlc w2_s7Wld
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+unsafeLoad
+  :: forall a. Array a -> (Ptr a -> Int -> IO Int) -> IO Int
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(C(C(S(SL)))),1*C1(C1(C1(U(U,U(U)))))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.unsafeLoad1
+               `cast` (forall (a :: <*>_N).
+                       <Array a>_R
+                       ->_R <Ptr a -> Int -> IO Int>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Int>_R)
+                       :: (forall a.
+                           Array a
+                           -> (Ptr a -> Int -> IO Int)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Int #) :: *)
+                          ~R# (forall a.
+                               Array a -> (Ptr a -> Int -> IO Int) -> IO Int :: *))}]
+unsafeLoad
+  = GHC.Event.Array.unsafeLoad1
+    `cast` (forall (a :: <*>_N).
+            <Array a>_R
+            ->_R <Ptr a -> Int -> IO Int>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Int>_R)
+            :: (forall a.
+                Array a
+                -> (Ptr a -> Int -> IO Int)
+                -> State# RealWorld
+                -> (# State# RealWorld, Int #) :: *)
+               ~R# (forall a. Array a -> (Ptr a -> Int -> IO Int) -> IO Int :: *))
+
+-- RHS size: {terms: 35, types: 70, coercions: 8, joins: 0/0}
+GHC.Event.Array.useAsPtr1
+  :: forall a b.
+     Array a
+     -> (Ptr a -> Int -> IO b)
+     -> State# RealWorld
+     -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(C(C(S(SL)))),1*C1(C1(C1(U(U,U))))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UTd)
+                 (@ b_a7UTe)
+                 (ds_d7V5r [Occ=Once] :: Array a_a7UTd)
+                 (f_a7Uzr [Occ=Once!] :: Ptr a_a7UTd -> Int -> IO b_a7UTe)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7V5r
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7UTd>_P ; GHC.IORef.N:IORef[0] <AC a_a7UTd>_N
+                              :: (Array a_a7UTd :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7UTd) :: *))
+                 of
+                 { GHC.STRef.STRef var#_i7IB3 [Occ=Once] ->
+                 case readMutVar# @ RealWorld @ (AC a_a7UTd) var#_i7IB3 s_i7IAv of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once!] #) ->
+                 case ipv1_i7IAz of
+                 { AC es_a7Uzs [Occ=Once!] dt_d7Vaa [Occ=Once] _ [Occ=Dead] ->
+                 case es_a7Uzs of
+                 { GHC.ForeignPtr.ForeignPtr ds2_s7VxF [Occ=Once]
+                                             r_s7VxG [Occ=Once] ->
+                 case ((f_a7Uzr
+                          (GHC.Ptr.Ptr @ a_a7UTd ds2_s7VxF) (GHC.Types.I# dt_d7Vaa))
+                       `cast` (GHC.Types.N:IO[0] <b_a7UTe>_R
+                               :: (IO b_a7UTe :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, b_a7UTe #) :: *)))
+                        ipv_i7IAy
+                 of
+                 { (# ipv2_X7IC6 [Occ=Once], ipv3_X7IC8 [Occ=Once] #) ->
+                 case touch#
+                        @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents r_s7VxG ipv2_X7IC6
+                 of s'_a7ILd
+                 { __DEFAULT ->
+                 (# s'_a7ILd, ipv3_X7IC8 #)
+                 }
+                 }
+                 }
+                 }
+                 }
+                 }}]
+GHC.Event.Array.useAsPtr1
+  = \ (@ a_a7UTd)
+      (@ b_a7UTe)
+      (ds_d7V5r :: Array a_a7UTd)
+      (f_a7Uzr :: Ptr a_a7UTd -> Int -> IO b_a7UTe)
+      (s_i7IAv :: State# RealWorld) ->
+      case ds_d7V5r
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7UTd>_P ; GHC.IORef.N:IORef[0] <AC a_a7UTd>_N
+                   :: (Array a_a7UTd :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7UTd) :: *))
+      of
+      { GHC.STRef.STRef var#_i7IB3 ->
+      case readMutVar# @ RealWorld @ (AC a_a7UTd) var#_i7IB3 s_i7IAv of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC es_a7Uzs dt_d7Vaa dt1_d7Vab ->
+      case es_a7Uzs of { GHC.ForeignPtr.ForeignPtr ds2_s7WAy r_s7WAz ->
+      case ((f_a7Uzr
+               (GHC.Ptr.Ptr @ a_a7UTd ds2_s7WAy) (GHC.Types.I# dt_d7Vaa))
+            `cast` (GHC.Types.N:IO[0] <b_a7UTe>_R
+                    :: (IO b_a7UTe :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, b_a7UTe #) :: *)))
+             ipv_i7IAy
+      of
+      { (# ipv2_X7IC6, ipv3_X7IC8 #) ->
+      case touch#
+             @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents r_s7WAz ipv2_X7IC6
+      of s'_a7ILd
+      { __DEFAULT ->
+      (# s'_a7ILd, ipv3_X7IC8 #)
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 18, joins: 0/0}
+useAsPtr :: forall a b. Array a -> (Ptr a -> Int -> IO b) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(C(C(S(SL)))),1*C1(C1(C1(U(U,U))))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.useAsPtr1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <Array a>_R
+                       ->_R <Ptr a -> Int -> IO b>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           Array a
+                           -> (Ptr a -> Int -> IO b)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. Array a -> (Ptr a -> Int -> IO b) -> IO b :: *))}]
+useAsPtr
+  = GHC.Event.Array.useAsPtr1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <Array a>_R
+            ->_R <Ptr a -> Int -> IO b>_R
+            ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                Array a
+                -> (Ptr a -> Int -> IO b)
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. Array a -> (Ptr a -> Int -> IO b) -> IO b :: *))
+
+-- RHS size: {terms: 11, types: 14, coercions: 0, joins: 0/0}
+GHC.Event.Array.clear2 :: forall a. AC a -> (AC a, ())
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SLL),1*U(U,A,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UT6) (a1_a7RtR [Occ=Once!] :: AC a_a7UT6) ->
+                 case a1_a7RtR of
+                 { AC es_a7UzE [Occ=Once] _ [Occ=Dead] dt1_d7Va9 [Occ=Once] ->
+                 (GHC.Event.Array.AC @ a_a7UT6 es_a7UzE 0# dt1_d7Va9, GHC.Tuple.())
+                 }}]
+GHC.Event.Array.clear2
+  = \ (@ a_a7UT6) (a1_a7RtR :: AC a_a7UT6) ->
+      case a1_a7RtR of { AC es_a7UzE dt_d7Va8 dt1_d7Va9 ->
+      (GHC.Event.Array.AC @ a_a7UT6 es_a7UzE 0# dt1_d7Va9, GHC.Tuple.())
+      }
+
+-- RHS size: {terms: 18, types: 42, coercions: 6, joins: 0/0}
+GHC.Event.Array.clear1
+  :: forall a.
+     Array a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7UT6)
+                 (ds_d7V5e [Occ=Once] :: Array a_a7UT6)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7V5e
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7UT6>_P ; GHC.IORef.N:IORef[0] <AC a_a7UT6>_N
+                              :: (Array a_a7UT6 :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7UT6) :: *))
+                 of
+                 { GHC.STRef.STRef r#_a7Ivm [Occ=Once] ->
+                 case atomicModifyMutVar#
+                        @ RealWorld
+                        @ (AC a_a7UT6)
+                        @ (AC a_a7UT6, ())
+                        @ ()
+                        r#_a7Ivm
+                        (GHC.Event.Array.clear2 @ a_a7UT6)
+                        eta_B1
+                 of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once!] #) ->
+                 case ipv1_i7IAz of { () -> (# ipv_i7IAy, GHC.Tuple.() #) }
+                 }
+                 }}]
+GHC.Event.Array.clear1
+  = \ (@ a_a7UT6)
+      (ds_d7V5e :: Array a_a7UT6)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d7V5e
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7UT6>_P ; GHC.IORef.N:IORef[0] <AC a_a7UT6>_N
+                   :: (Array a_a7UT6 :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7UT6) :: *))
+      of
+      { GHC.STRef.STRef r#_a7Ivm ->
+      case atomicModifyMutVar#
+             @ RealWorld
+             @ (AC a_a7UT6)
+             @ (AC a_a7UT6, ())
+             @ ()
+             r#_a7Ivm
+             (GHC.Event.Array.clear2 @ a_a7UT6)
+             eta_B1
+      of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { () -> (# ipv_i7IAy, GHC.Tuple.() #) }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+clear :: forall a. Array a -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.clear1
+               `cast` (forall (a :: <*>_N).
+                       <Array a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Array a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. Array a -> IO () :: *))}]
+clear
+  = GHC.Event.Array.clear1
+    `cast` (forall (a :: <*>_N).
+            <Array a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Array a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Array a -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl5_r7WM9 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl5_r7WM9 = "undefined"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl6_r7WMa :: [Char]
+[GblId]
+lvl6_r7WMa = unpackCString# lvl5_r7WM9
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Event.Array.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_r7WMb :: [Char]
+[GblId]
+lvl7_r7WMb = unpackCString# GHC.Event.Array.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Event.Array.$trModule2 = "GHC.Event.Array"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl8_r7WMc :: [Char]
+[GblId]
+lvl8_r7WMc = unpackCString# GHC.Event.Array.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl9_r7WMd :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl9_r7WMd = "./GHC/Event/Array.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl10_r7WMe :: [Char]
+[GblId]
+lvl10_r7WMe = unpackCString# lvl9_r7WMd
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl11_r7WMf :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl11_r7WMf = GHC.Types.I# 179#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl12_r7WMg :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl12_r7WMg = GHC.Types.I# 29#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl13_r7WMh :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl13_r7WMh = GHC.Types.I# 38#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl14_r7WMi :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl14_r7WMi
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl11_r7WMf
+      lvl12_r7WMg
+      lvl11_r7WMf
+      lvl13_r7WMh
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl15_r7WMj :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl15_r7WMj
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl14_r7WMi GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.forM_1 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.forM_1
+  = \ (@ a_a7URw) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7URw
+        (lvl15_r7WMj
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 73, types: 113, coercions: 20, joins: 2/4}
+forM_ :: forall a. Storable a => Array a -> (a -> IO ()) -> IO ()
+[GblId,
+ Arity=1,
+ Str=<L,U(1*C1(U(U)),A,A,A,A,A,C(C1(U(U,U))),A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60] 225 60}]
+forM_
+  = \ (@ a_a7URw) ($dStorable_a7URy :: Storable a_a7URw) ->
+      let {
+        size_s7Vyd [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        size_s7Vyd
+          = sizeOf
+              @ a_a7URw $dStorable_a7URy (GHC.Event.Array.forM_1 @ a_a7URw) } in
+      (\ (ary_a7UzG :: Array a_a7URw)
+         (g_a7UzH :: a_a7URw -> IO ())
+         (eta_B1 :: State# RealWorld) ->
+         case ary_a7UzG
+              `cast` (GHC.Event.Array.N:Array[0]
+                          <a_a7URw>_P ; GHC.IORef.N:IORef[0] <AC a_a7URw>_N
+                      :: (Array a_a7URw :: *)
+                         ~R# (GHC.STRef.STRef RealWorld (AC a_a7URw) :: *))
+         of
+         { GHC.STRef.STRef var#_i7IB3 ->
+         case readMutVar# @ RealWorld @ (AC a_a7URw) var#_i7IB3 eta_B1 of
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case ipv1_i7IAz of { AC es_a7UzN dt_d7Va6 dt1_d7Va7 ->
+         case es_a7UzN of { GHC.ForeignPtr.ForeignPtr fo_s7WAQ ds2_s7WAR ->
+         case size_s7Vyd of { I# y_i7MWP ->
+         let {
+           offset_s7Wp6 [Dmd=<S,U>] :: Int#
+           [LclId]
+           offset_s7Wp6 = *# dt_d7Va6 y_i7MWP } in
+         join {
+           exit_X1P [Dmd=<L,C(U)>]
+             :: State# RealWorld -> (# State# RealWorld, () #)
+           [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+           exit_X1P (w_s7Wlq [OS=OneShot] :: State# RealWorld)
+             = case touch#
+                      @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents ds2_s7WAR w_s7Wlq
+               of s'_a7ILd
+               { __DEFAULT ->
+               (# s'_a7ILd, GHC.Tuple.() #)
+               } } in
+         joinrec {
+           $wgo_s7Wlv [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+             :: Int# -> State# RealWorld -> (# State# RealWorld, () #)
+           [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+           $wgo_s7Wlv (ww_s7Wlt :: Int#) (w_s7Wlq :: State# RealWorld)
+             = case >=# ww_s7Wlt offset_s7Wp6 of {
+                 __DEFAULT ->
+                   case ((peek
+                            @ a_a7URw
+                            $dStorable_a7URy
+                            (GHC.Ptr.Ptr @ a_a7URw (plusAddr# fo_s7WAQ ww_s7Wlt)))
+                         `cast` (GHC.Types.N:IO[0] <a_a7URw>_R
+                                 :: (IO a_a7URw :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, a_a7URw #) :: *)))
+                          w_s7Wlq
+                   of
+                   { (# ipv2_X7ICE, ipv3_X7ICG #) ->
+                   case ((g_a7UzH ipv3_X7ICG)
+                         `cast` (GHC.Types.N:IO[0] <()>_R
+                                 :: (IO () :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                          ipv2_X7ICE
+                   of
+                   { (# ipv4_i7JiK, ipv5_i7JiL #) ->
+                   jump $wgo_s7Wlv (+# ww_s7Wlt y_i7MWP) ipv4_i7JiK
+                   }
+                   };
+                 1# -> jump exit_X1P w_s7Wlq
+               }; } in
+         jump $wgo_s7Wlv 0# ipv_i7IAy
+         }
+         }
+         }
+         }
+         })
+      `cast` (<Array a_a7URw>_R
+              ->_R <a_a7URw -> IO ()>_R
+              ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+              :: (Array a_a7URw
+                  -> (a_a7URw -> IO ())
+                  -> State# RealWorld
+                  -> (# State# RealWorld, () #) :: *)
+                 ~R# (Array a_a7URw -> (a_a7URw -> IO ()) -> IO () :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl16_r7WMk :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl16_r7WMk = GHC.Types.I# 194#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl17_r7WMl :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl17_r7WMl = GHC.Types.I# 33#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl18_r7WMm :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl18_r7WMm = GHC.Types.I# 42#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl19_r7WMn :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl19_r7WMn
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl16_r7WMk
+      lvl17_r7WMl
+      lvl16_r7WMk
+      lvl18_r7WMm
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl20_r7WMo :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl20_r7WMo
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl19_r7WMn GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.loop1 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.loop1
+  = \ (@ a_a7UPB) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7UPB
+        (lvl20_r7WMo
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 98, types: 154, coercions: 27, joins: 3/5}
+loop
+  :: forall a b.
+     Storable a =>
+     Array a -> b -> (b -> a -> IO (b, Bool)) -> IO ()
+[GblId,
+ Arity=1,
+ Str=<L,U(1*C1(U(U)),A,A,A,A,A,C(C1(U(U,U))),A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60] 281 60}]
+loop
+  = \ (@ a_a7UPB)
+      (@ b_a7UPC)
+      ($dStorable_a7UPE :: Storable a_a7UPB) ->
+      let {
+        size_s7VyR [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        size_s7VyR
+          = sizeOf
+              @ a_a7UPB $dStorable_a7UPE (GHC.Event.Array.loop1 @ a_a7UPB) } in
+      (\ (ary_a7UzU :: Array a_a7UPB)
+         (z_a7UzV :: b_a7UPC)
+         (g_a7UzW :: b_a7UPC -> a_a7UPB -> IO (b_a7UPC, Bool))
+         (eta_B1 :: State# RealWorld) ->
+         case ary_a7UzU
+              `cast` (GHC.Event.Array.N:Array[0]
+                          <a_a7UPB>_P ; GHC.IORef.N:IORef[0] <AC a_a7UPB>_N
+                      :: (Array a_a7UPB :: *)
+                         ~R# (GHC.STRef.STRef RealWorld (AC a_a7UPB) :: *))
+         of
+         { GHC.STRef.STRef var#_i7IB3 ->
+         case readMutVar# @ RealWorld @ (AC a_a7UPB) var#_i7IB3 eta_B1 of
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case ipv1_i7IAz of { AC es_a7UA4 dt_d7Va4 dt1_d7Va5 ->
+         case es_a7UA4 of { GHC.ForeignPtr.ForeignPtr fo_s7WB8 ds2_s7WB9 ->
+         case size_s7VyR of { I# y_i7MWP ->
+         let {
+           offset_s7Wpi [Dmd=<S,U>] :: Int#
+           [LclId]
+           offset_s7Wpi = *# dt_d7Va4 y_i7MWP } in
+         join {
+           exit_X22 [Dmd=<L,C(U)>]
+             :: State# RealWorld -> (# State# RealWorld, () #)
+           [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+           exit_X22 (ipv2_X7IIz [OS=OneShot] :: State# RealWorld)
+             = case touch#
+                      @ 'LiftedRep
+                      @ GHC.ForeignPtr.ForeignPtrContents
+                      ds2_s7WB9
+                      ipv2_X7IIz
+               of s'_a7ILd
+               { __DEFAULT ->
+               (# s'_a7ILd, GHC.Tuple.() #)
+               } } in
+         join {
+           exit1_X1T [Dmd=<L,C(U)>]
+             :: State# RealWorld -> (# State# RealWorld, () #)
+           [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+           exit1_X1T (w_s7WlG [OS=OneShot] :: State# RealWorld)
+             = case touch#
+                      @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents ds2_s7WB9 w_s7WlG
+               of s'_a7ILd
+               { __DEFAULT ->
+               (# s'_a7ILd, GHC.Tuple.() #)
+               } } in
+         joinrec {
+           $wgo_s7WlL [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+             :: Int#
+                -> b_a7UPC -> State# RealWorld -> (# State# RealWorld, () #)
+           [LclId[JoinId(3)], Arity=3, Str=<S,U><L,U><S,U>, Unf=OtherCon []]
+           $wgo_s7WlL (ww_s7WlJ :: Int#)
+                      (w_s7WlF :: b_a7UPC)
+                      (w1_s7WlG :: State# RealWorld)
+             = case >=# ww_s7WlJ offset_s7Wpi of {
+                 __DEFAULT ->
+                   case ((peek
+                            @ a_a7UPB
+                            $dStorable_a7UPE
+                            (GHC.Ptr.Ptr @ a_a7UPB (plusAddr# fo_s7WB8 ww_s7WlJ)))
+                         `cast` (GHC.Types.N:IO[0] <a_a7UPB>_R
+                                 :: (IO a_a7UPB :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, a_a7UPB #) :: *)))
+                          w1_s7WlG
+                   of
+                   { (# ipv2_X7ICJ, ipv3_X7ICL #) ->
+                   case ((g_a7UzW w_s7WlF ipv3_X7ICL)
+                         `cast` (GHC.Types.N:IO[0] <(b_a7UPC, Bool)>_R
+                                 :: (IO (b_a7UPC, Bool) :: *)
+                                    ~R# (State# RealWorld
+                                         -> (# State# RealWorld, (b_a7UPC, Bool) #) :: *)))
+                          ipv2_X7ICJ
+                   of
+                   { (# ipv4_X7IIz, ipv5_X7IIC #) ->
+                   case ipv5_X7IIC of { (k'_a7UAc, cont_a7UAd) ->
+                   case cont_a7UAd of {
+                     False -> jump exit_X22 ipv4_X7IIz;
+                     True -> jump $wgo_s7WlL (+# ww_s7WlJ y_i7MWP) k'_a7UAc ipv4_X7IIz
+                   }
+                   }
+                   }
+                   };
+                 1# -> jump exit1_X1T w1_s7WlG
+               }; } in
+         jump $wgo_s7WlL 0# z_a7UzV ipv_i7IAy
+         }
+         }
+         }
+         }
+         })
+      `cast` (<Array a_a7UPB>_R
+              ->_R <b_a7UPC>_R
+              ->_R <b_a7UPC -> a_a7UPB -> IO (b_a7UPC, Bool)>_R
+              ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+              :: (Array a_a7UPB
+                  -> b_a7UPC
+                  -> (b_a7UPC -> a_a7UPB -> IO (b_a7UPC, Bool))
+                  -> State# RealWorld
+                  -> (# State# RealWorld, () #) :: *)
+                 ~R# (Array a_a7UPB
+                      -> b_a7UPC
+                      -> (b_a7UPC -> a_a7UPB -> IO (b_a7UPC, Bool))
+                      -> IO () :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.$trModule3
+  = GHC.Types.TrNameS GHC.Event.Array.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.$trModule1
+  = GHC.Types.TrNameS GHC.Event.Array.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Event.Array.$trModule
+  = GHC.Types.Module
+      GHC.Event.Array.$trModule3 GHC.Event.Array.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r7WMp :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r7WMp
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcInt (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r7WMq :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r7WMq = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_r7WMr :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r7WMr
+  = GHC.Types.: @ KindRep $krep1_r7WMq (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r7WMs :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r7WMs
+  = GHC.Types.KindRepTyConApp
+      GHC.ForeignPtr.$tcForeignPtr $krep2_r7WMr
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tcAC2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Event.Array.$tcAC2 = "AC"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tcAC1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.$tcAC1 = GHC.Types.TrNameS GHC.Event.Array.$tcAC2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tcAC :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Event.Array.$tcAC
+  = GHC.Types.TyCon
+      14339520722473255067##
+      15778732457674388659##
+      GHC.Event.Array.$trModule
+      GHC.Event.Array.$tcAC1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r7WMt :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r7WMt
+  = GHC.Types.KindRepTyConApp GHC.Event.Array.$tcAC $krep2_r7WMr
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r7WMu :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep5_r7WMu = GHC.Types.KindRepFun $krep_r7WMp $krep4_r7WMt
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep6_r7WMv :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep6_r7WMv = GHC.Types.KindRepFun $krep_r7WMp $krep5_r7WMu
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'AC1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Event.Array.$tc'AC1
+  = GHC.Types.KindRepFun $krep3_r7WMs $krep6_r7WMv
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'AC3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Event.Array.$tc'AC3 = "'AC"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'AC2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.$tc'AC2 = GHC.Types.TrNameS GHC.Event.Array.$tc'AC3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'AC :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Event.Array.$tc'AC
+  = GHC.Types.TyCon
+      954782197074941232##
+      8411064637322477330##
+      GHC.Event.Array.$trModule
+      GHC.Event.Array.$tc'AC2
+      1#
+      GHC.Event.Array.$tc'AC1
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep7_r7WMw :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep7_r7WMw
+  = GHC.Types.: @ KindRep $krep4_r7WMt (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep8_r7WMx :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep8_r7WMx
+  = GHC.Types.KindRepTyConApp GHC.IORef.$tcIORef $krep7_r7WMw
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tcArray2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Event.Array.$tcArray2 = "Array"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tcArray1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.$tcArray1
+  = GHC.Types.TrNameS GHC.Event.Array.$tcArray2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tcArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Event.Array.$tcArray
+  = GHC.Types.TyCon
+      18201768782471713089##
+      1209293416176401920##
+      GHC.Event.Array.$trModule
+      GHC.Event.Array.$tcArray1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep9_r7WMy :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep9_r7WMy
+  = GHC.Types.KindRepTyConApp GHC.Event.Array.$tcArray $krep2_r7WMr
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'Array1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Event.Array.$tc'Array1
+  = GHC.Types.KindRepFun $krep8_r7WMx $krep9_r7WMy
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'Array3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Event.Array.$tc'Array3 = "'Array"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'Array2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.$tc'Array2
+  = GHC.Types.TrNameS GHC.Event.Array.$tc'Array3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.$tc'Array :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Event.Array.$tc'Array
+  = GHC.Types.TyCon
+      1928439007980526225##
+      8720085055779125030##
+      GHC.Event.Array.$trModule
+      GHC.Event.Array.$tc'Array2
+      1#
+      GHC.Event.Array.$tc'Array1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl21_r7WMz :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl21_r7WMz = GHC.Types.I# 265#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl22_r7WMA :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl22_r7WMA
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl21_r7WMz
+      lvl12_r7WMg
+      lvl21_r7WMz
+      lvl13_r7WMh
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl23_r7WMB :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl23_r7WMB
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl22_r7WMA GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.removeAt2 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.removeAt2
+  = \ (@ a_a7ULd) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7ULd
+        (lvl23_r7WMB
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl24_r7WMC :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl24_r7WMC = "removeAt: invalid index"#
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+GHC.Event.Array.removeAt1 :: IO ()
+[GblId, Str=x]
+GHC.Event.Array.removeAt1
+  = errorWithoutStackTrace
+      @ 'LiftedRep @ (IO ()) (unpackCString# lvl24_r7WMC)
+
+-- RHS size: {terms: 124, types: 113, coercions: 14, joins: 0/2}
+removeAt :: forall a. Storable a => Array a -> Int -> IO ()
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30] 285 60}]
+removeAt
+  = \ (@ a_a7ULd) ($dStorable_a7ULf :: Storable a_a7ULd) ->
+      let {
+        size_s7VzI [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        size_s7VzI
+          = sizeOf
+              @ a_a7ULd
+              $dStorable_a7ULf
+              (GHC.Event.Array.removeAt2 @ a_a7ULd) } in
+      (\ (a1_a7UAY :: Array a_a7ULd)
+         (i_a7UAZ :: Int)
+         (eta_B1 :: State# RealWorld) ->
+         case a1_a7UAY
+              `cast` (GHC.Event.Array.N:Array[0]
+                          <a_a7ULd>_P ; GHC.IORef.N:IORef[0] <AC a_a7ULd>_N
+                      :: (Array a_a7ULd :: *)
+                         ~R# (GHC.STRef.STRef RealWorld (AC a_a7ULd) :: *))
+         of
+         { GHC.STRef.STRef var#_i7IB3 ->
+         case readMutVar# @ RealWorld @ (AC a_a7ULd) var#_i7IB3 eta_B1 of
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case ipv1_i7IAz of { AC fp_a7UB4 dt_d7Va0 dt1_d7Va1 ->
+         case fp_a7UB4 of wild2_s7WBq
+         { GHC.ForeignPtr.ForeignPtr fo_s7WBr ds2_s7WBs ->
+         case i_a7UAZ of { I# x_alN9 ->
+         case <# x_alN9 0# of {
+           __DEFAULT ->
+             case >=# x_alN9 dt_d7Va0 of {
+               __DEFAULT ->
+                 let {
+                   newLen_s7VvF [Dmd=<S,U>] :: Int#
+                   [LclId]
+                   newLen_s7VvF = -# dt_d7Va0 1# } in
+                 case ># newLen_s7VvF 0# of {
+                   __DEFAULT ->
+                     case writeMutVar#
+                            @ RealWorld
+                            @ (AC a_a7ULd)
+                            var#_i7IB3
+                            (GHC.Event.Array.AC @ a_a7ULd wild2_s7WBq newLen_s7VvF dt1_d7Va1)
+                            ipv_i7IAy
+                     of s2#_i7IBe
+                     { __DEFAULT ->
+                     (# s2#_i7IBe, GHC.Tuple.() #)
+                     };
+                   1# ->
+                     case <# x_alN9 newLen_s7VvF of {
+                       __DEFAULT ->
+                         case writeMutVar#
+                                @ RealWorld
+                                @ (AC a_a7ULd)
+                                var#_i7IB3
+                                (GHC.Event.Array.AC @ a_a7ULd wild2_s7WBq newLen_s7VvF dt1_d7Va1)
+                                ipv_i7IAy
+                         of s2#_i7IBe
+                         { __DEFAULT ->
+                         (# s2#_i7IBe, GHC.Tuple.() #)
+                         };
+                       1# ->
+                         case size_s7VzI of { I# x1_i7MWL ->
+                         case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9K
+                                (plusAddr# fo_s7WBr (*# x1_i7MWL x_alN9))
+                                (plusAddr# fo_s7WBr (*# x1_i7MWL (+# x_alN9 1#)))
+                                (int2Word# (*# x1_i7MWL (-# newLen_s7VvF x_alN9)))
+                                ipv_i7IAy
+                         of
+                         { (# ds_d7V9I, ds3_d7V9H #) ->
+                         case touch#
+                                @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents ds2_s7WBs ds_d7V9I
+                         of s'_a7ILd
+                         { __DEFAULT ->
+                         case writeMutVar#
+                                @ RealWorld
+                                @ (AC a_a7ULd)
+                                var#_i7IB3
+                                (GHC.Event.Array.AC @ a_a7ULd wild2_s7WBq newLen_s7VvF dt1_d7Va1)
+                                s'_a7ILd
+                         of s2#_i7IBe
+                         { __DEFAULT ->
+                         (# s2#_i7IBe, GHC.Tuple.() #)
+                         }
+                         }
+                         }
+                         }
+                     }
+                 };
+               1# -> case GHC.Event.Array.removeAt1 of wild4_00 { }
+             };
+           1# -> case GHC.Event.Array.removeAt1 of wild4_00 { }
+         }
+         }
+         }
+         }
+         }
+         })
+      `cast` (<Array a_a7ULd>_R
+              ->_R <Int>_R
+              ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+              :: (Array a_a7ULd
+                  -> Int -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                 ~R# (Array a_a7ULd -> Int -> IO () :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl25_r7WMD :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl25_r7WMD = GHC.Types.I# 211#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl26_r7WME :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl26_r7WME = GHC.Types.I# 22#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl27_r7WMF :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl27_r7WMF = GHC.Types.I# 31#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl28_r7WMG :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl28_r7WMG
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl25_r7WMD
+      lvl26_r7WME
+      lvl25_r7WMD
+      lvl27_r7WMF
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl29_r7WMH :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl29_r7WMH
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl28_r7WMG GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.findIndex1 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.findIndex1
+  = \ (@ a_a7UNb) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7UNb
+        (lvl29_r7WMH
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 98, types: 154, coercions: 20, joins: 3/5}
+findIndex
+  :: forall a.
+     Storable a =>
+     (a -> Bool) -> Array a -> IO (Maybe (Int, a))
+[GblId,
+ Arity=1,
+ Str=<L,U(1*C1(U(U)),A,A,A,A,A,C(C1(U(U,U))),A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60] 276 60}]
+findIndex
+  = \ (@ a_a7UNb) ($dStorable_a7UNd :: Storable a_a7UNb) ->
+      let {
+        size_s7VAe [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        size_s7VAe
+          = sizeOf
+              @ a_a7UNb
+              $dStorable_a7UNd
+              (GHC.Event.Array.findIndex1 @ a_a7UNb) } in
+      (\ (p_a7UAh :: a_a7UNb -> Bool)
+         (ds_d7V4b :: Array a_a7UNb)
+         (s_i7IAv :: State# RealWorld) ->
+         case ds_d7V4b
+              `cast` (GHC.Event.Array.N:Array[0]
+                          <a_a7UNb>_P ; GHC.IORef.N:IORef[0] <AC a_a7UNb>_N
+                      :: (Array a_a7UNb :: *)
+                         ~R# (GHC.STRef.STRef RealWorld (AC a_a7UNb) :: *))
+         of
+         { GHC.STRef.STRef var#_i7IB3 ->
+         case readMutVar# @ RealWorld @ (AC a_a7UNb) var#_i7IB3 s_i7IAv of
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case ipv1_i7IAz of { AC es_a7UAj dt_d7Va2 dt1_d7Va3 ->
+         case es_a7UAj of { GHC.ForeignPtr.ForeignPtr fo_s7WBJ ds2_s7WBK ->
+         case size_s7VAe of { I# y_i7MWP ->
+         let {
+           offset_s7WpL [Dmd=<S,U>] :: Int#
+           [LclId]
+           offset_s7WpL = *# dt_d7Va2 y_i7MWP } in
+         join {
+           exit_X1U [Dmd=<L,C(C1(C1(U)))>]
+             :: Int#
+                -> State# RealWorld
+                -> a_a7UNb
+                -> (# State# RealWorld, Maybe (Int, a_a7UNb) #)
+           [LclId[JoinId(3)], Arity=3, Str=<L,U><S,U><L,U>]
+           exit_X1U (ww_s7Wm6 [OS=OneShot] :: Int#)
+                    (ipv2_X7IDn [OS=OneShot] :: State# RealWorld)
+                    (ipv3_X7IDp [OS=OneShot] :: a_a7UNb)
+             = case touch#
+                      @ 'LiftedRep
+                      @ GHC.ForeignPtr.ForeignPtrContents
+                      ds2_s7WBK
+                      ipv2_X7IDn
+               of s'_a7ILd
+               { __DEFAULT ->
+               (# s'_a7ILd,
+                  GHC.Base.Just
+                    @ (Int, a_a7UNb) (GHC.Types.I# ww_s7Wm6, ipv3_X7IDp) #)
+               } } in
+         join {
+           exit1_X1R [Dmd=<L,C(U)>]
+             :: State# RealWorld -> (# State# RealWorld, Maybe (Int, a_a7UNb) #)
+           [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+           exit1_X1R (w_s7WlZ [OS=OneShot] :: State# RealWorld)
+             = case touch#
+                      @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents ds2_s7WBK w_s7WlZ
+               of s'_a7ILd
+               { __DEFAULT ->
+               (# s'_a7ILd, GHC.Base.Nothing @ (Int, a_a7UNb) #)
+               } } in
+         joinrec {
+           $wgo_s7Wm8 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+             :: Int#
+                -> Int#
+                -> State# RealWorld
+                -> (# State# RealWorld, Maybe (Int, a_a7UNb) #)
+           [LclId[JoinId(3)], Arity=3, Str=<S,U><L,U><S,U>, Unf=OtherCon []]
+           $wgo_s7Wm8 (ww_s7Wm2 :: Int#)
+                      (ww1_s7Wm6 :: Int#)
+                      (w_s7WlZ :: State# RealWorld)
+             = case >=# ww_s7Wm2 offset_s7WpL of {
+                 __DEFAULT ->
+                   case ((peek
+                            @ a_a7UNb
+                            $dStorable_a7UNd
+                            (GHC.Ptr.Ptr @ a_a7UNb (plusAddr# fo_s7WBJ ww_s7Wm2)))
+                         `cast` (GHC.Types.N:IO[0] <a_a7UNb>_R
+                                 :: (IO a_a7UNb :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, a_a7UNb #) :: *)))
+                          w_s7WlZ
+                   of
+                   { (# ipv2_X7IDn, ipv3_X7IDp #) ->
+                   case p_a7UAh ipv3_X7IDp of {
+                     False ->
+                       jump $wgo_s7Wm8 (+# ww_s7Wm2 y_i7MWP) (+# ww1_s7Wm6 1#) ipv2_X7IDn;
+                     True -> jump exit_X1U ww1_s7Wm6 ipv2_X7IDn ipv3_X7IDp
+                   }
+                   };
+                 1# -> jump exit1_X1R w_s7WlZ
+               }; } in
+         jump $wgo_s7Wm8 0# 0# ipv_i7IAy
+         }
+         }
+         }
+         }
+         })
+      `cast` (<a_a7UNb -> Bool>_R
+              ->_R <Array a_a7UNb>_R
+              ->_R Sym (GHC.Types.N:IO[0] <Maybe (Int, a_a7UNb)>_R)
+              :: ((a_a7UNb -> Bool)
+                  -> Array a_a7UNb
+                  -> State# RealWorld
+                  -> (# State# RealWorld, Maybe (Int, a_a7UNb) #) :: *)
+                 ~R# ((a_a7UNb -> Bool)
+                      -> Array a_a7UNb -> IO (Maybe (Int, a_a7UNb)) :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl30_r7WMI :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl30_r7WMI = GHC.Types.I# 74#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl31_r7WMJ :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl31_r7WMJ = GHC.Types.I# 46#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl32_r7WMK :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl32_r7WMK = GHC.Types.I# 55#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl33_r7WML :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl33_r7WML
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl30_r7WMI
+      lvl31_r7WMJ
+      lvl30_r7WMI
+      lvl32_r7WMK
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl34_r7WMM :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl34_r7WMM
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl33_r7WML GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.ensureCapacity2 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.ensureCapacity2
+  = \ (@ a_a7UWL) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7UWL
+        (lvl34_r7WMM
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 206, types: 174, coercions: 5, joins: 0/10}
+GHC.Event.Array.$wensureCapacity [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     MutVar# RealWorld (AC a)
+     -> Int# -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 0 0 0] 370 210}]
+GHC.Event.Array.$wensureCapacity
+  = \ (@ a_s7Wmb)
+      (w_s7Wmc :: Storable a_s7Wmb)
+      (ww_s7Wmi :: MutVar# RealWorld (AC a_s7Wmb))
+      (ww1_s7Wmm :: Int#)
+      (w1_s7Wmf :: State# RealWorld) ->
+      case readMutVar# @ RealWorld @ (AC a_s7Wmb) ww_s7Wmi w1_s7Wmf of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC ds_d7V7u dt_d7Vao dt1_d7Vap ->
+      case ds_d7V7u of { GHC.ForeignPtr.ForeignPtr fo_s7WC1 ds2_s7WC2 ->
+      case ># ww1_s7Wmm dt1_d7Vap of {
+        __DEFAULT -> (# ipv_i7IAy, GHC.Tuple.() #);
+        1# ->
+          case sizeOf
+                 @ a_s7Wmb w_s7Wmc (GHC.Event.Array.ensureCapacity2 @ a_s7Wmb)
+          of
+          { I# y_i7MWP ->
+          let {
+            n1_s7VvR [Dmd=<S,U>] :: Int#
+            [LclId]
+            n1_s7VvR = -# ww1_s7Wmm 1# } in
+          let {
+            ipv2_s7VdA [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv2_s7VdA = orI# n1_s7VvR (uncheckedIShiftRA# n1_s7VvR 1#) } in
+          let {
+            ipv3_s7VdE [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv3_s7VdE
+              = orI# ipv2_s7VdA (uncheckedIShiftRA# ipv2_s7VdA 2#) } in
+          let {
+            ipv4_s7VdI [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv4_s7VdI
+              = orI# ipv3_s7VdE (uncheckedIShiftRA# ipv3_s7VdE 4#) } in
+          let {
+            ipv5_s7VdM [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv5_s7VdM
+              = orI# ipv4_s7VdI (uncheckedIShiftRA# ipv4_s7VdI 8#) } in
+          let {
+            ipv6_s7VdQ [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv6_s7VdQ
+              = orI# ipv5_s7VdM (uncheckedIShiftRA# ipv5_s7VdM 16#) } in
+          let {
+            x_i7MWL [Dmd=<S,U>] :: Int#
+            [LclId]
+            x_i7MWL
+              = +# (orI# ipv6_s7VdQ (uncheckedIShiftRA# ipv6_s7VdQ 32#)) 1# } in
+          let {
+            x1_alN9 [Dmd=<S,U>] :: Int#
+            [LclId]
+            x1_alN9 = *# x_i7MWL y_i7MWP } in
+          case <# x1_alN9 0# of {
+            __DEFAULT ->
+              case newPinnedByteArray# @ RealWorld x1_alN9 ipv_i7IAy of
+              { (# ipv7_s7JbE, ipv8_s7JbF #) ->
+              let {
+                ipv9_s7VEO :: Addr#
+                [LclId]
+                ipv9_s7VEO
+                  = byteArrayContents#
+                      (ipv8_s7JbF
+                       `cast` (UnsafeCo representational (MutableByteArray#
+                                                            RealWorld) ByteArray#
+                               :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                  ~R# (ByteArray# :: TYPE 'UnliftedRep))) } in
+              let {
+                ipv10_s7VEP :: GHC.ForeignPtr.ForeignPtrContents
+                [LclId, Unf=OtherCon []]
+                ipv10_s7VEP = GHC.ForeignPtr.PlainPtr ipv8_s7JbF } in
+              case eqAddr# fo_s7WC1 __NULL of {
+                __DEFAULT ->
+                  case ># dt1_d7Vap 0# of {
+                    __DEFAULT ->
+                      case touch#
+                             @ 'LiftedRep
+                             @ GHC.ForeignPtr.ForeignPtrContents
+                             ds2_s7WC2
+                             ipv7_s7JbE
+                      of s'_a7ILd
+                      { __DEFAULT ->
+                      case /=# x_i7MWL dt1_d7Vap of {
+                        __DEFAULT -> (# s'_a7ILd, GHC.Tuple.() #);
+                        1# ->
+                          case writeMutVar#
+                                 @ RealWorld
+                                 @ (AC a_s7Wmb)
+                                 ww_s7Wmi
+                                 (GHC.Event.Array.AC
+                                    @ a_s7Wmb
+                                    (GHC.ForeignPtr.ForeignPtr @ a_s7Wmb ipv9_s7VEO ipv10_s7VEP)
+                                    dt_d7Vao
+                                    x_i7MWL)
+                                 s'_a7ILd
+                          of s2#_i7IBe
+                          { __DEFAULT ->
+                          (# s2#_i7IBe, GHC.Tuple.() #)
+                          }
+                      }
+                      };
+                    1# ->
+                      case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                             ipv9_s7VEO fo_s7WC1 (int2Word# (*# dt1_d7Vap y_i7MWP)) ipv7_s7JbE
+                      of
+                      { (# ds4_d7V9W, ds5_d7V9V #) ->
+                      case touch#
+                             @ 'LiftedRep
+                             @ GHC.ForeignPtr.ForeignPtrContents
+                             ipv10_s7VEP
+                             ds4_d7V9W
+                      of s'_a7ILd
+                      { __DEFAULT ->
+                      case touch#
+                             @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents ds2_s7WC2 s'_a7ILd
+                      of s'1_X7IPj
+                      { __DEFAULT ->
+                      case /=# x_i7MWL dt1_d7Vap of {
+                        __DEFAULT -> (# s'1_X7IPj, GHC.Tuple.() #);
+                        1# ->
+                          case writeMutVar#
+                                 @ RealWorld
+                                 @ (AC a_s7Wmb)
+                                 ww_s7Wmi
+                                 (GHC.Event.Array.AC
+                                    @ a_s7Wmb
+                                    (GHC.ForeignPtr.ForeignPtr @ a_s7Wmb ipv9_s7VEO ipv10_s7VEP)
+                                    dt_d7Vao
+                                    x_i7MWL)
+                                 s'1_X7IPj
+                          of s2#_i7IBe
+                          { __DEFAULT ->
+                          (# s2#_i7IBe, GHC.Tuple.() #)
+                          }
+                      }
+                      }
+                      }
+                      }
+                  };
+                1# ->
+                  case touch#
+                         @ 'LiftedRep
+                         @ GHC.ForeignPtr.ForeignPtrContents
+                         ds2_s7WC2
+                         ipv7_s7JbE
+                  of s'_a7ILd
+                  { __DEFAULT ->
+                  case /=# x_i7MWL dt1_d7Vap of {
+                    __DEFAULT -> (# s'_a7ILd, GHC.Tuple.() #);
+                    1# ->
+                      case writeMutVar#
+                             @ RealWorld
+                             @ (AC a_s7Wmb)
+                             ww_s7Wmi
+                             (GHC.Event.Array.AC
+                                @ a_s7Wmb
+                                (GHC.ForeignPtr.ForeignPtr @ a_s7Wmb ipv9_s7VEO ipv10_s7VEP)
+                                dt_d7Vao
+                                x_i7MWL)
+                             s'_a7ILd
+                      of s2#_i7IBe
+                      { __DEFAULT ->
+                      (# s2#_i7IBe, GHC.Tuple.() #)
+                      }
+                  }
+                  }
+              }
+              };
+            1# ->
+              case GHC.ForeignPtr.mallocPlainForeignPtrBytes2 of wild3_00 { }
+          }
+          }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 20, coercions: 6, joins: 0/0}
+GHC.Event.Array.ensureCapacity1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Array a -> Int -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7Wmb)
+                 (w_s7Wmc [Occ=Once] :: Storable a_s7Wmb)
+                 (w1_s7Wmd [Occ=Once] :: Array a_s7Wmb)
+                 (w2_s7Wme [Occ=Once!] :: Int)
+                 (w3_s7Wmf [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7Wmd
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_s7Wmb>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wmb>_N
+                              :: (Array a_s7Wmb :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wmb) :: *))
+                 of
+                 { GHC.STRef.STRef ww1_s7Wmi [Occ=Once] ->
+                 case w2_s7Wme of { I# ww3_s7Wmm [Occ=Once] ->
+                 GHC.Event.Array.$wensureCapacity
+                   @ a_s7Wmb w_s7Wmc ww1_s7Wmi ww3_s7Wmm w3_s7Wmf
+                 }
+                 }}]
+GHC.Event.Array.ensureCapacity1
+  = \ (@ a_s7Wmb)
+      (w_s7Wmc :: Storable a_s7Wmb)
+      (w1_s7Wmd :: Array a_s7Wmb)
+      (w2_s7Wme :: Int)
+      (w3_s7Wmf :: State# RealWorld) ->
+      case w1_s7Wmd
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_s7Wmb>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wmb>_N
+                   :: (Array a_s7Wmb :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wmb) :: *))
+      of
+      { GHC.STRef.STRef ww1_s7Wmi ->
+      case w2_s7Wme of { I# ww3_s7Wmm ->
+      GHC.Event.Array.$wensureCapacity
+        @ a_s7Wmb w_s7Wmc ww1_s7Wmi ww3_s7Wmm w3_s7Wmf
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+ensureCapacity :: forall a. Storable a => Array a -> Int -> IO ()
+[GblId,
+ Arity=4,
+ Str=<L,1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.ensureCapacity1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Array a>_R
+                       ->_R <Int>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Array a
+                           -> Int -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. Storable a => Array a -> Int -> IO () :: *))}]
+ensureCapacity
+  = GHC.Event.Array.ensureCapacity1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Array a>_R
+            ->_R <Int>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Storable a =>
+                Array a
+                -> Int -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Storable a => Array a -> Int -> IO () :: *))
+
+-- RHS size: {terms: 232, types: 205, coercions: 5, joins: 0/11}
+GHC.Event.Array.$wsnoc [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     MutVar# RealWorld (AC a)
+     -> a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<S,U(1*C1(U(U)),A,A,1*C1(C1(C1(C1(U(U,U))))),A,A,A,A)><S,U><L,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 0 0 0] 642 120}]
+GHC.Event.Array.$wsnoc
+  = \ (@ a_s7Wmp)
+      (w_s7Wmq :: Storable a_s7Wmp)
+      (ww_s7Wmw :: MutVar# RealWorld (AC a_s7Wmp))
+      (w1_s7Wms :: a_s7Wmp)
+      (w2_s7Wmt :: State# RealWorld) ->
+      case readMutVar# @ RealWorld @ (AC a_s7Wmp) ww_s7Wmw w2_s7Wmt of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { AC ds_d7V7T dt_d7Vas dt1_d7Vat ->
+      case ds_d7V7T of wild1_s7WC4
+      { GHC.ForeignPtr.ForeignPtr fo_s7WC5 ds2_s7WC6 ->
+      let {
+        len'_s7Vv7 [Dmd=<S,U>] :: Int#
+        [LclId]
+        len'_s7Vv7 = +# dt_d7Vas 1# } in
+      case ># len'_s7Vv7 dt1_d7Vat of {
+        __DEFAULT ->
+          case GHC.Event.Array.$wunsafeWrite'
+                 @ a_s7Wmp
+                 w_s7Wmq
+                 fo_s7WC5
+                 ds2_s7WC6
+                 dt1_d7Vat
+                 dt_d7Vas
+                 w1_s7Wms
+                 ipv_i7IAy
+          of
+          { (# ipv2_i7JiK, ipv3_i7JiL #) ->
+          case writeMutVar#
+                 @ RealWorld
+                 @ (AC a_s7Wmp)
+                 ww_s7Wmw
+                 (GHC.Event.Array.AC @ a_s7Wmp wild1_s7WC4 len'_s7Vv7 dt1_d7Vat)
+                 ipv2_i7JiK
+          of s2#_i7IBe
+          { __DEFAULT ->
+          (# s2#_i7IBe, GHC.Tuple.() #)
+          }
+          };
+        1# ->
+          case sizeOf
+                 @ a_s7Wmp w_s7Wmq (GHC.Event.Array.ensureCapacity2 @ a_s7Wmp)
+          of
+          { I# y_i7MWP ->
+          let {
+            n1_s7VvR [Dmd=<S,U>] :: Int#
+            [LclId]
+            n1_s7VvR = -# len'_s7Vv7 1# } in
+          let {
+            ipv2_s7VdA [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv2_s7VdA = orI# n1_s7VvR (uncheckedIShiftRA# n1_s7VvR 1#) } in
+          let {
+            ipv3_s7VdE [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv3_s7VdE
+              = orI# ipv2_s7VdA (uncheckedIShiftRA# ipv2_s7VdA 2#) } in
+          let {
+            ipv4_s7VdI [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv4_s7VdI
+              = orI# ipv3_s7VdE (uncheckedIShiftRA# ipv3_s7VdE 4#) } in
+          let {
+            ipv5_s7VdM [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv5_s7VdM
+              = orI# ipv4_s7VdI (uncheckedIShiftRA# ipv4_s7VdI 8#) } in
+          let {
+            ipv6_s7VdQ [Dmd=<S,U>] :: Int#
+            [LclId]
+            ipv6_s7VdQ
+              = orI# ipv5_s7VdM (uncheckedIShiftRA# ipv5_s7VdM 16#) } in
+          let {
+            x_i7MWL [Dmd=<S,U>] :: Int#
+            [LclId]
+            x_i7MWL
+              = +# (orI# ipv6_s7VdQ (uncheckedIShiftRA# ipv6_s7VdQ 32#)) 1# } in
+          let {
+            x1_alN9 [Dmd=<S,U>] :: Int#
+            [LclId]
+            x1_alN9 = *# x_i7MWL y_i7MWP } in
+          case <# x1_alN9 0# of {
+            __DEFAULT ->
+              case newPinnedByteArray# @ RealWorld x1_alN9 ipv_i7IAy of
+              { (# ipv7_s7JbE, ipv8_s7JbF #) ->
+              let {
+                ipv9_s7VEO [Dmd=<S,U>] :: Addr#
+                [LclId]
+                ipv9_s7VEO
+                  = byteArrayContents#
+                      (ipv8_s7JbF
+                       `cast` (UnsafeCo representational (MutableByteArray#
+                                                            RealWorld) ByteArray#
+                               :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                  ~R# (ByteArray# :: TYPE 'UnliftedRep))) } in
+              let {
+                ipv10_s7VEP :: GHC.ForeignPtr.ForeignPtrContents
+                [LclId, Unf=OtherCon []]
+                ipv10_s7VEP = GHC.ForeignPtr.PlainPtr ipv8_s7JbF } in
+              case eqAddr# fo_s7WC5 __NULL of {
+                __DEFAULT ->
+                  case ># dt1_d7Vat 0# of {
+                    __DEFAULT ->
+                      case touch#
+                             @ 'LiftedRep
+                             @ GHC.ForeignPtr.ForeignPtrContents
+                             ds2_s7WC6
+                             ipv7_s7JbE
+                      of s'_a7ILd
+                      { __DEFAULT ->
+                      case GHC.Event.Array.$wunsafeWrite'
+                             @ a_s7Wmp
+                             w_s7Wmq
+                             ipv9_s7VEO
+                             ipv10_s7VEP
+                             x_i7MWL
+                             dt_d7Vas
+                             w1_s7Wms
+                             s'_a7ILd
+                      of
+                      { (# ipv11_i7JiK, ipv12_i7JiL #) ->
+                      case writeMutVar#
+                             @ RealWorld
+                             @ (AC a_s7Wmp)
+                             ww_s7Wmw
+                             (GHC.Event.Array.AC
+                                @ a_s7Wmp
+                                (GHC.ForeignPtr.ForeignPtr @ a_s7Wmp ipv9_s7VEO ipv10_s7VEP)
+                                len'_s7Vv7
+                                x_i7MWL)
+                             ipv11_i7JiK
+                      of s2#_i7IBe
+                      { __DEFAULT ->
+                      (# s2#_i7IBe, GHC.Tuple.() #)
+                      }
+                      }
+                      };
+                    1# ->
+                      case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                             ipv9_s7VEO fo_s7WC5 (int2Word# (*# dt1_d7Vat y_i7MWP)) ipv7_s7JbE
+                      of
+                      { (# ds4_d7V9W, ds5_d7V9V #) ->
+                      case touch#
+                             @ 'LiftedRep
+                             @ GHC.ForeignPtr.ForeignPtrContents
+                             ipv10_s7VEP
+                             ds4_d7V9W
+                      of s'_a7ILd
+                      { __DEFAULT ->
+                      case touch#
+                             @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents ds2_s7WC6 s'_a7ILd
+                      of s'1_X7IPj
+                      { __DEFAULT ->
+                      case GHC.Event.Array.$wunsafeWrite'
+                             @ a_s7Wmp
+                             w_s7Wmq
+                             ipv9_s7VEO
+                             ipv10_s7VEP
+                             x_i7MWL
+                             dt_d7Vas
+                             w1_s7Wms
+                             s'1_X7IPj
+                      of
+                      { (# ipv11_i7JiK, ipv12_i7JiL #) ->
+                      case writeMutVar#
+                             @ RealWorld
+                             @ (AC a_s7Wmp)
+                             ww_s7Wmw
+                             (GHC.Event.Array.AC
+                                @ a_s7Wmp
+                                (GHC.ForeignPtr.ForeignPtr @ a_s7Wmp ipv9_s7VEO ipv10_s7VEP)
+                                len'_s7Vv7
+                                x_i7MWL)
+                             ipv11_i7JiK
+                      of s2#_i7IBe
+                      { __DEFAULT ->
+                      (# s2#_i7IBe, GHC.Tuple.() #)
+                      }
+                      }
+                      }
+                      }
+                      }
+                  };
+                1# ->
+                  case touch#
+                         @ 'LiftedRep
+                         @ GHC.ForeignPtr.ForeignPtrContents
+                         ds2_s7WC6
+                         ipv7_s7JbE
+                  of s'_a7ILd
+                  { __DEFAULT ->
+                  case GHC.Event.Array.$wunsafeWrite'
+                         @ a_s7Wmp
+                         w_s7Wmq
+                         ipv9_s7VEO
+                         ipv10_s7VEP
+                         x_i7MWL
+                         dt_d7Vas
+                         w1_s7Wms
+                         s'_a7ILd
+                  of
+                  { (# ipv11_i7JiK, ipv12_i7JiL #) ->
+                  case writeMutVar#
+                         @ RealWorld
+                         @ (AC a_s7Wmp)
+                         ww_s7Wmw
+                         (GHC.Event.Array.AC
+                            @ a_s7Wmp
+                            (GHC.ForeignPtr.ForeignPtr @ a_s7Wmp ipv9_s7VEO ipv10_s7VEP)
+                            len'_s7Vv7
+                            x_i7MWL)
+                         ipv11_i7JiK
+                  of s2#_i7IBe
+                  { __DEFAULT ->
+                  (# s2#_i7IBe, GHC.Tuple.() #)
+                  }
+                  }
+                  }
+              }
+              };
+            1# ->
+              case GHC.ForeignPtr.mallocPlainForeignPtrBytes2 of wild3_00 { }
+          }
+          }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 13, types: 18, coercions: 6, joins: 0/0}
+GHC.Event.Array.snoc1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Array a -> a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<S,U(C(U(U)),A,A,C(C1(C1(C1(U(U,U))))),A,A,A,A)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7Wmp)
+                 (w_s7Wmq [Occ=Once] :: Storable a_s7Wmp)
+                 (w1_s7Wmr [Occ=Once] :: Array a_s7Wmp)
+                 (w2_s7Wms [Occ=Once] :: a_s7Wmp)
+                 (w3_s7Wmt [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7Wmr
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_s7Wmp>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wmp>_N
+                              :: (Array a_s7Wmp :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wmp) :: *))
+                 of
+                 { GHC.STRef.STRef ww1_s7Wmw [Occ=Once] ->
+                 GHC.Event.Array.$wsnoc
+                   @ a_s7Wmp w_s7Wmq ww1_s7Wmw w2_s7Wms w3_s7Wmt
+                 }}]
+GHC.Event.Array.snoc1
+  = \ (@ a_s7Wmp)
+      (w_s7Wmq :: Storable a_s7Wmp)
+      (w1_s7Wmr :: Array a_s7Wmp)
+      (w2_s7Wms :: a_s7Wmp)
+      (w3_s7Wmt :: State# RealWorld) ->
+      case w1_s7Wmr
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_s7Wmp>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wmp>_N
+                   :: (Array a_s7Wmp :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wmp) :: *))
+      of
+      { GHC.STRef.STRef ww1_s7Wmw ->
+      GHC.Event.Array.$wsnoc
+        @ a_s7Wmp w_s7Wmq ww1_s7Wmw w2_s7Wms w3_s7Wmt
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+snoc :: forall a. Storable a => Array a -> a -> IO ()
+[GblId,
+ Arity=4,
+ Str=<S,U(C(U(U)),A,A,C(C1(C1(C1(U(U,U))))),A,A,A,A)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.snoc1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Array a>_R
+                       ->_R <a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Array a
+                           -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. Storable a => Array a -> a -> IO () :: *))}]
+snoc
+  = GHC.Event.Array.snoc1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Array a>_R
+            ->_R <a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Storable a =>
+                Array a
+                -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Storable a => Array a -> a -> IO () :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl35_r7WMN :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl35_r7WMN = GHC.Types.I# 245#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl36_r7WMO :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl36_r7WMO = GHC.Types.I# 49#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl37_r7WMP :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl37_r7WMP = GHC.Types.I# 58#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl38_r7WMQ :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl38_r7WMQ
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl35_r7WMN
+      lvl36_r7WMO
+      lvl35_r7WMN
+      lvl37_r7WMP
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl39_r7WMR :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl39_r7WMR
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl38_r7WMQ GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+lvl40_r7WMS :: forall a. a
+[GblId, Str=x]
+lvl40_r7WMS
+  = \ (@ a_a7UY6) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7UY6
+        (lvl39_r7WMR
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl41_r7WMT :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl41_r7WMT = "copy: bad offsets or lengths"#
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+lvl42_r7WMU :: IO ()
+[GblId, Str=x]
+lvl42_r7WMU
+  = errorWithoutStackTrace
+      @ 'LiftedRep @ (IO ()) (unpackCString# lvl41_r7WMT)
+
+-- RHS size: {terms: 419, types: 282, coercions: 5, joins: 1/13}
+GHC.Event.Array.concat3
+  :: forall a.
+     Storable a =>
+     AC a
+     -> Int
+     -> AC a
+     -> Int
+     -> Int
+     -> State# RealWorld
+     -> (# State# RealWorld, AC a #)
+[GblId,
+ Arity=7,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)><S(SSL),1*U(U(U,U),U,U)><S(S),1*U(U)><S(SSL),1*U(U(U,U),U,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []]
+GHC.Event.Array.concat3
+  = \ (@ a_a7UY6)
+      ($dStorable_a7UY8 :: Storable a_a7UY6)
+      (eta_B6 :: AC a_a7UY6)
+      (eta1_B5 :: Int)
+      (eta2_B4 :: AC a_a7UY6)
+      (eta3_B3 :: Int)
+      (eta4_B2 :: Int)
+      (eta5_B1 :: State# RealWorld) ->
+      case eta_B6 of wild_X2E { AC ds_d7V8s dt_d7Vaw dt1_d7Vax ->
+      case ds_d7V8s of wild1_s7WCr
+      { GHC.ForeignPtr.ForeignPtr fo_s7WCs ds1_s7WCt ->
+      case eta2_B4 of { AC src_a7UAO dt2_d7Vay dt3_d7Vaz ->
+      case src_a7UAO of { GHC.ForeignPtr.ForeignPtr ds2_s7WCo r_s7WCp ->
+      case eta4_B2 of { I# x_alN9 ->
+      case <# x_alN9 0# of {
+        __DEFAULT ->
+          case eta1_B5 of { I# x1_XlR6 ->
+          case <# x1_XlR6 0# of {
+            __DEFAULT ->
+              case ># x1_XlR6 dt_d7Vaw of {
+                __DEFAULT ->
+                  case eta3_B3 of { I# x2_XlRk ->
+                  case <# x2_XlRk 0# of {
+                    __DEFAULT ->
+                      case ># x2_XlRk dt2_d7Vay of {
+                        __DEFAULT ->
+                          let {
+                            y1_at5x [Dmd=<S,U>] :: Int#
+                            [LclId]
+                            y1_at5x = -# dt2_d7Vay x2_XlRk } in
+                          join {
+                            $j_s7VTj [Dmd=<C(S),1*C1(U(U,U))>]
+                              :: Int# -> (# State# RealWorld, AC a_a7UY6 #)
+                            [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+                            $j_s7VTj (x3_a22G [OS=OneShot] :: Int#)
+                              = case x3_a22G of wild7_X4A {
+                                  __DEFAULT ->
+                                    let {
+                                      x4_aA1E [Dmd=<S,U>] :: Int#
+                                      [LclId]
+                                      x4_aA1E = +# x1_XlR6 wild7_X4A } in
+                                    case ># x4_aA1E dt1_d7Vax of {
+                                      __DEFAULT ->
+                                        case sizeOf
+                                               @ a_a7UY6 $dStorable_a7UY8 (lvl40_r7WMS @ a_a7UY6)
+                                        of
+                                        { I# y_i7MWP ->
+                                        case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                                               (plusAddr# fo_s7WCs (*# x1_XlR6 y_i7MWP))
+                                               (plusAddr# ds2_s7WCo (*# x2_XlRk y_i7MWP))
+                                               (int2Word# (*# wild7_X4A y_i7MWP))
+                                               eta5_B1
+                                        of
+                                        { (# ds4_d7V9W, ds5_d7V9V #) ->
+                                        case touch#
+                                               @ 'LiftedRep
+                                               @ GHC.ForeignPtr.ForeignPtrContents
+                                               r_s7WCp
+                                               ds4_d7V9W
+                                        of s'_a7ILd
+                                        { __DEFAULT ->
+                                        case touch#
+                                               @ 'LiftedRep
+                                               @ GHC.ForeignPtr.ForeignPtrContents
+                                               ds1_s7WCt
+                                               s'_a7ILd
+                                        of s'1_X7IT2
+                                        { __DEFAULT ->
+                                        (# s'1_X7IT2,
+                                           case <=# dt_d7Vaw x4_aA1E of {
+                                             __DEFAULT -> wild_X2E;
+                                             1# ->
+                                               GHC.Event.Array.AC
+                                                 @ a_a7UY6 wild1_s7WCr x4_aA1E dt1_d7Vax
+                                           } #)
+                                        }
+                                        }
+                                        }
+                                        };
+                                      1# ->
+                                        case sizeOf
+                                               @ a_a7UY6
+                                               $dStorable_a7UY8
+                                               (GHC.Event.Array.ensureCapacity2 @ a_a7UY6)
+                                        of
+                                        { I# y_i7MWP ->
+                                        let {
+                                          n1_s7VvR [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          n1_s7VvR = -# x4_aA1E 1# } in
+                                        let {
+                                          ipv_s7VdA [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ipv_s7VdA
+                                            = orI# n1_s7VvR (uncheckedIShiftRA# n1_s7VvR 1#) } in
+                                        let {
+                                          ipv1_s7VdE [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ipv1_s7VdE
+                                            = orI# ipv_s7VdA (uncheckedIShiftRA# ipv_s7VdA 2#) } in
+                                        let {
+                                          ipv2_s7VdI [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ipv2_s7VdI
+                                            = orI#
+                                                ipv1_s7VdE (uncheckedIShiftRA# ipv1_s7VdE 4#) } in
+                                        let {
+                                          ipv3_s7VdM [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ipv3_s7VdM
+                                            = orI#
+                                                ipv2_s7VdI (uncheckedIShiftRA# ipv2_s7VdI 8#) } in
+                                        let {
+                                          ipv4_s7VdQ [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ipv4_s7VdQ
+                                            = orI#
+                                                ipv3_s7VdM (uncheckedIShiftRA# ipv3_s7VdM 16#) } in
+                                        let {
+                                          x5_i7MWL [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          x5_i7MWL
+                                            = +#
+                                                (orI#
+                                                   ipv4_s7VdQ (uncheckedIShiftRA# ipv4_s7VdQ 32#))
+                                                1# } in
+                                        let {
+                                          x6_XlRr [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          x6_XlRr = *# x5_i7MWL y_i7MWP } in
+                                        case <# x6_XlRr 0# of {
+                                          __DEFAULT ->
+                                            case newPinnedByteArray# @ RealWorld x6_XlRr eta5_B1 of
+                                            { (# ipv5_s7JbE, ipv6_s7JbF #) ->
+                                            let {
+                                              ipv7_s7VEO [Dmd=<S,U>] :: Addr#
+                                              [LclId]
+                                              ipv7_s7VEO
+                                                = byteArrayContents#
+                                                    (ipv6_s7JbF
+                                                     `cast` (UnsafeCo representational (MutableByteArray#
+                                                                                          RealWorld) ByteArray#
+                                                             :: (MutableByteArray# RealWorld :: TYPE
+                                                                                                  'UnliftedRep)
+                                                                ~R# (ByteArray# :: TYPE
+                                                                                     'UnliftedRep))) } in
+                                            let {
+                                              ipv8_s7VEP :: GHC.ForeignPtr.ForeignPtrContents
+                                              [LclId, Unf=OtherCon []]
+                                              ipv8_s7VEP = GHC.ForeignPtr.PlainPtr ipv6_s7JbF } in
+                                            case eqAddr# fo_s7WCs __NULL of {
+                                              __DEFAULT ->
+                                                case ># dt1_d7Vax 0# of {
+                                                  __DEFAULT ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           ds1_s7WCt
+                                                           ipv5_s7JbE
+                                                    of s'_a7ILd
+                                                    { __DEFAULT ->
+                                                    case sizeOf
+                                                           @ a_a7UY6
+                                                           $dStorable_a7UY8
+                                                           (lvl40_r7WMS @ a_a7UY6)
+                                                    of
+                                                    { I# y2_X7N1u ->
+                                                    case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                                                           (plusAddr#
+                                                              ipv7_s7VEO (*# x1_XlR6 y2_X7N1u))
+                                                           (plusAddr#
+                                                              ds2_s7WCo (*# x2_XlRk y2_X7N1u))
+                                                           (int2Word# (*# wild7_X4A y2_X7N1u))
+                                                           s'_a7ILd
+                                                    of
+                                                    { (# ds5_d7V9W, ds6_d7V9V #) ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           r_s7WCp
+                                                           ds5_d7V9W
+                                                    of s'1_X7IQ0
+                                                    { __DEFAULT ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           ipv8_s7VEP
+                                                           s'1_X7IQ0
+                                                    of s'2_X7IT2
+                                                    { __DEFAULT ->
+                                                    (# s'2_X7IT2,
+                                                       case <=# dt_d7Vaw x4_aA1E of {
+                                                         __DEFAULT ->
+                                                           GHC.Event.Array.AC
+                                                             @ a_a7UY6
+                                                             (GHC.ForeignPtr.ForeignPtr
+                                                                @ a_a7UY6 ipv7_s7VEO ipv8_s7VEP)
+                                                             dt_d7Vaw
+                                                             x5_i7MWL;
+                                                         1# ->
+                                                           GHC.Event.Array.AC
+                                                             @ a_a7UY6
+                                                             (GHC.ForeignPtr.ForeignPtr
+                                                                @ a_a7UY6 ipv7_s7VEO ipv8_s7VEP)
+                                                             x4_aA1E
+                                                             x5_i7MWL
+                                                       } #)
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                    };
+                                                  1# ->
+                                                    case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                                                           ipv7_s7VEO
+                                                           fo_s7WCs
+                                                           (int2Word# (*# dt1_d7Vax y_i7MWP))
+                                                           ipv5_s7JbE
+                                                    of
+                                                    { (# ds5_d7V9W, ds6_d7V9V #) ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           ipv8_s7VEP
+                                                           ds5_d7V9W
+                                                    of s'_a7ILd
+                                                    { __DEFAULT ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           ds1_s7WCt
+                                                           s'_a7ILd
+                                                    of s'1_X7IPj
+                                                    { __DEFAULT ->
+                                                    case sizeOf
+                                                           @ a_a7UY6
+                                                           $dStorable_a7UY8
+                                                           (lvl40_r7WMS @ a_a7UY6)
+                                                    of
+                                                    { I# y2_X7N1C ->
+                                                    case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                                                           (plusAddr#
+                                                              ipv7_s7VEO (*# x1_XlR6 y2_X7N1C))
+                                                           (plusAddr#
+                                                              ds2_s7WCo (*# x2_XlRk y2_X7N1C))
+                                                           (int2Word# (*# wild7_X4A y2_X7N1C))
+                                                           s'1_X7IPj
+                                                    of
+                                                    { (# ds7_X7VeO, ds8_X7VjH #) ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           r_s7WCp
+                                                           ds7_X7VeO
+                                                    of s'2_X7IQ8
+                                                    { __DEFAULT ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           ipv8_s7VEP
+                                                           s'2_X7IQ8
+                                                    of s'3_X7IT2
+                                                    { __DEFAULT ->
+                                                    (# s'3_X7IT2,
+                                                       case <=# dt_d7Vaw x4_aA1E of {
+                                                         __DEFAULT ->
+                                                           GHC.Event.Array.AC
+                                                             @ a_a7UY6
+                                                             (GHC.ForeignPtr.ForeignPtr
+                                                                @ a_a7UY6 ipv7_s7VEO ipv8_s7VEP)
+                                                             dt_d7Vaw
+                                                             x5_i7MWL;
+                                                         1# ->
+                                                           GHC.Event.Array.AC
+                                                             @ a_a7UY6
+                                                             (GHC.ForeignPtr.ForeignPtr
+                                                                @ a_a7UY6 ipv7_s7VEO ipv8_s7VEP)
+                                                             x4_aA1E
+                                                             x5_i7MWL
+                                                       } #)
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                };
+                                              1# ->
+                                                case touch#
+                                                       @ 'LiftedRep
+                                                       @ GHC.ForeignPtr.ForeignPtrContents
+                                                       ds1_s7WCt
+                                                       ipv5_s7JbE
+                                                of s'_a7ILd
+                                                { __DEFAULT ->
+                                                case sizeOf
+                                                       @ a_a7UY6
+                                                       $dStorable_a7UY8
+                                                       (lvl40_r7WMS @ a_a7UY6)
+                                                of
+                                                { I# y2_X7N1r ->
+                                                case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                                                       (plusAddr# ipv7_s7VEO (*# x1_XlR6 y2_X7N1r))
+                                                       (plusAddr# ds2_s7WCo (*# x2_XlRk y2_X7N1r))
+                                                       (int2Word# (*# wild7_X4A y2_X7N1r))
+                                                       s'_a7ILd
+                                                of
+                                                { (# ds5_d7V9W, ds6_d7V9V #) ->
+                                                case touch#
+                                                       @ 'LiftedRep
+                                                       @ GHC.ForeignPtr.ForeignPtrContents
+                                                       r_s7WCp
+                                                       ds5_d7V9W
+                                                of s'1_X7IPX
+                                                { __DEFAULT ->
+                                                case touch#
+                                                       @ 'LiftedRep
+                                                       @ GHC.ForeignPtr.ForeignPtrContents
+                                                       ipv8_s7VEP
+                                                       s'1_X7IPX
+                                                of s'2_X7IT2
+                                                { __DEFAULT ->
+                                                (# s'2_X7IT2,
+                                                   case <=# dt_d7Vaw x4_aA1E of {
+                                                     __DEFAULT ->
+                                                       GHC.Event.Array.AC
+                                                         @ a_a7UY6
+                                                         (GHC.ForeignPtr.ForeignPtr
+                                                            @ a_a7UY6 ipv7_s7VEO ipv8_s7VEP)
+                                                         dt_d7Vaw
+                                                         x5_i7MWL;
+                                                     1# ->
+                                                       GHC.Event.Array.AC
+                                                         @ a_a7UY6
+                                                         (GHC.ForeignPtr.ForeignPtr
+                                                            @ a_a7UY6 ipv7_s7VEO ipv8_s7VEP)
+                                                         x4_aA1E
+                                                         x5_i7MWL
+                                                   } #)
+                                                }
+                                                }
+                                                }
+                                                }
+                                                }
+                                            }
+                                            };
+                                          1# ->
+                                            case GHC.ForeignPtr.mallocPlainForeignPtrBytes2
+                                            of wild9_00 {
+                                            }
+                                        }
+                                        }
+                                    };
+                                  0# -> (# eta5_B1, wild_X2E #)
+                                } } in
+                          case <=# x_alN9 y1_at5x of {
+                            __DEFAULT -> jump $j_s7VTj y1_at5x;
+                            1# -> jump $j_s7VTj x_alN9
+                          };
+                        1# -> case lvl42_r7WMU of wild7_00 { }
+                      };
+                    1# -> case lvl42_r7WMU of wild7_00 { }
+                  }
+                  };
+                1# -> case lvl42_r7WMU of wild6_00 { }
+              };
+            1# -> case lvl42_r7WMU of wild6_00 { }
+          }
+          };
+        1# -> case lvl42_r7WMU of wild5_00 { }
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Array.concat2 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Array.concat2 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 42, types: 84, coercions: 0, joins: 0/0}
+GHC.Event.Array.$wconcat [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     MutVar# RealWorld (AC a)
+     -> MutVar# RealWorld (AC a)
+     -> State# RealWorld
+     -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)><S,U><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0 0] 126 30}]
+GHC.Event.Array.$wconcat
+  = \ (@ a_s7Wng)
+      (w_s7Wnh :: Storable a_s7Wng)
+      (ww_s7Wnn :: MutVar# RealWorld (AC a_s7Wng))
+      (ww1_s7Wnr :: MutVar# RealWorld (AC a_s7Wng))
+      (w1_s7Wnk :: State# RealWorld) ->
+      case readMutVar# @ RealWorld @ (AC a_s7Wng) ww_s7Wnn w1_s7Wnk of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of wild_X2u { AC ds_d7V8S dt_d7VaC dt1_d7VaD ->
+      case readMutVar# @ RealWorld @ (AC a_s7Wng) ww1_s7Wnr ipv_i7IAy of
+      { (# ipv2_X7IDe, ipv3_X7IDg #) ->
+      case ipv3_X7IDg of wild1_XO { AC ds3_d7V8H dt2_d7VaE dt3_d7VaF ->
+      case GHC.Event.Array.concat3
+             @ a_s7Wng
+             w_s7Wnh
+             wild_X2u
+             (GHC.Types.I# dt_d7VaC)
+             wild1_XO
+             GHC.Event.Array.concat2
+             (GHC.Types.I# dt2_d7VaE)
+             ipv2_X7IDe
+      of
+      { (# ipv4_X7IDr, ipv5_X7IDt #) ->
+      case writeMutVar#
+             @ RealWorld @ (AC a_s7Wng) ww_s7Wnn ipv5_X7IDt ipv4_X7IDr
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (# s2#_i7IBe, GHC.Tuple.() #)
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 27, coercions: 12, joins: 0/0}
+GHC.Event.Array.concat1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Array a
+     -> Array a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7Wng)
+                 (w_s7Wnh [Occ=Once] :: Storable a_s7Wng)
+                 (w1_s7Wni [Occ=Once] :: Array a_s7Wng)
+                 (w2_s7Wnj [Occ=Once] :: Array a_s7Wng)
+                 (w3_s7Wnk [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7Wni
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_s7Wng>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wng>_N
+                              :: (Array a_s7Wng :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wng) :: *))
+                 of
+                 { GHC.STRef.STRef ww1_s7Wnn [Occ=Once] ->
+                 case w2_s7Wnj
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_s7Wng>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wng>_N
+                              :: (Array a_s7Wng :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wng) :: *))
+                 of
+                 { GHC.STRef.STRef ww3_s7Wnr [Occ=Once] ->
+                 GHC.Event.Array.$wconcat
+                   @ a_s7Wng w_s7Wnh ww1_s7Wnn ww3_s7Wnr w3_s7Wnk
+                 }
+                 }}]
+GHC.Event.Array.concat1
+  = \ (@ a_s7Wng)
+      (w_s7Wnh :: Storable a_s7Wng)
+      (w1_s7Wni :: Array a_s7Wng)
+      (w2_s7Wnj :: Array a_s7Wng)
+      (w3_s7Wnk :: State# RealWorld) ->
+      case w1_s7Wni
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_s7Wng>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wng>_N
+                   :: (Array a_s7Wng :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wng) :: *))
+      of
+      { GHC.STRef.STRef ww1_s7Wnn ->
+      case w2_s7Wnj
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_s7Wng>_P ; GHC.IORef.N:IORef[0] <AC a_s7Wng>_N
+                   :: (Array a_s7Wng :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_s7Wng) :: *))
+      of
+      { GHC.STRef.STRef ww3_s7Wnr ->
+      GHC.Event.Array.$wconcat
+        @ a_s7Wng w_s7Wnh ww1_s7Wnn ww3_s7Wnr w3_s7Wnk
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+concat :: forall a. Storable a => Array a -> Array a -> IO ()
+[GblId,
+ Arity=4,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.concat1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Array a>_R
+                       ->_R <Array a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Array a
+                           -> Array a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. Storable a => Array a -> Array a -> IO () :: *))}]
+concat
+  = GHC.Event.Array.concat1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Array a>_R
+            ->_R <Array a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Storable a =>
+                Array a
+                -> Array a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Storable a => Array a -> Array a -> IO () :: *))
+
+-- RHS size: {terms: 43, types: 87, coercions: 12, joins: 0/0}
+GHC.Event.Array.copy1
+  :: forall a.
+     Storable a =>
+     Array a
+     -> Int
+     -> Array a
+     -> Int
+     -> Int
+     -> State# RealWorld
+     -> (# State# RealWorld, () #)
+[GblId,
+ Arity=7,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=7,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7V0z)
+                 ($dStorable_a7V0B [Occ=Once] :: Storable a_a7V0z)
+                 (ds_d7V90 [Occ=Once] :: Array a_a7V0z)
+                 (dstart_a7UAz [Occ=Once] :: Int)
+                 (ds1_d7V91 [Occ=Once] :: Array a_a7V0z)
+                 (sstart_a7UAB [Occ=Once] :: Int)
+                 (maxCount_a7UAC [Occ=Once] :: Int)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7V90
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7V0z>_P ; GHC.IORef.N:IORef[0] <AC a_a7V0z>_N
+                              :: (Array a_a7V0z :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7V0z) :: *))
+                 of
+                 { GHC.STRef.STRef var#_i7IB3 ->
+                 case readMutVar# @ RealWorld @ (AC a_a7V0z) var#_i7IB3 s_i7IAv of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                 case ds1_d7V91
+                      `cast` (GHC.Event.Array.N:Array[0]
+                                  <a_a7V0z>_P ; GHC.IORef.N:IORef[0] <AC a_a7V0z>_N
+                              :: (Array a_a7V0z :: *)
+                                 ~R# (GHC.STRef.STRef RealWorld (AC a_a7V0z) :: *))
+                 of
+                 { GHC.STRef.STRef var#1_X7IHy [Occ=Once] ->
+                 case readMutVar# @ RealWorld @ (AC a_a7V0z) var#1_X7IHy ipv_i7IAy
+                 of
+                 { (# ipv2_X7IDe [Occ=Once], ipv3_X7IDg [Occ=Once] #) ->
+                 case GHC.Event.Array.concat3
+                        @ a_a7V0z
+                        $dStorable_a7V0B
+                        ipv1_i7IAz
+                        dstart_a7UAz
+                        ipv3_X7IDg
+                        sstart_a7UAB
+                        maxCount_a7UAC
+                        ipv2_X7IDe
+                 of
+                 { (# ipv4_X7IDj [Occ=Once], ipv5_X7IDl [Occ=Once] #) ->
+                 case writeMutVar#
+                        @ RealWorld @ (AC a_a7V0z) var#_i7IB3 ipv5_X7IDl ipv4_X7IDj
+                 of s2#_i7IBe
+                 { __DEFAULT ->
+                 (# s2#_i7IBe, GHC.Tuple.() #)
+                 }
+                 }
+                 }
+                 }
+                 }
+                 }}]
+GHC.Event.Array.copy1
+  = \ (@ a_a7V0z)
+      ($dStorable_a7V0B :: Storable a_a7V0z)
+      (ds_d7V90 :: Array a_a7V0z)
+      (dstart_a7UAz :: Int)
+      (ds1_d7V91 :: Array a_a7V0z)
+      (sstart_a7UAB :: Int)
+      (maxCount_a7UAC :: Int)
+      (s_i7IAv :: State# RealWorld) ->
+      case ds_d7V90
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7V0z>_P ; GHC.IORef.N:IORef[0] <AC a_a7V0z>_N
+                   :: (Array a_a7V0z :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7V0z) :: *))
+      of
+      { GHC.STRef.STRef var#_i7IB3 ->
+      case readMutVar# @ RealWorld @ (AC a_a7V0z) var#_i7IB3 s_i7IAv of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ds1_d7V91
+           `cast` (GHC.Event.Array.N:Array[0]
+                       <a_a7V0z>_P ; GHC.IORef.N:IORef[0] <AC a_a7V0z>_N
+                   :: (Array a_a7V0z :: *)
+                      ~R# (GHC.STRef.STRef RealWorld (AC a_a7V0z) :: *))
+      of
+      { GHC.STRef.STRef var#1_X7IHy ->
+      case readMutVar# @ RealWorld @ (AC a_a7V0z) var#1_X7IHy ipv_i7IAy
+      of
+      { (# ipv2_X7IDe, ipv3_X7IDg #) ->
+      case GHC.Event.Array.concat3
+             @ a_a7V0z
+             $dStorable_a7V0B
+             ipv1_i7IAz
+             dstart_a7UAz
+             ipv3_X7IDg
+             sstart_a7UAB
+             maxCount_a7UAC
+             ipv2_X7IDe
+      of
+      { (# ipv4_X7IDj, ipv5_X7IDl #) ->
+      case writeMutVar#
+             @ RealWorld @ (AC a_a7V0z) var#_i7IB3 ipv5_X7IDl ipv4_X7IDj
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (# s2#_i7IBe, GHC.Tuple.() #)
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 21, joins: 0/0}
+copy
+  :: forall a.
+     Storable a =>
+     Array a -> Int -> Array a -> Int -> Int -> IO ()
+[GblId,
+ Arity=7,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.copy1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Array a>_R
+                       ->_R <Int>_R
+                       ->_R <Array a>_R
+                       ->_R <Int>_R
+                       ->_R <Int>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Array a
+                           -> Int
+                           -> Array a
+                           -> Int
+                           -> Int
+                           -> State# RealWorld
+                           -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a.
+                               Storable a =>
+                               Array a -> Int -> Array a -> Int -> Int -> IO () :: *))}]
+copy
+  = GHC.Event.Array.copy1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Array a>_R
+            ->_R <Int>_R
+            ->_R <Array a>_R
+            ->_R <Int>_R
+            ->_R <Int>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Storable a =>
+                Array a
+                -> Int
+                -> Array a
+                -> Int
+                -> Int
+                -> State# RealWorld
+                -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a.
+                    Storable a =>
+                    Array a -> Int -> Array a -> Int -> Int -> IO () :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl43_r7WMV :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl43_r7WMV = GHC.Types.I# 68#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl44_r7WMW :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl44_r7WMW = GHC.Types.I# 26#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl45_r7WMX :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl45_r7WMX = GHC.Types.I# 35#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl46_r7WMY :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl46_r7WMY
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl43_r7WMV
+      lvl44_r7WMW
+      lvl43_r7WMV
+      lvl45_r7WMX
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl47_r7WMZ :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl47_r7WMZ
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl46_r7WMY GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.duplicate1 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.duplicate1
+  = \ (@ a_a7V0U) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7V0U
+        (lvl47_r7WMZ
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 84, types: 72, coercions: 13, joins: 0/8}
+GHC.Event.Array.$wnew [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Int# -> State# RealWorld -> (# State# RealWorld, Array a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0 0] 143 30}]
+GHC.Event.Array.$wnew
+  = \ (@ a_s7Wnu)
+      (w_s7Wnv :: Storable a_s7Wnu)
+      (ww_s7WnA :: Int#)
+      (w1_s7Wnx :: State# RealWorld) ->
+      case sizeOf
+             @ a_s7Wnu w_s7Wnv (GHC.Event.Array.duplicate1 @ a_s7Wnu)
+      of
+      { I# y_i7MWP ->
+      let {
+        n1_s7VvR [Dmd=<S,U>] :: Int#
+        [LclId]
+        n1_s7VvR = -# ww_s7WnA 1# } in
+      let {
+        ipv_s7VdA [Dmd=<S,U>] :: Int#
+        [LclId]
+        ipv_s7VdA = orI# n1_s7VvR (uncheckedIShiftRA# n1_s7VvR 1#) } in
+      let {
+        ipv1_s7VdE [Dmd=<S,U>] :: Int#
+        [LclId]
+        ipv1_s7VdE = orI# ipv_s7VdA (uncheckedIShiftRA# ipv_s7VdA 2#) } in
+      let {
+        ipv2_s7VdI [Dmd=<S,U>] :: Int#
+        [LclId]
+        ipv2_s7VdI
+          = orI# ipv1_s7VdE (uncheckedIShiftRA# ipv1_s7VdE 4#) } in
+      let {
+        ipv3_s7VdM [Dmd=<S,U>] :: Int#
+        [LclId]
+        ipv3_s7VdM
+          = orI# ipv2_s7VdI (uncheckedIShiftRA# ipv2_s7VdI 8#) } in
+      let {
+        ipv4_s7VdQ [Dmd=<S,U>] :: Int#
+        [LclId]
+        ipv4_s7VdQ
+          = orI# ipv3_s7VdM (uncheckedIShiftRA# ipv3_s7VdM 16#) } in
+      let {
+        x_i7MWL [Dmd=<S,U>] :: Int#
+        [LclId]
+        x_i7MWL
+          = +# (orI# ipv4_s7VdQ (uncheckedIShiftRA# ipv4_s7VdQ 32#)) 1# } in
+      let {
+        x1_alN9 [Dmd=<S,U>] :: Int#
+        [LclId]
+        x1_alN9 = *# x_i7MWL y_i7MWP } in
+      case <# x1_alN9 0# of {
+        __DEFAULT ->
+          case newPinnedByteArray# @ RealWorld x1_alN9 w1_s7Wnx of
+          { (# ipv5_s7JbE, ipv6_s7JbF #) ->
+          case newMutVar#
+                 @ (AC a_s7Wnu)
+                 @ RealWorld
+                 (GHC.Event.Array.AC
+                    @ a_s7Wnu
+                    (GHC.ForeignPtr.ForeignPtr
+                       @ a_s7Wnu
+                       (byteArrayContents#
+                          (ipv6_s7JbF
+                           `cast` (UnsafeCo representational (MutableByteArray#
+                                                                RealWorld) ByteArray#
+                                   :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                      ~R# (ByteArray# :: TYPE 'UnliftedRep))))
+                       (GHC.ForeignPtr.PlainPtr ipv6_s7JbF))
+                    0#
+                    x_i7MWL)
+                 ipv5_s7JbE
+          of
+          { (# ipv7_i7IAN, ipv8_i7IAO #) ->
+          (# ipv7_i7IAN,
+             (GHC.STRef.STRef @ RealWorld @ (AC a_s7Wnu) ipv8_i7IAO)
+             `cast` (Sym (GHC.IORef.N:IORef[0]) <AC
+                                                   a_s7Wnu>_N ; Sym (GHC.Event.Array.N:Array[0]
+                                                                         <a_s7Wnu>_P)
+                     :: (GHC.STRef.STRef RealWorld (AC a_s7Wnu) :: *)
+                        ~R# (Array a_s7Wnu :: *)) #)
+          }
+          };
+        1# ->
+          case GHC.ForeignPtr.mallocPlainForeignPtrBytes2 of wild_00 { }
+      }
+      }
+
+-- RHS size: {terms: 11, types: 10, coercions: 0, joins: 0/0}
+GHC.Event.Array.new1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Storable a =>
+     Int -> State# RealWorld -> (# State# RealWorld, Array a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s7Wnu)
+                 (w_s7Wnv [Occ=Once] :: Storable a_s7Wnu)
+                 (w1_s7Wnw [Occ=Once!] :: Int)
+                 (w2_s7Wnx [Occ=Once] :: State# RealWorld) ->
+                 case w1_s7Wnw of { I# ww1_s7WnA [Occ=Once] ->
+                 GHC.Event.Array.$wnew @ a_s7Wnu w_s7Wnv ww1_s7WnA w2_s7Wnx
+                 }}]
+GHC.Event.Array.new1
+  = \ (@ a_s7Wnu)
+      (w_s7Wnv :: Storable a_s7Wnu)
+      (w1_s7Wnw :: Int)
+      (w2_s7Wnx :: State# RealWorld) ->
+      case w1_s7Wnw of { I# ww1_s7WnA ->
+      GHC.Event.Array.$wnew @ a_s7Wnu w_s7Wnv ww1_s7WnA w2_s7Wnx
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+new :: forall a. Storable a => Int -> IO (Array a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Array.new1
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R
+                       ->_R <Int>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Array a>_R)
+                       :: (forall a.
+                           Storable a =>
+                           Int -> State# RealWorld -> (# State# RealWorld, Array a #) :: *)
+                          ~R# (forall a. Storable a => Int -> IO (Array a) :: *))}]
+new
+  = GHC.Event.Array.new1
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R
+            ->_R <Int>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Array a>_R)
+            :: (forall a.
+                Storable a =>
+                Int -> State# RealWorld -> (# State# RealWorld, Array a #) :: *)
+               ~R# (forall a. Storable a => Int -> IO (Array a) :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl48_r7WN0 :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl48_r7WN0 = GHC.Types.I# 95#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl49_r7WN1 :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl49_r7WN1 = GHC.Types.I# 23#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl50_r7WN2 :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl50_r7WN2 = GHC.Types.I# 32#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl51_r7WN3 :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl51_r7WN3
+  = GHC.Stack.Types.SrcLoc
+      lvl7_r7WMb
+      lvl8_r7WMc
+      lvl10_r7WMe
+      lvl48_r7WN0
+      lvl49_r7WN1
+      lvl48_r7WN0
+      lvl50_r7WN2
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl52_r7WN4 :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl52_r7WN4
+  = GHC.Stack.Types.PushCallStack
+      lvl6_r7WMa lvl51_r7WN3 GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+GHC.Event.Array.duplicate2 :: forall a. a
+[GblId, Str=x]
+GHC.Event.Array.duplicate2
+  = \ (@ a_a7V1V) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a7V1V
+        (lvl52_r7WN4
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 89, types: 127, coercions: 26, joins: 0/5}
+duplicate :: forall a. Storable a => Array a -> IO (Array a)
+[GblId,
+ Arity=1,
+ Str=<L,U(C(U(U)),A,A,A,A,A,A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60] 281 60}]
+duplicate
+  = \ (@ a_a7V1V) ($dStorable_a7V1X :: Storable a_a7V1V) ->
+      let {
+        lvl53_s7VCP [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        lvl53_s7VCP
+          = sizeOf
+              @ a_a7V1V
+              $dStorable_a7V1X
+              (GHC.Event.Array.duplicate2 @ a_a7V1V) } in
+      let {
+        lvl54_s7WD0 [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        lvl54_s7WD0
+          = sizeOf
+              @ a_a7V1V
+              $dStorable_a7V1X
+              (GHC.Event.Array.duplicate1 @ a_a7V1V) } in
+      (\ (a1_a7UyE :: Array a_a7V1V) (eta_B1 :: State# RealWorld) ->
+         case a1_a7UyE
+              `cast` (GHC.Event.Array.N:Array[0]
+                          <a_a7V1V>_P ; GHC.IORef.N:IORef[0] <AC a_a7V1V>_N
+                      :: (Array a_a7V1V :: *)
+                         ~R# (GHC.STRef.STRef RealWorld (AC a_a7V1V) :: *))
+         of
+         { GHC.STRef.STRef var#_i7IB3 ->
+         case readMutVar# @ RealWorld @ (AC a_a7V1V) var#_i7IB3 eta_B1 of
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case ipv1_i7IAz of { AC es_a7UyJ dt_d7VaG dt1_d7VaH ->
+         case es_a7UyJ of { GHC.ForeignPtr.ForeignPtr ds2_s7WCY r_s7WCZ ->
+         case lvl54_s7WD0 of { I# y_i7MWP ->
+         let {
+           x_alN9 [Dmd=<S,U>] :: Int#
+           [LclId]
+           x_alN9 = *# dt1_d7VaH y_i7MWP } in
+         case <# x_alN9 0# of {
+           __DEFAULT ->
+             case newPinnedByteArray# @ RealWorld x_alN9 ipv_i7IAy of
+             { (# ipv2_s7JbE, ipv3_s7JbF #) ->
+             case lvl53_s7VCP of { I# y1_X7N46 ->
+             let {
+               ipv4_s7VG8 [Dmd=<S,U>] :: Addr#
+               [LclId]
+               ipv4_s7VG8
+                 = byteArrayContents#
+                     (ipv3_s7JbF
+                      `cast` (UnsafeCo representational (MutableByteArray#
+                                                           RealWorld) ByteArray#
+                              :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                 ~R# (ByteArray# :: TYPE 'UnliftedRep))) } in
+             case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Addr# #)}_d7V9Y
+                    ipv4_s7VG8 ds2_s7WCY (int2Word# (*# dt_d7VaG y1_X7N46)) ipv2_s7JbE
+             of
+             { (# ds4_d7V9W, ds5_d7V9V #) ->
+             case touch#
+                    @ 'LiftedRep @ GHC.ForeignPtr.ForeignPtrContents r_s7WCZ ds4_d7V9W
+             of s'_a7ILd
+             { __DEFAULT ->
+             let {
+               ipv5_s7VG9 :: GHC.ForeignPtr.ForeignPtrContents
+               [LclId, Unf=OtherCon []]
+               ipv5_s7VG9 = GHC.ForeignPtr.PlainPtr ipv3_s7JbF } in
+             case touch#
+                    @ 'LiftedRep
+                    @ GHC.ForeignPtr.ForeignPtrContents
+                    ipv5_s7VG9
+                    s'_a7ILd
+             of s'1_X7ISO
+             { __DEFAULT ->
+             case newMutVar#
+                    @ (AC a_a7V1V)
+                    @ RealWorld
+                    (GHC.Event.Array.AC
+                       @ a_a7V1V
+                       (GHC.ForeignPtr.ForeignPtr @ a_a7V1V ipv4_s7VG8 ipv5_s7VG9)
+                       dt_d7VaG
+                       dt1_d7VaH)
+                    s'1_X7ISO
+             of
+             { (# ipv6_i7IAN, ipv7_i7IAO #) ->
+             (# ipv6_i7IAN,
+                (GHC.STRef.STRef @ RealWorld @ (AC a_a7V1V) ipv7_i7IAO)
+                `cast` (Sym (GHC.IORef.N:IORef[0]) <AC
+                                                      a_a7V1V>_N ; Sym (GHC.Event.Array.N:Array[0]
+                                                                            <a_a7V1V>_P)
+                        :: (GHC.STRef.STRef RealWorld (AC a_a7V1V) :: *)
+                           ~R# (Array a_a7V1V :: *)) #)
+             }
+             }
+             }
+             }
+             }
+             };
+           1# ->
+             case GHC.ForeignPtr.mallocPlainForeignPtrBytes2 of wild4_00 { }
+         }
+         }
+         }
+         }
+         }
+         })
+      `cast` (<Array a_a7V1V>_R
+              ->_R Sym (GHC.Types.N:IO[0] <Array a_a7V1V>_R)
+              :: (Array a_a7V1V
+                  -> State# RealWorld -> (# State# RealWorld, Array a_a7V1V #) :: *)
+                 ~R# (Array a_a7V1V -> IO (Array a_a7V1V) :: *))
+
+

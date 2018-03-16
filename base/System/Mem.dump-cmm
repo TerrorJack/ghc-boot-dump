@@ -1,0 +1,972 @@
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.569283255 UTC
+
+[]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.569764579 UTC
+
+[section ""cstring" . System.Mem.$trModule4_bytes" {
+     System.Mem.$trModule4_bytes:
+         I8[] [98,97,115,101]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.57030091 UTC
+
+[section ""data" . System.Mem.$trModule3_closure" {
+     System.Mem.$trModule3_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule4_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.570843598 UTC
+
+[section ""cstring" . System.Mem.$trModule2_bytes" {
+     System.Mem.$trModule2_bytes:
+         I8[] [83,121,115,116,101,109,46,77,101,109]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.571372456 UTC
+
+[section ""data" . System.Mem.$trModule1_closure" {
+     System.Mem.$trModule1_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule2_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.571956874 UTC
+
+[section ""data" . System.Mem.$trModule_closure" {
+     System.Mem.$trModule_closure:
+         const GHC.Types.Module_con_info;
+         const System.Mem.$trModule3_closure+1;
+         const System.Mem.$trModule1_closure+1;
+         const 3;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.572900388 UTC
+
+[section ""data" . performMajorGC1_rcmsu_closure" {
+     performMajorGC1_rcmsu_closure:
+         const performMajorGC1_rcmsu_info;
+ },
+ performMajorGC1_rcmsu_entry() //  []
+         { info_tbl: [(ccmsM,
+                       label: performMajorGC1_rcmsu_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmsM: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmsN; else goto ccmsO;
+       ccmsN: // global
+           R1 = performMajorGC1_rcmsu_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmsO: // global
+           I64[Sp - 8] = block_ccmsK_info;
+           Sp = Sp - 8;
+           _ucmsS::P64 = CurrentTSO;
+           I64[I64[_ucmsS::P64 + 24] + 16] = Sp;
+           _ucmsT::I64 = CurrentNursery;
+           P64[_ucmsT::I64 + 8] = Hp + 8;
+           I64[_ucmsS::P64 + 104] = I64[_ucmsS::P64 + 104] - ((Hp + 8) - I64[_ucmsT::I64]);
+           (_ucmsQ::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performMajorGC();
+           (_ucmsR::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmsQ::I64);
+           BaseReg = _ucmsR::I64;
+           _ucmsU::P64 = CurrentTSO;
+           _ucmsV::P64 = I64[_ucmsU::P64 + 24];
+           Sp = I64[_ucmsV::P64 + 16];
+           SpLim = _ucmsV::P64 + 192;
+           HpAlloc = 0;
+           _ucmsW::I64 = CurrentNursery;
+           _ucmsX::I64 = I64[_ucmsW::I64 + 8];
+           Hp = _ucmsX::I64 - 8;
+           _ucmsY::I64 = I64[_ucmsW::I64];
+           HpLim = _ucmsY::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmsW::I64 + 48]) << 12) - 1);
+           I64[_ucmsU::P64 + 104] = I64[_ucmsU::P64 + 104] + (_ucmsX::I64 - _ucmsY::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmsK() //  []
+         { info_tbl: [(ccmsK,
+                       label: block_ccmsK_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmsK: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.574309268 UTC
+
+[section ""data" . System.Mem.performMajorGC_closure" {
+     System.Mem.performMajorGC_closure:
+         const System.Mem.performMajorGC_info;
+ },
+ System.Mem.performMajorGC_entry() //  []
+         { info_tbl: [(ccmt4,
+                       label: System.Mem.performMajorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmt4: // global
+           call performMajorGC1_rcmsu_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.575115369 UTC
+
+[section ""data" . System.Mem.performGC_closure" {
+     System.Mem.performGC_closure:
+         const System.Mem.performGC_info;
+ },
+ System.Mem.performGC_entry() //  []
+         { info_tbl: [(ccmtb,
+                       label: System.Mem.performGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmtb: // global
+           call System.Mem.performMajorGC_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.576038112 UTC
+
+[section ""data" . performMinorGC1_rcmsv_closure" {
+     performMinorGC1_rcmsv_closure:
+         const performMinorGC1_rcmsv_info;
+ },
+ performMinorGC1_rcmsv_entry() //  []
+         { info_tbl: [(ccmtl,
+                       label: performMinorGC1_rcmsv_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmtl: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmtm; else goto ccmtn;
+       ccmtm: // global
+           R1 = performMinorGC1_rcmsv_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmtn: // global
+           I64[Sp - 8] = block_ccmtj_info;
+           Sp = Sp - 8;
+           _ucmtr::P64 = CurrentTSO;
+           I64[I64[_ucmtr::P64 + 24] + 16] = Sp;
+           _ucmts::I64 = CurrentNursery;
+           P64[_ucmts::I64 + 8] = Hp + 8;
+           I64[_ucmtr::P64 + 104] = I64[_ucmtr::P64 + 104] - ((Hp + 8) - I64[_ucmts::I64]);
+           (_ucmtp::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performGC();
+           (_ucmtq::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmtp::I64);
+           BaseReg = _ucmtq::I64;
+           _ucmtt::P64 = CurrentTSO;
+           _ucmtu::P64 = I64[_ucmtt::P64 + 24];
+           Sp = I64[_ucmtu::P64 + 16];
+           SpLim = _ucmtu::P64 + 192;
+           HpAlloc = 0;
+           _ucmtv::I64 = CurrentNursery;
+           _ucmtw::I64 = I64[_ucmtv::I64 + 8];
+           Hp = _ucmtw::I64 - 8;
+           _ucmtx::I64 = I64[_ucmtv::I64];
+           HpLim = _ucmtx::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmtv::I64 + 48]) << 12) - 1);
+           I64[_ucmtt::P64 + 104] = I64[_ucmtt::P64 + 104] + (_ucmtw::I64 - _ucmtx::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmtj() //  []
+         { info_tbl: [(ccmtj,
+                       label: block_ccmtj_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmtj: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.577333722 UTC
+
+[section ""data" . System.Mem.performMinorGC_closure" {
+     System.Mem.performMinorGC_closure:
+         const System.Mem.performMinorGC_info;
+ },
+ System.Mem.performMinorGC_entry() //  []
+         { info_tbl: [(ccmtD,
+                       label: System.Mem.performMinorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmtD: // global
+           call performMinorGC1_rcmsv_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.578053374 UTC
+
+[section ""relreadonly" . ScmtG_srt" { ScmtG_srt:
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.578663838 UTC
+
+[]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.579215171 UTC
+
+[section ""cstring" . System.Mem.$trModule4_bytes" {
+     System.Mem.$trModule4_bytes:
+         I8[] [98,97,115,101]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.579836104 UTC
+
+[section ""data" . System.Mem.$trModule3_closure" {
+     System.Mem.$trModule3_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule4_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.580365212 UTC
+
+[section ""cstring" . System.Mem.$trModule2_bytes" {
+     System.Mem.$trModule2_bytes:
+         I8[] [83,121,115,116,101,109,46,77,101,109]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.580962932 UTC
+
+[section ""data" . System.Mem.$trModule1_closure" {
+     System.Mem.$trModule1_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule2_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.581573145 UTC
+
+[section ""data" . System.Mem.$trModule_closure" {
+     System.Mem.$trModule_closure:
+         const GHC.Types.Module_con_info;
+         const System.Mem.$trModule3_closure+1;
+         const System.Mem.$trModule1_closure+1;
+         const 3;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.582402532 UTC
+
+[section ""data" . performMajorGC1_rcmsu_closure" {
+     performMajorGC1_rcmsu_closure:
+         const performMajorGC1_rcmsu_info;
+ },
+ performMajorGC1_rcmsu_entry() //  []
+         { info_tbl: [(ccmtO,
+                       label: performMajorGC1_rcmsu_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmtO: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmtP; else goto ccmtQ;
+       ccmtP: // global
+           R1 = performMajorGC1_rcmsu_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmtQ: // global
+           I64[Sp - 8] = block_ccmtM_info;
+           Sp = Sp - 8;
+           _ucmtU::P64 = CurrentTSO;
+           I64[I64[_ucmtU::P64 + 24] + 16] = Sp;
+           _ucmtV::I64 = CurrentNursery;
+           P64[_ucmtV::I64 + 8] = Hp + 8;
+           I64[_ucmtU::P64 + 104] = I64[_ucmtU::P64 + 104] - ((Hp + 8) - I64[_ucmtV::I64]);
+           (_ucmtS::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performMajorGC();
+           (_ucmtT::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmtS::I64);
+           BaseReg = _ucmtT::I64;
+           _ucmtW::P64 = CurrentTSO;
+           _ucmtX::P64 = I64[_ucmtW::P64 + 24];
+           Sp = I64[_ucmtX::P64 + 16];
+           SpLim = _ucmtX::P64 + 192;
+           HpAlloc = 0;
+           _ucmtY::I64 = CurrentNursery;
+           _ucmtZ::I64 = I64[_ucmtY::I64 + 8];
+           Hp = _ucmtZ::I64 - 8;
+           _ucmu0::I64 = I64[_ucmtY::I64];
+           HpLim = _ucmu0::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmtY::I64 + 48]) << 12) - 1);
+           I64[_ucmtW::P64 + 104] = I64[_ucmtW::P64 + 104] + (_ucmtZ::I64 - _ucmu0::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmtM() //  []
+         { info_tbl: [(ccmtM,
+                       label: block_ccmtM_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmtM: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.583709943 UTC
+
+[section ""data" . System.Mem.performMajorGC_closure" {
+     System.Mem.performMajorGC_closure:
+         const System.Mem.performMajorGC_info;
+ },
+ System.Mem.performMajorGC_entry() //  []
+         { info_tbl: [(ccmu6,
+                       label: System.Mem.performMajorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmu6: // global
+           call performMajorGC1_rcmsu_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.584480665 UTC
+
+[section ""data" . System.Mem.performGC_closure" {
+     System.Mem.performGC_closure:
+         const System.Mem.performGC_info;
+ },
+ System.Mem.performGC_entry() //  []
+         { info_tbl: [(ccmud,
+                       label: System.Mem.performGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmud: // global
+           call System.Mem.performMajorGC_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.585465296 UTC
+
+[section ""data" . performMinorGC1_rcmsv_closure" {
+     performMinorGC1_rcmsv_closure:
+         const performMinorGC1_rcmsv_info;
+ },
+ performMinorGC1_rcmsv_entry() //  []
+         { info_tbl: [(ccmun,
+                       label: performMinorGC1_rcmsv_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmun: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmuo; else goto ccmup;
+       ccmuo: // global
+           R1 = performMinorGC1_rcmsv_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmup: // global
+           I64[Sp - 8] = block_ccmul_info;
+           Sp = Sp - 8;
+           _ucmut::P64 = CurrentTSO;
+           I64[I64[_ucmut::P64 + 24] + 16] = Sp;
+           _ucmuu::I64 = CurrentNursery;
+           P64[_ucmuu::I64 + 8] = Hp + 8;
+           I64[_ucmut::P64 + 104] = I64[_ucmut::P64 + 104] - ((Hp + 8) - I64[_ucmuu::I64]);
+           (_ucmur::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performGC();
+           (_ucmus::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmur::I64);
+           BaseReg = _ucmus::I64;
+           _ucmuv::P64 = CurrentTSO;
+           _ucmuw::P64 = I64[_ucmuv::P64 + 24];
+           Sp = I64[_ucmuw::P64 + 16];
+           SpLim = _ucmuw::P64 + 192;
+           HpAlloc = 0;
+           _ucmux::I64 = CurrentNursery;
+           _ucmuy::I64 = I64[_ucmux::I64 + 8];
+           Hp = _ucmuy::I64 - 8;
+           _ucmuz::I64 = I64[_ucmux::I64];
+           HpLim = _ucmuz::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmux::I64 + 48]) << 12) - 1);
+           I64[_ucmuv::P64 + 104] = I64[_ucmuv::P64 + 104] + (_ucmuy::I64 - _ucmuz::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmul() //  []
+         { info_tbl: [(ccmul,
+                       label: block_ccmul_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmul: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.586742925 UTC
+
+[section ""data" . System.Mem.performMinorGC_closure" {
+     System.Mem.performMinorGC_closure:
+         const System.Mem.performMinorGC_info;
+ },
+ System.Mem.performMinorGC_entry() //  []
+         { info_tbl: [(ccmuF,
+                       label: System.Mem.performMinorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmuF: // global
+           call performMinorGC1_rcmsv_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.587448099 UTC
+
+[section ""relreadonly" . ScmtG_srt" { ScmtG_srt:
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.588237844 UTC
+
+[]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.589395146 UTC
+
+[section ""cstring" . System.Mem.$trModule4_bytes" {
+     System.Mem.$trModule4_bytes:
+         I8[] [98,97,115,101]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.591267192 UTC
+
+[section ""data" . System.Mem.$trModule3_closure" {
+     System.Mem.$trModule3_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule4_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.593006463 UTC
+
+[section ""cstring" . System.Mem.$trModule2_bytes" {
+     System.Mem.$trModule2_bytes:
+         I8[] [83,121,115,116,101,109,46,77,101,109]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.595104424 UTC
+
+[section ""data" . System.Mem.$trModule1_closure" {
+     System.Mem.$trModule1_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule2_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.596835376 UTC
+
+[section ""data" . System.Mem.$trModule_closure" {
+     System.Mem.$trModule_closure:
+         const GHC.Types.Module_con_info;
+         const System.Mem.$trModule3_closure+1;
+         const System.Mem.$trModule1_closure+1;
+         const 3;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.599661249 UTC
+
+[section ""data" . performMajorGC1_rcmsu_closure" {
+     performMajorGC1_rcmsu_closure:
+         const performMajorGC1_rcmsu_info;
+ },
+ performMajorGC1_rcmsu_entry() //  []
+         { info_tbl: [(ccmuU,
+                       label: performMajorGC1_rcmsu_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmuU: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmuV; else goto ccmuW;
+       ccmuV: // global
+           R1 = performMajorGC1_rcmsu_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmuW: // global
+           I64[Sp - 8] = block_ccmuS_info;
+           Sp = Sp - 8;
+           _ucmv0::P64 = CurrentTSO;
+           I64[I64[_ucmv0::P64 + 24] + 16] = Sp;
+           _ucmv1::I64 = CurrentNursery;
+           P64[_ucmv1::I64 + 8] = Hp + 8;
+           I64[_ucmv0::P64 + 104] = I64[_ucmv0::P64 + 104] - ((Hp + 8) - I64[_ucmv1::I64]);
+           (_ucmuY::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performMajorGC();
+           (_ucmuZ::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmuY::I64);
+           BaseReg = _ucmuZ::I64;
+           _ucmv2::P64 = CurrentTSO;
+           _ucmv3::P64 = I64[_ucmv2::P64 + 24];
+           Sp = I64[_ucmv3::P64 + 16];
+           SpLim = _ucmv3::P64 + 192;
+           HpAlloc = 0;
+           _ucmv4::I64 = CurrentNursery;
+           _ucmv5::I64 = I64[_ucmv4::I64 + 8];
+           Hp = _ucmv5::I64 - 8;
+           _ucmv6::I64 = I64[_ucmv4::I64];
+           HpLim = _ucmv6::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmv4::I64 + 48]) << 12) - 1);
+           I64[_ucmv2::P64 + 104] = I64[_ucmv2::P64 + 104] + (_ucmv5::I64 - _ucmv6::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmuS() //  []
+         { info_tbl: [(ccmuS,
+                       label: block_ccmuS_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmuS: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.606246978 UTC
+
+[section ""data" . System.Mem.performMajorGC_closure" {
+     System.Mem.performMajorGC_closure:
+         const System.Mem.performMajorGC_info;
+ },
+ System.Mem.performMajorGC_entry() //  []
+         { info_tbl: [(ccmvA,
+                       label: System.Mem.performMajorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmvA: // global
+           call performMajorGC1_rcmsu_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.60970887 UTC
+
+[section ""data" . System.Mem.performGC_closure" {
+     System.Mem.performGC_closure:
+         const System.Mem.performGC_info;
+ },
+ System.Mem.performGC_entry() //  []
+         { info_tbl: [(ccmvL,
+                       label: System.Mem.performGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmvL: // global
+           call System.Mem.performMajorGC_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.61313226 UTC
+
+[section ""data" . performMinorGC1_rcmsv_closure" {
+     performMinorGC1_rcmsv_closure:
+         const performMinorGC1_rcmsv_info;
+ },
+ performMinorGC1_rcmsv_entry() //  []
+         { info_tbl: [(ccmvZ,
+                       label: performMinorGC1_rcmsv_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmvZ: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmw0; else goto ccmw1;
+       ccmw0: // global
+           R1 = performMinorGC1_rcmsv_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmw1: // global
+           I64[Sp - 8] = block_ccmvX_info;
+           Sp = Sp - 8;
+           _ucmw5::P64 = CurrentTSO;
+           I64[I64[_ucmw5::P64 + 24] + 16] = Sp;
+           _ucmw6::I64 = CurrentNursery;
+           P64[_ucmw6::I64 + 8] = Hp + 8;
+           I64[_ucmw5::P64 + 104] = I64[_ucmw5::P64 + 104] - ((Hp + 8) - I64[_ucmw6::I64]);
+           (_ucmw3::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performGC();
+           (_ucmw4::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmw3::I64);
+           BaseReg = _ucmw4::I64;
+           _ucmw7::P64 = CurrentTSO;
+           _ucmw8::P64 = I64[_ucmw7::P64 + 24];
+           Sp = I64[_ucmw8::P64 + 16];
+           SpLim = _ucmw8::P64 + 192;
+           HpAlloc = 0;
+           _ucmw9::I64 = CurrentNursery;
+           _ucmwa::I64 = I64[_ucmw9::I64 + 8];
+           Hp = _ucmwa::I64 - 8;
+           _ucmwb::I64 = I64[_ucmw9::I64];
+           HpLim = _ucmwb::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmw9::I64 + 48]) << 12) - 1);
+           I64[_ucmw7::P64 + 104] = I64[_ucmw7::P64 + 104] + (_ucmwa::I64 - _ucmwb::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmvX() //  []
+         { info_tbl: [(ccmvX,
+                       label: block_ccmvX_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmvX: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.619926542 UTC
+
+[section ""data" . System.Mem.performMinorGC_closure" {
+     System.Mem.performMinorGC_closure:
+         const System.Mem.performMinorGC_info;
+ },
+ System.Mem.performMinorGC_entry() //  []
+         { info_tbl: [(ccmwF,
+                       label: System.Mem.performMinorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmwF: // global
+           call performMinorGC1_rcmsv_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.623218559 UTC
+
+[section ""relreadonly" . ScmtG_srt" { ScmtG_srt:
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.665062048 UTC
+
+[]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.666149125 UTC
+
+[section ""cstring" . System.Mem.$trModule4_bytes" {
+     System.Mem.$trModule4_bytes:
+         I8[] [98,97,115,101]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.667788011 UTC
+
+[section ""data" . System.Mem.$trModule3_closure" {
+     System.Mem.$trModule3_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule4_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.669476363 UTC
+
+[section ""cstring" . System.Mem.$trModule2_bytes" {
+     System.Mem.$trModule2_bytes:
+         I8[] [83,121,115,116,101,109,46,77,101,109]
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.671163059 UTC
+
+[section ""data" . System.Mem.$trModule1_closure" {
+     System.Mem.$trModule1_closure:
+         const GHC.Types.TrNameS_con_info;
+         const System.Mem.$trModule2_bytes;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.672876916 UTC
+
+[section ""data" . System.Mem.$trModule_closure" {
+     System.Mem.$trModule_closure:
+         const GHC.Types.Module_con_info;
+         const System.Mem.$trModule3_closure+1;
+         const System.Mem.$trModule1_closure+1;
+         const 3;
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.675102985 UTC
+
+[section ""data" . performMajorGC1_rcmsu_closure" {
+     performMajorGC1_rcmsu_closure:
+         const performMajorGC1_rcmsu_info;
+ },
+ performMajorGC1_rcmsu_entry() //  []
+         { info_tbl: [(ccmx7,
+                       label: performMajorGC1_rcmsu_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmx7: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmx8; else goto ccmx9;
+       ccmx8: // global
+           R1 = performMajorGC1_rcmsu_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmx9: // global
+           I64[Sp - 8] = block_ccmx5_info;
+           Sp = Sp - 8;
+           _ucmxd::P64 = CurrentTSO;
+           I64[I64[_ucmxd::P64 + 24] + 16] = Sp;
+           _ucmxe::I64 = CurrentNursery;
+           P64[_ucmxe::I64 + 8] = Hp + 8;
+           I64[_ucmxd::P64 + 104] = I64[_ucmxd::P64 + 104] - ((Hp + 8) - I64[_ucmxe::I64]);
+           (_ucmxb::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performMajorGC();
+           (_ucmxc::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmxb::I64);
+           BaseReg = _ucmxc::I64;
+           _ucmxf::P64 = CurrentTSO;
+           _ucmxg::P64 = I64[_ucmxf::P64 + 24];
+           Sp = I64[_ucmxg::P64 + 16];
+           SpLim = _ucmxg::P64 + 192;
+           HpAlloc = 0;
+           _ucmxh::I64 = CurrentNursery;
+           _ucmxi::I64 = I64[_ucmxh::I64 + 8];
+           Hp = _ucmxi::I64 - 8;
+           _ucmxj::I64 = I64[_ucmxh::I64];
+           HpLim = _ucmxj::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmxh::I64 + 48]) << 12) - 1);
+           I64[_ucmxf::P64 + 104] = I64[_ucmxf::P64 + 104] + (_ucmxi::I64 - _ucmxj::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmx5() //  []
+         { info_tbl: [(ccmx5,
+                       label: block_ccmx5_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmx5: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.681662384 UTC
+
+[section ""data" . System.Mem.performMajorGC_closure" {
+     System.Mem.performMajorGC_closure:
+         const System.Mem.performMajorGC_info;
+ },
+ System.Mem.performMajorGC_entry() //  []
+         { info_tbl: [(ccmxP,
+                       label: System.Mem.performMajorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmxP: // global
+           call performMajorGC1_rcmsu_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.6850221 UTC
+
+[section ""data" . System.Mem.performGC_closure" {
+     System.Mem.performGC_closure:
+         const System.Mem.performGC_info;
+ },
+ System.Mem.performGC_entry() //  []
+         { info_tbl: [(ccmy0,
+                       label: System.Mem.performGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmy0: // global
+           call System.Mem.performMajorGC_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.689169988 UTC
+
+[section ""data" . performMinorGC1_rcmsv_closure" {
+     performMinorGC1_rcmsv_closure:
+         const performMinorGC1_rcmsv_info;
+ },
+ performMinorGC1_rcmsv_entry() //  []
+         { info_tbl: [(ccmye,
+                       label: performMinorGC1_rcmsv_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmye: // global
+           if ((Sp + -8) < SpLim) (likely: False) goto ccmyf; else goto ccmyg;
+       ccmyf: // global
+           R1 = performMinorGC1_rcmsv_closure;
+           call (stg_gc_fun)(R1) args: 8, res: 0, upd: 8;
+       ccmyg: // global
+           I64[Sp - 8] = block_ccmyc_info;
+           Sp = Sp - 8;
+           _ucmyk::P64 = CurrentTSO;
+           I64[I64[_ucmyk::P64 + 24] + 16] = Sp;
+           _ucmyl::I64 = CurrentNursery;
+           P64[_ucmyl::I64 + 8] = Hp + 8;
+           I64[_ucmyk::P64 + 104] = I64[_ucmyk::P64 + 104] - ((Hp + 8) - I64[_ucmyl::I64]);
+           (_ucmyi::I64) = call "ccall" arg hints:  [PtrHint,]  result hints:  [PtrHint] suspendThread(BaseReg, 0);
+           call "ccall" arg hints:  []  result hints:  [] performGC();
+           (_ucmyj::I64) = call "ccall" arg hints:  [PtrHint]  result hints:  [PtrHint] resumeThread(_ucmyi::I64);
+           BaseReg = _ucmyj::I64;
+           _ucmym::P64 = CurrentTSO;
+           _ucmyn::P64 = I64[_ucmym::P64 + 24];
+           Sp = I64[_ucmyn::P64 + 16];
+           SpLim = _ucmyn::P64 + 192;
+           HpAlloc = 0;
+           _ucmyo::I64 = CurrentNursery;
+           _ucmyp::I64 = I64[_ucmyo::I64 + 8];
+           Hp = _ucmyp::I64 - 8;
+           _ucmyq::I64 = I64[_ucmyo::I64];
+           HpLim = _ucmyq::I64 + ((%MO_SS_Conv_W32_W64(I32[_ucmyo::I64 + 48]) << 12) - 1);
+           I64[_ucmym::P64 + 104] = I64[_ucmym::P64 + 104] + (_ucmyp::I64 - _ucmyq::I64);
+           call (I64[I64[Sp]])() args: 8, res: 8, upd: 8;
+     }
+ },
+ _ccmyc() //  []
+         { info_tbl: [(ccmyc,
+                       label: block_ccmyc_info
+                       rep:StackRep [])]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmyc: // global
+           R1 = GHC.Tuple.()_closure+1;
+           Sp = Sp + 8;
+           call (I64[P64[Sp]])(R1) args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.696094157 UTC
+
+[section ""data" . System.Mem.performMinorGC_closure" {
+     System.Mem.performMinorGC_closure:
+         const System.Mem.performMinorGC_info;
+ },
+ System.Mem.performMinorGC_entry() //  []
+         { info_tbl: [(ccmyW,
+                       label: System.Mem.performMinorGC_info
+                       rep:HeapRep static { Fun {arity: 1 fun_type: ArgSpec 3} })]
+           stack_info: arg_space: 0 updfr_space: Nothing
+         }
+     {offset
+       ccmyW: // global
+           call performMinorGC1_rcmsv_entry() args: 8, res: 0, upd: 8;
+     }
+ }]
+
+
+==================== Output Cmm ====================
+2018-03-16 16:07:15.699351256 UTC
+
+[section ""relreadonly" . Scmz3_srt" { Scmz3_srt:
+ }]
+

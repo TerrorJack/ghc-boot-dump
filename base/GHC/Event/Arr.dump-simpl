@@ -1,0 +1,396 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:04.344121516 UTC
+
+Result size of Tidy Core
+  = {terms: 137, types: 184, coercions: 35, joins: 0/0}
+
+-- RHS size: {terms: 17, types: 34, coercions: 0, joins: 0/0}
+GHC.Event.Arr.new1
+  :: forall a.
+     a
+     -> Int
+     -> GHC.Prim.State# RealWorld
+     -> (# GHC.Prim.State# RealWorld, Arr a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aqMu)
+                 (defval_aqKI [Occ=Once] :: a_aqMu)
+                 (ds_dqNe [Occ=Once!] :: Int)
+                 (eta_B1 [Occ=Once] :: GHC.Prim.State# RealWorld) ->
+                 case ds_dqNe of { I# n#_aqKJ [Occ=Once] ->
+                 case newArray# @ a_aqMu @ RealWorld n#_aqKJ defval_aqKI eta_B1 of
+                 { (# ipv_sqNs [Occ=Once], ipv1_sqNt [Occ=Once] #) ->
+                 (# ipv_sqNs, GHC.Event.Arr.Arr @ a_aqMu ipv1_sqNt #)
+                 }
+                 }}]
+GHC.Event.Arr.new1
+  = \ (@ a_aqMu)
+      (defval_aqKI :: a_aqMu)
+      (ds_dqNe :: Int)
+      (eta_B1 :: GHC.Prim.State# RealWorld) ->
+      case ds_dqNe of { I# n#_aqKJ ->
+      case newArray# @ a_aqMu @ RealWorld n#_aqKJ defval_aqKI eta_B1 of
+      { (# ipv_sqNs, ipv1_sqNt #) ->
+      (# ipv_sqNs, GHC.Event.Arr.Arr @ a_aqMu ipv1_sqNt #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+new :: forall a. a -> Int -> IO (Arr a)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Arr.new1
+               `cast` (forall (a :: <*>_N).
+                       <a>_R ->_R <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Arr a>_R)
+                       :: (forall a.
+                           a
+                           -> Int
+                           -> GHC.Prim.State# RealWorld
+                           -> (# GHC.Prim.State# RealWorld, Arr a #) :: *)
+                          ~R# (forall a. a -> Int -> IO (Arr a) :: *))}]
+new
+  = GHC.Event.Arr.new1
+    `cast` (forall (a :: <*>_N).
+            <a>_R ->_R <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Arr a>_R)
+            :: (forall a.
+                a
+                -> Int
+                -> GHC.Prim.State# RealWorld
+                -> (# GHC.Prim.State# RealWorld, Arr a #) :: *)
+               ~R# (forall a. a -> Int -> IO (Arr a) :: *))
+
+-- RHS size: {terms: 8, types: 11, coercions: 0, joins: 0/0}
+size :: forall a. Arr a -> Int
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aqMq) (ds_dqNa [Occ=Once!] :: Arr a_aqMq) ->
+                 case ds_dqNa of { Arr a1_aqKN [Occ=Once] ->
+                 GHC.Types.I# (sizeofMutableArray# @ RealWorld @ a_aqMq a1_aqKN)
+                 }}]
+size
+  = \ (@ a_aqMq) (ds_dqNa :: Arr a_aqMq) ->
+      case ds_dqNa of { Arr a1_aqKN ->
+      GHC.Types.I# (sizeofMutableArray# @ RealWorld @ a_aqMq a1_aqKN)
+      }
+
+-- RHS size: {terms: 14, types: 16, coercions: 0, joins: 0/0}
+GHC.Event.Arr.read1
+  :: forall a.
+     Arr a
+     -> Int
+     -> GHC.Prim.State# RealWorld
+     -> (# GHC.Prim.State# RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aqMh)
+                 (ds_dqMX [Occ=Once!] :: Arr a_aqMh)
+                 (ds1_dqMY [Occ=Once!] :: Int)
+                 (eta_B1 [Occ=Once] :: GHC.Prim.State# RealWorld) ->
+                 case ds_dqMX of { Arr a1_aqKO [Occ=Once] ->
+                 case ds1_dqMY of { I# n#_aqKP [Occ=Once] ->
+                 readArray# @ RealWorld @ a_aqMh a1_aqKO n#_aqKP eta_B1
+                 }
+                 }}]
+GHC.Event.Arr.read1
+  = \ (@ a_aqMh)
+      (ds_dqMX :: Arr a_aqMh)
+      (ds1_dqMY :: Int)
+      (eta_B1 :: GHC.Prim.State# RealWorld) ->
+      case ds_dqMX of { Arr a1_aqKO ->
+      case ds1_dqMY of { I# n#_aqKP ->
+      readArray# @ RealWorld @ a_aqMh a1_aqKO n#_aqKP eta_B1
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+read :: forall a. Arr a -> Int -> IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Arr.read1
+               `cast` (forall (a :: <*>_N).
+                       <Arr a>_R ->_R <Int>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           Arr a
+                           -> Int
+                           -> GHC.Prim.State# RealWorld
+                           -> (# GHC.Prim.State# RealWorld, a #) :: *)
+                          ~R# (forall a. Arr a -> Int -> IO a :: *))}]
+read
+  = GHC.Event.Arr.read1
+    `cast` (forall (a :: <*>_N).
+            <Arr a>_R ->_R <Int>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                Arr a
+                -> Int
+                -> GHC.Prim.State# RealWorld
+                -> (# GHC.Prim.State# RealWorld, a #) :: *)
+               ~R# (forall a. Arr a -> Int -> IO a :: *))
+
+-- RHS size: {terms: 21, types: 26, coercions: 0, joins: 0/0}
+GHC.Event.Arr.write1
+  :: forall a.
+     Arr a
+     -> Int
+     -> a
+     -> GHC.Prim.State# RealWorld
+     -> (# GHC.Prim.State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aqM8)
+                 (ds_dqMO [Occ=Once!] :: Arr a_aqM8)
+                 (ds1_dqMP [Occ=Once!] :: Int)
+                 (val_aqKV [Occ=Once] :: a_aqM8)
+                 (eta_B1 [Occ=Once] :: GHC.Prim.State# RealWorld) ->
+                 case ds_dqMO of { Arr a1_aqKT [Occ=Once] ->
+                 case ds1_dqMP of { I# n#_aqKU [Occ=Once] ->
+                 case writeArray#
+                        @ RealWorld @ a_aqM8 a1_aqKT n#_aqKU val_aqKV eta_B1
+                 of s1#_aqKX
+                 { __DEFAULT ->
+                 (# s1#_aqKX, GHC.Tuple.() #)
+                 }
+                 }
+                 }}]
+GHC.Event.Arr.write1
+  = \ (@ a_aqM8)
+      (ds_dqMO :: Arr a_aqM8)
+      (ds1_dqMP :: Int)
+      (val_aqKV :: a_aqM8)
+      (eta_B1 :: GHC.Prim.State# RealWorld) ->
+      case ds_dqMO of { Arr a1_aqKT ->
+      case ds1_dqMP of { I# n#_aqKU ->
+      case writeArray#
+             @ RealWorld @ a_aqM8 a1_aqKT n#_aqKU val_aqKV eta_B1
+      of s1#_aqKX
+      { __DEFAULT ->
+      (# s1#_aqKX, GHC.Tuple.() #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+write :: forall a. Arr a -> Int -> a -> IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Event.Arr.write1
+               `cast` (forall (a :: <*>_N).
+                       <Arr a>_R
+                       ->_R <Int>_R
+                       ->_R <a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Arr a
+                           -> Int
+                           -> a
+                           -> GHC.Prim.State# RealWorld
+                           -> (# GHC.Prim.State# RealWorld, () #) :: *)
+                          ~R# (forall a. Arr a -> Int -> a -> IO () :: *))}]
+write
+  = GHC.Event.Arr.write1
+    `cast` (forall (a :: <*>_N).
+            <Arr a>_R
+            ->_R <Int>_R
+            ->_R <a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Arr a
+                -> Int
+                -> a
+                -> GHC.Prim.State# RealWorld
+                -> (# GHC.Prim.State# RealWorld, () #) :: *)
+               ~R# (forall a. Arr a -> Int -> a -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Event.Arr.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Arr.$trModule3
+  = GHC.Types.TrNameS GHC.Event.Arr.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Event.Arr.$trModule2 = "GHC.Event.Arr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Arr.$trModule1
+  = GHC.Types.TrNameS GHC.Event.Arr.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Event.Arr.$trModule
+  = GHC.Types.Module
+      GHC.Event.Arr.$trModule3 GHC.Event.Arr.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rqPP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rqPP
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcRealWorld (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_rqPQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_rqPQ = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_rqPR :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_rqPR
+  = GHC.Types.:
+      @ GHC.Types.KindRep $krep1_rqPQ (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep3_rqPS :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_rqPS
+  = GHC.Types.: @ GHC.Types.KindRep $krep_rqPP $krep2_rqPR
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_rqPT :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_rqPT
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcMutableArray# $krep3_rqPS
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tcArr2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Event.Arr.$tcArr2 = "Arr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tcArr1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Arr.$tcArr1 = GHC.Types.TrNameS GHC.Event.Arr.$tcArr2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tcArr :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Event.Arr.$tcArr
+  = GHC.Types.TyCon
+      7773062135567581215##
+      417034436732562294##
+      GHC.Event.Arr.$trModule
+      GHC.Event.Arr.$tcArr1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_rqPU :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_rqPU
+  = GHC.Types.KindRepTyConApp GHC.Event.Arr.$tcArr $krep2_rqPR
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tc'Arr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Event.Arr.$tc'Arr1
+  = GHC.Types.KindRepFun $krep4_rqPT $krep5_rqPU
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tc'Arr3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Event.Arr.$tc'Arr3 = "'Arr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tc'Arr2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Event.Arr.$tc'Arr2 = GHC.Types.TrNameS GHC.Event.Arr.$tc'Arr3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Event.Arr.$tc'Arr :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Event.Arr.$tc'Arr
+  = GHC.Types.TyCon
+      2259010253002565214##
+      11584643395998142804##
+      GHC.Event.Arr.$trModule
+      GHC.Event.Arr.$tc'Arr2
+      1#
+      GHC.Event.Arr.$tc'Arr1
+
+

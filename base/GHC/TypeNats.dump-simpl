@@ -1,0 +1,1617 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:00:27.561573246 UTC
+
+Result size of Tidy Core
+  = {terms: 534, types: 556, coercions: 268, joins: 0/0}
+
+-- RHS size: {terms: 3, types: 3, coercions: 2, joins: 0/0}
+natSing [InlPrag=INLINE] :: forall (n :: Nat). KnownNat n => SNat n
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=True)
+         Tmpl= \ (@ (n_a5rLr :: Nat))
+                 (v_B1 [Occ=Once] :: KnownNat n_a5rLr) ->
+                 v_B1
+                 `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rLr>_N
+                         :: (KnownNat n_a5rLr :: Constraint) ~R# (SNat n_a5rLr :: *))}]
+natSing
+  = \ (@ (n_a5rLr :: Nat)) (v_B1 :: KnownNat n_a5rLr) ->
+      v_B1
+      `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rLr>_N
+              :: (KnownNat n_a5rLr :: Constraint) ~R# (SNat n_a5rLr :: *))
+
+-- RHS size: {terms: 5, types: 8, coercions: 0, joins: 0/0}
+GHC.TypeNats.natVal1
+  :: forall (n :: Nat) (proxy :: Nat -> *).
+     KnownNat n =>
+     proxy n -> KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (n_a5rQR :: Nat))
+                 (@ (proxy_a5rQS :: Nat -> *))
+                 ($dKnownNat_a5rQU [Occ=Once] :: KnownNat n_a5rQR)
+                 _ [Occ=Dead] ->
+                 $dKnownNat_a5rQU}]
+GHC.TypeNats.natVal1
+  = \ (@ (n_a5rQR :: Nat))
+      (@ (proxy_a5rQS :: Nat -> *))
+      ($dKnownNat_a5rQU :: KnownNat n_a5rQR)
+      _ [Occ=Dead] ->
+      $dKnownNat_a5rQU
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+natVal
+  :: forall (n :: Nat) (proxy :: Nat -> *).
+     KnownNat n =>
+     proxy n -> Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.TypeNats.natVal1
+               `cast` (forall (n :: <Nat>_N) (proxy :: <Nat -> *>_N).
+                       <KnownNat n>_R
+                       ->_R <proxy n>_R
+                       ->_R GHC.TypeNats.N:KnownNat[0] <n>_N ; GHC.TypeNats.N:SNat[0]
+                                                                   <n>_P
+                       :: (forall (n :: Nat) (proxy :: Nat -> *).
+                           KnownNat n =>
+                           proxy n -> KnownNat n :: *)
+                          ~R# (forall (n :: Nat) (proxy :: Nat -> *).
+                               KnownNat n =>
+                               proxy n -> Natural :: *))}]
+natVal
+  = GHC.TypeNats.natVal1
+    `cast` (forall (n :: <Nat>_N) (proxy :: <Nat -> *>_N).
+            <KnownNat n>_R
+            ->_R <proxy n>_R
+            ->_R GHC.TypeNats.N:KnownNat[0] <n>_N ; GHC.TypeNats.N:SNat[0]
+                                                        <n>_P
+            :: (forall (n :: Nat) (proxy :: Nat -> *).
+                KnownNat n =>
+                proxy n -> KnownNat n :: *)
+               ~R# (forall (n :: Nat) (proxy :: Nat -> *).
+                    KnownNat n =>
+                    proxy n -> Natural :: *))
+
+-- RHS size: {terms: 4, types: 13, coercions: 21, joins: 0/0}
+GHC.TypeNats.sameNat1
+  :: forall (a :: Nat) (b :: Nat). Maybe (a :~: b)
+[GblId,
+ Caf=NoCafRefs,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.sameNat1
+  = \ (@ (a_a5rR3 :: Nat)) (@ (b_a5rR4 :: Nat)) ->
+      GHC.Base.Just
+        @ (a_a5rR3 :~: b_a5rR4)
+        ((Data.Type.Equality.$WRefl @ GHC.Types.Any @ GHC.Types.Any)
+         `cast` (((:~:)
+                    (UnsafeCo nominal GHC.Types.Any Nat)
+                    (UnsafeCo nominal GHC.Types.Any a_a5rR3)
+                    (UnsafeCo nominal GHC.Types.Any b_a5rR4))_R
+                 :: (GHC.Types.Any :~: GHC.Types.Any :: *)
+                    ~R# (a_a5rR3 :~: b_a5rR4 :: *)))
+
+-- RHS size: {terms: 14, types: 19, coercions: 14, joins: 0/0}
+sameNat
+  :: forall (a :: Nat) (b :: Nat).
+     (KnownNat a, KnownNat b) =>
+     Proxy a -> Proxy b -> Maybe (a :~: b)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U><L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (a_a5rR3 :: Nat))
+                 (@ (b_a5rR4 :: Nat))
+                 ($dKnownNat_a5rR6 [Occ=Once] :: KnownNat a_a5rR3)
+                 ($dKnownNat1_a5rR7 [Occ=Once] :: KnownNat b_a5rR4)
+                 _ [Occ=Dead]
+                 _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.eqInteger#
+                        ($dKnownNat_a5rR6
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <a_a5rR3>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <a_a5rR3>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat a_a5rR3 :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rR7
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <b_a5rR4>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <b_a5rR4>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat b_a5rR4 :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> GHC.Base.Nothing @ (a_a5rR3 :~: b_a5rR4);
+                   1# -> GHC.TypeNats.sameNat1 @ a_a5rR3 @ b_a5rR4
+                 }}]
+sameNat
+  = \ (@ (a_a5rR3 :: Nat))
+      (@ (b_a5rR4 :: Nat))
+      ($dKnownNat_a5rR6 :: KnownNat a_a5rR3)
+      ($dKnownNat1_a5rR7 :: KnownNat b_a5rR4)
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.eqInteger#
+             ($dKnownNat_a5rR6
+              `cast` (GHC.TypeNats.N:KnownNat[0] <a_a5rR3>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <a_a5rR3>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat a_a5rR3 :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rR7
+              `cast` (GHC.TypeNats.N:KnownNat[0] <b_a5rR4>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <b_a5rR4>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat b_a5rR4 :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> GHC.Base.Nothing @ (a_a5rR3 :~: b_a5rR4);
+        1# -> GHC.TypeNats.sameNat1 @ a_a5rR3 @ b_a5rR4
+      }
+
+-- RHS size: {terms: 10, types: 10, coercions: 7, joins: 0/0}
+GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+  :: GHC.Types.Int -> SomeNat -> GHC.Show.ShowS
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S,1*U><L,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (p_a5rLw [Occ=Once] :: GHC.Types.Int)
+                 (ds_d5rUq [Occ=Once!] :: SomeNat)
+                 (eta_B1 [Occ=Once] :: GHC.Base.String) ->
+                 case ds_d5rUq of
+                 { SomeNat @ n_a5rRU $dKnownNat_a5rRV [Occ=Once] _ [Occ=Dead] ->
+                 GHC.Show.$fShowInteger_$cshowsPrec
+                   p_a5rLw
+                   ($dKnownNat_a5rRV
+                    `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rRU>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                          <n_a5rRU>_P ; GHC.Natural.N:Natural[0])
+                            :: (KnownNat n_a5rRU :: Constraint)
+                               ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                   eta_B1
+                 }}]
+GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+  = \ (p_a5rLw :: GHC.Types.Int)
+      (ds_d5rUq :: SomeNat)
+      (eta_B1 :: GHC.Base.String) ->
+      case ds_d5rUq of { SomeNat @ n_a5rRU $dKnownNat_a5rRV x_a5rLx ->
+      GHC.Show.$fShowInteger_$cshowsPrec
+        p_a5rLw
+        ($dKnownNat_a5rRV
+         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rRU>_N ; (GHC.TypeNats.N:SNat[0]
+                                                               <n_a5rRU>_P ; GHC.Natural.N:Natural[0])
+                 :: (KnownNat n_a5rRU :: Constraint)
+                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+        eta_B1
+      }
+
+-- RHS size: {terms: 13, types: 19, coercions: 7, joins: 0/0}
+GHC.TypeNats.$fShowSomeNat_$cshow :: SomeNat -> GHC.Base.String
+[GblId,
+ Arity=1,
+ Str=<S,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i1Jj2 [Occ=Once!] :: SomeNat) ->
+                 case x_i1Jj2 of
+                 { SomeNat @ n_a5rRU $dKnownNat_a5rRV [Occ=Once] _ [Occ=Dead] ->
+                 case GHC.Show.$w$cshowsPrec4
+                        0#
+                        ($dKnownNat_a5rRV
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rRU>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rRU>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rRU :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        (GHC.Types.[] @ GHC.Types.Char)
+                 of
+                 { (# ww3_i2pQo [Occ=Once], ww4_i2pQp [Occ=Once] #) ->
+                 GHC.Types.: @ GHC.Types.Char ww3_i2pQo ww4_i2pQp
+                 }
+                 }}]
+GHC.TypeNats.$fShowSomeNat_$cshow
+  = \ (x_i1Jj2 :: SomeNat) ->
+      case x_i1Jj2 of { SomeNat @ n_a5rRU $dKnownNat_a5rRV x1_a5rLx ->
+      case GHC.Show.$w$cshowsPrec4
+             0#
+             ($dKnownNat_a5rRV
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rRU>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rRU>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rRU :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             (GHC.Types.[] @ GHC.Types.Char)
+      of
+      { (# ww3_i2pQo, ww4_i2pQp #) ->
+      GHC.Types.: @ GHC.Types.Char ww3_i2pQo ww4_i2pQp
+      }
+      }
+
+-- RHS size: {terms: 14, types: 19, coercions: 7, joins: 0/0}
+GHC.TypeNats.$fShowSomeNat1
+  :: SomeNat -> GHC.Base.String -> GHC.Base.String
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d5rUq [Occ=Once!] :: SomeNat)
+                 (eta_B1 [Occ=Once, OS=OneShot] :: GHC.Base.String) ->
+                 case ds_d5rUq of
+                 { SomeNat @ n_a5rRU $dKnownNat_a5rRV [Occ=Once] _ [Occ=Dead] ->
+                 case GHC.Show.$w$cshowsPrec4
+                        0#
+                        ($dKnownNat_a5rRV
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rRU>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rRU>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rRU :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        eta_B1
+                 of
+                 { (# ww3_i2pQo [Occ=Once], ww4_i2pQp [Occ=Once] #) ->
+                 GHC.Types.: @ GHC.Types.Char ww3_i2pQo ww4_i2pQp
+                 }
+                 }}]
+GHC.TypeNats.$fShowSomeNat1
+  = \ (ds_d5rUq :: SomeNat)
+      (eta_B1 [OS=OneShot] :: GHC.Base.String) ->
+      case ds_d5rUq of { SomeNat @ n_a5rRU $dKnownNat_a5rRV x_a5rLx ->
+      case GHC.Show.$w$cshowsPrec4
+             0#
+             ($dKnownNat_a5rRV
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rRU>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rRU>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rRU :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             eta_B1
+      of
+      { (# ww3_i2pQo, ww4_i2pQp #) ->
+      GHC.Types.: @ GHC.Types.Char ww3_i2pQo ww4_i2pQp
+      }
+      }
+
+-- RHS size: {terms: 6, types: 4, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fShowSomeNat_$cshowList
+  :: [SomeNat] -> GHC.Show.ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ls_i1Mix [Occ=Once] :: [SomeNat])
+                 (s_i1Miy [Occ=Once] :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ SomeNat GHC.TypeNats.$fShowSomeNat1 ls_i1Mix s_i1Miy}]
+GHC.TypeNats.$fShowSomeNat_$cshowList
+  = \ (ls_i1Mix :: [SomeNat]) (s_i1Miy :: GHC.Base.String) ->
+      GHC.Show.showList__
+        @ SomeNat GHC.TypeNats.$fShowSomeNat1 ls_i1Mix s_i1Miy
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fShowSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: Show SomeNat
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Show.C:Show TYPE: SomeNat
+                       GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+                       GHC.TypeNats.$fShowSomeNat_$cshow
+                       GHC.TypeNats.$fShowSomeNat_$cshowList]
+GHC.TypeNats.$fShowSomeNat
+  = GHC.Show.C:Show
+      @ SomeNat
+      GHC.TypeNats.$fShowSomeNat_$cshowsPrec
+      GHC.TypeNats.$fShowSomeNat_$cshow
+      GHC.TypeNats.$fShowSomeNat_$cshowList
+
+-- RHS size: {terms: 11, types: 16, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$ccompare
+  :: SomeNat -> SomeNat -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d5rUy [Occ=Once!] :: SomeNat)
+                 (ds1_d5rUz [Occ=Once!] :: SomeNat) ->
+                 case ds_d5rUy of
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case ds1_d5rUz of
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                   ($dKnownNat_a5rSn
+                    `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                          <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                            :: (KnownNat n_a5rSm :: Constraint)
+                               ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                   ($dKnownNat1_a5rSp
+                    `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                           <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                            :: (KnownNat n1_a5rSo :: Constraint)
+                               ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$ccompare
+  = \ (ds_d5rUy :: SomeNat) (ds1_d5rUz :: SomeNat) ->
+      case ds_d5rUy of { SomeNat @ n_a5rSm $dKnownNat_a5rSn x_a5rLy ->
+      case ds1_d5rUz of { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y_a5rLz ->
+      integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+        ($dKnownNat_a5rSn
+         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                 :: (KnownNat n_a5rSm :: Constraint)
+                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+        ($dKnownNat1_a5rSp
+         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                 :: (KnownNat n1_a5rSo :: Constraint)
+                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      }
+      }
+
+-- RHS size: {terms: 11, types: 16, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fEqSomeNat_$c== :: SomeNat -> SomeNat -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d5rUN [Occ=Once!] :: SomeNat)
+                 (ds1_d5rUO [Occ=Once!] :: SomeNat) ->
+                 case ds_d5rUN of
+                 { SomeNat @ n_a5rTa $dKnownNat_a5rTb [Occ=Once] _ [Occ=Dead] ->
+                 case ds1_d5rUO of
+                 { SomeNat @ n1_a5rTc $dKnownNat1_a5rTd [Occ=Once] _ [Occ=Dead] ->
+                 integer-simple-0.1.1.1:GHC.Integer.Type.eqInteger
+                   ($dKnownNat_a5rTb
+                    `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rTa>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                          <n_a5rTa>_P ; GHC.Natural.N:Natural[0])
+                            :: (KnownNat n_a5rTa :: Constraint)
+                               ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                   ($dKnownNat1_a5rTd
+                    `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rTc>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                           <n1_a5rTc>_P ; GHC.Natural.N:Natural[0])
+                            :: (KnownNat n1_a5rTc :: Constraint)
+                               ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 }
+                 }}]
+GHC.TypeNats.$fEqSomeNat_$c==
+  = \ (ds_d5rUN :: SomeNat) (ds1_d5rUO :: SomeNat) ->
+      case ds_d5rUN of { SomeNat @ n_a5rTa $dKnownNat_a5rTb x_a5rLA ->
+      case ds1_d5rUO of { SomeNat @ n1_a5rTc $dKnownNat1_a5rTd y_a5rLB ->
+      integer-simple-0.1.1.1:GHC.Integer.Type.eqInteger
+        ($dKnownNat_a5rTb
+         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rTa>_N ; (GHC.TypeNats.N:SNat[0]
+                                                               <n_a5rTa>_P ; GHC.Natural.N:Natural[0])
+                 :: (KnownNat n_a5rTa :: Constraint)
+                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+        ($dKnownNat1_a5rTd
+         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rTc>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                <n1_a5rTc>_P ; GHC.Natural.N:Natural[0])
+                 :: (KnownNat n1_a5rTc :: Constraint)
+                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      }
+      }
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fEqSomeNat_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: SomeNat -> SomeNat -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (x_a22b [Occ=Once!] :: SomeNat)
+                 (y_a22c [Occ=Once!] :: SomeNat) ->
+                 case x_a22b of
+                 { SomeNat @ n_a5rTa $dKnownNat_a5rTb [Occ=Once] _ [Occ=Dead] ->
+                 case y_a22c of
+                 { SomeNat @ n1_a5rTc $dKnownNat1_a5rTd [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.eqInteger#
+                        ($dKnownNat_a5rTb
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rTa>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rTa>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rTa :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rTd
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rTc>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rTc>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rTc :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fEqSomeNat_$c/=
+  = \ (eta_B2 :: SomeNat) (eta1_B1 :: SomeNat) ->
+      case eta_B2 of { SomeNat @ n_a5rTa $dKnownNat_a5rTb x_a5rLA ->
+      case eta1_B1 of { SomeNat @ n1_a5rTc $dKnownNat1_a5rTd y_a5rLB ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.eqInteger#
+             ($dKnownNat_a5rTb
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rTa>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rTa>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rTa :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rTd
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rTc>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rTc>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rTc :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fEqSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: Eq SomeNat
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Classes.C:Eq TYPE: SomeNat
+                        GHC.TypeNats.$fEqSomeNat_$c==
+                        GHC.TypeNats.$fEqSomeNat_$c/=]
+GHC.TypeNats.$fEqSomeNat
+  = GHC.Classes.C:Eq
+      @ SomeNat
+      GHC.TypeNats.$fEqSomeNat_$c==
+      GHC.TypeNats.$fEqSomeNat_$c/=
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$c< :: SomeNat -> SomeNat -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a1MiF [Occ=Once!] :: SomeNat)
+                 (y_a1MiG [Occ=Once!] :: SomeNat) ->
+                 case x_a1MiF of
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case y_a1MiG of
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                        ($dKnownNat_a5rSn
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rSm :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rSp
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rSo :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> GHC.Types.False;
+                   LT -> GHC.Types.True
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$c<
+  = \ (x_a1MiF :: SomeNat) (y_a1MiG :: SomeNat) ->
+      case x_a1MiF of { SomeNat @ n_a5rSm $dKnownNat_a5rSn x1_a5rLy ->
+      case y_a1MiG of { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y1_a5rLz ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+             ($dKnownNat_a5rSn
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rSm :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rSp
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rSo :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> GHC.Types.False;
+        LT -> GHC.Types.True
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$c>= :: SomeNat -> SomeNat -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a1fiT [Occ=Once!] :: SomeNat)
+                 (y_a1fiU [Occ=Once!] :: SomeNat) ->
+                 case x_a1fiT of
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case y_a1fiU of
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                        ($dKnownNat_a5rSn
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rSm :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rSp
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rSo :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> GHC.Types.True;
+                   LT -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$c>=
+  = \ (x_a1fiT :: SomeNat) (y_a1fiU :: SomeNat) ->
+      case x_a1fiT of { SomeNat @ n_a5rSm $dKnownNat_a5rSn x1_a5rLy ->
+      case y_a1fiU of { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y1_a5rLz ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+             ($dKnownNat_a5rSn
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rSm :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rSp
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rSo :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> GHC.Types.True;
+        LT -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$c> :: SomeNat -> SomeNat -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a1fiM [Occ=Once!] :: SomeNat)
+                 (y_a1fiN [Occ=Once!] :: SomeNat) ->
+                 case x_a1fiM of
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case y_a1fiN of
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                        ($dKnownNat_a5rSn
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rSm :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rSp
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rSo :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> GHC.Types.False;
+                   GT -> GHC.Types.True
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$c>
+  = \ (x_a1fiM :: SomeNat) (y_a1fiN :: SomeNat) ->
+      case x_a1fiM of { SomeNat @ n_a5rSm $dKnownNat_a5rSn x1_a5rLy ->
+      case y_a1fiN of { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y1_a5rLz ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+             ($dKnownNat_a5rSn
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rSm :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rSp
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rSo :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> GHC.Types.False;
+        GT -> GHC.Types.True
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$c<= :: SomeNat -> SomeNat -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a1MiL [Occ=Once!] :: SomeNat)
+                 (y_a1MiM [Occ=Once!] :: SomeNat) ->
+                 case x_a1MiL of
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case y_a1MiM of
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                        ($dKnownNat_a5rSn
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rSm :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rSp
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rSo :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> GHC.Types.True;
+                   GT -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$c<=
+  = \ (x_a1MiL :: SomeNat) (y_a1MiM :: SomeNat) ->
+      case x_a1MiL of { SomeNat @ n_a5rSm $dKnownNat_a5rSn x1_a5rLy ->
+      case y_a1MiM of { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y1_a5rLz ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+             ($dKnownNat_a5rSn
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rSm :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rSp
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rSo :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> GHC.Types.True;
+        GT -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$cmax :: SomeNat -> SomeNat -> SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a55d [Occ=Once!] :: SomeNat)
+                 (y_a55e [Occ=Once!] :: SomeNat) ->
+                 case x_a55d of wild_X16
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case y_a55e of wild1_Xd
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                        ($dKnownNat_a5rSn
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rSm :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rSp
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rSo :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> wild1_Xd;
+                   GT -> wild_X16
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$cmax
+  = \ (x_a55d :: SomeNat) (y_a55e :: SomeNat) ->
+      case x_a55d of wild_X16
+      { SomeNat @ n_a5rSm $dKnownNat_a5rSn x1_a5rLy ->
+      case y_a55e of wild1_Xd
+      { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y1_a5rLz ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+             ($dKnownNat_a5rSn
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rSm :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rSp
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rSo :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> wild1_Xd;
+        GT -> wild_X16
+      }
+      }
+      }
+
+-- RHS size: {terms: 16, types: 17, coercions: 14, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat_$cmin :: SomeNat -> SomeNat -> SomeNat
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a55m [Occ=Once!] :: SomeNat)
+                 (y_a55n [Occ=Once!] :: SomeNat) ->
+                 case x_a55m of wild_X16
+                 { SomeNat @ n_a5rSm $dKnownNat_a5rSn [Occ=Once] _ [Occ=Dead] ->
+                 case y_a55n of wild1_Xd
+                 { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp [Occ=Once] _ [Occ=Dead] ->
+                 case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+                        ($dKnownNat_a5rSn
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                               <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n_a5rSm :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                        ($dKnownNat1_a5rSp
+                         `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                                <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                                 :: (KnownNat n1_a5rSo :: Constraint)
+                                    ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+                 of {
+                   __DEFAULT -> wild_X16;
+                   GT -> wild1_Xd
+                 }
+                 }
+                 }}]
+GHC.TypeNats.$fOrdSomeNat_$cmin
+  = \ (x_a55m :: SomeNat) (y_a55n :: SomeNat) ->
+      case x_a55m of wild_X16
+      { SomeNat @ n_a5rSm $dKnownNat_a5rSn x1_a5rLy ->
+      case y_a55n of wild1_Xd
+      { SomeNat @ n1_a5rSo $dKnownNat1_a5rSp y1_a5rLz ->
+      case integer-simple-0.1.1.1:GHC.Integer.Type.compareInteger
+             ($dKnownNat_a5rSn
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n_a5rSm>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                    <n_a5rSm>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n_a5rSm :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+             ($dKnownNat1_a5rSp
+              `cast` (GHC.TypeNats.N:KnownNat[0] <n1_a5rSo>_N ; (GHC.TypeNats.N:SNat[0]
+                                                                     <n1_a5rSo>_P ; GHC.Natural.N:Natural[0])
+                      :: (KnownNat n1_a5rSo :: Constraint)
+                         ~R# (integer-simple-0.1.1.1:GHC.Integer.Type.Integer :: *)))
+      of {
+        __DEFAULT -> wild_X16;
+        GT -> wild1_Xd
+      }
+      }
+      }
+
+-- RHS size: {terms: 9, types: 1, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fOrdSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: Ord SomeNat
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Classes.C:Ord TYPE: SomeNat
+                         GHC.TypeNats.$fEqSomeNat
+                         GHC.TypeNats.$fOrdSomeNat_$ccompare
+                         GHC.TypeNats.$fOrdSomeNat_$c<
+                         GHC.TypeNats.$fOrdSomeNat_$c<=
+                         GHC.TypeNats.$fOrdSomeNat_$c>
+                         GHC.TypeNats.$fOrdSomeNat_$c>=
+                         GHC.TypeNats.$fOrdSomeNat_$cmax
+                         GHC.TypeNats.$fOrdSomeNat_$cmin]
+GHC.TypeNats.$fOrdSomeNat
+  = GHC.Classes.C:Ord
+      @ SomeNat
+      GHC.TypeNats.$fEqSomeNat
+      GHC.TypeNats.$fOrdSomeNat_$ccompare
+      GHC.TypeNats.$fOrdSomeNat_$c<
+      GHC.TypeNats.$fOrdSomeNat_$c<=
+      GHC.TypeNats.$fOrdSomeNat_$c>
+      GHC.TypeNats.$fOrdSomeNat_$c>=
+      GHC.TypeNats.$fOrdSomeNat_$cmax
+      GHC.TypeNats.$fOrdSomeNat_$cmin
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.TypeNats.natVal'1
+  :: forall (n :: Nat). KnownNat n => Proxy# n -> KnownNat n
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (n_a5rQG :: Nat))
+                 ($dKnownNat_a5rQI [Occ=Once] :: KnownNat n_a5rQG)
+                 _ [Occ=Dead] ->
+                 $dKnownNat_a5rQI}]
+GHC.TypeNats.natVal'1
+  = \ (@ (n_a5rQG :: Nat))
+      ($dKnownNat_a5rQI :: KnownNat n_a5rQG)
+      _ [Occ=Dead] ->
+      $dKnownNat_a5rQI
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+natVal' :: forall (n :: Nat). KnownNat n => Proxy# n -> Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.TypeNats.natVal'1
+               `cast` (forall (n :: <Nat>_N).
+                       <KnownNat n>_R
+                       ->_R <Proxy# n>_R
+                       ->_R GHC.TypeNats.N:KnownNat[0] <n>_N ; GHC.TypeNats.N:SNat[0]
+                                                                   <n>_P
+                       :: (forall (n :: Nat). KnownNat n => Proxy# n -> KnownNat n :: *)
+                          ~R# (forall (n :: Nat). KnownNat n => Proxy# n -> Natural :: *))}]
+natVal'
+  = GHC.TypeNats.natVal'1
+    `cast` (forall (n :: <Nat>_N).
+            <KnownNat n>_R
+            ->_R <Proxy# n>_R
+            ->_R GHC.TypeNats.N:KnownNat[0] <n>_N ; GHC.TypeNats.N:SNat[0]
+                                                        <n>_P
+            :: (forall (n :: Nat). KnownNat n => Proxy# n -> KnownNat n :: *)
+               ~R# (forall (n :: Nat). KnownNat n => Proxy# n -> Natural :: *))
+
+-- RHS size: {terms: 4, types: 6, coercions: 9, joins: 0/0}
+someNatVal :: Natural -> SomeNat
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (n_a5rLL [Occ=Once] :: Natural) ->
+                 GHC.TypeNats.SomeNat
+                   @ GHC.Types.Any
+                   (n_a5rLL
+                    `cast` (Sym (GHC.TypeNats.N:SNat[0]
+                                     <GHC.Types.Any>_P) ; Sym (GHC.TypeNats.N:KnownNat[0]) <GHC.Types.Any>_N
+                            :: (Natural :: *) ~R# (KnownNat GHC.Types.Any :: Constraint)))
+                   (Data.Proxy.Proxy @ Nat @ GHC.Types.Any)}]
+someNatVal
+  = \ (n_a5rLL :: Natural) ->
+      GHC.TypeNats.SomeNat
+        @ GHC.Types.Any
+        (n_a5rLL
+         `cast` (Sym (GHC.TypeNats.N:SNat[0]
+                          <GHC.Types.Any>_P) ; Sym (GHC.TypeNats.N:KnownNat[0]) <GHC.Types.Any>_N
+                 :: (Natural :: *) ~R# (KnownNat GHC.Types.Any :: Constraint)))
+        (Data.Proxy.Proxy @ Nat @ GHC.Types.Any)
+
+Rec {
+-- RHS size: {terms: 17, types: 33, coercions: 9, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat_go [Occ=LoopBreaker]
+  :: [(Natural, GHC.Base.String)] -> [(SomeNat, GHC.Base.String)]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+GHC.TypeNats.$fReadSomeNat_go
+  = \ (ds_i1y1c :: [(Natural, GHC.Base.String)]) ->
+      case ds_i1y1c of {
+        [] -> GHC.Types.[] @ (SomeNat, GHC.Base.String);
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of { (a_a5rLu, ys1_a5rLv) ->
+          GHC.Types.:
+            @ (SomeNat, GHC.Base.String)
+            (GHC.TypeNats.SomeNat
+               @ GHC.Types.Any
+               (a_a5rLu
+                `cast` (Sym (GHC.TypeNats.N:SNat[0]
+                                 <GHC.Types.Any>_P) ; Sym (GHC.TypeNats.N:KnownNat[0]) <GHC.Types.Any>_N
+                        :: (Natural :: *) ~R# (KnownNat GHC.Types.Any :: Constraint)))
+               (Data.Proxy.Proxy @ Nat @ GHC.Types.Any),
+             ys1_a5rLv)
+            (GHC.TypeNats.$fReadSomeNat_go ys_i1y1i)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 10, types: 5, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat_$creadsPrec
+  :: GHC.Types.Int -> Text.ParserCombinators.ReadP.ReadS SomeNat
+[GblId,
+ Arity=2,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 110 0}]
+GHC.TypeNats.$fReadSomeNat_$creadsPrec
+  = \ (p_a5rLs :: GHC.Types.Int) (xs_a5rLt :: GHC.Base.String) ->
+      GHC.TypeNats.$fReadSomeNat_go
+        (GHC.Natural.$fReadNatural_go
+           (Text.ParserCombinators.ReadP.run
+              @ integer-simple-0.1.1.1:GHC.Integer.Type.Integer
+              (GHC.Read.$fReadInteger_$sreadNumber
+                 GHC.Read.$fReadInteger2
+                 p_a5rLs
+                 @ integer-simple-0.1.1.1:GHC.Integer.Type.Integer
+                 (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+                    @ integer-simple-0.1.1.1:GHC.Integer.Type.Integer))
+              xs_a5rLt))
+
+-- RHS size: {terms: 11, types: 17, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (SomeNat -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId,
+ Arity=2,
+ Str=<L,U><L,C(U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (n_X3to9 [Occ=Once]
+                    :: Text.ParserCombinators.ReadPrec.Prec)
+                 (@ b_s3ofG)
+                 (eta_B1 [Occ=Once]
+                    :: SomeNat -> Text.ParserCombinators.ReadP.P b_s3ofG) ->
+                 case Text.ParserCombinators.ReadP.$wreadS_to_P
+                        @ SomeNat
+                        (GHC.TypeNats.$fReadSomeNat_$creadsPrec n_X3to9)
+                        @ b_s3ofG
+                        eta_B1
+                 of
+                 { (# ww1_s3oiG [Occ=Once] #) ->
+                 Text.ParserCombinators.ReadP.Look @ b_s3ofG ww1_s3oiG
+                 }}]
+GHC.TypeNats.$fReadSomeNat4
+  = \ (n_X3to9 :: Text.ParserCombinators.ReadPrec.Prec)
+      (@ b_s3ofG)
+      (eta_B1 :: SomeNat -> Text.ParserCombinators.ReadP.P b_s3ofG) ->
+      case Text.ParserCombinators.ReadP.$wreadS_to_P
+             @ SomeNat
+             (GHC.TypeNats.$fReadSomeNat_$creadsPrec n_X3to9)
+             @ b_s3ofG
+             eta_B1
+      of
+      { (# ww1_s3oiG #) ->
+      Text.ParserCombinators.ReadP.Look @ b_s3ofG ww1_s3oiG
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat3 :: GHC.Types.Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$fReadSomeNat3 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 4, types: 5, coercions: 15, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat2
+  :: Text.ParserCombinators.ReadP.P [SomeNat]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 40 0}]
+GHC.TypeNats.$fReadSomeNat2
+  = ((((GHC.Read.list
+          @ SomeNat
+          (GHC.TypeNats.$fReadSomeNat4
+           `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                    ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                  <SomeNat>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                           <SomeNat>_R)
+                   :: (Text.ParserCombinators.ReadPrec.Prec
+                       -> forall b.
+                          (SomeNat -> Text.ParserCombinators.ReadP.P b)
+                          -> Text.ParserCombinators.ReadP.P b :: *)
+                      ~R# (Text.ParserCombinators.ReadPrec.ReadPrec SomeNat :: *))))
+       `cast` (Text.ParserCombinators.ReadPrec.N:ReadPrec[0] <[SomeNat]>_R
+               :: (Text.ParserCombinators.ReadPrec.ReadPrec [SomeNat] :: *)
+                  ~R# (Text.ParserCombinators.ReadPrec.Prec
+                       -> Text.ParserCombinators.ReadP.ReadP [SomeNat] :: *)))
+        GHC.TypeNats.$fReadSomeNat3)
+     `cast` (Text.ParserCombinators.ReadP.N:ReadP[0] <[SomeNat]>_R
+             :: (Text.ParserCombinators.ReadP.ReadP [SomeNat] :: *)
+                ~R# (forall b.
+                     ([SomeNat] -> Text.ParserCombinators.ReadP.P b)
+                     -> Text.ParserCombinators.ReadP.P b :: *)))
+      @ [SomeNat]
+      (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure @ [SomeNat])
+
+-- RHS size: {terms: 2, types: 2, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [SomeNat]
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+GHC.TypeNats.$fReadSomeNat_$creadList
+  = Text.ParserCombinators.ReadP.run
+      @ [SomeNat] GHC.TypeNats.$fReadSomeNat2
+
+-- RHS size: {terms: 10, types: 19, coercions: 0, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([SomeNat] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId,
+ Arity=2,
+ Str=<L,A><L,C(U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ _ [Occ=Dead]
+                 (@ b_s3ofG)
+                 (w1_s3ofH [Occ=Once]
+                    :: [SomeNat] -> Text.ParserCombinators.ReadP.P b_s3ofG) ->
+                 case Text.ParserCombinators.ReadP.$wreadS_to_P
+                        @ [SomeNat]
+                        GHC.TypeNats.$fReadSomeNat_$creadList
+                        @ b_s3ofG
+                        w1_s3ofH
+                 of
+                 { (# ww1_s3oiG [Occ=Once] #) ->
+                 Text.ParserCombinators.ReadP.Look @ b_s3ofG ww1_s3oiG
+                 }}]
+GHC.TypeNats.$fReadSomeNat1
+  = \ _ [Occ=Dead]
+      (@ b_s3ofG)
+      (w1_s3ofH
+         :: [SomeNat] -> Text.ParserCombinators.ReadP.P b_s3ofG) ->
+      case Text.ParserCombinators.ReadP.$wreadS_to_P
+             @ [SomeNat]
+             GHC.TypeNats.$fReadSomeNat_$creadList
+             @ b_s3ofG
+             w1_s3ofH
+      of
+      { (# ww1_s3oiG #) ->
+      Text.ParserCombinators.ReadP.Look @ b_s3ofG ww1_s3oiG
+      }
+
+-- RHS size: {terms: 5, types: 1, coercions: 20, joins: 0/0}
+GHC.TypeNats.$fReadSomeNat [InlPrag=NOUSERINLINE CONLIKE]
+  :: Read SomeNat
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Read.C:Read TYPE: SomeNat
+                       GHC.TypeNats.$fReadSomeNat_$creadsPrec
+                       GHC.TypeNats.$fReadSomeNat_$creadList
+                       GHC.TypeNats.$fReadSomeNat4
+                       `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                                ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                              <SomeNat>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                                       <SomeNat>_R)
+                               :: (Text.ParserCombinators.ReadPrec.Prec
+                                   -> forall b.
+                                      (SomeNat -> Text.ParserCombinators.ReadP.P b)
+                                      -> Text.ParserCombinators.ReadP.P b :: *)
+                                  ~R# (Text.ParserCombinators.ReadPrec.ReadPrec SomeNat :: *))
+                       GHC.TypeNats.$fReadSomeNat1
+                       `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                                ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                              <[SomeNat]>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                                         <[SomeNat]>_R)
+                               :: (Text.ParserCombinators.ReadPrec.Prec
+                                   -> forall b.
+                                      ([SomeNat] -> Text.ParserCombinators.ReadP.P b)
+                                      -> Text.ParserCombinators.ReadP.P b :: *)
+                                  ~R# (Text.ParserCombinators.ReadPrec.ReadPrec [SomeNat] :: *))]
+GHC.TypeNats.$fReadSomeNat
+  = GHC.Read.C:Read
+      @ SomeNat
+      GHC.TypeNats.$fReadSomeNat_$creadsPrec
+      GHC.TypeNats.$fReadSomeNat_$creadList
+      (GHC.TypeNats.$fReadSomeNat4
+       `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                              <SomeNat>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                       <SomeNat>_R)
+               :: (Text.ParserCombinators.ReadPrec.Prec
+                   -> forall b.
+                      (SomeNat -> Text.ParserCombinators.ReadP.P b)
+                      -> Text.ParserCombinators.ReadP.P b :: *)
+                  ~R# (Text.ParserCombinators.ReadPrec.ReadPrec SomeNat :: *)))
+      (GHC.TypeNats.$fReadSomeNat1
+       `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                              <[SomeNat]>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                         <[SomeNat]>_R)
+               :: (Text.ParserCombinators.ReadPrec.Prec
+                   -> forall b.
+                      ([SomeNat] -> Text.ParserCombinators.ReadP.P b)
+                      -> Text.ParserCombinators.ReadP.P b :: *)
+                  ~R# (Text.ParserCombinators.ReadPrec.ReadPrec [SomeNat] :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.TypeNats.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$trModule3 = GHC.Types.TrNameS GHC.TypeNats.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.TypeNats.$trModule2 = "GHC.TypeNats"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$trModule1 = GHC.Types.TrNameS GHC.TypeNats.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.TypeNats.$trModule
+  = GHC.Types.Module GHC.TypeNats.$trModule3 GHC.TypeNats.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r5s5Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r5s5Z = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_r5s60 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_r5s60
+  = GHC.Types.KindRepTyConApp
+      GHC.Natural.$tcNatural (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep2_r5s61 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep2_r5s61
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep3_r5s62 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r5s62
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcNat (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep4_r5s63 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep4_r5s63
+  = GHC.Types.:
+      @ GHC.Types.KindRep $krep_r5s5Z (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep5_r5s64 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep5_r5s64
+  = GHC.Types.: @ GHC.Types.KindRep $krep3_r5s62 $krep4_r5s63
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep6_r5s65 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep6_r5s65
+  = GHC.Types.KindRepTyConApp Data.Proxy.$tcProxy $krep5_r5s64
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcKnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tcKnownNat1
+  = GHC.Types.KindRepFun $krep3_r5s62 $krep2_r5s61
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tcSNat1
+  = GHC.Types.KindRepFun $krep3_r5s62 GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcWrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tcWrapN1
+  = GHC.Types.KindRepFun $krep3_r5s62 GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep7_r5s66 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep7_r5s66 = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep8_r5s67 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep8_r5s67 = GHC.Types.KindRepFun $krep6_r5s65 $krep7_r5s66
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSNat3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.TypeNats.$tcSNat3 = "SNat"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSNat2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tcSNat2 = GHC.Types.TrNameS GHC.TypeNats.$tcSNat3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSNat :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tcSNat
+  = GHC.Types.TyCon
+      14249323166640683464##
+      2956401390546376063##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tcSNat2
+      0#
+      GHC.TypeNats.$tcSNat1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep9_r5s68 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep9_r5s68
+  = GHC.Types.KindRepTyConApp GHC.TypeNats.$tcSNat $krep4_r5s63
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tc'SNat1
+  = GHC.Types.KindRepFun $krep1_r5s60 $krep9_r5s68
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SNat3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.TypeNats.$tc'SNat3 = "'SNat"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SNat2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tc'SNat2 = GHC.Types.TrNameS GHC.TypeNats.$tc'SNat3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SNat :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tc'SNat
+  = GHC.Types.TyCon
+      10248898659057561068##
+      4968065829559829914##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tc'SNat2
+      1#
+      GHC.TypeNats.$tc'SNat1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcKnownNat3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.TypeNats.$tcKnownNat3 = "KnownNat"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcKnownNat2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tcKnownNat2
+  = GHC.Types.TrNameS GHC.TypeNats.$tcKnownNat3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcKnownNat :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tcKnownNat
+  = GHC.Types.TyCon
+      4406426137333124098##
+      3858660218128115833##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tcKnownNat2
+      0#
+      GHC.TypeNats.$tcKnownNat1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep10_r5s69 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep10_r5s69
+  = GHC.Types.KindRepTyConApp GHC.TypeNats.$tcKnownNat $krep4_r5s63
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep11_r5s6a :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep11_r5s6a = GHC.Types.KindRepFun $krep10_r5s69 $krep8_r5s67
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'C:KnownNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tc'C:KnownNat1
+  = GHC.Types.KindRepFun $krep9_r5s68 $krep10_r5s69
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'C:KnownNat3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.TypeNats.$tc'C:KnownNat3 = "'C:KnownNat"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'C:KnownNat2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tc'C:KnownNat2
+  = GHC.Types.TrNameS GHC.TypeNats.$tc'C:KnownNat3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'C:KnownNat :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tc'C:KnownNat
+  = GHC.Types.TyCon
+      12421457977663053218##
+      18328904747962077722##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tc'C:KnownNat2
+      1#
+      GHC.TypeNats.$tc'C:KnownNat1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSomeNat2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.TypeNats.$tcSomeNat2 = "SomeNat"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSomeNat1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tcSomeNat1
+  = GHC.Types.TrNameS GHC.TypeNats.$tcSomeNat2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcSomeNat :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tcSomeNat
+  = GHC.Types.TyCon
+      9244180789053763601##
+      6189216451384407387##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tcSomeNat1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep12_r5s6b :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep12_r5s6b
+  = GHC.Types.KindRepTyConApp
+      GHC.TypeNats.$tcSomeNat (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep13_r5s6c :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep13_r5s6c = GHC.Types.KindRepFun $krep6_r5s65 $krep12_r5s6b
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SomeNat1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tc'SomeNat1
+  = GHC.Types.KindRepFun $krep10_r5s69 $krep13_r5s6c
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SomeNat3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.TypeNats.$tc'SomeNat3 = "'SomeNat"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SomeNat2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tc'SomeNat2
+  = GHC.Types.TrNameS GHC.TypeNats.$tc'SomeNat3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'SomeNat :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tc'SomeNat
+  = GHC.Types.TyCon
+      5872332339143923373##
+      16743196919708003695##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tc'SomeNat2
+      1#
+      GHC.TypeNats.$tc'SomeNat1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcWrapN3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.TypeNats.$tcWrapN3 = "WrapN"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcWrapN2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tcWrapN2 = GHC.Types.TrNameS GHC.TypeNats.$tcWrapN3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tcWrapN :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tcWrapN
+  = GHC.Types.TyCon
+      825875854269014453##
+      10073258292275044429##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tcWrapN2
+      0#
+      GHC.TypeNats.$tcWrapN1
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep14_r5s6d :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep14_r5s6d
+  = GHC.Types.:
+      @ GHC.Types.KindRep $krep7_r5s66 (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep15_r5s6e :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep15_r5s6e
+  = GHC.Types.: @ GHC.Types.KindRep $krep_r5s5Z $krep14_r5s6d
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep16_r5s6f :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep16_r5s6f
+  = GHC.Types.KindRepTyConApp GHC.TypeNats.$tcWrapN $krep15_r5s6e
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'WrapN1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.TypeNats.$tc'WrapN1
+  = GHC.Types.KindRepFun $krep11_r5s6a $krep16_r5s6f
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'WrapN3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.TypeNats.$tc'WrapN3 = "'WrapN"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'WrapN2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.TypeNats.$tc'WrapN2 = GHC.Types.TrNameS GHC.TypeNats.$tc'WrapN3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.TypeNats.$tc'WrapN :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.TypeNats.$tc'WrapN
+  = GHC.Types.TyCon
+      731800900372900037##
+      17722817696101367246##
+      GHC.TypeNats.$trModule
+      GHC.TypeNats.$tc'WrapN2
+      2#
+      GHC.TypeNats.$tc'WrapN1
+
+

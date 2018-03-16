@@ -1,0 +1,233 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:05:05.087929809 UTC
+
+Result size of Tidy Core
+  = {terms: 105, types: 162, coercions: 10, joins: 0/0}
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+GHC.Stack.errorWithStackTrace1
+  :: forall a.
+     [String] -> String -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId, Arity=3, Str=<B,1*U><B,U><B,U>x, Unf=OtherCon []]
+GHC.Stack.errorWithStackTrace1
+  = \ (@ a_aa3gx)
+      (ipv1_i7IAz :: [String])
+      (x_aa3fg :: String)
+      (eta_ia3iq :: State# RealWorld) ->
+      raiseIO#
+        @ SomeException
+        @ a_aa3gx
+        (GHC.Exception.$fExceptionErrorCall_$ctoException
+           (GHC.Exception.ErrorCallWithLocation
+              x_aa3fg (renderStack ipv1_i7IAz)))
+        eta_ia3iq
+
+-- RHS size: {terms: 8, types: 7, coercions: 0, joins: 0/0}
+GHC.Stack.errorWithStackTrace2
+  :: forall a.
+     String -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []]
+GHC.Stack.errorWithStackTrace2
+  = \ (@ a_aa3gx)
+      (x_aa3fg :: String)
+      (eta_ia3iq :: State# RealWorld) ->
+      raiseIO#
+        @ SomeException
+        @ a_aa3gx
+        (GHC.Exception.$fExceptionErrorCall_$ctoException
+           (GHC.Exception.$bErrorCall x_aa3fg))
+        eta_ia3iq
+
+-- RHS size: {terms: 29, types: 70, coercions: 0, joins: 0/0}
+errorWithStackTrace :: forall a. String -> a
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 141 0}]
+errorWithStackTrace
+  = \ (@ a_aa3gx) (x_aa3fg :: String) ->
+      case runRW#
+             @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+             @ (# State# RealWorld, a_aa3gx #)
+             (\ (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+                case getCurrentCCS# @ String @ RealWorld x_aa3fg s_i7IAv of
+                { (# s'_sa3lY, addr_sa3lZ #) ->
+                case GHC.Stack.CCS.$wgo addr_sa3lZ (GHC.Types.[] @ [Char]) s'_sa3lY
+                of
+                { (# ipv_X7IBl, ipv1_X7IBn #) ->
+                case ipv1_X7IBn of wild1_i8hrH {
+                  [] -> GHC.Stack.errorWithStackTrace2 @ a_aa3gx x_aa3fg ipv_X7IBl;
+                  : ds2_i8hNn ds3_i8hNo ->
+                    GHC.Stack.errorWithStackTrace1
+                      @ a_aa3gx wild1_i8hrH x_aa3fg ipv_X7IBl
+                }
+                }
+                })
+      of
+      { (# ipv_i8hmF, ipv1_i8hmG #) ->
+      ipv1_i8hmG
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_ra3mz :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_ra3mz = "popCallStack: empty stack"#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+GHC.Stack.withFrozenCallStack1 :: CallStack
+[GblId, Str=x]
+GHC.Stack.withFrozenCallStack1
+  = errorWithoutStackTrace
+      @ 'LiftedRep @ CallStack (unpackCString# lvl_ra3mz)
+
+-- RHS size: {terms: 9, types: 7, coercions: 0, joins: 0/0}
+popCallStack [InlPrag=INLINE (sat-args=1)]
+  :: CallStack -> CallStack
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (stk_aa3fi [Occ=Once!] :: CallStack) ->
+                 case stk_aa3fi of wild_X8 {
+                   EmptyCallStack ->
+                     errorWithoutStackTrace
+                       @ 'LiftedRep
+                       @ CallStack
+                       (build
+                          @ Char
+                          (\ (@ b_i7Jbh) ->
+                             unpackFoldrCString# @ b_i7Jbh "popCallStack: empty stack"#));
+                   PushCallStack _ [Occ=Dead] _ [Occ=Dead] stk'_aa3fj [Occ=Once] ->
+                     stk'_aa3fj;
+                   FreezeCallStack _ [Occ=Dead] -> wild_X8
+                 }}]
+popCallStack
+  = \ (stk_aa3fi :: CallStack) ->
+      case stk_aa3fi of wild_X8 {
+        EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+        PushCallStack ds_da3hz ds1_da3hA stk'_aa3fj -> stk'_aa3fj;
+        FreezeCallStack ds_da3hB -> wild_X8
+      }
+
+-- RHS size: {terms: 9, types: 7, coercions: 3, joins: 0/0}
+callStack [InlPrag=INLINE (sat-args=0)]
+  :: HasCallStack => CallStack
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ ($dIP_aa3gd [Occ=Once] :: HasCallStack) ->
+                 case $dIP_aa3gd
+                      `cast` (GHC.Classes.N:IP[0] <"callStack">_N <CallStack>_N
+                              :: (?callStack::CallStack :: Constraint) ~R# (CallStack :: *))
+                 of wild_X9 {
+                   EmptyCallStack -> GHC.Stack.Types.EmptyCallStack;
+                   PushCallStack _ [Occ=Dead] _ [Occ=Dead] stk'_aa3fj [Occ=Once] ->
+                     stk'_aa3fj;
+                   FreezeCallStack _ [Occ=Dead] -> wild_X9
+                 }}]
+callStack
+  = \ ($dIP_aa3gd :: HasCallStack) ->
+      case $dIP_aa3gd
+           `cast` (GHC.Classes.N:IP[0] <"callStack">_N <CallStack>_N
+                   :: (?callStack::CallStack :: Constraint) ~R# (CallStack :: *))
+      of wild_X9 {
+        EmptyCallStack -> GHC.Stack.Types.EmptyCallStack;
+        PushCallStack ds_da3hz ds1_da3hA stk'_aa3fj -> stk'_aa3fj;
+        FreezeCallStack ds_da3hB -> wild_X9
+      }
+
+-- RHS size: {terms: 13, types: 11, coercions: 7, joins: 0/0}
+withFrozenCallStack
+  :: forall a. HasCallStack => (HasCallStack => a) -> a
+[GblId,
+ Arity=2,
+ Str=<L,1*U><C(S),1*C1(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aa3gn)
+                 ($dIP_aa3gp [Occ=Once] :: HasCallStack)
+                 (eta_B1 [Occ=Once!] :: HasCallStack => a_aa3gn) ->
+                 eta_B1
+                   ((GHC.Stack.Types.FreezeCallStack
+                       (case $dIP_aa3gp
+                             `cast` (GHC.Classes.N:IP[0] <"callStack">_N <CallStack>_N
+                                     :: (?callStack::CallStack :: Constraint) ~R# (CallStack :: *))
+                        of wild1_X6 {
+                          EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+                          PushCallStack _ [Occ=Dead] _ [Occ=Dead] stk'_Xa3gm [Occ=Once] ->
+                            stk'_Xa3gm;
+                          FreezeCallStack _ [Occ=Dead] -> wild1_X6
+                        }))
+                    `cast` (Sym (GHC.Classes.N:IP[0] <"callStack">_N <CallStack>_N)
+                            :: (CallStack :: *) ~R# (?callStack::CallStack :: Constraint)))}]
+withFrozenCallStack
+  = \ (@ a_aa3gn)
+      ($dIP_aa3gp :: HasCallStack)
+      (eta_B1 :: HasCallStack => a_aa3gn) ->
+      eta_B1
+        ((GHC.Stack.Types.FreezeCallStack
+            (case $dIP_aa3gp
+                  `cast` (GHC.Classes.N:IP[0] <"callStack">_N <CallStack>_N
+                          :: (?callStack::CallStack :: Constraint) ~R# (CallStack :: *))
+             of wild1_X6 {
+               EmptyCallStack -> GHC.Stack.withFrozenCallStack1;
+               PushCallStack ds_Xa3iA ds1_Xa3iC stk'_Xa3gm -> stk'_Xa3gm;
+               FreezeCallStack ds1_d20G -> wild1_X6
+             }))
+         `cast` (Sym (GHC.Classes.N:IP[0] <"callStack">_N <CallStack>_N)
+                 :: (CallStack :: *) ~R# (?callStack::CallStack :: Constraint)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Stack.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Stack.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Stack.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Stack.$trModule3 = GHC.Types.TrNameS GHC.Stack.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Stack.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Stack.$trModule2 = "GHC.Stack"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Stack.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Stack.$trModule1 = GHC.Types.TrNameS GHC.Stack.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Stack.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Stack.$trModule
+  = GHC.Types.Module GHC.Stack.$trModule3 GHC.Stack.$trModule1
+
+

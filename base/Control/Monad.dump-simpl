@@ -1,0 +1,1706 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:00.571202427 UTC
+
+Result size of Tidy Core
+  = {terms: 677, types: 1,333, coercions: 79, joins: 6/23}
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+guard :: forall (f :: * -> *). Alternative f => Bool -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(1*U(A,1*C1(U),A,A,A,A),1*U,A,A,A)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_ac6vd :: * -> *))
+                 ($dAlternative_ac6vf [Occ=Once*] :: Alternative f_ac6vd)
+                 (eta_B1 [Occ=Once!] :: Bool) ->
+                 case eta_B1 of {
+                   False -> empty @ f_ac6vd $dAlternative_ac6vf @ ();
+                   True ->
+                     pure
+                       @ f_ac6vd
+                       (GHC.Base.$p1Alternative @ f_ac6vd $dAlternative_ac6vf)
+                       @ ()
+                       GHC.Tuple.()
+                 }}]
+guard
+  = \ (@ (f_ac6vd :: * -> *))
+      ($dAlternative_ac6vf :: Alternative f_ac6vd)
+      (eta_B1 :: Bool) ->
+      case eta_B1 of {
+        False -> empty @ f_ac6vd $dAlternative_ac6vf @ ();
+        True ->
+          pure
+            @ f_ac6vd
+            (GHC.Base.$p1Alternative @ f_ac6vd $dAlternative_ac6vf)
+            @ ()
+            GHC.Tuple.()
+      }
+
+-- RHS size: {terms: 32, types: 41, coercions: 0, joins: 0/2}
+filterM [InlPrag=INLINE (sat-args=1)]
+  :: forall (m :: * -> *) a.
+     Applicative m =>
+     (a -> m Bool) -> [a] -> m [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ (m_ac6uV :: * -> *))
+                 (@ a_ac6uW)
+                 ($dApplicative_ac6uY :: Applicative m_ac6uV)
+                 (p_ac6fp [Occ=OnceL!] :: a_ac6uW -> m_ac6uV Bool) ->
+                 foldr
+                   @ a_ac6uW
+                   @ (m_ac6uV [a_ac6uW])
+                   (\ (x_ac6fq :: a_ac6uW) ->
+                      liftA2
+                        @ m_ac6uV
+                        $dApplicative_ac6uY
+                        @ Bool
+                        @ [a_ac6uW]
+                        @ [a_ac6uW]
+                        (\ (flg_ac6fr [Occ=Once!] :: Bool) ->
+                           case flg_ac6fr of {
+                             False -> id @ [a_ac6uW];
+                             True -> GHC.Types.: @ a_ac6uW x_ac6fq
+                           })
+                        (p_ac6fp x_ac6fq))
+                   (pure
+                      @ m_ac6uV
+                      $dApplicative_ac6uY
+                      @ [a_ac6uW]
+                      (GHC.Types.[] @ a_ac6uW))}]
+filterM
+  = \ (@ (m_ac6uV :: * -> *))
+      (@ a_ac6uW)
+      ($dApplicative_ac6uY :: Applicative m_ac6uV)
+      (eta_B1 :: a_ac6uW -> m_ac6uV Bool) ->
+      let {
+        z_i7Jci :: m_ac6uV [a_ac6uW]
+        [LclId]
+        z_i7Jci
+          = pure
+              @ m_ac6uV
+              $dApplicative_ac6uY
+              @ [a_ac6uW]
+              (GHC.Types.[] @ a_ac6uW) } in
+      letrec {
+        go_i7Jcj [Occ=LoopBreaker] :: [a_ac6uW] -> m_ac6uV [a_ac6uW]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go_i7Jcj
+          = \ (ds_i7Jck :: [a_ac6uW]) ->
+              case ds_i7Jck of {
+                [] -> z_i7Jci;
+                : y_i7Jcp ys_i7Jcq ->
+                  liftA2
+                    @ m_ac6uV
+                    $dApplicative_ac6uY
+                    @ Bool
+                    @ [a_ac6uW]
+                    @ [a_ac6uW]
+                    (\ (flg_ac6fr :: Bool) (eta1_XE :: [a_ac6uW]) ->
+                       case flg_ac6fr of {
+                         False -> eta1_XE;
+                         True -> GHC.Types.: @ a_ac6uW y_i7Jcp eta1_XE
+                       })
+                    (eta_B1 y_i7Jcp)
+                    (go_i7Jcj ys_i7Jcq)
+              }; } in
+      go_i7Jcj
+
+-- RHS size: {terms: 13, types: 22, coercions: 0, joins: 0/0}
+>=>
+  :: forall (m :: * -> *) a b c.
+     Monad m =>
+     (a -> m b) -> (b -> m c) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,1*C1(U)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_ac6uv :: * -> *))
+                 (@ a_ac6uw)
+                 (@ b_ac6ux)
+                 (@ c_ac6uy)
+                 ($dMonad_ac6uA [Occ=Once] :: Monad m_ac6uv)
+                 (f_ac6fs [Occ=Once!] :: a_ac6uw -> m_ac6uv b_ac6ux)
+                 (g_ac6ft [Occ=Once] :: b_ac6ux -> m_ac6uv c_ac6uy)
+                 (x_ac6fu [Occ=Once] :: a_ac6uw) ->
+                 >>=
+                   @ m_ac6uv
+                   $dMonad_ac6uA
+                   @ b_ac6ux
+                   @ c_ac6uy
+                   (f_ac6fs x_ac6fu)
+                   g_ac6ft}]
+>=>
+  = \ (@ (m_ac6uv :: * -> *))
+      (@ a_ac6uw)
+      (@ b_ac6ux)
+      (@ c_ac6uy)
+      ($dMonad_ac6uA :: Monad m_ac6uv)
+      (f_ac6fs :: a_ac6uw -> m_ac6uv b_ac6ux)
+      (g_ac6ft :: b_ac6ux -> m_ac6uv c_ac6uy)
+      (x_ac6fu :: a_ac6uw) ->
+      >>=
+        @ m_ac6uv
+        $dMonad_ac6uA
+        @ b_ac6ux
+        @ c_ac6uy
+        (f_ac6fs x_ac6fu)
+        g_ac6ft
+
+-- RHS size: {terms: 13, types: 23, coercions: 0, joins: 0/0}
+<=<
+  :: forall (m :: * -> *) b c a.
+     Monad m =>
+     (b -> m c) -> (a -> m b) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,U><L,1*C1(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (m_ac6uG :: * -> *))
+                 (@ b_ac6uH)
+                 (@ c_ac6uI)
+                 (@ a_ac6uJ)
+                 ($dMonad_ac6uL [Occ=Once] :: Monad m_ac6uG)
+                 (x_i8X9X [Occ=Once] :: b_ac6uH -> m_ac6uG c_ac6uI)
+                 (y_i8X9Y [Occ=Once] :: a_ac6uJ -> m_ac6uG b_ac6uH)
+                 (eta_B1 [Occ=Once] :: a_ac6uJ) ->
+                 >=>
+                   @ m_ac6uG
+                   @ a_ac6uJ
+                   @ b_ac6uH
+                   @ c_ac6uI
+                   $dMonad_ac6uL
+                   y_i8X9Y
+                   x_i8X9X
+                   eta_B1}]
+<=<
+  = \ (@ (m_ac6uG :: * -> *))
+      (@ b_ac6uH)
+      (@ c_ac6uI)
+      (@ a_ac6uJ)
+      ($dMonad_ac6uL :: Monad m_ac6uG)
+      (x_i8X9X :: b_ac6uH -> m_ac6uG c_ac6uI)
+      (y_i8X9Y :: a_ac6uJ -> m_ac6uG b_ac6uH)
+      (eta_B1 :: a_ac6uJ) ->
+      >=>
+        @ m_ac6uG
+        @ a_ac6uJ
+        @ b_ac6uH
+        @ c_ac6uI
+        $dMonad_ac6uL
+        y_i8X9Y
+        x_i8X9X
+        eta_B1
+
+-- RHS size: {terms: 11, types: 17, coercions: 0, joins: 0/1}
+forever [InlPrag=INLINE (sat-args=1)]
+  :: forall (f :: * -> *) a b. Applicative f => f a -> f b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLLC(C(S))L),U(A,A,A,A,C(C1(U)),A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ (f_ac6ub :: * -> *))
+                 (@ a_ac6uc)
+                 (@ b_ac6ud)
+                 ($dApplicative_ac6uf [Occ=Once] :: Applicative f_ac6ub)
+                 (a1_ac6fv [Occ=Once] :: f_ac6ub a_ac6uc) ->
+                 letrec {
+                   a'_ac6ui [Occ=LoopBreaker] :: f_ac6ub b_ac6ud
+                   [LclId]
+                   a'_ac6ui
+                     = *>
+                         @ f_ac6ub
+                         $dApplicative_ac6uf
+                         @ a_ac6uc
+                         @ b_ac6ud
+                         a1_ac6fv
+                         a'_ac6ui; } in
+                 a'_ac6ui}]
+forever
+  = \ (@ (f_ac6ub :: * -> *))
+      (@ a_ac6uc)
+      (@ b_ac6ud)
+      ($dApplicative_ac6uf :: Applicative f_ac6ub)
+      (a1_ac6fv :: f_ac6ub a_ac6uc) ->
+      letrec {
+        a'_sc6BN [Occ=LoopBreaker] :: f_ac6ub b_ac6ud
+        [LclId]
+        a'_sc6BN
+          = *>
+              @ f_ac6ub
+              $dApplicative_ac6uf
+              @ a_ac6uc
+              @ b_ac6ud
+              a1_ac6fv
+              a'_sc6BN; } in
+      a'_sc6BN
+
+-- RHS size: {terms: 31, types: 74, coercions: 0, joins: 0/2}
+mapAndUnzipM [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b c.
+     Applicative m =>
+     (a -> m (b, c)) -> [a] -> m ([b], [c])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S(C(C(S))L)LLLLL),U(1*U(1*C1(C1(U)),A),1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ (m_ac6tP :: * -> *))
+                 (@ a_ac6tQ)
+                 (@ b_ac6tR)
+                 (@ c_ac6tS)
+                 ($dApplicative_ac6tU :: Applicative m_ac6tP) ->
+                 let {
+                   $dFunctor_ac6tY [Occ=OnceL] :: Functor m_ac6tP
+                   [LclId]
+                   $dFunctor_ac6tY
+                     = GHC.Base.$p1Applicative @ m_ac6tP $dApplicative_ac6tU } in
+                 \ (f_ac6fx [Occ=OnceL!] :: a_ac6tQ -> m_ac6tP (b_ac6tR, c_ac6tS))
+                   (xs_ac6fy [Occ=Once] :: [a_ac6tQ]) ->
+                   fmap
+                     @ m_ac6tP
+                     $dFunctor_ac6tY
+                     @ [(b_ac6tR, c_ac6tS)]
+                     @ ([b_ac6tR], [c_ac6tS])
+                     (unzip @ b_ac6tR @ c_ac6tS)
+                     (foldr
+                        @ a_ac6tQ
+                        @ (m_ac6tP [(b_ac6tR, c_ac6tS)])
+                        (\ (x_abVgc [Occ=Once] :: a_ac6tQ)
+                           (ys_abVgd [Occ=Once, OS=OneShot]
+                              :: m_ac6tP [(b_ac6tR, c_ac6tS)]) ->
+                           liftA2
+                             @ m_ac6tP
+                             $dApplicative_ac6tU
+                             @ (b_ac6tR, c_ac6tS)
+                             @ [(b_ac6tR, c_ac6tS)]
+                             @ [(b_ac6tR, c_ac6tS)]
+                             (GHC.Types.: @ (b_ac6tR, c_ac6tS))
+                             (f_ac6fx x_abVgc)
+                             ys_abVgd)
+                        (pure
+                           @ m_ac6tP
+                           $dApplicative_ac6tU
+                           @ [(b_ac6tR, c_ac6tS)]
+                           (GHC.Types.[] @ (b_ac6tR, c_ac6tS)))
+                        xs_ac6fy)}]
+mapAndUnzipM
+  = \ (@ (m_ac6tP :: * -> *))
+      (@ a_ac6tQ)
+      (@ b_ac6tR)
+      (@ c_ac6tS)
+      ($dApplicative_ac6tU :: Applicative m_ac6tP)
+      (eta_B2 :: a_ac6tQ -> m_ac6tP (b_ac6tR, c_ac6tS))
+      (eta1_B1 :: [a_ac6tQ]) ->
+      fmap
+        @ m_ac6tP
+        (GHC.Base.$p1Applicative @ m_ac6tP $dApplicative_ac6tU)
+        @ [(b_ac6tR, c_ac6tS)]
+        @ ([b_ac6tR], [c_ac6tS])
+        (unzip @ b_ac6tR @ c_ac6tS)
+        (let {
+           z_i7Jci :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+           [LclId]
+           z_i7Jci
+             = pure
+                 @ m_ac6tP
+                 $dApplicative_ac6tU
+                 @ [(b_ac6tR, c_ac6tS)]
+                 (GHC.Types.[] @ (b_ac6tR, c_ac6tS)) } in
+         letrec {
+           go_i7Jcj [Occ=LoopBreaker]
+             :: [a_ac6tQ] -> m_ac6tP [(b_ac6tR, c_ac6tS)]
+           [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+           go_i7Jcj
+             = \ (ds_i7Jck :: [a_ac6tQ]) ->
+                 case ds_i7Jck of {
+                   [] -> z_i7Jci;
+                   : y_i7Jcp ys_i7Jcq ->
+                     liftA2
+                       @ m_ac6tP
+                       $dApplicative_ac6tU
+                       @ (b_ac6tR, c_ac6tS)
+                       @ [(b_ac6tR, c_ac6tS)]
+                       @ [(b_ac6tR, c_ac6tS)]
+                       (GHC.Types.: @ (b_ac6tR, c_ac6tS))
+                       (eta_B2 y_i7Jcp)
+                       (go_i7Jcj ys_i7Jcq)
+                 }; } in
+         go_i7Jcj eta1_B1)
+
+-- RHS size: {terms: 37, types: 55, coercions: 0, joins: 0/2}
+zipWithM [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m [c]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ (m_ac6tA :: * -> *))
+                 (@ a_ac6tB)
+                 (@ b_ac6tC)
+                 (@ c_ac6tD)
+                 ($dApplicative_ac6tF :: Applicative m_ac6tA)
+                 (f_ac6fz [Occ=Once] :: a_ac6tB -> b_ac6tC -> m_ac6tA c_ac6tD)
+                 (xs_ac6fA [Occ=Once] :: [a_ac6tB])
+                 (ys_ac6fB [Occ=Once] :: [b_ac6tC]) ->
+                 GHC.List.foldr2
+                   @ a_ac6tB
+                   @ b_ac6tC
+                   @ (m_ac6tA [c_ac6tD])
+                   (GHC.List.zipWithFB
+                      @ (m_ac6tA c_ac6tD)
+                      @ (m_ac6tA [c_ac6tD])
+                      @ (m_ac6tA [c_ac6tD])
+                      @ a_ac6tB
+                      @ b_ac6tC
+                      (\ (x_abVgc [Occ=Once] :: m_ac6tA c_ac6tD)
+                         (ys1_abVgd [Occ=Once] :: m_ac6tA [c_ac6tD]) ->
+                         liftA2
+                           @ m_ac6tA
+                           $dApplicative_ac6tF
+                           @ c_ac6tD
+                           @ [c_ac6tD]
+                           @ [c_ac6tD]
+                           (GHC.Types.: @ c_ac6tD)
+                           x_abVgc
+                           ys1_abVgd)
+                      f_ac6fz)
+                   (pure
+                      @ m_ac6tA $dApplicative_ac6tF @ [c_ac6tD] (GHC.Types.[] @ c_ac6tD))
+                   xs_ac6fA
+                   ys_ac6fB}]
+zipWithM
+  = \ (@ (m_ac6tA :: * -> *))
+      (@ a_ac6tB)
+      (@ b_ac6tC)
+      (@ c_ac6tD)
+      ($dApplicative_ac6tF :: Applicative m_ac6tA)
+      (eta_B3 :: a_ac6tB -> b_ac6tC -> m_ac6tA c_ac6tD)
+      (eta1_B2 :: [a_ac6tB])
+      (eta2_B1 :: [b_ac6tC]) ->
+      let {
+        z_iaIB1 :: m_ac6tA [c_ac6tD]
+        [LclId]
+        z_iaIB1
+          = pure
+              @ m_ac6tA
+              $dApplicative_ac6tF
+              @ [c_ac6tD]
+              (GHC.Types.[] @ c_ac6tD) } in
+      letrec {
+        go2_iaIB2 [Occ=LoopBreaker]
+          :: [a_ac6tB] -> [b_ac6tC] -> m_ac6tA [c_ac6tD]
+        [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []]
+        go2_iaIB2
+          = \ (ds_iaIB3 :: [a_ac6tB]) (_ys_iaIB4 :: [b_ac6tC]) ->
+              case ds_iaIB3 of {
+                [] -> z_iaIB1;
+                : ipv_iaIB9 ipv1_iaIBa ->
+                  case _ys_iaIB4 of {
+                    [] -> z_iaIB1;
+                    : ipv2_iaIBg ipv3_iaIBh ->
+                      liftA2
+                        @ m_ac6tA
+                        $dApplicative_ac6tF
+                        @ c_ac6tD
+                        @ [c_ac6tD]
+                        @ [c_ac6tD]
+                        (GHC.Types.: @ c_ac6tD)
+                        (eta_B3 ipv_iaIB9 ipv2_iaIBg)
+                        (go2_iaIB2 ipv1_iaIBa ipv3_iaIBh)
+                  }
+              }; } in
+      go2_iaIB2 eta1_B2 eta2_B1
+
+-- RHS size: {terms: 36, types: 47, coercions: 0, joins: 0/2}
+zipWithM_ [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ (m_ac6th :: * -> *))
+                 (@ a_ac6ti)
+                 (@ b_ac6tj)
+                 (@ c_ac6tk)
+                 ($dApplicative_ac6tm :: Applicative m_ac6th)
+                 (f_ac6fC [Occ=Once] :: a_ac6ti -> b_ac6tj -> m_ac6th c_ac6tk)
+                 (xs_ac6fD [Occ=Once] :: [a_ac6ti])
+                 (ys_ac6fE [Occ=Once] :: [b_ac6tj]) ->
+                 GHC.List.foldr2
+                   @ a_ac6ti
+                   @ b_ac6tj
+                   @ (m_ac6th ())
+                   (GHC.List.zipWithFB
+                      @ (m_ac6th c_ac6tk)
+                      @ (m_ac6th ())
+                      @ (m_ac6th ())
+                      @ a_ac6ti
+                      @ b_ac6tj
+                      (*> @ m_ac6th $dApplicative_ac6tm @ c_ac6tk @ ())
+                      f_ac6fC)
+                   (pure @ m_ac6th $dApplicative_ac6tm @ () GHC.Tuple.())
+                   xs_ac6fD
+                   ys_ac6fE}]
+zipWithM_
+  = \ (@ (m_ac6th :: * -> *))
+      (@ a_ac6ti)
+      (@ b_ac6tj)
+      (@ c_ac6tk)
+      ($dApplicative_ac6tm :: Applicative m_ac6th)
+      (eta_B3 :: a_ac6ti -> b_ac6tj -> m_ac6th c_ac6tk)
+      (eta1_B2 :: [a_ac6ti])
+      (eta2_B1 :: [b_ac6tj]) ->
+      let {
+        z_iaIB1 :: m_ac6th ()
+        [LclId]
+        z_iaIB1 = pure @ m_ac6th $dApplicative_ac6tm @ () GHC.Tuple.() } in
+      letrec {
+        go2_iaIB2 [Occ=LoopBreaker] :: [a_ac6ti] -> [b_ac6tj] -> m_ac6th ()
+        [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []]
+        go2_iaIB2
+          = \ (ds_iaIB3 :: [a_ac6ti]) (_ys_iaIB4 :: [b_ac6tj]) ->
+              case ds_iaIB3 of {
+                [] -> z_iaIB1;
+                : ipv_iaIB9 ipv1_iaIBa ->
+                  case _ys_iaIB4 of {
+                    [] -> z_iaIB1;
+                    : ipv2_iaIBg ipv3_iaIBh ->
+                      *>
+                        @ m_ac6th
+                        $dApplicative_ac6tm
+                        @ c_ac6tk
+                        @ ()
+                        (eta_B3 ipv_iaIB9 ipv2_iaIBg)
+                        (go2_iaIB2 ipv1_iaIBa ipv3_iaIBh)
+                  }
+              }; } in
+      go2_iaIB2 eta1_B2 eta2_B1
+
+-- RHS size: {terms: 27, types: 29, coercions: 0, joins: 1/1}
+Control.Monad.foldM_$sfoldM [InlPrag=INLINABLE]
+  :: forall a b. (a -> b -> Maybe a) -> a -> [b] -> Maybe a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ac6t8)
+                 (@ b_ac6t9)
+                 (f_ic6wP [Occ=OnceL!] :: a_ac6t8 -> b_ac6t9 -> Maybe a_ac6t8)
+                 (z0_ic6wQ [Occ=Once] :: a_ac6t8)
+                 (xs_ic6wR [Occ=Once] :: [b_ac6t9]) ->
+                 joinrec {
+                   go_i7Jcj [Occ=LoopBreakerT[2]]
+                     :: [b_ac6t9] -> a_ac6t8 -> Maybe a_ac6t8
+                   [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                   go_i7Jcj (ds_i7Jck [Occ=Once!] :: [b_ac6t9])
+                            (eta_B1 [Occ=Once*] :: a_ac6t8)
+                     = case ds_i7Jck of {
+                         [] -> GHC.Base.Just @ a_ac6t8 eta_B1;
+                         : y_i7Jcp [Occ=Once] ys_i7Jcq [Occ=Once] ->
+                           case f_ic6wP eta_B1 y_i7Jcp of {
+                             Nothing -> GHC.Base.Nothing @ a_ac6t8;
+                             Just x_i8hBy [Occ=Once] -> jump go_i7Jcj ys_i7Jcq x_i8hBy
+                           }
+                       }; } in
+                 jump go_i7Jcj xs_ic6wR z0_ic6wQ}]
+Control.Monad.foldM_$sfoldM
+  = \ (@ a_ac6t8)
+      (@ b_ac6t9)
+      (f_ic6wP :: a_ac6t8 -> b_ac6t9 -> Maybe a_ac6t8)
+      (z0_ic6wQ :: a_ac6t8)
+      (xs_ic6wR :: [b_ac6t9]) ->
+      joinrec {
+        go_i7Jcj [Occ=LoopBreaker] :: [b_ac6t9] -> a_ac6t8 -> Maybe a_ac6t8
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        go_i7Jcj (ds_i7Jck :: [b_ac6t9]) (eta_B1 :: a_ac6t8)
+          = case ds_i7Jck of {
+              [] -> GHC.Base.Just @ a_ac6t8 eta_B1;
+              : y_i7Jcp ys_i7Jcq ->
+                case f_ic6wP eta_B1 y_i7Jcp of {
+                  Nothing -> GHC.Base.Nothing @ a_ac6t8;
+                  Just x_i8hBy -> jump go_i7Jcj ys_i7Jcq x_i8hBy
+                }
+            }; } in
+      jump go_i7Jcj xs_ic6wR z0_ic6wQ
+
+-- RHS size: {terms: 31, types: 54, coercions: 2, joins: 1/1}
+Control.Monad.foldM1
+  :: forall a b.
+     (a -> b -> IO a)
+     -> a -> [b] -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ac6sC)
+                 (@ b_ac6sD)
+                 (f_ic6wP [Occ=OnceL!] :: a_ac6sC -> b_ac6sD -> IO a_ac6sC)
+                 (z0_ic6wQ [Occ=Once] :: a_ac6sC)
+                 (xs_ic6wR [Occ=Once] :: [b_ac6sD])
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 joinrec {
+                   go_sc6F5 [Occ=LoopBreakerT[3]]
+                     :: [b_ac6sD]
+                        -> a_ac6sC -> State# RealWorld -> (# State# RealWorld, a_ac6sC #)
+                   [LclId[JoinId(3)], Arity=3, Unf=OtherCon []]
+                   go_sc6F5 (ds_i7Jck [Occ=Once!] :: [b_ac6sD])
+                            (eta1_B2 [Occ=Once*] :: a_ac6sC)
+                            (eta2_XW [Occ=Once*] :: State# RealWorld)
+                     = case ds_i7Jck of {
+                         [] -> (# eta2_XW, eta1_B2 #);
+                         : y_i7Jcp [Occ=Once] ys_i7Jcq [Occ=Once] ->
+                           case ((f_ic6wP eta1_B2 y_i7Jcp)
+                                 `cast` (GHC.Types.N:IO[0] <a_ac6sC>_R
+                                         :: (IO a_ac6sC :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, a_ac6sC #) :: *)))
+                                  eta2_XW
+                           of
+                           { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                           jump go_sc6F5 ys_i7Jcq ipv1_i7IAz ipv_i7IAy
+                           }
+                       }; } in
+                 jump go_sc6F5 xs_ic6wR z0_ic6wQ eta_B1}]
+Control.Monad.foldM1
+  = \ (@ a_ac6sC)
+      (@ b_ac6sD)
+      (f_ic6wP :: a_ac6sC -> b_ac6sD -> IO a_ac6sC)
+      (z0_ic6wQ :: a_ac6sC)
+      (xs_ic6wR :: [b_ac6sD])
+      (eta_B1 :: State# RealWorld) ->
+      joinrec {
+        go_sc6F5 [Occ=LoopBreaker]
+          :: [b_ac6sD]
+             -> a_ac6sC -> State# RealWorld -> (# State# RealWorld, a_ac6sC #)
+        [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+        go_sc6F5 (ds_i7Jck :: [b_ac6sD])
+                 (eta1_B2 :: a_ac6sC)
+                 (eta2_XW :: State# RealWorld)
+          = case ds_i7Jck of {
+              [] -> (# eta2_XW, eta1_B2 #);
+              : y_i7Jcp ys_i7Jcq ->
+                case ((f_ic6wP eta1_B2 y_i7Jcp)
+                      `cast` (GHC.Types.N:IO[0] <a_ac6sC>_R
+                              :: (IO a_ac6sC :: *)
+                                 ~R# (State# RealWorld -> (# State# RealWorld, a_ac6sC #) :: *)))
+                       eta2_XW
+                of
+                { (# ipv_i7IAy, ipv1_i7IAz #) ->
+                jump go_sc6F5 ys_i7Jcq ipv1_i7IAz ipv_i7IAy
+                }
+            }; } in
+      jump go_sc6F5 xs_ic6wR z0_ic6wQ eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 19, joins: 0/0}
+Control.Monad.foldM_$sfoldM1 [InlPrag=INLINABLE]
+  :: forall a b. (a -> b -> IO a) -> a -> [b] -> IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.foldM1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <a -> b -> IO a>_R
+                       ->_R <a>_R
+                       ->_R <[b]>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a b.
+                           (a -> b -> IO a)
+                           -> a -> [b] -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a b. (a -> b -> IO a) -> a -> [b] -> IO a :: *))}]
+Control.Monad.foldM_$sfoldM1
+  = Control.Monad.foldM1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <a -> b -> IO a>_R
+            ->_R <a>_R
+            ->_R <[b]>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a b.
+                (a -> b -> IO a)
+                -> a -> [b] -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a b. (a -> b -> IO a) -> a -> [b] -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+foldM [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Foldable t, Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))LLLLLLLLLLLLL),1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= foldlM}]
+foldM = foldlM
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+Control.Monad.foldM_1 :: Maybe ()
+[GblId,
+ Caf=NoCafRefs,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.foldM_1 = GHC.Base.Just @ () GHC.Tuple.()
+
+-- RHS size: {terms: 26, types: 28, coercions: 0, joins: 1/1}
+Control.Monad.foldM__$sfoldM_ [InlPrag=INLINABLE]
+  :: forall a b. (a -> b -> Maybe a) -> a -> [b] -> Maybe ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ac6rS)
+                 (@ b_ac6rT)
+                 (f_ac6fF [Occ=OnceL!] :: a_ac6rS -> b_ac6rT -> Maybe a_ac6rS)
+                 (a1_ac6fG [Occ=Once] :: a_ac6rS)
+                 (xs_ac6fH [Occ=Once] :: [b_ac6rT]) ->
+                 joinrec {
+                   go_i7Jcj [Occ=LoopBreakerT[2]] :: [b_ac6rT] -> a_ac6rS -> Maybe ()
+                   [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                   go_i7Jcj (ds_i7Jck [Occ=Once!] :: [b_ac6rT])
+                            (eta_B1 [Occ=Once] :: a_ac6rS)
+                     = case ds_i7Jck of {
+                         [] -> Control.Monad.foldM_1;
+                         : y_i7Jcp [Occ=Once] ys_i7Jcq [Occ=Once] ->
+                           case f_ac6fF eta_B1 y_i7Jcp of {
+                             Nothing -> GHC.Base.Nothing @ ();
+                             Just x_i8hBy [Occ=Once] -> jump go_i7Jcj ys_i7Jcq x_i8hBy
+                           }
+                       }; } in
+                 jump go_i7Jcj xs_ac6fH a1_ac6fG}]
+Control.Monad.foldM__$sfoldM_
+  = \ (@ a_ac6rS)
+      (@ b_ac6rT)
+      (f_ac6fF :: a_ac6rS -> b_ac6rT -> Maybe a_ac6rS)
+      (a1_ac6fG :: a_ac6rS)
+      (xs_ac6fH :: [b_ac6rT]) ->
+      joinrec {
+        go_i7Jcj [Occ=LoopBreaker] :: [b_ac6rT] -> a_ac6rS -> Maybe ()
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        go_i7Jcj (ds_i7Jck :: [b_ac6rT]) (eta_B1 :: a_ac6rS)
+          = case ds_i7Jck of {
+              [] -> Control.Monad.foldM_1;
+              : y_i7Jcp ys_i7Jcq ->
+                case f_ac6fF eta_B1 y_i7Jcp of {
+                  Nothing -> GHC.Base.Nothing @ ();
+                  Just x_i8hBy -> jump go_i7Jcj ys_i7Jcq x_i8hBy
+                }
+            }; } in
+      jump go_i7Jcj xs_ac6fH a1_ac6fG
+
+-- RHS size: {terms: 31, types: 54, coercions: 2, joins: 1/1}
+Control.Monad.foldM_2
+  :: forall a b.
+     (a -> b -> IO a)
+     -> a -> [b] -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ac6rm)
+                 (@ b_ac6rn)
+                 (f_ac6fF [Occ=OnceL!] :: a_ac6rm -> b_ac6rn -> IO a_ac6rm)
+                 (a1_ac6fG [Occ=Once] :: a_ac6rm)
+                 (xs_ac6fH [Occ=Once] :: [b_ac6rn])
+                 (s_i7JiH [Occ=Once] :: State# RealWorld) ->
+                 joinrec {
+                   go_sc6Fc [Occ=LoopBreakerT[3]]
+                     :: [b_ac6rn]
+                        -> a_ac6rm -> State# RealWorld -> (# State# RealWorld, () #)
+                   [LclId[JoinId(3)], Arity=3, Unf=OtherCon []]
+                   go_sc6Fc (ds_i7Jck [Occ=Once!] :: [b_ac6rn])
+                            (eta_B2 [Occ=Once] :: a_ac6rm)
+                            (eta1_B1 [Occ=Once*] :: State# RealWorld)
+                     = case ds_i7Jck of {
+                         [] -> (# eta1_B1, GHC.Tuple.() #);
+                         : y_i7Jcp [Occ=Once] ys_i7Jcq [Occ=Once] ->
+                           case ((f_ac6fF eta_B2 y_i7Jcp)
+                                 `cast` (GHC.Types.N:IO[0] <a_ac6rm>_R
+                                         :: (IO a_ac6rm :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, a_ac6rm #) :: *)))
+                                  eta1_B1
+                           of
+                           { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                           jump go_sc6Fc ys_i7Jcq ipv1_i7IAz ipv_i7IAy
+                           }
+                       }; } in
+                 jump go_sc6Fc xs_ac6fH a1_ac6fG s_i7JiH}]
+Control.Monad.foldM_2
+  = \ (@ a_ac6rm)
+      (@ b_ac6rn)
+      (f_ac6fF :: a_ac6rm -> b_ac6rn -> IO a_ac6rm)
+      (a1_ac6fG :: a_ac6rm)
+      (xs_ac6fH :: [b_ac6rn])
+      (s_i7JiH :: State# RealWorld) ->
+      joinrec {
+        go_sc6Fc [Occ=LoopBreaker]
+          :: [b_ac6rn]
+             -> a_ac6rm -> State# RealWorld -> (# State# RealWorld, () #)
+        [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+        go_sc6Fc (ds_i7Jck :: [b_ac6rn])
+                 (eta_B2 :: a_ac6rm)
+                 (eta1_B1 :: State# RealWorld)
+          = case ds_i7Jck of {
+              [] -> (# eta1_B1, GHC.Tuple.() #);
+              : y_i7Jcp ys_i7Jcq ->
+                case ((f_ac6fF eta_B2 y_i7Jcp)
+                      `cast` (GHC.Types.N:IO[0] <a_ac6rm>_R
+                              :: (IO a_ac6rm :: *)
+                                 ~R# (State# RealWorld -> (# State# RealWorld, a_ac6rm #) :: *)))
+                       eta1_B1
+                of
+                { (# ipv_i7IAy, ipv1_i7IAz #) ->
+                jump go_sc6Fc ys_i7Jcq ipv1_i7IAz ipv_i7IAy
+                }
+            }; } in
+      jump go_sc6Fc xs_ac6fH a1_ac6fG s_i7JiH
+
+-- RHS size: {terms: 1, types: 0, coercions: 19, joins: 0/0}
+Control.Monad.foldM__$sfoldM_1 [InlPrag=INLINABLE]
+  :: forall a b. (a -> b -> IO a) -> a -> [b] -> IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.foldM_2
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <a -> b -> IO a>_R
+                       ->_R <a>_R
+                       ->_R <[b]>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a b.
+                           (a -> b -> IO a)
+                           -> a -> [b] -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a b. (a -> b -> IO a) -> a -> [b] -> IO () :: *))}]
+Control.Monad.foldM__$sfoldM_1
+  = Control.Monad.foldM_2
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <a -> b -> IO a>_R
+            ->_R <a>_R
+            ->_R <[b]>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a b.
+                (a -> b -> IO a)
+                -> a -> [b] -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a b. (a -> b -> IO a) -> a -> [b] -> IO () :: *))
+
+-- RHS size: {terms: 20, types: 32, coercions: 0, joins: 0/0}
+foldM_ [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Foldable t, Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><S(LLC(C(S))LL),U(A,C(C1(U)),1*C1(C1(U)),U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 60 0 0 0] 130 0
+         Tmpl= \ (@ (t_ac6qz :: * -> *))
+                 (@ (m_ac6qA :: * -> *))
+                 (@ b_ac6qB)
+                 (@ a_ac6qC)
+                 ($dFoldable_ac6qE [Occ=Once] :: Foldable t_ac6qz)
+                 ($dMonad_ac6qF :: Monad m_ac6qA)
+                 (f_Xc6gx [Occ=Once] :: b_ac6qB -> a_ac6qC -> m_ac6qA b_ac6qB)
+                 (a1_Xc6gz [Occ=Once] :: b_ac6qB)
+                 (xs_Xc6gB [Occ=Once] :: t_ac6qz a_ac6qC) ->
+                 >>
+                   @ m_ac6qA
+                   $dMonad_ac6qF
+                   @ b_ac6qB
+                   @ ()
+                   (foldlM
+                      @ t_ac6qz
+                      @ m_ac6qA
+                      @ b_ac6qB
+                      @ a_ac6qC
+                      $dFoldable_ac6qE
+                      $dMonad_ac6qF
+                      f_Xc6gx
+                      a1_Xc6gz
+                      xs_Xc6gB)
+                   (return @ m_ac6qA $dMonad_ac6qF @ () GHC.Tuple.())}]
+foldM_
+  = \ (@ (t_ac6qz :: * -> *))
+      (@ (m_ac6qA :: * -> *))
+      (@ b_ac6qB)
+      (@ a_ac6qC)
+      ($dFoldable_ac6qE :: Foldable t_ac6qz)
+      ($dMonad_ac6qF :: Monad m_ac6qA)
+      (f_Xc6gx :: b_ac6qB -> a_ac6qC -> m_ac6qA b_ac6qB)
+      (a1_Xc6gz :: b_ac6qB)
+      (xs_Xc6gB :: t_ac6qz a_ac6qC) ->
+      >>
+        @ m_ac6qA
+        $dMonad_ac6qF
+        @ b_ac6qB
+        @ ()
+        (foldlM
+           @ t_ac6qz
+           @ m_ac6qA
+           @ b_ac6qB
+           @ a_ac6qC
+           $dFoldable_ac6qE
+           $dMonad_ac6qF
+           f_Xc6gx
+           a1_Xc6gz
+           xs_Xc6gB)
+        (return @ m_ac6qA $dMonad_ac6qF @ () GHC.Tuple.())
+
+-- RHS size: {terms: 17, types: 21, coercions: 0, joins: 0/0}
+<$!> [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b. Monad m => (a -> b) -> m a -> m b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)><L,C(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ (m_ac6mS :: * -> *))
+                 (@ a_ac6mT)
+                 (@ b_ac6mU)
+                 ($dMonad_ac6mW :: Monad m_ac6mS)
+                 (f_ac6fS [Occ=OnceL!] :: a_ac6mT -> b_ac6mU)
+                 (m1_ac6fT [Occ=Once] :: m_ac6mS a_ac6mT) ->
+                 >>=
+                   @ m_ac6mS
+                   $dMonad_ac6mW
+                   @ a_ac6mT
+                   @ b_ac6mU
+                   m1_ac6fT
+                   (\ (x_ac6fU [Occ=Once] :: a_ac6mT) ->
+                      case f_ac6fS x_ac6fU of z_ac6fV { __DEFAULT ->
+                      return @ m_ac6mS $dMonad_ac6mW @ b_ac6mU z_ac6fV
+                      })}]
+<$!>
+  = \ (@ (m_ac6mS :: * -> *))
+      (@ a_ac6mT)
+      (@ b_ac6mU)
+      ($dMonad_ac6mW :: Monad m_ac6mS)
+      (eta_B2 :: a_ac6mT -> b_ac6mU)
+      (eta1_B1 :: m_ac6mS a_ac6mT) ->
+      >>=
+        @ m_ac6mS
+        $dMonad_ac6mW
+        @ a_ac6mT
+        @ b_ac6mU
+        eta1_B1
+        (\ (x_ac6fU :: a_ac6mT) ->
+           case eta_B2 x_ac6fU of z_Xc6g2 { __DEFAULT ->
+           return @ m_ac6mS $dMonad_ac6mW @ b_ac6mU z_Xc6g2
+           })
+
+-- RHS size: {terms: 24, types: 26, coercions: 0, joins: 0/2}
+mfilter [InlPrag=INLINABLE]
+  :: forall (m :: * -> *) a. MonadPlus m => (a -> Bool) -> m a -> m a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,C(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60] 190 60
+         Tmpl= \ (@ (m_ac6mD :: * -> *))
+                 (@ a_ac6mE)
+                 ($dMonadPlus_ac6mG :: MonadPlus m_ac6mD) ->
+                 let {
+                   $dMonad_ac6vp :: Monad m_ac6mD
+                   [LclId]
+                   $dMonad_ac6vp
+                     = GHC.Base.$p2MonadPlus @ m_ac6mD $dMonadPlus_ac6mG } in
+                 \ (p_ac6fW [Occ=OnceL!] :: a_ac6mE -> Bool)
+                   (ma_ac6fX [Occ=Once] :: m_ac6mD a_ac6mE) ->
+                   >>=
+                     @ m_ac6mD
+                     $dMonad_ac6vp
+                     @ a_ac6mE
+                     @ a_ac6mE
+                     ma_ac6fX
+                     (\ (a1_ac6fY :: a_ac6mE) ->
+                        case p_ac6fW a1_ac6fY of {
+                          False -> mzero @ m_ac6mD $dMonadPlus_ac6mG @ a_ac6mE;
+                          True -> return @ m_ac6mD $dMonad_ac6vp @ a_ac6mE a1_ac6fY
+                        })}]
+mfilter
+  = \ (@ (m_ac6mD :: * -> *))
+      (@ a_ac6mE)
+      ($dMonadPlus_ac6mG :: MonadPlus m_ac6mD)
+      (eta_B2 :: a_ac6mE -> Bool)
+      (eta1_B1 :: m_ac6mD a_ac6mE) ->
+      let {
+        lvl_sc6BQ :: m_ac6mD a_ac6mE
+        [LclId]
+        lvl_sc6BQ = mzero @ m_ac6mD $dMonadPlus_ac6mG @ a_ac6mE } in
+      let {
+        $dMonad_sc6BL [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          :: Monad m_ac6mD
+        [LclId]
+        $dMonad_sc6BL
+          = GHC.Base.$p2MonadPlus @ m_ac6mD $dMonadPlus_ac6mG } in
+      >>=
+        @ m_ac6mD
+        $dMonad_sc6BL
+        @ a_ac6mE
+        @ a_ac6mE
+        eta1_B1
+        (\ (a1_ac6fY :: a_ac6mE) ->
+           case eta_B2 a1_ac6fY of {
+             False -> lvl_sc6BQ;
+             True -> return @ m_ac6mD $dMonad_sc6BL @ a_ac6mE a1_ac6fY
+           })
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Monad.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.$trModule3
+  = GHC.Types.TrNameS Control.Monad.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+Control.Monad.$trModule2 = "Control.Monad"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.$trModule1
+  = GHC.Types.TrNameS Control.Monad.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Monad.$trModule
+  = GHC.Types.Module
+      Control.Monad.$trModule3 Control.Monad.$trModule1
+
+-- RHS size: {terms: 8, types: 4, coercions: 0, joins: 0/0}
+Control.Monad.unless_$sunless [InlPrag=INLINABLE]
+  :: Bool -> Maybe () -> Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (p_ac6fQ [Occ=Once!] :: Bool)
+                 (s_ac6fR [Occ=Once] :: Maybe ()) ->
+                 case p_ac6fQ of {
+                   False -> s_ac6fR;
+                   True -> Control.Monad.foldM_1
+                 }}]
+Control.Monad.unless_$sunless
+  = \ (p_ac6fQ :: Bool) (s_ac6fR :: Maybe ()) ->
+      case p_ac6fQ of {
+        False -> s_ac6fR;
+        True -> Control.Monad.foldM_1
+      }
+
+-- RHS size: {terms: 26, types: 16, coercions: 0, joins: 1/1}
+Control.Monad.replicateM__$sreplicateM_ [InlPrag=INLINABLE]
+  :: forall a. Int -> Maybe a -> Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ac6p1)
+                 (cnt0_ac6fM [Occ=Once] :: Int)
+                 (f_ac6fN [Occ=OnceL!] :: Maybe a_ac6p1) ->
+                 joinrec {
+                   loop_sc6BJ [Occ=LoopBreakerT[1]] :: Int -> Maybe ()
+                   [LclId[JoinId(1)], Arity=1, Unf=OtherCon []]
+                   loop_sc6BJ (cnt_ac6fP [Occ=Once!] :: Int)
+                     = case cnt_ac6fP of { I# x_at1e ->
+                       case <=# x_at1e 0# of {
+                         __DEFAULT ->
+                           case f_ac6fN of {
+                             Nothing -> GHC.Base.Nothing @ ();
+                             Just _ [Occ=Dead] -> jump loop_sc6BJ (GHC.Types.I# (-# x_at1e 1#))
+                           };
+                         1# -> Control.Monad.foldM_1
+                       }
+                       }; } in
+                 jump loop_sc6BJ cnt0_ac6fM}]
+Control.Monad.replicateM__$sreplicateM_
+  = \ (@ a_ac6p1) (cnt0_ac6fM :: Int) (f_ac6fN :: Maybe a_ac6p1) ->
+      case cnt0_ac6fM of { I# ww1_sc6K2 ->
+      joinrec {
+        $wloop_sc6K4 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> Maybe ()
+        [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []]
+        $wloop_sc6K4 (ww2_Xc6Li :: Int#)
+          = case <=# ww2_Xc6Li 0# of {
+              __DEFAULT ->
+                case f_ac6fN of {
+                  Nothing -> GHC.Base.Nothing @ ();
+                  Just _m1_ic6yc -> jump $wloop_sc6K4 (-# ww2_Xc6Li 1#)
+                };
+              1# -> Control.Monad.foldM_1
+            }; } in
+      jump $wloop_sc6K4 ww1_sc6K2
+      }
+
+-- RHS size: {terms: 3, types: 5, coercions: 0, joins: 0/0}
+Control.Monad.replicateM1 :: forall a. Maybe [a]
+[GblId,
+ Caf=NoCafRefs,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.replicateM1
+  = \ (@ a_ac6qu) ->
+      GHC.Base.Just @ [a_ac6qu] (GHC.Types.[] @ a_ac6qu)
+
+-- RHS size: {terms: 31, types: 27, coercions: 0, joins: 0/1}
+Control.Monad.$w$sreplicateM [InlPrag=INLINABLE[0]]
+  :: forall a. Int# -> Maybe a -> Maybe [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 30] 142 0}]
+Control.Monad.$w$sreplicateM
+  = \ (@ a_sc6Kb) (ww_sc6Kg :: Int#) (w_sc6Kd :: Maybe a_sc6Kb) ->
+      letrec {
+        $wloop_sc6Ka [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> Maybe [a_sc6Kb]
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        $wloop_sc6Ka
+          = \ (ww1_sc6K8 :: Int#) ->
+              case <=# ww1_sc6K8 0# of {
+                __DEFAULT ->
+                  case w_sc6Kd of {
+                    Nothing -> GHC.Base.Nothing @ [a_sc6Kb];
+                    Just x_ic6yO ->
+                      case $wloop_sc6Ka (-# ww1_sc6K8 1#) of {
+                        Nothing -> GHC.Base.Nothing @ [a_sc6Kb];
+                        Just y_ic6yT ->
+                          GHC.Base.Just @ [a_sc6Kb] (GHC.Types.: @ a_sc6Kb x_ic6yO y_ic6yT)
+                      }
+                  };
+                1# -> Control.Monad.replicateM1 @ a_sc6Kb
+              }; } in
+      $wloop_sc6Ka ww_sc6Kg
+
+-- RHS size: {terms: 9, types: 8, coercions: 0, joins: 0/0}
+Control.Monad.replicateM_$sreplicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall a. Int -> Maybe a -> Maybe [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sc6Kb)
+                 (w_sc6Kc [Occ=Once!] :: Int)
+                 (w1_sc6Kd [Occ=Once] :: Maybe a_sc6Kb) ->
+                 case w_sc6Kc of { I# ww1_sc6Kg [Occ=Once] ->
+                 Control.Monad.$w$sreplicateM @ a_sc6Kb ww1_sc6Kg w1_sc6Kd
+                 }}]
+Control.Monad.replicateM_$sreplicateM
+  = \ (@ a_sc6Kb) (w_sc6Kc :: Int) (w1_sc6Kd :: Maybe a_sc6Kb) ->
+      case w_sc6Kc of { I# ww1_sc6Kg ->
+      Control.Monad.$w$sreplicateM @ a_sc6Kb ww1_sc6Kg w1_sc6Kd
+      }
+
+-- RHS size: {terms: 12, types: 13, coercions: 2, joins: 0/0}
+Control.Monad.unless1
+  :: Bool -> IO () -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (p_ac6fQ [Occ=Once!] :: Bool)
+                 (s_ac6fR [Occ=Once] :: IO ())
+                 (eta_B1 [Occ=Once*] :: State# RealWorld) ->
+                 case p_ac6fQ of {
+                   False ->
+                     (s_ac6fR
+                      `cast` (GHC.Types.N:IO[0] <()>_R
+                              :: (IO () :: *)
+                                 ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                       eta_B1;
+                   True -> (# eta_B1, GHC.Tuple.() #)
+                 }}]
+Control.Monad.unless1
+  = \ (p_ac6fQ :: Bool)
+      (s_ac6fR :: IO ())
+      (eta_B1 :: State# RealWorld) ->
+      case p_ac6fQ of {
+        False ->
+          (s_ac6fR
+           `cast` (GHC.Types.N:IO[0] <()>_R
+                   :: (IO () :: *)
+                      ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+            eta_B1;
+        True -> (# eta_B1, GHC.Tuple.() #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 8, joins: 0/0}
+Control.Monad.unless_$sunless1 [InlPrag=INLINABLE]
+  :: Bool -> IO () -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.unless1
+               `cast` (<Bool>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (Bool
+                           -> IO () -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (Bool -> IO () -> IO () :: *))}]
+Control.Monad.unless_$sunless1
+  = Control.Monad.unless1
+    `cast` (<Bool>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (Bool
+                -> IO () -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (Bool -> IO () -> IO () :: *))
+
+-- RHS size: {terms: 12, types: 12, coercions: 0, joins: 0/0}
+unless [InlPrag=INLINABLE]
+  :: forall (f :: * -> *). Applicative f => Bool -> f () -> f ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U),A,A,A,A)><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_ac6nd :: * -> *))
+                 ($dApplicative_ac6nf [Occ=Once] :: Applicative f_ac6nd)
+                 (p_Xc6gU [Occ=Once!] :: Bool)
+                 (s_Xc6gW [Occ=Once] :: f_ac6nd ()) ->
+                 case p_Xc6gU of {
+                   False -> s_Xc6gW;
+                   True -> pure @ f_ac6nd $dApplicative_ac6nf @ () GHC.Tuple.()
+                 }}]
+unless
+  = \ (@ (f_ac6nd :: * -> *))
+      ($dApplicative_ac6nf :: Applicative f_ac6nd)
+      (p_Xc6gU :: Bool)
+      (s_Xc6gW :: f_ac6nd ()) ->
+      case p_Xc6gU of {
+        False -> s_Xc6gW;
+        True -> pure @ f_ac6nd $dApplicative_ac6nf @ () GHC.Tuple.()
+      }
+
+-- RHS size: {terms: 31, types: 42, coercions: 2, joins: 1/1}
+Control.Monad.replicateM_1
+  :: forall a.
+     Int -> IO a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ac6oI)
+                 (cnt0_ac6fM [Occ=Once] :: Int)
+                 (f_ac6fN [Occ=OnceL] :: IO a_ac6oI)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 joinrec {
+                   loop_sc6BF [Occ=LoopBreakerT[2]]
+                     :: Int -> State# RealWorld -> (# State# RealWorld, () #)
+                   [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                   loop_sc6BF (cnt_ac6fP [Occ=Once!] :: Int)
+                              (eta1_X1a [Occ=Once*] :: State# RealWorld)
+                     = case cnt_ac6fP of { I# x_at1e ->
+                       case <=# x_at1e 0# of {
+                         __DEFAULT ->
+                           case (f_ac6fN
+                                 `cast` (GHC.Types.N:IO[0] <a_ac6oI>_R
+                                         :: (IO a_ac6oI :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, a_ac6oI #) :: *)))
+                                  eta1_X1a
+                           of
+                           { (# ipv_i7JiK [Occ=Once], _ [Occ=Dead] #) ->
+                           jump loop_sc6BF (GHC.Types.I# (-# x_at1e 1#)) ipv_i7JiK
+                           };
+                         1# -> (# eta1_X1a, GHC.Tuple.() #)
+                       }
+                       }; } in
+                 jump loop_sc6BF cnt0_ac6fM eta_B1}]
+Control.Monad.replicateM_1
+  = \ (@ a_ac6oI)
+      (cnt0_ac6fM :: Int)
+      (f_ac6fN :: IO a_ac6oI)
+      (eta_B1 :: State# RealWorld) ->
+      case cnt0_ac6fM of { I# ww1_sc6Kn ->
+      joinrec {
+        $wloop_sc6Kp [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> State# RealWorld -> (# State# RealWorld, () #)
+        [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+        $wloop_sc6Kp (ww2_Xc6LM :: Int#) (w_sc6Kk :: State# RealWorld)
+          = case <=# ww2_Xc6LM 0# of {
+              __DEFAULT ->
+                case (f_ac6fN
+                      `cast` (GHC.Types.N:IO[0] <a_ac6oI>_R
+                              :: (IO a_ac6oI :: *)
+                                 ~R# (State# RealWorld -> (# State# RealWorld, a_ac6oI #) :: *)))
+                       w_sc6Kk
+                of
+                { (# ipv_i7JiK, ipv1_i7JiL #) ->
+                jump $wloop_sc6Kp (-# ww2_Xc6LM 1#) ipv_i7JiK
+                };
+              1# -> (# w_sc6Kk, GHC.Tuple.() #)
+            }; } in
+      jump $wloop_sc6Kp ww1_sc6Kn eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+Control.Monad.replicateM__$sreplicateM_1 [InlPrag=INLINABLE]
+  :: forall a. Int -> IO a -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.replicateM_1
+               `cast` (forall (a :: <*>_N).
+                       <Int>_R ->_R <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           Int -> IO a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. Int -> IO a -> IO () :: *))}]
+Control.Monad.replicateM__$sreplicateM_1
+  = Control.Monad.replicateM_1
+    `cast` (forall (a :: <*>_N).
+            <Int>_R ->_R <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Int -> IO a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Int -> IO a -> IO () :: *))
+
+-- RHS size: {terms: 27, types: 23, coercions: 0, joins: 0/2}
+Control.Monad.$wreplicateM_ [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a. Applicative m => Int# -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><S,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0 0] 182 0
+         Tmpl= \ (@ (m_sc6Kw :: * -> *))
+                 (@ a_sc6Kx)
+                 (w_sc6Ky [Occ=OnceL*] :: Applicative m_sc6Kw)
+                 (ww_sc6KD [Occ=Once] :: Int#)
+                 (w1_sc6KA [Occ=OnceL] :: m_sc6Kw a_sc6Kx) ->
+                 letrec {
+                   loop_ac6nM [Occ=LoopBreaker] :: Int -> m_sc6Kw ()
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   loop_ac6nM
+                     = \ (cnt_ac6fP [Occ=Once!] :: Int) ->
+                         case cnt_ac6fP of { I# x_at1e ->
+                         case <=# x_at1e 0# of {
+                           __DEFAULT ->
+                             *>
+                               @ m_sc6Kw
+                               w_sc6Ky
+                               @ a_sc6Kx
+                               @ ()
+                               w1_sc6KA
+                               (loop_ac6nM (GHC.Types.I# (-# x_at1e 1#)));
+                           1# -> pure @ m_sc6Kw w_sc6Ky @ () GHC.Tuple.()
+                         }
+                         }; } in
+                 loop_ac6nM (GHC.Types.I# ww_sc6KD)}]
+Control.Monad.$wreplicateM_
+  = \ (@ (m_sc6Kw :: * -> *))
+      (@ a_sc6Kx)
+      (w_sc6Ky :: Applicative m_sc6Kw)
+      (ww_sc6KD :: Int#)
+      (w1_sc6KA :: m_sc6Kw a_sc6Kx) ->
+      let {
+        lvl_sc6BY :: m_sc6Kw ()
+        [LclId]
+        lvl_sc6BY = pure @ m_sc6Kw w_sc6Ky @ () GHC.Tuple.() } in
+      letrec {
+        $wloop_sc6Kv [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> m_sc6Kw ()
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        $wloop_sc6Kv
+          = \ (ww1_sc6Kt :: Int#) ->
+              case <=# ww1_sc6Kt 0# of {
+                __DEFAULT ->
+                  *>
+                    @ m_sc6Kw
+                    w_sc6Ky
+                    @ a_sc6Kx
+                    @ ()
+                    w1_sc6KA
+                    ($wloop_sc6Kv (-# ww1_sc6Kt 1#));
+                1# -> lvl_sc6BY
+              }; } in
+      $wloop_sc6Kv ww_sc6KD
+
+-- RHS size: {terms: 12, types: 15, coercions: 0, joins: 0/0}
+replicateM_ [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a. Applicative m => Int -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,A,C(C1(U)),A)><S(S),1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_sc6Kw :: * -> *))
+                 (@ a_sc6Kx)
+                 (w_sc6Ky [Occ=Once] :: Applicative m_sc6Kw)
+                 (w1_sc6Kz [Occ=Once!] :: Int)
+                 (w2_sc6KA [Occ=Once] :: m_sc6Kw a_sc6Kx) ->
+                 case w1_sc6Kz of { I# ww1_sc6KD [Occ=Once] ->
+                 Control.Monad.$wreplicateM_
+                   @ m_sc6Kw @ a_sc6Kx w_sc6Ky ww1_sc6KD w2_sc6KA
+                 }}]
+replicateM_
+  = \ (@ (m_sc6Kw :: * -> *))
+      (@ a_sc6Kx)
+      (w_sc6Ky :: Applicative m_sc6Kw)
+      (w1_sc6Kz :: Int)
+      (w2_sc6KA :: m_sc6Kw a_sc6Kx) ->
+      case w1_sc6Kz of { I# ww1_sc6KD ->
+      Control.Monad.$wreplicateM_
+        @ m_sc6Kw @ a_sc6Kx w_sc6Ky ww1_sc6KD w2_sc6KA
+      }
+
+-- RHS size: {terms: 35, types: 65, coercions: 2, joins: 0/1}
+Control.Monad.$w$sreplicateM1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Int# -> IO a -> State# RealWorld -> (# State# RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(U(U,U))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 60 0] 122 0}]
+Control.Monad.$w$sreplicateM1
+  = \ (@ a_sc6KN)
+      (ww_sc6KT :: Int#)
+      (w_sc6KP :: IO a_sc6KN)
+      (w1_sc6KQ :: State# RealWorld) ->
+      letrec {
+        $wloop_sc6KM [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> State# RealWorld -> (# State# RealWorld, [a_sc6KN] #)
+        [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+        $wloop_sc6KM
+          = \ (ww1_sc6KK :: Int#) (w2_sc6KH :: State# RealWorld) ->
+              case <=# ww1_sc6KK 0# of {
+                __DEFAULT ->
+                  case (w_sc6KP
+                        `cast` (GHC.Types.N:IO[0] <a_sc6KN>_R
+                                :: (IO a_sc6KN :: *)
+                                   ~R# (State# RealWorld -> (# State# RealWorld, a_sc6KN #) :: *)))
+                         w2_sc6KH
+                  of
+                  { (# ipv_ic6zk, ipv1_ic6zl #) ->
+                  case $wloop_sc6KM (-# ww1_sc6KK 1#) ipv_ic6zk of
+                  { (# ipv2_ic6zp, ipv3_ic6zq #) ->
+                  (# ipv2_ic6zp, GHC.Types.: @ a_sc6KN ipv1_ic6zl ipv3_ic6zq #)
+                  }
+                  };
+                1# -> (# w2_sc6KH, GHC.Types.[] @ a_sc6KN #)
+              }; } in
+      $wloop_sc6KM ww_sc6KT w1_sc6KQ
+
+-- RHS size: {terms: 11, types: 10, coercions: 0, joins: 0/0}
+Control.Monad.replicateM2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Int -> IO a -> State# RealWorld -> (# State# RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sc6KN)
+                 (w_sc6KO [Occ=Once!] :: Int)
+                 (w1_sc6KP [Occ=Once] :: IO a_sc6KN)
+                 (w2_sc6KQ [Occ=Once] :: State# RealWorld) ->
+                 case w_sc6KO of { I# ww1_sc6KT [Occ=Once] ->
+                 Control.Monad.$w$sreplicateM1 @ a_sc6KN ww1_sc6KT w1_sc6KP w2_sc6KQ
+                 }}]
+Control.Monad.replicateM2
+  = \ (@ a_sc6KN)
+      (w_sc6KO :: Int)
+      (w1_sc6KP :: IO a_sc6KN)
+      (w2_sc6KQ :: State# RealWorld) ->
+      case w_sc6KO of { I# ww1_sc6KT ->
+      Control.Monad.$w$sreplicateM1 @ a_sc6KN ww1_sc6KT w1_sc6KP w2_sc6KQ
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+Control.Monad.replicateM_$sreplicateM1 [InlPrag=INLINABLE]
+  :: forall a. Int -> IO a -> IO [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.replicateM2
+               `cast` (forall (a :: <*>_N).
+                       <Int>_R ->_R <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <[a]>_R)
+                       :: (forall a.
+                           Int
+                           -> IO a -> State# RealWorld -> (# State# RealWorld, [a] #) :: *)
+                          ~R# (forall a. Int -> IO a -> IO [a] :: *))}]
+Control.Monad.replicateM_$sreplicateM1
+  = Control.Monad.replicateM2
+    `cast` (forall (a :: <*>_N).
+            <Int>_R ->_R <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <[a]>_R)
+            :: (forall a.
+                Int
+                -> IO a -> State# RealWorld -> (# State# RealWorld, [a] #) :: *)
+               ~R# (forall a. Int -> IO a -> IO [a] :: *))
+
+-- RHS size: {terms: 28, types: 31, coercions: 0, joins: 0/2}
+Control.Monad.$wreplicateM [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a. Applicative m => Int# -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><S,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0 0] 192 0
+         Tmpl= \ (@ (m_sc6L2 :: * -> *))
+                 (@ a_sc6L3)
+                 (w_sc6L4 [Occ=OnceL*] :: Applicative m_sc6L2)
+                 (ww_sc6L9 [Occ=Once] :: Int#)
+                 (w1_sc6L6 [Occ=OnceL] :: m_sc6L2 a_sc6L3) ->
+                 letrec {
+                   loop_ac6pc [Occ=LoopBreaker] :: Int -> m_sc6L2 [a_sc6L3]
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   loop_ac6pc
+                     = \ (cnt_ac6fL [Occ=Once!] :: Int) ->
+                         case cnt_ac6fL of { I# x_at1e ->
+                         case <=# x_at1e 0# of {
+                           __DEFAULT ->
+                             liftA2
+                               @ m_sc6L2
+                               w_sc6L4
+                               @ a_sc6L3
+                               @ [a_sc6L3]
+                               @ [a_sc6L3]
+                               (GHC.Types.: @ a_sc6L3)
+                               w1_sc6L6
+                               (loop_ac6pc (GHC.Types.I# (-# x_at1e 1#)));
+                           1# -> pure @ m_sc6L2 w_sc6L4 @ [a_sc6L3] (GHC.Types.[] @ a_sc6L3)
+                         }
+                         }; } in
+                 loop_ac6pc (GHC.Types.I# ww_sc6L9)}]
+Control.Monad.$wreplicateM
+  = \ (@ (m_sc6L2 :: * -> *))
+      (@ a_sc6L3)
+      (w_sc6L4 :: Applicative m_sc6L2)
+      (ww_sc6L9 :: Int#)
+      (w1_sc6L6 :: m_sc6L2 a_sc6L3) ->
+      let {
+        lvl_sc6C1 :: m_sc6L2 [a_sc6L3]
+        [LclId]
+        lvl_sc6C1
+          = pure @ m_sc6L2 w_sc6L4 @ [a_sc6L3] (GHC.Types.[] @ a_sc6L3) } in
+      letrec {
+        $wloop_sc6L1 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> m_sc6L2 [a_sc6L3]
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        $wloop_sc6L1
+          = \ (ww1_sc6KZ :: Int#) ->
+              case <=# ww1_sc6KZ 0# of {
+                __DEFAULT ->
+                  liftA2
+                    @ m_sc6L2
+                    w_sc6L4
+                    @ a_sc6L3
+                    @ [a_sc6L3]
+                    @ [a_sc6L3]
+                    (GHC.Types.: @ a_sc6L3)
+                    w1_sc6L6
+                    ($wloop_sc6L1 (-# ww1_sc6KZ 1#));
+                1# -> lvl_sc6C1
+              }; } in
+      $wloop_sc6L1 ww_sc6L9
+
+-- RHS size: {terms: 12, types: 15, coercions: 0, joins: 0/0}
+replicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a. Applicative m => Int -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,C(C1(C1(U))),A,A)><S(S),1*U(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_sc6L2 :: * -> *))
+                 (@ a_sc6L3)
+                 (w_sc6L4 [Occ=Once] :: Applicative m_sc6L2)
+                 (w1_sc6L5 [Occ=Once!] :: Int)
+                 (w2_sc6L6 [Occ=Once] :: m_sc6L2 a_sc6L3) ->
+                 case w1_sc6L5 of { I# ww1_sc6L9 [Occ=Once] ->
+                 Control.Monad.$wreplicateM
+                   @ m_sc6L2 @ a_sc6L3 w_sc6L4 ww1_sc6L9 w2_sc6L6
+                 }}]
+replicateM
+  = \ (@ (m_sc6L2 :: * -> *))
+      (@ a_sc6L3)
+      (w_sc6L4 :: Applicative m_sc6L2)
+      (w1_sc6L5 :: Int)
+      (w2_sc6L6 :: m_sc6L2 a_sc6L3) ->
+      case w1_sc6L5 of { I# ww1_sc6L9 ->
+      Control.Monad.$wreplicateM
+        @ m_sc6L2 @ a_sc6L3 w_sc6L4 ww1_sc6L9 w2_sc6L6
+      }
+
+
+------ Local rules for imported ids --------
+"SPEC foldM"
+    forall (@ a_Xc6tv)
+           (@ b_Xc6tx)
+           ($dMonad_ac6sJ :: Monad IO)
+           ($dFoldable_ac6sI :: Foldable []).
+      foldM @ [] @ IO @ a_Xc6tv @ b_Xc6tx $dFoldable_ac6sI $dMonad_ac6sJ
+      = Control.Monad.foldM_$sfoldM1 @ a_Xc6tv @ b_Xc6tx
+"SPEC foldM"
+    forall (@ a_ac6t8)
+           (@ b_ac6t9)
+           ($dMonad_ac6tf :: Monad Maybe)
+           ($dFoldable_ac6te :: Foldable []).
+      foldM @ []
+            @ Maybe
+            @ a_ac6t8
+            @ b_ac6t9
+            $dFoldable_ac6te
+            $dMonad_ac6tf
+      = Control.Monad.foldM_$sfoldM @ a_ac6t8 @ b_ac6t9
+"SPEC foldM_"
+    forall (@ a_Xc6s7)
+           (@ b_Xc6s9)
+           ($dMonad_ac6rt :: Monad IO)
+           ($dFoldable_ac6rs :: Foldable []).
+      foldM_ @ [] @ IO @ a_Xc6s7 @ b_Xc6s9 $dFoldable_ac6rs $dMonad_ac6rt
+      = Control.Monad.foldM__$sfoldM_1 @ a_Xc6s7 @ b_Xc6s9
+"SPEC foldM_"
+    forall (@ a_ac6rS)
+           (@ b_ac6rT)
+           ($dMonad_ac6rZ :: Monad Maybe)
+           ($dFoldable_ac6rY :: Foldable []).
+      foldM_ @ []
+             @ Maybe
+             @ a_ac6rS
+             @ b_ac6rT
+             $dFoldable_ac6rY
+             $dMonad_ac6rZ
+      = Control.Monad.foldM__$sfoldM_ @ a_ac6rS @ b_ac6rT
+"SPEC unless"
+    forall ($dApplicative_ac6nu :: Applicative IO).
+      unless @ IO $dApplicative_ac6nu
+      = Control.Monad.unless_$sunless1
+"SPEC unless"
+    forall ($dApplicative_ac6nF :: Applicative Maybe).
+      unless @ Maybe $dApplicative_ac6nF
+      = Control.Monad.unless_$sunless
+"SPEC replicateM_"
+    forall (@ a_Xc6pQ) ($dApplicative_ac6oL :: Applicative IO).
+      replicateM_ @ IO @ a_Xc6pQ $dApplicative_ac6oL
+      = Control.Monad.replicateM__$sreplicateM_1 @ a_Xc6pQ
+"SPEC replicateM_"
+    forall (@ a_ac6p1) ($dApplicative_ac6p4 :: Applicative Maybe).
+      replicateM_ @ Maybe @ a_ac6p1 $dApplicative_ac6p4
+      = Control.Monad.replicateM__$sreplicateM_ @ a_ac6p1
+"SPEC replicateM"
+    forall (@ a_Xc6rq) ($dApplicative_ac6qe :: Applicative IO).
+      replicateM @ IO @ a_Xc6rq $dApplicative_ac6qe
+      = Control.Monad.replicateM_$sreplicateM1 @ a_Xc6rq
+"SPEC replicateM"
+    forall (@ a_ac6qu) ($dApplicative_ac6qx :: Applicative Maybe).
+      replicateM @ Maybe @ a_ac6qu $dApplicative_ac6qx
+      = Control.Monad.replicateM_$sreplicateM @ a_ac6qu
+

@@ -1,0 +1,1152 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:04:57.958052585 UTC
+
+Result size of Tidy Core
+  = {terms: 409, types: 543, coercions: 68, joins: 0/0}
+
+-- RHS size: {terms: 20, types: 34, coercions: 8, joins: 0/0}
+System.IO.Error.tryIOError2
+  :: forall a.
+     SomeException
+     -> State# RealWorld -> (# State# RealWorld, Either IOError a #)
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 0] 93 30}]
+System.IO.Error.tryIOError2
+  = \ (@ a_a9Sja)
+      (e1_i8SfX [OS=OneShot] :: SomeException)
+      (eta_B1 [OS=OneShot] :: State# RealWorld) ->
+      case e1_i8SfX of wild_i8Sgg
+      { SomeException @ e2_i8Sgi $dException1_i8Sgj e3_i8Sgk ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ e2_i8Sgi
+             @ IOException
+             ((GHC.Exception.$p1Exception @ e2_i8Sgi $dException1_i8Sgj)
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e2_i8Sgi>_N
+                      :: (Data.Typeable.Internal.Typeable e2_i8Sgi :: Constraint)
+                         ~R# (Data.Typeable.Internal.TypeRep e2_i8Sgi :: *)))
+             GHC.IO.Exception.$fExceptionIOException4
+      of {
+        False ->
+          raiseIO#
+            @ SomeException @ (Either IOError a_a9Sja) wild_i8Sgg eta_B1;
+        True ->
+          (# eta_B1,
+             Data.Either.Left
+               @ IOError
+               @ a_a9Sja
+               (e3_i8Sgk
+                `cast` (UnsafeCo representational e2_i8Sgi IOException
+                        :: (e2_i8Sgi :: *) ~R# (IOException :: *))) #)
+      }
+      }
+
+-- RHS size: {terms: 15, types: 35, coercions: 2, joins: 0/0}
+System.IO.Error.tryIOError1
+  :: forall a.
+     IO a
+     -> State# RealWorld -> (# State# RealWorld, Either IOError a #)
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a9Sja)
+                 (f_a9Scg [Occ=Once] :: IO a_a9Sja)
+                 (eta_i8SfW [Occ=Once] :: State# RealWorld) ->
+                 catch#
+                   @ (Either IOError a_a9Sja)
+                   @ SomeException
+                   (\ (s_i7IAv [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                      case (f_a9Scg
+                            `cast` (GHC.Types.N:IO[0] <a_a9Sja>_R
+                                    :: (IO a_a9Sja :: *)
+                                       ~R# (State# RealWorld
+                                            -> (# State# RealWorld, a_a9Sja #) :: *)))
+                             s_i7IAv
+                      of
+                      { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                      (# ipv_i7IAy, Data.Either.Right @ IOError @ a_a9Sja ipv1_i7IAz #)
+                      })
+                   (System.IO.Error.tryIOError2 @ a_a9Sja)
+                   eta_i8SfW}]
+System.IO.Error.tryIOError1
+  = \ (@ a_a9Sja)
+      (f_a9Scg :: IO a_a9Sja)
+      (eta_i8SfW :: State# RealWorld) ->
+      catch#
+        @ (Either IOError a_a9Sja)
+        @ SomeException
+        (\ (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+           case (f_a9Scg
+                 `cast` (GHC.Types.N:IO[0] <a_a9Sja>_R
+                         :: (IO a_a9Sja :: *)
+                            ~R# (State# RealWorld -> (# State# RealWorld, a_a9Sja #) :: *)))
+                  s_i7IAv
+           of
+           { (# ipv_i7IAy, ipv1_i7IAz #) ->
+           (# ipv_i7IAy, Data.Either.Right @ IOError @ a_a9Sja ipv1_i7IAz #)
+           })
+        (System.IO.Error.tryIOError2 @ a_a9Sja)
+        eta_i8SfW
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+tryIOError :: forall a. IO a -> IO (Either IOError a)
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.Error.tryIOError1
+               `cast` (forall (a :: <*>_N).
+                       <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <Either IOError a>_R)
+                       :: (forall a.
+                           IO a
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Either IOError a #) :: *)
+                          ~R# (forall a. IO a -> IO (Either IOError a) :: *))}]
+tryIOError
+  = System.IO.Error.tryIOError1
+    `cast` (forall (a :: <*>_N).
+            <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <Either IOError a>_R)
+            :: (forall a.
+                IO a
+                -> State# RealWorld
+                -> (# State# RealWorld, Either IOError a #) :: *)
+               ~R# (forall a. IO a -> IO (Either IOError a) :: *))
+
+-- RHS size: {terms: 11, types: 8, coercions: 0, joins: 0/0}
+mkIOError
+  :: IOErrorType
+     -> String -> Maybe Handle -> Maybe FilePath -> IOError
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (t_a9Sci [Occ=Once] :: IOErrorType)
+                 (location_a9Scj [Occ=Once] :: String)
+                 (maybe_hdl_a9Sck [Occ=Once] :: Maybe Handle)
+                 (maybe_filename_a9Scl [Occ=Once] :: Maybe FilePath) ->
+                 GHC.IO.Exception.IOError
+                   maybe_hdl_a9Sck
+                   t_a9Sci
+                   location_a9Scj
+                   (GHC.Types.[] @ Char)
+                   (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+                   maybe_filename_a9Scl}]
+mkIOError
+  = \ (t_a9Sci :: IOErrorType)
+      (location_a9Scj :: String)
+      (maybe_hdl_a9Sck :: Maybe Handle)
+      (maybe_filename_a9Scl :: Maybe FilePath) ->
+      GHC.IO.Exception.IOError
+        maybe_hdl_a9Sck
+        t_a9Sci
+        location_a9Scj
+        (GHC.Types.[] @ Char)
+        (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+        maybe_filename_a9Scl
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+alreadyExistsErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.AlreadyExists}]
+alreadyExistsErrorType = GHC.IO.Exception.AlreadyExists
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+doesNotExistErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.NoSuchThing}]
+doesNotExistErrorType = GHC.IO.Exception.NoSuchThing
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+alreadyInUseErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.ResourceBusy}]
+alreadyInUseErrorType = GHC.IO.Exception.ResourceBusy
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+fullErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.ResourceExhausted}]
+fullErrorType = GHC.IO.Exception.ResourceExhausted
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+eofErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.EOF}]
+eofErrorType = GHC.IO.Exception.EOF
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+illegalOperationErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.IllegalOperation}]
+illegalOperationErrorType = GHC.IO.Exception.IllegalOperation
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+permissionErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.PermissionDenied}]
+permissionErrorType = GHC.IO.Exception.PermissionDenied
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+userErrorType :: IOErrorType
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Exception.UserError}]
+userErrorType = GHC.IO.Exception.UserError
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isAlreadyExistsErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9SoX [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9SoX of {
+                   __DEFAULT -> GHC.Types.False;
+                   AlreadyExists -> GHC.Types.True
+                 }}]
+isAlreadyExistsErrorType
+  = \ (ds_d9SoX :: IOErrorType) ->
+      case ds_d9SoX of {
+        __DEFAULT -> GHC.Types.False;
+        AlreadyExists -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isDoesNotExistErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9Soz [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9Soz of {
+                   __DEFAULT -> GHC.Types.False;
+                   NoSuchThing -> GHC.Types.True
+                 }}]
+isDoesNotExistErrorType
+  = \ (ds_d9Soz :: IOErrorType) ->
+      case ds_d9Soz of {
+        __DEFAULT -> GHC.Types.False;
+        NoSuchThing -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isAlreadyInUseErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9Sob [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9Sob of {
+                   __DEFAULT -> GHC.Types.False;
+                   ResourceBusy -> GHC.Types.True
+                 }}]
+isAlreadyInUseErrorType
+  = \ (ds_d9Sob :: IOErrorType) ->
+      case ds_d9Sob of {
+        __DEFAULT -> GHC.Types.False;
+        ResourceBusy -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isFullErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9SnN [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9SnN of {
+                   __DEFAULT -> GHC.Types.False;
+                   ResourceExhausted -> GHC.Types.True
+                 }}]
+isFullErrorType
+  = \ (ds_d9SnN :: IOErrorType) ->
+      case ds_d9SnN of {
+        __DEFAULT -> GHC.Types.False;
+        ResourceExhausted -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isEOFErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9Snp [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9Snp of {
+                   __DEFAULT -> GHC.Types.False;
+                   EOF -> GHC.Types.True
+                 }}]
+isEOFErrorType
+  = \ (ds_d9Snp :: IOErrorType) ->
+      case ds_d9Snp of {
+        __DEFAULT -> GHC.Types.False;
+        EOF -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isIllegalOperationErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9Sn1 [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9Sn1 of {
+                   __DEFAULT -> GHC.Types.False;
+                   IllegalOperation -> GHC.Types.True
+                 }}]
+isIllegalOperationErrorType
+  = \ (ds_d9Sn1 :: IOErrorType) ->
+      case ds_d9Sn1 of {
+        __DEFAULT -> GHC.Types.False;
+        IllegalOperation -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isPermissionErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9SmD [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9SmD of {
+                   __DEFAULT -> GHC.Types.False;
+                   PermissionDenied -> GHC.Types.True
+                 }}]
+isPermissionErrorType
+  = \ (ds_d9SmD :: IOErrorType) ->
+      case ds_d9SmD of {
+        __DEFAULT -> GHC.Types.False;
+        PermissionDenied -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+isUserErrorType :: IOErrorType -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d9Sm2 [Occ=Once!] :: IOErrorType) ->
+                 case ds_d9Sm2 of {
+                   __DEFAULT -> GHC.Types.False;
+                   UserError -> GHC.Types.True
+                 }}]
+isUserErrorType
+  = \ (ds_d9Sm2 :: IOErrorType) ->
+      case ds_d9Sm2 of {
+        __DEFAULT -> GHC.Types.False;
+        UserError -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+ioeGetErrorType :: IOError -> IOErrorType
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= ioe_type}]
+ioeGetErrorType = ioe_type
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isUserError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   UserError -> GHC.Types.True
+                 }
+                 }}]
+isUserError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        UserError -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isPermissionError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   PermissionDenied -> GHC.Types.True
+                 }
+                 }}]
+isPermissionError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        PermissionDenied -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isIllegalOperation :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   IllegalOperation -> GHC.Types.True
+                 }
+                 }}]
+isIllegalOperation
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        IllegalOperation -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isEOFError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   EOF -> GHC.Types.True
+                 }
+                 }}]
+isEOFError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        EOF -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isFullError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   ResourceExhausted -> GHC.Types.True
+                 }
+                 }}]
+isFullError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        ResourceExhausted -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isAlreadyInUseError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   ResourceBusy -> GHC.Types.True
+                 }
+                 }}]
+isAlreadyInUseError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        ResourceBusy -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isDoesNotExistError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   NoSuchThing -> GHC.Types.True
+                 }
+                 }}]
+isDoesNotExistError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        NoSuchThing -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 10, types: 12, coercions: 0, joins: 0/0}
+isAlreadyExistsError :: IOError -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLLLL),1*U(A,1*U,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_i7Rxi [Occ=Once!] :: IOError) ->
+                 case x_i7Rxi of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of {
+                   __DEFAULT -> GHC.Types.False;
+                   AlreadyExists -> GHC.Types.True
+                 }
+                 }}]
+isAlreadyExistsError
+  = \ (x_i7Rxi :: IOError) ->
+      case x_i7Rxi of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of {
+        __DEFAULT -> GHC.Types.False;
+        AlreadyExists -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+ioeGetLocation :: IOError -> String
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLSLLL),1*U(A,A,1*U,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= ioe_location}]
+ioeGetLocation = ioe_location
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+ioeGetHandle :: IOError -> Maybe Handle
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SLLLLL),1*U(1*U,A,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= ioe_handle}]
+ioeGetHandle = ioe_handle
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+ioeGetFileName :: IOError -> Maybe FilePath
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLLLLS),1*U(A,A,A,A,A,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= ioe_filename}]
+ioeGetFileName = ioe_filename
+
+-- RHS size: {terms: 12, types: 12, coercions: 0, joins: 0/0}
+ioeSetErrorType :: IOError -> IOErrorType -> IOError
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,A,U,U,U,U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9Scr [Occ=Once!] :: IOError)
+                 (errtype_a9Scs [Occ=Once] :: IOErrorType) ->
+                 case ioe_a9Scr of
+                 { IOError ds_d9Slo [Occ=Once] _ [Occ=Dead] ds2_d9Slq [Occ=Once]
+                           ds3_d9Slr [Occ=Once] ds4_d9Sls [Occ=Once] ds5_d9Slt [Occ=Once] ->
+                 GHC.IO.Exception.IOError
+                   ds_d9Slo errtype_a9Scs ds2_d9Slq ds3_d9Slr ds4_d9Sls ds5_d9Slt
+                 }}]
+ioeSetErrorType
+  = \ (ioe_a9Scr :: IOError) (errtype_a9Scs :: IOErrorType) ->
+      case ioe_a9Scr of
+      { IOError ds_d9Slo ds1_d9Slp ds2_d9Slq ds3_d9Slr ds4_d9Sls
+                ds5_d9Slt ->
+      GHC.IO.Exception.IOError
+        ds_d9Slo errtype_a9Scs ds2_d9Slq ds3_d9Slr ds4_d9Sls ds5_d9Slt
+      }
+
+-- RHS size: {terms: 12, types: 12, coercions: 0, joins: 0/0}
+ioeSetErrorString :: IOError -> String -> IOError
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U,U,A,U,U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9Sct [Occ=Once!] :: IOError)
+                 (str_a9Scu [Occ=Once] :: String) ->
+                 case ioe_a9Sct of
+                 { IOError ds_d9Sl7 [Occ=Once] ds1_d9Sl8 [Occ=Once]
+                           ds2_d9Sl9 [Occ=Once] _ [Occ=Dead] ds4_d9Slb [Occ=Once]
+                           ds5_d9Slc [Occ=Once] ->
+                 GHC.IO.Exception.IOError
+                   ds_d9Sl7 ds1_d9Sl8 ds2_d9Sl9 str_a9Scu ds4_d9Slb ds5_d9Slc
+                 }}]
+ioeSetErrorString
+  = \ (ioe_a9Sct :: IOError) (str_a9Scu :: String) ->
+      case ioe_a9Sct of
+      { IOError ds_d9Sl7 ds1_d9Sl8 ds2_d9Sl9 ds3_d9Sla ds4_d9Slb
+                ds5_d9Slc ->
+      GHC.IO.Exception.IOError
+        ds_d9Sl7 ds1_d9Sl8 ds2_d9Sl9 str_a9Scu ds4_d9Slb ds5_d9Slc
+      }
+
+-- RHS size: {terms: 12, types: 12, coercions: 0, joins: 0/0}
+ioeSetLocation :: IOError -> String -> IOError
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U,A,U,U,U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9Scv [Occ=Once!] :: IOError)
+                 (str_a9Scw [Occ=Once] :: String) ->
+                 case ioe_a9Scv of
+                 { IOError ds_d9SkQ [Occ=Once] ds1_d9SkR [Occ=Once] _ [Occ=Dead]
+                           ds3_d9SkT [Occ=Once] ds4_d9SkU [Occ=Once] ds5_d9SkV [Occ=Once] ->
+                 GHC.IO.Exception.IOError
+                   ds_d9SkQ ds1_d9SkR str_a9Scw ds3_d9SkT ds4_d9SkU ds5_d9SkV
+                 }}]
+ioeSetLocation
+  = \ (ioe_a9Scv :: IOError) (str_a9Scw :: String) ->
+      case ioe_a9Scv of
+      { IOError ds_d9SkQ ds1_d9SkR ds2_d9SkS ds3_d9SkT ds4_d9SkU
+                ds5_d9SkV ->
+      GHC.IO.Exception.IOError
+        ds_d9SkQ ds1_d9SkR str_a9Scw ds3_d9SkT ds4_d9SkU ds5_d9SkV
+      }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+ioeSetHandle :: IOError -> Handle -> IOError
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(A,U,U,U,U,U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9Scx [Occ=Once!] :: IOError)
+                 (hdl_a9Scy [Occ=Once] :: Handle) ->
+                 case ioe_a9Scx of
+                 { IOError _ [Occ=Dead] ds1_d9SkA [Occ=Once] ds2_d9SkB [Occ=Once]
+                           ds3_d9SkC [Occ=Once] ds4_d9SkD [Occ=Once] ds5_d9SkE [Occ=Once] ->
+                 GHC.IO.Exception.IOError
+                   (GHC.Base.Just @ Handle hdl_a9Scy)
+                   ds1_d9SkA
+                   ds2_d9SkB
+                   ds3_d9SkC
+                   ds4_d9SkD
+                   ds5_d9SkE
+                 }}]
+ioeSetHandle
+  = \ (ioe_a9Scx :: IOError) (hdl_a9Scy :: Handle) ->
+      case ioe_a9Scx of
+      { IOError ds_d9Skz ds1_d9SkA ds2_d9SkB ds3_d9SkC ds4_d9SkD
+                ds5_d9SkE ->
+      GHC.IO.Exception.IOError
+        (GHC.Base.Just @ Handle hdl_a9Scy)
+        ds1_d9SkA
+        ds2_d9SkB
+        ds3_d9SkC
+        ds4_d9SkD
+        ds5_d9SkE
+      }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+ioeSetFileName :: IOError -> FilePath -> IOError
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U,U,U,U,A)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9Scz [Occ=Once!] :: IOError)
+                 (filename_a9ScA [Occ=Once] :: FilePath) ->
+                 case ioe_a9Scz of
+                 { IOError ds_d9Ski [Occ=Once] ds1_d9Skj [Occ=Once]
+                           ds2_d9Skk [Occ=Once] ds3_d9Skl [Occ=Once] ds4_d9Skm [Occ=Once]
+                           _ [Occ=Dead] ->
+                 GHC.IO.Exception.IOError
+                   ds_d9Ski
+                   ds1_d9Skj
+                   ds2_d9Skk
+                   ds3_d9Skl
+                   ds4_d9Skm
+                   (GHC.Base.Just @ FilePath filename_a9ScA)
+                 }}]
+ioeSetFileName
+  = \ (ioe_a9Scz :: IOError) (filename_a9ScA :: FilePath) ->
+      case ioe_a9Scz of
+      { IOError ds_d9Ski ds1_d9Skj ds2_d9Skk ds3_d9Skl ds4_d9Skm
+                ds5_d9Skn ->
+      GHC.IO.Exception.IOError
+        ds_d9Ski
+        ds1_d9Skj
+        ds2_d9Skk
+        ds3_d9Skl
+        ds4_d9Skm
+        (GHC.Base.Just @ FilePath filename_a9ScA)
+      }
+
+-- RHS size: {terms: 9, types: 9, coercions: 0, joins: 0/0}
+System.IO.Error.modifyIOError2
+  :: forall a.
+     IOError
+     -> (IOError -> IOError)
+     -> State# RealWorld
+     -> (# State# RealWorld, a #)
+[GblId, Arity=3, Str=<B,U><B,1*C1(U)><B,U>x, Unf=OtherCon []]
+System.IO.Error.modifyIOError2
+  = \ (@ a_a9ShP)
+      (e'_i8Sg2 :: IOError)
+      (f_a9ScB :: IOError -> IOError)
+      (eta_i8rDX :: State# RealWorld) ->
+      raiseIO#
+        @ SomeException
+        @ a_a9ShP
+        (GHC.IO.Exception.$fExceptionIOException_$ctoException
+           (f_a9ScB e'_i8Sg2))
+        eta_i8rDX
+
+-- RHS size: {terms: 25, types: 30, coercions: 10, joins: 0/0}
+System.IO.Error.modifyIOError1
+  :: forall a.
+     (IOError -> IOError)
+     -> IO a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=3,
+ Str=<L,1*C1(U)><L,1*C1(U)><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 126 0}]
+System.IO.Error.modifyIOError1
+  = \ (@ a_a9ShP)
+      (f_a9ScB :: IOError -> IOError)
+      (io_a9ScC :: IO a_a9ShP)
+      (eta_i8SfW :: State# RealWorld) ->
+      catch#
+        @ a_a9ShP
+        @ SomeException
+        (io_a9ScC
+         `cast` (GHC.Types.N:IO[0] <a_a9ShP>_R
+                 :: (IO a_a9ShP :: *)
+                    ~R# (State# RealWorld -> (# State# RealWorld, a_a9ShP #) :: *)))
+        (\ (e1_i8SfX [OS=OneShot] :: SomeException) ->
+           case e1_i8SfX of wild_i8Sgg
+           { SomeException @ e2_i8Sgi $dException1_i8Sgj e3_i8Sgk ->
+           case Data.Typeable.Internal.sameTypeRep
+                  @ *
+                  @ *
+                  @ e2_i8Sgi
+                  @ IOException
+                  ((GHC.Exception.$p1Exception @ e2_i8Sgi $dException1_i8Sgj)
+                   `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e2_i8Sgi>_N
+                           :: (Data.Typeable.Internal.Typeable e2_i8Sgi :: Constraint)
+                              ~R# (Data.Typeable.Internal.TypeRep e2_i8Sgi :: *)))
+                  GHC.IO.Exception.$fExceptionIOException4
+           of {
+             False -> raiseIO# @ SomeException @ a_a9ShP wild_i8Sgg;
+             True ->
+               \ (eta1_i8rDX [OS=OneShot] :: State# RealWorld) ->
+                 System.IO.Error.modifyIOError2
+                   @ a_a9ShP
+                   (e3_i8Sgk
+                    `cast` (UnsafeCo representational e2_i8Sgi IOException
+                            :: (e2_i8Sgi :: *) ~R# (IOException :: *)))
+                   f_a9ScB
+                   eta1_i8rDX
+           }
+           })
+        eta_i8SfW
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+modifyIOError :: forall a. (IOError -> IOError) -> IO a -> IO a
+[GblId,
+ Arity=3,
+ Str=<L,1*C1(U)><L,1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.Error.modifyIOError1
+               `cast` (forall (a :: <*>_N).
+                       <IOError -> IOError>_R
+                       ->_R <IO a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           (IOError -> IOError)
+                           -> IO a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. (IOError -> IOError) -> IO a -> IO a :: *))}]
+modifyIOError
+  = System.IO.Error.modifyIOError1
+    `cast` (forall (a :: <*>_N).
+            <IOError -> IOError>_R
+            ->_R <IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                (IOError -> IOError)
+                -> IO a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. (IOError -> IOError) -> IO a -> IO a :: *))
+
+-- RHS size: {terms: 22, types: 28, coercions: 12, joins: 0/0}
+System.IO.Error.catchIOError1
+  :: forall a.
+     IO a
+     -> (IOError -> IO a)
+     -> State# RealWorld
+     -> (# State# RealWorld, a #)
+[GblId,
+ Arity=3,
+ Str=<L,1*C1(U)><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 60 0] 116 0}]
+System.IO.Error.catchIOError1
+  = \ (@ a_a9Shx)
+      (ds_X8Shm :: IO a_a9Shx)
+      (handler_X8Sho :: IOError -> IO a_a9Shx)
+      (eta_X8Shq :: State# RealWorld) ->
+      catch#
+        @ a_a9Shx
+        @ SomeException
+        (ds_X8Shm
+         `cast` (GHC.Types.N:IO[0] <a_a9Shx>_R
+                 :: (IO a_a9Shx :: *)
+                    ~R# (State# RealWorld -> (# State# RealWorld, a_a9Shx #) :: *)))
+        (\ (e1_i8SfX [OS=OneShot] :: SomeException) ->
+           case e1_i8SfX of wild_i8Sgg
+           { SomeException @ e2_i8Sgi $dException1_i8Sgj e3_i8Sgk ->
+           case Data.Typeable.Internal.sameTypeRep
+                  @ *
+                  @ *
+                  @ e2_i8Sgi
+                  @ IOException
+                  ((GHC.Exception.$p1Exception @ e2_i8Sgi $dException1_i8Sgj)
+                   `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e2_i8Sgi>_N
+                           :: (Data.Typeable.Internal.Typeable e2_i8Sgi :: Constraint)
+                              ~R# (Data.Typeable.Internal.TypeRep e2_i8Sgi :: *)))
+                  GHC.IO.Exception.$fExceptionIOException4
+           of {
+             False -> raiseIO# @ SomeException @ a_a9Shx wild_i8Sgg;
+             True ->
+               (handler_X8Sho
+                  (e3_i8Sgk
+                   `cast` (UnsafeCo representational e2_i8Sgi IOException
+                           :: (e2_i8Sgi :: *) ~R# (IOException :: *))))
+               `cast` (GHC.Types.N:IO[0] <a_a9Shx>_R
+                       :: (IO a_a9Shx :: *)
+                          ~R# (State# RealWorld -> (# State# RealWorld, a_a9Shx #) :: *))
+           }
+           })
+        eta_X8Shq
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+catchIOError :: forall a. IO a -> (IOError -> IO a) -> IO a
+[GblId,
+ Arity=3,
+ Str=<L,1*C1(U)><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.Error.catchIOError1
+               `cast` (forall (a :: <*>_N).
+                       <IO a>_R
+                       ->_R <IOError -> IO a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           IO a
+                           -> (IOError -> IO a)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. IO a -> (IOError -> IO a) -> IO a :: *))}]
+catchIOError
+  = System.IO.Error.catchIOError1
+    `cast` (forall (a :: <*>_N).
+            <IO a>_R
+            ->_R <IOError -> IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                IO a
+                -> (IOError -> IO a)
+                -> State# RealWorld
+                -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. IO a -> (IOError -> IO a) -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.Error.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.Error.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.Error.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.Error.$trModule3
+  = GHC.Types.TrNameS System.IO.Error.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.Error.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+System.IO.Error.$trModule2 = "System.IO.Error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.Error.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.Error.$trModule1
+  = GHC.Types.TrNameS System.IO.Error.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.IO.Error.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.IO.Error.$trModule
+  = GHC.Types.Module
+      System.IO.Error.$trModule3 System.IO.Error.$trModule1
+
+-- RHS size: {terms: 12, types: 13, coercions: 0, joins: 0/0}
+ioeGetErrorString :: IOError -> String
+[GblId,
+ Arity=1,
+ Str=<S(LSLLLL),1*U(A,1*U,A,1*U,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9Scn [Occ=Once!] :: IOError) ->
+                 case ioe_a9Scn of
+                 { IOError _ [Occ=Dead] ds2_i9SlV [Occ=Once!] _ [Occ=Dead]
+                           ds4_i9SlX [Occ=Once] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case ds2_i9SlV of wild1_X10 {
+                   __DEFAULT ->
+                     GHC.IO.Exception.$w$cshowsPrec4 wild1_X10 (GHC.Types.[] @ Char);
+                   UserError -> ds4_i9SlX
+                 }
+                 }}]
+ioeGetErrorString
+  = \ (ioe_a9Scn :: IOError) ->
+      case ioe_a9Scn of
+      { IOError ds1_i9SlU ds2_i9SlV ds3_i9SlW ds4_i9SlX ds5_i9SlY
+                ds6_i9SlZ ->
+      case ds2_i9SlV of wild1_X10 {
+        __DEFAULT ->
+          GHC.IO.Exception.$w$cshowsPrec4 wild1_X10 (GHC.Types.[] @ Char);
+        UserError -> ds4_i9SlX
+      }
+      }
+
+-- RHS size: {terms: 24, types: 22, coercions: 0, joins: 0/0}
+annotateIOError
+  :: IOError -> String -> Maybe Handle -> Maybe FilePath -> IOError
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U(1*U,U,A,U,U,1*U)><L,U><L,1*U><L,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ioe_a9ScE [Occ=Once!] :: IOError)
+                 (loc_a9ScF [Occ=Once] :: String)
+                 (hdl_a9ScG [Occ=Once!] :: Maybe Handle)
+                 (path_a9ScH [Occ=Once!] :: Maybe FilePath) ->
+                 case ioe_a9ScE of
+                 { IOError ds_d9SjZ [Occ=Once] ds1_d9Sk0 [Occ=Once] _ [Occ=Dead]
+                           ds3_d9Sk2 [Occ=Once] ds4_d9Sk3 [Occ=Once] ds5_d9Sk4 [Occ=Once] ->
+                 GHC.IO.Exception.IOError
+                   (case hdl_a9ScG of wild1_i9Squ {
+                      Nothing -> ds_d9SjZ;
+                      Just _ [Occ=Dead] -> wild1_i9Squ
+                    })
+                   ds1_d9Sk0
+                   loc_a9ScF
+                   ds3_d9Sk2
+                   ds4_d9Sk3
+                   (case path_a9ScH of wild1_i9Squ {
+                      Nothing -> ds5_d9Sk4;
+                      Just _ [Occ=Dead] -> wild1_i9Squ
+                    })
+                 }}]
+annotateIOError
+  = \ (ioe_a9ScE :: IOError)
+      (loc_a9ScF :: String)
+      (hdl_a9ScG :: Maybe Handle)
+      (path_a9ScH :: Maybe FilePath) ->
+      case ioe_a9ScE of
+      { IOError ds_d9SjZ ds1_d9Sk0 ds2_d9Sk1 ds3_d9Sk2 ds4_d9Sk3
+                ds5_d9Sk4 ->
+      GHC.IO.Exception.IOError
+        (case hdl_a9ScG of wild1_i9Squ {
+           Nothing -> ds_d9SjZ;
+           Just ipv_i9Sqy -> wild1_i9Squ
+         })
+        ds1_d9Sk0
+        loc_a9ScF
+        ds3_d9Sk2
+        ds4_d9Sk3
+        (case path_a9ScH of wild1_i9Squ {
+           Nothing -> ds5_d9Sk4;
+           Just ipv_i9Sqy -> wild1_i9Squ
+         })
+      }
+
+

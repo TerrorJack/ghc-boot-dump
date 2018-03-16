@@ -1,0 +1,1659 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:32.695762911 UTC
+
+Result size of Tidy Core
+  = {terms: 558, types: 1,188, coercions: 350, joins: 2/13}
+
+-- RHS size: {terms: 7, types: 10, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+  :: forall s a. a -> State s -> (a, State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ s_acDld)
+                 (@ a_acDll)
+                 (a1_acDdH [Occ=Once] :: a_acDll)
+                 (s1_acDdI [Occ=Once] :: State s_acDld) ->
+                 (a1_acDdH, s1_acDdI)}]
+Control.Monad.ST.Lazy.Imp.$fApplicativeST5
+  = \ (@ s_acDld)
+      (@ a_acDll)
+      (a1_acDdH :: a_acDll)
+      (s1_acDdI :: State s_acDld) ->
+      (a1_acDdH, s1_acDdI)
+
+-- RHS size: {terms: 5, types: 9, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail
+  :: forall s a. String -> ST s a
+[GblId,
+ Arity=1,
+ Str=<B,U>x,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ s_acDk4) (@ a_acDl7) (s1_acDdz [Occ=Once] :: String) ->
+                 errorWithoutStackTrace
+                   @ 'LiftedRep @ (ST s_acDk4 a_acDl7) s1_acDdz}]
+Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail
+  = \ (@ s_acDk4) (@ a_acDl7) (s1_acDdz :: String) ->
+      errorWithoutStackTrace @ 'LiftedRep @ (ST s_acDk4 a_acDl7) s1_acDdz
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.unST1 :: forall s a. ST s a -> ST s a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ s_acDfG)
+                 (@ a_acDfH)
+                 (ds_dcDr1 [Occ=Once] :: ST s_acDfG a_acDfH) ->
+                 ds_dcDr1}]
+Control.Monad.ST.Lazy.Imp.unST1
+  = \ (@ s_acDfG) (@ a_acDfH) (ds_dcDr1 :: ST s_acDfG a_acDfH) ->
+      ds_dcDr1
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+unST :: forall s a. ST s a -> State s -> (a, State s)
+[GblId[[RecSel]],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.ST.Lazy.Imp.unST1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST s a>_R ->_R Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R
+                       :: (forall s a. ST s a -> ST s a :: *)
+                          ~R# (forall s a. ST s a -> State s -> (a, State s) :: *))}]
+unST
+  = Control.Monad.ST.Lazy.Imp.unST1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST s a>_R ->_R Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R
+            :: (forall s a. ST s a -> ST s a :: *)
+               ~R# (forall s a. ST s a -> State s -> (a, State s) :: *))
+
+-- RHS size: {terms: 24, types: 43, coercions: 6, joins: 0/1}
+Control.Monad.ST.Lazy.Imp.$fMonadST1
+  :: forall s a b. ST s a -> (a -> ST s b) -> State s -> (b, State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><C(C(S)),1*C1(C1(U(U,U)))><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 60 0] 112 0}]
+Control.Monad.ST.Lazy.Imp.$fMonadST1
+  = \ (@ s_acDk4)
+      (@ a_acDkc)
+      (@ b_acDkd)
+      (m_acDdA :: ST s_acDk4 a_acDkc)
+      (k_acDdB :: a_acDkc -> ST s_acDk4 b_acDkd)
+      (s1_acDdC :: State s_acDk4) ->
+      let {
+        res_scDw4 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+          :: (a_acDkc, State s_acDk4)
+        [LclId]
+        res_scDw4
+          = runRW#
+              @ 'LiftedRep
+              @ (a_acDkc, State s_acDk4)
+              (\ (s2_acDeD [OS=OneShot] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s2_acDeD of { __DEFAULT ->
+                 (m_acDdA
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDk4>_N <a_acDkc>_R
+                          :: (ST s_acDk4 a_acDkc :: *)
+                             ~R# (State s_acDk4 -> (a_acDkc, State s_acDk4) :: *)))
+                   s1_acDdC
+                 }) } in
+      ((k_acDdB
+          (case res_scDw4 of { (r_acDkB, new_s_acDkD) -> r_acDkB }))
+       `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDk4>_N <b_acDkd>_R
+               :: (ST s_acDk4 b_acDkd :: *)
+                  ~R# (State s_acDk4 -> (b_acDkd, State s_acDk4) :: *)))
+        (case res_scDw4 of { (r_acDkB, new_s_acDkD) -> new_s_acDkD })
+
+-- RHS size: {terms: 36, types: 77, coercions: 7, joins: 1/3}
+Control.Monad.ST.Lazy.Imp.$w$c<*> [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b.
+     ST s (a -> b) -> ST s a -> State s -> (# b, State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 60 0] 154 0}]
+Control.Monad.ST.Lazy.Imp.$w$c<*>
+  = \ (@ s_scDBe)
+      (@ a_scDBf)
+      (@ b_scDBg)
+      (w_scDBh :: ST s_scDBe (a_scDBf -> b_scDBg))
+      (w1_scDBi :: ST s_scDBe a_scDBf)
+      (w2_scDBj :: State s_scDBe) ->
+      join {
+        res1_scDw2 [InlPrag=NOINLINE, Dmd=<S,1*U(U,U)>]
+          :: (# b_scDBg, State s_scDBe #)
+        [LclId[JoinId(0)]]
+        res1_scDw2
+          = case (w_scDBh
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0]
+                              <s_scDBe>_N <a_scDBf -> b_scDBg>_R
+                          :: (ST s_scDBe (a_scDBf -> b_scDBg) :: *)
+                             ~R# (State s_scDBe -> (a_scDBf -> b_scDBg, State s_scDBe) :: *)))
+                   w2_scDBj
+            of res2_XcDe0
+            { (ipv_scDsP, ipv1_scDsQ) ->
+            let {
+              res3_XcDfk [InlPrag=NOINLINE, Dmd=<S,1*U(1*C1(U),U)>]
+                :: (a_scDBf -> b_scDBg, State s_scDBe)
+              [LclId,
+               Str=m,
+               Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                       WorkFree=True, Expandable=True,
+                       Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+                       Tmpl= res2_XcDe0}]
+              res3_XcDfk = res2_XcDe0 } in
+            case res3_XcDfk of { (f_scDG6, s'_scDG7) ->
+            let {
+              res4_scDw1 [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+                :: (a_scDBf, State s_scDBe)
+              [LclId]
+              res4_scDw1
+                = runRW#
+                    @ 'LiftedRep
+                    @ (a_scDBf, State s_scDBe)
+                    (\ (s1_acDeD [OS=OneShot] :: State# RealWorld) ->
+                       case noDuplicate# @ RealWorld s1_acDeD of { __DEFAULT ->
+                       (w1_scDBi
+                        `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBe>_N <a_scDBf>_R
+                                :: (ST s_scDBe a_scDBf :: *)
+                                   ~R# (State s_scDBe -> (a_scDBf, State s_scDBe) :: *)))
+                         s'_scDG7
+                       }) } in
+            (# f_scDG6
+                 (case res4_scDw1 of { (x_acDmf, s''_acDmh) -> x_acDmf }),
+               case res4_scDw1 of { (x_acDmf, s''_acDmh) -> s''_acDmh } #)
+            }
+            } } in
+      jump res1_scDw2
+
+-- RHS size: {terms: 15, types: 30, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fApplicativeST4 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b. ST s (a -> b) -> ST s a -> State s -> (b, State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_scDBe)
+                 (@ a_scDBf)
+                 (@ b_scDBg)
+                 (w_scDBh [Occ=Once] :: ST s_scDBe (a_scDBf -> b_scDBg))
+                 (w1_scDBi [Occ=Once] :: ST s_scDBe a_scDBf)
+                 (w2_scDBj [Occ=Once] :: State s_scDBe) ->
+                 case Control.Monad.ST.Lazy.Imp.$w$c<*>
+                        @ s_scDBe @ a_scDBf @ b_scDBg w_scDBh w1_scDBi w2_scDBj
+                 of
+                 { (# ww1_scDC6 [Occ=Once], ww2_scDC7 [Occ=Once] #) ->
+                 (ww1_scDC6, ww2_scDC7)
+                 }}]
+Control.Monad.ST.Lazy.Imp.$fApplicativeST4
+  = \ (@ s_scDBe)
+      (@ a_scDBf)
+      (@ b_scDBg)
+      (w_scDBh :: ST s_scDBe (a_scDBf -> b_scDBg))
+      (w1_scDBi :: ST s_scDBe a_scDBf)
+      (w2_scDBj :: State s_scDBe) ->
+      case Control.Monad.ST.Lazy.Imp.$w$c<*>
+             @ s_scDBe @ a_scDBf @ b_scDBg w_scDBh w1_scDBi w2_scDBj
+      of
+      { (# ww1_scDC6, ww2_scDC7 #) ->
+      (ww1_scDC6, ww2_scDC7)
+      }
+
+-- RHS size: {terms: 43, types: 80, coercions: 6, joins: 0/2}
+Control.Monad.ST.Lazy.Imp.$w$cliftA2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c) -> ST s a -> ST s b -> State s -> (# c, State s #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [60 60 60 0] 194 30}]
+Control.Monad.ST.Lazy.Imp.$w$cliftA2
+  = \ (@ s_scDBo)
+      (@ a_scDBp)
+      (@ b_scDBq)
+      (@ c_scDBr)
+      (w_scDBs :: a_scDBp -> b_scDBq -> c_scDBr)
+      (w1_scDBt :: ST s_scDBo a_scDBp)
+      (w2_scDBu :: ST s_scDBo b_scDBq)
+      (w3_scDBv :: State s_scDBo) ->
+      let {
+        res1_scDvY [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+          :: (a_scDBp, State s_scDBo)
+        [LclId]
+        res1_scDvY
+          = runRW#
+              @ 'LiftedRep
+              @ (a_scDBp, State s_scDBo)
+              (\ (s1_acDeD [OS=OneShot] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s1_acDeD of { __DEFAULT ->
+                 (w1_scDBt
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBo>_N <a_scDBp>_R
+                          :: (ST s_scDBo a_scDBp :: *)
+                             ~R# (State s_scDBo -> (a_scDBp, State s_scDBo) :: *)))
+                   w3_scDBv
+                 }) } in
+      let {
+        res2_scDvX [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+          :: (b_scDBq, State s_scDBo)
+        [LclId]
+        res2_scDvX
+          = runRW#
+              @ 'LiftedRep
+              @ (b_scDBq, State s_scDBo)
+              (\ (s1_acDeD [OS=OneShot] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s1_acDeD of { __DEFAULT ->
+                 (w2_scDBu
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBo>_N <b_scDBq>_R
+                          :: (ST s_scDBo b_scDBq :: *)
+                             ~R# (State s_scDBo -> (b_scDBq, State s_scDBo) :: *)))
+                   (case res1_scDvY of { (x_acDmQ, s'_acDmS) -> s'_acDmS })
+                 }) } in
+      (# w_scDBs
+           (case res1_scDvY of { (x_acDmQ, s'_acDmS) -> x_acDmQ })
+           (case res2_scDvX of { (y_acDnd, s''_acDnf) -> y_acDnd }),
+         case res2_scDvX of { (y_acDnd, s''_acDnf) -> s''_acDnf } #)
+
+-- RHS size: {terms: 18, types: 35, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fApplicativeST3 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b c.
+     (a -> b -> c) -> ST s a -> ST s b -> State s -> (c, State s)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_scDBo)
+                 (@ a_scDBp)
+                 (@ b_scDBq)
+                 (@ c_scDBr)
+                 (w_scDBs [Occ=Once] :: a_scDBp -> b_scDBq -> c_scDBr)
+                 (w1_scDBt [Occ=Once] :: ST s_scDBo a_scDBp)
+                 (w2_scDBu [Occ=Once] :: ST s_scDBo b_scDBq)
+                 (w3_scDBv [Occ=Once] :: State s_scDBo) ->
+                 case Control.Monad.ST.Lazy.Imp.$w$cliftA2
+                        @ s_scDBo
+                        @ a_scDBp
+                        @ b_scDBq
+                        @ c_scDBr
+                        w_scDBs
+                        w1_scDBt
+                        w2_scDBu
+                        w3_scDBv
+                 of
+                 { (# ww1_scDC9 [Occ=Once], ww2_scDCa [Occ=Once] #) ->
+                 (ww1_scDC9, ww2_scDCa)
+                 }}]
+Control.Monad.ST.Lazy.Imp.$fApplicativeST3
+  = \ (@ s_scDBo)
+      (@ a_scDBp)
+      (@ b_scDBq)
+      (@ c_scDBr)
+      (w_scDBs :: a_scDBp -> b_scDBq -> c_scDBr)
+      (w1_scDBt :: ST s_scDBo a_scDBp)
+      (w2_scDBu :: ST s_scDBo b_scDBq)
+      (w3_scDBv :: State s_scDBo) ->
+      case Control.Monad.ST.Lazy.Imp.$w$cliftA2
+             @ s_scDBo
+             @ a_scDBp
+             @ b_scDBq
+             @ c_scDBr
+             w_scDBs
+             w1_scDBt
+             w2_scDBu
+             w3_scDBv
+      of
+      { (# ww1_scDC9, ww2_scDCa #) ->
+      (ww1_scDC9, ww2_scDCa)
+      }
+
+-- RHS size: {terms: 20, types: 31, coercions: 6, joins: 0/1}
+Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+  :: forall s a b. ST s a -> ST s b -> State s -> (b, State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><C(S),1*C1(U(U,U))><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_XcDms)
+                 (@ a_acDno)
+                 (@ b_acDnp)
+                 (m_acDe2 [Occ=Once] :: ST s_XcDms a_acDno)
+                 (n_acDe3 [Occ=Once] :: ST s_XcDms b_acDnp)
+                 (s1_acDe4 [Occ=Once] :: State s_XcDms) ->
+                 let {
+                   s'_scDvU [InlPrag=NOINLINE, Occ=Once] :: State s_XcDms
+                   [LclId]
+                   s'_scDvU
+                     = runRW#
+                         @ 'LiftedRep
+                         @ (State s_XcDms)
+                         (\ (s2_acDeD [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                            case noDuplicate# @ RealWorld s2_acDeD of { __DEFAULT ->
+                            case (m_acDe2
+                                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDms>_N <a_acDno>_R
+                                          :: (ST s_XcDms a_acDno :: *)
+                                             ~R# (State s_XcDms -> (a_acDno, State s_XcDms) :: *)))
+                                   s1_acDe4
+                            of
+                            { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                            y_iaIio
+                            }
+                            }) } in
+                 (n_acDe3
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDms>_N <b_acDnp>_R
+                          :: (ST s_XcDms b_acDnp :: *)
+                             ~R# (State s_XcDms -> (b_acDnp, State s_XcDms) :: *)))
+                   s'_scDvU}]
+Control.Monad.ST.Lazy.Imp.$fApplicativeST2
+  = \ (@ s_XcDms)
+      (@ a_acDno)
+      (@ b_acDnp)
+      (m_acDe2 :: ST s_XcDms a_acDno)
+      (n_acDe3 :: ST s_XcDms b_acDnp)
+      (s1_acDe4 :: State s_XcDms) ->
+      let {
+        s'_scDvU [InlPrag=NOINLINE] :: State s_XcDms
+        [LclId]
+        s'_scDvU
+          = runRW#
+              @ 'LiftedRep
+              @ (State s_XcDms)
+              (\ (s2_acDeD [OS=OneShot] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s2_acDeD of { __DEFAULT ->
+                 case (m_acDe2
+                       `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDms>_N <a_acDno>_R
+                               :: (ST s_XcDms a_acDno :: *)
+                                  ~R# (State s_XcDms -> (a_acDno, State s_XcDms) :: *)))
+                        s1_acDe4
+                 of
+                 { (ds1_iaIin, y_iaIio) ->
+                 y_iaIio
+                 }
+                 }) } in
+      (n_acDe3
+       `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDms>_N <b_acDnp>_R
+               :: (ST s_XcDms b_acDnp :: *)
+                  ~R# (State s_XcDms -> (b_acDnp, State s_XcDms) :: *)))
+        s'_scDvU
+
+-- RHS size: {terms: 32, types: 60, coercions: 6, joins: 1/3}
+Control.Monad.ST.Lazy.Imp.$w$c<* [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b. ST s a -> ST s b -> State s -> (# a, State s #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 60 0] 124 0}]
+Control.Monad.ST.Lazy.Imp.$w$c<*
+  = \ (@ s_scDBA)
+      (@ a_scDBB)
+      (@ b_scDBC)
+      (w_scDBD :: ST s_scDBA a_scDBB)
+      (w1_scDBE :: ST s_scDBA b_scDBC)
+      (w2_scDBF :: State s_scDBA) ->
+      join {
+        res1_scDvS [InlPrag=NOINLINE, Dmd=<S,1*U(U,U)>]
+          :: (# a_scDBB, State s_scDBA #)
+        [LclId[JoinId(0)]]
+        res1_scDvS
+          = case (w_scDBD
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBA>_N <a_scDBB>_R
+                          :: (ST s_scDBA a_scDBB :: *)
+                             ~R# (State s_scDBA -> (a_scDBB, State s_scDBA) :: *)))
+                   w2_scDBF
+            of res2_XcDeq
+            { (ipv_scDt9, ipv1_scDta) ->
+            let {
+              res3_XcDfN [InlPrag=NOINLINE, Dmd=<S,1*U(U,U)>]
+                :: (a_scDBB, State s_scDBA)
+              [LclId,
+               Str=m,
+               Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                       WorkFree=True, Expandable=True,
+                       Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+                       Tmpl= res2_XcDeq}]
+              res3_XcDfN = res2_XcDeq } in
+            case res3_XcDfN of { (mr_scDGe, s'_scDGf) ->
+            let {
+              s''_scDvR [InlPrag=NOINLINE] :: State s_scDBA
+              [LclId]
+              s''_scDvR
+                = runRW#
+                    @ 'LiftedRep
+                    @ (State s_scDBA)
+                    (\ (s1_acDeD [OS=OneShot] :: State# RealWorld) ->
+                       case noDuplicate# @ RealWorld s1_acDeD of { __DEFAULT ->
+                       case (w1_scDBE
+                             `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBA>_N <b_scDBC>_R
+                                     :: (ST s_scDBA b_scDBC :: *)
+                                        ~R# (State s_scDBA -> (b_scDBC, State s_scDBA) :: *)))
+                              s'_scDGf
+                       of
+                       { (ds1_iaIin, y_iaIio) ->
+                       y_iaIio
+                       }
+                       }) } in
+            (# mr_scDGe, s''_scDvR #)
+            }
+            } } in
+      jump res1_scDvS
+
+-- RHS size: {terms: 15, types: 29, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fApplicativeST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b. ST s a -> ST s b -> State s -> (a, State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_scDBA)
+                 (@ a_scDBB)
+                 (@ b_scDBC)
+                 (w_scDBD [Occ=Once] :: ST s_scDBA a_scDBB)
+                 (w1_scDBE [Occ=Once] :: ST s_scDBA b_scDBC)
+                 (w2_scDBF [Occ=Once] :: State s_scDBA) ->
+                 case Control.Monad.ST.Lazy.Imp.$w$c<*
+                        @ s_scDBA @ a_scDBB @ b_scDBC w_scDBD w1_scDBE w2_scDBF
+                 of
+                 { (# ww1_scDCc [Occ=Once], ww2_scDCd [Occ=Once] #) ->
+                 (ww1_scDCc, ww2_scDCd)
+                 }}]
+Control.Monad.ST.Lazy.Imp.$fApplicativeST1
+  = \ (@ s_scDBA)
+      (@ a_scDBB)
+      (@ b_scDBC)
+      (w_scDBD :: ST s_scDBA a_scDBB)
+      (w1_scDBE :: ST s_scDBA b_scDBC)
+      (w2_scDBF :: State s_scDBA) ->
+      case Control.Monad.ST.Lazy.Imp.$w$c<*
+             @ s_scDBA @ a_scDBB @ b_scDBC w_scDBD w1_scDBE w2_scDBF
+      of
+      { (# ww1_scDCc, ww2_scDCd #) ->
+      (ww1_scDCc, ww2_scDCd)
+      }
+
+-- RHS size: {terms: 25, types: 44, coercions: 3, joins: 0/1}
+Control.Monad.ST.Lazy.Imp.$fFunctorST2 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a b. (a -> b) -> ST s a -> State s -> (b, State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><L,1*C1(U)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_scDBK)
+                 (@ a_scDBL)
+                 (@ b_scDBM)
+                 (w_scDBN [Occ=Once!] :: a_scDBL -> b_scDBM)
+                 (w1_scDBO [Occ=Once] :: ST s_scDBK a_scDBL)
+                 (w2_scDBP [Occ=Once] :: State s_scDBK) ->
+                 let {
+                   res_scDvO [InlPrag=NOINLINE, Dmd=<L,U(U,U)>]
+                     :: (a_scDBL, State s_scDBK)
+                   [LclId]
+                   res_scDvO
+                     = runRW#
+                         @ 'LiftedRep
+                         @ (a_scDBL, State s_scDBK)
+                         (\ (s1_acDeD [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                            case noDuplicate# @ RealWorld s1_acDeD of { __DEFAULT ->
+                            (w1_scDBO
+                             `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBK>_N <a_scDBL>_R
+                                     :: (ST s_scDBK a_scDBL :: *)
+                                        ~R# (State s_scDBK -> (a_scDBL, State s_scDBK) :: *)))
+                              w2_scDBP
+                            }) } in
+                 (w_scDBN
+                    (case res_scDvO of { (r_acDp2 [Occ=Once], _ [Occ=Dead]) ->
+                     r_acDp2
+                     }),
+                  case res_scDvO of { (_ [Occ=Dead], new_s_acDp4 [Occ=Once]) ->
+                  new_s_acDp4
+                  })}]
+Control.Monad.ST.Lazy.Imp.$fFunctorST2
+  = \ (@ s_scDBK)
+      (@ a_scDBL)
+      (@ b_scDBM)
+      (w_scDBN :: a_scDBL -> b_scDBM)
+      (w1_scDBO :: ST s_scDBK a_scDBL)
+      (w2_scDBP :: State s_scDBK) ->
+      let {
+        res_scDvO [InlPrag=NOINLINE, Dmd=<L,U(1*U,1*U)>]
+          :: (a_scDBL, State s_scDBK)
+        [LclId]
+        res_scDvO
+          = runRW#
+              @ 'LiftedRep
+              @ (a_scDBL, State s_scDBK)
+              (\ (s1_acDeD [OS=OneShot] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s1_acDeD of { __DEFAULT ->
+                 (w1_scDBO
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBK>_N <a_scDBL>_R
+                          :: (ST s_scDBK a_scDBL :: *)
+                             ~R# (State s_scDBK -> (a_scDBL, State s_scDBK) :: *)))
+                   w2_scDBP
+                 }) } in
+      (w_scDBN (case res_scDvO of { (r_acDp2, new_s_acDp4) -> r_acDp2 }),
+       case res_scDvO of { (r_acDp2, new_s_acDp4) -> new_s_acDp4 })
+
+-- RHS size: {terms: 21, types: 32, coercions: 3, joins: 0/1}
+Control.Monad.ST.Lazy.Imp.$fFunctorST1
+  :: forall s a b. a -> ST s b -> State s -> (a, State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,1*C1(U(A,1*U))><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_XcDq9)
+                 (@ a_acDpd)
+                 (@ b_acDpe)
+                 (x_acDek [Occ=Once] :: a_acDpd)
+                 (m_acDel [Occ=Once] :: ST s_XcDq9 b_acDpe)
+                 (s1_acDem [Occ=Once] :: State s_XcDq9) ->
+                 let {
+                   s'_scDvM [InlPrag=NOINLINE, Occ=Once] :: State s_XcDq9
+                   [LclId]
+                   s'_scDvM
+                     = runRW#
+                         @ 'LiftedRep
+                         @ (State s_XcDq9)
+                         (\ (s2_acDeD [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                            case noDuplicate# @ RealWorld s2_acDeD of { __DEFAULT ->
+                            case (m_acDel
+                                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDq9>_N <b_acDpe>_R
+                                          :: (ST s_XcDq9 b_acDpe :: *)
+                                             ~R# (State s_XcDq9 -> (b_acDpe, State s_XcDq9) :: *)))
+                                   s1_acDem
+                            of
+                            { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                            y_iaIio
+                            }
+                            }) } in
+                 (x_acDek, s'_scDvM)}]
+Control.Monad.ST.Lazy.Imp.$fFunctorST1
+  = \ (@ s_XcDq9)
+      (@ a_acDpd)
+      (@ b_acDpe)
+      (x_acDek :: a_acDpd)
+      (m_acDel :: ST s_XcDq9 b_acDpe)
+      (s1_acDem :: State s_XcDq9) ->
+      let {
+        s'_scDvM [InlPrag=NOINLINE] :: State s_XcDq9
+        [LclId]
+        s'_scDvM
+          = runRW#
+              @ 'LiftedRep
+              @ (State s_XcDq9)
+              (\ (s2_acDeD [OS=OneShot] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s2_acDeD of { __DEFAULT ->
+                 case (m_acDel
+                       `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDq9>_N <b_acDpe>_R
+                               :: (ST s_XcDq9 b_acDpe :: *)
+                                  ~R# (State s_XcDq9 -> (b_acDpe, State s_XcDq9) :: *)))
+                        s1_acDem
+                 of
+                 { (ds1_iaIin, y_iaIio) ->
+                 y_iaIio
+                 }
+                 }) } in
+      (x_acDek, s'_scDvM)
+
+-- RHS size: {terms: 4, types: 6, coercions: 33, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fFunctorST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Functor (ST s)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ s_acDed) ->
+       GHC.Base.C:Functor TYPE: ST s_acDed
+                          (Control.Monad.ST.Lazy.Imp.$fFunctorST2 @ s_acDed)
+                          `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                  <a -> b>_R
+                                  ->_R <ST s_acDed a>_R
+                                  ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDed>_N <b>_R)
+                                  :: (forall a b.
+                                      (a -> b)
+                                      -> ST s_acDed a -> State s_acDed -> (b, State s_acDed) :: *)
+                                     ~R# (forall a b.
+                                          (a -> b) -> ST s_acDed a -> ST s_acDed b :: *))
+                          (Control.Monad.ST.Lazy.Imp.$fFunctorST1 @ s_acDed)
+                          `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                  <a>_R
+                                  ->_R <ST s_acDed b>_R
+                                  ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDed>_N <a>_R)
+                                  :: (forall a b.
+                                      a -> ST s_acDed b -> State s_acDed -> (a, State s_acDed) :: *)
+                                     ~R# (forall a b. a -> ST s_acDed b -> ST s_acDed a :: *))]
+Control.Monad.ST.Lazy.Imp.$fFunctorST
+  = \ (@ s_XcDqg) ->
+      GHC.Base.C:Functor
+        @ (ST s_XcDqg)
+        ((Control.Monad.ST.Lazy.Imp.$fFunctorST2 @ s_XcDqg)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <a -> b>_R
+                 ->_R <ST s_XcDqg a>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDqg>_N <b>_R)
+                 :: (forall a b.
+                     (a -> b)
+                     -> ST s_XcDqg a -> State s_XcDqg -> (b, State s_XcDqg) :: *)
+                    ~R# (forall a b. (a -> b) -> ST s_XcDqg a -> ST s_XcDqg b :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fFunctorST1 @ s_XcDqg)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <a>_R
+                 ->_R <ST s_XcDqg b>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDqg>_N <a>_R)
+                 :: (forall a b.
+                     a -> ST s_XcDqg b -> State s_XcDqg -> (a, State s_XcDqg) :: *)
+                    ~R# (forall a b. a -> ST s_XcDqg b -> ST s_XcDqg a :: *)))
+
+-- RHS size: {terms: 8, types: 10, coercions: 89, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fApplicativeST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Applicative (ST s)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ s_acDdG) ->
+       GHC.Base.C:Applicative TYPE: ST s_acDdG
+                              Control.Monad.ST.Lazy.Imp.$fFunctorST @ s_acDdG
+                              (Control.Monad.ST.Lazy.Imp.$fApplicativeST5 @ s_acDdG)
+                              `cast` (forall (a :: <*>_N).
+                                      <a>_R
+                                      ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdG>_N <a>_R)
+                                      :: (forall a. a -> State s_acDdG -> (a, State s_acDdG) :: *)
+                                         ~R# (forall a. a -> ST s_acDdG a :: *))
+                              (Control.Monad.ST.Lazy.Imp.$fApplicativeST4 @ s_acDdG)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <ST s_acDdG (a -> b)>_R
+                                      ->_R <ST s_acDdG a>_R
+                                      ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdG>_N <b>_R)
+                                      :: (forall a b.
+                                          ST s_acDdG (a -> b)
+                                          -> ST s_acDdG a
+                                          -> State s_acDdG
+                                          -> (b, State s_acDdG) :: *)
+                                         ~R# (forall a b.
+                                              ST s_acDdG (a -> b)
+                                              -> ST s_acDdG a -> ST s_acDdG b :: *))
+                              (Control.Monad.ST.Lazy.Imp.$fApplicativeST3 @ s_acDdG)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                      <a -> b -> c>_R
+                                      ->_R <ST s_acDdG a>_R
+                                      ->_R <ST s_acDdG b>_R
+                                      ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdG>_N <c>_R)
+                                      :: (forall a b c.
+                                          (a -> b -> c)
+                                          -> ST s_acDdG a
+                                          -> ST s_acDdG b
+                                          -> State s_acDdG
+                                          -> (c, State s_acDdG) :: *)
+                                         ~R# (forall a b c.
+                                              (a -> b -> c)
+                                              -> ST s_acDdG a -> ST s_acDdG b -> ST s_acDdG c :: *))
+                              (Control.Monad.ST.Lazy.Imp.$fApplicativeST2 @ s_acDdG)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <ST s_acDdG a>_R
+                                      ->_R <ST s_acDdG b>_R
+                                      ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdG>_N <b>_R)
+                                      :: (forall a b.
+                                          ST s_acDdG a
+                                          -> ST s_acDdG b
+                                          -> State s_acDdG
+                                          -> (b, State s_acDdG) :: *)
+                                         ~R# (forall a b.
+                                              ST s_acDdG a -> ST s_acDdG b -> ST s_acDdG b :: *))
+                              (Control.Monad.ST.Lazy.Imp.$fApplicativeST1 @ s_acDdG)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <ST s_acDdG a>_R
+                                      ->_R <ST s_acDdG b>_R
+                                      ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdG>_N <a>_R)
+                                      :: (forall a b.
+                                          ST s_acDdG a
+                                          -> ST s_acDdG b
+                                          -> State s_acDdG
+                                          -> (a, State s_acDdG) :: *)
+                                         ~R# (forall a b.
+                                              ST s_acDdG a -> ST s_acDdG b -> ST s_acDdG a :: *))]
+Control.Monad.ST.Lazy.Imp.$fApplicativeST
+  = \ (@ s_XcDmV) ->
+      GHC.Base.C:Applicative
+        @ (ST s_XcDmV)
+        (Control.Monad.ST.Lazy.Imp.$fFunctorST @ s_XcDmV)
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST5 @ s_XcDmV)
+         `cast` (forall (a :: <*>_N).
+                 <a>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDmV>_N <a>_R)
+                 :: (forall a. a -> State s_XcDmV -> (a, State s_XcDmV) :: *)
+                    ~R# (forall a. a -> ST s_XcDmV a :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST4 @ s_XcDmV)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_XcDmV (a -> b)>_R
+                 ->_R <ST s_XcDmV a>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDmV>_N <b>_R)
+                 :: (forall a b.
+                     ST s_XcDmV (a -> b)
+                     -> ST s_XcDmV a -> State s_XcDmV -> (b, State s_XcDmV) :: *)
+                    ~R# (forall a b.
+                         ST s_XcDmV (a -> b) -> ST s_XcDmV a -> ST s_XcDmV b :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST3 @ s_XcDmV)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                 <a -> b -> c>_R
+                 ->_R <ST s_XcDmV a>_R
+                 ->_R <ST s_XcDmV b>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDmV>_N <c>_R)
+                 :: (forall a b c.
+                     (a -> b -> c)
+                     -> ST s_XcDmV a
+                     -> ST s_XcDmV b
+                     -> State s_XcDmV
+                     -> (c, State s_XcDmV) :: *)
+                    ~R# (forall a b c.
+                         (a -> b -> c)
+                         -> ST s_XcDmV a -> ST s_XcDmV b -> ST s_XcDmV c :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST2 @ s_XcDmV)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_XcDmV a>_R
+                 ->_R <ST s_XcDmV b>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDmV>_N <b>_R)
+                 :: (forall a b.
+                     ST s_XcDmV a
+                     -> ST s_XcDmV b -> State s_XcDmV -> (b, State s_XcDmV) :: *)
+                    ~R# (forall a b.
+                         ST s_XcDmV a -> ST s_XcDmV b -> ST s_XcDmV b :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST1 @ s_XcDmV)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_XcDmV a>_R
+                 ->_R <ST s_XcDmV b>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDmV>_N <a>_R)
+                 :: (forall a b.
+                     ST s_XcDmV a
+                     -> ST s_XcDmV b -> State s_XcDmV -> (a, State s_XcDmV) :: *)
+                    ~R# (forall a b.
+                         ST s_XcDmV a -> ST s_XcDmV b -> ST s_XcDmV a :: *)))
+
+-- RHS size: {terms: 7, types: 9, coercions: 46, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fMonadST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Monad (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_acDdy) ->
+       GHC.Base.C:Monad TYPE: ST s_acDdy
+                        Control.Monad.ST.Lazy.Imp.$fApplicativeST @ s_acDdy
+                        (Control.Monad.ST.Lazy.Imp.$fMonadST1 @ s_acDdy)
+                        `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                <ST s_acDdy a>_R
+                                ->_R <a -> ST s_acDdy b>_R
+                                ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdy>_N <b>_R)
+                                :: (forall a b.
+                                    ST s_acDdy a
+                                    -> (a -> ST s_acDdy b)
+                                    -> State s_acDdy
+                                    -> (b, State s_acDdy) :: *)
+                                   ~R# (forall a b.
+                                        ST s_acDdy a -> (a -> ST s_acDdy b) -> ST s_acDdy b :: *))
+                        (Control.Monad.ST.Lazy.Imp.$fApplicativeST2 @ s_acDdy)
+                        `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                <ST s_acDdy a>_R
+                                ->_R <ST s_acDdy b>_R
+                                ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdy>_N <b>_R)
+                                :: (forall a b.
+                                    ST s_acDdy a
+                                    -> ST s_acDdy b -> State s_acDdy -> (b, State s_acDdy) :: *)
+                                   ~R# (forall a b.
+                                        ST s_acDdy a -> ST s_acDdy b -> ST s_acDdy b :: *))
+                        (Control.Monad.ST.Lazy.Imp.$fApplicativeST5 @ s_acDdy)
+                        `cast` (forall (a :: <*>_N).
+                                <a>_R
+                                ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDdy>_N <a>_R)
+                                :: (forall a. a -> State s_acDdy -> (a, State s_acDdy) :: *)
+                                   ~R# (forall a. a -> ST s_acDdy a :: *))
+                        Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail @ s_acDdy]
+Control.Monad.ST.Lazy.Imp.$fMonadST
+  = \ (@ s_XcDlO) ->
+      GHC.Base.C:Monad
+        @ (ST s_XcDlO)
+        (Control.Monad.ST.Lazy.Imp.$fApplicativeST @ s_XcDlO)
+        ((Control.Monad.ST.Lazy.Imp.$fMonadST1 @ s_XcDlO)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_XcDlO a>_R
+                 ->_R <a -> ST s_XcDlO b>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDlO>_N <b>_R)
+                 :: (forall a b.
+                     ST s_XcDlO a
+                     -> (a -> ST s_XcDlO b) -> State s_XcDlO -> (b, State s_XcDlO) :: *)
+                    ~R# (forall a b.
+                         ST s_XcDlO a -> (a -> ST s_XcDlO b) -> ST s_XcDlO b :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST2 @ s_XcDlO)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <ST s_XcDlO a>_R
+                 ->_R <ST s_XcDlO b>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDlO>_N <b>_R)
+                 :: (forall a b.
+                     ST s_XcDlO a
+                     -> ST s_XcDlO b -> State s_XcDlO -> (b, State s_XcDlO) :: *)
+                    ~R# (forall a b.
+                         ST s_XcDlO a -> ST s_XcDlO b -> ST s_XcDlO b :: *)))
+        ((Control.Monad.ST.Lazy.Imp.$fApplicativeST5 @ s_XcDlO)
+         `cast` (forall (a :: <*>_N).
+                 <a>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_XcDlO>_N <a>_R)
+                 :: (forall a. a -> State s_XcDlO -> (a, State s_XcDlO) :: *)
+                    ~R# (forall a. a -> ST s_XcDlO a :: *)))
+        (Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail @ s_XcDlO)
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fMonadFailST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Fail.MonadFail (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_acDdw) ->
+       Control.Monad.Fail.C:MonadFail TYPE: ST s_acDdw
+                                      Control.Monad.ST.Lazy.Imp.$fMonadST @ s_acDdw
+                                      Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail @ s_acDdw]
+Control.Monad.ST.Lazy.Imp.$fMonadFailST
+  = \ (@ s_acDjP) ->
+      Control.Monad.Fail.C:MonadFail
+        @ (ST s_acDjP)
+        (Control.Monad.ST.Lazy.Imp.$fMonadST @ s_acDjP)
+        (Control.Monad.ST.Lazy.Imp.$fMonadFailST_$cfail @ s_acDjP)
+
+-- RHS size: {terms: 10, types: 20, coercions: 3, joins: 0/0}
+runST :: forall a. (forall s. ST s a) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(1*U,A))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_acDjm)
+                 (ds_dcDqF [Occ=Once] :: forall s. ST s a_acDjm) ->
+                 runRW#
+                   @ 'LiftedRep
+                   @ a_acDjm
+                   (\ (s_acDeF [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                      case ((ds_dcDqF @ RealWorld)
+                            `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <RealWorld>_N <a_acDjm>_R
+                                    :: (ST RealWorld a_acDjm :: *)
+                                       ~R# (State RealWorld -> (a_acDjm, State RealWorld) :: *)))
+                             (Control.Monad.ST.Lazy.Imp.S# @ RealWorld s_acDeF)
+                      of
+                      { (r_acDeG [Occ=Once], _ [Occ=Dead]) ->
+                      r_acDeG
+                      })}]
+runST
+  = \ (@ a_acDjm) (ds_dcDqF :: forall s. ST s a_acDjm) ->
+      runRW#
+        @ 'LiftedRep
+        @ a_acDjm
+        (\ (s_acDeF [OS=OneShot] :: State# RealWorld) ->
+           case ((ds_dcDqF @ RealWorld)
+                 `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <RealWorld>_N <a_acDjm>_R
+                         :: (ST RealWorld a_acDjm :: *)
+                            ~R# (State RealWorld -> (a_acDjm, State RealWorld) :: *)))
+                  (Control.Monad.ST.Lazy.Imp.S# @ RealWorld s_acDeF)
+           of
+           { (r_acDeG, ds1_dcDqN) ->
+           r_acDeG
+           })
+
+-- RHS size: {terms: 21, types: 62, coercions: 3, joins: 0/1}
+Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+  :: forall a s. (a -> ST s a) -> State s -> (a, State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_acDiW)
+                 (@ s_acDiX)
+                 (m_acDeH [Occ=Once!] :: a_acDiW -> ST s_acDiX a_acDiW)
+                 (s1_acDeI [Occ=Once] :: State s_acDiX) ->
+                 letrec {
+                   ds_scDvK [Occ=LoopBreaker]
+                     :: ((a_acDiW, State s_acDiX), a_acDiW, State s_acDiX)
+                   [LclId]
+                   ds_scDvK
+                     = case ((m_acDeH
+                                (case ds_scDvK of
+                                 { (_ [Occ=Dead], r_XcDjA [Occ=Once], _ [Occ=Dead]) ->
+                                 r_XcDjA
+                                 }))
+                             `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDiX>_N <a_acDiW>_R
+                                     :: (ST s_acDiX a_acDiW :: *)
+                                        ~R# (State s_acDiX -> (a_acDiW, State s_acDiX) :: *)))
+                              s1_acDeI
+                       of wild_X1T
+                       { (r_XcDjz [Occ=Once], _s'_acDja [Occ=Once]) ->
+                       (wild_X1T, r_XcDjz, _s'_acDja)
+                       }; } in
+                 case ds_scDvK of
+                 { (q_acDj4 [Occ=Once], _ [Occ=Dead], _ [Occ=Dead]) ->
+                 q_acDj4
+                 }}]
+Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+  = \ (@ a_acDiW)
+      (@ s_acDiX)
+      (m_acDeH :: a_acDiW -> ST s_acDiX a_acDiW)
+      (s1_acDeI :: State s_acDiX) ->
+      letrec {
+        ds_scDvK [Occ=LoopBreaker]
+          :: ((a_acDiW, State s_acDiX), a_acDiW, State s_acDiX)
+        [LclId]
+        ds_scDvK
+          = case ((m_acDeH
+                     (case ds_scDvK of { (q_acDj4, r_XcDjA, _s'_acDja) -> r_XcDjA }))
+                  `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDiX>_N <a_acDiW>_R
+                          :: (ST s_acDiX a_acDiW :: *)
+                             ~R# (State s_acDiX -> (a_acDiW, State s_acDiX) :: *)))
+                   s1_acDeI
+            of wild_X1T
+            { (r_XcDjz, _s'_acDja) ->
+            (wild_X1T, r_XcDjz, _s'_acDja)
+            }; } in
+      case ds_scDvK of { (q_acDj4, r_XcDjA, _s'_acDja) -> q_acDj4 }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+fixST :: forall a s. (a -> ST s a) -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U(U,U)))><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+               `cast` (forall (a :: <*>_N) (s :: <*>_N).
+                       <a -> ST s a>_R
+                       ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+                       :: (forall a s. (a -> ST s a) -> State s -> (a, State s) :: *)
+                          ~R# (forall a s. (a -> ST s a) -> ST s a :: *))}]
+fixST
+  = Control.Monad.ST.Lazy.Imp.$fMonadFixST1
+    `cast` (forall (a :: <*>_N) (s :: <*>_N).
+            <a -> ST s a>_R
+            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+            :: (forall a s. (a -> ST s a) -> State s -> (a, State s) :: *)
+               ~R# (forall a s. (a -> ST s a) -> ST s a :: *))
+
+-- RHS size: {terms: 5, types: 9, coercions: 12, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. MonadFix (ST s)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ s_acDdv) ->
+       Control.Monad.Fix.C:MonadFix TYPE: ST s_acDdv
+                                    Control.Monad.ST.Lazy.Imp.$fMonadST @ s_acDdv
+                                    (\ (@ a_acDjJ) ->
+                                       Control.Monad.ST.Lazy.Imp.$fMonadFixST1 @ a_acDjJ @ s_acDdv)
+                                    `cast` (forall (a :: <*>_N).
+                                            <a -> ST s_acDdv a>_R
+                                            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0]
+                                                          <s_acDdv>_N <a>_R)
+                                            :: (forall a.
+                                                (a -> ST s_acDdv a)
+                                                -> State s_acDdv -> (a, State s_acDdv) :: *)
+                                               ~R# (forall a.
+                                                    (a -> ST s_acDdv a) -> ST s_acDdv a :: *))]
+Control.Monad.ST.Lazy.Imp.$fMonadFixST
+  = \ (@ s_acDjB) ->
+      Control.Monad.Fix.C:MonadFix
+        @ (ST s_acDjB)
+        (Control.Monad.ST.Lazy.Imp.$fMonadST @ s_acDjB)
+        ((\ (@ a_acDjJ) ->
+            Control.Monad.ST.Lazy.Imp.$fMonadFixST1 @ a_acDjJ @ s_acDjB)
+         `cast` (forall (a :: <*>_N).
+                 <a -> ST s_acDjB a>_R
+                 ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDjB>_N <a>_R)
+                 :: (forall a.
+                     (a -> ST s_acDjB a) -> State s_acDjB -> (a, State s_acDjB) :: *)
+                    ~R# (forall a. (a -> ST s_acDjB a) -> ST s_acDjB a :: *)))
+
+-- RHS size: {terms: 15, types: 28, coercions: 3, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.strictToLazyST1
+  :: forall s a. GHC.ST.ST s a -> State s -> (a, State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acDih)
+                 (@ a_acDii)
+                 (ds_dcDq4 [Occ=Once] :: GHC.ST.ST s_acDih a_acDii)
+                 (ds1_dcDq5 [Occ=Once!] :: State s_acDih) ->
+                 case ds1_dcDq5 of { S# s1_acDeN [Occ=Once] ->
+                 case (ds_dcDq4
+                       `cast` (GHC.ST.N:ST[0] <s_acDih>_N <a_acDii>_R
+                               :: (GHC.ST.ST s_acDih a_acDii :: *)
+                                  ~R# (GHC.ST.STRep s_acDih a_acDii :: *)))
+                        s1_acDeN
+                 of
+                 { (# ipv_scDtv [Occ=Once], ipv1_scDtw [Occ=Once] #) ->
+                 (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_acDih ipv_scDtv)
+                 }
+                 }}]
+Control.Monad.ST.Lazy.Imp.strictToLazyST1
+  = \ (@ s_acDih)
+      (@ a_acDii)
+      (ds_dcDq4 :: GHC.ST.ST s_acDih a_acDii)
+      (ds1_dcDq5 :: State s_acDih) ->
+      case ds1_dcDq5 of { S# s1_acDeN ->
+      case (ds_dcDq4
+            `cast` (GHC.ST.N:ST[0] <s_acDih>_N <a_acDii>_R
+                    :: (GHC.ST.ST s_acDih a_acDii :: *)
+                       ~R# (GHC.ST.STRep s_acDih a_acDii :: *)))
+             s1_acDeN
+      of
+      { (# ipv_scDtv, ipv1_scDtw #) ->
+      (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_acDih ipv_scDtv)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+strictToLazyST :: forall s a. GHC.ST.ST s a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.ST.Lazy.Imp.strictToLazyST1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <GHC.ST.ST s a>_R
+                       ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a. GHC.ST.ST s a -> State s -> (a, State s) :: *)
+                          ~R# (forall s a. GHC.ST.ST s a -> ST s a :: *))}]
+strictToLazyST
+  = Control.Monad.ST.Lazy.Imp.strictToLazyST1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <GHC.ST.ST s a>_R
+            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. GHC.ST.ST s a -> State s -> (a, State s) :: *)
+               ~R# (forall s a. GHC.ST.ST s a -> ST s a :: *))
+
+-- RHS size: {terms: 15, types: 27, coercions: 18, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+  :: forall a s. IO a -> State s -> (a, State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_acDiJ)
+                 (@ s_acDiK)
+                 (x_i7Rxi [Occ=Once] :: IO a_acDiJ)
+                 (eta_B1 [Occ=Once!] :: State s_acDiK) ->
+                 case eta_B1 of { S# s1_acDeN [Occ=Once] ->
+                 case ((x_i7Rxi
+                        `cast` (GHC.Types.N:IO[0] <a_acDiJ>_R
+                                :: (IO a_acDiJ :: *)
+                                   ~R# (State# RealWorld -> (# State# RealWorld, a_acDiJ #) :: *)))
+                         (s1_acDeN
+                          `cast` ((State# (UnsafeCo nominal s_acDiK RealWorld))_R
+                                  :: (State# s_acDiK :: TYPE ('TupleRep '[]))
+                                     ~R# (State# RealWorld :: TYPE ('TupleRep '[])))))
+                      `cast` (((#,#)
+                                 <'TupleRep '[]>_R
+                                 <'LiftedRep>_R
+                                 (State# (UnsafeCo nominal RealWorld s_acDiK))_R
+                                 <a_acDiJ>_R)_R
+                              :: ((# State# RealWorld, a_acDiJ #) :: TYPE
+                                                                       ('TupleRep
+                                                                          '['TupleRep '[],
+                                                                            'LiftedRep]))
+                                 ~R# ((# State# s_acDiK, a_acDiJ #) :: TYPE
+                                                                         ('TupleRep
+                                                                            '['TupleRep '[],
+                                                                              'LiftedRep])))
+                 of
+                 { (# ipv_scDtv [Occ=Once], ipv1_scDtw [Occ=Once] #) ->
+                 (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_acDiK ipv_scDtv)
+                 }
+                 }}]
+Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+  = \ (@ a_acDiJ)
+      (@ s_acDiK)
+      (x_i7Rxi :: IO a_acDiJ)
+      (eta_B1 :: State s_acDiK) ->
+      case eta_B1 of { S# s1_acDeN ->
+      case ((x_i7Rxi
+             `cast` (GHC.Types.N:IO[0] <a_acDiJ>_R
+                     :: (IO a_acDiJ :: *)
+                        ~R# (State# RealWorld -> (# State# RealWorld, a_acDiJ #) :: *)))
+              (s1_acDeN
+               `cast` ((State# (UnsafeCo nominal s_acDiK RealWorld))_R
+                       :: (State# s_acDiK :: TYPE ('TupleRep '[]))
+                          ~R# (State# RealWorld :: TYPE ('TupleRep '[])))))
+           `cast` (((#,#)
+                      <'TupleRep '[]>_R
+                      <'LiftedRep>_R
+                      (State# (UnsafeCo nominal RealWorld s_acDiK))_R
+                      <a_acDiJ>_R)_R
+                   :: ((# State# RealWorld, a_acDiJ #) :: TYPE
+                                                            ('TupleRep
+                                                               '['TupleRep '[], 'LiftedRep]))
+                      ~R# ((# State# s_acDiK, a_acDiJ #) :: TYPE
+                                                              ('TupleRep
+                                                                 '['TupleRep '[], 'LiftedRep])))
+      of
+      { (# ipv_scDtv, ipv1_scDtw #) ->
+      (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_acDiK ipv_scDtv)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+unsafeIOToST :: forall a s. IO a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U(U,U))><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+               `cast` (forall (a :: <*>_N) (s :: <*>_N).
+                       <IO a>_R ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+                       :: (forall a s. IO a -> State s -> (a, State s) :: *)
+                          ~R# (forall a s. IO a -> ST s a :: *))}]
+unsafeIOToST
+  = Control.Monad.ST.Lazy.Imp.unsafeIOToST1
+    `cast` (forall (a :: <*>_N) (s :: <*>_N).
+            <IO a>_R ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+            :: (forall a s. IO a -> State s -> (a, State s) :: *)
+               ~R# (forall a s. IO a -> ST s a :: *))
+
+-- RHS size: {terms: 15, types: 28, coercions: 3, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+  :: forall s a. ST s a -> State# s -> (# State# s, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acDhX)
+                 (@ a_acDhY)
+                 (ds_dcDpN [Occ=Once] :: ST s_acDhX a_acDhY)
+                 (s1_acDeR [Occ=Once] :: State# s_acDhX) ->
+                 case (ds_dcDpN
+                       `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDhX>_N <a_acDhY>_R
+                               :: (ST s_acDhX a_acDhY :: *)
+                                  ~R# (State s_acDhX -> (a_acDhY, State s_acDhX) :: *)))
+                        (Control.Monad.ST.Lazy.Imp.S# @ s_acDhX s1_acDeR)
+                 of
+                 { (a1_acDeS [Occ=Once], ds1_dcDpV [Occ=Once!]) ->
+                 case ds1_dcDpV of { S# s'_acDeT [Occ=Once] ->
+                 (# s'_acDeT, a1_acDeS #)
+                 }
+                 }}]
+Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+  = \ (@ s_acDhX)
+      (@ a_acDhY)
+      (ds_dcDpN :: ST s_acDhX a_acDhY)
+      (s1_acDeR :: State# s_acDhX) ->
+      case (ds_dcDpN
+            `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_acDhX>_N <a_acDhY>_R
+                    :: (ST s_acDhX a_acDhY :: *)
+                       ~R# (State s_acDhX -> (a_acDhY, State s_acDhX) :: *)))
+             (Control.Monad.ST.Lazy.Imp.S# @ s_acDhX s1_acDeR)
+      of
+      { (a1_acDeS, ds1_dcDpV) ->
+      case ds1_dcDpV of { S# s'_acDeT -> (# s'_acDeT, a1_acDeS #) }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+lazyToStrictST :: forall s a. ST s a -> GHC.ST.ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a. ST s a -> GHC.ST.STRep s a :: *)
+                          ~R# (forall s a. ST s a -> GHC.ST.ST s a :: *))}]
+lazyToStrictST
+  = Control.Monad.ST.Lazy.Imp.lazyToStrictST1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST s a>_R ->_R Sym (GHC.ST.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. ST s a -> GHC.ST.STRep s a :: *)
+               ~R# (forall s a. ST s a -> GHC.ST.ST s a :: *))
+
+-- RHS size: {terms: 1, types: 1, coercions: 10, joins: 0/0}
+stToIO :: forall a. ST RealWorld a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(LS(S))),1*C1(U(U,1*U(U)))><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= (Control.Monad.ST.Lazy.Imp.lazyToStrictST1 @ RealWorld)
+               `cast` (forall (a :: <*>_N).
+                       <ST RealWorld a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           ST RealWorld a
+                           -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. ST RealWorld a -> IO a :: *))}]
+stToIO
+  = (Control.Monad.ST.Lazy.Imp.lazyToStrictST1 @ RealWorld)
+    `cast` (forall (a :: <*>_N).
+            <ST RealWorld a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                ST RealWorld a
+                -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. ST RealWorld a -> IO a :: *))
+
+-- RHS size: {terms: 31, types: 54, coercions: 10, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1 [InlPrag=NOUSERINLINE[0]]
+  :: forall s a. ST s a -> State s -> (a, State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_scDBU)
+                 (@ a_scDBV)
+                 (w_scDBW [Occ=Once] :: ST s_scDBU a_scDBV)
+                 (w1_scDBX [Occ=Once!] :: State s_scDBU) ->
+                 case w1_scDBX of { S# ww1_scDC0 [Occ=Once] ->
+                 case ((GHC.ST.unsafeDupableInterleaveST
+                          @ s_scDBU
+                          @ a_scDBV
+                          ((\ (s1_icDqn [Occ=Once, OS=OneShot] :: State# s_scDBU) ->
+                              case noDuplicate# @ s_scDBU s1_icDqn of wild_icDqo { __DEFAULT ->
+                              case (w_scDBW
+                                    `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0]
+                                                <s_scDBU>_N <a_scDBV>_R
+                                            :: (ST s_scDBU a_scDBV :: *)
+                                               ~R# (State s_scDBU
+                                                    -> (a_scDBV, State s_scDBU) :: *)))
+                                     (Control.Monad.ST.Lazy.Imp.S# @ s_scDBU wild_icDqo)
+                              of
+                              { (a1_acDeS [Occ=Once], ds_dcDpV [Occ=Once!]) ->
+                              case ds_dcDpV of { S# s'_acDeT [Occ=Once] ->
+                              (# s'_acDeT, a1_acDeS #)
+                              }
+                              }
+                              })
+                           `cast` (Sym (GHC.ST.N:ST[0] <s_scDBU>_N <a_scDBV>_R)
+                                   :: (GHC.ST.STRep s_scDBU a_scDBV :: *)
+                                      ~R# (GHC.ST.ST s_scDBU a_scDBV :: *))))
+                       `cast` (GHC.ST.N:ST[0] <s_scDBU>_N <a_scDBV>_R
+                               :: (GHC.ST.ST s_scDBU a_scDBV :: *)
+                                  ~R# (GHC.ST.STRep s_scDBU a_scDBV :: *)))
+                        ww1_scDC0
+                 of
+                 { (# ipv_scDtv [Occ=Once], ipv1_scDtw [Occ=Once] #) ->
+                 (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_scDBU ipv_scDtv)
+                 }
+                 }}]
+Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1
+  = \ (@ s_scDBU)
+      (@ a_scDBV)
+      (w_scDBW :: ST s_scDBU a_scDBV)
+      (w1_scDBX :: State s_scDBU) ->
+      case w1_scDBX of { S# ww1_scDC0 ->
+      case ((GHC.ST.unsafeDupableInterleaveST
+               @ s_scDBU
+               @ a_scDBV
+               ((\ (s1_icDqn [OS=OneShot] :: State# s_scDBU) ->
+                   case noDuplicate# @ s_scDBU s1_icDqn of wild_icDqo { __DEFAULT ->
+                   case (w_scDBW
+                         `cast` (Control.Monad.ST.Lazy.Imp.N:ST[0] <s_scDBU>_N <a_scDBV>_R
+                                 :: (ST s_scDBU a_scDBV :: *)
+                                    ~R# (State s_scDBU -> (a_scDBV, State s_scDBU) :: *)))
+                          (Control.Monad.ST.Lazy.Imp.S# @ s_scDBU wild_icDqo)
+                   of
+                   { (a1_acDeS, ds_dcDpV) ->
+                   case ds_dcDpV of { S# s'_acDeT -> (# s'_acDeT, a1_acDeS #) }
+                   }
+                   })
+                `cast` (Sym (GHC.ST.N:ST[0] <s_scDBU>_N <a_scDBV>_R)
+                        :: (GHC.ST.STRep s_scDBU a_scDBV :: *)
+                           ~R# (GHC.ST.ST s_scDBU a_scDBV :: *))))
+            `cast` (GHC.ST.N:ST[0] <s_scDBU>_N <a_scDBV>_R
+                    :: (GHC.ST.ST s_scDBU a_scDBV :: *)
+                       ~R# (GHC.ST.STRep s_scDBU a_scDBV :: *)))
+             ww1_scDC0
+      of
+      { (# ipv_scDtv, ipv1_scDtw #) ->
+      (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_scDBU ipv_scDtv)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+unsafeInterleaveST :: forall s a. ST s a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(1*U,1*U(1*U)))><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST s a>_R ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a. ST s a -> State s -> (a, State s) :: *)
+                          ~R# (forall s a. ST s a -> ST s a :: *))}]
+unsafeInterleaveST
+  = Control.Monad.ST.Lazy.Imp.unsafeInterleaveST1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST s a>_R ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+            :: (forall s a. ST s a -> State s -> (a, State s) :: *)
+               ~R# (forall s a. ST s a -> ST s a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Monad.ST.Lazy.Imp.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.ST.Lazy.Imp.$trModule3
+  = GHC.Types.TrNameS Control.Monad.ST.Lazy.Imp.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 80 0}]
+Control.Monad.ST.Lazy.Imp.$trModule2 = "Control.Monad.ST.Lazy.Imp"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.ST.Lazy.Imp.$trModule1
+  = GHC.Types.TrNameS Control.Monad.ST.Lazy.Imp.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Monad.ST.Lazy.Imp.$trModule
+  = GHC.Types.Module
+      Control.Monad.ST.Lazy.Imp.$trModule3
+      Control.Monad.ST.Lazy.Imp.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_rcDJ5 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_rcDJ5 = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_rcDJ6 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_rcDJ6 = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_rcDJ7 :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_rcDJ7
+  = GHC.Types.: @ KindRep $krep1_rcDJ6 (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_rcDJ8 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_rcDJ8
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcState# $krep2_rcDJ7
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tcState2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Control.Monad.ST.Lazy.Imp.$tcState2 = "State"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tcState1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.ST.Lazy.Imp.$tcState1
+  = GHC.Types.TrNameS Control.Monad.ST.Lazy.Imp.$tcState2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tcState :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Control.Monad.ST.Lazy.Imp.$tcState
+  = GHC.Types.TyCon
+      220923881781706094##
+      12630832853168782158##
+      Control.Monad.ST.Lazy.Imp.$trModule
+      Control.Monad.ST.Lazy.Imp.$tcState1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_rcDJ9 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_rcDJ9
+  = GHC.Types.KindRepTyConApp
+      Control.Monad.ST.Lazy.Imp.$tcState $krep2_rcDJ7
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'S#1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Control.Monad.ST.Lazy.Imp.$tc'S#1
+  = GHC.Types.KindRepFun $krep3_rcDJ8 $krep4_rcDJ9
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'S#3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Monad.ST.Lazy.Imp.$tc'S#3 = "'S#"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'S#2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.ST.Lazy.Imp.$tc'S#2
+  = GHC.Types.TrNameS Control.Monad.ST.Lazy.Imp.$tc'S#3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'S# :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Control.Monad.ST.Lazy.Imp.$tc'S#
+  = GHC.Types.TyCon
+      12704778602275544086##
+      1928505377508739254##
+      Control.Monad.ST.Lazy.Imp.$trModule
+      Control.Monad.ST.Lazy.Imp.$tc'S#2
+      1#
+      Control.Monad.ST.Lazy.Imp.$tc'S#1
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep5_rcDJa :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep5_rcDJa
+  = GHC.Types.: @ KindRep $krep4_rcDJ9 (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep6_rcDJb :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep6_rcDJb = GHC.Types.: @ KindRep $krep_rcDJ5 $krep5_rcDJa
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep7_rcDJc :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep7_rcDJc
+  = GHC.Types.KindRepTyConApp GHC.Tuple.$tc(,) $krep6_rcDJb
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep8_rcDJd :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep8_rcDJd = GHC.Types.KindRepFun $krep4_rcDJ9 $krep7_rcDJc
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tcST2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Monad.ST.Lazy.Imp.$tcST2 = "ST"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tcST1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.ST.Lazy.Imp.$tcST1
+  = GHC.Types.TrNameS Control.Monad.ST.Lazy.Imp.$tcST2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tcST :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Control.Monad.ST.Lazy.Imp.$tcST
+  = GHC.Types.TyCon
+      9758985700159114765##
+      4154811637844139714##
+      Control.Monad.ST.Lazy.Imp.$trModule
+      Control.Monad.ST.Lazy.Imp.$tcST1
+      0#
+      GHC.Types.krep$*->*->*
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep9_rcDJe :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep9_rcDJe
+  = GHC.Types.: @ KindRep $krep_rcDJ5 (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep10_rcDJf :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep10_rcDJf = GHC.Types.: @ KindRep $krep1_rcDJ6 $krep9_rcDJe
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep11_rcDJg :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep11_rcDJg
+  = GHC.Types.KindRepTyConApp
+      Control.Monad.ST.Lazy.Imp.$tcST $krep10_rcDJf
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'ST1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Control.Monad.ST.Lazy.Imp.$tc'ST1
+  = GHC.Types.KindRepFun $krep8_rcDJd $krep11_rcDJg
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'ST3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Monad.ST.Lazy.Imp.$tc'ST3 = "'ST"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'ST2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.ST.Lazy.Imp.$tc'ST2
+  = GHC.Types.TrNameS Control.Monad.ST.Lazy.Imp.$tc'ST3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.ST.Lazy.Imp.$tc'ST :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Control.Monad.ST.Lazy.Imp.$tc'ST
+  = GHC.Types.TyCon
+      5656684040178075861##
+      6626797926801395533##
+      Control.Monad.ST.Lazy.Imp.$trModule
+      Control.Monad.ST.Lazy.Imp.$tc'ST2
+      2#
+      Control.Monad.ST.Lazy.Imp.$tc'ST1
+
+

@@ -1,0 +1,157 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:04.832343251 UTC
+
+Result size of Tidy Core
+  = {terms: 66, types: 131, coercions: 0, joins: 0/0}
+
+-- RHS size: {terms: 7, types: 12, coercions: 0, joins: 0/0}
+fst :: forall a b. (a, b) -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(1*U,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ar4A)
+                 (@ b_ar4B)
+                 (ds_dr51 [Occ=Once!] :: (a_ar4A, b_ar4B)) ->
+                 case ds_dr51 of { (x_ar2R [Occ=Once], _ [Occ=Dead]) -> x_ar2R }}]
+fst
+  = \ (@ a_ar4A) (@ b_ar4B) (ds_dr51 :: (a_ar4A, b_ar4B)) ->
+      case ds_dr51 of { (x_ar2R, ds1_dr57) -> x_ar2R }
+
+-- RHS size: {terms: 7, types: 12, coercions: 0, joins: 0/0}
+snd :: forall a b. (a, b) -> b
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ar4x)
+                 (@ b_ar4y)
+                 (ds_dr4U [Occ=Once!] :: (a_ar4x, b_ar4y)) ->
+                 case ds_dr4U of { (_ [Occ=Dead], y_ar2S [Occ=Once]) -> y_ar2S }}]
+snd
+  = \ (@ a_ar4x) (@ b_ar4y) (ds_dr4U :: (a_ar4x, b_ar4y)) ->
+      case ds_dr4U of { (ds1_dr50, y_ar2S) -> y_ar2S }
+
+-- RHS size: {terms: 14, types: 22, coercions: 0, joins: 0/0}
+uncurry :: forall a b c. (a -> b -> c) -> (a, b) -> c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U(1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ar4D)
+                 (@ b_ar4E)
+                 (@ c_ar4F)
+                 (f_ar2W [Occ=Once!] :: a_ar4D -> b_ar4E -> c_ar4F)
+                 (p_ar2X :: (a_ar4D, b_ar4E)) ->
+                 f_ar2W
+                   (case p_ar2X of { (x_ar2R [Occ=Once], _ [Occ=Dead]) -> x_ar2R })
+                   (case p_ar2X of { (_ [Occ=Dead], y_ar2S [Occ=Once]) -> y_ar2S })}]
+uncurry
+  = \ (@ a_ar4D)
+      (@ b_ar4E)
+      (@ c_ar4F)
+      (f_ar2W :: a_ar4D -> b_ar4E -> c_ar4F)
+      (p_ar2X :: (a_ar4D, b_ar4E)) ->
+      f_ar2W
+        (case p_ar2X of { (x_ar2R, ds_dr57) -> x_ar2R })
+        (case p_ar2X of { (ds_dr50, y_ar2S) -> y_ar2S })
+
+-- RHS size: {terms: 10, types: 14, coercions: 0, joins: 0/0}
+curry :: forall a b c. ((a, b) -> c) -> a -> b -> c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ar4t)
+                 (@ b_ar4u)
+                 (@ c_ar4v)
+                 (f_ar2T [Occ=Once!] :: (a_ar4t, b_ar4u) -> c_ar4v)
+                 (x_ar2U [Occ=Once] :: a_ar4t)
+                 (y_ar2V [Occ=Once] :: b_ar4u) ->
+                 f_ar2T (x_ar2U, y_ar2V)}]
+curry
+  = \ (@ a_ar4t)
+      (@ b_ar4u)
+      (@ c_ar4v)
+      (f_ar2T :: (a_ar4t, b_ar4u) -> c_ar4v)
+      (x_ar2U :: a_ar4t)
+      (y_ar2V :: b_ar4u) ->
+      f_ar2T (x_ar2U, y_ar2V)
+
+-- RHS size: {terms: 9, types: 14, coercions: 0, joins: 0/0}
+swap :: forall a b. (a, b) -> (b, a)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_ar4q)
+                 (@ b_ar4r)
+                 (ds_dr4O [Occ=Once!] :: (a_ar4q, b_ar4r)) ->
+                 case ds_dr4O of { (a1_ar2Y [Occ=Once], b1_ar2Z [Occ=Once]) ->
+                 (b1_ar2Z, a1_ar2Y)
+                 }}]
+swap
+  = \ (@ a_ar4q) (@ b_ar4r) (ds_dr4O :: (a_ar4q, b_ar4r)) ->
+      case ds_dr4O of { (a1_ar2Y, b1_ar2Z) -> (b1_ar2Z, a1_ar2Y) }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Tuple.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Tuple.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Tuple.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Tuple.$trModule3 = GHC.Types.TrNameS Data.Tuple.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Tuple.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Tuple.$trModule2 = "Data.Tuple"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Tuple.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Tuple.$trModule1 = GHC.Types.TrNameS Data.Tuple.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Tuple.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Tuple.$trModule
+  = GHC.Types.Module Data.Tuple.$trModule3 Data.Tuple.$trModule1
+
+

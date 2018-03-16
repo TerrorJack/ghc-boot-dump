@@ -1,0 +1,202 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:30.531076999 UTC
+
+Result size of Tidy Core
+  = {terms: 69, types: 150, coercions: 34, joins: 0/0}
+
+-- RHS size: {terms: 23, types: 41, coercions: 0, joins: 0/0}
+Data.STRef.modifySTRef1
+  :: forall s a.
+     STRef s a
+     -> (a -> a) -> GHC.Prim.State# s -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acBuB)
+                 (@ a_acBuC)
+                 (ref_acBtB [Occ=Once!] :: STRef s_acBuB a_acBuC)
+                 (f_acBtC [Occ=Once!] :: a_acBuC -> a_acBuC)
+                 (s1_i80sB [Occ=Once] :: GHC.Prim.State# s_acBuB) ->
+                 case ref_acBtB of { STRef var#_i7IB3 ->
+                 case GHC.Prim.readMutVar# @ s_acBuB @ a_acBuC var#_i7IB3 s1_i80sB
+                 of
+                 { (# ipv_i80sE [Occ=Once], ipv1_i80sF [Occ=Once] #) ->
+                 case GHC.Prim.writeMutVar#
+                        @ s_acBuB @ a_acBuC var#_i7IB3 (f_acBtC ipv1_i80sF) ipv_i80sE
+                 of s2#_i7IBe
+                 { __DEFAULT ->
+                 (# s2#_i7IBe, GHC.Tuple.() #)
+                 }
+                 }
+                 }}]
+Data.STRef.modifySTRef1
+  = \ (@ s_acBuB)
+      (@ a_acBuC)
+      (ref_acBtB :: STRef s_acBuB a_acBuC)
+      (f_acBtC :: a_acBuC -> a_acBuC)
+      (s1_i80sB :: GHC.Prim.State# s_acBuB) ->
+      case ref_acBtB of { STRef var#_i7IB3 ->
+      case GHC.Prim.readMutVar# @ s_acBuB @ a_acBuC var#_i7IB3 s1_i80sB
+      of
+      { (# ipv_i80sE, ipv1_i80sF #) ->
+      case GHC.Prim.writeMutVar#
+             @ s_acBuB @ a_acBuC var#_i7IB3 (f_acBtC ipv1_i80sF) ipv_i80sE
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (# s2#_i7IBe, GHC.Tuple.() #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+modifySTRef :: forall s a. STRef s a -> (a -> a) -> ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.STRef.modifySTRef1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <STRef s a>_R
+                       ->_R <a -> a>_R
+                       ->_R Sym (GHC.ST.N:ST[0] <s>_N <()>_R)
+                       :: (forall s a. STRef s a -> (a -> a) -> STRep s () :: *)
+                          ~R# (forall s a. STRef s a -> (a -> a) -> ST s () :: *))}]
+modifySTRef
+  = Data.STRef.modifySTRef1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <STRef s a>_R
+            ->_R <a -> a>_R
+            ->_R Sym (GHC.ST.N:ST[0] <s>_N <()>_R)
+            :: (forall s a. STRef s a -> (a -> a) -> STRep s () :: *)
+               ~R# (forall s a. STRef s a -> (a -> a) -> ST s () :: *))
+
+-- RHS size: {terms: 26, types: 42, coercions: 0, joins: 0/0}
+Data.STRef.modifySTRef'1
+  :: forall s a.
+     STRef s a
+     -> (a -> a) -> GHC.Prim.State# s -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acBuh)
+                 (@ a_acBui)
+                 (ref_acBtD [Occ=Once!] :: STRef s_acBuh a_acBui)
+                 (f_acBtE [Occ=Once!] :: a_acBui -> a_acBui)
+                 (s1_i80sB [Occ=Once] :: GHC.Prim.State# s_acBuh) ->
+                 case ref_acBtD of { STRef var#_i7IB3 ->
+                 case GHC.Prim.readMutVar# @ s_acBuh @ a_acBui var#_i7IB3 s1_i80sB
+                 of
+                 { (# ipv_i80sE [Occ=Once], ipv1_i80sF [Occ=Once] #) ->
+                 case f_acBtE ipv1_i80sF of x'_acBtG { __DEFAULT ->
+                 case GHC.Prim.writeMutVar#
+                        @ s_acBuh @ a_acBui var#_i7IB3 x'_acBtG ipv_i80sE
+                 of s2#_i7IBe
+                 { __DEFAULT ->
+                 (# s2#_i7IBe, GHC.Tuple.() #)
+                 }
+                 }
+                 }
+                 }}]
+Data.STRef.modifySTRef'1
+  = \ (@ s_acBuh)
+      (@ a_acBui)
+      (ref_acBtD :: STRef s_acBuh a_acBui)
+      (f_acBtE :: a_acBui -> a_acBui)
+      (s1_i80sB :: GHC.Prim.State# s_acBuh) ->
+      case ref_acBtD of { STRef var#_i7IB3 ->
+      case GHC.Prim.readMutVar# @ s_acBuh @ a_acBui var#_i7IB3 s1_i80sB
+      of
+      { (# ipv_i80sE, ipv1_i80sF #) ->
+      case f_acBtE ipv1_i80sF of x'_acBtG { __DEFAULT ->
+      case GHC.Prim.writeMutVar#
+             @ s_acBuh @ a_acBui var#_i7IB3 x'_acBtG ipv_i80sE
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (# s2#_i7IBe, GHC.Tuple.() #)
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+modifySTRef' :: forall s a. STRef s a -> (a -> a) -> ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(S),1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.STRef.modifySTRef'1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <STRef s a>_R
+                       ->_R <a -> a>_R
+                       ->_R Sym (GHC.ST.N:ST[0] <s>_N <()>_R)
+                       :: (forall s a. STRef s a -> (a -> a) -> STRep s () :: *)
+                          ~R# (forall s a. STRef s a -> (a -> a) -> ST s () :: *))}]
+modifySTRef'
+  = Data.STRef.modifySTRef'1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <STRef s a>_R
+            ->_R <a -> a>_R
+            ->_R Sym (GHC.ST.N:ST[0] <s>_N <()>_R)
+            :: (forall s a. STRef s a -> (a -> a) -> STRep s () :: *)
+               ~R# (forall s a. STRef s a -> (a -> a) -> ST s () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.STRef.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.STRef.$trModule3 = GHC.Types.TrNameS Data.STRef.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.STRef.$trModule2 = "Data.STRef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.STRef.$trModule1 = GHC.Types.TrNameS Data.STRef.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.STRef.$trModule
+  = GHC.Types.Module Data.STRef.$trModule3 Data.STRef.$trModule1
+
+

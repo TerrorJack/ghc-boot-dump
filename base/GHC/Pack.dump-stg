@@ -1,0 +1,1124 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:59:02.307625117 UTC
+
+GHC.Pack.unpackCString
+  :: forall a. GHC.Ptr.Ptr a -> [GHC.Types.Char]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [a1_s49ua]
+        case a1_s49ua of {
+          GHC.Ptr.Ptr addr_s49uc ->
+              case eqAddr# [addr_s49uc __NULL] of {
+                __DEFAULT -> GHC.CString.unpackCString# addr_s49uc;
+                1# -> [] [];
+              };
+        };
+
+GHC.Pack.$wfill_in [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall s.
+     GHC.Prim.MutableByteArray# s
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_s49ue w_s49uf w1_s49ug w2_s49uh]
+        case w1_s49ug of {
+          [] ->
+              case
+                  writeCharArray# [ww_s49ue w_s49uf '\NUL'# w2_s49uh]
+              of
+              s2#_s49uj
+              { __DEFAULT -> (#,#) [s2#_s49uj GHC.Tuple.()];
+              };
+          : ds_s49uk [Occ=Once!] cs_s49ul [Occ=Once] ->
+              case ds_s49uk of {
+                GHC.Types.C# c_s49un [Occ=Once] ->
+                    case
+                        writeCharArray# [ww_s49ue w_s49uf c_s49un w2_s49uh]
+                    of
+                    s2#_s49uo
+                    { __DEFAULT ->
+                          case +# [w_s49uf 1#] of sat_s49up {
+                            __DEFAULT ->
+                                GHC.Pack.$wfill_in ww_s49ue sat_s49up cs_s49ul s2#_s49uo;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.packCString#1 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Pack.packCString# :: [GHC.Types.Char] -> GHC.Prim.ByteArray#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [str_s49uq]
+        case GHC.List.$wlenAcc str_s49uq 0# of ww2_s49ur {
+          __DEFAULT ->
+              case +# [ww2_s49ur 1#] of sat_s49us {
+                __DEFAULT ->
+                    case
+                        case newByteArray# [sat_s49us GHC.Prim.realWorld#] of {
+                          (#,#) ipv_s49uu [Occ=Once] ipv1_s49uv ->
+                              case GHC.Pack.$wfill_in ipv1_s49uv 0# str_s49uq ipv_s49uu of {
+                                (#,#) ipv2_s49ux [Occ=Once] _ [Occ=Dead] ->
+                                    case unsafeFreezeByteArray# [ipv1_s49uv ipv2_s49ux] of {
+                                      (#,#) ipv4_s49uA [Occ=Once] ipv5_s49uB [Occ=Once] ->
+                                          let {
+                                            sat_s49uC [Occ=Once] :: GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Types.I#! [ww2_s49ur]; } in
+                                          let {
+                                            sat_s49uD [Occ=Once] :: GHC.Pack.ByteArray GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Pack.ByteArray! [GHC.Pack.packCString#1
+                                                                          sat_s49uC
+                                                                          ipv5_s49uB];
+                                          } in  (#,#) [ipv4_s49uA sat_s49uD];
+                                    };
+                              };
+                        }
+                    of
+                    { (#,#) _ [Occ=Dead] ipv1_s49uG [Occ=Once!] ->
+                          case ipv1_s49uG of {
+                            GHC.Pack.ByteArray _ [Occ=Dead]
+                                               _ [Occ=Dead]
+                                               bytes_s49uK [Occ=Once] ->
+                                bytes_s49uK;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Pack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule4];
+
+GHC.Pack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Pack"#;
+
+GHC.Pack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule2];
+
+GHC.Pack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Pack.$trModule3
+                                     GHC.Pack.$trModule1];
+
+$krep_r49tW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r49tX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r49tY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+$krep3_r49tZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX GHC.Types.[]];
+
+$krep4_r49u0 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableByteArray#
+                                              $krep3_r49tZ];
+
+GHC.Pack.$tcByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ByteArray"#;
+
+GHC.Pack.$tcByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcByteArray2];
+
+GHC.Pack.$tcByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6611072354126638117##
+                                    11678736345727892353##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcByteArray1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_r49u1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcByteArray
+                                              $krep3_r49tZ];
+
+$krep6_r49u2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r49tY $krep5_r49u1];
+
+$krep7_r49u3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep6_r49u2];
+
+GHC.Pack.$tc'ByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep7_r49u3];
+
+GHC.Pack.$tc'ByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ByteArray"#;
+
+GHC.Pack.$tc'ByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'ByteArray3];
+
+GHC.Pack.$tc'ByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11073751302644004223##
+                                    16492867229169068973##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'ByteArray2
+                                    1#
+                                    GHC.Pack.$tc'ByteArray1];
+
+GHC.Pack.$tcMutableByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MutableByteArray"#;
+
+GHC.Pack.$tcMutableByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcMutableByteArray2];
+
+GHC.Pack.$tcMutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10421317957223969791##
+                                    16976841683708620350##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcMutableByteArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep8_r49u4 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r49tW GHC.Types.[]];
+
+$krep9_r49u5 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX $krep8_r49u4];
+
+$krep10_r49u6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcMutableByteArray
+                                              $krep9_r49u5];
+
+$krep11_r49u7 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r49u0 $krep10_r49u6];
+
+$krep12_r49u8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep11_r49u7];
+
+GHC.Pack.$tc'MutableByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep12_r49u8];
+
+GHC.Pack.$tc'MutableByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MutableByteArray"#;
+
+GHC.Pack.$tc'MutableByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'MutableByteArray3];
+
+GHC.Pack.$tc'MutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4727910943669758619##
+                                    1938961805888617932##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'MutableByteArray2
+                                    2#
+                                    GHC.Pack.$tc'MutableByteArray1];
+
+GHC.Pack.MutableByteArray
+  :: forall s ix.
+     ix
+     -> ix
+     -> GHC.Prim.MutableByteArray# s
+     -> GHC.Pack.MutableByteArray s ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.MutableByteArray [eta_B3 eta_B2 eta_B1];
+
+GHC.Pack.ByteArray
+  :: forall ix.
+     ix -> ix -> GHC.Prim.ByteArray# -> GHC.Pack.ByteArray ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.ByteArray [eta_B3 eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:59:02.312481996 UTC
+
+GHC.Pack.unpackCString
+  :: forall a. GHC.Ptr.Ptr a -> [GHC.Types.Char]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [a1_s49ua]
+        case a1_s49ua of {
+          GHC.Ptr.Ptr addr_s49uc ->
+              case eqAddr# [addr_s49uc __NULL] of {
+                __DEFAULT -> GHC.CString.unpackCString# addr_s49uc;
+                1# -> [] [];
+              };
+        };
+
+GHC.Pack.$wfill_in [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall s.
+     GHC.Prim.MutableByteArray# s
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_s49ue w_s49uf w1_s49ug void_0E]
+        case w1_s49ug of {
+          [] ->
+              case
+                  writeCharArray# [ww_s49ue w_s49uf '\NUL'# GHC.Prim.void#]
+              of
+              s2#_s49uj
+              { (##) -> Unit# [GHC.Tuple.()];
+              };
+          : ds_s49uk [Occ=Once!] cs_s49ul [Occ=Once] ->
+              case ds_s49uk of {
+                GHC.Types.C# c_s49un [Occ=Once] ->
+                    case
+                        writeCharArray# [ww_s49ue w_s49uf c_s49un GHC.Prim.void#]
+                    of
+                    s2#_s49uo
+                    { (##) ->
+                          case +# [w_s49uf 1#] of sat_s49up {
+                            __DEFAULT ->
+                                GHC.Pack.$wfill_in ww_s49ue sat_s49up cs_s49ul GHC.Prim.void#;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.packCString#1 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Pack.packCString# :: [GHC.Types.Char] -> GHC.Prim.ByteArray#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [str_s49uq]
+        case GHC.List.$wlenAcc str_s49uq 0# of ww2_s49ur {
+          __DEFAULT ->
+              case +# [ww2_s49ur 1#] of sat_s49us {
+                __DEFAULT ->
+                    case
+                        case newByteArray# [sat_s49us GHC.Prim.realWorld#] of {
+                          Unit# ipv1_s49uv ->
+                              case GHC.Pack.$wfill_in ipv1_s49uv 0# str_s49uq GHC.Prim.void# of {
+                                Unit# _ [Occ=Dead] ->
+                                    case unsafeFreezeByteArray# [ipv1_s49uv GHC.Prim.void#] of {
+                                      Unit# ipv5_s49uB [Occ=Once] ->
+                                          let {
+                                            sat_s49uC [Occ=Once] :: GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Types.I#! [ww2_s49ur]; } in
+                                          let {
+                                            sat_s49uD [Occ=Once] :: GHC.Pack.ByteArray GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Pack.ByteArray! [GHC.Pack.packCString#1
+                                                                          sat_s49uC
+                                                                          ipv5_s49uB];
+                                          } in  Unit# [sat_s49uD];
+                                    };
+                              };
+                        }
+                    of
+                    { Unit# ipv1_s49uG [Occ=Once!] ->
+                          case ipv1_s49uG of {
+                            GHC.Pack.ByteArray _ [Occ=Dead]
+                                               _ [Occ=Dead]
+                                               bytes_s49uK [Occ=Once] ->
+                                bytes_s49uK;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Pack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule4];
+
+GHC.Pack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Pack"#;
+
+GHC.Pack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule2];
+
+GHC.Pack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Pack.$trModule3
+                                     GHC.Pack.$trModule1];
+
+$krep_r49tW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r49tX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r49tY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+$krep3_r49tZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX GHC.Types.[]];
+
+$krep4_r49u0 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableByteArray#
+                                              $krep3_r49tZ];
+
+GHC.Pack.$tcByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ByteArray"#;
+
+GHC.Pack.$tcByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcByteArray2];
+
+GHC.Pack.$tcByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6611072354126638117##
+                                    11678736345727892353##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcByteArray1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_r49u1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcByteArray
+                                              $krep3_r49tZ];
+
+$krep6_r49u2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r49tY $krep5_r49u1];
+
+$krep7_r49u3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep6_r49u2];
+
+GHC.Pack.$tc'ByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep7_r49u3];
+
+GHC.Pack.$tc'ByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ByteArray"#;
+
+GHC.Pack.$tc'ByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'ByteArray3];
+
+GHC.Pack.$tc'ByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11073751302644004223##
+                                    16492867229169068973##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'ByteArray2
+                                    1#
+                                    GHC.Pack.$tc'ByteArray1];
+
+GHC.Pack.$tcMutableByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MutableByteArray"#;
+
+GHC.Pack.$tcMutableByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcMutableByteArray2];
+
+GHC.Pack.$tcMutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10421317957223969791##
+                                    16976841683708620350##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcMutableByteArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep8_r49u4 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r49tW GHC.Types.[]];
+
+$krep9_r49u5 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX $krep8_r49u4];
+
+$krep10_r49u6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcMutableByteArray
+                                              $krep9_r49u5];
+
+$krep11_r49u7 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r49u0 $krep10_r49u6];
+
+$krep12_r49u8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep11_r49u7];
+
+GHC.Pack.$tc'MutableByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep12_r49u8];
+
+GHC.Pack.$tc'MutableByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MutableByteArray"#;
+
+GHC.Pack.$tc'MutableByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'MutableByteArray3];
+
+GHC.Pack.$tc'MutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4727910943669758619##
+                                    1938961805888617932##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'MutableByteArray2
+                                    2#
+                                    GHC.Pack.$tc'MutableByteArray1];
+
+GHC.Pack.MutableByteArray
+  :: forall s ix.
+     ix
+     -> ix
+     -> GHC.Prim.MutableByteArray# s
+     -> GHC.Pack.MutableByteArray s ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.MutableByteArray [eta_B3 eta_B2 eta_B1];
+
+GHC.Pack.ByteArray
+  :: forall ix.
+     ix -> ix -> GHC.Prim.ByteArray# -> GHC.Pack.ByteArray ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.ByteArray [eta_B3 eta_B2 eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:59:02.713962808 UTC
+
+GHC.Pack.unpackCString
+  :: forall a. GHC.Ptr.Ptr a -> [GHC.Types.Char]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [a1_s49BU]
+        case a1_s49BU of {
+          GHC.Ptr.Ptr addr_s49BW ->
+              case eqAddr# [addr_s49BW __NULL] of {
+                __DEFAULT -> GHC.CString.unpackCString# addr_s49BW;
+                1# -> [] [];
+              };
+        };
+
+GHC.Pack.$wfill_in [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall s.
+     GHC.Prim.MutableByteArray# s
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_s49BY w_s49BZ w1_s49C0 w2_s49C1]
+        case w1_s49C0 of {
+          [] ->
+              case
+                  writeCharArray# [ww_s49BY w_s49BZ '\NUL'# w2_s49C1]
+              of
+              s2#_s49C3
+              { __DEFAULT -> (#,#) [s2#_s49C3 GHC.Tuple.()];
+              };
+          : ds_s49C4 [Occ=Once!] cs_s49C5 [Occ=Once] ->
+              case ds_s49C4 of {
+                GHC.Types.C# c_s49C7 [Occ=Once] ->
+                    case
+                        writeCharArray# [ww_s49BY w_s49BZ c_s49C7 w2_s49C1]
+                    of
+                    s2#_s49C8
+                    { __DEFAULT ->
+                          case +# [w_s49BZ 1#] of sat_s49C9 {
+                            __DEFAULT ->
+                                GHC.Pack.$wfill_in ww_s49BY sat_s49C9 cs_s49C5 s2#_s49C8;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.packCString#1 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Pack.packCString# :: [GHC.Types.Char] -> GHC.Prim.ByteArray#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [str_s49Ca]
+        case GHC.List.$wlenAcc str_s49Ca 0# of ww2_s49Cb {
+          __DEFAULT ->
+              case +# [ww2_s49Cb 1#] of sat_s49Cc {
+                __DEFAULT ->
+                    case
+                        case newByteArray# [sat_s49Cc GHC.Prim.realWorld#] of {
+                          (#,#) ipv_s49Ce [Occ=Once] ipv1_s49Cf ->
+                              case GHC.Pack.$wfill_in ipv1_s49Cf 0# str_s49Ca ipv_s49Ce of {
+                                (#,#) ipv2_s49Ch [Occ=Once] _ [Occ=Dead] ->
+                                    case unsafeFreezeByteArray# [ipv1_s49Cf ipv2_s49Ch] of {
+                                      (#,#) ipv4_s49Ck [Occ=Once] ipv5_s49Cl [Occ=Once] ->
+                                          let {
+                                            sat_s49Cm [Occ=Once] :: GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Types.I#! [ww2_s49Cb]; } in
+                                          let {
+                                            sat_s49Cn [Occ=Once] :: GHC.Pack.ByteArray GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Pack.ByteArray! [GHC.Pack.packCString#1
+                                                                          sat_s49Cm
+                                                                          ipv5_s49Cl];
+                                          } in  (#,#) [ipv4_s49Ck sat_s49Cn];
+                                    };
+                              };
+                        }
+                    of
+                    { (#,#) _ [Occ=Dead] ipv1_s49Cq [Occ=Once!] ->
+                          case ipv1_s49Cq of {
+                            GHC.Pack.ByteArray _ [Occ=Dead]
+                                               _ [Occ=Dead]
+                                               bytes_s49Cu [Occ=Once] ->
+                                bytes_s49Cu;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Pack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule4];
+
+GHC.Pack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Pack"#;
+
+GHC.Pack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule2];
+
+GHC.Pack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Pack.$trModule3
+                                     GHC.Pack.$trModule1];
+
+$krep_r49tW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r49tX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r49tY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+$krep3_r49tZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX GHC.Types.[]];
+
+$krep4_r49u0 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableByteArray#
+                                              $krep3_r49tZ];
+
+GHC.Pack.$tcByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ByteArray"#;
+
+GHC.Pack.$tcByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcByteArray2];
+
+GHC.Pack.$tcByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6611072354126638117##
+                                    11678736345727892353##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcByteArray1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_r49u1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcByteArray
+                                              $krep3_r49tZ];
+
+$krep6_r49u2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r49tY $krep5_r49u1];
+
+$krep7_r49u3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep6_r49u2];
+
+GHC.Pack.$tc'ByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep7_r49u3];
+
+GHC.Pack.$tc'ByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ByteArray"#;
+
+GHC.Pack.$tc'ByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'ByteArray3];
+
+GHC.Pack.$tc'ByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11073751302644004223##
+                                    16492867229169068973##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'ByteArray2
+                                    1#
+                                    GHC.Pack.$tc'ByteArray1];
+
+GHC.Pack.$tcMutableByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MutableByteArray"#;
+
+GHC.Pack.$tcMutableByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcMutableByteArray2];
+
+GHC.Pack.$tcMutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10421317957223969791##
+                                    16976841683708620350##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcMutableByteArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep8_r49u4 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r49tW GHC.Types.[]];
+
+$krep9_r49u5 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX $krep8_r49u4];
+
+$krep10_r49u6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcMutableByteArray
+                                              $krep9_r49u5];
+
+$krep11_r49u7 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r49u0 $krep10_r49u6];
+
+$krep12_r49u8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep11_r49u7];
+
+GHC.Pack.$tc'MutableByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep12_r49u8];
+
+GHC.Pack.$tc'MutableByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MutableByteArray"#;
+
+GHC.Pack.$tc'MutableByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'MutableByteArray3];
+
+GHC.Pack.$tc'MutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4727910943669758619##
+                                    1938961805888617932##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'MutableByteArray2
+                                    2#
+                                    GHC.Pack.$tc'MutableByteArray1];
+
+GHC.Pack.MutableByteArray
+  :: forall s ix.
+     ix
+     -> ix
+     -> GHC.Prim.MutableByteArray# s
+     -> GHC.Pack.MutableByteArray s ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.MutableByteArray [eta_B3 eta_B2 eta_B1];
+
+GHC.Pack.ByteArray
+  :: forall ix.
+     ix -> ix -> GHC.Prim.ByteArray# -> GHC.Pack.ByteArray ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.ByteArray [eta_B3 eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:59:02.71827474 UTC
+
+GHC.Pack.unpackCString
+  :: forall a. GHC.Ptr.Ptr a -> [GHC.Types.Char]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [a1_s49BU]
+        case a1_s49BU of {
+          GHC.Ptr.Ptr addr_s49BW ->
+              case eqAddr# [addr_s49BW __NULL] of {
+                __DEFAULT -> GHC.CString.unpackCString# addr_s49BW;
+                1# -> [] [];
+              };
+        };
+
+GHC.Pack.$wfill_in [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall s.
+     GHC.Prim.MutableByteArray# s
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# s
+     -> (# GHC.Prim.State# s, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_s49BY w_s49BZ w1_s49C0 void_0E]
+        case w1_s49C0 of {
+          [] ->
+              case
+                  writeCharArray# [ww_s49BY w_s49BZ '\NUL'# GHC.Prim.void#]
+              of
+              s2#_s49C3
+              { (##) -> Unit# [GHC.Tuple.()];
+              };
+          : ds_s49C4 [Occ=Once!] cs_s49C5 [Occ=Once] ->
+              case ds_s49C4 of {
+                GHC.Types.C# c_s49C7 [Occ=Once] ->
+                    case
+                        writeCharArray# [ww_s49BY w_s49BZ c_s49C7 GHC.Prim.void#]
+                    of
+                    s2#_s49C8
+                    { (##) ->
+                          case +# [w_s49BZ 1#] of sat_s49C9 {
+                            __DEFAULT ->
+                                GHC.Pack.$wfill_in ww_s49BY sat_s49C9 cs_s49C5 GHC.Prim.void#;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.packCString#1 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Pack.packCString# :: [GHC.Types.Char] -> GHC.Prim.ByteArray#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [str_s49Ca]
+        case GHC.List.$wlenAcc str_s49Ca 0# of ww2_s49Cb {
+          __DEFAULT ->
+              case +# [ww2_s49Cb 1#] of sat_s49Cc {
+                __DEFAULT ->
+                    case
+                        case newByteArray# [sat_s49Cc GHC.Prim.realWorld#] of {
+                          Unit# ipv1_s49Cf ->
+                              case GHC.Pack.$wfill_in ipv1_s49Cf 0# str_s49Ca GHC.Prim.void# of {
+                                Unit# _ [Occ=Dead] ->
+                                    case unsafeFreezeByteArray# [ipv1_s49Cf GHC.Prim.void#] of {
+                                      Unit# ipv5_s49Cl [Occ=Once] ->
+                                          let {
+                                            sat_s49Cm [Occ=Once] :: GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Types.I#! [ww2_s49Cb]; } in
+                                          let {
+                                            sat_s49Cn [Occ=Once] :: GHC.Pack.ByteArray GHC.Types.Int
+                                            [LclId] =
+                                                CCCS GHC.Pack.ByteArray! [GHC.Pack.packCString#1
+                                                                          sat_s49Cm
+                                                                          ipv5_s49Cl];
+                                          } in  Unit# [sat_s49Cn];
+                                    };
+                              };
+                        }
+                    of
+                    { Unit# ipv1_s49Cq [Occ=Once!] ->
+                          case ipv1_s49Cq of {
+                            GHC.Pack.ByteArray _ [Occ=Dead]
+                                               _ [Occ=Dead]
+                                               bytes_s49Cu [Occ=Once] ->
+                                bytes_s49Cu;
+                          };
+                    };
+              };
+        };
+
+GHC.Pack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Pack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule4];
+
+GHC.Pack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Pack"#;
+
+GHC.Pack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$trModule2];
+
+GHC.Pack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Pack.$trModule3
+                                     GHC.Pack.$trModule1];
+
+$krep_r49tW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r49tX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep2_r49tY :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcByteArray#
+                                              GHC.Types.[]];
+
+$krep3_r49tZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX GHC.Types.[]];
+
+$krep4_r49u0 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcMutableByteArray#
+                                              $krep3_r49tZ];
+
+GHC.Pack.$tcByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ByteArray"#;
+
+GHC.Pack.$tcByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcByteArray2];
+
+GHC.Pack.$tcByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6611072354126638117##
+                                    11678736345727892353##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcByteArray1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep5_r49u1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcByteArray
+                                              $krep3_r49tZ];
+
+$krep6_r49u2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r49tY $krep5_r49u1];
+
+$krep7_r49u3 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep6_r49u2];
+
+GHC.Pack.$tc'ByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep1_r49tX $krep7_r49u3];
+
+GHC.Pack.$tc'ByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ByteArray"#;
+
+GHC.Pack.$tc'ByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'ByteArray3];
+
+GHC.Pack.$tc'ByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11073751302644004223##
+                                    16492867229169068973##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'ByteArray2
+                                    1#
+                                    GHC.Pack.$tc'ByteArray1];
+
+GHC.Pack.$tcMutableByteArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MutableByteArray"#;
+
+GHC.Pack.$tcMutableByteArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tcMutableByteArray2];
+
+GHC.Pack.$tcMutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10421317957223969791##
+                                    16976841683708620350##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tcMutableByteArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep8_r49u4 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r49tW GHC.Types.[]];
+
+$krep9_r49u5 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r49tX $krep8_r49u4];
+
+$krep10_r49u6 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Pack.$tcMutableByteArray
+                                              $krep9_r49u5];
+
+$krep11_r49u7 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_r49u0 $krep10_r49u6];
+
+$krep12_r49u8 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep11_r49u7];
+
+GHC.Pack.$tc'MutableByteArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r49tW $krep12_r49u8];
+
+GHC.Pack.$tc'MutableByteArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'MutableByteArray"#;
+
+GHC.Pack.$tc'MutableByteArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Pack.$tc'MutableByteArray3];
+
+GHC.Pack.$tc'MutableByteArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4727910943669758619##
+                                    1938961805888617932##
+                                    GHC.Pack.$trModule
+                                    GHC.Pack.$tc'MutableByteArray2
+                                    2#
+                                    GHC.Pack.$tc'MutableByteArray1];
+
+GHC.Pack.MutableByteArray
+  :: forall s ix.
+     ix
+     -> ix
+     -> GHC.Prim.MutableByteArray# s
+     -> GHC.Pack.MutableByteArray s ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.MutableByteArray [eta_B3 eta_B2 eta_B1];
+
+GHC.Pack.ByteArray
+  :: forall ix.
+     ix -> ix -> GHC.Prim.ByteArray# -> GHC.Pack.ByteArray ix
+[GblId[DataCon],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Pack.ByteArray [eta_B3 eta_B2 eta_B1];
+

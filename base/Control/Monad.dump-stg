@@ -1,0 +1,3328 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:00.610841548 UTC
+
+Control.Monad.guard
+  :: forall (f :: * -> *).
+     GHC.Base.Alternative f =>
+     GHC.Types.Bool -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(1*U(A,1*C1(U),A,A,A,A),1*U,A,A,A)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dAlternative_sc6QB eta_sc6QC]
+        case eta_sc6QC of {
+          GHC.Types.False -> GHC.Base.empty $dAlternative_sc6QB;
+          GHC.Types.True ->
+              case GHC.Base.$p1Alternative $dAlternative_sc6QB of sat_sc6QE {
+                __DEFAULT -> GHC.Base.pure sat_sc6QE GHC.Tuple.();
+              };
+        };
+
+Control.Monad.filterM [InlPrag=INLINE (sat-args=1)]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     (a -> m GHC.Types.Bool) -> [a] -> m [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6QF eta_sc6QG]
+        let {
+          z_sc6QH [Occ=OnceL] :: m_ac6uV [a_ac6uW]
+          [LclId] =
+              [$dApplicative_sc6QF] \u []
+                  GHC.Base.pure $dApplicative_sc6QF GHC.Types.[]; } in
+        let {
+          go_sc6QI [Occ=LoopBreaker] :: [a_ac6uW] -> m_ac6uV [a_ac6uW]
+          [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+              [$dApplicative_sc6QF eta_sc6QG z_sc6QH go_sc6QI] \r [ds_sc6QJ]
+                  case ds_sc6QJ of {
+                    [] -> z_sc6QH;
+                    : y_sc6QL ys_sc6QM [Occ=Once] ->
+                        let {
+                          sat_sc6QS [Occ=Once] :: m_ac6uV [a_ac6uW]
+                          [LclId] =
+                              [go_sc6QI ys_sc6QM] \u [] go_sc6QI ys_sc6QM; } in
+                        let {
+                          sat_sc6QR [Occ=Once] :: m_ac6uV GHC.Types.Bool
+                          [LclId] =
+                              [eta_sc6QG y_sc6QL] \u [] eta_sc6QG y_sc6QL; } in
+                        let {
+                          sat_sc6QQ [Occ=Once] :: GHC.Types.Bool -> [a_ac6uW] -> [a_ac6uW]
+                          [LclId] =
+                              [y_sc6QL] \r [flg_sc6QN eta1_sc6QO]
+                                  case flg_sc6QN of {
+                                    GHC.Types.False -> eta1_sc6QO;
+                                    GHC.Types.True -> : [y_sc6QL eta1_sc6QO];
+                                  };
+                        } in 
+                          GHC.Base.liftA2 $dApplicative_sc6QF sat_sc6QQ sat_sc6QR sat_sc6QS;
+                  };
+        } in  go_sc6QI;
+
+Control.Monad.>=>
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Monad m =>
+     (a -> m b) -> (b -> m c) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc6QT f_sc6QU g_sc6QV x_sc6QW]
+        let {
+          sat_sc6QX [Occ=Once] :: m_ac6uv b_ac6ux
+          [LclId] =
+              [f_sc6QU x_sc6QW] \u [] f_sc6QU x_sc6QW;
+        } in  GHC.Base.>>= $dMonad_sc6QT sat_sc6QX g_sc6QV;
+
+Control.Monad.<=<
+  :: forall (m :: * -> *) b c a.
+     GHC.Base.Monad m =>
+     (b -> m c) -> (a -> m b) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,U><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc6QY x_sc6QZ y_sc6R0 eta_sc6R1]
+        Control.Monad.>=> $dMonad_sc6QY y_sc6R0 x_sc6QZ eta_sc6R1;
+
+Control.Monad.forever [InlPrag=INLINE (sat-args=1)]
+  :: forall (f :: * -> *) a b. GHC.Base.Applicative f => f a -> f b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLLC(C(S))L),U(A,A,A,A,C(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6R2 a1_sc6R3]
+        let {
+          a'_sc6R4 [Occ=LoopBreaker] :: f_ac6ub b_ac6ud
+          [LclId] =
+              [$dApplicative_sc6R2 a1_sc6R3 a'_sc6R4] \u []
+                  GHC.Base.*> $dApplicative_sc6R2 a1_sc6R3 a'_sc6R4;
+        } in  a'_sc6R4;
+
+Control.Monad.mapAndUnzipM [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> m (b, c)) -> [a] -> m ([b], [c])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S(C(C(S))L)LLLLL),U(1*U(1*C1(C1(U)),A),1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6R5 eta_sc6R6 eta1_sc6R7]
+        let {
+          sat_sc6Rh [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+          [LclId] =
+              [$dApplicative_sc6R5 eta_sc6R6 eta1_sc6R7] \u []
+                  let {
+                    z_sc6R9 [Occ=OnceL] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId] =
+                        [$dApplicative_sc6R5] \u []
+                            GHC.Base.pure $dApplicative_sc6R5 GHC.Types.[]; } in
+                  let {
+                    go_sc6Ra [Occ=LoopBreaker]
+                      :: [a_ac6tQ] -> m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                        sat-only [$dApplicative_sc6R5
+                                  eta_sc6R6
+                                  z_sc6R9
+                                  go_sc6Ra] \r [ds_sc6Rb]
+                            case ds_sc6Rb of {
+                              [] -> z_sc6R9;
+                              : y_sc6Rd [Occ=Once] ys_sc6Re [Occ=Once] ->
+                                  let {
+                                    sat_sc6Rg [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                                    [LclId] =
+                                        [go_sc6Ra ys_sc6Re] \u [] go_sc6Ra ys_sc6Re; } in
+                                  let {
+                                    sat_sc6Rf [Occ=Once] :: m_ac6tP (b_ac6tR, c_ac6tS)
+                                    [LclId] =
+                                        [eta_sc6R6 y_sc6Rd] \u [] eta_sc6R6 y_sc6Rd;
+                                  } in 
+                                    GHC.Base.liftA2
+                                        $dApplicative_sc6R5 GHC.Types.: sat_sc6Rf sat_sc6Rg;
+                            };
+                  } in  go_sc6Ra eta1_sc6R7;
+        } in 
+          case GHC.Base.$p1Applicative $dApplicative_sc6R5 of sat_sc6R8 {
+            __DEFAULT -> GHC.Base.fmap sat_sc6R8 GHC.List.unzip sat_sc6Rh;
+          };
+
+Control.Monad.zipWithM [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m [c]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6Ri eta_sc6Rj eta1_sc6Rk eta2_sc6Rl]
+        let {
+          z_sc6Rm [Occ=OnceL*] :: m_ac6tA [c_ac6tD]
+          [LclId] =
+              [$dApplicative_sc6Ri] \u []
+                  GHC.Base.pure $dApplicative_sc6Ri GHC.Types.[]; } in
+        let {
+          go2_sc6Rn [Occ=LoopBreaker]
+            :: [a_ac6tB] -> [b_ac6tC] -> m_ac6tA [c_ac6tD]
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc6Ri
+                        eta_sc6Rj
+                        z_sc6Rm
+                        go2_sc6Rn] \r [ds_sc6Ro _ys_sc6Rp]
+                  case ds_sc6Ro of {
+                    [] -> z_sc6Rm;
+                    : ipv_sc6Rr [Occ=Once] ipv1_sc6Rs [Occ=Once] ->
+                        case _ys_sc6Rp of {
+                          [] -> z_sc6Rm;
+                          : ipv2_sc6Ru [Occ=Once] ipv3_sc6Rv [Occ=Once] ->
+                              let {
+                                sat_sc6Rx [Occ=Once] :: m_ac6tA [c_ac6tD]
+                                [LclId] =
+                                    [go2_sc6Rn ipv1_sc6Rs ipv3_sc6Rv] \u []
+                                        go2_sc6Rn ipv1_sc6Rs ipv3_sc6Rv; } in
+                              let {
+                                sat_sc6Rw [Occ=Once] :: m_ac6tA c_ac6tD
+                                [LclId] =
+                                    [eta_sc6Rj ipv_sc6Rr ipv2_sc6Ru] \u []
+                                        eta_sc6Rj ipv_sc6Rr ipv2_sc6Ru;
+                              } in 
+                                GHC.Base.liftA2
+                                    $dApplicative_sc6Ri GHC.Types.: sat_sc6Rw sat_sc6Rx;
+                        };
+                  };
+        } in  go2_sc6Rn eta1_sc6Rk eta2_sc6Rl;
+
+Control.Monad.zipWithM_ [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6Ry eta_sc6Rz eta1_sc6RA eta2_sc6RB]
+        let {
+          z_sc6RC [Occ=OnceL*] :: m_ac6th ()
+          [LclId] =
+              [$dApplicative_sc6Ry] \u []
+                  GHC.Base.pure $dApplicative_sc6Ry GHC.Tuple.(); } in
+        let {
+          go2_sc6RD [Occ=LoopBreaker] :: [a_ac6ti] -> [b_ac6tj] -> m_ac6th ()
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc6Ry
+                        eta_sc6Rz
+                        z_sc6RC
+                        go2_sc6RD] \r [ds_sc6RE _ys_sc6RF]
+                  case ds_sc6RE of {
+                    [] -> z_sc6RC;
+                    : ipv_sc6RH [Occ=Once] ipv1_sc6RI [Occ=Once] ->
+                        case _ys_sc6RF of {
+                          [] -> z_sc6RC;
+                          : ipv2_sc6RK [Occ=Once] ipv3_sc6RL [Occ=Once] ->
+                              let {
+                                sat_sc6RN [Occ=Once] :: m_ac6th ()
+                                [LclId] =
+                                    [go2_sc6RD ipv1_sc6RI ipv3_sc6RL] \u []
+                                        go2_sc6RD ipv1_sc6RI ipv3_sc6RL; } in
+                              let {
+                                sat_sc6RM [Occ=Once] :: m_ac6th c_ac6tk
+                                [LclId] =
+                                    [eta_sc6Rz ipv_sc6RH ipv2_sc6RK] \u []
+                                        eta_sc6Rz ipv_sc6RH ipv2_sc6RK;
+                              } in  GHC.Base.*> $dApplicative_sc6Ry sat_sc6RM sat_sc6RN;
+                        };
+                  };
+        } in  go2_sc6RD eta1_sc6RA eta2_sc6RB;
+
+Control.Monad.foldM_$sfoldM [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6RO z0_sc6RP xs_sc6RQ]
+        let-no-escape {
+          go_sc6RR [Occ=LoopBreakerT[2]]
+            :: [b_ac6t9] -> a_ac6t8 -> GHC.Base.Maybe a_ac6t8
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc6RO go_sc6RR] \r [ds_sc6RS eta_sc6RT]
+                  case ds_sc6RS of {
+                    [] -> GHC.Base.Just [eta_sc6RT];
+                    : y_sc6RV [Occ=Once] ys_sc6RW [Occ=Once] ->
+                        case f_sc6RO eta_sc6RT y_sc6RV of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc6RY [Occ=Once] -> go_sc6RR ys_sc6RW x_sc6RY;
+                        };
+                  };
+        } in  go_sc6RR xs_sc6RQ z0_sc6RP;
+
+Control.Monad.foldM1
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6RZ z0_sc6S0 xs_sc6S1 eta_sc6S2]
+        let-no-escape {
+          go_sc6S3 [Occ=LoopBreakerT[3]]
+            :: [b_ac6sD]
+               -> a_ac6sC
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_ac6sC #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc6RZ go_sc6S3] \r [ds_sc6S4 eta1_sc6S5 eta2_sc6S6]
+                  case ds_sc6S4 of {
+                    [] -> (#,#) [eta2_sc6S6 eta1_sc6S5];
+                    : y_sc6S8 [Occ=Once] ys_sc6S9 [Occ=Once] ->
+                        case f_sc6RZ eta1_sc6S5 y_sc6S8 eta2_sc6S6 of {
+                          (#,#) ipv_sc6Sb [Occ=Once] ipv1_sc6Sc [Occ=Once] ->
+                              go_sc6S3 ys_sc6S9 ipv1_sc6Sc ipv_sc6Sb;
+                        };
+                  };
+        } in  go_sc6S3 xs_sc6S1 z0_sc6S0 eta_sc6S2;
+
+Control.Monad.foldM_$sfoldM1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Control.Monad.foldM1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))LLLLLLLLLLLLL),1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 eta_B1]
+        Data.Foldable.foldlM eta_B5 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM_1 :: GHC.Base.Maybe ()
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Tuple.()];
+
+Control.Monad.foldM__$sfoldM_ [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6Sd a1_sc6Se xs_sc6Sf]
+        let-no-escape {
+          go_sc6Sg [Occ=LoopBreakerT[2]]
+            :: [b_ac6rT] -> a_ac6rS -> GHC.Base.Maybe ()
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc6Sd go_sc6Sg] \r [ds_sc6Sh eta_sc6Si]
+                  case ds_sc6Sh of {
+                    [] -> Control.Monad.foldM_1;
+                    : y_sc6Sk [Occ=Once] ys_sc6Sl [Occ=Once] ->
+                        case f_sc6Sd eta_sc6Si y_sc6Sk of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc6Sn [Occ=Once] -> go_sc6Sg ys_sc6Sl x_sc6Sn;
+                        };
+                  };
+        } in  go_sc6Sg xs_sc6Sf a1_sc6Se;
+
+Control.Monad.foldM_2
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6So a1_sc6Sp xs_sc6Sq s_sc6Sr]
+        let-no-escape {
+          go_sc6Ss [Occ=LoopBreakerT[3]]
+            :: [b_ac6rn]
+               -> a_ac6rm
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc6So go_sc6Ss] \r [ds_sc6St eta_sc6Su eta1_sc6Sv]
+                  case ds_sc6St of {
+                    [] -> (#,#) [eta1_sc6Sv GHC.Tuple.()];
+                    : y_sc6Sx [Occ=Once] ys_sc6Sy [Occ=Once] ->
+                        case f_sc6So eta_sc6Su y_sc6Sx eta1_sc6Sv of {
+                          (#,#) ipv_sc6SA [Occ=Once] ipv1_sc6SB [Occ=Once] ->
+                              go_sc6Ss ys_sc6Sy ipv1_sc6SB ipv_sc6SA;
+                        };
+                  };
+        } in  go_sc6Ss xs_sc6Sq a1_sc6Sp s_sc6Sr;
+
+Control.Monad.foldM__$sfoldM_1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Control.Monad.foldM_2 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM_ [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><S(LLC(C(S))LL),U(A,C(C1(U)),1*C1(C1(U)),U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dFoldable_sc6SC $dMonad_sc6SD f_sc6SE a1_sc6SF xs_sc6SG]
+        let {
+          sat_sc6SI [Occ=Once] :: m_ac6qA ()
+          [LclId] =
+              [$dMonad_sc6SD] \u []
+                  GHC.Base.return $dMonad_sc6SD GHC.Tuple.(); } in
+        let {
+          sat_sc6SH [Occ=Once] :: m_ac6qA b_ac6qB
+          [LclId] =
+              [$dFoldable_sc6SC $dMonad_sc6SD f_sc6SE a1_sc6SF xs_sc6SG] \u []
+                  Data.Foldable.foldlM
+                      $dFoldable_sc6SC $dMonad_sc6SD f_sc6SE a1_sc6SF xs_sc6SG;
+        } in  GHC.Base.>> $dMonad_sc6SD sat_sc6SH sat_sc6SI;
+
+Control.Monad.<$!> [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b.
+     GHC.Base.Monad m =>
+     (a -> b) -> m a -> m b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc6SJ eta_sc6SK eta1_sc6SL]
+        let {
+          sat_sc6SO [Occ=Once] :: a_ac6mT -> m_ac6mS b_ac6mU
+          [LclId] =
+              [$dMonad_sc6SJ eta_sc6SK] \r [x_sc6SM]
+                  case eta_sc6SK x_sc6SM of z_sc6SN {
+                    __DEFAULT -> GHC.Base.return $dMonad_sc6SJ z_sc6SN;
+                  };
+        } in  GHC.Base.>>= $dMonad_sc6SJ eta1_sc6SL sat_sc6SO;
+
+Control.Monad.mfilter [InlPrag=INLINABLE]
+  :: forall (m :: * -> *) a.
+     GHC.Base.MonadPlus m =>
+     (a -> GHC.Types.Bool) -> m a -> m a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadPlus_sc6SP eta_sc6SQ eta1_sc6SR]
+        let {
+          lvl_sc6SS [Occ=OnceL] :: m_ac6mD a_ac6mE
+          [LclId] =
+              [$dMonadPlus_sc6SP] \u [] GHC.Base.mzero $dMonadPlus_sc6SP;
+        } in 
+          case
+              GHC.Base.$p2MonadPlus $dMonadPlus_sc6SP
+          of
+          $dMonad_sc6ST [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          { __DEFAULT ->
+                let {
+                  sat_sc6SW [Occ=Once] :: a_ac6mE -> m_ac6mD a_ac6mE
+                  [LclId] =
+                      [eta_sc6SQ lvl_sc6SS $dMonad_sc6ST] \r [a1_sc6SU]
+                          case eta_sc6SQ a1_sc6SU of {
+                            GHC.Types.False -> lvl_sc6SS;
+                            GHC.Types.True -> GHC.Base.return $dMonad_sc6ST a1_sc6SU;
+                          };
+                } in  GHC.Base.>>= $dMonad_sc6ST eta1_sc6SR sat_sc6SW;
+          };
+
+Control.Monad.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule4];
+
+Control.Monad.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad"#;
+
+Control.Monad.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule2];
+
+Control.Monad.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.$trModule3
+                                     Control.Monad.$trModule1];
+
+Control.Monad.unless_$sunless [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Base.Maybe () -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc6SX s_sc6SY]
+        case p_sc6SX of {
+          GHC.Types.False -> s_sc6SY;
+          GHC.Types.True -> Control.Monad.foldM_1;
+        };
+
+Control.Monad.replicateM__$sreplicateM_ [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc6T0 f_sc6T1]
+        case cnt0_sc6T0 of {
+          GHC.Types.I# ww1_sc6T3 [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc6T4 [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[1]]
+                  :: GHC.Prim.Int# -> GHC.Base.Maybe ()
+                [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc6T1 $wloop_sc6T4] \r [ww2_sc6T5]
+                        case <=# [ww2_sc6T5 0#] of {
+                          __DEFAULT ->
+                              case f_sc6T1 of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just _ [Occ=Dead] ->
+                                    case -# [ww2_sc6T5 1#] of sat_sc6T9 {
+                                      __DEFAULT -> $wloop_sc6T4 sat_sc6T9;
+                                    };
+                              };
+                          1# -> Control.Monad.foldM_1;
+                        };
+              } in  $wloop_sc6T4 ww1_sc6T3;
+        };
+
+Control.Monad.replicateM1 :: forall a. GHC.Base.Maybe [a]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Types.[]];
+
+Control.Monad.$w$sreplicateM [InlPrag=INLINABLE[0]]
+  :: forall a.
+     GHC.Prim.Int# -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [ww_sc6Ta w_sc6Tb]
+        let {
+          $wloop_sc6Tc [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> GHC.Base.Maybe [a_sc6Kb]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6Tb $wloop_sc6Tc] \r [ww1_sc6Td]
+                  case <=# [ww1_sc6Td 0#] of {
+                    __DEFAULT ->
+                        case w_sc6Tb of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc6Tg [Occ=Once] ->
+                              case -# [ww1_sc6Td 1#] of sat_sc6Th {
+                                __DEFAULT ->
+                                    case $wloop_sc6Tc sat_sc6Th of {
+                                      GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                      GHC.Base.Just y_sc6Tj [Occ=Once] ->
+                                          let {
+                                            sat_sc6Tk [Occ=Once] :: [a_sc6Kb]
+                                            [LclId] =
+                                                CCCS :! [x_sc6Tg y_sc6Tj];
+                                          } in  GHC.Base.Just [sat_sc6Tk];
+                                    };
+                              };
+                        };
+                    1# -> Control.Monad.replicateM1;
+                  };
+        } in  $wloop_sc6Tc ww_sc6Ta;
+
+Control.Monad.replicateM_$sreplicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Tl w1_sc6Tm]
+        case w_sc6Tl of {
+          GHC.Types.I# ww1_sc6To [Occ=Once] ->
+              Control.Monad.$w$sreplicateM ww1_sc6To w1_sc6Tm;
+        };
+
+Control.Monad.unless1
+  :: GHC.Types.Bool
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc6Tp s_sc6Tq eta_sc6Tr]
+        case p_sc6Tp of {
+          GHC.Types.False -> s_sc6Tq eta_sc6Tr;
+          GHC.Types.True -> (#,#) [eta_sc6Tr GHC.Tuple.()];
+        };
+
+Control.Monad.unless_$sunless1 [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Monad.unless1 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.unless [InlPrag=INLINABLE]
+  :: forall (f :: * -> *).
+     GHC.Base.Applicative f =>
+     GHC.Types.Bool -> f () -> f ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U),A,A,A,A)><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6Tt p_sc6Tu s_sc6Tv]
+        case p_sc6Tu of {
+          GHC.Types.False -> s_sc6Tv;
+          GHC.Types.True -> GHC.Base.pure $dApplicative_sc6Tt GHC.Tuple.();
+        };
+
+Control.Monad.replicateM_1
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc6Tx f_sc6Ty eta_sc6Tz]
+        case cnt0_sc6Tx of {
+          GHC.Types.I# ww1_sc6TB [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc6TC [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc6Ty $wloop_sc6TC] \r [ww2_sc6TD w_sc6TE]
+                        case <=# [ww2_sc6TD 0#] of {
+                          __DEFAULT ->
+                              case f_sc6Ty w_sc6TE of {
+                                (#,#) ipv_sc6TH [Occ=Once] _ [Occ=Dead] ->
+                                    case -# [ww2_sc6TD 1#] of sat_sc6TJ {
+                                      __DEFAULT -> $wloop_sc6TC sat_sc6TJ ipv_sc6TH;
+                                    };
+                              };
+                          1# -> (#,#) [w_sc6TE GHC.Tuple.()];
+                        };
+              } in  $wloop_sc6TC ww1_sc6TB eta_sc6Tz;
+        };
+
+Control.Monad.replicateM__$sreplicateM_1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Monad.replicateM_1 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.$wreplicateM_ [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6TK ww_sc6TL w1_sc6TM]
+        let {
+          lvl_sc6TN [Occ=OnceL] :: m_sc6Kw ()
+          [LclId] =
+              [w_sc6TK] \u [] GHC.Base.pure w_sc6TK GHC.Tuple.(); } in
+        let {
+          $wloop_sc6TO [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6Kw ()
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6TK w1_sc6TM lvl_sc6TN $wloop_sc6TO] \r [ww1_sc6TP]
+                  case <=# [ww1_sc6TP 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc6TS [Occ=Once] :: m_sc6Kw ()
+                          [LclId] =
+                              [$wloop_sc6TO ww1_sc6TP] \u []
+                                  case -# [ww1_sc6TP 1#] of sat_sc6TR {
+                                    __DEFAULT -> $wloop_sc6TO sat_sc6TR;
+                                  };
+                        } in  GHC.Base.*> w_sc6TK w1_sc6TM sat_sc6TS;
+                    1# -> lvl_sc6TN;
+                  };
+        } in  $wloop_sc6TO ww_sc6TL;
+
+Control.Monad.replicateM_ [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,A,C(C1(U)),A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6TT w1_sc6TU w2_sc6TV]
+        case w1_sc6TU of {
+          GHC.Types.I# ww1_sc6TX [Occ=Once] ->
+              Control.Monad.$wreplicateM_ w_sc6TT ww1_sc6TX w2_sc6TV;
+        };
+
+Control.Monad.$w$sreplicateM1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Int#
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sc6TY w_sc6TZ w1_sc6U0]
+        let {
+          $wloop_sc6U1 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int#
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a_sc6KN] #)
+          [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6TZ $wloop_sc6U1] \r [ww1_sc6U2 w2_sc6U3]
+                  case <=# [ww1_sc6U2 0#] of {
+                    __DEFAULT ->
+                        case w_sc6TZ w2_sc6U3 of {
+                          (#,#) ipv_sc6U6 [Occ=Once] ipv1_sc6U7 [Occ=Once] ->
+                              case -# [ww1_sc6U2 1#] of sat_sc6U8 {
+                                __DEFAULT ->
+                                    case $wloop_sc6U1 sat_sc6U8 ipv_sc6U6 of {
+                                      (#,#) ipv2_sc6Ua [Occ=Once] ipv3_sc6Ub [Occ=Once] ->
+                                          let {
+                                            sat_sc6Uc [Occ=Once] :: [a_sc6KN]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sc6U7 ipv3_sc6Ub];
+                                          } in  (#,#) [ipv2_sc6Ua sat_sc6Uc];
+                                    };
+                              };
+                        };
+                    1# -> (#,#) [w2_sc6U3 GHC.Types.[]];
+                  };
+        } in  $wloop_sc6U1 ww_sc6TY w1_sc6U0;
+
+Control.Monad.replicateM2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Ud w1_sc6Ue w2_sc6Uf]
+        case w_sc6Ud of {
+          GHC.Types.I# ww1_sc6Uh [Occ=Once] ->
+              Control.Monad.$w$sreplicateM1 ww1_sc6Uh w1_sc6Ue w2_sc6Uf;
+        };
+
+Control.Monad.replicateM_$sreplicateM1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Monad.replicateM2 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.$wreplicateM [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Ui ww_sc6Uj w1_sc6Uk]
+        let {
+          lvl_sc6Ul [Occ=OnceL] :: m_sc6L2 [a_sc6L3]
+          [LclId] =
+              [w_sc6Ui] \u [] GHC.Base.pure w_sc6Ui GHC.Types.[]; } in
+        let {
+          $wloop_sc6Um [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6L2 [a_sc6L3]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6Ui w1_sc6Uk lvl_sc6Ul $wloop_sc6Um] \r [ww1_sc6Un]
+                  case <=# [ww1_sc6Un 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc6Uq [Occ=Once] :: m_sc6L2 [a_sc6L3]
+                          [LclId] =
+                              [$wloop_sc6Um ww1_sc6Un] \u []
+                                  case -# [ww1_sc6Un 1#] of sat_sc6Up {
+                                    __DEFAULT -> $wloop_sc6Um sat_sc6Up;
+                                  };
+                        } in  GHC.Base.liftA2 w_sc6Ui GHC.Types.: w1_sc6Uk sat_sc6Uq;
+                    1# -> lvl_sc6Ul;
+                  };
+        } in  $wloop_sc6Um ww_sc6Uj;
+
+Control.Monad.replicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,C(C1(C1(U))),A,A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Ur w1_sc6Us w2_sc6Ut]
+        case w1_sc6Us of {
+          GHC.Types.I# ww1_sc6Uv [Occ=Once] ->
+              Control.Monad.$wreplicateM w_sc6Ur ww1_sc6Uv w2_sc6Ut;
+        };
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:00.625631767 UTC
+
+Control.Monad.guard
+  :: forall (f :: * -> *).
+     GHC.Base.Alternative f =>
+     GHC.Types.Bool -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(1*U(A,1*C1(U),A,A,A,A),1*U,A,A,A)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dAlternative_sc6QB eta_sc6QC]
+        case eta_sc6QC of {
+          GHC.Types.False -> GHC.Base.empty $dAlternative_sc6QB;
+          GHC.Types.True ->
+              case GHC.Base.$p1Alternative $dAlternative_sc6QB of sat_sc6QE {
+                __DEFAULT -> GHC.Base.pure sat_sc6QE GHC.Tuple.();
+              };
+        };
+
+Control.Monad.filterM [InlPrag=INLINE (sat-args=1)]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     (a -> m GHC.Types.Bool) -> [a] -> m [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6QF eta_sc6QG]
+        let {
+          z_sc6QH [Occ=OnceL] :: m_ac6uV [a_ac6uW]
+          [LclId] =
+              [$dApplicative_sc6QF] \u []
+                  GHC.Base.pure $dApplicative_sc6QF GHC.Types.[]; } in
+        let {
+          go_sc6QI [Occ=LoopBreaker] :: [a_ac6uW] -> m_ac6uV [a_ac6uW]
+          [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+              [$dApplicative_sc6QF eta_sc6QG z_sc6QH go_sc6QI] \r [ds_sc6QJ]
+                  case ds_sc6QJ of {
+                    [] -> z_sc6QH;
+                    : y_sc6QL ys_sc6QM [Occ=Once] ->
+                        let {
+                          sat_sc6QS [Occ=Once] :: m_ac6uV [a_ac6uW]
+                          [LclId] =
+                              [go_sc6QI ys_sc6QM] \u [] go_sc6QI ys_sc6QM; } in
+                        let {
+                          sat_sc6QR [Occ=Once] :: m_ac6uV GHC.Types.Bool
+                          [LclId] =
+                              [eta_sc6QG y_sc6QL] \u [] eta_sc6QG y_sc6QL; } in
+                        let {
+                          sat_sc6QQ [Occ=Once] :: GHC.Types.Bool -> [a_ac6uW] -> [a_ac6uW]
+                          [LclId] =
+                              [y_sc6QL] \r [flg_sc6QN eta1_sc6QO]
+                                  case flg_sc6QN of {
+                                    GHC.Types.False -> eta1_sc6QO;
+                                    GHC.Types.True -> : [y_sc6QL eta1_sc6QO];
+                                  };
+                        } in 
+                          GHC.Base.liftA2 $dApplicative_sc6QF sat_sc6QQ sat_sc6QR sat_sc6QS;
+                  };
+        } in  go_sc6QI;
+
+Control.Monad.>=>
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Monad m =>
+     (a -> m b) -> (b -> m c) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc6QT f_sc6QU g_sc6QV x_sc6QW]
+        let {
+          sat_sc6QX [Occ=Once] :: m_ac6uv b_ac6ux
+          [LclId] =
+              [f_sc6QU x_sc6QW] \u [] f_sc6QU x_sc6QW;
+        } in  GHC.Base.>>= $dMonad_sc6QT sat_sc6QX g_sc6QV;
+
+Control.Monad.<=<
+  :: forall (m :: * -> *) b c a.
+     GHC.Base.Monad m =>
+     (b -> m c) -> (a -> m b) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,U><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc6QY x_sc6QZ y_sc6R0 eta_sc6R1]
+        Control.Monad.>=> $dMonad_sc6QY y_sc6R0 x_sc6QZ eta_sc6R1;
+
+Control.Monad.forever [InlPrag=INLINE (sat-args=1)]
+  :: forall (f :: * -> *) a b. GHC.Base.Applicative f => f a -> f b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLLC(C(S))L),U(A,A,A,A,C(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6R2 a1_sc6R3]
+        let {
+          a'_sc6R4 [Occ=LoopBreaker] :: f_ac6ub b_ac6ud
+          [LclId] =
+              [$dApplicative_sc6R2 a1_sc6R3 a'_sc6R4] \u []
+                  GHC.Base.*> $dApplicative_sc6R2 a1_sc6R3 a'_sc6R4;
+        } in  a'_sc6R4;
+
+Control.Monad.mapAndUnzipM [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> m (b, c)) -> [a] -> m ([b], [c])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S(C(C(S))L)LLLLL),U(1*U(1*C1(C1(U)),A),1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6R5 eta_sc6R6 eta1_sc6R7]
+        let {
+          sat_sc6Rh [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+          [LclId] =
+              [$dApplicative_sc6R5 eta_sc6R6 eta1_sc6R7] \u []
+                  let {
+                    z_sc6R9 [Occ=OnceL] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId] =
+                        [$dApplicative_sc6R5] \u []
+                            GHC.Base.pure $dApplicative_sc6R5 GHC.Types.[]; } in
+                  let {
+                    go_sc6Ra [Occ=LoopBreaker]
+                      :: [a_ac6tQ] -> m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                        sat-only [$dApplicative_sc6R5
+                                  eta_sc6R6
+                                  z_sc6R9
+                                  go_sc6Ra] \r [ds_sc6Rb]
+                            case ds_sc6Rb of {
+                              [] -> z_sc6R9;
+                              : y_sc6Rd [Occ=Once] ys_sc6Re [Occ=Once] ->
+                                  let {
+                                    sat_sc6Rg [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                                    [LclId] =
+                                        [go_sc6Ra ys_sc6Re] \u [] go_sc6Ra ys_sc6Re; } in
+                                  let {
+                                    sat_sc6Rf [Occ=Once] :: m_ac6tP (b_ac6tR, c_ac6tS)
+                                    [LclId] =
+                                        [eta_sc6R6 y_sc6Rd] \u [] eta_sc6R6 y_sc6Rd;
+                                  } in 
+                                    GHC.Base.liftA2
+                                        $dApplicative_sc6R5 GHC.Types.: sat_sc6Rf sat_sc6Rg;
+                            };
+                  } in  go_sc6Ra eta1_sc6R7;
+        } in 
+          case GHC.Base.$p1Applicative $dApplicative_sc6R5 of sat_sc6R8 {
+            __DEFAULT -> GHC.Base.fmap sat_sc6R8 GHC.List.unzip sat_sc6Rh;
+          };
+
+Control.Monad.zipWithM [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m [c]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6Ri eta_sc6Rj eta1_sc6Rk eta2_sc6Rl]
+        let {
+          z_sc6Rm [Occ=OnceL*] :: m_ac6tA [c_ac6tD]
+          [LclId] =
+              [$dApplicative_sc6Ri] \u []
+                  GHC.Base.pure $dApplicative_sc6Ri GHC.Types.[]; } in
+        let {
+          go2_sc6Rn [Occ=LoopBreaker]
+            :: [a_ac6tB] -> [b_ac6tC] -> m_ac6tA [c_ac6tD]
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc6Ri
+                        eta_sc6Rj
+                        z_sc6Rm
+                        go2_sc6Rn] \r [ds_sc6Ro _ys_sc6Rp]
+                  case ds_sc6Ro of {
+                    [] -> z_sc6Rm;
+                    : ipv_sc6Rr [Occ=Once] ipv1_sc6Rs [Occ=Once] ->
+                        case _ys_sc6Rp of {
+                          [] -> z_sc6Rm;
+                          : ipv2_sc6Ru [Occ=Once] ipv3_sc6Rv [Occ=Once] ->
+                              let {
+                                sat_sc6Rx [Occ=Once] :: m_ac6tA [c_ac6tD]
+                                [LclId] =
+                                    [go2_sc6Rn ipv1_sc6Rs ipv3_sc6Rv] \u []
+                                        go2_sc6Rn ipv1_sc6Rs ipv3_sc6Rv; } in
+                              let {
+                                sat_sc6Rw [Occ=Once] :: m_ac6tA c_ac6tD
+                                [LclId] =
+                                    [eta_sc6Rj ipv_sc6Rr ipv2_sc6Ru] \u []
+                                        eta_sc6Rj ipv_sc6Rr ipv2_sc6Ru;
+                              } in 
+                                GHC.Base.liftA2
+                                    $dApplicative_sc6Ri GHC.Types.: sat_sc6Rw sat_sc6Rx;
+                        };
+                  };
+        } in  go2_sc6Rn eta1_sc6Rk eta2_sc6Rl;
+
+Control.Monad.zipWithM_ [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6Ry eta_sc6Rz eta1_sc6RA eta2_sc6RB]
+        let {
+          z_sc6RC [Occ=OnceL*] :: m_ac6th ()
+          [LclId] =
+              [$dApplicative_sc6Ry] \u []
+                  GHC.Base.pure $dApplicative_sc6Ry GHC.Tuple.(); } in
+        let {
+          go2_sc6RD [Occ=LoopBreaker] :: [a_ac6ti] -> [b_ac6tj] -> m_ac6th ()
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc6Ry
+                        eta_sc6Rz
+                        z_sc6RC
+                        go2_sc6RD] \r [ds_sc6RE _ys_sc6RF]
+                  case ds_sc6RE of {
+                    [] -> z_sc6RC;
+                    : ipv_sc6RH [Occ=Once] ipv1_sc6RI [Occ=Once] ->
+                        case _ys_sc6RF of {
+                          [] -> z_sc6RC;
+                          : ipv2_sc6RK [Occ=Once] ipv3_sc6RL [Occ=Once] ->
+                              let {
+                                sat_sc6RN [Occ=Once] :: m_ac6th ()
+                                [LclId] =
+                                    [go2_sc6RD ipv1_sc6RI ipv3_sc6RL] \u []
+                                        go2_sc6RD ipv1_sc6RI ipv3_sc6RL; } in
+                              let {
+                                sat_sc6RM [Occ=Once] :: m_ac6th c_ac6tk
+                                [LclId] =
+                                    [eta_sc6Rz ipv_sc6RH ipv2_sc6RK] \u []
+                                        eta_sc6Rz ipv_sc6RH ipv2_sc6RK;
+                              } in  GHC.Base.*> $dApplicative_sc6Ry sat_sc6RM sat_sc6RN;
+                        };
+                  };
+        } in  go2_sc6RD eta1_sc6RA eta2_sc6RB;
+
+Control.Monad.foldM_$sfoldM [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6RO z0_sc6RP xs_sc6RQ]
+        let-no-escape {
+          go_sc6RR [Occ=LoopBreakerT[2]]
+            :: [b_ac6t9] -> a_ac6t8 -> GHC.Base.Maybe a_ac6t8
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc6RO go_sc6RR] \r [ds_sc6RS eta_sc6RT]
+                  case ds_sc6RS of {
+                    [] -> GHC.Base.Just [eta_sc6RT];
+                    : y_sc6RV [Occ=Once] ys_sc6RW [Occ=Once] ->
+                        case f_sc6RO eta_sc6RT y_sc6RV of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc6RY [Occ=Once] -> go_sc6RR ys_sc6RW x_sc6RY;
+                        };
+                  };
+        } in  go_sc6RR xs_sc6RQ z0_sc6RP;
+
+Control.Monad.foldM1
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6RZ z0_sc6S0 xs_sc6S1 void_0E]
+        let-no-escape {
+          go_sc6S3 [Occ=LoopBreakerT[3]]
+            :: [b_ac6sD]
+               -> a_ac6sC
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_ac6sC #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc6RZ go_sc6S3] \r [ds_sc6S4 eta1_sc6S5 void_0E]
+                  case ds_sc6S4 of {
+                    [] -> Unit# [eta1_sc6S5];
+                    : y_sc6S8 [Occ=Once] ys_sc6S9 [Occ=Once] ->
+                        case f_sc6RZ eta1_sc6S5 y_sc6S8 GHC.Prim.void# of {
+                          Unit# ipv1_sc6Sc [Occ=Once] ->
+                              go_sc6S3 ys_sc6S9 ipv1_sc6Sc GHC.Prim.void#;
+                        };
+                  };
+        } in  go_sc6S3 xs_sc6S1 z0_sc6S0 GHC.Prim.void#;
+
+Control.Monad.foldM_$sfoldM1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Control.Monad.foldM1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.foldM [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))LLLLLLLLLLLLL),1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 eta_B1]
+        Data.Foldable.foldlM eta_B5 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM_1 :: GHC.Base.Maybe ()
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Tuple.()];
+
+Control.Monad.foldM__$sfoldM_ [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6Sd a1_sc6Se xs_sc6Sf]
+        let-no-escape {
+          go_sc6Sg [Occ=LoopBreakerT[2]]
+            :: [b_ac6rT] -> a_ac6rS -> GHC.Base.Maybe ()
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc6Sd go_sc6Sg] \r [ds_sc6Sh eta_sc6Si]
+                  case ds_sc6Sh of {
+                    [] -> Control.Monad.foldM_1;
+                    : y_sc6Sk [Occ=Once] ys_sc6Sl [Occ=Once] ->
+                        case f_sc6Sd eta_sc6Si y_sc6Sk of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc6Sn [Occ=Once] -> go_sc6Sg ys_sc6Sl x_sc6Sn;
+                        };
+                  };
+        } in  go_sc6Sg xs_sc6Sf a1_sc6Se;
+
+Control.Monad.foldM_2
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc6So a1_sc6Sp xs_sc6Sq void_0E]
+        let-no-escape {
+          go_sc6Ss [Occ=LoopBreakerT[3]]
+            :: [b_ac6rn]
+               -> a_ac6rm
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc6So go_sc6Ss] \r [ds_sc6St eta_sc6Su void_0E]
+                  case ds_sc6St of {
+                    [] -> Unit# [GHC.Tuple.()];
+                    : y_sc6Sx [Occ=Once] ys_sc6Sy [Occ=Once] ->
+                        case f_sc6So eta_sc6Su y_sc6Sx GHC.Prim.void# of {
+                          Unit# ipv1_sc6SB [Occ=Once] ->
+                              go_sc6Ss ys_sc6Sy ipv1_sc6SB GHC.Prim.void#;
+                        };
+                  };
+        } in  go_sc6Ss xs_sc6Sq a1_sc6Sp GHC.Prim.void#;
+
+Control.Monad.foldM__$sfoldM_1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Control.Monad.foldM_2 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.foldM_ [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><S(LLC(C(S))LL),U(A,C(C1(U)),1*C1(C1(U)),U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dFoldable_sc6SC $dMonad_sc6SD f_sc6SE a1_sc6SF xs_sc6SG]
+        let {
+          sat_sc6SI [Occ=Once] :: m_ac6qA ()
+          [LclId] =
+              [$dMonad_sc6SD] \u []
+                  GHC.Base.return $dMonad_sc6SD GHC.Tuple.(); } in
+        let {
+          sat_sc6SH [Occ=Once] :: m_ac6qA b_ac6qB
+          [LclId] =
+              [$dFoldable_sc6SC $dMonad_sc6SD f_sc6SE a1_sc6SF xs_sc6SG] \u []
+                  Data.Foldable.foldlM
+                      $dFoldable_sc6SC $dMonad_sc6SD f_sc6SE a1_sc6SF xs_sc6SG;
+        } in  GHC.Base.>> $dMonad_sc6SD sat_sc6SH sat_sc6SI;
+
+Control.Monad.<$!> [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b.
+     GHC.Base.Monad m =>
+     (a -> b) -> m a -> m b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc6SJ eta_sc6SK eta1_sc6SL]
+        let {
+          sat_sc6SO [Occ=Once] :: a_ac6mT -> m_ac6mS b_ac6mU
+          [LclId] =
+              [$dMonad_sc6SJ eta_sc6SK] \r [x_sc6SM]
+                  case eta_sc6SK x_sc6SM of z_sc6SN {
+                    __DEFAULT -> GHC.Base.return $dMonad_sc6SJ z_sc6SN;
+                  };
+        } in  GHC.Base.>>= $dMonad_sc6SJ eta1_sc6SL sat_sc6SO;
+
+Control.Monad.mfilter [InlPrag=INLINABLE]
+  :: forall (m :: * -> *) a.
+     GHC.Base.MonadPlus m =>
+     (a -> GHC.Types.Bool) -> m a -> m a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadPlus_sc6SP eta_sc6SQ eta1_sc6SR]
+        let {
+          lvl_sc6SS [Occ=OnceL] :: m_ac6mD a_ac6mE
+          [LclId] =
+              [$dMonadPlus_sc6SP] \u [] GHC.Base.mzero $dMonadPlus_sc6SP;
+        } in 
+          case
+              GHC.Base.$p2MonadPlus $dMonadPlus_sc6SP
+          of
+          $dMonad_sc6ST [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          { __DEFAULT ->
+                let {
+                  sat_sc6SW [Occ=Once] :: a_ac6mE -> m_ac6mD a_ac6mE
+                  [LclId] =
+                      [eta_sc6SQ lvl_sc6SS $dMonad_sc6ST] \r [a1_sc6SU]
+                          case eta_sc6SQ a1_sc6SU of {
+                            GHC.Types.False -> lvl_sc6SS;
+                            GHC.Types.True -> GHC.Base.return $dMonad_sc6ST a1_sc6SU;
+                          };
+                } in  GHC.Base.>>= $dMonad_sc6ST eta1_sc6SR sat_sc6SW;
+          };
+
+Control.Monad.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule4];
+
+Control.Monad.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad"#;
+
+Control.Monad.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule2];
+
+Control.Monad.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.$trModule3
+                                     Control.Monad.$trModule1];
+
+Control.Monad.unless_$sunless [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Base.Maybe () -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc6SX s_sc6SY]
+        case p_sc6SX of {
+          GHC.Types.False -> s_sc6SY;
+          GHC.Types.True -> Control.Monad.foldM_1;
+        };
+
+Control.Monad.replicateM__$sreplicateM_ [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc6T0 f_sc6T1]
+        case cnt0_sc6T0 of {
+          GHC.Types.I# ww1_sc6T3 [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc6T4 [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[1]]
+                  :: GHC.Prim.Int# -> GHC.Base.Maybe ()
+                [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc6T1 $wloop_sc6T4] \r [ww2_sc6T5]
+                        case <=# [ww2_sc6T5 0#] of {
+                          __DEFAULT ->
+                              case f_sc6T1 of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just _ [Occ=Dead] ->
+                                    case -# [ww2_sc6T5 1#] of sat_sc6T9 {
+                                      __DEFAULT -> $wloop_sc6T4 sat_sc6T9;
+                                    };
+                              };
+                          1# -> Control.Monad.foldM_1;
+                        };
+              } in  $wloop_sc6T4 ww1_sc6T3;
+        };
+
+Control.Monad.replicateM1 :: forall a. GHC.Base.Maybe [a]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Types.[]];
+
+Control.Monad.$w$sreplicateM [InlPrag=INLINABLE[0]]
+  :: forall a.
+     GHC.Prim.Int# -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [ww_sc6Ta w_sc6Tb]
+        let {
+          $wloop_sc6Tc [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> GHC.Base.Maybe [a_sc6Kb]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6Tb $wloop_sc6Tc] \r [ww1_sc6Td]
+                  case <=# [ww1_sc6Td 0#] of {
+                    __DEFAULT ->
+                        case w_sc6Tb of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc6Tg [Occ=Once] ->
+                              case -# [ww1_sc6Td 1#] of sat_sc6Th {
+                                __DEFAULT ->
+                                    case $wloop_sc6Tc sat_sc6Th of {
+                                      GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                      GHC.Base.Just y_sc6Tj [Occ=Once] ->
+                                          let {
+                                            sat_sc6Tk [Occ=Once] :: [a_sc6Kb]
+                                            [LclId] =
+                                                CCCS :! [x_sc6Tg y_sc6Tj];
+                                          } in  GHC.Base.Just [sat_sc6Tk];
+                                    };
+                              };
+                        };
+                    1# -> Control.Monad.replicateM1;
+                  };
+        } in  $wloop_sc6Tc ww_sc6Ta;
+
+Control.Monad.replicateM_$sreplicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Tl w1_sc6Tm]
+        case w_sc6Tl of {
+          GHC.Types.I# ww1_sc6To [Occ=Once] ->
+              Control.Monad.$w$sreplicateM ww1_sc6To w1_sc6Tm;
+        };
+
+Control.Monad.unless1
+  :: GHC.Types.Bool
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc6Tp s_sc6Tq void_0E]
+        case p_sc6Tp of {
+          GHC.Types.False -> s_sc6Tq GHC.Prim.void#;
+          GHC.Types.True -> Unit# [GHC.Tuple.()];
+        };
+
+Control.Monad.unless_$sunless1 [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Monad.unless1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.unless [InlPrag=INLINABLE]
+  :: forall (f :: * -> *).
+     GHC.Base.Applicative f =>
+     GHC.Types.Bool -> f () -> f ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U),A,A,A,A)><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc6Tt p_sc6Tu s_sc6Tv]
+        case p_sc6Tu of {
+          GHC.Types.False -> s_sc6Tv;
+          GHC.Types.True -> GHC.Base.pure $dApplicative_sc6Tt GHC.Tuple.();
+        };
+
+Control.Monad.replicateM_1
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc6Tx f_sc6Ty void_0E]
+        case cnt0_sc6Tx of {
+          GHC.Types.I# ww1_sc6TB [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc6TC [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc6Ty $wloop_sc6TC] \r [ww2_sc6TD void_0E]
+                        case <=# [ww2_sc6TD 0#] of {
+                          __DEFAULT ->
+                              case f_sc6Ty GHC.Prim.void# of {
+                                Unit# _ [Occ=Dead] ->
+                                    case -# [ww2_sc6TD 1#] of sat_sc6TJ {
+                                      __DEFAULT -> $wloop_sc6TC sat_sc6TJ GHC.Prim.void#;
+                                    };
+                              };
+                          1# -> Unit# [GHC.Tuple.()];
+                        };
+              } in  $wloop_sc6TC ww1_sc6TB GHC.Prim.void#;
+        };
+
+Control.Monad.replicateM__$sreplicateM_1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Monad.replicateM_1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.$wreplicateM_ [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6TK ww_sc6TL w1_sc6TM]
+        let {
+          lvl_sc6TN [Occ=OnceL] :: m_sc6Kw ()
+          [LclId] =
+              [w_sc6TK] \u [] GHC.Base.pure w_sc6TK GHC.Tuple.(); } in
+        let {
+          $wloop_sc6TO [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6Kw ()
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6TK w1_sc6TM lvl_sc6TN $wloop_sc6TO] \r [ww1_sc6TP]
+                  case <=# [ww1_sc6TP 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc6TS [Occ=Once] :: m_sc6Kw ()
+                          [LclId] =
+                              [$wloop_sc6TO ww1_sc6TP] \u []
+                                  case -# [ww1_sc6TP 1#] of sat_sc6TR {
+                                    __DEFAULT -> $wloop_sc6TO sat_sc6TR;
+                                  };
+                        } in  GHC.Base.*> w_sc6TK w1_sc6TM sat_sc6TS;
+                    1# -> lvl_sc6TN;
+                  };
+        } in  $wloop_sc6TO ww_sc6TL;
+
+Control.Monad.replicateM_ [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,A,C(C1(U)),A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6TT w1_sc6TU w2_sc6TV]
+        case w1_sc6TU of {
+          GHC.Types.I# ww1_sc6TX [Occ=Once] ->
+              Control.Monad.$wreplicateM_ w_sc6TT ww1_sc6TX w2_sc6TV;
+        };
+
+Control.Monad.$w$sreplicateM1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Int#
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sc6TY w_sc6TZ void_0E]
+        let {
+          $wloop_sc6U1 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int#
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a_sc6KN] #)
+          [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6TZ $wloop_sc6U1] \r [ww1_sc6U2 void_0E]
+                  case <=# [ww1_sc6U2 0#] of {
+                    __DEFAULT ->
+                        case w_sc6TZ GHC.Prim.void# of {
+                          Unit# ipv1_sc6U7 [Occ=Once] ->
+                              case -# [ww1_sc6U2 1#] of sat_sc6U8 {
+                                __DEFAULT ->
+                                    case $wloop_sc6U1 sat_sc6U8 GHC.Prim.void# of {
+                                      Unit# ipv3_sc6Ub [Occ=Once] ->
+                                          let {
+                                            sat_sc6Uc [Occ=Once] :: [a_sc6KN]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sc6U7 ipv3_sc6Ub];
+                                          } in  Unit# [sat_sc6Uc];
+                                    };
+                              };
+                        };
+                    1# -> Unit# [GHC.Types.[]];
+                  };
+        } in  $wloop_sc6U1 ww_sc6TY GHC.Prim.void#;
+
+Control.Monad.replicateM2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Ud w1_sc6Ue void_0E]
+        case w_sc6Ud of {
+          GHC.Types.I# ww1_sc6Uh [Occ=Once] ->
+              Control.Monad.$w$sreplicateM1 ww1_sc6Uh w1_sc6Ue GHC.Prim.void#;
+        };
+
+Control.Monad.replicateM_$sreplicateM1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Monad.replicateM2 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.$wreplicateM [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Ui ww_sc6Uj w1_sc6Uk]
+        let {
+          lvl_sc6Ul [Occ=OnceL] :: m_sc6L2 [a_sc6L3]
+          [LclId] =
+              [w_sc6Ui] \u [] GHC.Base.pure w_sc6Ui GHC.Types.[]; } in
+        let {
+          $wloop_sc6Um [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6L2 [a_sc6L3]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc6Ui w1_sc6Uk lvl_sc6Ul $wloop_sc6Um] \r [ww1_sc6Un]
+                  case <=# [ww1_sc6Un 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc6Uq [Occ=Once] :: m_sc6L2 [a_sc6L3]
+                          [LclId] =
+                              [$wloop_sc6Um ww1_sc6Un] \u []
+                                  case -# [ww1_sc6Un 1#] of sat_sc6Up {
+                                    __DEFAULT -> $wloop_sc6Um sat_sc6Up;
+                                  };
+                        } in  GHC.Base.liftA2 w_sc6Ui GHC.Types.: w1_sc6Uk sat_sc6Uq;
+                    1# -> lvl_sc6Ul;
+                  };
+        } in  $wloop_sc6Um ww_sc6Uj;
+
+Control.Monad.replicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,C(C1(C1(U))),A,A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc6Ur w1_sc6Us w2_sc6Ut]
+        case w1_sc6Us of {
+          GHC.Types.I# ww1_sc6Uv [Occ=Once] ->
+              Control.Monad.$wreplicateM w_sc6Ur ww1_sc6Uv w2_sc6Ut;
+        };
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:01.9626094 UTC
+
+Control.Monad.guard
+  :: forall (f :: * -> *).
+     GHC.Base.Alternative f =>
+     GHC.Types.Bool -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(1*U(A,1*C1(U),A,A,A,A),1*U,A,A,A)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dAlternative_sc7NB eta_sc7NC]
+        case eta_sc7NC of {
+          GHC.Types.False -> GHC.Base.empty $dAlternative_sc7NB;
+          GHC.Types.True ->
+              case GHC.Base.$p1Alternative $dAlternative_sc7NB of sat_sc7NE {
+                __DEFAULT -> GHC.Base.pure sat_sc7NE GHC.Tuple.();
+              };
+        };
+
+Control.Monad.filterM [InlPrag=INLINE (sat-args=1)]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     (a -> m GHC.Types.Bool) -> [a] -> m [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7NF eta_sc7NG]
+        let {
+          z_sc7NH [Occ=OnceL] :: m_ac6uV [a_ac6uW]
+          [LclId] =
+              [$dApplicative_sc7NF] \u []
+                  GHC.Base.pure $dApplicative_sc7NF GHC.Types.[]; } in
+        let {
+          go_sc7NI [Occ=LoopBreaker] :: [a_ac6uW] -> m_ac6uV [a_ac6uW]
+          [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+              [$dApplicative_sc7NF eta_sc7NG z_sc7NH go_sc7NI] \r [ds_sc7NJ]
+                  case ds_sc7NJ of {
+                    [] -> z_sc7NH;
+                    : y_sc7NL ys_sc7NM [Occ=Once] ->
+                        let {
+                          sat_sc7NS [Occ=Once] :: m_ac6uV [a_ac6uW]
+                          [LclId] =
+                              [go_sc7NI ys_sc7NM] \u [] go_sc7NI ys_sc7NM; } in
+                        let {
+                          sat_sc7NR [Occ=Once] :: m_ac6uV GHC.Types.Bool
+                          [LclId] =
+                              [eta_sc7NG y_sc7NL] \u [] eta_sc7NG y_sc7NL; } in
+                        let {
+                          sat_sc7NQ [Occ=Once] :: GHC.Types.Bool -> [a_ac6uW] -> [a_ac6uW]
+                          [LclId] =
+                              [y_sc7NL] \r [flg_sc7NN eta1_sc7NO]
+                                  case flg_sc7NN of {
+                                    GHC.Types.False -> eta1_sc7NO;
+                                    GHC.Types.True -> : [y_sc7NL eta1_sc7NO];
+                                  };
+                        } in 
+                          GHC.Base.liftA2 $dApplicative_sc7NF sat_sc7NQ sat_sc7NR sat_sc7NS;
+                  };
+        } in  go_sc7NI;
+
+Control.Monad.>=>
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Monad m =>
+     (a -> m b) -> (b -> m c) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc7NT f_sc7NU g_sc7NV x_sc7NW]
+        let {
+          sat_sc7NX [Occ=Once] :: m_ac6uv b_ac6ux
+          [LclId] =
+              [f_sc7NU x_sc7NW] \u [] f_sc7NU x_sc7NW;
+        } in  GHC.Base.>>= $dMonad_sc7NT sat_sc7NX g_sc7NV;
+
+Control.Monad.<=<
+  :: forall (m :: * -> *) b c a.
+     GHC.Base.Monad m =>
+     (b -> m c) -> (a -> m b) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,U><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc7NY x_sc7NZ y_sc7O0 eta_sc7O1]
+        Control.Monad.>=> $dMonad_sc7NY y_sc7O0 x_sc7NZ eta_sc7O1;
+
+Control.Monad.forever [InlPrag=INLINE (sat-args=1)]
+  :: forall (f :: * -> *) a b. GHC.Base.Applicative f => f a -> f b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLLC(C(S))L),U(A,A,A,A,C(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7O2 a1_sc7O3]
+        let {
+          a'_sc7O4 [Occ=LoopBreaker] :: f_ac6ub b_ac6ud
+          [LclId] =
+              [$dApplicative_sc7O2 a1_sc7O3 a'_sc7O4] \u []
+                  GHC.Base.*> $dApplicative_sc7O2 a1_sc7O3 a'_sc7O4;
+        } in  a'_sc7O4;
+
+Control.Monad.mapAndUnzipM [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> m (b, c)) -> [a] -> m ([b], [c])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S(C(C(S))L)LLLLL),U(1*U(1*C1(C1(U)),A),1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7O5 eta_sc7O6 eta1_sc7O7]
+        let {
+          sat_sc7Oh [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+          [LclId] =
+              [$dApplicative_sc7O5 eta_sc7O6 eta1_sc7O7] \u []
+                  let {
+                    z_sc7O9 [Occ=OnceL] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId] =
+                        [$dApplicative_sc7O5] \u []
+                            GHC.Base.pure $dApplicative_sc7O5 GHC.Types.[]; } in
+                  let {
+                    go_sc7Oa [Occ=LoopBreaker]
+                      :: [a_ac6tQ] -> m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                        sat-only [$dApplicative_sc7O5
+                                  eta_sc7O6
+                                  z_sc7O9
+                                  go_sc7Oa] \r [ds_sc7Ob]
+                            case ds_sc7Ob of {
+                              [] -> z_sc7O9;
+                              : y_sc7Od [Occ=Once] ys_sc7Oe [Occ=Once] ->
+                                  let {
+                                    sat_sc7Og [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                                    [LclId] =
+                                        [go_sc7Oa ys_sc7Oe] \u [] go_sc7Oa ys_sc7Oe; } in
+                                  let {
+                                    sat_sc7Of [Occ=Once] :: m_ac6tP (b_ac6tR, c_ac6tS)
+                                    [LclId] =
+                                        [eta_sc7O6 y_sc7Od] \u [] eta_sc7O6 y_sc7Od;
+                                  } in 
+                                    GHC.Base.liftA2
+                                        $dApplicative_sc7O5 GHC.Types.: sat_sc7Of sat_sc7Og;
+                            };
+                  } in  go_sc7Oa eta1_sc7O7;
+        } in 
+          case GHC.Base.$p1Applicative $dApplicative_sc7O5 of sat_sc7O8 {
+            __DEFAULT -> GHC.Base.fmap sat_sc7O8 GHC.List.unzip sat_sc7Oh;
+          };
+
+Control.Monad.zipWithM [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m [c]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7Oi eta_sc7Oj eta1_sc7Ok eta2_sc7Ol]
+        let {
+          z_sc7Om [Occ=OnceL*] :: m_ac6tA [c_ac6tD]
+          [LclId] =
+              [$dApplicative_sc7Oi] \u []
+                  GHC.Base.pure $dApplicative_sc7Oi GHC.Types.[]; } in
+        let {
+          go2_sc7On [Occ=LoopBreaker]
+            :: [a_ac6tB] -> [b_ac6tC] -> m_ac6tA [c_ac6tD]
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc7Oi
+                        eta_sc7Oj
+                        z_sc7Om
+                        go2_sc7On] \r [ds_sc7Oo _ys_sc7Op]
+                  case ds_sc7Oo of {
+                    [] -> z_sc7Om;
+                    : ipv_sc7Or [Occ=Once] ipv1_sc7Os [Occ=Once] ->
+                        case _ys_sc7Op of {
+                          [] -> z_sc7Om;
+                          : ipv2_sc7Ou [Occ=Once] ipv3_sc7Ov [Occ=Once] ->
+                              let {
+                                sat_sc7Ox [Occ=Once] :: m_ac6tA [c_ac6tD]
+                                [LclId] =
+                                    [go2_sc7On ipv1_sc7Os ipv3_sc7Ov] \u []
+                                        go2_sc7On ipv1_sc7Os ipv3_sc7Ov; } in
+                              let {
+                                sat_sc7Ow [Occ=Once] :: m_ac6tA c_ac6tD
+                                [LclId] =
+                                    [eta_sc7Oj ipv_sc7Or ipv2_sc7Ou] \u []
+                                        eta_sc7Oj ipv_sc7Or ipv2_sc7Ou;
+                              } in 
+                                GHC.Base.liftA2
+                                    $dApplicative_sc7Oi GHC.Types.: sat_sc7Ow sat_sc7Ox;
+                        };
+                  };
+        } in  go2_sc7On eta1_sc7Ok eta2_sc7Ol;
+
+Control.Monad.zipWithM_ [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7Oy eta_sc7Oz eta1_sc7OA eta2_sc7OB]
+        let {
+          z_sc7OC [Occ=OnceL*] :: m_ac6th ()
+          [LclId] =
+              [$dApplicative_sc7Oy] \u []
+                  GHC.Base.pure $dApplicative_sc7Oy GHC.Tuple.(); } in
+        let {
+          go2_sc7OD [Occ=LoopBreaker] :: [a_ac6ti] -> [b_ac6tj] -> m_ac6th ()
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc7Oy
+                        eta_sc7Oz
+                        z_sc7OC
+                        go2_sc7OD] \r [ds_sc7OE _ys_sc7OF]
+                  case ds_sc7OE of {
+                    [] -> z_sc7OC;
+                    : ipv_sc7OH [Occ=Once] ipv1_sc7OI [Occ=Once] ->
+                        case _ys_sc7OF of {
+                          [] -> z_sc7OC;
+                          : ipv2_sc7OK [Occ=Once] ipv3_sc7OL [Occ=Once] ->
+                              let {
+                                sat_sc7ON [Occ=Once] :: m_ac6th ()
+                                [LclId] =
+                                    [go2_sc7OD ipv1_sc7OI ipv3_sc7OL] \u []
+                                        go2_sc7OD ipv1_sc7OI ipv3_sc7OL; } in
+                              let {
+                                sat_sc7OM [Occ=Once] :: m_ac6th c_ac6tk
+                                [LclId] =
+                                    [eta_sc7Oz ipv_sc7OH ipv2_sc7OK] \u []
+                                        eta_sc7Oz ipv_sc7OH ipv2_sc7OK;
+                              } in  GHC.Base.*> $dApplicative_sc7Oy sat_sc7OM sat_sc7ON;
+                        };
+                  };
+        } in  go2_sc7OD eta1_sc7OA eta2_sc7OB;
+
+Control.Monad.foldM_$sfoldM [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7OO z0_sc7OP xs_sc7OQ]
+        let-no-escape {
+          go_sc7OR [Occ=LoopBreakerT[2]]
+            :: [b_ac6t9] -> a_ac6t8 -> GHC.Base.Maybe a_ac6t8
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc7OO go_sc7OR] \r [ds_sc7OS eta_sc7OT]
+                  case ds_sc7OS of {
+                    [] -> GHC.Base.Just [eta_sc7OT];
+                    : y_sc7OV [Occ=Once] ys_sc7OW [Occ=Once] ->
+                        case f_sc7OO eta_sc7OT y_sc7OV of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc7OY [Occ=Once] -> go_sc7OR ys_sc7OW x_sc7OY;
+                        };
+                  };
+        } in  go_sc7OR xs_sc7OQ z0_sc7OP;
+
+Control.Monad.foldM1
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7OZ z0_sc7P0 xs_sc7P1 eta_sc7P2]
+        let-no-escape {
+          go_sc7P3 [Occ=LoopBreakerT[3]]
+            :: [b_ac6sD]
+               -> a_ac6sC
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_ac6sC #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc7OZ go_sc7P3] \r [ds_sc7P4 eta1_sc7P5 eta2_sc7P6]
+                  case ds_sc7P4 of {
+                    [] -> (#,#) [eta2_sc7P6 eta1_sc7P5];
+                    : y_sc7P8 [Occ=Once] ys_sc7P9 [Occ=Once] ->
+                        case f_sc7OZ eta1_sc7P5 y_sc7P8 eta2_sc7P6 of {
+                          (#,#) ipv_sc7Pb [Occ=Once] ipv1_sc7Pc [Occ=Once] ->
+                              go_sc7P3 ys_sc7P9 ipv1_sc7Pc ipv_sc7Pb;
+                        };
+                  };
+        } in  go_sc7P3 xs_sc7P1 z0_sc7P0 eta_sc7P2;
+
+Control.Monad.foldM_$sfoldM1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Control.Monad.foldM1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))LLLLLLLLLLLLL),1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 eta_B1]
+        Data.Foldable.foldlM eta_B5 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM_1 :: GHC.Base.Maybe ()
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Tuple.()];
+
+Control.Monad.foldM__$sfoldM_ [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7Pd a1_sc7Pe xs_sc7Pf]
+        let-no-escape {
+          go_sc7Pg [Occ=LoopBreakerT[2]]
+            :: [b_ac6rT] -> a_ac6rS -> GHC.Base.Maybe ()
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc7Pd go_sc7Pg] \r [ds_sc7Ph eta_sc7Pi]
+                  case ds_sc7Ph of {
+                    [] -> Control.Monad.foldM_1;
+                    : y_sc7Pk [Occ=Once] ys_sc7Pl [Occ=Once] ->
+                        case f_sc7Pd eta_sc7Pi y_sc7Pk of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc7Pn [Occ=Once] -> go_sc7Pg ys_sc7Pl x_sc7Pn;
+                        };
+                  };
+        } in  go_sc7Pg xs_sc7Pf a1_sc7Pe;
+
+Control.Monad.foldM_2
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7Po a1_sc7Pp xs_sc7Pq s_sc7Pr]
+        let-no-escape {
+          go_sc7Ps [Occ=LoopBreakerT[3]]
+            :: [b_ac6rn]
+               -> a_ac6rm
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc7Po go_sc7Ps] \r [ds_sc7Pt eta_sc7Pu eta1_sc7Pv]
+                  case ds_sc7Pt of {
+                    [] -> (#,#) [eta1_sc7Pv GHC.Tuple.()];
+                    : y_sc7Px [Occ=Once] ys_sc7Py [Occ=Once] ->
+                        case f_sc7Po eta_sc7Pu y_sc7Px eta1_sc7Pv of {
+                          (#,#) ipv_sc7PA [Occ=Once] ipv1_sc7PB [Occ=Once] ->
+                              go_sc7Ps ys_sc7Py ipv1_sc7PB ipv_sc7PA;
+                        };
+                  };
+        } in  go_sc7Ps xs_sc7Pq a1_sc7Pp s_sc7Pr;
+
+Control.Monad.foldM__$sfoldM_1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Control.Monad.foldM_2 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM_ [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><S(LLC(C(S))LL),U(A,C(C1(U)),1*C1(C1(U)),U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dFoldable_sc7PC $dMonad_sc7PD f_sc7PE a1_sc7PF xs_sc7PG]
+        let {
+          sat_sc7PI [Occ=Once] :: m_ac6qA ()
+          [LclId] =
+              [$dMonad_sc7PD] \u []
+                  GHC.Base.return $dMonad_sc7PD GHC.Tuple.(); } in
+        let {
+          sat_sc7PH [Occ=Once] :: m_ac6qA b_ac6qB
+          [LclId] =
+              [$dFoldable_sc7PC $dMonad_sc7PD f_sc7PE a1_sc7PF xs_sc7PG] \u []
+                  Data.Foldable.foldlM
+                      $dFoldable_sc7PC $dMonad_sc7PD f_sc7PE a1_sc7PF xs_sc7PG;
+        } in  GHC.Base.>> $dMonad_sc7PD sat_sc7PH sat_sc7PI;
+
+Control.Monad.<$!> [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b.
+     GHC.Base.Monad m =>
+     (a -> b) -> m a -> m b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc7PJ eta_sc7PK eta1_sc7PL]
+        let {
+          sat_sc7PO [Occ=Once] :: a_ac6mT -> m_ac6mS b_ac6mU
+          [LclId] =
+              [$dMonad_sc7PJ eta_sc7PK] \r [x_sc7PM]
+                  case eta_sc7PK x_sc7PM of z_sc7PN {
+                    __DEFAULT -> GHC.Base.return $dMonad_sc7PJ z_sc7PN;
+                  };
+        } in  GHC.Base.>>= $dMonad_sc7PJ eta1_sc7PL sat_sc7PO;
+
+Control.Monad.mfilter [InlPrag=INLINABLE]
+  :: forall (m :: * -> *) a.
+     GHC.Base.MonadPlus m =>
+     (a -> GHC.Types.Bool) -> m a -> m a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadPlus_sc7PP eta_sc7PQ eta1_sc7PR]
+        let {
+          lvl_sc7PS [Occ=OnceL] :: m_ac6mD a_ac6mE
+          [LclId] =
+              [$dMonadPlus_sc7PP] \u [] GHC.Base.mzero $dMonadPlus_sc7PP;
+        } in 
+          case
+              GHC.Base.$p2MonadPlus $dMonadPlus_sc7PP
+          of
+          $dMonad_sc7PT [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          { __DEFAULT ->
+                let {
+                  sat_sc7PW [Occ=Once] :: a_ac6mE -> m_ac6mD a_ac6mE
+                  [LclId] =
+                      [eta_sc7PQ lvl_sc7PS $dMonad_sc7PT] \r [a1_sc7PU]
+                          case eta_sc7PQ a1_sc7PU of {
+                            GHC.Types.False -> lvl_sc7PS;
+                            GHC.Types.True -> GHC.Base.return $dMonad_sc7PT a1_sc7PU;
+                          };
+                } in  GHC.Base.>>= $dMonad_sc7PT eta1_sc7PR sat_sc7PW;
+          };
+
+Control.Monad.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule4];
+
+Control.Monad.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad"#;
+
+Control.Monad.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule2];
+
+Control.Monad.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.$trModule3
+                                     Control.Monad.$trModule1];
+
+Control.Monad.unless_$sunless [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Base.Maybe () -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc7PX s_sc7PY]
+        case p_sc7PX of {
+          GHC.Types.False -> s_sc7PY;
+          GHC.Types.True -> Control.Monad.foldM_1;
+        };
+
+Control.Monad.replicateM__$sreplicateM_ [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc7Q0 f_sc7Q1]
+        case cnt0_sc7Q0 of {
+          GHC.Types.I# ww1_sc7Q3 [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc7Q4 [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[1]]
+                  :: GHC.Prim.Int# -> GHC.Base.Maybe ()
+                [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc7Q1 $wloop_sc7Q4] \r [ww2_sc7Q5]
+                        case <=# [ww2_sc7Q5 0#] of {
+                          __DEFAULT ->
+                              case f_sc7Q1 of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just _ [Occ=Dead] ->
+                                    case -# [ww2_sc7Q5 1#] of sat_sc7Q9 {
+                                      __DEFAULT -> $wloop_sc7Q4 sat_sc7Q9;
+                                    };
+                              };
+                          1# -> Control.Monad.foldM_1;
+                        };
+              } in  $wloop_sc7Q4 ww1_sc7Q3;
+        };
+
+Control.Monad.replicateM1 :: forall a. GHC.Base.Maybe [a]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Types.[]];
+
+Control.Monad.$w$sreplicateM [InlPrag=INLINABLE[0]]
+  :: forall a.
+     GHC.Prim.Int# -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [ww_sc7Qa w_sc7Qb]
+        let {
+          $wloop_sc7Qc [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> GHC.Base.Maybe [a_sc6Kb]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7Qb $wloop_sc7Qc] \r [ww1_sc7Qd]
+                  case <=# [ww1_sc7Qd 0#] of {
+                    __DEFAULT ->
+                        case w_sc7Qb of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc7Qg [Occ=Once] ->
+                              case -# [ww1_sc7Qd 1#] of sat_sc7Qh {
+                                __DEFAULT ->
+                                    case $wloop_sc7Qc sat_sc7Qh of {
+                                      GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                      GHC.Base.Just y_sc7Qj [Occ=Once] ->
+                                          let {
+                                            sat_sc7Qk [Occ=Once] :: [a_sc6Kb]
+                                            [LclId] =
+                                                CCCS :! [x_sc7Qg y_sc7Qj];
+                                          } in  GHC.Base.Just [sat_sc7Qk];
+                                    };
+                              };
+                        };
+                    1# -> Control.Monad.replicateM1;
+                  };
+        } in  $wloop_sc7Qc ww_sc7Qa;
+
+Control.Monad.replicateM_$sreplicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Ql w1_sc7Qm]
+        case w_sc7Ql of {
+          GHC.Types.I# ww1_sc7Qo [Occ=Once] ->
+              Control.Monad.$w$sreplicateM ww1_sc7Qo w1_sc7Qm;
+        };
+
+Control.Monad.unless1
+  :: GHC.Types.Bool
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc7Qp s_sc7Qq eta_sc7Qr]
+        case p_sc7Qp of {
+          GHC.Types.False -> s_sc7Qq eta_sc7Qr;
+          GHC.Types.True -> (#,#) [eta_sc7Qr GHC.Tuple.()];
+        };
+
+Control.Monad.unless_$sunless1 [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Monad.unless1 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.unless [InlPrag=INLINABLE]
+  :: forall (f :: * -> *).
+     GHC.Base.Applicative f =>
+     GHC.Types.Bool -> f () -> f ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U),A,A,A,A)><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7Qt p_sc7Qu s_sc7Qv]
+        case p_sc7Qu of {
+          GHC.Types.False -> s_sc7Qv;
+          GHC.Types.True -> GHC.Base.pure $dApplicative_sc7Qt GHC.Tuple.();
+        };
+
+Control.Monad.replicateM_1
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc7Qx f_sc7Qy eta_sc7Qz]
+        case cnt0_sc7Qx of {
+          GHC.Types.I# ww1_sc7QB [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc7QC [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc7Qy $wloop_sc7QC] \r [ww2_sc7QD w_sc7QE]
+                        case <=# [ww2_sc7QD 0#] of {
+                          __DEFAULT ->
+                              case f_sc7Qy w_sc7QE of {
+                                (#,#) ipv_sc7QH [Occ=Once] _ [Occ=Dead] ->
+                                    case -# [ww2_sc7QD 1#] of sat_sc7QJ {
+                                      __DEFAULT -> $wloop_sc7QC sat_sc7QJ ipv_sc7QH;
+                                    };
+                              };
+                          1# -> (#,#) [w_sc7QE GHC.Tuple.()];
+                        };
+              } in  $wloop_sc7QC ww1_sc7QB eta_sc7Qz;
+        };
+
+Control.Monad.replicateM__$sreplicateM_1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Monad.replicateM_1 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.$wreplicateM_ [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7QK ww_sc7QL w1_sc7QM]
+        let {
+          lvl_sc7QN [Occ=OnceL] :: m_sc6Kw ()
+          [LclId] =
+              [w_sc7QK] \u [] GHC.Base.pure w_sc7QK GHC.Tuple.(); } in
+        let {
+          $wloop_sc7QO [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6Kw ()
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7QK w1_sc7QM lvl_sc7QN $wloop_sc7QO] \r [ww1_sc7QP]
+                  case <=# [ww1_sc7QP 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc7QS [Occ=Once] :: m_sc6Kw ()
+                          [LclId] =
+                              [$wloop_sc7QO ww1_sc7QP] \u []
+                                  case -# [ww1_sc7QP 1#] of sat_sc7QR {
+                                    __DEFAULT -> $wloop_sc7QO sat_sc7QR;
+                                  };
+                        } in  GHC.Base.*> w_sc7QK w1_sc7QM sat_sc7QS;
+                    1# -> lvl_sc7QN;
+                  };
+        } in  $wloop_sc7QO ww_sc7QL;
+
+Control.Monad.replicateM_ [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,A,C(C1(U)),A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7QT w1_sc7QU w2_sc7QV]
+        case w1_sc7QU of {
+          GHC.Types.I# ww1_sc7QX [Occ=Once] ->
+              Control.Monad.$wreplicateM_ w_sc7QT ww1_sc7QX w2_sc7QV;
+        };
+
+Control.Monad.$w$sreplicateM1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Int#
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sc7QY w_sc7QZ w1_sc7R0]
+        let {
+          $wloop_sc7R1 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int#
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a_sc6KN] #)
+          [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7QZ $wloop_sc7R1] \r [ww1_sc7R2 w2_sc7R3]
+                  case <=# [ww1_sc7R2 0#] of {
+                    __DEFAULT ->
+                        case w_sc7QZ w2_sc7R3 of {
+                          (#,#) ipv_sc7R6 [Occ=Once] ipv1_sc7R7 [Occ=Once] ->
+                              case -# [ww1_sc7R2 1#] of sat_sc7R8 {
+                                __DEFAULT ->
+                                    case $wloop_sc7R1 sat_sc7R8 ipv_sc7R6 of {
+                                      (#,#) ipv2_sc7Ra [Occ=Once] ipv3_sc7Rb [Occ=Once] ->
+                                          let {
+                                            sat_sc7Rc [Occ=Once] :: [a_sc6KN]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sc7R7 ipv3_sc7Rb];
+                                          } in  (#,#) [ipv2_sc7Ra sat_sc7Rc];
+                                    };
+                              };
+                        };
+                    1# -> (#,#) [w2_sc7R3 GHC.Types.[]];
+                  };
+        } in  $wloop_sc7R1 ww_sc7QY w1_sc7R0;
+
+Control.Monad.replicateM2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Rd w1_sc7Re w2_sc7Rf]
+        case w_sc7Rd of {
+          GHC.Types.I# ww1_sc7Rh [Occ=Once] ->
+              Control.Monad.$w$sreplicateM1 ww1_sc7Rh w1_sc7Re w2_sc7Rf;
+        };
+
+Control.Monad.replicateM_$sreplicateM1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Monad.replicateM2 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.$wreplicateM [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Ri ww_sc7Rj w1_sc7Rk]
+        let {
+          lvl_sc7Rl [Occ=OnceL] :: m_sc6L2 [a_sc6L3]
+          [LclId] =
+              [w_sc7Ri] \u [] GHC.Base.pure w_sc7Ri GHC.Types.[]; } in
+        let {
+          $wloop_sc7Rm [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6L2 [a_sc6L3]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7Ri w1_sc7Rk lvl_sc7Rl $wloop_sc7Rm] \r [ww1_sc7Rn]
+                  case <=# [ww1_sc7Rn 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc7Rq [Occ=Once] :: m_sc6L2 [a_sc6L3]
+                          [LclId] =
+                              [$wloop_sc7Rm ww1_sc7Rn] \u []
+                                  case -# [ww1_sc7Rn 1#] of sat_sc7Rp {
+                                    __DEFAULT -> $wloop_sc7Rm sat_sc7Rp;
+                                  };
+                        } in  GHC.Base.liftA2 w_sc7Ri GHC.Types.: w1_sc7Rk sat_sc7Rq;
+                    1# -> lvl_sc7Rl;
+                  };
+        } in  $wloop_sc7Rm ww_sc7Rj;
+
+Control.Monad.replicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,C(C1(C1(U))),A,A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Rr w1_sc7Rs w2_sc7Rt]
+        case w1_sc7Rs of {
+          GHC.Types.I# ww1_sc7Rv [Occ=Once] ->
+              Control.Monad.$wreplicateM w_sc7Rr ww1_sc7Rv w2_sc7Rt;
+        };
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:01.981705869 UTC
+
+Control.Monad.guard
+  :: forall (f :: * -> *).
+     GHC.Base.Alternative f =>
+     GHC.Types.Bool -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(1*U(A,1*C1(U),A,A,A,A),1*U,A,A,A)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dAlternative_sc7NB eta_sc7NC]
+        case eta_sc7NC of {
+          GHC.Types.False -> GHC.Base.empty $dAlternative_sc7NB;
+          GHC.Types.True ->
+              case GHC.Base.$p1Alternative $dAlternative_sc7NB of sat_sc7NE {
+                __DEFAULT -> GHC.Base.pure sat_sc7NE GHC.Tuple.();
+              };
+        };
+
+Control.Monad.filterM [InlPrag=INLINE (sat-args=1)]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     (a -> m GHC.Types.Bool) -> [a] -> m [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7NF eta_sc7NG]
+        let {
+          z_sc7NH [Occ=OnceL] :: m_ac6uV [a_ac6uW]
+          [LclId] =
+              [$dApplicative_sc7NF] \u []
+                  GHC.Base.pure $dApplicative_sc7NF GHC.Types.[]; } in
+        let {
+          go_sc7NI [Occ=LoopBreaker] :: [a_ac6uW] -> m_ac6uV [a_ac6uW]
+          [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+              [$dApplicative_sc7NF eta_sc7NG z_sc7NH go_sc7NI] \r [ds_sc7NJ]
+                  case ds_sc7NJ of {
+                    [] -> z_sc7NH;
+                    : y_sc7NL ys_sc7NM [Occ=Once] ->
+                        let {
+                          sat_sc7NS [Occ=Once] :: m_ac6uV [a_ac6uW]
+                          [LclId] =
+                              [go_sc7NI ys_sc7NM] \u [] go_sc7NI ys_sc7NM; } in
+                        let {
+                          sat_sc7NR [Occ=Once] :: m_ac6uV GHC.Types.Bool
+                          [LclId] =
+                              [eta_sc7NG y_sc7NL] \u [] eta_sc7NG y_sc7NL; } in
+                        let {
+                          sat_sc7NQ [Occ=Once] :: GHC.Types.Bool -> [a_ac6uW] -> [a_ac6uW]
+                          [LclId] =
+                              [y_sc7NL] \r [flg_sc7NN eta1_sc7NO]
+                                  case flg_sc7NN of {
+                                    GHC.Types.False -> eta1_sc7NO;
+                                    GHC.Types.True -> : [y_sc7NL eta1_sc7NO];
+                                  };
+                        } in 
+                          GHC.Base.liftA2 $dApplicative_sc7NF sat_sc7NQ sat_sc7NR sat_sc7NS;
+                  };
+        } in  go_sc7NI;
+
+Control.Monad.>=>
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Monad m =>
+     (a -> m b) -> (b -> m c) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,1*C1(U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc7NT f_sc7NU g_sc7NV x_sc7NW]
+        let {
+          sat_sc7NX [Occ=Once] :: m_ac6uv b_ac6ux
+          [LclId] =
+              [f_sc7NU x_sc7NW] \u [] f_sc7NU x_sc7NW;
+        } in  GHC.Base.>>= $dMonad_sc7NT sat_sc7NX g_sc7NV;
+
+Control.Monad.<=<
+  :: forall (m :: * -> *) b c a.
+     GHC.Base.Monad m =>
+     (b -> m c) -> (a -> m b) -> a -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),1*U(A,1*C1(C1(U)),A,A,A)><L,U><L,1*C1(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc7NY x_sc7NZ y_sc7O0 eta_sc7O1]
+        Control.Monad.>=> $dMonad_sc7NY y_sc7O0 x_sc7NZ eta_sc7O1;
+
+Control.Monad.forever [InlPrag=INLINE (sat-args=1)]
+  :: forall (f :: * -> *) a b. GHC.Base.Applicative f => f a -> f b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLLC(C(S))L),U(A,A,A,A,C(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7O2 a1_sc7O3]
+        let {
+          a'_sc7O4 [Occ=LoopBreaker] :: f_ac6ub b_ac6ud
+          [LclId] =
+              [$dApplicative_sc7O2 a1_sc7O3 a'_sc7O4] \u []
+                  GHC.Base.*> $dApplicative_sc7O2 a1_sc7O3 a'_sc7O4;
+        } in  a'_sc7O4;
+
+Control.Monad.mapAndUnzipM [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> m (b, c)) -> [a] -> m ([b], [c])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S(C(C(S))L)LLLLL),U(1*U(1*C1(C1(U)),A),1*C1(U),A,C(C1(C1(U))),A,A)><L,C(U)><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7O5 eta_sc7O6 eta1_sc7O7]
+        let {
+          sat_sc7Oh [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+          [LclId] =
+              [$dApplicative_sc7O5 eta_sc7O6 eta1_sc7O7] \u []
+                  let {
+                    z_sc7O9 [Occ=OnceL] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId] =
+                        [$dApplicative_sc7O5] \u []
+                            GHC.Base.pure $dApplicative_sc7O5 GHC.Types.[]; } in
+                  let {
+                    go_sc7Oa [Occ=LoopBreaker]
+                      :: [a_ac6tQ] -> m_ac6tP [(b_ac6tR, c_ac6tS)]
+                    [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                        sat-only [$dApplicative_sc7O5
+                                  eta_sc7O6
+                                  z_sc7O9
+                                  go_sc7Oa] \r [ds_sc7Ob]
+                            case ds_sc7Ob of {
+                              [] -> z_sc7O9;
+                              : y_sc7Od [Occ=Once] ys_sc7Oe [Occ=Once] ->
+                                  let {
+                                    sat_sc7Og [Occ=Once] :: m_ac6tP [(b_ac6tR, c_ac6tS)]
+                                    [LclId] =
+                                        [go_sc7Oa ys_sc7Oe] \u [] go_sc7Oa ys_sc7Oe; } in
+                                  let {
+                                    sat_sc7Of [Occ=Once] :: m_ac6tP (b_ac6tR, c_ac6tS)
+                                    [LclId] =
+                                        [eta_sc7O6 y_sc7Od] \u [] eta_sc7O6 y_sc7Od;
+                                  } in 
+                                    GHC.Base.liftA2
+                                        $dApplicative_sc7O5 GHC.Types.: sat_sc7Of sat_sc7Og;
+                            };
+                  } in  go_sc7Oa eta1_sc7O7;
+        } in 
+          case GHC.Base.$p1Applicative $dApplicative_sc7O5 of sat_sc7O8 {
+            __DEFAULT -> GHC.Base.fmap sat_sc7O8 GHC.List.unzip sat_sc7Oh;
+          };
+
+Control.Monad.zipWithM [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m [c]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7Oi eta_sc7Oj eta1_sc7Ok eta2_sc7Ol]
+        let {
+          z_sc7Om [Occ=OnceL*] :: m_ac6tA [c_ac6tD]
+          [LclId] =
+              [$dApplicative_sc7Oi] \u []
+                  GHC.Base.pure $dApplicative_sc7Oi GHC.Types.[]; } in
+        let {
+          go2_sc7On [Occ=LoopBreaker]
+            :: [a_ac6tB] -> [b_ac6tC] -> m_ac6tA [c_ac6tD]
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc7Oi
+                        eta_sc7Oj
+                        z_sc7Om
+                        go2_sc7On] \r [ds_sc7Oo _ys_sc7Op]
+                  case ds_sc7Oo of {
+                    [] -> z_sc7Om;
+                    : ipv_sc7Or [Occ=Once] ipv1_sc7Os [Occ=Once] ->
+                        case _ys_sc7Op of {
+                          [] -> z_sc7Om;
+                          : ipv2_sc7Ou [Occ=Once] ipv3_sc7Ov [Occ=Once] ->
+                              let {
+                                sat_sc7Ox [Occ=Once] :: m_ac6tA [c_ac6tD]
+                                [LclId] =
+                                    [go2_sc7On ipv1_sc7Os ipv3_sc7Ov] \u []
+                                        go2_sc7On ipv1_sc7Os ipv3_sc7Ov; } in
+                              let {
+                                sat_sc7Ow [Occ=Once] :: m_ac6tA c_ac6tD
+                                [LclId] =
+                                    [eta_sc7Oj ipv_sc7Or ipv2_sc7Ou] \u []
+                                        eta_sc7Oj ipv_sc7Or ipv2_sc7Ou;
+                              } in 
+                                GHC.Base.liftA2
+                                    $dApplicative_sc7Oi GHC.Types.: sat_sc7Ow sat_sc7Ox;
+                        };
+                  };
+        } in  go2_sc7On eta1_sc7Ok eta2_sc7Ol;
+
+Control.Monad.zipWithM_ [InlPrag=INLINE (sat-args=3)]
+  :: forall (m :: * -> *) a b c.
+     GHC.Base.Applicative m =>
+     (a -> b -> m c) -> [a] -> [b] -> m ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><L,C(C1(U))><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7Oy eta_sc7Oz eta1_sc7OA eta2_sc7OB]
+        let {
+          z_sc7OC [Occ=OnceL*] :: m_ac6th ()
+          [LclId] =
+              [$dApplicative_sc7Oy] \u []
+                  GHC.Base.pure $dApplicative_sc7Oy GHC.Tuple.(); } in
+        let {
+          go2_sc7OD [Occ=LoopBreaker] :: [a_ac6ti] -> [b_ac6tj] -> m_ac6th ()
+          [LclId, Arity=2, Str=<S,1*U><L,1*U>, Unf=OtherCon []] =
+              sat-only [$dApplicative_sc7Oy
+                        eta_sc7Oz
+                        z_sc7OC
+                        go2_sc7OD] \r [ds_sc7OE _ys_sc7OF]
+                  case ds_sc7OE of {
+                    [] -> z_sc7OC;
+                    : ipv_sc7OH [Occ=Once] ipv1_sc7OI [Occ=Once] ->
+                        case _ys_sc7OF of {
+                          [] -> z_sc7OC;
+                          : ipv2_sc7OK [Occ=Once] ipv3_sc7OL [Occ=Once] ->
+                              let {
+                                sat_sc7ON [Occ=Once] :: m_ac6th ()
+                                [LclId] =
+                                    [go2_sc7OD ipv1_sc7OI ipv3_sc7OL] \u []
+                                        go2_sc7OD ipv1_sc7OI ipv3_sc7OL; } in
+                              let {
+                                sat_sc7OM [Occ=Once] :: m_ac6th c_ac6tk
+                                [LclId] =
+                                    [eta_sc7Oz ipv_sc7OH ipv2_sc7OK] \u []
+                                        eta_sc7Oz ipv_sc7OH ipv2_sc7OK;
+                              } in  GHC.Base.*> $dApplicative_sc7Oy sat_sc7OM sat_sc7ON;
+                        };
+                  };
+        } in  go2_sc7OD eta1_sc7OA eta2_sc7OB;
+
+Control.Monad.foldM_$sfoldM [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7OO z0_sc7OP xs_sc7OQ]
+        let-no-escape {
+          go_sc7OR [Occ=LoopBreakerT[2]]
+            :: [b_ac6t9] -> a_ac6t8 -> GHC.Base.Maybe a_ac6t8
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc7OO go_sc7OR] \r [ds_sc7OS eta_sc7OT]
+                  case ds_sc7OS of {
+                    [] -> GHC.Base.Just [eta_sc7OT];
+                    : y_sc7OV [Occ=Once] ys_sc7OW [Occ=Once] ->
+                        case f_sc7OO eta_sc7OT y_sc7OV of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc7OY [Occ=Once] -> go_sc7OR ys_sc7OW x_sc7OY;
+                        };
+                  };
+        } in  go_sc7OR xs_sc7OQ z0_sc7OP;
+
+Control.Monad.foldM1
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7OZ z0_sc7P0 xs_sc7P1 void_0E]
+        let-no-escape {
+          go_sc7P3 [Occ=LoopBreakerT[3]]
+            :: [b_ac6sD]
+               -> a_ac6sC
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_ac6sC #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc7OZ go_sc7P3] \r [ds_sc7P4 eta1_sc7P5 void_0E]
+                  case ds_sc7P4 of {
+                    [] -> Unit# [eta1_sc7P5];
+                    : y_sc7P8 [Occ=Once] ys_sc7P9 [Occ=Once] ->
+                        case f_sc7OZ eta1_sc7P5 y_sc7P8 GHC.Prim.void# of {
+                          Unit# ipv1_sc7Pc [Occ=Once] ->
+                              go_sc7P3 ys_sc7P9 ipv1_sc7Pc GHC.Prim.void#;
+                        };
+                  };
+        } in  go_sc7P3 xs_sc7P1 z0_sc7P0 GHC.Prim.void#;
+
+Control.Monad.foldM_$sfoldM1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Control.Monad.foldM1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.foldM [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m b
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))LLLLLLLLLLLLL),1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 eta_B1]
+        Data.Foldable.foldlM eta_B5 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Control.Monad.foldM_1 :: GHC.Base.Maybe ()
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Tuple.()];
+
+Control.Monad.foldM__$sfoldM_ [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Base.Maybe a) -> a -> [b] -> GHC.Base.Maybe ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7Pd a1_sc7Pe xs_sc7Pf]
+        let-no-escape {
+          go_sc7Pg [Occ=LoopBreakerT[2]]
+            :: [b_ac6rT] -> a_ac6rS -> GHC.Base.Maybe ()
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+              sat-only [f_sc7Pd go_sc7Pg] \r [ds_sc7Ph eta_sc7Pi]
+                  case ds_sc7Ph of {
+                    [] -> Control.Monad.foldM_1;
+                    : y_sc7Pk [Occ=Once] ys_sc7Pl [Occ=Once] ->
+                        case f_sc7Pd eta_sc7Pi y_sc7Pk of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc7Pn [Occ=Once] -> go_sc7Pg ys_sc7Pl x_sc7Pn;
+                        };
+                  };
+        } in  go_sc7Pg xs_sc7Pf a1_sc7Pe;
+
+Control.Monad.foldM_2
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a)
+     -> a
+     -> [b]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sc7Po a1_sc7Pp xs_sc7Pq void_0E]
+        let-no-escape {
+          go_sc7Ps [Occ=LoopBreakerT[3]]
+            :: [b_ac6rn]
+               -> a_ac6rm
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(3)],
+           Arity=3,
+           Str=<S,1*U><L,U><S,U>,
+           Unf=OtherCon []] =
+              sat-only [f_sc7Po go_sc7Ps] \r [ds_sc7Pt eta_sc7Pu void_0E]
+                  case ds_sc7Pt of {
+                    [] -> Unit# [GHC.Tuple.()];
+                    : y_sc7Px [Occ=Once] ys_sc7Py [Occ=Once] ->
+                        case f_sc7Po eta_sc7Pu y_sc7Px GHC.Prim.void# of {
+                          Unit# ipv1_sc7PB [Occ=Once] ->
+                              go_sc7Ps ys_sc7Py ipv1_sc7PB GHC.Prim.void#;
+                        };
+                  };
+        } in  go_sc7Ps xs_sc7Pq a1_sc7Pp GHC.Prim.void#;
+
+Control.Monad.foldM__$sfoldM_1 [InlPrag=INLINABLE]
+  :: forall a b.
+     (a -> b -> GHC.Types.IO a) -> a -> [b] -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(U(U,U))))><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Control.Monad.foldM_2 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.foldM_ [InlPrag=INLINABLE]
+  :: forall (t :: * -> *) (m :: * -> *) b a.
+     (Data.Foldable.Foldable t, GHC.Base.Monad m) =>
+     (b -> a -> m b) -> b -> t a -> m ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A,A,A,A,A,A,A,A,A,A,A,A,A)><S(LLC(C(S))LL),U(A,C(C1(U)),1*C1(C1(U)),U,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dFoldable_sc7PC $dMonad_sc7PD f_sc7PE a1_sc7PF xs_sc7PG]
+        let {
+          sat_sc7PI [Occ=Once] :: m_ac6qA ()
+          [LclId] =
+              [$dMonad_sc7PD] \u []
+                  GHC.Base.return $dMonad_sc7PD GHC.Tuple.(); } in
+        let {
+          sat_sc7PH [Occ=Once] :: m_ac6qA b_ac6qB
+          [LclId] =
+              [$dFoldable_sc7PC $dMonad_sc7PD f_sc7PE a1_sc7PF xs_sc7PG] \u []
+                  Data.Foldable.foldlM
+                      $dFoldable_sc7PC $dMonad_sc7PD f_sc7PE a1_sc7PF xs_sc7PG;
+        } in  GHC.Base.>> $dMonad_sc7PD sat_sc7PH sat_sc7PI;
+
+Control.Monad.<$!> [InlPrag=INLINE (sat-args=2)]
+  :: forall (m :: * -> *) a b.
+     GHC.Base.Monad m =>
+     (a -> b) -> m a -> m b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonad_sc7PJ eta_sc7PK eta1_sc7PL]
+        let {
+          sat_sc7PO [Occ=Once] :: a_ac6mT -> m_ac6mS b_ac6mU
+          [LclId] =
+              [$dMonad_sc7PJ eta_sc7PK] \r [x_sc7PM]
+                  case eta_sc7PK x_sc7PM of z_sc7PN {
+                    __DEFAULT -> GHC.Base.return $dMonad_sc7PJ z_sc7PN;
+                  };
+        } in  GHC.Base.>>= $dMonad_sc7PJ eta1_sc7PL sat_sc7PO;
+
+Control.Monad.mfilter [InlPrag=INLINABLE]
+  :: forall (m :: * -> *) a.
+     GHC.Base.MonadPlus m =>
+     (a -> GHC.Types.Bool) -> m a -> m a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LS(LC(C(S))LLL)LL),U(A,1*U(A,1*C1(C1(U)),A,C(U),A),1*U,A)><L,C(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadPlus_sc7PP eta_sc7PQ eta1_sc7PR]
+        let {
+          lvl_sc7PS [Occ=OnceL] :: m_ac6mD a_ac6mE
+          [LclId] =
+              [$dMonadPlus_sc7PP] \u [] GHC.Base.mzero $dMonadPlus_sc7PP;
+        } in 
+          case
+              GHC.Base.$p2MonadPlus $dMonadPlus_sc7PP
+          of
+          $dMonad_sc7PT [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          { __DEFAULT ->
+                let {
+                  sat_sc7PW [Occ=Once] :: a_ac6mE -> m_ac6mD a_ac6mE
+                  [LclId] =
+                      [eta_sc7PQ lvl_sc7PS $dMonad_sc7PT] \r [a1_sc7PU]
+                          case eta_sc7PQ a1_sc7PU of {
+                            GHC.Types.False -> lvl_sc7PS;
+                            GHC.Types.True -> GHC.Base.return $dMonad_sc7PT a1_sc7PU;
+                          };
+                } in  GHC.Base.>>= $dMonad_sc7PT eta1_sc7PR sat_sc7PW;
+          };
+
+Control.Monad.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule4];
+
+Control.Monad.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad"#;
+
+Control.Monad.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.$trModule2];
+
+Control.Monad.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.$trModule3
+                                     Control.Monad.$trModule1];
+
+Control.Monad.unless_$sunless [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Base.Maybe () -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc7PX s_sc7PY]
+        case p_sc7PX of {
+          GHC.Types.False -> s_sc7PY;
+          GHC.Types.True -> Control.Monad.foldM_1;
+        };
+
+Control.Monad.replicateM__$sreplicateM_ [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc7Q0 f_sc7Q1]
+        case cnt0_sc7Q0 of {
+          GHC.Types.I# ww1_sc7Q3 [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc7Q4 [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[1]]
+                  :: GHC.Prim.Int# -> GHC.Base.Maybe ()
+                [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc7Q1 $wloop_sc7Q4] \r [ww2_sc7Q5]
+                        case <=# [ww2_sc7Q5 0#] of {
+                          __DEFAULT ->
+                              case f_sc7Q1 of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just _ [Occ=Dead] ->
+                                    case -# [ww2_sc7Q5 1#] of sat_sc7Q9 {
+                                      __DEFAULT -> $wloop_sc7Q4 sat_sc7Q9;
+                                    };
+                              };
+                          1# -> Control.Monad.foldM_1;
+                        };
+              } in  $wloop_sc7Q4 ww1_sc7Q3;
+        };
+
+Control.Monad.replicateM1 :: forall a. GHC.Base.Maybe [a]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Base.Just! [GHC.Types.[]];
+
+Control.Monad.$w$sreplicateM [InlPrag=INLINABLE[0]]
+  :: forall a.
+     GHC.Prim.Int# -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [ww_sc7Qa w_sc7Qb]
+        let {
+          $wloop_sc7Qc [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> GHC.Base.Maybe [a_sc6Kb]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7Qb $wloop_sc7Qc] \r [ww1_sc7Qd]
+                  case <=# [ww1_sc7Qd 0#] of {
+                    __DEFAULT ->
+                        case w_sc7Qb of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just x_sc7Qg [Occ=Once] ->
+                              case -# [ww1_sc7Qd 1#] of sat_sc7Qh {
+                                __DEFAULT ->
+                                    case $wloop_sc7Qc sat_sc7Qh of {
+                                      GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                      GHC.Base.Just y_sc7Qj [Occ=Once] ->
+                                          let {
+                                            sat_sc7Qk [Occ=Once] :: [a_sc6Kb]
+                                            [LclId] =
+                                                CCCS :! [x_sc7Qg y_sc7Qj];
+                                          } in  GHC.Base.Just [sat_sc7Qk];
+                                    };
+                              };
+                        };
+                    1# -> Control.Monad.replicateM1;
+                  };
+        } in  $wloop_sc7Qc ww_sc7Qa;
+
+Control.Monad.replicateM_$sreplicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int -> GHC.Base.Maybe a -> GHC.Base.Maybe [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Ql w1_sc7Qm]
+        case w_sc7Ql of {
+          GHC.Types.I# ww1_sc7Qo [Occ=Once] ->
+              Control.Monad.$w$sreplicateM ww1_sc7Qo w1_sc7Qm;
+        };
+
+Control.Monad.unless1
+  :: GHC.Types.Bool
+     -> GHC.Types.IO ()
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sc7Qp s_sc7Qq void_0E]
+        case p_sc7Qp of {
+          GHC.Types.False -> s_sc7Qq GHC.Prim.void#;
+          GHC.Types.True -> Unit# [GHC.Tuple.()];
+        };
+
+Control.Monad.unless_$sunless1 [InlPrag=INLINABLE]
+  :: GHC.Types.Bool -> GHC.Types.IO () -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*C1(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Monad.unless1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.unless [InlPrag=INLINABLE]
+  :: forall (f :: * -> *).
+     GHC.Base.Applicative f =>
+     GHC.Types.Bool -> f () -> f ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U),A,A,A,A)><S,1*U><L,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dApplicative_sc7Qt p_sc7Qu s_sc7Qv]
+        case p_sc7Qu of {
+          GHC.Types.False -> s_sc7Qv;
+          GHC.Types.True -> GHC.Base.pure $dApplicative_sc7Qt GHC.Tuple.();
+        };
+
+Control.Monad.replicateM_1
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [cnt0_sc7Qx f_sc7Qy void_0E]
+        case cnt0_sc7Qx of {
+          GHC.Types.I# ww1_sc7QB [Occ=Once] ->
+              let-no-escape {
+                $wloop_sc7QC [InlPrag=NOUSERINLINE[0], Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+                    sat-only [f_sc7Qy $wloop_sc7QC] \r [ww2_sc7QD void_0E]
+                        case <=# [ww2_sc7QD 0#] of {
+                          __DEFAULT ->
+                              case f_sc7Qy GHC.Prim.void# of {
+                                Unit# _ [Occ=Dead] ->
+                                    case -# [ww2_sc7QD 1#] of sat_sc7QJ {
+                                      __DEFAULT -> $wloop_sc7QC sat_sc7QJ GHC.Prim.void#;
+                                    };
+                              };
+                          1# -> Unit# [GHC.Tuple.()];
+                        };
+              } in  $wloop_sc7QC ww1_sc7QB GHC.Prim.void#;
+        };
+
+Control.Monad.replicateM__$sreplicateM_1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,A))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Monad.replicateM_1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.$wreplicateM_ [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,A,C(C1(U)),A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7QK ww_sc7QL w1_sc7QM]
+        let {
+          lvl_sc7QN [Occ=OnceL] :: m_sc6Kw ()
+          [LclId] =
+              [w_sc7QK] \u [] GHC.Base.pure w_sc7QK GHC.Tuple.(); } in
+        let {
+          $wloop_sc7QO [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6Kw ()
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7QK w1_sc7QM lvl_sc7QN $wloop_sc7QO] \r [ww1_sc7QP]
+                  case <=# [ww1_sc7QP 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc7QS [Occ=Once] :: m_sc6Kw ()
+                          [LclId] =
+                              [$wloop_sc7QO ww1_sc7QP] \u []
+                                  case -# [ww1_sc7QP 1#] of sat_sc7QR {
+                                    __DEFAULT -> $wloop_sc7QO sat_sc7QR;
+                                  };
+                        } in  GHC.Base.*> w_sc7QK w1_sc7QM sat_sc7QS;
+                    1# -> lvl_sc7QN;
+                  };
+        } in  $wloop_sc7QO ww_sc7QL;
+
+Control.Monad.replicateM_ [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,A,C(C1(U)),A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7QT w1_sc7QU w2_sc7QV]
+        case w1_sc7QU of {
+          GHC.Types.I# ww1_sc7QX [Occ=Once] ->
+              Control.Monad.$wreplicateM_ w_sc7QT ww1_sc7QX w2_sc7QV;
+        };
+
+Control.Monad.$w$sreplicateM1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.Int#
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sc7QY w_sc7QZ void_0E]
+        let {
+          $wloop_sc7R1 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int#
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a_sc6KN] #)
+          [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7QZ $wloop_sc7R1] \r [ww1_sc7R2 void_0E]
+                  case <=# [ww1_sc7R2 0#] of {
+                    __DEFAULT ->
+                        case w_sc7QZ GHC.Prim.void# of {
+                          Unit# ipv1_sc7R7 [Occ=Once] ->
+                              case -# [ww1_sc7R2 1#] of sat_sc7R8 {
+                                __DEFAULT ->
+                                    case $wloop_sc7R1 sat_sc7R8 GHC.Prim.void# of {
+                                      Unit# ipv3_sc7Rb [Occ=Once] ->
+                                          let {
+                                            sat_sc7Rc [Occ=Once] :: [a_sc6KN]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sc7R7 ipv3_sc7Rb];
+                                          } in  Unit# [sat_sc7Rc];
+                                    };
+                              };
+                        };
+                    1# -> Unit# [GHC.Types.[]];
+                  };
+        } in  $wloop_sc7R1 ww_sc7QY GHC.Prim.void#;
+
+Control.Monad.replicateM2 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Types.Int
+     -> GHC.Types.IO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Rd w1_sc7Re void_0E]
+        case w_sc7Rd of {
+          GHC.Types.I# ww1_sc7Rh [Occ=Once] ->
+              Control.Monad.$w$sreplicateM1 ww1_sc7Rh w1_sc7Re GHC.Prim.void#;
+        };
+
+Control.Monad.replicateM_$sreplicateM1 [InlPrag=INLINABLE]
+  :: forall a. GHC.Types.Int -> GHC.Types.IO a -> GHC.Types.IO [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(U(U,U))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Monad.replicateM2 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Monad.$wreplicateM [InlPrag=INLINABLE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Prim.Int# -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,1*C1(U),A,C(C1(C1(U))),A,A)><S,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Ri ww_sc7Rj w1_sc7Rk]
+        let {
+          lvl_sc7Rl [Occ=OnceL] :: m_sc6L2 [a_sc6L3]
+          [LclId] =
+              [w_sc7Ri] \u [] GHC.Base.pure w_sc7Ri GHC.Types.[]; } in
+        let {
+          $wloop_sc7Rm [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+            :: GHC.Prim.Int# -> m_sc6L2 [a_sc6L3]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [w_sc7Ri w1_sc7Rk lvl_sc7Rl $wloop_sc7Rm] \r [ww1_sc7Rn]
+                  case <=# [ww1_sc7Rn 0#] of {
+                    __DEFAULT ->
+                        let {
+                          sat_sc7Rq [Occ=Once] :: m_sc6L2 [a_sc6L3]
+                          [LclId] =
+                              [$wloop_sc7Rm ww1_sc7Rn] \u []
+                                  case -# [ww1_sc7Rn 1#] of sat_sc7Rp {
+                                    __DEFAULT -> $wloop_sc7Rm sat_sc7Rp;
+                                  };
+                        } in  GHC.Base.liftA2 w_sc7Ri GHC.Types.: w1_sc7Rk sat_sc7Rq;
+                    1# -> lvl_sc7Rl;
+                  };
+        } in  $wloop_sc7Rm ww_sc7Rj;
+
+Control.Monad.replicateM [InlPrag=NOUSERINLINE[0]]
+  :: forall (m :: * -> *) a.
+     GHC.Base.Applicative m =>
+     GHC.Types.Int -> m a -> m [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(U),A,C(C1(C1(U))),A,A)><S(S),1*U(U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sc7Rr w1_sc7Rs w2_sc7Rt]
+        case w1_sc7Rs of {
+          GHC.Types.I# ww1_sc7Rv [Occ=Once] ->
+              Control.Monad.$wreplicateM w_sc7Rr ww1_sc7Rv w2_sc7Rt;
+        };
+

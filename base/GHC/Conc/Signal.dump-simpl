@@ -1,0 +1,956 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:05:22.887530845 UTC
+
+Result size of Tidy Core
+  = {terms: 530, types: 1,357, coercions: 121, joins: 0/4}
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Conc.Signal.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Conc.Signal.$trModule3
+  = GHC.Types.TrNameS GHC.Conc.Signal.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Conc.Signal.$trModule2 = "GHC.Conc.Signal"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Conc.Signal.$trModule1
+  = GHC.Types.TrNameS GHC.Conc.Signal.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Conc.Signal.$trModule
+  = GHC.Types.Module
+      GHC.Conc.Signal.$trModule3 GHC.Conc.Signal.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl_ramSF :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl_ramSF = GHC.Types.I# 0#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl1_ramSG :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl1_ramSG = GHC.Types.I# 64#
+
+-- RHS size: {terms: 93, types: 273, coercions: 73, joins: 0/1}
+lvl2_ramSH
+  :: State# RealWorld
+     -> (# State# RealWorld,
+           MVar (IOArray Int (Maybe (HandlerFun, Dynamic))) #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+lvl2_ramSH
+  = \ (s_i91ZD [OS=OneShot] :: State# RealWorld) ->
+      case noDuplicate# @ RealWorld s_i91ZD of s'_i91ZE { __DEFAULT ->
+      case newArray#
+             @ (Maybe (HandlerFun, Dynamic))
+             @ RealWorld
+             65#
+             (GHC.Base.Nothing @ (HandlerFun, Dynamic))
+             s'_i91ZE
+      of
+      { (# ipv_iamtQ, ipv1_iamtR #) ->
+      case newMVar#
+             @ RealWorld @ (IOArray Int (Maybe (HandlerFun, Dynamic))) ipv_iamtQ
+      of
+      { (# ipv2_ia50l, ipv3_ia50m #) ->
+      case putMVar#
+             @ RealWorld
+             @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+             ipv3_ia50m
+             ((GHC.Arr.STArray
+                 @ RealWorld
+                 @ Int
+                 @ (Maybe (HandlerFun, Dynamic))
+                 lvl_ramSF
+                 lvl1_ramSG
+                 65#
+                 ipv1_iamtR)
+              `cast` (Sym (GHC.IOArray.N:IOArray[0]) <Int>_N <Maybe
+                                                                (HandlerFun, Dynamic)>_N
+                      :: (GHC.Arr.STArray
+                            RealWorld Int (Maybe (HandlerFun, Dynamic)) :: *)
+                         ~R# (IOArray Int (Maybe (HandlerFun, Dynamic)) :: *)))
+             ipv2_ia50l
+      of s2#_ia50o
+      { __DEFAULT ->
+      case getMaskingState# s2#_ia50o of
+      { (# ipv4_ia56X, ipv5_ia56Y #) ->
+      let {
+        ipv6_X7IB7 :: MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))
+        [LclId, Unf=OtherCon []]
+        ipv6_X7IB7
+          = GHC.MVar.MVar
+              @ (IOArray Int (Maybe (HandlerFun, Dynamic))) ipv3_ia50m } in
+      case ipv5_ia56Y of {
+        __DEFAULT ->
+          case makeStablePtr#
+                 @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+                 ipv6_X7IB7
+                 ipv4_ia56X
+          of
+          { (# ipv7_i9DrV, ipv8_i9DrW #) ->
+          case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_damuE
+                 (ipv8_i9DrW
+                  `cast` (UnsafeCo representational (StablePtr#
+                                                       (MVar
+                                                          (IOArray
+                                                             Int
+                                                             (Maybe (HandlerFun, Dynamic))))) Addr#
+                          :: (StablePtr#
+                                (MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))) :: TYPE
+                                                                                        'AddrRep)
+                             ~R# (Addr# :: TYPE 'AddrRep)))
+                 ipv7_i9DrV
+          of
+          { (# ds5_damuC, ds6_damuB #) ->
+          case eqAddr#
+                 (ipv8_i9DrW
+                  `cast` (UnsafeCo representational (StablePtr#
+                                                       (MVar
+                                                          (IOArray
+                                                             Int
+                                                             (Maybe (HandlerFun, Dynamic))))) Addr#
+                          :: (StablePtr#
+                                (MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))) :: TYPE
+                                                                                        'AddrRep)
+                             ~R# (Addr# :: TYPE 'AddrRep)))
+                 ds6_damuB
+          of {
+            __DEFAULT ->
+              case {__pkg_ccall base-4.11.0.0 forall a.
+                           StablePtr# a -> State# RealWorld -> (# State# RealWorld #)}_i9Ddh
+                     @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+                     ipv8_i9DrW
+                     ds5_damuC
+              of
+              { (# ds7_i9Ddm #) ->
+              deRefStablePtr#
+                @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+                (ds6_damuB
+                 `cast` (UnsafeCo representational Addr# (StablePtr#
+                                                            (MVar
+                                                               (IOArray
+                                                                  Int
+                                                                  (Maybe (HandlerFun, Dynamic)))))
+                         :: (Addr# :: TYPE 'AddrRep)
+                            ~R# (StablePtr#
+                                   (MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))) :: TYPE
+                                                                                           'AddrRep)))
+                ds7_i9Ddm
+              };
+            1# -> (# ds5_damuC, ipv6_X7IB7 #)
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+            (\ (s1_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case makeStablePtr#
+                      @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+                      ipv6_X7IB7
+                      s1_i7IAv
+               of
+               { (# ipv7_i9DrV, ipv8_i9DrW #) ->
+               case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_damuE
+                      (ipv8_i9DrW
+                       `cast` (UnsafeCo representational (StablePtr#
+                                                            (MVar
+                                                               (IOArray
+                                                                  Int
+                                                                  (Maybe
+                                                                     (HandlerFun, Dynamic))))) Addr#
+                               :: (StablePtr#
+                                     (MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))) :: TYPE
+                                                                                             'AddrRep)
+                                  ~R# (Addr# :: TYPE 'AddrRep)))
+                      ipv7_i9DrV
+               of
+               { (# ds5_damuC, ds6_damuB #) ->
+               case eqAddr#
+                      (ipv8_i9DrW
+                       `cast` (UnsafeCo representational (StablePtr#
+                                                            (MVar
+                                                               (IOArray
+                                                                  Int
+                                                                  (Maybe
+                                                                     (HandlerFun, Dynamic))))) Addr#
+                               :: (StablePtr#
+                                     (MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))) :: TYPE
+                                                                                             'AddrRep)
+                                  ~R# (Addr# :: TYPE 'AddrRep)))
+                      ds6_damuB
+               of {
+                 __DEFAULT ->
+                   case {__pkg_ccall base-4.11.0.0 forall a.
+                           StablePtr# a -> State# RealWorld -> (# State# RealWorld #)}_i9Ddh
+                          @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+                          ipv8_i9DrW
+                          ds5_damuC
+                   of
+                   { (# ds7_i9Ddm #) ->
+                   deRefStablePtr#
+                     @ (MVar (IOArray Int (Maybe (HandlerFun, Dynamic))))
+                     (ds6_damuB
+                      `cast` (UnsafeCo representational Addr# (StablePtr#
+                                                                 (MVar
+                                                                    (IOArray
+                                                                       Int
+                                                                       (Maybe
+                                                                          (HandlerFun, Dynamic)))))
+                              :: (Addr# :: TYPE 'AddrRep)
+                                 ~R# (StablePtr#
+                                        (MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))) :: TYPE
+                                                                                                'AddrRep)))
+                     ds7_i9Ddm
+                   };
+                 1# -> (# ds5_damuC, ipv6_X7IB7 #)
+               }
+               }
+               })
+            ipv4_ia56X
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 5, types: 48, coercions: 0, joins: 0/0}
+signal_handlers [InlPrag=NOINLINE]
+  :: MVar (IOArray Int (Maybe (HandlerFun, Dynamic)))
+[GblId]
+signal_handlers
+  = case runRW#
+           @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+           @ (# State# RealWorld,
+                MVar (IOArray Int (Maybe (HandlerFun, Dynamic))) #)
+           lvl2_ramSH
+    of
+    { (# ipv_i91ZH, ipv1_i91ZI #) ->
+    ipv1_i91ZI
+    }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl3_ramSI :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl3_ramSI = "GHC.Conc.setHandler: signal out of range"#
+
+-- RHS size: {terms: 3, types: 6, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.setHandler2 :: IO (Maybe (HandlerFun, Dynamic))
+[GblId, Str=x]
+GHC.Conc.Signal.setHandler2
+  = errorWithoutStackTrace
+      @ 'LiftedRep
+      @ (IO (Maybe (HandlerFun, Dynamic)))
+      (unpackCString# lvl3_ramSI)
+
+-- RHS size: {terms: 167, types: 440, coercions: 7, joins: 0/1}
+GHC.Conc.Signal.setHandler1
+  :: Signal
+     -> Maybe (HandlerFun, Dynamic)
+     -> State# RealWorld
+     -> (# State# RealWorld, Maybe (HandlerFun, Dynamic) #)
+[GblId,
+ Arity=3,
+ Str=<L,1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 0 0] 450 60}]
+GHC.Conc.Signal.setHandler1
+  = \ (sig_aamoT :: Signal)
+      (handler_aamoU :: Maybe (HandlerFun, Dynamic))
+      (eta_B1 :: State# RealWorld) ->
+      case getMaskingState# eta_B1 of { (# ipv_iafMW, ipv1_iafMX #) ->
+      let {
+        io_samAi [Dmd=<L,1*C1(C1(U))>]
+          :: IOArray Int (Maybe (HandlerFun, Dynamic))
+             -> State# RealWorld
+             -> (# State# RealWorld, Maybe (HandlerFun, Dynamic) #)
+        [LclId,
+         Arity=2,
+         Str=<S(S(S)S(S)LS),1*U(U(U),U(U),A,U)><S,U>,
+         Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                 WorkFree=True, Expandable=True,
+                 Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+                 Tmpl= \ (arr_aamoW [Occ=Once]
+                            :: IOArray Int (Maybe (HandlerFun, Dynamic)))
+                         (eta1_Xp [Occ=Once] :: State# RealWorld) ->
+                         case arr_aamoW
+                              `cast` (GHC.IOArray.N:IOArray[0] <Int>_N <Maybe
+                                                                          (HandlerFun, Dynamic)>_N
+                                      :: (IOArray Int (Maybe (HandlerFun, Dynamic)) :: *)
+                                         ~R# (GHC.Arr.STArray
+                                                RealWorld Int (Maybe (HandlerFun, Dynamic)) :: *))
+                         of
+                         { GHC.Arr.STArray l_i80pt [Occ=Once!] u_i80pu [Occ=Once!]
+                                           _ [Occ=Dead] ds1_i80pw ->
+                         case l_i80pt of { I# m_iamvK [Occ=Once] ->
+                         case u_i80pu of { I# n_iamvO [Occ=Once] ->
+                         case sig_aamoT
+                              `cast` (Foreign.C.Types.N:CInt[0]
+                                      :: (CInt :: *) ~R# (GHC.Int.Int32 :: *))
+                         of
+                         { GHC.Int.I32# x#_i7O0N ->
+                         case <=# m_iamvK x#_i7O0N of {
+                           __DEFAULT -> case GHC.Conc.Signal.setHandler2 of { };
+                           1# ->
+                             case <=# x#_i7O0N n_iamvO of {
+                               __DEFAULT -> case GHC.Conc.Signal.setHandler2 of { };
+                               1# ->
+                                 case readArray#
+                                        @ RealWorld
+                                        @ (Maybe (HandlerFun, Dynamic))
+                                        ds1_i80pw
+                                        x#_i7O0N
+                                        eta1_Xp
+                                 of
+                                 { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz [Occ=Once] #) ->
+                                 case writeArray#
+                                        @ RealWorld
+                                        @ (Maybe (HandlerFun, Dynamic))
+                                        ds1_i80pw
+                                        x#_i7O0N
+                                        handler_aamoU
+                                        ipv2_i7IAy
+                                 of s2#_i80qK
+                                 { __DEFAULT ->
+                                 (# s2#_i80qK, ipv3_i7IAz #)
+                                 }
+                                 }
+                             }
+                         }
+                         }
+                         }
+                         }
+                         }}]
+        io_samAi
+          = \ (arr_aamoW [OS=OneShot]
+                 :: IOArray Int (Maybe (HandlerFun, Dynamic)))
+              (eta1_Xp [OS=OneShot] :: State# RealWorld) ->
+              case arr_aamoW
+                   `cast` (GHC.IOArray.N:IOArray[0] <Int>_N <Maybe
+                                                               (HandlerFun, Dynamic)>_N
+                           :: (IOArray Int (Maybe (HandlerFun, Dynamic)) :: *)
+                              ~R# (GHC.Arr.STArray
+                                     RealWorld Int (Maybe (HandlerFun, Dynamic)) :: *))
+              of
+              { GHC.Arr.STArray l_i80pt u_i80pu dt_i80pv ds1_i80pw ->
+              case l_i80pt of { I# m_samPF ->
+              case u_i80pu of { I# n_samPI ->
+              case sig_aamoT
+                   `cast` (Foreign.C.Types.N:CInt[0]
+                           :: (CInt :: *) ~R# (GHC.Int.Int32 :: *))
+              of
+              { GHC.Int.I32# x#_i7O0N ->
+              case <=# m_samPF x#_i7O0N of {
+                __DEFAULT -> case GHC.Conc.Signal.setHandler2 of wild5_00 { };
+                1# ->
+                  case <=# x#_i7O0N n_samPI of {
+                    __DEFAULT -> case GHC.Conc.Signal.setHandler2 of wild5_00 { };
+                    1# ->
+                      case readArray#
+                             @ RealWorld
+                             @ (Maybe (HandlerFun, Dynamic))
+                             ds1_i80pw
+                             x#_i7O0N
+                             eta1_Xp
+                      of
+                      { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+                      case writeArray#
+                             @ RealWorld
+                             @ (Maybe (HandlerFun, Dynamic))
+                             ds1_i80pw
+                             x#_i7O0N
+                             handler_aamoU
+                             ipv2_i7IAy
+                      of s2#_i80qK
+                      { __DEFAULT ->
+                      (# s2#_i80qK, ipv3_i7IAz #)
+                      }
+                      }
+                  }
+              }
+              }
+              }
+              }
+              } } in
+      case ipv1_iafMX of {
+        __DEFAULT ->
+          case signal_handlers of { GHC.MVar.MVar mvar#_i9Dso ->
+          case takeMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv_iafMW
+          of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ (Maybe (HandlerFun, Dynamic))
+                 @ GHC.Exception.SomeException
+                 (maskAsyncExceptions#
+                    @ (Maybe (HandlerFun, Dynamic)) (io_samAi ipv3_i7IAz))
+                 (\ (e1_iafN9 [OS=OneShot] :: GHC.Exception.SomeException)
+                    (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar#
+                           @ RealWorld
+                           @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                           mvar#_i9Dso
+                           ipv3_i7IAz
+                           s1_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO#
+                      @ GHC.Exception.SomeException
+                      @ (Maybe (HandlerFun, Dynamic))
+                      e1_iafN9
+                      s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+          case putMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv3_i7IAz
+                 ipv4_X7IAZ
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv5_X7IB1 #)
+          }
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ (Maybe (HandlerFun, Dynamic))
+            (\ (s1_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case signal_handlers of { GHC.MVar.MVar mvar#_i9Dso ->
+               case takeMVar#
+                      @ RealWorld
+                      @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                      mvar#_i9Dso
+                      s1_i7IAv
+               of
+               { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+               case catch#
+                      @ (Maybe (HandlerFun, Dynamic))
+                      @ GHC.Exception.SomeException
+                      (unmaskAsyncExceptions#
+                         @ (Maybe (HandlerFun, Dynamic)) (io_samAi ipv3_i7IAz))
+                      (\ (e1_iafN9 [OS=OneShot] :: GHC.Exception.SomeException)
+                         (s2_iafNa [OS=OneShot] :: State# RealWorld) ->
+                         case putMVar#
+                                @ RealWorld
+                                @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                                mvar#_i9Dso
+                                ipv3_i7IAz
+                                s2_iafNa
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         raiseIO#
+                           @ GHC.Exception.SomeException
+                           @ (Maybe (HandlerFun, Dynamic))
+                           e1_iafN9
+                           s2#_i9DsB
+                         })
+                      ipv2_i7IAy
+               of
+               { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+               case putMVar#
+                      @ RealWorld
+                      @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                      mvar#_i9Dso
+                      ipv3_i7IAz
+                      ipv4_X7IAZ
+               of s2#_i9DsB
+               { __DEFAULT ->
+               (# s2#_i9DsB, ipv5_X7IB1 #)
+               }
+               }
+               }
+               })
+            ipv_iafMW;
+        1# ->
+          case signal_handlers of { GHC.MVar.MVar mvar#_i9Dso ->
+          case takeMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv_iafMW
+          of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ (Maybe (HandlerFun, Dynamic))
+                 @ GHC.Exception.SomeException
+                 (maskUninterruptible#
+                    @ (Maybe (HandlerFun, Dynamic)) (io_samAi ipv3_i7IAz))
+                 (\ (e1_iafN9 [OS=OneShot] :: GHC.Exception.SomeException)
+                    (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar#
+                           @ RealWorld
+                           @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                           mvar#_i9Dso
+                           ipv3_i7IAz
+                           s1_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO#
+                      @ GHC.Exception.SomeException
+                      @ (Maybe (HandlerFun, Dynamic))
+                      e1_iafN9
+                      s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+          case putMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv3_i7IAz
+                 ipv4_X7IAZ
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv5_X7IB1 #)
+          }
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+setHandler
+  :: Signal
+     -> Maybe (HandlerFun, Dynamic) -> IO (Maybe (HandlerFun, Dynamic))
+[GblId,
+ Arity=3,
+ Str=<L,1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Conc.Signal.setHandler1
+               `cast` (<Signal>_R
+                       ->_R <Maybe (HandlerFun, Dynamic)>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Maybe (HandlerFun, Dynamic)>_R)
+                       :: (Signal
+                           -> Maybe (HandlerFun, Dynamic)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Maybe (HandlerFun, Dynamic) #) :: *)
+                          ~R# (Signal
+                               -> Maybe (HandlerFun, Dynamic)
+                               -> IO (Maybe (HandlerFun, Dynamic)) :: *))}]
+setHandler
+  = GHC.Conc.Signal.setHandler1
+    `cast` (<Signal>_R
+            ->_R <Maybe (HandlerFun, Dynamic)>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Maybe (HandlerFun, Dynamic)>_R)
+            :: (Signal
+                -> Maybe (HandlerFun, Dynamic)
+                -> State# RealWorld
+                -> (# State# RealWorld, Maybe (HandlerFun, Dynamic) #) :: *)
+               ~R# (Signal
+                    -> Maybe (HandlerFun, Dynamic)
+                    -> IO (Maybe (HandlerFun, Dynamic)) :: *))
+
+-- RHS size: {terms: 192, types: 436, coercions: 12, joins: 0/2}
+GHC.Conc.Signal.runHandlers1
+  :: ForeignPtr Word8
+     -> Signal -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,1*U(U)><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 20 0] 595 60}]
+GHC.Conc.Signal.runHandlers1
+  = \ (p_info_aamoY :: ForeignPtr Word8)
+      (sig_aamoZ :: Signal)
+      (eta_B1 :: State# RealWorld) ->
+      case getMaskingState# eta_B1 of { (# ipv_iafMW, ipv1_iafMX #) ->
+      let {
+        $wio_samMF [InlPrag=NOUSERINLINE[0],
+                    Dmd=<L,1*C1(C1(C1(C1(U(U,U)))))>]
+          :: Int#
+             -> Int#
+             -> MutableArray# RealWorld (Maybe (HandlerFun, Dynamic))
+             -> State# RealWorld
+             -> (# State# RealWorld, () #)
+        [LclId, Arity=4, Str=<S,U><L,U><L,U><S,U>, Unf=OtherCon []]
+        $wio_samMF
+          = \ (ww_samMv [OS=OneShot] :: Int#)
+              (ww1_samMA [OS=OneShot] :: Int#)
+              (ww2_samMD [OS=OneShot]
+                 :: MutableArray# RealWorld (Maybe (HandlerFun, Dynamic)))
+              (w_samMp [OS=OneShot] :: State# RealWorld) ->
+              case sig_aamoZ
+                   `cast` (Foreign.C.Types.N:CInt[0]
+                           :: (CInt :: *) ~R# (GHC.Int.Int32 :: *))
+              of
+              { GHC.Int.I32# x#_i7O0N ->
+              case <=# ww_samMv x#_i7O0N of {
+                __DEFAULT -> (# w_samMp, GHC.Tuple.() #);
+                1# ->
+                  case <=# x#_i7O0N ww1_samMA of {
+                    __DEFAULT -> (# w_samMp, GHC.Tuple.() #);
+                    1# ->
+                      case readArray#
+                             @ RealWorld
+                             @ (Maybe (HandlerFun, Dynamic))
+                             ww2_samMD
+                             x#_i7O0N
+                             w_samMp
+                      of
+                      { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+                      case ipv3_i7IAz of {
+                        Nothing -> (# ipv2_i7IAy, GHC.Tuple.() #);
+                        Just ds2_damum ->
+                          case ds2_damum of { (f_aamp3, ds3_damun) ->
+                          case fork#
+                                 @ (IO ())
+                                 ((\ (eta1_iamwF :: State# RealWorld) ->
+                                     catch#
+                                       @ ()
+                                       @ GHC.Exception.SomeException
+                                       ((f_aamp3 p_info_aamoY)
+                                        `cast` (GHC.Types.N:IO[0] <()>_R
+                                                :: (IO () :: *)
+                                                   ~R# (State# RealWorld
+                                                        -> (# State# RealWorld, () #) :: *)))
+                                       GHC.Conc.Sync.forkIO2
+                                       eta1_iamwF)
+                                  `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                                          :: (State# RealWorld -> (# State# RealWorld, () #) :: *)
+                                             ~R# (IO () :: *)))
+                                 ipv2_i7IAy
+                          of
+                          { (# ipv4_iamwJ, ipv5_iamwK #) ->
+                          (# ipv4_iamwJ, GHC.Tuple.() #)
+                          }
+                          }
+                      }
+                      }
+                  }
+              }
+              } } in
+      let {
+        io_samAe [InlPrag=NOUSERINLINE[0], Dmd=<L,1*C1(C1(U))>]
+          :: IOArray Int (Maybe (HandlerFun, Dynamic))
+             -> State# RealWorld -> (# State# RealWorld, () #)
+        [LclId,
+         Arity=2,
+         Str=<S(S(S)S(S)LS),1*U(U(U),U(U),A,U)><S,U>,
+         Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                 WorkFree=True, Expandable=True,
+                 Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+                 Tmpl= \ (w_samMo [Occ=Once]
+                            :: IOArray Int (Maybe (HandlerFun, Dynamic)))
+                         (w1_samMp [Occ=Once] :: State# RealWorld) ->
+                         case w_samMo
+                              `cast` (GHC.IOArray.N:IOArray[0] <Int>_N <Maybe
+                                                                          (HandlerFun, Dynamic)>_N
+                                      :: (IOArray Int (Maybe (HandlerFun, Dynamic)) :: *)
+                                         ~R# (GHC.Arr.STArray
+                                                RealWorld Int (Maybe (HandlerFun, Dynamic)) :: *))
+                         of
+                         { GHC.Arr.STArray ww1_samMs [Occ=Once!] ww2_samMx [Occ=Once!]
+                                           _ [Occ=Dead] ww4_samMD [Occ=Once] ->
+                         case ww1_samMs of { I# ww6_samMv [Occ=Once] ->
+                         case ww2_samMx of { I# ww8_samMA [Occ=Once] ->
+                         $wio_samMF ww6_samMv ww8_samMA ww4_samMD w1_samMp
+                         }
+                         }
+                         }}]
+        io_samAe
+          = \ (w_samMo [OS=OneShot]
+                 :: IOArray Int (Maybe (HandlerFun, Dynamic)))
+              (w1_samMp [OS=OneShot] :: State# RealWorld) ->
+              case w_samMo
+                   `cast` (GHC.IOArray.N:IOArray[0] <Int>_N <Maybe
+                                                               (HandlerFun, Dynamic)>_N
+                           :: (IOArray Int (Maybe (HandlerFun, Dynamic)) :: *)
+                              ~R# (GHC.Arr.STArray
+                                     RealWorld Int (Maybe (HandlerFun, Dynamic)) :: *))
+              of
+              { GHC.Arr.STArray ww1_samMs ww2_samMx ww3_samMC ww4_samMD ->
+              case ww1_samMs of { I# ww6_samPL ->
+              case ww2_samMx of { I# ww8_samPO ->
+              $wio_samMF ww6_samPL ww8_samPO ww4_samMD w1_samMp
+              }
+              }
+              } } in
+      case ipv1_iafMX of {
+        __DEFAULT ->
+          case signal_handlers of { GHC.MVar.MVar mvar#_i9Dso ->
+          case takeMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv_iafMW
+          of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ ()
+                 @ GHC.Exception.SomeException
+                 (maskAsyncExceptions# @ () (io_samAe ipv3_i7IAz))
+                 (\ (e1_iafN9 [OS=OneShot] :: GHC.Exception.SomeException)
+                    (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar#
+                           @ RealWorld
+                           @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                           mvar#_i9Dso
+                           ipv3_i7IAz
+                           s1_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ GHC.Exception.SomeException @ () e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+          case putMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv3_i7IAz
+                 ipv4_X7IAZ
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv5_X7IB1 #)
+          }
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ ()
+            (\ (s1_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case signal_handlers of { GHC.MVar.MVar mvar#_i9Dso ->
+               case takeMVar#
+                      @ RealWorld
+                      @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                      mvar#_i9Dso
+                      s1_i7IAv
+               of
+               { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+               case catch#
+                      @ ()
+                      @ GHC.Exception.SomeException
+                      (unmaskAsyncExceptions# @ () (io_samAe ipv3_i7IAz))
+                      (\ (e1_iafN9 [OS=OneShot] :: GHC.Exception.SomeException)
+                         (s2_iafNa [OS=OneShot] :: State# RealWorld) ->
+                         case putMVar#
+                                @ RealWorld
+                                @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                                mvar#_i9Dso
+                                ipv3_i7IAz
+                                s2_iafNa
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         raiseIO# @ GHC.Exception.SomeException @ () e1_iafN9 s2#_i9DsB
+                         })
+                      ipv2_i7IAy
+               of
+               { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+               case putMVar#
+                      @ RealWorld
+                      @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                      mvar#_i9Dso
+                      ipv3_i7IAz
+                      ipv4_X7IAZ
+               of s2#_i9DsB
+               { __DEFAULT ->
+               (# s2#_i9DsB, ipv5_X7IB1 #)
+               }
+               }
+               }
+               })
+            ipv_iafMW;
+        1# ->
+          case signal_handlers of { GHC.MVar.MVar mvar#_i9Dso ->
+          case takeMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv_iafMW
+          of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ ()
+                 @ GHC.Exception.SomeException
+                 (maskUninterruptible# @ () (io_samAe ipv3_i7IAz))
+                 (\ (e1_iafN9 [OS=OneShot] :: GHC.Exception.SomeException)
+                    (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar#
+                           @ RealWorld
+                           @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                           mvar#_i9Dso
+                           ipv3_i7IAz
+                           s1_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ GHC.Exception.SomeException @ () e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+          case putMVar#
+                 @ RealWorld
+                 @ (IOArray Int (Maybe (HandlerFun, Dynamic)))
+                 mvar#_i9Dso
+                 ipv3_i7IAz
+                 ipv4_X7IAZ
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv5_X7IB1 #)
+          }
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 8, joins: 0/0}
+runHandlers :: ForeignPtr Word8 -> Signal -> IO ()
+[GblId,
+ Arity=3,
+ Str=<L,U><L,1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Conc.Signal.runHandlers1
+               `cast` (<ForeignPtr Word8>_R
+                       ->_R <Signal>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (ForeignPtr Word8
+                           -> Signal -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (ForeignPtr Word8 -> Signal -> IO () :: *))}]
+runHandlers
+  = GHC.Conc.Signal.runHandlers1
+    `cast` (<ForeignPtr Word8>_R
+            ->_R <Signal>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (ForeignPtr Word8
+                -> Signal -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (ForeignPtr Word8 -> Signal -> IO () :: *))
+
+-- RHS size: {terms: 25, types: 34, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.$wrunHandlersPtr [InlPrag=NOUSERINLINE[0]]
+  :: Addr#
+     -> Signal -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<S,U><L,1*U(U)><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 143 0}]
+GHC.Conc.Signal.$wrunHandlersPtr
+  = \ (ww_samMO :: Addr#)
+      (w_samMK :: Signal)
+      (w1_samML :: State# RealWorld) ->
+      case newMutVar#
+             @ GHC.ForeignPtr.Finalizers
+             @ RealWorld
+             GHC.ForeignPtr.NoFinalizers
+             w1_samML
+      of
+      { (# ipv_iamIG, ipv1_iamIH #) ->
+      case GHC.ForeignPtr.$winsertCFinalizer
+             @ ()
+             ipv1_iamIH
+             (__label "free" (function))
+             0#
+             __NULL
+             ww_samMO
+             GHC.Tuple.()
+             ipv_iamIG
+      of
+      { (# ipv2_iamIL, ipv3_iamIM #) ->
+      GHC.Conc.Signal.runHandlers1
+        (GHC.ForeignPtr.ForeignPtr
+           @ Word8 ww_samMO (GHC.ForeignPtr.PlainForeignPtr ipv1_iamIH))
+        w_samMK
+        ipv2_iamIL
+      }
+      }
+
+-- RHS size: {terms: 10, types: 8, coercions: 0, joins: 0/0}
+GHC.Conc.Signal.runHandlersPtr1 [InlPrag=NOUSERINLINE[0]]
+  :: Ptr Word8
+     -> Signal -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><L,1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_samMJ [Occ=Once!] :: Ptr Word8)
+                 (w1_samMK [Occ=Once] :: Signal)
+                 (w2_samML [Occ=Once] :: State# RealWorld) ->
+                 case w_samMJ of { GHC.Ptr.Ptr ww1_samMO [Occ=Once] ->
+                 GHC.Conc.Signal.$wrunHandlersPtr ww1_samMO w1_samMK w2_samML
+                 }}]
+GHC.Conc.Signal.runHandlersPtr1
+  = \ (w_samMJ :: Ptr Word8)
+      (w1_samMK :: Signal)
+      (w2_samML :: State# RealWorld) ->
+      case w_samMJ of { GHC.Ptr.Ptr ww1_samMO ->
+      GHC.Conc.Signal.$wrunHandlersPtr ww1_samMO w1_samMK w2_samML
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 8, joins: 0/0}
+runHandlersPtr :: Ptr Word8 -> Signal -> IO ()
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><L,1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Conc.Signal.runHandlersPtr1
+               `cast` (<Ptr Word8>_R
+                       ->_R <Signal>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (Ptr Word8
+                           -> Signal -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (Ptr Word8 -> Signal -> IO () :: *))}]
+runHandlersPtr
+  = GHC.Conc.Signal.runHandlersPtr1
+    `cast` (<Ptr Word8>_R
+            ->_R <Signal>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (Ptr Word8
+                -> Signal -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (Ptr Word8 -> Signal -> IO () :: *))
+
+

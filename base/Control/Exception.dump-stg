@@ -1,0 +1,1006 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:04:59.204386022 UTC
+
+Control.Exception.$fFunctorHandler_$cfmap
+  :: forall a b.
+     (a -> b)
+     -> Control.Exception.Handler a -> Control.Exception.Handler b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_s9TUU ds_s9TUV]
+        case ds_s9TUV of {
+          Control.Exception.Handler $dException_s9TUX [Occ=Once]
+                                    h_s9TUY [Occ=OnceL!] ->
+              let {
+                sat_s9TV5 [Occ=Once] :: e_a9TQq -> GHC.Types.IO b_a9TQo
+                [LclId] =
+                    [f_s9TUU h_s9TUY] \r [x_s9TUZ s_s9TV0]
+                        case h_s9TUY x_s9TUZ s_s9TV0 of {
+                          (#,#) ipv_s9TV2 [Occ=Once] ipv1_s9TV3 [Occ=Once] ->
+                              let {
+                                sat_s9TV4 [Occ=Once] :: b_a9TQo
+                                [LclId] =
+                                    [f_s9TUU ipv1_s9TV3] \u [] f_s9TUU ipv1_s9TV3;
+                              } in  (#,#) [ipv_s9TV2 sat_s9TV4];
+                        };
+              } in  Control.Exception.Handler [$dException_s9TUX sat_s9TV5];
+        };
+
+Control.Exception.$fFunctorHandler_$c<$
+  :: forall a b.
+     a -> Control.Exception.Handler b -> Control.Exception.Handler a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s9TV6 ds_s9TV7]
+        case ds_s9TV7 of {
+          Control.Exception.Handler $dException_s9TV9 [Occ=Once]
+                                    h_s9TVa [Occ=OnceL!] ->
+              let {
+                sat_s9TVg [Occ=Once] :: e_a9TQq -> GHC.Types.IO a_a9TQH
+                [LclId] =
+                    [x_s9TV6 h_s9TVa] \r [x1_s9TVb s_s9TVc]
+                        case h_s9TVa x1_s9TVb s_s9TVc of {
+                          (#,#) ipv_s9TVe [Occ=Once] _ [Occ=Dead] ->
+                              (#,#) [ipv_s9TVe x_s9TV6];
+                        };
+              } in  Control.Exception.Handler [$dException_s9TV9 sat_s9TVg];
+        };
+
+Control.Exception.$fFunctorHandler [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Base.Functor Control.Exception.Handler
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Exception.$fFunctorHandler_$cfmap
+                                       Control.Exception.$fFunctorHandler_$c<$];
+
+Control.Exception.catches2
+  :: forall a. GHC.Exception.SomeException -> GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [e1_s9TVh]
+        GHC.Exception.throw
+            GHC.Exception.$fExceptionSomeException e1_s9TVh;
+
+Control.Exception.catches1
+  :: forall a.
+     GHC.Types.IO a
+     -> [Control.Exception.Handler a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [io_s9TVi handlers_s9TVj eta_s9TVk]
+        let {
+          sat_s9TVx [Occ=Once]
+            :: GHC.Exception.SomeException
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a9TQd #)
+          [LclId] =
+              [handlers_s9TVj] \r [e1_s9TVl]
+                  let-no-escape {
+                    z_s9TVm [Occ=OnceLT[0], Dmd=<L,C(U)>] :: GHC.Types.IO a_a9TQd
+                    [LclId[JoinId(0)], Str=x, Unf=OtherCon []] =
+                        [e1_s9TVl] \r [] Control.Exception.catches2 e1_s9TVl;
+                  } in 
+                    let-no-escape {
+                      go_s9TVn [Occ=LoopBreakerT[1]]
+                        :: [Control.Exception.Handler a_a9TQd] -> GHC.Types.IO a_a9TQd
+                      [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                          sat-only [e1_s9TVl z_s9TVm go_s9TVn] \r [ds_s9TVo]
+                              case ds_s9TVo of {
+                                [] -> z_s9TVm;
+                                : y_s9TVq [Occ=Once!] ys_s9TVr [Occ=Once] ->
+                                    case y_s9TVq of {
+                                      Control.Exception.Handler $dException_s9TVt [Occ=Once]
+                                                                handler_s9TVu [Occ=Once!] ->
+                                          case
+                                              GHC.Exception.fromException $dException_s9TVt e1_s9TVl
+                                          of
+                                          { GHC.Base.Nothing -> go_s9TVn ys_s9TVr;
+                                            GHC.Base.Just e'_s9TVw [Occ=Once] ->
+                                                handler_s9TVu e'_s9TVw;
+                                          };
+                                    };
+                              };
+                    } in  go_s9TVn handlers_s9TVj;
+        } in  catch# [io_s9TVi sat_s9TVx eta_s9TVk];
+
+Control.Exception.catches
+  :: forall a.
+     GHC.Types.IO a -> [Control.Exception.Handler a] -> GHC.Types.IO a
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Exception.catches1 eta_B3 eta_B2 eta_B1;
+
+Control.Exception.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Exception.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule4];
+
+Control.Exception.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Exception"#;
+
+Control.Exception.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule2];
+
+Control.Exception.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Exception.$trModule3
+                                     Control.Exception.$trModule1];
+
+$krep_r9TUJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r9TUK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r9TUJ GHC.Types.[]];
+
+$krep2_r9TUL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Exception.$tcException
+                                              $krep1_r9TUK];
+
+$krep3_r9TUM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r9TUN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r9TUM GHC.Types.[]];
+
+$krep5_r9TUO :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcIO
+                                              $krep4_r9TUN];
+
+$krep6_r9TUP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r9TUJ $krep5_r9TUO];
+
+Control.Exception.$tcHandler2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Handler"#;
+
+Control.Exception.$tcHandler1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tcHandler2];
+
+Control.Exception.$tcHandler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6426835558342087658##
+                                    14166740461602238008##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tcHandler1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep7_r9TUQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Exception.$tcHandler
+                                              $krep4_r9TUN];
+
+$krep8_r9TUR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r9TUP $krep7_r9TUQ];
+
+Control.Exception.$tc'Handler1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r9TUL $krep8_r9TUR];
+
+Control.Exception.$tc'Handler3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Handler"#;
+
+Control.Exception.$tc'Handler2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tc'Handler3];
+
+Control.Exception.$tc'Handler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [23626058257872273##
+                                    1528997583294198943##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tc'Handler2
+                                    2#
+                                    Control.Exception.$tc'Handler1];
+
+lvl_r9TUS
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_s9TVy] (#,#) [s_s9TVy GHC.Tuple.()];
+
+Control.Exception.allowInterrupt1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_s9TVz]
+        case getMaskingState# [s_s9TVz] of {
+          (#,#) ipv_s9TVB [Occ=Once*] ipv1_s9TVC [Occ=Once!] ->
+              case ipv1_s9TVC of {
+                __DEFAULT -> unmaskAsyncExceptions# [lvl_r9TUS ipv_s9TVB];
+                0# -> (#,#) [ipv_s9TVB GHC.Tuple.()];
+                1# -> (#,#) [ipv_s9TVB GHC.Tuple.()];
+              };
+        };
+
+Control.Exception.allowInterrupt :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Exception.allowInterrupt1 eta_B1;
+
+Control.Exception.Handler
+  :: forall a e.
+     GHC.Exception.Exception e =>
+     (e -> GHC.Types.IO a) -> Control.Exception.Handler a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Exception.Handler [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:04:59.208577017 UTC
+
+Control.Exception.$fFunctorHandler_$cfmap
+  :: forall a b.
+     (a -> b)
+     -> Control.Exception.Handler a -> Control.Exception.Handler b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_s9TUU ds_s9TUV]
+        case ds_s9TUV of {
+          Control.Exception.Handler $dException_s9TUX [Occ=Once]
+                                    h_s9TUY [Occ=OnceL!] ->
+              let {
+                sat_s9TV5 [Occ=Once] :: e_a9TQq -> GHC.Types.IO b_a9TQo
+                [LclId] =
+                    [f_s9TUU h_s9TUY] \r [x_s9TUZ void_0E]
+                        case h_s9TUY x_s9TUZ GHC.Prim.void# of {
+                          Unit# ipv1_s9TV3 [Occ=Once] ->
+                              let {
+                                sat_s9TV4 [Occ=Once] :: b_a9TQo
+                                [LclId] =
+                                    [f_s9TUU ipv1_s9TV3] \u [] f_s9TUU ipv1_s9TV3;
+                              } in  Unit# [sat_s9TV4];
+                        };
+              } in  Control.Exception.Handler [$dException_s9TUX sat_s9TV5];
+        };
+
+Control.Exception.$fFunctorHandler_$c<$
+  :: forall a b.
+     a -> Control.Exception.Handler b -> Control.Exception.Handler a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s9TV6 ds_s9TV7]
+        case ds_s9TV7 of {
+          Control.Exception.Handler $dException_s9TV9 [Occ=Once]
+                                    h_s9TVa [Occ=OnceL!] ->
+              let {
+                sat_s9TVg [Occ=Once] :: e_a9TQq -> GHC.Types.IO a_a9TQH
+                [LclId] =
+                    [x_s9TV6 h_s9TVa] \r [x1_s9TVb void_0E]
+                        case h_s9TVa x1_s9TVb GHC.Prim.void# of {
+                          Unit# _ [Occ=Dead] -> Unit# [x_s9TV6];
+                        };
+              } in  Control.Exception.Handler [$dException_s9TV9 sat_s9TVg];
+        };
+
+Control.Exception.$fFunctorHandler [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Base.Functor Control.Exception.Handler
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Exception.$fFunctorHandler_$cfmap
+                                       Control.Exception.$fFunctorHandler_$c<$];
+
+Control.Exception.catches2
+  :: forall a. GHC.Exception.SomeException -> GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [e1_s9TVh]
+        GHC.Exception.throw
+            GHC.Exception.$fExceptionSomeException e1_s9TVh;
+
+Control.Exception.catches1
+  :: forall a.
+     GHC.Types.IO a
+     -> [Control.Exception.Handler a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [io_s9TVi handlers_s9TVj void_0E]
+        let {
+          sat_s9TVx [Occ=Once]
+            :: GHC.Exception.SomeException
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a9TQd #)
+          [LclId] =
+              [handlers_s9TVj] \r [e1_s9TVl]
+                  let-no-escape {
+                    z_s9TVm [Occ=OnceLT[0], Dmd=<L,C(U)>] :: GHC.Types.IO a_a9TQd
+                    [LclId[JoinId(0)], Str=x, Unf=OtherCon []] =
+                        [e1_s9TVl] \r [] Control.Exception.catches2 e1_s9TVl;
+                  } in 
+                    let-no-escape {
+                      go_s9TVn [Occ=LoopBreakerT[1]]
+                        :: [Control.Exception.Handler a_a9TQd] -> GHC.Types.IO a_a9TQd
+                      [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                          sat-only [e1_s9TVl z_s9TVm go_s9TVn] \r [ds_s9TVo]
+                              case ds_s9TVo of {
+                                [] -> z_s9TVm;
+                                : y_s9TVq [Occ=Once!] ys_s9TVr [Occ=Once] ->
+                                    case y_s9TVq of {
+                                      Control.Exception.Handler $dException_s9TVt [Occ=Once]
+                                                                handler_s9TVu [Occ=Once!] ->
+                                          case
+                                              GHC.Exception.fromException $dException_s9TVt e1_s9TVl
+                                          of
+                                          { GHC.Base.Nothing -> go_s9TVn ys_s9TVr;
+                                            GHC.Base.Just e'_s9TVw [Occ=Once] ->
+                                                handler_s9TVu e'_s9TVw;
+                                          };
+                                    };
+                              };
+                    } in  go_s9TVn handlers_s9TVj;
+        } in  catch# [io_s9TVi sat_s9TVx GHC.Prim.void#];
+
+Control.Exception.catches
+  :: forall a.
+     GHC.Types.IO a -> [Control.Exception.Handler a] -> GHC.Types.IO a
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Exception.catches1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Exception.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Exception.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule4];
+
+Control.Exception.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Exception"#;
+
+Control.Exception.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule2];
+
+Control.Exception.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Exception.$trModule3
+                                     Control.Exception.$trModule1];
+
+$krep_r9TUJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r9TUK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r9TUJ GHC.Types.[]];
+
+$krep2_r9TUL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Exception.$tcException
+                                              $krep1_r9TUK];
+
+$krep3_r9TUM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r9TUN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r9TUM GHC.Types.[]];
+
+$krep5_r9TUO :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcIO
+                                              $krep4_r9TUN];
+
+$krep6_r9TUP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r9TUJ $krep5_r9TUO];
+
+Control.Exception.$tcHandler2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Handler"#;
+
+Control.Exception.$tcHandler1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tcHandler2];
+
+Control.Exception.$tcHandler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6426835558342087658##
+                                    14166740461602238008##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tcHandler1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep7_r9TUQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Exception.$tcHandler
+                                              $krep4_r9TUN];
+
+$krep8_r9TUR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r9TUP $krep7_r9TUQ];
+
+Control.Exception.$tc'Handler1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r9TUL $krep8_r9TUR];
+
+Control.Exception.$tc'Handler3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Handler"#;
+
+Control.Exception.$tc'Handler2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tc'Handler3];
+
+Control.Exception.$tc'Handler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [23626058257872273##
+                                    1528997583294198943##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tc'Handler2
+                                    2#
+                                    Control.Exception.$tc'Handler1];
+
+lvl_r9TUS
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] Unit# [GHC.Tuple.()];
+
+Control.Exception.allowInterrupt1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_s9TVC [Occ=Once!] ->
+              case ipv1_s9TVC of {
+                __DEFAULT -> unmaskAsyncExceptions# [lvl_r9TUS GHC.Prim.void#];
+                0# -> Unit# [GHC.Tuple.()];
+                1# -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+Control.Exception.allowInterrupt :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] Control.Exception.allowInterrupt1 GHC.Prim.void#;
+
+Control.Exception.Handler
+  :: forall a e.
+     GHC.Exception.Exception e =>
+     (e -> GHC.Types.IO a) -> Control.Exception.Handler a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Exception.Handler [eta_B2 eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:04:59.484992148 UTC
+
+Control.Exception.$fFunctorHandler_$cfmap
+  :: forall a b.
+     (a -> b)
+     -> Control.Exception.Handler a -> Control.Exception.Handler b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_s9U6t ds_s9U6u]
+        case ds_s9U6u of {
+          Control.Exception.Handler $dException_s9U6w [Occ=Once]
+                                    h_s9U6x [Occ=OnceL!] ->
+              let {
+                sat_s9U6E [Occ=Once] :: e_a9TQq -> GHC.Types.IO b_a9TQo
+                [LclId] =
+                    [f_s9U6t h_s9U6x] \r [x_s9U6y s_s9U6z]
+                        case h_s9U6x x_s9U6y s_s9U6z of {
+                          (#,#) ipv_s9U6B [Occ=Once] ipv1_s9U6C [Occ=Once] ->
+                              let {
+                                sat_s9U6D [Occ=Once] :: b_a9TQo
+                                [LclId] =
+                                    [f_s9U6t ipv1_s9U6C] \u [] f_s9U6t ipv1_s9U6C;
+                              } in  (#,#) [ipv_s9U6B sat_s9U6D];
+                        };
+              } in  Control.Exception.Handler [$dException_s9U6w sat_s9U6E];
+        };
+
+Control.Exception.$fFunctorHandler_$c<$
+  :: forall a b.
+     a -> Control.Exception.Handler b -> Control.Exception.Handler a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s9U6F ds_s9U6G]
+        case ds_s9U6G of {
+          Control.Exception.Handler $dException_s9U6I [Occ=Once]
+                                    h_s9U6J [Occ=OnceL!] ->
+              let {
+                sat_s9U6P [Occ=Once] :: e_a9TQq -> GHC.Types.IO a_a9TQH
+                [LclId] =
+                    [x_s9U6F h_s9U6J] \r [x1_s9U6K s_s9U6L]
+                        case h_s9U6J x1_s9U6K s_s9U6L of {
+                          (#,#) ipv_s9U6N [Occ=Once] _ [Occ=Dead] ->
+                              (#,#) [ipv_s9U6N x_s9U6F];
+                        };
+              } in  Control.Exception.Handler [$dException_s9U6I sat_s9U6P];
+        };
+
+Control.Exception.$fFunctorHandler [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Base.Functor Control.Exception.Handler
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Exception.$fFunctorHandler_$cfmap
+                                       Control.Exception.$fFunctorHandler_$c<$];
+
+Control.Exception.catches2
+  :: forall a. GHC.Exception.SomeException -> GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [e1_s9U6Q]
+        GHC.Exception.throw
+            GHC.Exception.$fExceptionSomeException e1_s9U6Q;
+
+Control.Exception.catches1
+  :: forall a.
+     GHC.Types.IO a
+     -> [Control.Exception.Handler a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [io_s9U6R handlers_s9U6S eta_s9U6T]
+        let {
+          sat_s9U76 [Occ=Once]
+            :: GHC.Exception.SomeException
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a9TQd #)
+          [LclId] =
+              [handlers_s9U6S] \r [e1_s9U6U]
+                  let-no-escape {
+                    z_s9U6V [Occ=OnceLT[0], Dmd=<L,C(U)>] :: GHC.Types.IO a_a9TQd
+                    [LclId[JoinId(0)], Str=x, Unf=OtherCon []] =
+                        [e1_s9U6U] \r [] Control.Exception.catches2 e1_s9U6U;
+                  } in 
+                    let-no-escape {
+                      go_s9U6W [Occ=LoopBreakerT[1]]
+                        :: [Control.Exception.Handler a_a9TQd] -> GHC.Types.IO a_a9TQd
+                      [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                          sat-only [e1_s9U6U z_s9U6V go_s9U6W] \r [ds_s9U6X]
+                              case ds_s9U6X of {
+                                [] -> z_s9U6V;
+                                : y_s9U6Z [Occ=Once!] ys_s9U70 [Occ=Once] ->
+                                    case y_s9U6Z of {
+                                      Control.Exception.Handler $dException_s9U72 [Occ=Once]
+                                                                handler_s9U73 [Occ=Once!] ->
+                                          case
+                                              GHC.Exception.fromException $dException_s9U72 e1_s9U6U
+                                          of
+                                          { GHC.Base.Nothing -> go_s9U6W ys_s9U70;
+                                            GHC.Base.Just e'_s9U75 [Occ=Once] ->
+                                                handler_s9U73 e'_s9U75;
+                                          };
+                                    };
+                              };
+                    } in  go_s9U6W handlers_s9U6S;
+        } in  catch# [io_s9U6R sat_s9U76 eta_s9U6T];
+
+Control.Exception.catches
+  :: forall a.
+     GHC.Types.IO a -> [Control.Exception.Handler a] -> GHC.Types.IO a
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Exception.catches1 eta_B3 eta_B2 eta_B1;
+
+Control.Exception.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Exception.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule4];
+
+Control.Exception.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Exception"#;
+
+Control.Exception.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule2];
+
+Control.Exception.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Exception.$trModule3
+                                     Control.Exception.$trModule1];
+
+$krep_r9TUJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r9TUK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r9TUJ GHC.Types.[]];
+
+$krep2_r9TUL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Exception.$tcException
+                                              $krep1_r9TUK];
+
+$krep3_r9TUM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r9TUN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r9TUM GHC.Types.[]];
+
+$krep5_r9TUO :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcIO
+                                              $krep4_r9TUN];
+
+$krep6_r9TUP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r9TUJ $krep5_r9TUO];
+
+Control.Exception.$tcHandler2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Handler"#;
+
+Control.Exception.$tcHandler1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tcHandler2];
+
+Control.Exception.$tcHandler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6426835558342087658##
+                                    14166740461602238008##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tcHandler1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep7_r9TUQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Exception.$tcHandler
+                                              $krep4_r9TUN];
+
+$krep8_r9TUR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r9TUP $krep7_r9TUQ];
+
+Control.Exception.$tc'Handler1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r9TUL $krep8_r9TUR];
+
+Control.Exception.$tc'Handler3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Handler"#;
+
+Control.Exception.$tc'Handler2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tc'Handler3];
+
+Control.Exception.$tc'Handler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [23626058257872273##
+                                    1528997583294198943##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tc'Handler2
+                                    2#
+                                    Control.Exception.$tc'Handler1];
+
+lvl_r9TUS
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_s9U77] (#,#) [s_s9U77 GHC.Tuple.()];
+
+Control.Exception.allowInterrupt1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_s9U78]
+        case getMaskingState# [s_s9U78] of {
+          (#,#) ipv_s9U7a [Occ=Once*] ipv1_s9U7b [Occ=Once!] ->
+              case ipv1_s9U7b of {
+                __DEFAULT -> unmaskAsyncExceptions# [lvl_r9TUS ipv_s9U7a];
+                0# -> (#,#) [ipv_s9U7a GHC.Tuple.()];
+                1# -> (#,#) [ipv_s9U7a GHC.Tuple.()];
+              };
+        };
+
+Control.Exception.allowInterrupt :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Exception.allowInterrupt1 eta_B1;
+
+Control.Exception.Handler
+  :: forall a e.
+     GHC.Exception.Exception e =>
+     (e -> GHC.Types.IO a) -> Control.Exception.Handler a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Exception.Handler [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:04:59.489380476 UTC
+
+Control.Exception.$fFunctorHandler_$cfmap
+  :: forall a b.
+     (a -> b)
+     -> Control.Exception.Handler a -> Control.Exception.Handler b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [f_s9U6t ds_s9U6u]
+        case ds_s9U6u of {
+          Control.Exception.Handler $dException_s9U6w [Occ=Once]
+                                    h_s9U6x [Occ=OnceL!] ->
+              let {
+                sat_s9U6E [Occ=Once] :: e_a9TQq -> GHC.Types.IO b_a9TQo
+                [LclId] =
+                    [f_s9U6t h_s9U6x] \r [x_s9U6y void_0E]
+                        case h_s9U6x x_s9U6y GHC.Prim.void# of {
+                          Unit# ipv1_s9U6C [Occ=Once] ->
+                              let {
+                                sat_s9U6D [Occ=Once] :: b_a9TQo
+                                [LclId] =
+                                    [f_s9U6t ipv1_s9U6C] \u [] f_s9U6t ipv1_s9U6C;
+                              } in  Unit# [sat_s9U6D];
+                        };
+              } in  Control.Exception.Handler [$dException_s9U6w sat_s9U6E];
+        };
+
+Control.Exception.$fFunctorHandler_$c<$
+  :: forall a b.
+     a -> Control.Exception.Handler b -> Control.Exception.Handler a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [x_s9U6F ds_s9U6G]
+        case ds_s9U6G of {
+          Control.Exception.Handler $dException_s9U6I [Occ=Once]
+                                    h_s9U6J [Occ=OnceL!] ->
+              let {
+                sat_s9U6P [Occ=Once] :: e_a9TQq -> GHC.Types.IO a_a9TQH
+                [LclId] =
+                    [x_s9U6F h_s9U6J] \r [x1_s9U6K void_0E]
+                        case h_s9U6J x1_s9U6K GHC.Prim.void# of {
+                          Unit# _ [Occ=Dead] -> Unit# [x_s9U6F];
+                        };
+              } in  Control.Exception.Handler [$dException_s9U6I sat_s9U6P];
+        };
+
+Control.Exception.$fFunctorHandler [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Base.Functor Control.Exception.Handler
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Base.C:Functor! [Control.Exception.$fFunctorHandler_$cfmap
+                                       Control.Exception.$fFunctorHandler_$c<$];
+
+Control.Exception.catches2
+  :: forall a. GHC.Exception.SomeException -> GHC.Types.IO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []] =
+    [] \r [e1_s9U6Q]
+        GHC.Exception.throw
+            GHC.Exception.$fExceptionSomeException e1_s9U6Q;
+
+Control.Exception.catches1
+  :: forall a.
+     GHC.Types.IO a
+     -> [Control.Exception.Handler a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [io_s9U6R handlers_s9U6S void_0E]
+        let {
+          sat_s9U76 [Occ=Once]
+            :: GHC.Exception.SomeException
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_a9TQd #)
+          [LclId] =
+              [handlers_s9U6S] \r [e1_s9U6U]
+                  let-no-escape {
+                    z_s9U6V [Occ=OnceLT[0], Dmd=<L,C(U)>] :: GHC.Types.IO a_a9TQd
+                    [LclId[JoinId(0)], Str=x, Unf=OtherCon []] =
+                        [e1_s9U6U] \r [] Control.Exception.catches2 e1_s9U6U;
+                  } in 
+                    let-no-escape {
+                      go_s9U6W [Occ=LoopBreakerT[1]]
+                        :: [Control.Exception.Handler a_a9TQd] -> GHC.Types.IO a_a9TQd
+                      [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+                          sat-only [e1_s9U6U z_s9U6V go_s9U6W] \r [ds_s9U6X]
+                              case ds_s9U6X of {
+                                [] -> z_s9U6V;
+                                : y_s9U6Z [Occ=Once!] ys_s9U70 [Occ=Once] ->
+                                    case y_s9U6Z of {
+                                      Control.Exception.Handler $dException_s9U72 [Occ=Once]
+                                                                handler_s9U73 [Occ=Once!] ->
+                                          case
+                                              GHC.Exception.fromException $dException_s9U72 e1_s9U6U
+                                          of
+                                          { GHC.Base.Nothing -> go_s9U6W ys_s9U70;
+                                            GHC.Base.Just e'_s9U75 [Occ=Once] ->
+                                                handler_s9U73 e'_s9U75;
+                                          };
+                                    };
+                              };
+                    } in  go_s9U6W handlers_s9U6S;
+        } in  catch# [io_s9U6R sat_s9U76 GHC.Prim.void#];
+
+Control.Exception.catches
+  :: forall a.
+     GHC.Types.IO a -> [Control.Exception.Handler a] -> GHC.Types.IO a
+[GblId, Arity=3, Str=<L,1*C1(U)><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Exception.catches1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Exception.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Exception.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule4];
+
+Control.Exception.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Exception"#;
+
+Control.Exception.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$trModule2];
+
+Control.Exception.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Exception.$trModule3
+                                     Control.Exception.$trModule1];
+
+$krep_r9TUJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep1_r9TUK :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r9TUJ GHC.Types.[]];
+
+$krep2_r9TUL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Exception.$tcException
+                                              $krep1_r9TUK];
+
+$krep3_r9TUM :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep4_r9TUN :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep3_r9TUM GHC.Types.[]];
+
+$krep5_r9TUO :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcIO
+                                              $krep4_r9TUN];
+
+$krep6_r9TUP :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r9TUJ $krep5_r9TUO];
+
+Control.Exception.$tcHandler2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Handler"#;
+
+Control.Exception.$tcHandler1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tcHandler2];
+
+Control.Exception.$tcHandler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6426835558342087658##
+                                    14166740461602238008##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tcHandler1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep7_r9TUQ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Exception.$tcHandler
+                                              $krep4_r9TUN];
+
+$krep8_r9TUR :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r9TUP $krep7_r9TUQ];
+
+Control.Exception.$tc'Handler1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r9TUL $krep8_r9TUR];
+
+Control.Exception.$tc'Handler3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Handler"#;
+
+Control.Exception.$tc'Handler2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Exception.$tc'Handler3];
+
+Control.Exception.$tc'Handler :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [23626058257872273##
+                                    1528997583294198943##
+                                    Control.Exception.$trModule
+                                    Control.Exception.$tc'Handler2
+                                    2#
+                                    Control.Exception.$tc'Handler1];
+
+lvl_r9TUS
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] Unit# [GHC.Tuple.()];
+
+Control.Exception.allowInterrupt1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_s9U7b [Occ=Once!] ->
+              case ipv1_s9U7b of {
+                __DEFAULT -> unmaskAsyncExceptions# [lvl_r9TUS GHC.Prim.void#];
+                0# -> Unit# [GHC.Tuple.()];
+                1# -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+Control.Exception.allowInterrupt :: GHC.Types.IO ()
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] Control.Exception.allowInterrupt1 GHC.Prim.void#;
+
+Control.Exception.Handler
+  :: forall a e.
+     GHC.Exception.Exception e =>
+     (e -> GHC.Types.IO a) -> Control.Exception.Handler a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Exception.Handler [eta_B2 eta_B1];
+

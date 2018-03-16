@@ -1,0 +1,2726 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:53:48.733570441 UTC
+
+Result size of Tidy Core
+  = {terms: 2,252, types: 1,183, coercions: 15, joins: 0/14}
+
+-- RHS size: {terms: 6, types: 2, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$WPositive [InlPrag=INLINE[2]]
+  :: Positive -> Integer
+[GblId[DataConWrapper],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>m1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (dt_a1Vj [Occ=Once] :: Positive) ->
+                 case dt_a1Vj of dt_X1Vl { __DEFAULT ->
+                 GHC.Integer.Type.Positive dt_X1Vl
+                 }}]
+GHC.Integer.Type.$WPositive
+  = \ (dt_a1Vj [Occ=Once] :: Positive) ->
+      case dt_a1Vj of dt_X1Vl { __DEFAULT ->
+      GHC.Integer.Type.Positive dt_X1Vl
+      }
+
+-- RHS size: {terms: 6, types: 2, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$WNegative [InlPrag=INLINE[2]]
+  :: Positive -> Integer
+[GblId[DataConWrapper],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (dt_a1Vm [Occ=Once] :: Positive) ->
+                 case dt_a1Vm of dt_X1Vo { __DEFAULT ->
+                 GHC.Integer.Type.Negative dt_X1Vo
+                 }}]
+GHC.Integer.Type.$WNegative
+  = \ (dt_a1Vm [Occ=Once] :: Positive) ->
+      case dt_a1Vm of dt_X1Vo { __DEFAULT ->
+      GHC.Integer.Type.Negative dt_X1Vo
+      }
+
+-- RHS size: {terms: 8, types: 3, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$WSome [InlPrag=INLINE[2]]
+  :: Digit -> Digits -> Digits
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>m1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (dt_a1UE [Occ=Once] :: Digit)
+                 (dt_a1UF [Occ=Once] :: Digits) ->
+                 case dt_a1UF of dt_X1UI { __DEFAULT ->
+                 GHC.Integer.Type.Some dt_a1UE dt_X1UI
+                 }}]
+GHC.Integer.Type.$WSome
+  = \ (dt_a1UE [Occ=Once] :: Digit) (dt_a1UF [Occ=Once] :: Digits) ->
+      case dt_a1UF of dt_X1UI { __DEFAULT ->
+      GHC.Integer.Type.Some dt_a1UE dt_X1UI
+      }
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+errorPositive :: Positive
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+errorPositive = GHC.Integer.Type.Some 47## GHC.Integer.Type.None
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+errorInteger :: Integer
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+errorInteger = GHC.Integer.Type.Positive errorPositive
+
+-- RHS size: {terms: 10, types: 2, coercions: 0, joins: 0/0}
+wordToInteger [InlPrag=NOINLINE] :: Word# -> Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+wordToInteger
+  = \ (w_a1OQ :: Word#) ->
+      case w_a1OQ of wild_X1S {
+        __DEFAULT ->
+          GHC.Integer.Type.Positive
+            (GHC.Integer.Type.Some wild_X1S GHC.Integer.Type.None);
+        0## -> GHC.Integer.Type.Naught
+      }
+
+-- RHS size: {terms: 21, types: 10, coercions: 0, joins: 0/0}
+integerToWord [InlPrag=NOINLINE] :: Integer -> Word#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+integerToWord
+  = \ (ds_d2rR :: Integer) ->
+      case ds_d2rR of {
+        Positive ds1_d2s9 ->
+          case ds1_d2s9 of {
+            Some w_a1OR ds2_d2sa -> w_a1OR;
+            None -> 0##
+          };
+        Negative ds1_d2sb ->
+          case ds1_d2sb of {
+            Some w_a1OS ds2_d2sc -> minusWord# 0## w_a1OS;
+            None -> 0##
+          };
+        Naught -> 0##
+      }
+
+-- RHS size: {terms: 7, types: 2, coercions: 0, joins: 0/0}
+integerToInt [InlPrag=NOINLINE] :: Integer -> Int#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+integerToInt
+  = \ (i_a1OT :: Integer) ->
+      case integerToWord i_a1OT of wild_X1U { __DEFAULT ->
+      word2Int# wild_X1U
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+hashInteger [InlPrag=NOINLINE] :: Integer -> Int#
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= integerToInt}]
+hashInteger = integerToInt
+
+Rec {
+-- RHS size: {terms: 14, types: 5, coercions: 0, joins: 0/0}
+flipBitsDigits [Occ=LoopBreaker] :: Digits -> Digits
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+flipBitsDigits
+  = \ (ds_d2qp :: Digits) ->
+      case ds_d2qp of {
+        Some w_a1Qp ws_a1Qq ->
+          case flipBitsDigits ws_a1Qq of dt_X1UI { __DEFAULT ->
+          GHC.Integer.Type.Some (not# w_a1Qp) dt_X1UI
+          };
+        None -> GHC.Integer.Type.None
+      }
+end Rec }
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Integer.Type.flipBits1 :: Digits -> Digits
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (ds_a1Qo [Occ=Once] :: Digits) -> flipBitsDigits ds_a1Qo}]
+GHC.Integer.Type.flipBits1
+  = \ (ds_a1Qo :: Digits) -> flipBitsDigits ds_a1Qo
+
+-- RHS size: {terms: 1, types: 0, coercions: 4, joins: 0/0}
+flipBits :: Digits -> DigitsOnes
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Integer.Type.flipBits1
+               `cast` (<Digits>_R ->_R Sym (GHC.Integer.Type.N:DigitsOnes[0])
+                       :: (Digits -> Digits :: *) ~R# (Digits -> DigitsOnes :: *))}]
+flipBits
+  = GHC.Integer.Type.flipBits1
+    `cast` (<Digits>_R ->_R Sym (GHC.Integer.Type.N:DigitsOnes[0])
+            :: (Digits -> Digits :: *) ~R# (Digits -> DigitsOnes :: *))
+
+-- RHS size: {terms: 11, types: 4, coercions: 0, joins: 0/0}
+negateInteger [InlPrag=NOINLINE] :: Integer -> Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+negateInteger
+  = \ (ds_d2qg :: Integer) ->
+      case ds_d2qg of {
+        Positive p_a1Qr -> GHC.Integer.Type.Negative p_a1Qr;
+        Negative p_a1Qs -> GHC.Integer.Type.Positive p_a1Qs;
+        Naught -> GHC.Integer.Type.Naught
+      }
+
+-- RHS size: {terms: 15, types: 2, coercions: 0, joins: 0/0}
+smallInteger [InlPrag=NOINLINE] :: Int# -> Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+smallInteger
+  = \ (i_a1OP :: Int#) ->
+      case >=# i_a1OP 0# of {
+        __DEFAULT ->
+          negateInteger (wordToInteger (int2Word# (negateInt# i_a1OP)));
+        1# -> wordToInteger (int2Word# i_a1OP)
+      }
+
+-- RHS size: {terms: 9, types: 12, coercions: 0, joins: 0/0}
+decodeFloatInteger [InlPrag=NOINLINE]
+  :: Float# -> (# Integer, Int# #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+decodeFloatInteger
+  = \ (f2_a1Pe :: Float#) ->
+      case decodeFloat_Int# f2_a1Pe of { (# ipv_s2AK, ipv1_s2AL #) ->
+      (# smallInteger ipv_s2AK, ipv1_s2AL #)
+      }
+
+-- RHS size: {terms: 8, types: 3, coercions: 0, joins: 0/0}
+absInteger [InlPrag=NOINLINE] :: Integer -> Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+absInteger
+  = \ (ds_d2oq :: Integer) ->
+      case ds_d2oq of wild_X23 {
+        __DEFAULT -> wild_X23;
+        Negative x_a1RL -> GHC.Integer.Type.Positive x_a1RL
+      }
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+onePositive :: Positive
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+onePositive = GHC.Integer.Type.Some 1## GHC.Integer.Type.None
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+negativeOneInteger :: Integer
+[GblId,
+ Caf=NoCafRefs,
+ Str=m2,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+negativeOneInteger = GHC.Integer.Type.Negative onePositive
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+oneInteger :: Integer
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+oneInteger = GHC.Integer.Type.Positive onePositive
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+signumInteger [InlPrag=NOINLINE] :: Integer -> Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+signumInteger
+  = \ (ds_d2rE :: Integer) ->
+      case ds_d2rE of {
+        Positive ds1_d2rO -> oneInteger;
+        Negative ds1_d2rN -> negativeOneInteger;
+        Naught -> GHC.Integer.Type.Naught
+      }
+
+-- RHS size: {terms: 5, types: 2, coercions: 0, joins: 0/0}
+halfBoundUp :: () -> Digit
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d2ni [Occ=Once!] :: ()) ->
+                 case ds_d2ni of { () -> 9223372036854775808## }}]
+halfBoundUp
+  = \ (ds_d2ni :: ()) ->
+      case ds_d2ni of { () -> 9223372036854775808## }
+
+-- RHS size: {terms: 5, types: 2, coercions: 0, joins: 0/0}
+fullBound :: () -> Digit
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d2n8 [Occ=Once!] :: ()) ->
+                 case ds_d2n8 of { () -> 18446744073709551615## }}]
+fullBound
+  = \ (ds_d2n8 :: ()) ->
+      case ds_d2n8 of { () -> 18446744073709551615## }
+
+Rec {
+-- RHS size: {terms: 26, types: 24, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$wsuccPositive [InlPrag=NOUSERINLINE[0],
+                                 Occ=LoopBreaker]
+  :: Positive -> (# Digit, Digits #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+GHC.Integer.Type.$wsuccPositive
+  = \ (w_s3fN :: Positive) ->
+      case w_s3fN of {
+        Some w1_a1Sp ws_a1Sq ->
+          case w1_a1Sp of wild1_X2h {
+            __DEFAULT -> (# plusWord# wild1_X2h 1##, ws_a1Sq #);
+            18446744073709551615## ->
+              case GHC.Integer.Type.$wsuccPositive ws_a1Sq of
+              { (# ww1_s3hs, ww2_s3ht #) ->
+              (# 0##, GHC.Integer.Type.Some ww1_s3hs ww2_s3ht #)
+              }
+          };
+        None -> (# 1##, GHC.Integer.Type.None #)
+      }
+end Rec }
+
+-- RHS size: {terms: 8, types: 8, coercions: 0, joins: 0/0}
+succPositive [InlPrag=NOUSERINLINE[0]] :: Positive -> Positive
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s3fN [Occ=Once] :: Positive) ->
+                 case GHC.Integer.Type.$wsuccPositive w_s3fN of
+                 { (# ww1_s3hs [Occ=Once], ww2_s3ht [Occ=Once] #) ->
+                 GHC.Integer.Type.Some ww1_s3hs ww2_s3ht
+                 }}]
+succPositive
+  = \ (w_s3fN :: Positive) ->
+      case GHC.Integer.Type.$wsuccPositive w_s3fN of
+      { (# ww1_s3hs, ww2_s3ht #) ->
+      GHC.Integer.Type.Some ww1_s3hs ww2_s3ht
+      }
+
+-- RHS size: {terms: 7, types: 7, coercions: 0, joins: 0/0}
+lvl_r3Bo :: Positive
+[GblId]
+lvl_r3Bo
+  = case GHC.Integer.Type.$wsuccPositive GHC.Integer.Type.None of
+    { (# ww1_s3hs, ww2_s3ht #) ->
+    GHC.Integer.Type.Some ww1_s3hs ww2_s3ht
+    }
+
+Rec {
+-- RHS size: {terms: 133, types: 38, coercions: 0, joins: 0/1}
+GHC.Integer.Type.plusPositive_addWithCarry [Occ=LoopBreaker]
+  :: Digit -> Positive -> Positive -> Positive
+[GblId, Arity=3, Str=<S,U><S,1*U><S,1*U>, Unf=OtherCon []]
+GHC.Integer.Type.plusPositive_addWithCarry
+  = \ (c_a1S4 :: Digit) (ds_d2nm :: Digits) (ds1_d2nn :: Digits) ->
+      case ds_d2nm of wild_X2i {
+        Some ds2_d2nQ ds3_d2nR ->
+          case ds1_d2nn of wild1_Xu {
+            Some y_a1Se ys'_a1Sf ->
+              case ltWord# ds2_d2nQ y_a1Se of {
+                __DEFAULT ->
+                  case geWord# y_a1Se 9223372036854775808## of {
+                    __DEFAULT ->
+                      case geWord# ds2_d2nQ 9223372036854775808## of {
+                        __DEFAULT ->
+                          case GHC.Integer.Type.plusPositive_addWithCarry
+                                 0## ds3_d2nR ys'_a1Sf
+                          of dt_X1UI
+                          { __DEFAULT ->
+                          GHC.Integer.Type.Some
+                            (plusWord# (plusWord# ds2_d2nQ y_a1Se) c_a1S4) dt_X1UI
+                          };
+                        1# ->
+                          let {
+                            z_s2Ns [Dmd=<S,U>] :: Word#
+                            [LclId]
+                            z_s2Ns
+                              = plusWord#
+                                  (plusWord# (minusWord# ds2_d2nQ 9223372036854775808##) y_a1Se)
+                                  c_a1S4 } in
+                          case ltWord# z_s2Ns 9223372036854775808## of {
+                            __DEFAULT ->
+                              case GHC.Integer.Type.plusPositive_addWithCarry
+                                     1## ds3_d2nR ys'_a1Sf
+                              of dt_X1UI
+                              { __DEFAULT ->
+                              GHC.Integer.Type.Some
+                                (minusWord# z_s2Ns 9223372036854775808##) dt_X1UI
+                              };
+                            1# ->
+                              case GHC.Integer.Type.plusPositive_addWithCarry
+                                     0## ds3_d2nR ys'_a1Sf
+                              of dt_X1UI
+                              { __DEFAULT ->
+                              GHC.Integer.Type.Some
+                                (plusWord# z_s2Ns 9223372036854775808##) dt_X1UI
+                              }
+                          }
+                      };
+                    1# ->
+                      case GHC.Integer.Type.plusPositive_addWithCarry
+                             1## ds3_d2nR ys'_a1Sf
+                      of dt_X1UI
+                      { __DEFAULT ->
+                      GHC.Integer.Type.Some
+                        (plusWord#
+                           (plusWord#
+                              (minusWord# ds2_d2nQ 9223372036854775808##)
+                              (minusWord# y_a1Se 9223372036854775808##))
+                           c_a1S4)
+                        dt_X1UI
+                      }
+                  };
+                1# ->
+                  GHC.Integer.Type.plusPositive_addWithCarry c_a1S4 wild1_Xu wild_X2i
+              };
+            None ->
+              case c_a1S4 of {
+                __DEFAULT ->
+                  case GHC.Integer.Type.$wsuccPositive wild_X2i of
+                  { (# ww1_s3hs, ww2_s3ht #) ->
+                  GHC.Integer.Type.Some ww1_s3hs ww2_s3ht
+                  };
+                0## -> wild_X2i
+              }
+          };
+        None ->
+          case ds1_d2nn of wild1_Xs {
+            Some ds2_d2nO ds3_d2nP ->
+              case c_a1S4 of {
+                __DEFAULT ->
+                  case GHC.Integer.Type.$wsuccPositive wild1_Xs of
+                  { (# ww1_s3hs, ww2_s3ht #) ->
+                  GHC.Integer.Type.Some ww1_s3hs ww2_s3ht
+                  };
+                0## -> wild1_Xs
+              };
+            None ->
+              case c_a1S4 of {
+                __DEFAULT -> lvl_r3Bo;
+                0## -> GHC.Integer.Type.None
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 6, types: 2, coercions: 0, joins: 0/0}
+plusPositive :: Positive -> Positive -> Positive
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x0_a1S0 [Occ=Once] :: Positive)
+                 (y0_a1S1 [Occ=Once] :: Positive) ->
+                 GHC.Integer.Type.plusPositive_addWithCarry 0## x0_a1S0 y0_a1S1}]
+plusPositive
+  = \ (x0_a1S0 :: Positive) (y0_a1S1 :: Positive) ->
+      GHC.Integer.Type.plusPositive_addWithCarry 0## x0_a1S0 y0_a1S1
+
+Rec {
+-- RHS size: {terms: 65, types: 18, coercions: 0, joins: 0/0}
+minusPositive [Occ=LoopBreaker] :: Positive -> Positive -> Positive
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+minusPositive
+  = \ (ds_d2su :: Digits) (ds1_d2sv :: Digits) ->
+      case ds_d2su of wild_X2d {
+        Some x_a1Sr xs_a1Ss ->
+          case ds1_d2sv of {
+            Some y_a1St ys_a1Su ->
+              case eqWord# x_a1Sr y_a1St of {
+                __DEFAULT ->
+                  case gtWord# x_a1Sr y_a1St of {
+                    __DEFAULT ->
+                      case minusPositive (minusPositive xs_a1Ss ys_a1Su) onePositive
+                      of dt_X1UI
+                      { __DEFAULT ->
+                      GHC.Integer.Type.Some
+                        (plusWord#
+                           (plusWord# (minusWord# 18446744073709551615## y_a1St) 1##) x_a1Sr)
+                        dt_X1UI
+                      };
+                    1# ->
+                      case minusPositive xs_a1Ss ys_a1Su of dt_X1UI { __DEFAULT ->
+                      GHC.Integer.Type.Some (minusWord# x_a1Sr y_a1St) dt_X1UI
+                      }
+                  };
+                1# ->
+                  case minusPositive xs_a1Ss ys_a1Su of wild2_Xw {
+                    Some ipv_s2Bm ipv1_s2Bn -> GHC.Integer.Type.Some 0## wild2_Xw;
+                    None -> GHC.Integer.Type.None
+                  }
+              };
+            None -> wild_X2d
+          };
+        None ->
+          case ds1_d2sv of {
+            Some ds2_d2sY ds3_d2sZ -> errorPositive;
+            None -> GHC.Integer.Type.None
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 5, types: 1, coercions: 0, joins: 0/0}
+GHC.Integer.Type.twosComplementPositive1 :: Positive -> Digits
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (p_a1Qn [Occ=Once] :: Positive) ->
+                 flipBitsDigits (minusPositive p_a1Qn onePositive)}]
+GHC.Integer.Type.twosComplementPositive1
+  = \ (p_a1Qn :: Positive) ->
+      flipBitsDigits (minusPositive p_a1Qn onePositive)
+
+-- RHS size: {terms: 1, types: 0, coercions: 4, joins: 0/0}
+twosComplementPositive :: Positive -> DigitsOnes
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Integer.Type.twosComplementPositive1
+               `cast` (<Positive>_R ->_R Sym (GHC.Integer.Type.N:DigitsOnes[0])
+                       :: (Positive -> Digits :: *) ~R# (Positive -> DigitsOnes :: *))}]
+twosComplementPositive
+  = GHC.Integer.Type.twosComplementPositive1
+    `cast` (<Positive>_R ->_R Sym (GHC.Integer.Type.N:DigitsOnes[0])
+            :: (Positive -> Digits :: *) ~R# (Positive -> DigitsOnes :: *))
+
+-- RHS size: {terms: 5, types: 2, coercions: 0, joins: 0/0}
+lowHalfMask :: () -> Digit
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d2mG [Occ=Once!] :: ()) ->
+                 case ds_d2mG of { () -> 4294967295## }}]
+lowHalfMask
+  = \ (ds_d2mG :: ()) -> case ds_d2mG of { () -> 4294967295## }
+
+-- RHS size: {terms: 5, types: 2, coercions: 0, joins: 0/0}
+highHalfShift :: () -> Int#
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d2mD [Occ=Once!] :: ()) ->
+                 case ds_d2mD of { () -> 32# }}]
+highHalfShift = \ (ds_d2mD :: ()) -> case ds_d2mD of { () -> 32# }
+
+-- RHS size: {terms: 8, types: 5, coercions: 0, joins: 0/0}
+splitHalves :: Digit -> (# Digit, Digit #)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a1SW :: Digit) ->
+                 (# uncheckedShiftRL# x_a1SW 32#, and# x_a1SW 4294967295## #)}]
+splitHalves
+  = \ (x_a1SW :: Digit) ->
+      (# uncheckedShiftRL# x_a1SW 32#, and# x_a1SW 4294967295## #)
+
+Rec {
+-- RHS size: {terms: 31, types: 5, coercions: 0, joins: 0/0}
+doubleFromPositive [Occ=LoopBreaker] :: Positive -> Double#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+doubleFromPositive
+  = \ (ds_d2mK :: Digits) ->
+      case ds_d2mK of {
+        Some w_a1U1 ds1_a1U2 ->
+          case doubleFromPositive ds1_a1U2 of wild1_XA { __DEFAULT ->
+          +##
+            (+##
+               (*## wild1_XA (**## 2.0## 64.0##))
+               (*##
+                  (int2Double# (word2Int# (uncheckedShiftRL# w_a1U1 32#)))
+                  (**## 2.0## 32.0##)))
+            (int2Double# (word2Int# (and# w_a1U1 4294967295##)))
+          };
+        None -> 0.0##
+      }
+end Rec }
+
+-- RHS size: {terms: 15, types: 5, coercions: 0, joins: 0/0}
+doubleFromInteger [InlPrag=NOINLINE] :: Integer -> Double#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+doubleFromInteger
+  = \ (ds_d2qQ :: Integer) ->
+      case ds_d2qQ of {
+        Positive p_a1Pm -> doubleFromPositive p_a1Pm;
+        Negative p_a1Pn ->
+          case doubleFromPositive p_a1Pn of wild1_Xu { __DEFAULT ->
+          negateDouble# wild1_Xu
+          };
+        Naught -> 0.0##
+      }
+
+Rec {
+-- RHS size: {terms: 31, types: 5, coercions: 0, joins: 0/0}
+floatFromPositive [Occ=LoopBreaker] :: Positive -> Float#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+floatFromPositive
+  = \ (ds_d2mW :: Digits) ->
+      case ds_d2mW of {
+        Some w_a1U5 ds1_a1U6 ->
+          case floatFromPositive ds1_a1U6 of wild1_XC { __DEFAULT ->
+          plusFloat#
+            (plusFloat#
+               (timesFloat# wild1_XC (powerFloat# 2.0# 64.0#))
+               (timesFloat#
+                  (int2Float# (word2Int# (uncheckedShiftRL# w_a1U5 32#)))
+                  (powerFloat# 2.0# 32.0#)))
+            (int2Float# (word2Int# (and# w_a1U5 4294967295##)))
+          };
+        None -> 0.0#
+      }
+end Rec }
+
+-- RHS size: {terms: 15, types: 5, coercions: 0, joins: 0/0}
+floatFromInteger [InlPrag=NOINLINE] :: Integer -> Float#
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+floatFromInteger
+  = \ (ds_d2qH :: Integer) ->
+      case ds_d2qH of {
+        Positive p_a1Po -> floatFromPositive p_a1Po;
+        Negative p_a1Pp ->
+          case floatFromPositive p_a1Pp of wild1_Xw { __DEFAULT ->
+          negateFloat# wild1_Xw
+          };
+        Naught -> 0.0#
+      }
+
+-- RHS size: {terms: 73, types: 10, coercions: 0, joins: 0/7}
+timesDigit :: Digit -> Digit -> Positive
+[GblId,
+ Arity=2,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 216 0}]
+timesDigit
+  = \ (x_a1SG :: Digit) (y_a1SH :: Digit) ->
+      let {
+        ds_s2No [Dmd=<S,U>] :: Word#
+        [LclId]
+        ds_s2No = uncheckedShiftRL# x_a1SG 32# } in
+      let {
+        ds1_s2Nl [Dmd=<S,U>] :: Word#
+        [LclId]
+        ds1_s2Nl = and# y_a1SH 4294967295## } in
+      let {
+        x1_s2Nk [Dmd=<S,U>] :: Digit
+        [LclId]
+        x1_s2Nk = timesWord# ds_s2No ds1_s2Nl } in
+      let {
+        ds2_s2Nn [Dmd=<S,U>] :: Word#
+        [LclId]
+        ds2_s2Nn = and# x_a1SG 4294967295## } in
+      let {
+        ds3_s2Nm [Dmd=<S,U>] :: Word#
+        [LclId]
+        ds3_s2Nm = uncheckedShiftRL# y_a1SH 32# } in
+      let {
+        x2_s2Nj [Dmd=<S,U>] :: Digit
+        [LclId]
+        x2_s2Nj = timesWord# ds2_s2Nn ds3_s2Nm } in
+      let {
+        low_s2Nh [Dmd=<S,1*U>] :: Positive
+        [LclId]
+        low_s2Nh
+          = GHC.Integer.Type.plusPositive_addWithCarry
+              0##
+              (GHC.Integer.Type.plusPositive_addWithCarry
+                 0##
+                 (GHC.Integer.Type.Some
+                    (uncheckedShiftL# (and# x1_s2Nk 4294967295##) 32#)
+                    GHC.Integer.Type.None)
+                 (GHC.Integer.Type.Some
+                    (uncheckedShiftL# (and# x2_s2Nj 4294967295##) 32#)
+                    GHC.Integer.Type.None))
+              (GHC.Integer.Type.Some
+                 (timesWord# ds2_s2Nn ds1_s2Nl) GHC.Integer.Type.None) } in
+      case plusWord#
+             (plusWord#
+                (timesWord# ds_s2No ds3_s2Nm) (uncheckedShiftRL# x1_s2Nk 32#))
+             (uncheckedShiftRL# x2_s2Nj 32#)
+      of wild_X34 {
+        __DEFAULT ->
+          GHC.Integer.Type.plusPositive_addWithCarry
+            0##
+            (GHC.Integer.Type.Some
+               0## (GHC.Integer.Type.Some wild_X34 GHC.Integer.Type.None))
+            low_s2Nh;
+        0## -> low_s2Nh
+      }
+
+Rec {
+-- RHS size: {terms: 73, types: 22, coercions: 0, joins: 0/0}
+timesPositive [Occ=LoopBreaker] :: Positive -> Positive -> Positive
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+timesPositive
+  = \ (ds_d2ww :: Digits) (ds1_d2wx :: Digits) ->
+      case ds_d2ww of wild_X2p {
+        Some ds2_d2xx ds3_d2xy ->
+          case ds1_d2wx of wild1_XB {
+            Some y_a1SD ys'_a1SE ->
+              case ds3_d2xy of wild2_XE {
+                Some ds4_d2x9 ds5_d2xa ->
+                  case ys'_a1SE of {
+                    Some ds6_d2wZ ds7_d2x0 ->
+                      case timesPositive wild2_XE wild1_XB of dt_X1UI { __DEFAULT ->
+                      GHC.Integer.Type.plusPositive_addWithCarry
+                        0##
+                        (timesPositive
+                           (GHC.Integer.Type.Some ds2_d2xx GHC.Integer.Type.None) wild1_XB)
+                        (GHC.Integer.Type.Some 0## dt_X1UI)
+                      };
+                    None ->
+                      case ds2_d2xx of wild4_X2O {
+                        __DEFAULT ->
+                          case timesPositive wild2_XE wild1_XB of dt_X1UI { __DEFAULT ->
+                          GHC.Integer.Type.plusPositive_addWithCarry
+                            0##
+                            (timesDigit wild4_X2O y_a1SD)
+                            (GHC.Integer.Type.Some 0## dt_X1UI)
+                          };
+                        0## ->
+                          case timesPositive wild2_XE wild1_XB of dt_X1UI { __DEFAULT ->
+                          GHC.Integer.Type.Some 0## dt_X1UI
+                          }
+                      }
+                  };
+                None ->
+                  case ys'_a1SE of {
+                    Some ds4_d2wJ ds5_d2wK -> timesPositive wild1_XB wild_X2p;
+                    None -> timesDigit ds2_d2xx y_a1SD
+                  }
+              };
+            None -> errorPositive
+          };
+        None -> case ds1_d2wx of { __DEFAULT -> errorPositive }
+      }
+end Rec }
+
+-- RHS size: {terms: 51, types: 16, coercions: 0, joins: 0/0}
+timesInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Integer
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+timesInteger
+  = \ (ds_d2xC :: Integer) (ds1_d2xD :: Integer) ->
+      case ds_d2xC of {
+        Positive p1_a1QH ->
+          case ds1_d2xD of {
+            Positive p2_a1QI ->
+              case timesPositive p1_a1QH p2_a1QI of dt_X1Vl { __DEFAULT ->
+              GHC.Integer.Type.Positive dt_X1Vl
+              };
+            Negative p2_a1QM ->
+              case timesPositive p1_a1QH p2_a1QM of dt_X1Vo { __DEFAULT ->
+              GHC.Integer.Type.Negative dt_X1Vo
+              };
+            Naught -> GHC.Integer.Type.Naught
+          };
+        Negative p1_a1QJ ->
+          case ds1_d2xD of {
+            Positive p2_a1QO ->
+              case timesPositive p1_a1QJ p2_a1QO of dt_X1Vo { __DEFAULT ->
+              GHC.Integer.Type.Negative dt_X1Vo
+              };
+            Negative p2_a1QK ->
+              case timesPositive p1_a1QJ p2_a1QK of dt_X1Vl { __DEFAULT ->
+              GHC.Integer.Type.Positive dt_X1Vl
+              };
+            Naught -> GHC.Integer.Type.Naught
+          };
+        Naught -> case ds1_d2xD of { __DEFAULT -> GHC.Integer.Type.Naught }
+      }
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+twoToTheThirtytwoPositive :: Positive
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+twoToTheThirtytwoPositive
+  = GHC.Integer.Type.Some 4294967296## GHC.Integer.Type.None
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+twoToTheThirtytwoInteger :: Integer
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+twoToTheThirtytwoInteger
+  = GHC.Integer.Type.Positive twoToTheThirtytwoPositive
+
+-- RHS size: {terms: 8, types: 4, coercions: 0, joins: 0/0}
+digitsMaybeZeroToInteger :: Digits -> Integer
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_d2mu [Occ=Once!] :: Digits) ->
+                 case ds_d2mu of wild_X2s {
+                   Some _ [Occ=Dead] _ [Occ=Dead] ->
+                     GHC.Integer.Type.Positive wild_X2s;
+                   None -> GHC.Integer.Type.Naught
+                 }}]
+digitsMaybeZeroToInteger
+  = \ (ds_d2mu :: Digits) ->
+      case ds_d2mu of wild_X2s {
+        Some ipv_s2Ce ipv1_s2Cf -> GHC.Integer.Type.Positive wild_X2s;
+        None -> GHC.Integer.Type.Naught
+      }
+
+Rec {
+-- RHS size: {terms: 26, types: 9, coercions: 0, joins: 0/0}
+removeZeroTails [Occ=LoopBreaker] :: Digits -> Digits
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+removeZeroTails
+  = \ (ds_d2lX :: Digits) ->
+      case ds_d2lX of {
+        Some w_a1RS ds1_a1RT ->
+          case w_a1RS of wild1_X2z {
+            __DEFAULT ->
+              case removeZeroTails ds1_a1RT of dt_X1UI { __DEFAULT ->
+              GHC.Integer.Type.Some wild1_X2z dt_X1UI
+              };
+            0## ->
+              case removeZeroTails ds1_a1RT of wild2_XH {
+                Some ipv_s2Cl ipv1_s2Cm -> GHC.Integer.Type.Some 0## wild2_XH;
+                None -> GHC.Integer.Type.None
+              }
+          };
+        None -> GHC.Integer.Type.None
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+digitsToNegativeInteger :: Digits -> Integer
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_a1RQ [Occ=Once] :: Digits) ->
+                 case removeZeroTails ds_a1RQ of wild_X2u {
+                   Some _ [Occ=Dead] _ [Occ=Dead] ->
+                     GHC.Integer.Type.Negative wild_X2u;
+                   None -> GHC.Integer.Type.Naught
+                 }}]
+digitsToNegativeInteger
+  = \ (ds_a1RQ :: Digits) ->
+      case removeZeroTails ds_a1RQ of wild_X2u {
+        Some ipv_s2Cq ipv1_s2Cr -> GHC.Integer.Type.Negative wild_X2u;
+        None -> GHC.Integer.Type.Naught
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+digitsToInteger :: Digits -> Integer
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (ds_a1RO [Occ=Once] :: Digits) ->
+                 case removeZeroTails ds_a1RO of wild_X2v {
+                   Some _ [Occ=Dead] _ [Occ=Dead] ->
+                     GHC.Integer.Type.Positive wild_X2v;
+                   None -> GHC.Integer.Type.Naught
+                 }}]
+digitsToInteger
+  = \ (ds_a1RO :: Digits) ->
+      case removeZeroTails ds_a1RO of wild_X2v {
+        Some ipv_s2Cu ipv1_s2Cv -> GHC.Integer.Type.Positive wild_X2v;
+        None -> GHC.Integer.Type.Naught
+      }
+
+Rec {
+-- RHS size: {terms: 39, types: 14, coercions: 0, joins: 0/0}
+comparePositive [Occ=LoopBreaker]
+  :: Positive -> Positive -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+comparePositive
+  = \ (ds_d2ls :: Digits) (ds1_d2lt :: Digits) ->
+      case ds_d2ls of {
+        Some x_a1RV xs_a1RW ->
+          case ds1_d2lt of {
+            Some y_a1RX ys_a1RY ->
+              case comparePositive xs_a1RW ys_a1RY of wild2_XN {
+                __DEFAULT -> wild2_XN;
+                EQ ->
+                  case ltWord# x_a1RV y_a1RX of {
+                    __DEFAULT ->
+                      case gtWord# x_a1RV y_a1RX of {
+                        __DEFAULT -> GHC.Types.EQ;
+                        1# -> GHC.Types.GT
+                      };
+                    1# -> GHC.Types.LT
+                  }
+              };
+            None -> GHC.Types.GT
+          };
+        None ->
+          case ds1_d2lt of {
+            Some ds2_d2lS ds3_d2lT -> GHC.Types.LT;
+            None -> GHC.Types.EQ
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 31, types: 12, coercions: 0, joins: 0/0}
+compareInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+compareInteger
+  = \ (ds_d2oA :: Integer) (ds1_d2oB :: Integer) ->
+      case ds_d2oA of {
+        Positive x_a1Rj ->
+          case ds1_d2oB of {
+            __DEFAULT -> GHC.Types.GT;
+            Positive y_a1Rk -> comparePositive x_a1Rj y_a1Rk
+          };
+        Negative x_a1Rl ->
+          case ds1_d2oB of {
+            __DEFAULT -> GHC.Types.LT;
+            Negative y_a1Rm -> comparePositive y_a1Rm x_a1Rl
+          };
+        Naught ->
+          case ds1_d2oB of {
+            Positive ipv_s2CM -> GHC.Types.LT;
+            Negative ds2_d2p2 -> GHC.Types.GT;
+            Naught -> GHC.Types.EQ
+          }
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+eqInteger# [InlPrag=NOINLINE] :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+eqInteger#
+  = \ (x_a1Rn :: Integer) (y_a1Ro :: Integer) ->
+      case compareInteger x_a1Rn y_a1Ro of {
+        __DEFAULT -> 0#;
+        EQ -> 1#
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+eqInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Integer -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (a_a1Rr [Occ=Once] :: Integer)
+                 (b_a1Rs [Occ=Once] :: Integer) ->
+                 case eqInteger# a_a1Rr b_a1Rs of wild_X2A { __DEFAULT ->
+                 tagToEnum# @ Bool wild_X2A
+                 }}]
+eqInteger
+  = \ (a_a1Rr :: Integer) (b_a1Rs :: Integer) ->
+      case eqInteger# a_a1Rr b_a1Rs of wild_X2A { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2A
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+neqInteger# [InlPrag=NOINLINE] :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+neqInteger#
+  = \ (x_a1Rp :: Integer) (y_a1Rq :: Integer) ->
+      case compareInteger x_a1Rp y_a1Rq of {
+        __DEFAULT -> 1#;
+        EQ -> 0#
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+neqInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Integer -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (a_a1Rt [Occ=Once] :: Integer)
+                 (b_a1Ru [Occ=Once] :: Integer) ->
+                 case neqInteger# a_a1Rt b_a1Ru of wild_X2C { __DEFAULT ->
+                 tagToEnum# @ Bool wild_X2C
+                 }}]
+neqInteger
+  = \ (a_a1Rt :: Integer) (b_a1Ru :: Integer) ->
+      case neqInteger# a_a1Rt b_a1Ru of wild_X2C { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2C
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$fEqInteger [InlPrag=NOUSERINLINE CONLIKE]
+  :: Eq Integer
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ -> GHC.Classes.C:Eq TYPE: Integer eqInteger neqInteger]
+GHC.Integer.Type.$fEqInteger
+  = GHC.Classes.C:Eq @ Integer eqInteger neqInteger
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+ltInteger# [InlPrag=NOINLINE] :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+ltInteger#
+  = \ (x_a1Rv :: Integer) (y_a1Rw :: Integer) ->
+      case compareInteger x_a1Rv y_a1Rw of {
+        __DEFAULT -> 0#;
+        LT -> 1#
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+ltInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Integer -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (a_a1RH [Occ=Once] :: Integer)
+                 (b_a1RI [Occ=Once] :: Integer) ->
+                 case ltInteger# a_a1RH b_a1RI of wild_X2F { __DEFAULT ->
+                 tagToEnum# @ Bool wild_X2F
+                 }}]
+ltInteger
+  = \ (a_a1RH :: Integer) (b_a1RI :: Integer) ->
+      case ltInteger# a_a1RH b_a1RI of wild_X2F { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2F
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+gtInteger# [InlPrag=NOINLINE] :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+gtInteger#
+  = \ (x_a1Rx :: Integer) (y_a1Ry :: Integer) ->
+      case compareInteger x_a1Rx y_a1Ry of {
+        __DEFAULT -> 0#;
+        GT -> 1#
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+gtInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Integer -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (a_a1RF [Occ=Once] :: Integer)
+                 (b_a1RG [Occ=Once] :: Integer) ->
+                 case gtInteger# a_a1RF b_a1RG of wild_X2H { __DEFAULT ->
+                 tagToEnum# @ Bool wild_X2H
+                 }}]
+gtInteger
+  = \ (a_a1RF :: Integer) (b_a1RG :: Integer) ->
+      case gtInteger# a_a1RF b_a1RG of wild_X2H { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2H
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+leInteger# [InlPrag=NOINLINE] :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+leInteger#
+  = \ (x_a1Rz :: Integer) (y_a1RA :: Integer) ->
+      case compareInteger x_a1Rz y_a1RA of {
+        __DEFAULT -> 1#;
+        GT -> 0#
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+leInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Integer -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (a_a1RD [Occ=Once] :: Integer)
+                 (b_a1RE [Occ=Once] :: Integer) ->
+                 case leInteger# a_a1RD b_a1RE of wild_X2J { __DEFAULT ->
+                 tagToEnum# @ Bool wild_X2J
+                 }}]
+leInteger
+  = \ (a_a1RD :: Integer) (b_a1RE :: Integer) ->
+      case leInteger# a_a1RD b_a1RE of wild_X2J { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2J
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+geInteger# [InlPrag=NOINLINE] :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+geInteger#
+  = \ (x_a1RB :: Integer) (y_a1RC :: Integer) ->
+      case compareInteger x_a1RB y_a1RC of {
+        __DEFAULT -> 1#;
+        LT -> 0#
+      }
+
+-- RHS size: {terms: 9, types: 4, coercions: 0, joins: 0/0}
+geInteger [InlPrag=INLINE (sat-args=2)]
+  :: Integer -> Integer -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (a_a1RJ [Occ=Once] :: Integer)
+                 (b_a1RK [Occ=Once] :: Integer) ->
+                 case geInteger# a_a1RJ b_a1RK of wild_X2L { __DEFAULT ->
+                 tagToEnum# @ Bool wild_X2L
+                 }}]
+geInteger
+  = \ (a_a1RJ :: Integer) (b_a1RK :: Integer) ->
+      case geInteger# a_a1RJ b_a1RK of wild_X2L { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2L
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$fOrdInteger_$cmax
+  :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a2zY :: Integer) (y_a2zZ :: Integer) ->
+                 case leInteger# x_a2zY y_a2zZ of {
+                   __DEFAULT -> x_a2zY;
+                   1# -> y_a2zZ
+                 }}]
+GHC.Integer.Type.$fOrdInteger_$cmax
+  = \ (x_a2zY :: Integer) (y_a2zZ :: Integer) ->
+      case leInteger# x_a2zY y_a2zZ of {
+        __DEFAULT -> x_a2zY;
+        1# -> y_a2zZ
+      }
+
+-- RHS size: {terms: 10, types: 3, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$fOrdInteger_$cmin
+  :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (x_a2A7 :: Integer) (y_a2A8 :: Integer) ->
+                 case leInteger# x_a2A7 y_a2A8 of {
+                   __DEFAULT -> y_a2A8;
+                   1# -> x_a2A7
+                 }}]
+GHC.Integer.Type.$fOrdInteger_$cmin
+  = \ (x_a2A7 :: Integer) (y_a2A8 :: Integer) ->
+      case leInteger# x_a2A7 y_a2A8 of {
+        __DEFAULT -> y_a2A8;
+        1# -> x_a2A7
+      }
+
+-- RHS size: {terms: 9, types: 1, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$fOrdInteger [InlPrag=NOUSERINLINE CONLIKE]
+  :: Ord Integer
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Classes.C:Ord TYPE: Integer
+                         GHC.Integer.Type.$fEqInteger
+                         compareInteger
+                         ltInteger
+                         leInteger
+                         gtInteger
+                         geInteger
+                         GHC.Integer.Type.$fOrdInteger_$cmax
+                         GHC.Integer.Type.$fOrdInteger_$cmin]
+GHC.Integer.Type.$fOrdInteger
+  = GHC.Classes.C:Ord
+      @ Integer
+      GHC.Integer.Type.$fEqInteger
+      compareInteger
+      ltInteger
+      leInteger
+      gtInteger
+      geInteger
+      GHC.Integer.Type.$fOrdInteger_$cmax
+      GHC.Integer.Type.$fOrdInteger_$cmin
+
+Rec {
+-- RHS size: {terms: 61, types: 16, coercions: 0, joins: 0/0}
+plusInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Integer -> Integer
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+plusInteger
+  = \ (ds_d2uR :: Integer) (ds1_d2uS :: Integer) ->
+      case ds_d2uR of wild_X2P {
+        Positive p1_a1Qt ->
+          case ds1_d2uS of {
+            Positive p2_a1Qu ->
+              case GHC.Integer.Type.plusPositive_addWithCarry 0## p1_a1Qt p2_a1Qu
+              of dt_X1Vl
+              { __DEFAULT ->
+              GHC.Integer.Type.Positive dt_X1Vl
+              };
+            Negative p2_a1Qy ->
+              case comparePositive p1_a1Qt p2_a1Qy of {
+                LT ->
+                  case minusPositive p2_a1Qy p1_a1Qt of dt_X1Vo { __DEFAULT ->
+                  GHC.Integer.Type.Negative dt_X1Vo
+                  };
+                EQ -> GHC.Integer.Type.Naught;
+                GT ->
+                  case minusPositive p1_a1Qt p2_a1Qy of dt_X1Vl { __DEFAULT ->
+                  GHC.Integer.Type.Positive dt_X1Vl
+                  }
+              };
+            Naught -> wild_X2P
+          };
+        Negative p1_a1Qv ->
+          case ds1_d2uS of wild1_X10 {
+            Positive p2_a1QA -> plusInteger wild1_X10 wild_X2P;
+            Negative p2_a1Qw ->
+              case GHC.Integer.Type.plusPositive_addWithCarry 0## p1_a1Qv p2_a1Qw
+              of dt_X1Vo
+              { __DEFAULT ->
+              GHC.Integer.Type.Negative dt_X1Vo
+              };
+            Naught -> wild_X2P
+          };
+        Naught -> ds1_d2uS
+      }
+end Rec }
+
+-- RHS size: {terms: 6, types: 2, coercions: 0, joins: 0/0}
+minusInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Integer
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+minusInteger
+  = \ (i1_a1QF :: Integer) (i2_a1QG :: Integer) ->
+      plusInteger i1_a1QF (negateInteger i2_a1QG)
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+complementInteger [InlPrag=NOINLINE] :: Integer -> Integer
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+complementInteger
+  = \ (x_a1Qc :: Integer) -> minusInteger negativeOneInteger x_a1Qc
+
+-- RHS size: {terms: 17, types: 18, coercions: 0, joins: 0/0}
+decodeDoubleInteger [InlPrag=NOINLINE]
+  :: Double# -> (# Integer, Int# #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+decodeDoubleInteger
+  = \ (d_a1Ph :: Double#) ->
+      case decodeDouble_2Int# d_a1Ph of
+      { (# ipv_s2De, ipv1_s2Df, ipv2_s2Dg, ipv3_s2Dh #) ->
+      (# timesInteger
+           (smallInteger ipv_s2De)
+           (plusInteger
+              (timesInteger (wordToInteger ipv1_s2Df) twoToTheThirtytwoInteger)
+              (wordToInteger ipv2_s2Dg)),
+         ipv3_s2Dh #)
+      }
+
+-- RHS size: {terms: 43, types: 14, coercions: 0, joins: 0/2}
+smallShiftLPositive :: Positive -> Int# -> Positive
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 30] 184 0}]
+smallShiftLPositive
+  = \ (p_a1SZ :: Positive) (ds_d2kA :: Int#) ->
+      case ds_d2kA of ds1_X2lC {
+        __DEFAULT ->
+          let {
+            j_s2N8 :: Int#
+            [LclId]
+            j_s2N8 = -# 64# ds1_X2lC } in
+          letrec {
+            f2_s2N7 [Occ=LoopBreaker] :: Word# -> Digits -> Digits
+            [LclId, Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+            f2_s2N7
+              = \ (carry_a1T4 :: Word#) (ds2_d2kB :: Digits) ->
+                  case ds2_d2kB of {
+                    Some w_a1T6 ws_a1T7 ->
+                      case f2_s2N7 (uncheckedShiftRL# w_a1T6 j_s2N8) ws_a1T7 of dt_X1UI
+                      { __DEFAULT ->
+                      GHC.Integer.Type.Some
+                        (or# (uncheckedShiftL# w_a1T6 ds1_X2lC) carry_a1T4) dt_X1UI
+                      };
+                    None ->
+                      case carry_a1T4 of wild1_X39 {
+                        __DEFAULT -> GHC.Integer.Type.Some wild1_X39 GHC.Integer.Type.None;
+                        0## -> GHC.Integer.Type.None
+                      }
+                  }; } in
+          f2_s2N7 0## p_a1SZ;
+        0# -> p_a1SZ
+      }
+
+-- RHS size: {terms: 27, types: 10, coercions: 0, joins: 0/0}
+smallShiftRPositive :: Positive -> Int# -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 40] 121 60}]
+smallShiftRPositive
+  = \ (p_a1Td :: Positive) (i_a1Te :: Int#) ->
+      case p_a1Td of p1_X1Uf { __DEFAULT ->
+      case i_a1Te of wild_X2Y {
+        __DEFAULT ->
+          case smallShiftLPositive p1_X1Uf (-# 64# wild_X2Y) of {
+            Some ds_d2l7 p'_a1Tf ->
+              case p'_a1Tf of wild2_X19 {
+                Some ds1_d2l8 ds2_d2l9 -> GHC.Integer.Type.Positive wild2_X19;
+                None -> GHC.Integer.Type.Naught
+              };
+            None -> GHC.Integer.Type.Naught
+          };
+        0# -> GHC.Integer.Type.Positive p1_X1Uf
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 21, types: 6, coercions: 0, joins: 0/0}
+shiftRPositive [Occ=LoopBreaker] :: Positive -> Int# -> Integer
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+shiftRPositive
+  = \ (ds_d2lf :: Digits) (ds1_d2lg :: Int#) ->
+      case ds_d2lf of wild_X2V {
+        Some ds2_d2lp q_a1Tb ->
+          case >=# ds1_d2lg 64# of {
+            __DEFAULT -> smallShiftRPositive wild_X2V ds1_d2lg;
+            1# -> shiftRPositive q_a1Tb (-# ds1_d2lg 64#)
+          };
+        None -> GHC.Integer.Type.Naught
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 16, types: 5, coercions: 0, joins: 0/0}
+shiftRInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Int# -> Integer
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+shiftRInteger
+  = \ (ds_d2vD :: Integer) (i_a1Qi :: Int#) ->
+      case ds_d2vD of wild_X2W {
+        Positive p_a1Qh -> shiftRPositive p_a1Qh i_a1Qi;
+        Negative ds1_d2vN ->
+          complementInteger
+            (shiftRInteger (complementInteger wild_X2W) i_a1Qi);
+        Naught -> GHC.Integer.Type.Naught
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 21, types: 4, coercions: 0, joins: 0/0}
+shiftLPositive [Occ=LoopBreaker] :: Positive -> Int# -> Positive
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><S,U>, Unf=OtherCon []]
+shiftLPositive
+  = \ (p_a1SX :: Positive) (i_a1SY :: Int#) ->
+      case >=# i_a1SY 64# of {
+        __DEFAULT -> smallShiftLPositive p_a1SX i_a1SY;
+        1# ->
+          case p_a1SX of dt_X1UI { __DEFAULT ->
+          shiftLPositive (GHC.Integer.Type.Some 0## dt_X1UI) (-# i_a1SY 64#)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 22, types: 7, coercions: 0, joins: 0/0}
+shiftLInteger [InlPrag=NOINLINE] :: Integer -> Int# -> Integer
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+shiftLInteger
+  = \ (ds_d2qx :: Integer) (i_a1Qe :: Int#) ->
+      case ds_d2qx of {
+        Positive p_a1Qd ->
+          case shiftLPositive p_a1Qd i_a1Qe of dt_X1Vl { __DEFAULT ->
+          GHC.Integer.Type.Positive dt_X1Vl
+          };
+        Negative n_a1Qf ->
+          case shiftLPositive n_a1Qf i_a1Qe of dt_X1Vo { __DEFAULT ->
+          GHC.Integer.Type.Negative dt_X1Vo
+          };
+        Naught -> GHC.Integer.Type.Naught
+      }
+
+-- RHS size: {terms: 17, types: 6, coercions: 0, joins: 0/0}
+some :: Digit -> Digits -> Digits
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_a1TD [Occ=Once*] :: Digit)
+                 (ds_d2ks [Occ=Once!] :: Digits) ->
+                 case ds_d2ks of wild_X30 {
+                   Some _ [Occ=Dead] _ [Occ=Dead] ->
+                     GHC.Integer.Type.Some w_a1TD wild_X30;
+                   None ->
+                     case w_a1TD of wild1_X34 {
+                       __DEFAULT -> GHC.Integer.Type.Some wild1_X34 GHC.Integer.Type.None;
+                       0## -> GHC.Integer.Type.None
+                     }
+                 }}]
+some
+  = \ (w_a1TD :: Digit) (ds_d2ks :: Digits) ->
+      case ds_d2ks of wild_X30 {
+        Some ipv_s2DF ipv1_s2DG -> GHC.Integer.Type.Some w_a1TD wild_X30;
+        None ->
+          case w_a1TD of wild1_X34 {
+            __DEFAULT -> GHC.Integer.Type.Some wild1_X34 GHC.Integer.Type.None;
+            0## -> GHC.Integer.Type.None
+          }
+      }
+
+Rec {
+-- RHS size: {terms: 35, types: 15, coercions: 0, joins: 0/0}
+GHC.Integer.Type.quotRemPositive_g [Occ=LoopBreaker]
+  :: Digit -> Positives -> Digits -> (# Digit, Digits #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><S,1*U><S,U>,
+ Unf=OtherCon []]
+GHC.Integer.Type.quotRemPositive_g
+  = \ (d_a1Tu :: Digit)
+      (ds_d2wg :: List Positive)
+      (m_a1Tv :: Digits) ->
+      case ds_d2wg of {
+        Nil ->
+          case m_a1Tv of m1_X1UL { __DEFAULT -> (# d_a1Tu, m1_X1UL #) };
+        Cons sub_a1Tx subs_a1Ty ->
+          case comparePositive m_a1Tv sub_a1Tx of {
+            __DEFAULT ->
+              GHC.Integer.Type.quotRemPositive_g
+                (plusWord# (uncheckedShiftL# d_a1Tu 1#) 1##)
+                subs_a1Ty
+                (minusPositive m_a1Tv sub_a1Tx);
+            LT ->
+              GHC.Integer.Type.quotRemPositive_g
+                (uncheckedShiftL# d_a1Tu 1#) subs_a1Ty m_a1Tv
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 94, types: 83, coercions: 0, joins: 0/4}
+quotRemPositive :: Positive -> Positive -> (# Integer, Integer #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 20] 601 30}]
+quotRemPositive
+  = \ (xs_a1Tg :: Positive) (ys_a1Th :: Positive) ->
+      case ys_a1Th of ys1_X1Uq { __DEFAULT ->
+      let {
+        subtractors_s2N2 :: Positives
+        [LclId]
+        subtractors_s2N2
+          = let {
+              lvl1_s2NA :: List Positive
+              [LclId, Unf=OtherCon []]
+              lvl1_s2NA
+                = GHC.Integer.Type.Cons
+                    @ Positive ys1_X1Uq (GHC.Integer.Type.Nil @ Positive) } in
+            letrec {
+              mkSubtractors_s2N4 [Occ=LoopBreaker] :: Int# -> List Positive
+              [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+              mkSubtractors_s2N4
+                = \ (n_a1Tm :: Int#) ->
+                    case n_a1Tm of wild_X3c {
+                      __DEFAULT ->
+                        GHC.Integer.Type.Cons
+                          @ Positive
+                          (smallShiftLPositive ys1_X1Uq wild_X3c)
+                          (mkSubtractors_s2N4 (-# wild_X3c 1#));
+                      0# -> lvl1_s2NA
+                    }; } in
+            mkSubtractors_s2N4 63# } in
+      letrec {
+        f2_s2N0 [Occ=LoopBreaker] :: Positive -> (# Digits, Digits #)
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        f2_s2N0
+          = \ (ds_d2vW :: Digits) ->
+              case ds_d2vW of {
+                Some z_a1Tn zs_a1To ->
+                  case f2_s2N0 zs_a1To of { (# ipv_s2DW, ipv1_s2DX #) ->
+                  case ipv1_s2DX of wild1_X30 {
+                    Some ipv2_s2DF ipv3_s2DG ->
+                      case GHC.Integer.Type.quotRemPositive_g
+                             0## subtractors_s2N2 (GHC.Integer.Type.Some z_a1Tn wild1_X30)
+                      of
+                      { (# ipv4_s2E0, ipv5_s2E1 #) ->
+                      (# some ipv4_s2E0 ipv_s2DW, ipv5_s2E1 #)
+                      };
+                    None ->
+                      case z_a1Tn of wild2_X34 {
+                        __DEFAULT ->
+                          case GHC.Integer.Type.quotRemPositive_g
+                                 0##
+                                 subtractors_s2N2
+                                 (GHC.Integer.Type.Some wild2_X34 GHC.Integer.Type.None)
+                          of
+                          { (# ipv2_s2E0, ipv3_s2E1 #) ->
+                          (# some ipv2_s2E0 ipv_s2DW, ipv3_s2E1 #)
+                          };
+                        0## ->
+                          case GHC.Integer.Type.quotRemPositive_g
+                                 0## subtractors_s2N2 GHC.Integer.Type.None
+                          of
+                          { (# ipv2_s2E0, ipv3_s2E1 #) ->
+                          (# some ipv2_s2E0 ipv_s2DW, ipv3_s2E1 #)
+                          }
+                      }
+                  }
+                  };
+                None -> (# GHC.Integer.Type.None, GHC.Integer.Type.None #)
+              }; } in
+      case f2_s2N0 xs_a1Tg of { (# ipv_s2E4, ipv1_s2E5 #) ->
+      (# digitsMaybeZeroToInteger ipv_s2E4,
+         digitsMaybeZeroToInteger ipv1_s2E5 #)
+      }
+      }
+
+-- RHS size: {terms: 62, types: 55, coercions: 0, joins: 0/0}
+quotRemInteger [InlPrag=NOINLINE]
+  :: Integer -> Integer -> (# Integer, Integer #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+quotRemInteger
+  = \ (ds_d2yd :: Integer) (ds1_d2ye :: Integer) ->
+      case ds_d2yd of wild_X33 {
+        __DEFAULT ->
+          case ds1_d2ye of wild1_X1c {
+            __DEFAULT ->
+              case wild_X33 of {
+                Positive p1_a1QZ ->
+                  case wild1_X1c of {
+                    Positive p2_a1R0 -> quotRemPositive p1_a1QZ p2_a1R0;
+                    Negative p2_a1R6 ->
+                      case quotRemPositive p1_a1QZ p2_a1R6 of
+                      { (# ipv_s2Ec, ipv1_s2Ed #) ->
+                      (# negateInteger ipv_s2Ec, ipv1_s2Ed #)
+                      }
+                  };
+                Negative p1_a1R1 ->
+                  case wild1_X1c of {
+                    Positive p2_a1R2 ->
+                      case quotRemPositive p1_a1R1 p2_a1R2 of
+                      { (# ipv_s2Eh, ipv1_s2Ei #) ->
+                      (# negateInteger ipv_s2Eh, negateInteger ipv1_s2Ei #)
+                      };
+                    Negative p2_a1Ra ->
+                      case quotRemPositive p1_a1R1 p2_a1Ra of
+                      { (# ipv_s2El, ipv1_s2Em #) ->
+                      (# ipv_s2El, negateInteger ipv1_s2Em #)
+                      }
+                  }
+              };
+            Naught -> (# errorInteger, errorInteger #)
+          };
+        Naught ->
+          case ds1_d2ye of { __DEFAULT ->
+          (# GHC.Integer.Type.Naught, GHC.Integer.Type.Naught #)
+          }
+      }
+
+-- RHS size: {terms: 24, types: 14, coercions: 0, joins: 0/0}
+divModInteger [InlPrag=NOINLINE]
+  :: Integer -> Integer -> (# Integer, Integer #)
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []]
+divModInteger
+  = \ (n_a1QP :: Integer) (d_a1QQ :: Integer) ->
+      case quotRemInteger n_a1QP d_a1QQ of ds_d2yY
+      { (# ipv_s2Eq, ipv1_s2Er #) ->
+      case eqInteger#
+             (signumInteger ipv1_s2Er) (negateInteger (signumInteger d_a1QQ))
+      of {
+        __DEFAULT -> ds_d2yY;
+        1# ->
+          (# minusInteger ipv_s2Eq oneInteger,
+             plusInteger ipv1_s2Er d_a1QQ #)
+      }
+      }
+
+-- RHS size: {terms: 8, types: 9, coercions: 0, joins: 0/0}
+divInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Integer
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []]
+divInteger
+  = \ (n_a1QT :: Integer) (d_a1QU :: Integer) ->
+      case divModInteger n_a1QT d_a1QU of { (# ipv_s2Ew, ipv1_s2Ex #) ->
+      ipv_s2Ew
+      }
+
+-- RHS size: {terms: 8, types: 9, coercions: 0, joins: 0/0}
+modInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Integer
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []]
+modInteger
+  = \ (n_a1QW :: Integer) (d_a1QX :: Integer) ->
+      case divModInteger n_a1QW d_a1QX of { (# ipv_s2EB, ipv1_s2EC #) ->
+      ipv1_s2EC
+      }
+
+-- RHS size: {terms: 8, types: 9, coercions: 0, joins: 0/0}
+quotInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+quotInteger
+  = \ (x_a1Rd :: Integer) (y_a1Re :: Integer) ->
+      case quotRemInteger x_a1Rd y_a1Re of { (# ipv_s2EG, ipv1_s2EH #) ->
+      ipv_s2EG
+      }
+
+-- RHS size: {terms: 8, types: 9, coercions: 0, joins: 0/0}
+remInteger [InlPrag=NOINLINE] :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+remInteger
+  = \ (x_a1Rg :: Integer) (y_a1Rh :: Integer) ->
+      case quotRemInteger x_a1Rg y_a1Rh of { (# ipv_s2EK, ipv1_s2EL #) ->
+      ipv1_s2EL
+      }
+
+Rec {
+-- RHS size: {terms: 25, types: 10, coercions: 0, joins: 0/0}
+andDigits [Occ=LoopBreaker] :: Digits -> Digits -> Digits
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+andDigits
+  = \ (ds_d2k2 :: Digits) (ds1_d2k3 :: Digits) ->
+      case ds_d2k2 of {
+        Some ds2_d2kn ds3_d2ko ->
+          case ds1_d2k3 of {
+            Some w2_a1TI ws2_a1TJ ->
+              case andDigits ds3_d2ko ws2_a1TJ of dt_X1UI { __DEFAULT ->
+              GHC.Integer.Type.Some (and# ds2_d2kn w2_a1TI) dt_X1UI
+              };
+            None -> GHC.Integer.Type.None
+          };
+        None -> case ds1_d2k3 of { __DEFAULT -> GHC.Integer.Type.None }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 22, types: 9, coercions: 3, joins: 0/0}
+andDigitsOnes [Occ=LoopBreaker] :: DigitsOnes -> Digits -> Digits
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+andDigitsOnes
+  = \ (ds_d2jy :: DigitsOnes) (ds1_d2jz :: Digits) ->
+      case ds_d2jy
+           `cast` (GHC.Integer.Type.N:DigitsOnes[0]
+                   :: (DigitsOnes :: *) ~R# (Digits :: *))
+      of {
+        Some ds2_d2jX ds3_d2jY ->
+          case ds1_d2jz of {
+            Some w2_a1TN ws2_a1TO ->
+              case andDigitsOnes
+                     (ds3_d2jY
+                      `cast` (Sym (GHC.Integer.Type.N:DigitsOnes[0])
+                              :: (Digits :: *) ~R# (DigitsOnes :: *)))
+                     ws2_a1TO
+              of dt_X1UI
+              { __DEFAULT ->
+              GHC.Integer.Type.Some (and# ds2_d2jX w2_a1TN) dt_X1UI
+              };
+            None -> GHC.Integer.Type.None
+          };
+        None -> ds1_d2jz
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 22, types: 9, coercions: 0, joins: 0/0}
+orDigits [Occ=LoopBreaker] :: Digits -> Digits -> Digits
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+orDigits
+  = \ (ds_d2j6 :: Digits) (ds1_d2j7 :: Digits) ->
+      case ds_d2j6 of wild_X39 {
+        Some ds2_d2jt ds3_d2ju ->
+          case ds1_d2j7 of {
+            Some w2_a1TT ds4_a1TU ->
+              case orDigits ds3_d2ju ds4_a1TU of dt_X1UI { __DEFAULT ->
+              GHC.Integer.Type.Some (or# ds2_d2jt w2_a1TT) dt_X1UI
+              };
+            None -> wild_X39
+          };
+        None -> ds1_d2j7
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 73, types: 34, coercions: 2, joins: 0/0}
+orInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+orInteger
+  = \ (ds_d2t3 :: Integer) (i_a1PE :: Integer) ->
+      case ds_d2t3 of wild_X3c {
+        __DEFAULT ->
+          case i_a1PE of wild1_X1m {
+            __DEFAULT ->
+              case wild_X3c of wild2_X1n {
+                Positive x_a1PG ->
+                  case wild1_X1m of {
+                    Positive y_a1PH ->
+                      case orDigits x_a1PG y_a1PH of dt_X1Vl { __DEFAULT ->
+                      GHC.Integer.Type.Positive dt_X1Vl
+                      };
+                    Negative y_a1PJ ->
+                      case GHC.Integer.Type.$wsuccPositive
+                             (andDigitsOnes
+                                ((flipBitsDigits x_a1PG)
+                                 `cast` (Sym (GHC.Integer.Type.N:DigitsOnes[0])
+                                         :: (Digits :: *) ~R# (DigitsOnes :: *)))
+                                (minusPositive y_a1PJ onePositive))
+                      of
+                      { (# ww1_s3hs, ww2_s3ht #) ->
+                      case removeZeroTails (GHC.Integer.Type.Some ww1_s3hs ww2_s3ht)
+                      of wild4_X2u {
+                        Some ipv_s2Cq ipv1_s2Cr -> GHC.Integer.Type.Negative wild4_X2u;
+                        None -> GHC.Integer.Type.Naught
+                      }
+                      }
+                  };
+                Negative x_a1PO ->
+                  case wild1_X1m of wild3_X1p {
+                    Positive y_a1PP -> orInteger wild3_X1p wild2_X1n;
+                    Negative y_a1PR ->
+                      case GHC.Integer.Type.$wsuccPositive
+                             (andDigits
+                                (minusPositive x_a1PO onePositive)
+                                (minusPositive y_a1PR onePositive))
+                      of
+                      { (# ww1_s3hs, ww2_s3ht #) ->
+                      case removeZeroTails (GHC.Integer.Type.Some ww1_s3hs ww2_s3ht)
+                      of wild4_X2u {
+                        Some ipv_s2Cq ipv1_s2Cr -> GHC.Integer.Type.Negative wild4_X2u;
+                        None -> GHC.Integer.Type.Naught
+                      }
+                      }
+                  }
+              };
+            Naught -> wild_X3c
+          };
+        Naught -> i_a1PE
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 16, types: 9, coercions: 0, joins: 0/0}
+GHC.Integer.Type.mkInteger_f [Occ=LoopBreaker] :: [Int] -> Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+GHC.Integer.Type.mkInteger_f
+  = \ (ds_d2zI :: [Int]) ->
+      case ds_d2zI of {
+        [] -> GHC.Integer.Type.Naught;
+        : ds1_d2zQ is'_a1ON ->
+          case ds1_d2zQ of { I# i_a1OM ->
+          orInteger
+            (smallInteger i_a1OM)
+            (shiftLInteger (GHC.Integer.Type.mkInteger_f is'_a1ON) 31#)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 11, types: 4, coercions: 0, joins: 0/0}
+mkInteger :: Bool -> [Int] -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (nonNegative_a1OJ [Occ=Once!] :: Bool)
+                 (is_a1OK [Occ=Once*] :: [Int]) ->
+                 case nonNegative_a1OJ of {
+                   False -> negateInteger (GHC.Integer.Type.mkInteger_f is_a1OK);
+                   True -> GHC.Integer.Type.mkInteger_f is_a1OK
+                 }}]
+mkInteger
+  = \ (nonNegative_a1OJ :: Bool) (is_a1OK :: [Int]) ->
+      case nonNegative_a1OJ of {
+        False -> negateInteger (GHC.Integer.Type.mkInteger_f is_a1OK);
+        True -> GHC.Integer.Type.mkInteger_f is_a1OK
+      }
+
+Rec {
+-- RHS size: {terms: 73, types: 30, coercions: 2, joins: 0/0}
+andInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+andInteger
+  = \ (ds_d2ue :: Integer) (ds1_d2uf :: Integer) ->
+      case ds_d2ue of wild_X3e {
+        __DEFAULT ->
+          case ds1_d2uf of wild1_X1o {
+            __DEFAULT ->
+              case wild_X3e of wild2_X1p {
+                Positive x_a1Pq ->
+                  case wild1_X1o of {
+                    Positive y_a1Pr ->
+                      case removeZeroTails (andDigits x_a1Pq y_a1Pr) of wild4_X2v {
+                        Some ipv_s2Cu ipv1_s2Cv -> GHC.Integer.Type.Positive wild4_X2v;
+                        None -> GHC.Integer.Type.Naught
+                      };
+                    Negative y_a1Pt ->
+                      case removeZeroTails
+                             (andDigitsOnes
+                                ((flipBitsDigits (minusPositive y_a1Pt onePositive))
+                                 `cast` (Sym (GHC.Integer.Type.N:DigitsOnes[0])
+                                         :: (Digits :: *) ~R# (DigitsOnes :: *)))
+                                x_a1Pq)
+                      of wild4_X2v {
+                        Some ipv_s2Cu ipv1_s2Cv -> GHC.Integer.Type.Positive wild4_X2v;
+                        None -> GHC.Integer.Type.Naught
+                      }
+                  };
+                Negative x_a1Pw ->
+                  case wild1_X1o of wild3_X1r {
+                    Positive y_a1Px -> andInteger wild3_X1r wild2_X1p;
+                    Negative y_a1Pz ->
+                      case GHC.Integer.Type.$wsuccPositive
+                             (orDigits
+                                (minusPositive x_a1Pw onePositive)
+                                (minusPositive y_a1Pz onePositive))
+                      of
+                      { (# ww1_s3hs, ww2_s3ht #) ->
+                      case removeZeroTails (GHC.Integer.Type.Some ww1_s3hs ww2_s3ht)
+                      of wild4_X2u {
+                        Some ipv_s2Cq ipv1_s2Cr -> GHC.Integer.Type.Negative wild4_X2u;
+                        None -> GHC.Integer.Type.Naught
+                      }
+                      }
+                  }
+              };
+            Naught -> GHC.Integer.Type.Naught
+          };
+        Naught -> case ds1_d2uf of { __DEFAULT -> GHC.Integer.Type.Naught }
+      }
+end Rec }
+
+-- RHS size: {terms: 13, types: 4, coercions: 0, joins: 0/0}
+testBitInteger :: Integer -> Int# -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 101 0}]
+testBitInteger
+  = \ (x_a1Ql :: Integer) (i_a1Qm :: Int#) ->
+      case neqInteger#
+             (andInteger x_a1Ql (shiftLInteger oneInteger i_a1Qm))
+             GHC.Integer.Type.Naught
+      of wild_X2C
+      { __DEFAULT ->
+      tagToEnum# @ Bool wild_X2C
+      }
+
+Rec {
+-- RHS size: {terms: 22, types: 9, coercions: 0, joins: 0/0}
+xorDigits [Occ=LoopBreaker] :: Digits -> Digits -> Digits
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+xorDigits
+  = \ (ds_d2iE :: Digits) (ds1_d2iF :: Digits) ->
+      case ds_d2iE of wild_X3e {
+        Some ds2_d2j1 ds3_d2j2 ->
+          case ds1_d2iF of {
+            Some w2_a1TZ ds4_a1U0 ->
+              case xorDigits ds3_d2j2 ds4_a1U0 of dt_X1UI { __DEFAULT ->
+              GHC.Integer.Type.Some (xor# ds2_d2j1 w2_a1TZ) dt_X1UI
+              };
+            None -> wild_X3e
+          };
+        None -> ds1_d2iF
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 69, types: 29, coercions: 0, joins: 0/0}
+xorInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Integer -> Integer
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+xorInteger
+  = \ (ds_d2tE :: Integer) (i_a1PW :: Integer) ->
+      case ds_d2tE of wild_X3h {
+        __DEFAULT ->
+          case i_a1PW of wild1_X1r {
+            __DEFAULT ->
+              case wild_X3h of wild2_X1s {
+                Positive x_a1PY ->
+                  case wild1_X1r of {
+                    Positive y_a1PZ ->
+                      case removeZeroTails (xorDigits x_a1PY y_a1PZ) of wild4_X2v {
+                        Some ipv_s2Cu ipv1_s2Cv -> GHC.Integer.Type.Positive wild4_X2v;
+                        None -> GHC.Integer.Type.Naught
+                      };
+                    Negative y_a1Q1 ->
+                      case GHC.Integer.Type.$wsuccPositive
+                             (xorDigits x_a1PY (minusPositive y_a1Q1 onePositive))
+                      of
+                      { (# ww1_s3hs, ww2_s3ht #) ->
+                      case removeZeroTails (GHC.Integer.Type.Some ww1_s3hs ww2_s3ht)
+                      of wild4_X2u {
+                        Some ipv_s2Cq ipv1_s2Cr -> GHC.Integer.Type.Negative wild4_X2u;
+                        None -> GHC.Integer.Type.Naught
+                      }
+                      }
+                  };
+                Negative x_a1Q5 ->
+                  case wild1_X1r of wild3_X1u {
+                    Positive y_a1Q6 -> xorInteger wild3_X1u wild2_X1s;
+                    Negative y_a1Q8 ->
+                      case removeZeroTails
+                             (xorDigits
+                                (minusPositive x_a1Q5 onePositive)
+                                (minusPositive y_a1Q8 onePositive))
+                      of wild4_X2v {
+                        Some ipv_s2Cu ipv1_s2Cv -> GHC.Integer.Type.Positive wild4_X2v;
+                        None -> GHC.Integer.Type.Naught
+                      }
+                  }
+              };
+            Naught -> wild_X3h
+          };
+        Naught -> i_a1PW
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Integer.Type.$trModule4 = "integer-simple"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$trModule3
+  = GHC.Types.TrNameS GHC.Integer.Type.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Integer.Type.$trModule2 = "GHC.Integer.Type"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$trModule1
+  = GHC.Types.TrNameS GHC.Integer.Type.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Integer.Type.$trModule
+  = GHC.Types.Module
+      GHC.Integer.Type.$trModule3 GHC.Integer.Type.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r3Bp :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r3Bp = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_r3Bq :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_r3Bq
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcWord# (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcDigits2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Integer.Type.$tcDigits2 = "Digits"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcDigits1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tcDigits1
+  = GHC.Types.TrNameS GHC.Integer.Type.$tcDigits2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcDigits :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tcDigits
+  = GHC.Types.TyCon
+      16647862651490579480##
+      7069031713090282797##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tcDigits1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'None1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+GHC.Integer.Type.$tc'None1
+  = GHC.Types.KindRepTyConApp
+      GHC.Integer.Type.$tcDigits (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'None3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Integer.Type.$tc'None3 = "'None"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'None2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'None2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'None3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'None :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'None
+  = GHC.Types.TyCon
+      903679638320298226##
+      12977397153301278560##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'None2
+      0#
+      GHC.Integer.Type.$tc'None1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep2_r3Br :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep2_r3Br
+  = GHC.Types.KindRepFun
+      GHC.Integer.Type.$tc'None1 GHC.Integer.Type.$tc'None1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Some1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Integer.Type.$tc'Some1
+  = GHC.Types.KindRepFun $krep1_r3Bq $krep2_r3Br
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Some3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Integer.Type.$tc'Some3 = "'Some"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Some2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'Some2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'Some3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Some :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'Some
+  = GHC.Types.TyCon
+      6045911439621864566##
+      9702873355935012388##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'Some2
+      0#
+      GHC.Integer.Type.$tc'Some1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcInteger2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Integer.Type.$tcInteger2 = "Integer"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcInteger1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tcInteger1
+  = GHC.Types.TrNameS GHC.Integer.Type.$tcInteger2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcInteger :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tcInteger
+  = GHC.Types.TyCon
+      12260413788024328428##
+      9583620696682509916##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tcInteger1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Naught1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+GHC.Integer.Type.$tc'Naught1
+  = GHC.Types.KindRepTyConApp
+      GHC.Integer.Type.$tcInteger (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Naught3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Integer.Type.$tc'Naught3 = "'Naught"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Naught2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'Naught2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'Naught3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Naught :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'Naught
+  = GHC.Types.TyCon
+      7287704174224038176##
+      776397532388787230##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'Naught2
+      0#
+      GHC.Integer.Type.$tc'Naught1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Negative1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Integer.Type.$tc'Negative1
+  = GHC.Types.KindRepFun
+      GHC.Integer.Type.$tc'None1 GHC.Integer.Type.$tc'Naught1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Positive2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Integer.Type.$tc'Positive2 = "'Positive"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Positive1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'Positive1
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'Positive2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Positive :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'Positive
+  = GHC.Types.TyCon
+      6887932004110746796##
+      9391890139750561935##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'Positive1
+      0#
+      GHC.Integer.Type.$tc'Negative1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Negative3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Integer.Type.$tc'Negative3 = "'Negative"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Negative2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'Negative2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'Negative3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Negative :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'Negative
+  = GHC.Types.TyCon
+      4010847856516363452##
+      15624358648337932456##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'Negative2
+      0#
+      GHC.Integer.Type.$tc'Negative1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcList2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Integer.Type.$tcList2 = "List"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcList1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tcList1
+  = GHC.Types.TrNameS GHC.Integer.Type.$tcList2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcList :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tcList
+  = GHC.Types.TyCon
+      732340346576824023##
+      9653115931589988500##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tcList1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep3_r3Bs :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r3Bs
+  = GHC.Types.: @ KindRep $krep_r3Bp (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Nil1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+GHC.Integer.Type.$tc'Nil1
+  = GHC.Types.KindRepTyConApp GHC.Integer.Type.$tcList $krep3_r3Bs
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Nil3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Integer.Type.$tc'Nil3 = "'Nil"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Nil2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'Nil2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'Nil3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Nil :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'Nil
+  = GHC.Types.TyCon
+      13538585131509945451##
+      9366316088405446135##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'Nil2
+      1#
+      GHC.Integer.Type.$tc'Nil1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r3Bt :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep4_r3Bt
+  = GHC.Types.KindRepFun
+      GHC.Integer.Type.$tc'Nil1 GHC.Integer.Type.$tc'Nil1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Cons1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Integer.Type.$tc'Cons1
+  = GHC.Types.KindRepFun $krep_r3Bp $krep4_r3Bt
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Cons3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Integer.Type.$tc'Cons3 = "'Cons"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Cons2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'Cons2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'Cons3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'Cons :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'Cons
+  = GHC.Types.TyCon
+      3906777924842222150##
+      5463288556346842885##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'Cons2
+      1#
+      GHC.Integer.Type.$tc'Cons1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcDigitsOnes2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Integer.Type.$tcDigitsOnes2 = "DigitsOnes"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcDigitsOnes1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tcDigitsOnes1
+  = GHC.Types.TrNameS GHC.Integer.Type.$tcDigitsOnes2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tcDigitsOnes :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tcDigitsOnes
+  = GHC.Types.TyCon
+      4554239703586147919##
+      6957361150436389790##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tcDigitsOnes1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep5_r3Bu :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_r3Bu
+  = GHC.Types.KindRepTyConApp
+      GHC.Integer.Type.$tcDigitsOnes (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'DigitsOnes1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Integer.Type.$tc'DigitsOnes1
+  = GHC.Types.KindRepFun GHC.Integer.Type.$tc'None1 $krep5_r3Bu
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'DigitsOnes3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Integer.Type.$tc'DigitsOnes3 = "'DigitsOnes"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'DigitsOnes2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Type.$tc'DigitsOnes2
+  = GHC.Types.TrNameS GHC.Integer.Type.$tc'DigitsOnes3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Type.$tc'DigitsOnes :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Integer.Type.$tc'DigitsOnes
+  = GHC.Types.TyCon
+      15211110739657495015##
+      1682512192113792266##
+      GHC.Integer.Type.$trModule
+      GHC.Integer.Type.$tc'DigitsOnes2
+      0#
+      GHC.Integer.Type.$tc'DigitsOnes1
+
+-- RHS size: {terms: 9, types: 13, coercions: 0, joins: 0/0}
+encodeDouble# :: Word# -> Int# -> Double#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (ds_d2Am [Occ=Once] :: Word#)
+                 (ds1_d2An [Occ=Once] :: Int#) ->
+                 case {__pkg_ccall integer-simple-0.1.1.1 Word#
+                                    -> Int# -> State# RealWorld -> (# State# RealWorld, Double# #)}_d2Aq
+                        ds_d2Am ds1_d2An realWorld#
+                 of
+                 { (# _ [Occ=Dead], ds3_d2Ao [Occ=Once] #) ->
+                 ds3_d2Ao
+                 }}]
+encodeDouble#
+  = \ (ds_d2Am :: Word#) (ds1_d2An :: Int#) ->
+      case {__pkg_ccall integer-simple-0.1.1.1 Word#
+                                    -> Int# -> State# RealWorld -> (# State# RealWorld, Double# #)}_d2Aq
+             ds_d2Am ds1_d2An realWorld#
+      of
+      { (# ds2_d2Ap, ds3_d2Ao #) ->
+      ds3_d2Ao
+      }
+
+Rec {
+-- RHS size: {terms: 22, types: 17, coercions: 0, joins: 0/0}
+f_r3Bv :: Double# -> Digits -> Int# -> Double#
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U><L,U>,
+ Unf=OtherCon []]
+f_r3Bv
+  = \ (acc_a1OX :: Double#) (ds_d2rq :: Digits) (ds1_d2rr :: Int#) ->
+      case ds_d2rq of {
+        Some d_a1OZ ds2_a1P0 ->
+          case {__pkg_ccall integer-simple-0.1.1.1 Word#
+                                    -> Int# -> State# RealWorld -> (# State# RealWorld, Double# #)}_d2Aq
+                 d_a1OZ ds1_d2rr realWorld#
+          of
+          { (# ds3_d2Ap, ds4_d2Ao #) ->
+          f_r3Bv (+## acc_a1OX ds4_d2Ao) ds2_a1P0 (+# ds1_d2rr 64#)
+          };
+        None -> acc_a1OX
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 20, types: 6, coercions: 0, joins: 0/0}
+encodeDoubleInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Int# -> Double#
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+encodeDoubleInteger
+  = \ (ds_d2ri :: Integer) (e0_a1OV :: Int#) ->
+      case ds_d2ri of {
+        Positive ds0_a1OU -> f_r3Bv 0.0## ds0_a1OU e0_a1OV;
+        Negative ds1_a1P2 ->
+          case encodeDoubleInteger
+                 (GHC.Integer.Type.Positive ds1_a1P2) e0_a1OV
+          of wild1_X1R
+          { __DEFAULT ->
+          negateDouble# wild1_X1R
+          };
+        Naught -> 0.0##
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 13, coercions: 0, joins: 0/0}
+encodeFloat# :: Word# -> Int# -> Float#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (ds_d2Ag [Occ=Once] :: Word#)
+                 (ds1_d2Ah [Occ=Once] :: Int#) ->
+                 case {__pkg_ccall integer-simple-0.1.1.1 Word#
+                                    -> Int# -> State# RealWorld -> (# State# RealWorld, Float# #)}_d2Ak
+                        ds_d2Ag ds1_d2Ah realWorld#
+                 of
+                 { (# _ [Occ=Dead], ds3_d2Ai [Occ=Once] #) ->
+                 ds3_d2Ai
+                 }}]
+encodeFloat#
+  = \ (ds_d2Ag :: Word#) (ds1_d2Ah :: Int#) ->
+      case {__pkg_ccall integer-simple-0.1.1.1 Word#
+                                    -> Int# -> State# RealWorld -> (# State# RealWorld, Float# #)}_d2Ak
+             ds_d2Ag ds1_d2Ah realWorld#
+      of
+      { (# ds2_d2Aj, ds3_d2Ai #) ->
+      ds3_d2Ai
+      }
+
+Rec {
+-- RHS size: {terms: 22, types: 17, coercions: 0, joins: 0/0}
+f1_r3Bw :: Float# -> Digits -> Int# -> Float#
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U><L,U>,
+ Unf=OtherCon []]
+f1_r3Bw
+  = \ (acc_a1P7 :: Float#) (ds_d2r7 :: Digits) (ds1_d2r8 :: Int#) ->
+      case ds_d2r7 of {
+        Some d_a1P9 ds2_a1Pa ->
+          case {__pkg_ccall integer-simple-0.1.1.1 Word#
+                                    -> Int# -> State# RealWorld -> (# State# RealWorld, Float# #)}_d2Ak
+                 d_a1P9 ds1_d2r8 realWorld#
+          of
+          { (# ds3_d2Aj, ds4_d2Ai #) ->
+          f1_r3Bw (plusFloat# acc_a1P7 ds4_d2Ai) ds2_a1Pa (+# ds1_d2r8 64#)
+          };
+        None -> acc_a1P7
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 20, types: 6, coercions: 0, joins: 0/0}
+encodeFloatInteger [InlPrag=NOINLINE, Occ=LoopBreaker]
+  :: Integer -> Int# -> Float#
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+encodeFloatInteger
+  = \ (ds_d2qZ :: Integer) (e0_a1P5 :: Int#) ->
+      case ds_d2qZ of {
+        Positive ds0_a1P4 -> f1_r3Bw 0.0# ds0_a1P4 e0_a1P5;
+        Negative ds1_a1Pc ->
+          case encodeFloatInteger
+                 (GHC.Integer.Type.Positive ds1_a1Pc) e0_a1P5
+          of wild1_X1T
+          { __DEFAULT ->
+          negateFloat# wild1_X1T
+          };
+        Naught -> 0.0#
+      }
+end Rec }
+
+

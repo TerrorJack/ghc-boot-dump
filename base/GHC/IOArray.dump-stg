@@ -1,0 +1,1134 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:03:07.954421576 UTC
+
+GHC.IOArray.$fEqIOArray_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e
+     -> GHC.IOArray.IOArray i e -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(LLLS),1*U(A,A,A,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s80x4 eta1_s80x5]
+        case eta_s80x4 of {
+          GHC.Arr.STArray _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          arr1#_s80xa [Occ=Once] ->
+              case eta1_s80x5 of {
+                GHC.Arr.STArray _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                arr2#_s80xf [Occ=Once] ->
+                    case sameMutableArray# [arr1#_s80xa arr2#_s80xf] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.IOArray.$fEqIOArray [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall i e. GHC.Classes.Eq (GHC.IOArray.IOArray i e)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Arr.$fEqSTArray_$c==
+                                     GHC.IOArray.$fEqIOArray_$c/=];
+
+$wnewIOArray_r80wT
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     i
+     -> i
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><L,U><L,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80xh ww_s80xi ww1_s80xj w1_s80xk w2_s80xl]
+        let {
+          sat_s80xm [Occ=Once] :: (i_s80vr, i_s80vr)
+          [LclId] =
+              CCCS (,)! [ww_s80xi ww1_s80xj];
+        } in 
+          case GHC.Arr.rangeSize w_s80xh sat_s80xm of {
+            GHC.Types.I# x_s80xo ->
+                case <# [x_s80xo 0#] of {
+                  __DEFAULT ->
+                      case newArray# [x_s80xo w1_s80xk w2_s80xl] of {
+                        (#,#) ipv_s80xr [Occ=Once] ipv1_s80xs [Occ=Once] ->
+                            let {
+                              sat_s80xv [Occ=Once] :: GHC.IOArray.IOArray i_s80vr e_s80vs
+                              [LclId] =
+                                  [ww_s80xi ww1_s80xj x_s80xo ipv1_s80xs] \u []
+                                      case ww_s80xi of dt_s80xt {
+                                        __DEFAULT ->
+                                            case ww1_s80xj of dt1_s80xu {
+                                              __DEFAULT ->
+                                                  GHC.Arr.STArray [dt_s80xt
+                                                                   dt1_s80xu
+                                                                   x_s80xo
+                                                                   ipv1_s80xs];
+                                            };
+                                      };
+                            } in  (#,#) [ipv_s80xr sat_s80xv];
+                      };
+                  1# -> GHC.Arr.negRange;
+                };
+          };
+
+newIOArray1_r80wU
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i)
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80xx w1_s80xy w2_s80xz w3_s80xA]
+        case w1_s80xy of {
+          (,) ww1_s80xC [Occ=Once] ww2_s80xD [Occ=Once] ->
+              $wnewIOArray_r80wT w_s80xx ww1_s80xC ww2_s80xD w2_s80xz w3_s80xA;
+        };
+
+GHC.IOArray.newIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i) -> e -> GHC.Types.IO (GHC.IOArray.IOArray i e)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        newIOArray1_r80wU eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.unsafeReadIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> GHC.Types.IO e
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Arr.unsafeReadSTArray eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.unsafeWriteIOArray [InlPrag=INLINE (sat-args=3)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.Arr.unsafeWriteSTArray eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.readIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.ST.ST GHC.Prim.RealWorld e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80xE ds_s80xF i1_s80xG eta_B1]
+        GHC.Arr.readSTArray $dIx_s80xE ds_s80xF i1_s80xG eta_B1;
+
+GHC.IOArray.readIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.Types.IO e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.IOArray.readIOArray1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.writeIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e
+     -> i -> e -> GHC.ST.ST GHC.Prim.RealWorld ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80xH ds_s80xI i1_s80xJ e1_s80xK eta_B1]
+        GHC.Arr.writeSTArray $dIx_s80xH ds_s80xI i1_s80xJ e1_s80xK eta_B1;
+
+GHC.IOArray.writeIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.IOArray.writeIOArray1 eta_B5 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.boundsIOArray [InlPrag=INLINE (sat-args=1)]
+  :: forall i e. GHC.IOArray.IOArray i e -> (i, i)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SSLL),1*U(U,U,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Arr.boundsSTArray eta_B1;
+
+GHC.IOArray.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IOArray.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule4];
+
+GHC.IOArray.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IOArray"#;
+
+GHC.IOArray.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule2];
+
+GHC.IOArray.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IOArray.$trModule3
+                                     GHC.IOArray.$trModule1];
+
+$krep_r80wV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_r80wW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep2_r80wX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep3_r80wY :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r80wW GHC.Types.[]];
+
+$krep4_r80wZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r80wX $krep3_r80wY];
+
+$krep5_r80x0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r80wV $krep4_r80wZ];
+
+$krep6_r80x1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Arr.$tcSTArray
+                                              $krep5_r80x0];
+
+GHC.IOArray.$tcIOArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "IOArray"#;
+
+GHC.IOArray.$tcIOArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tcIOArray2];
+
+GHC.IOArray.$tcIOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5233307069339228571##
+                                    18318902734717728881##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tcIOArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep7_r80x2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.IOArray.$tcIOArray
+                                              $krep4_r80wZ];
+
+GHC.IOArray.$tc'IOArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r80x1 $krep7_r80x2];
+
+GHC.IOArray.$tc'IOArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'IOArray"#;
+
+GHC.IOArray.$tc'IOArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tc'IOArray3];
+
+GHC.IOArray.$tc'IOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3384482173433764395##
+                                    11270226801258228404##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tc'IOArray2
+                                    2#
+                                    GHC.IOArray.$tc'IOArray1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:03:07.959050049 UTC
+
+GHC.IOArray.$fEqIOArray_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e
+     -> GHC.IOArray.IOArray i e -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(LLLS),1*U(A,A,A,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s80x4 eta1_s80x5]
+        case eta_s80x4 of {
+          GHC.Arr.STArray _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          arr1#_s80xa [Occ=Once] ->
+              case eta1_s80x5 of {
+                GHC.Arr.STArray _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                arr2#_s80xf [Occ=Once] ->
+                    case sameMutableArray# [arr1#_s80xa arr2#_s80xf] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.IOArray.$fEqIOArray [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall i e. GHC.Classes.Eq (GHC.IOArray.IOArray i e)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Arr.$fEqSTArray_$c==
+                                     GHC.IOArray.$fEqIOArray_$c/=];
+
+$wnewIOArray_r80wT
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     i
+     -> i
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><L,U><L,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80xh ww_s80xi ww1_s80xj w1_s80xk void_0E]
+        let {
+          sat_s80xm [Occ=Once] :: (i_s80vr, i_s80vr)
+          [LclId] =
+              CCCS (,)! [ww_s80xi ww1_s80xj];
+        } in 
+          case GHC.Arr.rangeSize w_s80xh sat_s80xm of {
+            GHC.Types.I# x_s80xo ->
+                case <# [x_s80xo 0#] of {
+                  __DEFAULT ->
+                      case newArray# [x_s80xo w1_s80xk GHC.Prim.void#] of {
+                        Unit# ipv1_s80xs [Occ=Once] ->
+                            let {
+                              sat_s80xv [Occ=Once] :: GHC.IOArray.IOArray i_s80vr e_s80vs
+                              [LclId] =
+                                  [ww_s80xi ww1_s80xj x_s80xo ipv1_s80xs] \u []
+                                      case ww_s80xi of dt_s80xt {
+                                        __DEFAULT ->
+                                            case ww1_s80xj of dt1_s80xu {
+                                              __DEFAULT ->
+                                                  GHC.Arr.STArray [dt_s80xt
+                                                                   dt1_s80xu
+                                                                   x_s80xo
+                                                                   ipv1_s80xs];
+                                            };
+                                      };
+                            } in  Unit# [sat_s80xv];
+                      };
+                  1# -> GHC.Arr.negRange;
+                };
+          };
+
+newIOArray1_r80wU
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i)
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80xx w1_s80xy w2_s80xz void_0E]
+        case w1_s80xy of {
+          (,) ww1_s80xC [Occ=Once] ww2_s80xD [Occ=Once] ->
+              $wnewIOArray_r80wT
+                  w_s80xx ww1_s80xC ww2_s80xD w2_s80xz GHC.Prim.void#;
+        };
+
+GHC.IOArray.newIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i) -> e -> GHC.Types.IO (GHC.IOArray.IOArray i e)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        newIOArray1_r80wU eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.unsafeReadIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> GHC.Types.IO e
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Arr.unsafeReadSTArray eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.unsafeWriteIOArray [InlPrag=INLINE (sat-args=3)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.Arr.unsafeWriteSTArray eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.readIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.ST.ST GHC.Prim.RealWorld e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80xE ds_s80xF i1_s80xG void_0E]
+        GHC.Arr.readSTArray $dIx_s80xE ds_s80xF i1_s80xG GHC.Prim.void#;
+
+GHC.IOArray.readIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.Types.IO e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.IOArray.readIOArray1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.writeIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e
+     -> i -> e -> GHC.ST.ST GHC.Prim.RealWorld ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80xH ds_s80xI i1_s80xJ e1_s80xK void_0E]
+        GHC.Arr.writeSTArray
+            $dIx_s80xH ds_s80xI i1_s80xJ e1_s80xK GHC.Prim.void#;
+
+GHC.IOArray.writeIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.IOArray.writeIOArray1
+            eta_B5 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.boundsIOArray [InlPrag=INLINE (sat-args=1)]
+  :: forall i e. GHC.IOArray.IOArray i e -> (i, i)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SSLL),1*U(U,U,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Arr.boundsSTArray eta_B1;
+
+GHC.IOArray.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IOArray.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule4];
+
+GHC.IOArray.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IOArray"#;
+
+GHC.IOArray.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule2];
+
+GHC.IOArray.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IOArray.$trModule3
+                                     GHC.IOArray.$trModule1];
+
+$krep_r80wV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_r80wW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep2_r80wX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep3_r80wY :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r80wW GHC.Types.[]];
+
+$krep4_r80wZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r80wX $krep3_r80wY];
+
+$krep5_r80x0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r80wV $krep4_r80wZ];
+
+$krep6_r80x1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Arr.$tcSTArray
+                                              $krep5_r80x0];
+
+GHC.IOArray.$tcIOArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "IOArray"#;
+
+GHC.IOArray.$tcIOArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tcIOArray2];
+
+GHC.IOArray.$tcIOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5233307069339228571##
+                                    18318902734717728881##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tcIOArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep7_r80x2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.IOArray.$tcIOArray
+                                              $krep4_r80wZ];
+
+GHC.IOArray.$tc'IOArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r80x1 $krep7_r80x2];
+
+GHC.IOArray.$tc'IOArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'IOArray"#;
+
+GHC.IOArray.$tc'IOArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tc'IOArray3];
+
+GHC.IOArray.$tc'IOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3384482173433764395##
+                                    11270226801258228404##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tc'IOArray2
+                                    2#
+                                    GHC.IOArray.$tc'IOArray1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:03:08.223124498 UTC
+
+GHC.IOArray.$fEqIOArray_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e
+     -> GHC.IOArray.IOArray i e -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(LLLS),1*U(A,A,A,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s80GI eta1_s80GJ]
+        case eta_s80GI of {
+          GHC.Arr.STArray _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          arr1#_s80GO [Occ=Once] ->
+              case eta1_s80GJ of {
+                GHC.Arr.STArray _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                arr2#_s80GT [Occ=Once] ->
+                    case sameMutableArray# [arr1#_s80GO arr2#_s80GT] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.IOArray.$fEqIOArray [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall i e. GHC.Classes.Eq (GHC.IOArray.IOArray i e)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Arr.$fEqSTArray_$c==
+                                     GHC.IOArray.$fEqIOArray_$c/=];
+
+$wnewIOArray_r80wT
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     i
+     -> i
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><L,U><L,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80GV ww_s80GW ww1_s80GX w1_s80GY w2_s80GZ]
+        let {
+          sat_s80H0 [Occ=Once] :: (i_s80vr, i_s80vr)
+          [LclId] =
+              CCCS (,)! [ww_s80GW ww1_s80GX];
+        } in 
+          case GHC.Arr.rangeSize w_s80GV sat_s80H0 of {
+            GHC.Types.I# x_s80H2 ->
+                case <# [x_s80H2 0#] of {
+                  __DEFAULT ->
+                      case newArray# [x_s80H2 w1_s80GY w2_s80GZ] of {
+                        (#,#) ipv_s80H5 [Occ=Once] ipv1_s80H6 [Occ=Once] ->
+                            let {
+                              sat_s80H9 [Occ=Once] :: GHC.IOArray.IOArray i_s80vr e_s80vs
+                              [LclId] =
+                                  [ww_s80GW ww1_s80GX x_s80H2 ipv1_s80H6] \u []
+                                      case ww_s80GW of dt_s80H7 {
+                                        __DEFAULT ->
+                                            case ww1_s80GX of dt1_s80H8 {
+                                              __DEFAULT ->
+                                                  GHC.Arr.STArray [dt_s80H7
+                                                                   dt1_s80H8
+                                                                   x_s80H2
+                                                                   ipv1_s80H6];
+                                            };
+                                      };
+                            } in  (#,#) [ipv_s80H5 sat_s80H9];
+                      };
+                  1# -> GHC.Arr.negRange;
+                };
+          };
+
+newIOArray1_r80wU
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i)
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80Hb w1_s80Hc w2_s80Hd w3_s80He]
+        case w1_s80Hc of {
+          (,) ww1_s80Hg [Occ=Once] ww2_s80Hh [Occ=Once] ->
+              $wnewIOArray_r80wT w_s80Hb ww1_s80Hg ww2_s80Hh w2_s80Hd w3_s80He;
+        };
+
+GHC.IOArray.newIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i) -> e -> GHC.Types.IO (GHC.IOArray.IOArray i e)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        newIOArray1_r80wU eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.unsafeReadIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> GHC.Types.IO e
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Arr.unsafeReadSTArray eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.unsafeWriteIOArray [InlPrag=INLINE (sat-args=3)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.Arr.unsafeWriteSTArray eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.readIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.ST.ST GHC.Prim.RealWorld e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80Hi ds_s80Hj i1_s80Hk eta_B1]
+        GHC.Arr.readSTArray $dIx_s80Hi ds_s80Hj i1_s80Hk eta_B1;
+
+GHC.IOArray.readIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.Types.IO e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.IOArray.readIOArray1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.writeIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e
+     -> i -> e -> GHC.ST.ST GHC.Prim.RealWorld ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80Hl ds_s80Hm i1_s80Hn e1_s80Ho eta_B1]
+        GHC.Arr.writeSTArray $dIx_s80Hl ds_s80Hm i1_s80Hn e1_s80Ho eta_B1;
+
+GHC.IOArray.writeIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.IOArray.writeIOArray1 eta_B5 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.IOArray.boundsIOArray [InlPrag=INLINE (sat-args=1)]
+  :: forall i e. GHC.IOArray.IOArray i e -> (i, i)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SSLL),1*U(U,U,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Arr.boundsSTArray eta_B1;
+
+GHC.IOArray.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IOArray.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule4];
+
+GHC.IOArray.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IOArray"#;
+
+GHC.IOArray.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule2];
+
+GHC.IOArray.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IOArray.$trModule3
+                                     GHC.IOArray.$trModule1];
+
+$krep_r80wV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_r80wW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep2_r80wX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep3_r80wY :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r80wW GHC.Types.[]];
+
+$krep4_r80wZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r80wX $krep3_r80wY];
+
+$krep5_r80x0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r80wV $krep4_r80wZ];
+
+$krep6_r80x1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Arr.$tcSTArray
+                                              $krep5_r80x0];
+
+GHC.IOArray.$tcIOArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "IOArray"#;
+
+GHC.IOArray.$tcIOArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tcIOArray2];
+
+GHC.IOArray.$tcIOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5233307069339228571##
+                                    18318902734717728881##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tcIOArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep7_r80x2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.IOArray.$tcIOArray
+                                              $krep4_r80wZ];
+
+GHC.IOArray.$tc'IOArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r80x1 $krep7_r80x2];
+
+GHC.IOArray.$tc'IOArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'IOArray"#;
+
+GHC.IOArray.$tc'IOArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tc'IOArray3];
+
+GHC.IOArray.$tc'IOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3384482173433764395##
+                                    11270226801258228404##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tc'IOArray2
+                                    2#
+                                    GHC.IOArray.$tc'IOArray1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:03:08.227973581 UTC
+
+GHC.IOArray.$fEqIOArray_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e
+     -> GHC.IOArray.IOArray i e -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(LLLS),1*U(A,A,A,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s80GI eta1_s80GJ]
+        case eta_s80GI of {
+          GHC.Arr.STArray _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          _ [Occ=Dead]
+                          arr1#_s80GO [Occ=Once] ->
+              case eta1_s80GJ of {
+                GHC.Arr.STArray _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                _ [Occ=Dead]
+                                arr2#_s80GT [Occ=Once] ->
+                    case sameMutableArray# [arr1#_s80GO arr2#_s80GT] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.IOArray.$fEqIOArray [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall i e. GHC.Classes.Eq (GHC.IOArray.IOArray i e)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Arr.$fEqSTArray_$c==
+                                     GHC.IOArray.$fEqIOArray_$c/=];
+
+$wnewIOArray_r80wT
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     i
+     -> i
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=5,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><L,U><L,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80GV ww_s80GW ww1_s80GX w1_s80GY void_0E]
+        let {
+          sat_s80H0 [Occ=Once] :: (i_s80vr, i_s80vr)
+          [LclId] =
+              CCCS (,)! [ww_s80GW ww1_s80GX];
+        } in 
+          case GHC.Arr.rangeSize w_s80GV sat_s80H0 of {
+            GHC.Types.I# x_s80H2 ->
+                case <# [x_s80H2 0#] of {
+                  __DEFAULT ->
+                      case newArray# [x_s80H2 w1_s80GY GHC.Prim.void#] of {
+                        Unit# ipv1_s80H6 [Occ=Once] ->
+                            let {
+                              sat_s80H9 [Occ=Once] :: GHC.IOArray.IOArray i_s80vr e_s80vs
+                              [LclId] =
+                                  [ww_s80GW ww1_s80GX x_s80H2 ipv1_s80H6] \u []
+                                      case ww_s80GW of dt_s80H7 {
+                                        __DEFAULT ->
+                                            case ww1_s80GX of dt1_s80H8 {
+                                              __DEFAULT ->
+                                                  GHC.Arr.STArray [dt_s80H7
+                                                                   dt1_s80H8
+                                                                   x_s80H2
+                                                                   ipv1_s80H6];
+                                            };
+                                      };
+                            } in  Unit# [sat_s80H9];
+                      };
+                  1# -> GHC.Arr.negRange;
+                };
+          };
+
+newIOArray1_r80wU
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i)
+     -> e
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.IOArray.IOArray i e #)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [w_s80Hb w1_s80Hc w2_s80Hd void_0E]
+        case w1_s80Hc of {
+          (,) ww1_s80Hg [Occ=Once] ww2_s80Hh [Occ=Once] ->
+              $wnewIOArray_r80wT
+                  w_s80Hb ww1_s80Hg ww2_s80Hh w2_s80Hd GHC.Prim.void#;
+        };
+
+GHC.IOArray.newIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     (i, i) -> e -> GHC.Types.IO (GHC.IOArray.IOArray i e)
+[GblId,
+ Arity=4,
+ Str=<S(LLLLLC(S(S))L),1*U(A,A,A,A,A,1*C1(U(U)),A)><S,1*U(U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        newIOArray1_r80wU eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.unsafeReadIOArray [InlPrag=INLINE (sat-args=2)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> GHC.Types.IO e
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Arr.unsafeReadSTArray eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.unsafeWriteIOArray [InlPrag=INLINE (sat-args=3)]
+  :: forall i e.
+     GHC.IOArray.IOArray i e -> GHC.Types.Int -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),1*U(A,A,A,U)><S(S),1*U(U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.Arr.unsafeWriteSTArray eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.readIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.ST.ST GHC.Prim.RealWorld e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80Hi ds_s80Hj i1_s80Hk void_0E]
+        GHC.Arr.readSTArray $dIx_s80Hi ds_s80Hj i1_s80Hk GHC.Prim.void#;
+
+GHC.IOArray.readIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> GHC.Types.IO e
+[GblId,
+ Arity=4,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.IOArray.readIOArray1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.writeIOArray1
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e
+     -> i -> e -> GHC.ST.ST GHC.Prim.RealWorld ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dIx_s80Hl ds_s80Hm i1_s80Hn e1_s80Ho void_0E]
+        GHC.Arr.writeSTArray
+            $dIx_s80Hl ds_s80Hm i1_s80Hn e1_s80Ho GHC.Prim.void#;
+
+GHC.IOArray.writeIOArray
+  :: forall i e.
+     GHC.Arr.Ix i =>
+     GHC.IOArray.IOArray i e -> i -> e -> GHC.Types.IO ()
+[GblId,
+ Arity=5,
+ Str=<L,U(A,A,C(C1(U(U))),A,A,A,A)><L,U(U,U,U,U)><L,U><L,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B5 eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.IOArray.writeIOArray1
+            eta_B5 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.IOArray.boundsIOArray [InlPrag=INLINE (sat-args=1)]
+  :: forall i e. GHC.IOArray.IOArray i e -> (i, i)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SSLL),1*U(U,U,A,A)>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Arr.boundsSTArray eta_B1;
+
+GHC.IOArray.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.IOArray.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule4];
+
+GHC.IOArray.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.IOArray"#;
+
+GHC.IOArray.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$trModule2];
+
+GHC.IOArray.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.IOArray.$trModule3
+                                     GHC.IOArray.$trModule1];
+
+$krep_r80wV :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcRealWorld
+                                              GHC.Types.[]];
+
+$krep1_r80wW :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [1#];
+
+$krep2_r80wX :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep3_r80wY :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep1_r80wW GHC.Types.[]];
+
+$krep4_r80wZ :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_r80wX $krep3_r80wY];
+
+$krep5_r80x0 :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r80wV $krep4_r80wZ];
+
+$krep6_r80x1 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Arr.$tcSTArray
+                                              $krep5_r80x0];
+
+GHC.IOArray.$tcIOArray2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "IOArray"#;
+
+GHC.IOArray.$tcIOArray1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tcIOArray2];
+
+GHC.IOArray.$tcIOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [5233307069339228571##
+                                    18318902734717728881##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tcIOArray1
+                                    0#
+                                    GHC.Types.krep$*->*->*];
+
+$krep7_r80x2 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.IOArray.$tcIOArray
+                                              $krep4_r80wZ];
+
+GHC.IOArray.$tc'IOArray1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep6_r80x1 $krep7_r80x2];
+
+GHC.IOArray.$tc'IOArray3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'IOArray"#;
+
+GHC.IOArray.$tc'IOArray2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.IOArray.$tc'IOArray3];
+
+GHC.IOArray.$tc'IOArray :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3384482173433764395##
+                                    11270226801258228404##
+                                    GHC.IOArray.$trModule
+                                    GHC.IOArray.$tc'IOArray2
+                                    2#
+                                    GHC.IOArray.$tc'IOArray1];
+

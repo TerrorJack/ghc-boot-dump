@@ -1,0 +1,297 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:01.383067996 UTC
+
+Result size of Tidy Core
+  = {terms: 75, types: 188, coercions: 34, joins: 0/0}
+
+-- RHS size: {terms: 7, types: 34, coercions: 2, joins: 0/0}
+unsafeDupablePerformIO :: forall a. IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_antF) (ds_dnuh [Occ=Once] :: IO a_antF) ->
+                 case runRW#
+                        @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+                        @ (# State# RealWorld, a_antF #)
+                        (ds_dnuh
+                         `cast` (GHC.Types.N:IO[0] <a_antF>_R
+                                 :: (IO a_antF :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, a_antF #) :: *)))
+                 of
+                 { (# _ [Occ=Dead], ipv1_snuB [Occ=Once] #) ->
+                 ipv1_snuB
+                 }}]
+unsafeDupablePerformIO
+  = \ (@ a_antF) (ds_dnuh :: IO a_antF) ->
+      case runRW#
+             @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+             @ (# State# RealWorld, a_antF #)
+             (ds_dnuh
+              `cast` (GHC.Types.N:IO[0] <a_antF>_R
+                      :: (IO a_antF :: *)
+                         ~R# (State# RealWorld -> (# State# RealWorld, a_antF #) :: *)))
+      of
+      { (# ipv_snuA, ipv1_snuB #) ->
+      ipv1_snuB
+      }
+
+-- RHS size: {terms: 10, types: 24, coercions: 2, joins: 0/0}
+GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+  :: forall a. IO a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_antl)
+                 (ds_dnu2 [Occ=Once] :: IO a_antl)
+                 (s_ansm :: State# RealWorld) ->
+                 (# s_ansm,
+                    case (ds_dnu2
+                          `cast` (GHC.Types.N:IO[0] <a_antl>_R
+                                  :: (IO a_antl :: *)
+                                     ~R# (State# RealWorld -> (# State# RealWorld, a_antl #) :: *)))
+                           s_ansm
+                    of
+                    { (# _ [Occ=Dead], ipv1_snuF [Occ=Once] #) ->
+                    ipv1_snuF
+                    } #)}]
+GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+  = \ (@ a_antl)
+      (ds_dnu2 :: IO a_antl)
+      (s_ansm :: State# RealWorld) ->
+      (# s_ansm,
+         case (ds_dnu2
+               `cast` (GHC.Types.N:IO[0] <a_antl>_R
+                       :: (IO a_antl :: *)
+                          ~R# (State# RealWorld -> (# State# RealWorld, a_antl #) :: *)))
+                s_ansm
+         of
+         { (# ipv_snuE, ipv1_snuF #) ->
+         ipv1_snuF
+         } #)
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+unsafeDupableInterleaveIO [InlPrag=NOINLINE]
+  :: forall a. IO a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+               `cast` (forall (a :: <*>_N).
+                       <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           IO a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. IO a -> IO a :: *))}]
+unsafeDupableInterleaveIO
+  = GHC.IO.Unsafe.unsafeDupableInterleaveIO1
+    `cast` (forall (a :: <*>_N).
+            <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                IO a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. IO a -> IO a :: *))
+
+-- RHS size: {terms: 8, types: 12, coercions: 0, joins: 0/0}
+GHC.IO.Unsafe.noDuplicate1
+  :: State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (s_ansp [Occ=Once] :: State# RealWorld) ->
+                 case noDuplicate# @ RealWorld s_ansp of s'_ansq { __DEFAULT ->
+                 (# s'_ansq, GHC.Tuple.() #)
+                 }}]
+GHC.IO.Unsafe.noDuplicate1
+  = \ (s_ansp :: State# RealWorld) ->
+      case noDuplicate# @ RealWorld s_ansp of s'_ansq { __DEFAULT ->
+      (# s'_ansq, GHC.Tuple.() #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+noDuplicate :: IO ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IO.Unsafe.noDuplicate1
+               `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (IO () :: *))}]
+noDuplicate
+  = GHC.IO.Unsafe.noDuplicate1
+    `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (IO () :: *))
+
+-- RHS size: {terms: 12, types: 12, coercions: 7, joins: 0/0}
+unsafeInterleaveIO1_rnwE
+  :: forall a. IO a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=OtherCon []]
+unsafeInterleaveIO1_rnwE
+  = \ (@ a_antx)
+      (eta_B1 :: IO a_antx)
+      (eta1_X2 :: State# RealWorld) ->
+      ((unsafeDupableInterleaveIO
+          @ a_antx
+          ((\ (s_imNK [OS=OneShot] :: State# RealWorld) ->
+              case noDuplicate# @ RealWorld s_imNK of s'_ansq { __DEFAULT ->
+              (eta_B1
+               `cast` (GHC.Types.N:IO[0] <a_antx>_R
+                       :: (IO a_antx :: *)
+                          ~R# (State# RealWorld -> (# State# RealWorld, a_antx #) :: *)))
+                s'_ansq
+              })
+           `cast` (Sym (GHC.Types.N:IO[0] <a_antx>_R)
+                   :: (State# RealWorld -> (# State# RealWorld, a_antx #) :: *)
+                      ~R# (IO a_antx :: *))))
+       `cast` (GHC.Types.N:IO[0] <a_antx>_R
+               :: (IO a_antx :: *)
+                  ~R# (State# RealWorld -> (# State# RealWorld, a_antx #) :: *)))
+        eta1_X2
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+unsafeInterleaveIO [InlPrag=INLINE (sat-args=1)]
+  :: forall a. IO a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U(A,1*U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_XntS) (m_ansk [Occ=Once] :: IO a_XntS) ->
+                 unsafeDupableInterleaveIO
+                   @ a_XntS
+                   ((\ (s_imNK [Occ=Once] :: State# RealWorld) ->
+                       case noDuplicate# @ RealWorld s_imNK of s'_ansq { __DEFAULT ->
+                       (m_ansk
+                        `cast` (GHC.Types.N:IO[0] <a_XntS>_R
+                                :: (IO a_XntS :: *)
+                                   ~R# (State# RealWorld -> (# State# RealWorld, a_XntS #) :: *)))
+                         s'_ansq
+                       })
+                    `cast` (Sym (GHC.Types.N:IO[0] <a_XntS>_R)
+                            :: (State# RealWorld -> (# State# RealWorld, a_XntS #) :: *)
+                               ~R# (IO a_XntS :: *)))}]
+unsafeInterleaveIO
+  = unsafeInterleaveIO1_rnwE
+    `cast` (forall (a :: <*>_N).
+            <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                IO a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. IO a -> IO a :: *))
+
+-- RHS size: {terms: 13, types: 39, coercions: 2, joins: 0/0}
+unsafePerformIO :: forall a. IO a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_antO) (m_ansh [Occ=Once] :: IO a_antO) ->
+                 case runRW#
+                        @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+                        @ (# State# RealWorld, a_antO #)
+                        (\ (s_imNK [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                           case noDuplicate# @ RealWorld s_imNK of s'_ansq { __DEFAULT ->
+                           (m_ansh
+                            `cast` (GHC.Types.N:IO[0] <a_antO>_R
+                                    :: (IO a_antO :: *)
+                                       ~R# (State# RealWorld
+                                            -> (# State# RealWorld, a_antO #) :: *)))
+                             s'_ansq
+                           })
+                 of
+                 { (# _ [Occ=Dead], ipv1_snuB [Occ=Once] #) ->
+                 ipv1_snuB
+                 }}]
+unsafePerformIO
+  = \ (@ a_antO) (m_ansh :: IO a_antO) ->
+      case runRW#
+             @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+             @ (# State# RealWorld, a_antO #)
+             (\ (s_imNK [OS=OneShot] :: State# RealWorld) ->
+                case noDuplicate# @ RealWorld s_imNK of s'_ansq { __DEFAULT ->
+                (m_ansh
+                 `cast` (GHC.Types.N:IO[0] <a_antO>_R
+                         :: (IO a_antO :: *)
+                            ~R# (State# RealWorld -> (# State# RealWorld, a_antO #) :: *)))
+                  s'_ansq
+                })
+      of
+      { (# ipv_snuA, ipv1_snuB #) ->
+      ipv1_snuB
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IO.Unsafe.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.IO.Unsafe.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IO.Unsafe.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IO.Unsafe.$trModule3
+  = GHC.Types.TrNameS GHC.IO.Unsafe.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IO.Unsafe.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.IO.Unsafe.$trModule2 = "GHC.IO.Unsafe"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IO.Unsafe.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IO.Unsafe.$trModule1
+  = GHC.Types.TrNameS GHC.IO.Unsafe.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.IO.Unsafe.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.IO.Unsafe.$trModule
+  = GHC.Types.Module
+      GHC.IO.Unsafe.$trModule3 GHC.IO.Unsafe.$trModule1
+
+

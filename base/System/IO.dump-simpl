@@ -1,0 +1,2192 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:06:29.932243898 UTC
+
+Result size of Tidy Core
+  = {terms: 1,117, types: 1,739, coercions: 225, joins: 3/11}
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+System.IO.putChar1
+  :: Char -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Str=<L,U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (c_abxCX [Occ=Once] :: Char) ->
+                 GHC.IO.Handle.Text.hPutChar1 stdout c_abxCX}]
+System.IO.putChar1
+  = \ (c_abxCX :: Char) ->
+      GHC.IO.Handle.Text.hPutChar1 stdout c_abxCX
+
+-- RHS size: {terms: 1, types: 0, coercions: 5, joins: 0/0}
+putChar :: Char -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.putChar1
+               `cast` (<Char>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (Char -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (Char -> IO () :: *))}]
+putChar
+  = System.IO.putChar1
+    `cast` (<Char>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (Char -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (Char -> IO () :: *))
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+putStr :: String -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (s_abxCY [Occ=Once] :: String) -> hPutStr stdout s_abxCY}]
+putStr = \ (s_abxCY :: String) -> hPutStr stdout s_abxCY
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+putStrLn :: String -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (s_abxCZ [Occ=Once] :: String) ->
+                 hPutStrLn stdout s_abxCZ}]
+putStrLn = \ (s_abxCZ :: String) -> hPutStrLn stdout s_abxCZ
+
+-- RHS size: {terms: 9, types: 6, coercions: 0, joins: 0/0}
+print :: forall a. Show a => a -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,1*U(A,1*C1(U),A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aby0H)
+                 ($dShow_aby0J [Occ=Once] :: Show a_aby0H)
+                 (x_abxD0 [Occ=Once] :: a_aby0H) ->
+                 GHC.IO.Handle.Text.hPutStr'
+                   stdout (show @ a_aby0H $dShow_aby0J x_abxD0) GHC.Types.True}]
+print
+  = \ (@ a_aby0H)
+      ($dShow_aby0J :: Show a_aby0H)
+      (x_abxD0 :: a_aby0H) ->
+      GHC.IO.Handle.Text.hPutStr'
+        stdout (show @ a_aby0H $dShow_aby0J x_abxD0) GHC.Types.True
+
+-- RHS size: {terms: 4, types: 1, coercions: 5, joins: 0/0}
+System.IO.getChar1
+  :: State# RealWorld -> (# State# RealWorld, Char #)
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 60}]
+System.IO.getChar1
+  = GHC.IO.Handle.Internals.wantReadableHandle_1
+      @ Char
+      GHC.IO.Handle.Text.hGetChar6
+      stdin
+      (GHC.IO.Handle.Text.hGetChar2
+       `cast` (<GHC.IO.Handle.Types.Handle__>_R
+               ->_R Sym (GHC.Types.N:IO[0] <Char>_R)
+               :: (GHC.IO.Handle.Types.Handle__
+                   -> State# RealWorld -> (# State# RealWorld, Char #) :: *)
+                  ~R# (GHC.IO.Handle.Types.Handle__ -> IO Char :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+getChar :: IO Char
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.getChar1
+               `cast` (Sym (GHC.Types.N:IO[0] <Char>_R)
+                       :: (State# RealWorld -> (# State# RealWorld, Char #) :: *)
+                          ~R# (IO Char :: *))}]
+getChar
+  = System.IO.getChar1
+    `cast` (Sym (GHC.Types.N:IO[0] <Char>_R)
+            :: (State# RealWorld -> (# State# RealWorld, Char #) :: *)
+               ~R# (IO Char :: *))
+
+-- RHS size: {terms: 4, types: 1, coercions: 5, joins: 0/0}
+System.IO.getLine1
+  :: State# RealWorld -> (# State# RealWorld, String #)
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 60}]
+System.IO.getLine1
+  = GHC.IO.Handle.Internals.wantReadableHandle_1
+      @ String
+      GHC.IO.Handle.Text.hGetLine4
+      stdin
+      (GHC.IO.Handle.Text.hGetLine2
+       `cast` (<GHC.IO.Handle.Types.Handle__>_R
+               ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+               :: (GHC.IO.Handle.Types.Handle__
+                   -> State# RealWorld -> (# State# RealWorld, String #) :: *)
+                  ~R# (GHC.IO.Handle.Types.Handle__ -> IO String :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+getLine :: IO String
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.getLine1
+               `cast` (Sym (GHC.Types.N:IO[0] <String>_R)
+                       :: (State# RealWorld -> (# State# RealWorld, String #) :: *)
+                          ~R# (IO String :: *))}]
+getLine
+  = System.IO.getLine1
+    `cast` (Sym (GHC.Types.N:IO[0] <String>_R)
+            :: (State# RealWorld -> (# State# RealWorld, String #) :: *)
+               ~R# (IO String :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.getContents1
+  :: State# RealWorld -> (# State# RealWorld, String #)
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+System.IO.getContents1 = GHC.IO.Handle.Text.hGetContents1 stdin
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+getContents :: IO String
+[GblId,
+ Arity=1,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.getContents1
+               `cast` (Sym (GHC.Types.N:IO[0] <String>_R)
+                       :: (State# RealWorld -> (# State# RealWorld, String #) :: *)
+                          ~R# (IO String :: *))}]
+getContents
+  = System.IO.getContents1
+    `cast` (Sym (GHC.Types.N:IO[0] <String>_R)
+            :: (State# RealWorld -> (# State# RealWorld, String #) :: *)
+               ~R# (IO String :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+localeEncoding :: TextEncoding
+[GblId,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= initLocaleEncoding}]
+localeEncoding = initLocaleEncoding
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.hReady2 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.hReady2 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 6, types: 3, coercions: 0, joins: 0/0}
+System.IO.hReady1
+  :: Handle -> State# RealWorld -> (# State# RealWorld, Bool #)
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (h_abxDg [Occ=Once] :: Handle)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 GHC.IO.Handle.Text.hWaitForInput1
+                   h_abxDg System.IO.hReady2 eta_B1}]
+System.IO.hReady1
+  = \ (h_abxDg :: Handle) (eta_B1 :: State# RealWorld) ->
+      GHC.IO.Handle.Text.hWaitForInput1 h_abxDg System.IO.hReady2 eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 5, joins: 0/0}
+hReady :: Handle -> IO Bool
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.hReady1
+               `cast` (<Handle>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+                       :: (Handle
+                           -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+                          ~R# (Handle -> IO Bool :: *))}]
+hReady
+  = System.IO.hReady1
+    `cast` (<Handle>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+            :: (Handle
+                -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+               ~R# (Handle -> IO Bool :: *))
+
+-- RHS size: {terms: 10, types: 7, coercions: 0, joins: 0/0}
+hPrint :: forall a. Show a => Handle -> a -> IO ()
+[GblId,
+ Arity=3,
+ Str=<L,1*U(A,1*C1(U),A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_abxZo)
+                 ($dShow_abxZq [Occ=Once] :: Show a_abxZo)
+                 (hdl_abxDh [Occ=Once] :: Handle)
+                 (eta_B1 [Occ=Once] :: a_abxZo) ->
+                 GHC.IO.Handle.Text.hPutStr'
+                   hdl_abxDh (show @ a_abxZo $dShow_abxZq eta_B1) GHC.Types.True}]
+hPrint
+  = \ (@ a_abxZo)
+      ($dShow_abxZq :: Show a_abxZo)
+      (hdl_abxDh :: Handle)
+      (eta_B1 :: a_abxZo) ->
+      GHC.IO.Handle.Text.hPutStr'
+        hdl_abxDh (show @ a_abxZo $dShow_abxZq eta_B1) GHC.Types.True
+
+-- RHS size: {terms: 110, types: 201, coercions: 6, joins: 0/0}
+System.IO.appendFile2
+  :: forall r.
+     FilePath
+     -> IOMode
+     -> (Handle -> IO r)
+     -> State# RealWorld
+     -> (# State# RealWorld, r #)
+[GblId,
+ Arity=4,
+ Str=<L,U><L,U><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [0 0 60 0] 492 60}]
+System.IO.appendFile2
+  = \ (@ r_abxZi)
+      (name_abxDi :: FilePath)
+      (mode_abxDj :: IOMode)
+      (eta_B2 :: Handle -> IO r_abxZi)
+      (eta1_B1 :: State# RealWorld) ->
+      case getMaskingState# eta1_B1 of { (# ipv_ibydy, ipv1_ibydz #) ->
+      case ipv1_ibydz of {
+        __DEFAULT ->
+          case GHC.IO.Handle.FD.openFile1 name_abxDi mode_abxDj ipv_ibydy of
+          { (# ipv2_ibydE, ipv3_ibydF #) ->
+          case catch#
+                 @ r_abxZi
+                 @ SomeException
+                 (maskAsyncExceptions#
+                    @ r_abxZi
+                    ((eta_B2 ipv3_ibydF)
+                     `cast` (GHC.Types.N:IO[0] <r_abxZi>_R
+                             :: (IO r_abxZi :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, r_abxZi #) :: *))))
+                 (\ (e1_ibydH [OS=OneShot] :: SomeException)
+                    (s_ibydI [OS=OneShot] :: State# RealWorld) ->
+                    case GHC.IO.Handle.hClose1 ipv3_ibydF s_ibydI of
+                    { (# ipv4_ibydL, ipv5_ibydM #) ->
+                    raiseIO# @ SomeException @ r_abxZi e1_ibydH ipv4_ibydL
+                    })
+                 ipv2_ibydE
+          of
+          { (# ipv4_ibydQ, ipv5_ibydR #) ->
+          case GHC.IO.Handle.hClose1 ipv3_ibydF ipv4_ibydQ of
+          { (# ipv6_ibydV, ipv7_ibydW #) ->
+          (# ipv6_ibydV, ipv5_ibydR #)
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ r_abxZi
+            (\ (s_ibydY [OS=OneShot] :: State# RealWorld) ->
+               case GHC.IO.Handle.FD.openFile1 name_abxDi mode_abxDj s_ibydY of
+               { (# ipv2_ibye1, ipv3_ibye2 #) ->
+               case catch#
+                      @ r_abxZi
+                      @ SomeException
+                      (unmaskAsyncExceptions#
+                         @ r_abxZi
+                         ((eta_B2 ipv3_ibye2)
+                          `cast` (GHC.Types.N:IO[0] <r_abxZi>_R
+                                  :: (IO r_abxZi :: *)
+                                     ~R# (State# RealWorld
+                                          -> (# State# RealWorld, r_abxZi #) :: *))))
+                      (\ (e1_ibye4 [OS=OneShot] :: SomeException)
+                         (s1_ibye5 [OS=OneShot] :: State# RealWorld) ->
+                         case GHC.IO.Handle.hClose1 ipv3_ibye2 s1_ibye5 of
+                         { (# ipv4_ibye8, ipv5_ibye9 #) ->
+                         raiseIO# @ SomeException @ r_abxZi e1_ibye4 ipv4_ibye8
+                         })
+                      ipv2_ibye1
+               of
+               { (# ipv4_ibyed, ipv5_ibyee #) ->
+               case GHC.IO.Handle.hClose1 ipv3_ibye2 ipv4_ibyed of
+               { (# ipv6_ibyei, ipv7_ibyej #) ->
+               (# ipv6_ibyei, ipv5_ibyee #)
+               }
+               }
+               })
+            ipv_ibydy;
+        1# ->
+          case GHC.IO.Handle.FD.openFile1 name_abxDi mode_abxDj ipv_ibydy of
+          { (# ipv2_ibyen, ipv3_ibyeo #) ->
+          case catch#
+                 @ r_abxZi
+                 @ SomeException
+                 (maskUninterruptible#
+                    @ r_abxZi
+                    ((eta_B2 ipv3_ibyeo)
+                     `cast` (GHC.Types.N:IO[0] <r_abxZi>_R
+                             :: (IO r_abxZi :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, r_abxZi #) :: *))))
+                 (\ (e1_ibyeq [OS=OneShot] :: SomeException)
+                    (s_ibyer [OS=OneShot] :: State# RealWorld) ->
+                    case GHC.IO.Handle.hClose1 ipv3_ibyeo s_ibyer of
+                    { (# ipv4_ibyeu, ipv5_ibyev #) ->
+                    raiseIO# @ SomeException @ r_abxZi e1_ibyeq ipv4_ibyeu
+                    })
+                 ipv2_ibyen
+          of
+          { (# ipv4_ibyez, ipv5_ibyeA #) ->
+          case GHC.IO.Handle.hClose1 ipv3_ibyeo ipv4_ibyez of
+          { (# ipv6_ibyeE, ipv7_ibyeF #) ->
+          (# ipv6_ibyeE, ipv5_ibyeA #)
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+withFile
+  :: forall r. FilePath -> IOMode -> (Handle -> IO r) -> IO r
+[GblId,
+ Arity=4,
+ Str=<L,U><L,U><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.appendFile2
+               `cast` (forall (r :: <*>_N).
+                       <FilePath>_R
+                       ->_R <IOMode>_R
+                       ->_R <Handle -> IO r>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <r>_R)
+                       :: (forall r.
+                           FilePath
+                           -> IOMode
+                           -> (Handle -> IO r)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, r #) :: *)
+                          ~R# (forall r.
+                               FilePath -> IOMode -> (Handle -> IO r) -> IO r :: *))}]
+withFile
+  = System.IO.appendFile2
+    `cast` (forall (r :: <*>_N).
+            <FilePath>_R
+            ->_R <IOMode>_R
+            ->_R <Handle -> IO r>_R
+            ->_R Sym (GHC.Types.N:IO[0] <r>_R)
+            :: (forall r.
+                FilePath
+                -> IOMode
+                -> (Handle -> IO r)
+                -> State# RealWorld
+                -> (# State# RealWorld, r #) :: *)
+               ~R# (forall r.
+                    FilePath -> IOMode -> (Handle -> IO r) -> IO r :: *))
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+System.IO.appendFile1
+  :: FilePath
+     -> String -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (f_abxD7 [Occ=Once] :: FilePath)
+                 (txt_abxD8 [Occ=Once] :: String)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 System.IO.appendFile2
+                   @ ()
+                   f_abxD7
+                   GHC.IO.IOMode.AppendMode
+                   (\ (hdl_abxD9 [Occ=Once, OS=OneShot] :: Handle) ->
+                      hPutStr hdl_abxD9 txt_abxD8)
+                   eta_B1}]
+System.IO.appendFile1
+  = \ (f_abxD7 :: FilePath)
+      (txt_abxD8 :: String)
+      (eta_B1 :: State# RealWorld) ->
+      System.IO.appendFile2
+        @ ()
+        f_abxD7
+        GHC.IO.IOMode.AppendMode
+        (\ (hdl_abxD9 [OS=OneShot] :: Handle) ->
+           hPutStr hdl_abxD9 txt_abxD8)
+        eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+appendFile :: FilePath -> String -> IO ()
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.appendFile1
+               `cast` (<FilePath>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (FilePath
+                           -> String -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (FilePath -> String -> IO () :: *))}]
+appendFile
+  = System.IO.appendFile1
+    `cast` (<FilePath>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (FilePath
+                -> String -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (FilePath -> String -> IO () :: *))
+
+-- RHS size: {terms: 11, types: 6, coercions: 0, joins: 0/0}
+System.IO.writeFile1
+  :: FilePath
+     -> String -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (f_abxD4 [Occ=Once] :: FilePath)
+                 (txt_abxD5 [Occ=Once] :: String)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 System.IO.appendFile2
+                   @ ()
+                   f_abxD4
+                   GHC.IO.IOMode.WriteMode
+                   (\ (hdl_abxD6 [Occ=Once, OS=OneShot] :: Handle) ->
+                      hPutStr hdl_abxD6 txt_abxD5)
+                   eta_B1}]
+System.IO.writeFile1
+  = \ (f_abxD4 :: FilePath)
+      (txt_abxD5 :: String)
+      (eta_B1 :: State# RealWorld) ->
+      System.IO.appendFile2
+        @ ()
+        f_abxD4
+        GHC.IO.IOMode.WriteMode
+        (\ (hdl_abxD6 [OS=OneShot] :: Handle) ->
+           hPutStr hdl_abxD6 txt_abxD5)
+        eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+writeFile :: FilePath -> String -> IO ()
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.writeFile1
+               `cast` (<FilePath>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (FilePath
+                           -> String -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (FilePath -> String -> IO () :: *))}]
+writeFile
+  = System.IO.writeFile1
+    `cast` (<FilePath>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (FilePath
+                -> String -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (FilePath -> String -> IO () :: *))
+
+-- RHS size: {terms: 110, types: 201, coercions: 6, joins: 0/0}
+System.IO.withBinaryFile1
+  :: forall r.
+     FilePath
+     -> IOMode
+     -> (Handle -> IO r)
+     -> State# RealWorld
+     -> (# State# RealWorld, r #)
+[GblId,
+ Arity=4,
+ Str=<L,U><L,U><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [0 0 60 0] 492 60}]
+System.IO.withBinaryFile1
+  = \ (@ r_abxZ7)
+      (name_abxDk :: FilePath)
+      (mode_abxDl :: IOMode)
+      (eta_X1y :: Handle -> IO r_abxZ7)
+      (eta1_B1 :: State# RealWorld) ->
+      case getMaskingState# eta1_B1 of { (# ipv_ibydy, ipv1_ibydz #) ->
+      case ipv1_ibydz of {
+        __DEFAULT ->
+          case GHC.IO.Handle.FD.openBinaryFile1
+                 name_abxDk mode_abxDl ipv_ibydy
+          of
+          { (# ipv2_ibydE, ipv3_ibydF #) ->
+          case catch#
+                 @ r_abxZ7
+                 @ SomeException
+                 (maskAsyncExceptions#
+                    @ r_abxZ7
+                    ((eta_X1y ipv3_ibydF)
+                     `cast` (GHC.Types.N:IO[0] <r_abxZ7>_R
+                             :: (IO r_abxZ7 :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, r_abxZ7 #) :: *))))
+                 (\ (e1_ibydH [OS=OneShot] :: SomeException)
+                    (s_ibydI [OS=OneShot] :: State# RealWorld) ->
+                    case GHC.IO.Handle.hClose1 ipv3_ibydF s_ibydI of
+                    { (# ipv4_ibydL, ipv5_ibydM #) ->
+                    raiseIO# @ SomeException @ r_abxZ7 e1_ibydH ipv4_ibydL
+                    })
+                 ipv2_ibydE
+          of
+          { (# ipv4_ibydQ, ipv5_ibydR #) ->
+          case GHC.IO.Handle.hClose1 ipv3_ibydF ipv4_ibydQ of
+          { (# ipv6_ibydV, ipv7_ibydW #) ->
+          (# ipv6_ibydV, ipv5_ibydR #)
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ r_abxZ7
+            (\ (s_ibydY [OS=OneShot] :: State# RealWorld) ->
+               case GHC.IO.Handle.FD.openBinaryFile1 name_abxDk mode_abxDl s_ibydY
+               of
+               { (# ipv2_ibye1, ipv3_ibye2 #) ->
+               case catch#
+                      @ r_abxZ7
+                      @ SomeException
+                      (unmaskAsyncExceptions#
+                         @ r_abxZ7
+                         ((eta_X1y ipv3_ibye2)
+                          `cast` (GHC.Types.N:IO[0] <r_abxZ7>_R
+                                  :: (IO r_abxZ7 :: *)
+                                     ~R# (State# RealWorld
+                                          -> (# State# RealWorld, r_abxZ7 #) :: *))))
+                      (\ (e1_ibye4 [OS=OneShot] :: SomeException)
+                         (s1_ibye5 [OS=OneShot] :: State# RealWorld) ->
+                         case GHC.IO.Handle.hClose1 ipv3_ibye2 s1_ibye5 of
+                         { (# ipv4_ibye8, ipv5_ibye9 #) ->
+                         raiseIO# @ SomeException @ r_abxZ7 e1_ibye4 ipv4_ibye8
+                         })
+                      ipv2_ibye1
+               of
+               { (# ipv4_ibyed, ipv5_ibyee #) ->
+               case GHC.IO.Handle.hClose1 ipv3_ibye2 ipv4_ibyed of
+               { (# ipv6_ibyei, ipv7_ibyej #) ->
+               (# ipv6_ibyei, ipv5_ibyee #)
+               }
+               }
+               })
+            ipv_ibydy;
+        1# ->
+          case GHC.IO.Handle.FD.openBinaryFile1
+                 name_abxDk mode_abxDl ipv_ibydy
+          of
+          { (# ipv2_ibyen, ipv3_ibyeo #) ->
+          case catch#
+                 @ r_abxZ7
+                 @ SomeException
+                 (maskUninterruptible#
+                    @ r_abxZ7
+                    ((eta_X1y ipv3_ibyeo)
+                     `cast` (GHC.Types.N:IO[0] <r_abxZ7>_R
+                             :: (IO r_abxZ7 :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, r_abxZ7 #) :: *))))
+                 (\ (e1_ibyeq [OS=OneShot] :: SomeException)
+                    (s_ibyer [OS=OneShot] :: State# RealWorld) ->
+                    case GHC.IO.Handle.hClose1 ipv3_ibyeo s_ibyer of
+                    { (# ipv4_ibyeu, ipv5_ibyev #) ->
+                    raiseIO# @ SomeException @ r_abxZ7 e1_ibyeq ipv4_ibyeu
+                    })
+                 ipv2_ibyen
+          of
+          { (# ipv4_ibyez, ipv5_ibyeA #) ->
+          case GHC.IO.Handle.hClose1 ipv3_ibyeo ipv4_ibyez of
+          { (# ipv6_ibyeE, ipv7_ibyeF #) ->
+          (# ipv6_ibyeE, ipv5_ibyeA #)
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+withBinaryFile
+  :: forall r. FilePath -> IOMode -> (Handle -> IO r) -> IO r
+[GblId,
+ Arity=4,
+ Str=<L,U><L,U><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.withBinaryFile1
+               `cast` (forall (r :: <*>_N).
+                       <FilePath>_R
+                       ->_R <IOMode>_R
+                       ->_R <Handle -> IO r>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <r>_R)
+                       :: (forall r.
+                           FilePath
+                           -> IOMode
+                           -> (Handle -> IO r)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, r #) :: *)
+                          ~R# (forall r.
+                               FilePath -> IOMode -> (Handle -> IO r) -> IO r :: *))}]
+withBinaryFile
+  = System.IO.withBinaryFile1
+    `cast` (forall (r :: <*>_N).
+            <FilePath>_R
+            ->_R <IOMode>_R
+            ->_R <Handle -> IO r>_R
+            ->_R Sym (GHC.Types.N:IO[0] <r>_R)
+            :: (forall r.
+                FilePath
+                -> IOMode
+                -> (Handle -> IO r)
+                -> State# RealWorld
+                -> (# State# RealWorld, r #) :: *)
+               ~R# (forall r.
+                    FilePath -> IOMode -> (Handle -> IO r) -> IO r :: *))
+
+-- RHS size: {terms: 14, types: 32, coercions: 3, joins: 0/0}
+lvl_rbyQ6 :: State# RealWorld -> (# State# RealWorld, IORef Int #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []]
+lvl_rbyQ6
+  = \ (s_i91ZD [OS=OneShot] :: State# RealWorld) ->
+      case noDuplicate# @ RealWorld s_i91ZD of s'_i91ZE { __DEFAULT ->
+      case newMutVar# @ Int @ RealWorld System.IO.hReady2 s'_i91ZE of
+      { (# ipv_ia4ZV, ipv1_ia4ZW #) ->
+      (# ipv_ia4ZV,
+         (GHC.STRef.STRef @ RealWorld @ Int ipv1_ia4ZW)
+         `cast` (Sym (GHC.IORef.N:IORef[0]) <Int>_N
+                 :: (GHC.STRef.STRef RealWorld Int :: *) ~R# (IORef Int :: *)) #)
+      }
+      }
+
+-- RHS size: {terms: 5, types: 33, coercions: 0, joins: 0/0}
+tempCounter_rbxCH :: IORef Int
+[GblId]
+tempCounter_rbxCH
+  = case runRW#
+           @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+           @ (# State# RealWorld, IORef Int #)
+           lvl_rbyQ6
+    of
+    { (# ipv_i91ZH, ipv1_i91ZI #) ->
+    ipv1_i91ZI
+    }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+pathSeparatorChar_rbxCK :: Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+pathSeparatorChar_rbxCK = GHC.Types.C# '/'#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.$trModule3 = GHC.Types.TrNameS System.IO.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+System.IO.$trModule2 = "System.IO"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.$trModule1 = GHC.Types.TrNameS System.IO.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.IO.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.IO.$trModule
+  = GHC.Types.Module System.IO.$trModule3 System.IO.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rbyQ7 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rbyQ7
+  = GHC.Types.KindRepTyConApp
+      Foreign.C.Error.$tcErrno (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep1_rbyQ8 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep1_rbyQ8
+  = GHC.Types.KindRepTyConApp
+      Foreign.C.Types.$tcCInt (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tcOpenNewFileResult2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+System.IO.$tcOpenNewFileResult2 = "OpenNewFileResult"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tcOpenNewFileResult1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.$tcOpenNewFileResult1
+  = GHC.Types.TrNameS System.IO.$tcOpenNewFileResult2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tcOpenNewFileResult :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+System.IO.$tcOpenNewFileResult
+  = GHC.Types.TyCon
+      9627069439367662246##
+      2547759174955940786##
+      System.IO.$trModule
+      System.IO.$tcOpenNewFileResult1
+      0#
+      GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+System.IO.$tc'FileExists1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+System.IO.$tc'FileExists1
+  = GHC.Types.KindRepTyConApp
+      System.IO.$tcOpenNewFileResult (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'FileExists3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+System.IO.$tc'FileExists3 = "'FileExists"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'FileExists2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.$tc'FileExists2
+  = GHC.Types.TrNameS System.IO.$tc'FileExists3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'FileExists :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+System.IO.$tc'FileExists
+  = GHC.Types.TyCon
+      6704133186904346962##
+      16997416543076271011##
+      System.IO.$trModule
+      System.IO.$tc'FileExists2
+      0#
+      System.IO.$tc'FileExists1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'NewFileCreated1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+System.IO.$tc'NewFileCreated1
+  = GHC.Types.KindRepFun $krep1_rbyQ8 System.IO.$tc'FileExists1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'NewFileCreated3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+System.IO.$tc'NewFileCreated3 = "'NewFileCreated"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'NewFileCreated2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.$tc'NewFileCreated2
+  = GHC.Types.TrNameS System.IO.$tc'NewFileCreated3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'NewFileCreated :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+System.IO.$tc'NewFileCreated
+  = GHC.Types.TyCon
+      9070829168557028496##
+      15570227817593865145##
+      System.IO.$trModule
+      System.IO.$tc'NewFileCreated2
+      0#
+      System.IO.$tc'NewFileCreated1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'OpenNewError1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+System.IO.$tc'OpenNewError1
+  = GHC.Types.KindRepFun $krep_rbyQ7 System.IO.$tc'FileExists1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'OpenNewError3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+System.IO.$tc'OpenNewError3 = "'OpenNewError"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'OpenNewError2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.$tc'OpenNewError2
+  = GHC.Types.TrNameS System.IO.$tc'OpenNewError3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+System.IO.$tc'OpenNewError :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+System.IO.$tc'OpenNewError
+  = GHC.Types.TyCon
+      300310999495895268##
+      12582581010413704951##
+      System.IO.$trModule
+      System.IO.$tc'OpenNewError2
+      0#
+      System.IO.$tc'OpenNewError1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl1_rbyQ9 :: SomeException
+[GblId]
+lvl1_rbyQ9
+  = GHC.IO.Exception.$fExceptionFixIOException_$ctoException
+      GHC.IO.Exception.FixIOException
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+System.IO.fixIO3
+  :: forall a. State# RealWorld -> (# State# RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+System.IO.fixIO3
+  = \ (@ a_abxYz) (eta_ia3iq [OS=OneShot] :: State# RealWorld) ->
+      raiseIO# @ SomeException @ a_abxYz lvl1_rbyQ9 eta_ia3iq
+
+-- RHS size: {terms: 18, types: 21, coercions: 8, joins: 0/0}
+System.IO.fixIO2
+  :: forall a.
+     SomeException -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20] 92 60}]
+System.IO.fixIO2
+  = \ (@ a_abxYz) (e1_ib3yU [OS=OneShot] :: SomeException) ->
+      case e1_ib3yU of wild_ibyhq
+      { SomeException @ e2_ibyhs $dException1_ibyht e3_ibyhu ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ e2_ibyhs
+             @ BlockedIndefinitelyOnMVar
+             ((GHC.Exception.$p1Exception @ e2_ibyhs $dException1_ibyht)
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e2_ibyhs>_N
+                      :: (Data.Typeable.Internal.Typeable e2_ibyhs :: Constraint)
+                         ~R# (Data.Typeable.Internal.TypeRep e2_ibyhs :: *)))
+             GHC.IO.Exception.$fExceptionBlockedIndefinitelyOnMVar3
+      of {
+        False -> raiseIO# @ SomeException @ a_abxYz wild_ibyhq;
+        True ->
+          case e3_ibyhu
+               `cast` (UnsafeCo representational e2_ibyhs BlockedIndefinitelyOnMVar
+                       :: (e2_ibyhs :: *) ~R# (BlockedIndefinitelyOnMVar :: *))
+          of
+          { BlockedIndefinitelyOnMVar ->
+          System.IO.fixIO3 @ a_abxYz
+          }
+      }
+      }
+
+-- RHS size: {terms: 33, types: 67, coercions: 7, joins: 0/0}
+System.IO.fixIO1
+  :: forall a.
+     (a -> IO a) -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0] 93 30}]
+System.IO.fixIO1
+  = \ (@ a_abxYz)
+      (k_abxDm :: a_abxYz -> IO a_abxYz)
+      (s_i7IAv :: State# RealWorld) ->
+      case newMVar# @ RealWorld @ a_abxYz s_i7IAv of
+      { (# ipv_iaIyp, ipv1_iaIyq #) ->
+      case ((unsafeDupableInterleaveIO
+               @ a_abxYz
+               ((\ (eta_ib3yT [OS=OneShot] :: State# RealWorld) ->
+                   catch#
+                     @ a_abxYz
+                     @ SomeException
+                     (\ (eta1_ibf3h [OS=OneShot] :: State# RealWorld) ->
+                        readMVar# @ RealWorld @ a_abxYz ipv1_iaIyq eta1_ibf3h)
+                     (System.IO.fixIO2 @ a_abxYz)
+                     eta_ib3yT)
+                `cast` (Sym (GHC.Types.N:IO[0] <a_abxYz>_R)
+                        :: (State# RealWorld -> (# State# RealWorld, a_abxYz #) :: *)
+                           ~R# (IO a_abxYz :: *))))
+            `cast` (GHC.Types.N:IO[0] <a_abxYz>_R
+                    :: (IO a_abxYz :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_abxYz #) :: *)))
+             ipv_iaIyp
+      of
+      { (# ipv2_X7IC7, ipv3_X7IC9 #) ->
+      case ((k_abxDm ipv3_X7IC9)
+            `cast` (GHC.Types.N:IO[0] <a_abxYz>_R
+                    :: (IO a_abxYz :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_abxYz #) :: *)))
+             ipv2_X7IC7
+      of
+      { (# ipv4_X7ICc, ipv5_X7ICe #) ->
+      case putMVar#
+             @ RealWorld @ a_abxYz ipv1_iaIyq ipv5_X7ICe ipv4_X7ICc
+      of s2#_i9DsB
+      { __DEFAULT ->
+      (# s2#_i9DsB, ipv5_X7ICe #)
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+fixIO :: forall a. (a -> IO a) -> IO a
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.fixIO1
+               `cast` (forall (a :: <*>_N).
+                       <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           (a -> IO a) -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. (a -> IO a) -> IO a :: *))}]
+fixIO
+  = System.IO.fixIO1
+    `cast` (forall (a :: <*>_N).
+            <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                (a -> IO a) -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. (a -> IO a) -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.readIO9 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 70 0}]
+System.IO.readIO9 = "Prelude.readIO: no parse"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.readIO8 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.readIO8 = unpackCString# System.IO.readIO9
+
+-- RHS size: {terms: 7, types: 4, coercions: 0, joins: 0/0}
+System.IO.readIO7 :: IOException
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+System.IO.readIO7
+  = GHC.IO.Exception.IOError
+      (GHC.Base.Nothing @ Handle)
+      GHC.IO.Exception.UserError
+      (GHC.Types.[] @ Char)
+      System.IO.readIO8
+      (GHC.Base.Nothing @ CInt)
+      (GHC.Base.Nothing @ FilePath)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.readIO6 :: SomeException
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 20 0}]
+System.IO.readIO6
+  = GHC.IO.Exception.$fExceptionIOException_$ctoException
+      System.IO.readIO7
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.readIO5 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 90 0}]
+System.IO.readIO5 = "Prelude.readIO: ambiguous parse"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.readIO4 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.readIO4 = unpackCString# System.IO.readIO5
+
+-- RHS size: {terms: 7, types: 4, coercions: 0, joins: 0/0}
+System.IO.readIO3 :: IOException
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+System.IO.readIO3
+  = GHC.IO.Exception.IOError
+      (GHC.Base.Nothing @ Handle)
+      GHC.IO.Exception.UserError
+      (GHC.Types.[] @ Char)
+      System.IO.readIO4
+      (GHC.Base.Nothing @ CInt)
+      (GHC.Base.Nothing @ FilePath)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.readIO2 :: SomeException
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 20 0}]
+System.IO.readIO2
+  = GHC.IO.Exception.$fExceptionIOException_$ctoException
+      System.IO.readIO3
+
+Rec {
+-- RHS size: {terms: 47, types: 70, coercions: 0, joins: 0/3}
+System.IO.readIO10 [Occ=LoopBreaker]
+  :: forall a. [(a, String)] -> [a]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+System.IO.readIO10
+  = \ (@ a_abxZC) (ds_i7Jck :: [(a_abxZC, String)]) ->
+      case ds_i7Jck of {
+        [] -> GHC.Types.[] @ a_abxZC;
+        : y_i7Jcp ys_i7Jcq ->
+          case y_i7Jcp of { (x_abxDd, t_abxDe) ->
+          let {
+            lvl12_sbyoC :: [a_abxZC]
+            [LclId, Unf=OtherCon []]
+            lvl12_sbyoC
+              = GHC.Types.: @ a_abxZC x_abxDd (GHC.Types.[] @ a_abxZC) } in
+          let {
+            z_X7JeX :: [a_abxZC]
+            [LclId]
+            z_X7JeX = System.IO.readIO10 @ a_abxZC ys_i7Jcq } in
+          letrec {
+            go1_X7Jf0 [Occ=LoopBreaker] :: [(String, String)] -> [a_abxZC]
+            [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+            go1_X7Jf0
+              = \ (ds1_X7Jf2 :: [(String, String)]) ->
+                  case ds1_X7Jf2 of {
+                    [] -> z_X7JeX;
+                    : y1_X7Jfa ys1_X7Jfc ->
+                      case y1_X7Jfa of { (ds2_dby4v, ds3_dby4w) ->
+                      case ds2_dby4v of {
+                        [] ->
+                          case ds3_dby4w of {
+                            [] -> ++ @ a_abxZC lvl12_sbyoC (go1_X7Jf0 ys1_X7Jfc);
+                            : ipv_sbyib ipv1_sbyih -> go1_X7Jf0 ys1_X7Jfc
+                          };
+                        : ipv_sbyi9 ipv1_sbyij -> go1_X7Jf0 ys1_X7Jfc
+                      }
+                      }
+                  }; } in
+          go1_X7Jf0
+            (Text.ParserCombinators.ReadP.run @ String GHC.Read.lex1 t_abxDe)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 25, types: 30, coercions: 0, joins: 0/0}
+System.IO.readIO1
+  :: forall a.
+     Read a =>
+     String -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(C(S))LLL),1*U(1*C1(C1(U)),A,A,A)><L,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0 0] 106 30}]
+System.IO.readIO1
+  = \ (@ a_abxZC)
+      ($dRead_abxZE :: Read a_abxZC)
+      (s_abxDc :: String)
+      (eta_B1 :: State# RealWorld) ->
+      case System.IO.readIO10
+             @ a_abxZC (readsPrec @ a_abxZC $dRead_abxZE minPrec s_abxDc)
+      of {
+        [] -> raiseIO# @ SomeException @ a_abxZC System.IO.readIO6 eta_B1;
+        : x_abxDf ds_dby4T ->
+          case ds_dby4T of {
+            [] -> (# eta_B1, x_abxDf #);
+            : ipv_sbyit ipv1_sbyiu ->
+              raiseIO# @ SomeException @ a_abxZC System.IO.readIO2 eta_B1
+          }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+readIO :: forall a. Read a => String -> IO a
+[GblId,
+ Arity=3,
+ Str=<S(C(C(S))LLL),1*U(1*C1(C1(U)),A,A,A)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.readIO1
+               `cast` (forall (a :: <*>_N).
+                       <Read a>_R ->_R <String>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           Read a =>
+                           String -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. Read a => String -> IO a :: *))}]
+readIO
+  = System.IO.readIO1
+    `cast` (forall (a :: <*>_N).
+            <Read a>_R ->_R <String>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                Read a =>
+                String -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. Read a => String -> IO a :: *))
+
+-- RHS size: {terms: 14, types: 19, coercions: 5, joins: 0/0}
+System.IO.readLn1
+  :: forall a.
+     Read a =>
+     State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*C1(C1(U)),A,A,A)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aby0n)
+                 ($dRead_aby0p [Occ=Once] :: Read a_aby0n)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case GHC.IO.Handle.Internals.wantReadableHandle_1
+                        @ String
+                        GHC.IO.Handle.Text.hGetLine4
+                        stdin
+                        (GHC.IO.Handle.Text.hGetLine2
+                         `cast` (<GHC.IO.Handle.Types.Handle__>_R
+                                 ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+                                 :: (GHC.IO.Handle.Types.Handle__
+                                     -> State# RealWorld -> (# State# RealWorld, String #) :: *)
+                                    ~R# (GHC.IO.Handle.Types.Handle__ -> IO String :: *)))
+                        s_i7IAv
+                 of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                 System.IO.readIO1 @ a_aby0n $dRead_aby0p ipv1_i7IAz ipv_i7IAy
+                 }}]
+System.IO.readLn1
+  = \ (@ a_aby0n)
+      ($dRead_aby0p :: Read a_aby0n)
+      (s_i7IAv :: State# RealWorld) ->
+      case GHC.IO.Handle.Internals.wantReadableHandle_1
+             @ String
+             GHC.IO.Handle.Text.hGetLine4
+             stdin
+             (GHC.IO.Handle.Text.hGetLine2
+              `cast` (<GHC.IO.Handle.Types.Handle__>_R
+                      ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+                      :: (GHC.IO.Handle.Types.Handle__
+                          -> State# RealWorld -> (# State# RealWorld, String #) :: *)
+                         ~R# (GHC.IO.Handle.Types.Handle__ -> IO String :: *)))
+             s_i7IAv
+      of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      System.IO.readIO1 @ a_aby0n $dRead_aby0p ipv1_i7IAz ipv_i7IAy
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+readLn :: forall a. Read a => IO a
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*C1(C1(U)),A,A,A)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.readLn1
+               `cast` (forall (a :: <*>_N).
+                       <Read a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           Read a =>
+                           State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. Read a => IO a :: *))}]
+readLn
+  = System.IO.readLn1
+    `cast` (forall (a :: <*>_N).
+            <Read a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                Read a =>
+                State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. Read a => IO a :: *))
+
+-- RHS size: {terms: 11, types: 14, coercions: 0, joins: 0/0}
+System.IO.readFile1
+  :: FilePath -> State# RealWorld -> (# State# RealWorld, String #)
+[GblId,
+ Arity=2,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (name_abxD3 [Occ=Once] :: FilePath)
+                 (s_X7IC6 [Occ=Once] :: State# RealWorld) ->
+                 case GHC.IO.Handle.FD.openFile1
+                        name_abxD3 GHC.IO.IOMode.ReadMode s_X7IC6
+                 of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                 GHC.IO.Handle.Text.hGetContents1 ipv1_i7IAz ipv_i7IAy
+                 }}]
+System.IO.readFile1
+  = \ (name_abxD3 :: FilePath) (s_X7IC6 :: State# RealWorld) ->
+      case GHC.IO.Handle.FD.openFile1
+             name_abxD3 GHC.IO.IOMode.ReadMode s_X7IC6
+      of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      GHC.IO.Handle.Text.hGetContents1 ipv1_i7IAz ipv_i7IAy
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 5, joins: 0/0}
+readFile :: FilePath -> IO String
+[GblId,
+ Arity=2,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.readFile1
+               `cast` (<FilePath>_R ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+                       :: (FilePath
+                           -> State# RealWorld -> (# State# RealWorld, String #) :: *)
+                          ~R# (FilePath -> IO String :: *))}]
+readFile
+  = System.IO.readFile1
+    `cast` (<FilePath>_R ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+            :: (FilePath
+                -> State# RealWorld -> (# State# RealWorld, String #) :: *)
+               ~R# (FilePath -> IO String :: *))
+
+-- RHS size: {terms: 13, types: 15, coercions: 2, joins: 0/0}
+System.IO.interact1
+  :: (String -> String)
+     -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (f_abxD1 [Occ=Once!] :: String -> String)
+                 (s_X7IC9 [Occ=Once] :: State# RealWorld) ->
+                 case GHC.IO.Handle.Text.hGetContents1 stdin s_X7IC9 of
+                 { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz [Occ=Once] #) ->
+                 ((GHC.IO.Handle.Text.hPutStr'
+                     stdout (f_abxD1 ipv1_i7IAz) GHC.Types.False)
+                  `cast` (GHC.Types.N:IO[0] <()>_R
+                          :: (IO () :: *)
+                             ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                   ipv_i7IAy
+                 }}]
+System.IO.interact1
+  = \ (f_abxD1 :: String -> String) (s_X7IC9 :: State# RealWorld) ->
+      case GHC.IO.Handle.Text.hGetContents1 stdin s_X7IC9 of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      ((GHC.IO.Handle.Text.hPutStr'
+          stdout (f_abxD1 ipv1_i7IAz) GHC.Types.False)
+       `cast` (GHC.Types.N:IO[0] <()>_R
+               :: (IO () :: *)
+                  ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+        ipv_i7IAy
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 6, joins: 0/0}
+interact :: (String -> String) -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.interact1
+               `cast` (<String -> String>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: ((String -> String)
+                           -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# ((String -> String) -> IO () :: *))}]
+interact
+  = System.IO.interact1
+    `cast` (<String -> String>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: ((String -> String)
+                -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# ((String -> String) -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_rbyQa :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_rbyQa = "bug in System.IO.openTempFile"#
+
+-- RHS size: {terms: 3, types: 6, coercions: 0, joins: 0/0}
+lvl3_rbyQb :: ([Char], [Char])
+[GblId, Str=x]
+lvl3_rbyQb
+  = errorWithoutStackTrace
+      @ 'LiftedRep @ ([Char], [Char]) (unpackCString# lvl2_rbyQa)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl4_rbyQc :: Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl4_rbyQc = GHC.Types.C# '.'#
+
+-- RHS size: {terms: 10, types: 4, coercions: 0, joins: 0/0}
+lvl5_rbyQd :: Char -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []]
+lvl5_rbyQd
+  = \ (ds_dby3e :: Char) ->
+      case ds_dby3e of { C# x_a5ih ->
+      case x_a5ih of {
+        __DEFAULT -> GHC.Types.False;
+        '.'# -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 41, types: 55, coercions: 0, joins: 0/0}
+lvl6_rbyQe :: GHC.Int.Int32
+[GblId]
+lvl6_rbyQe
+  = case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iaUMx
+           realWorld#
+    of
+    { (# ds_iaUMA, ds1_iaUMB #) ->
+    case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iaUME
+           realWorld#
+    of
+    { (# ds2_iaUMH, ds3_iaUMI #) ->
+    case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iaUML
+           realWorld#
+    of
+    { (# ds4_iaUMO, ds5_iaUMP #) ->
+    case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iaUN6
+           realWorld#
+    of
+    { (# ds6_iaUN9, ds7_iaUNa #) ->
+    case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iby1K
+           realWorld#
+    of
+    { (# ds8_iby1N, ds9_iby1O #) ->
+    GHC.Int.I32#
+      (word2Int#
+         (or#
+            (or#
+               (or#
+                  (or#
+                     (int2Word# (narrow32Int# ds1_iaUMB))
+                     (int2Word# (narrow32Int# ds3_iaUMI)))
+                  (int2Word# (narrow32Int# ds5_iaUMP)))
+               (int2Word# (narrow32Int# ds7_iaUNa)))
+            (int2Word# (narrow32Int# ds9_iby1O))))
+    }
+    }
+    }
+    }
+    }
+
+-- RHS size: {terms: 13, types: 12, coercions: 0, joins: 0/0}
+$wlvl_rbyQf
+  :: Int#
+     -> String
+     -> FilePath
+     -> State# RealWorld
+     -> (# State# RealWorld, ([Char], Handle) #)
+[GblId, Arity=4, Str=<B,U><B,U><B,U><B,U>x, Unf=OtherCon []]
+$wlvl_rbyQf
+  = \ (ww_sbyHO :: Int#)
+      (w_sbyHJ :: String)
+      (w1_sbyHK :: FilePath)
+      (w2_sbyHL :: State# RealWorld) ->
+      raiseIO#
+        @ SomeException
+        @ ([Char], Handle)
+        (GHC.IO.Exception.$fExceptionIOException_$ctoException
+           (Foreign.C.Error.$werrnoToIOError
+              w_sbyHJ
+              ww_sbyHO
+              (GHC.Base.Nothing @ Handle)
+              (GHC.Base.Just @ FilePath w1_sbyHK)))
+        w2_sbyHL
+
+-- RHS size: {terms: 12, types: 7, coercions: 3, joins: 0/0}
+lvl7_rbyQg
+  :: Errno
+     -> String
+     -> FilePath
+     -> State# RealWorld
+     -> (# State# RealWorld, ([Char], Handle) #)
+[GblId, Arity=4, Str=<B,1*U(U)><B,U><B,U><B,U>x, Unf=OtherCon []]
+lvl7_rbyQg
+  = \ (w_sbyHI :: Errno)
+      (w1_sbyHJ :: String)
+      (w2_sbyHK :: FilePath)
+      (w3_sbyHL :: State# RealWorld) ->
+      case w_sbyHI
+           `cast` (Foreign.C.Error.N:Errno[0] ; Foreign.C.Types.N:CInt[0]
+                   :: (Errno :: *) ~R# (GHC.Int.Int32 :: *))
+      of
+      { GHC.Int.I32# ww1_sbyHO ->
+      $wlvl_rbyQf ww1_sbyHO w1_sbyHJ w2_sbyHK w3_sbyHL
+      }
+
+-- RHS size: {terms: 10, types: 5, coercions: 0, joins: 0/0}
+lvl8_rbyQh :: Int -> (Int, Int)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U(U)>m, Unf=OtherCon []]
+lvl8_rbyQh
+  = \ (n_abxDX :: Int) ->
+      (case n_abxDX of { I# x_i7MX1 -> GHC.Types.I# (+# x_i7MX1 1#) },
+       n_abxDX)
+
+Rec {
+-- RHS size: {terms: 10, types: 8, coercions: 0, joins: 0/0}
+go_rbyQi :: [Char] -> Char -> Char
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U(U)>,
+ Unf=OtherCon []]
+go_rbyQi
+  = \ (ds_i7Jck :: [Char]) (eta_X3l :: Char) ->
+      case ds_i7Jck of {
+        [] -> eta_X3l;
+        : y_i7Jcp ys_i7Jcq -> go_rbyQi ys_i7Jcq y_i7Jcp
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl9_rbyQj :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl9_rbyQj = "-"#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl10_rbyQk :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl10_rbyQk
+  = "openTempFile': Template string must not contain path separator characters: "#
+
+-- RHS size: {terms: 7, types: 6, coercions: 0, joins: 0/0}
+lvl11_rbyQl
+  :: State# RealWorld
+     -> String -> (# State# RealWorld, (FilePath, Handle) #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []]
+lvl11_rbyQl
+  = \ (eta_B1 :: State# RealWorld) (template_abxDA :: String) ->
+      GHC.IO.failIO1
+        @ (FilePath, Handle)
+        (unpackAppendCString# lvl10_rbyQk template_abxDA)
+        eta_B1
+
+-- RHS size: {terms: 269, types: 354, coercions: 29, joins: 3/8}
+System.IO.openBinaryTempFile5
+  :: String
+     -> FilePath
+     -> String
+     -> Bool
+     -> CMode
+     -> State# RealWorld
+     -> (# State# RealWorld, (FilePath, Handle) #)
+[GblId,
+ Arity=6,
+ Str=<L,U><L,U><S,U><L,1*U><L,U(U)><S,U>,
+ Unf=OtherCon []]
+System.IO.openBinaryTempFile5
+  = \ (loc_abxDy :: String)
+      (tmp_dir_abxDz :: FilePath)
+      (template_abxDA :: String)
+      (binary_abxDB :: Bool)
+      (mode_abxDC :: CMode)
+      (eta_B1 :: State# RealWorld) ->
+      case elem
+             @ Char GHC.Classes.$fEqChar pathSeparatorChar_rbxCK template_abxDA
+      of {
+        False ->
+          let {
+            ds_sbyok [Dmd=<L,U(U,U)>] :: ([Char], [Char])
+            [LclId]
+            ds_sbyok
+              = case GHC.List.$wbreak
+                       @ Char
+                       lvl5_rbyQd
+                       (GHC.List.reverse1 @ Char template_abxDA (GHC.Types.[] @ Char))
+                of
+                { (# ww1_iby3b, ww2_iby3c #) ->
+                case ww2_iby3c of {
+                  [] -> (reverse @ Char ww1_iby3b, GHC.Types.[] @ Char);
+                  : ds1_dby3s rest_abxDI ->
+                    case ds1_dby3s of { C# ds2_dby3t ->
+                    case ds2_dby3t of {
+                      __DEFAULT -> lvl3_rbyQb;
+                      '.'# ->
+                        (reverse @ Char rest_abxDI,
+                         GHC.Types.: @ Char lvl4_rbyQc (reverse @ Char ww1_iby3b))
+                    }
+                    }
+                }
+                } } in
+          let {
+            oflags_sbyLD [Dmd=<L,U(U)>] :: GHC.Int.Int32
+            [LclId]
+            oflags_sbyLD
+              = case lvl6_rbyQe of wild1_i9h2A { GHC.Int.I32# x#_i9h2C ->
+                case binary_abxDB of {
+                  False -> wild1_i9h2A;
+                  True ->
+                    case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iby1R
+                           realWorld#
+                    of
+                    { (# ds1_iby1U, ds2_iby1V #) ->
+                    GHC.Int.I32#
+                      (word2Int#
+                         (or# (int2Word# x#_i9h2C) (int2Word# (narrow32Int# ds2_iby1V))))
+                    }
+                }
+                } } in
+          let {
+            lvl12_sbyLE [Dmd=<L,C(C1(U(U,U)))>]
+              :: Foreign.C.String.CString
+                 -> State# RealWorld -> (# State# RealWorld, CInt #)
+            [LclId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []]
+            lvl12_sbyLE
+              = \ (f_abxE5 :: Foreign.C.String.CString)
+                  (eta1_X2F [OS=OneShot] :: State# RealWorld) ->
+                  case f_abxE5 of { GHC.Ptr.Ptr ds4_iby1q ->
+                  case oflags_sbyLD of { GHC.Int.I32# ds6_iby1u ->
+                  case mode_abxDC
+                       `cast` (System.Posix.Types.N:CMode[0]
+                               :: (CMode :: *) ~R# (GHC.Word.Word32 :: *))
+                  of
+                  { GHC.Word.W32# ds8_iby1A ->
+                  case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Int#
+                           -> Word#
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iby1z
+                         ds4_iby1q ds6_iby1u ds8_iby1A eta1_X2F
+                  of
+                  { (# ds10_iby1E, ds11_iby1F #) ->
+                  (# ds10_iby1E, GHC.Int.I32# (narrow32Int# ds11_iby1F) #)
+                  `cast` (((#,#)
+                             <'TupleRep '[]>_R
+                             <'LiftedRep>_R
+                             <State# RealWorld>_R
+                             (Sym (Foreign.C.Types.N:CInt[0])))_R
+                          :: ((# State# RealWorld, GHC.Int.Int32 #) :: TYPE
+                                                                         ('TupleRep
+                                                                            '['TupleRep '[],
+                                                                              'LiftedRep]))
+                             ~R# ((# State# RealWorld, CInt #) :: TYPE
+                                                                    ('TupleRep
+                                                                       '['TupleRep '[],
+                                                                         'LiftedRep])))
+                  }
+                  }
+                  }
+                  } } in
+          let {
+            lvl13_sbyLB :: Bool
+            [LclId]
+            lvl13_sbyLB
+              = elem
+                  @ Char
+                  GHC.Classes.$fEqChar
+                  pathSeparatorChar_rbxCK
+                  (GHC.Types.:
+                     @ Char
+                     (go_rbyQi tmp_dir_abxDz (GHC.List.lastError @ Char))
+                     (GHC.Types.[] @ Char)) } in
+          join {
+            exit_X20 [Dmd=<L,C(C1(U(U,U)))>]
+              :: State# RealWorld
+                 -> Errno -> (# State# RealWorld, (FilePath, Handle) #)
+            [LclId[JoinId(2)], Arity=2, Str=<B,U><B,1*U(U)>x]
+            exit_X20 (ipv_X7IGP [OS=OneShot] :: State# RealWorld)
+                     (errno_abxDQ [OS=OneShot] :: Errno)
+              = lvl7_rbyQg errno_abxDQ loc_abxDy tmp_dir_abxDz ipv_X7IGP } in
+          joinrec {
+            findTempName_sbyoj [Occ=LoopBreaker]
+              :: State# RealWorld -> (# State# RealWorld, (FilePath, Handle) #)
+            [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []]
+            findTempName_sbyoj (s_X7ICw :: State# RealWorld)
+              = case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iby28
+                       s_X7ICw
+                of
+                { (# ds1_iby2b, ds2_iby2c #) ->
+                case tempCounter_rbxCH
+                     `cast` (GHC.IORef.N:IORef[0] <Int>_N
+                             :: (IORef Int :: *) ~R# (GHC.STRef.STRef RealWorld Int :: *))
+                of
+                { GHC.STRef.STRef r#_iaocE ->
+                case atomicModifyMutVar#
+                       @ RealWorld @ Int @ (Int, Int) @ Int r#_iaocE lvl8_rbyQh ds1_iby2b
+                of
+                { (# ipv_X7ICf, ipv1_X7ICh #) ->
+                case ((noinline @ (IO TextEncoding) getFileSystemEncoding)
+                      `cast` (GHC.Types.N:IO[0] <TextEncoding>_R
+                              :: (IO TextEncoding :: *)
+                                 ~R# (State# RealWorld
+                                      -> (# State# RealWorld, TextEncoding #) :: *)))
+                       ipv_X7ICf
+                of
+                { (# ipv2_iaV4P, ipv3_iaV4Q #) ->
+                let {
+                  filepath_sbyoo :: [Char]
+                  [LclId]
+                  filepath_sbyoo
+                    = case ds_sbyok of { (prefix_abxWC, suffix_abxWE) ->
+                      case ++
+                             @ Char
+                             prefix_abxWC
+                             (case GHC.Show.$wshowSignedInt
+                                     0# (narrow32Int# ds2_iby2c) (GHC.Types.[] @ Char)
+                              of
+                              { (# ww5_i9gYK, ww6_i9gYL #) ->
+                              ++
+                                @ Char
+                                (GHC.Types.: @ Char ww5_i9gYK ww6_i9gYL)
+                                (unpackAppendCString#
+                                   lvl9_rbyQj
+                                   (case ipv1_X7ICh of { I# ww3_i7NVa ->
+                                    case GHC.Show.$wshowSignedInt 0# ww3_i7NVa (GHC.Types.[] @ Char)
+                                    of
+                                    { (# ww8_i7NVe, ww9_i7NVf #) ->
+                                    ++ @ Char (GHC.Types.: @ Char ww8_i7NVe ww9_i7NVf) suffix_abxWE
+                                    }
+                                    }))
+                              })
+                      of wild4_i8hrH {
+                        [] -> tmp_dir_abxDz;
+                        : ds6_i8hNn ds7_i8hNo ->
+                          case tmp_dir_abxDz of wild5_X8huW {
+                            [] -> wild4_i8hrH;
+                            : ds8_X8hQE ds9_X8hQG ->
+                              case lvl13_sbyLB of {
+                                False ->
+                                  ++
+                                    @ Char
+                                    wild5_X8huW
+                                    (GHC.Types.: @ Char pathSeparatorChar_rbxCK wild4_i8hrH);
+                                True -> ++ @ Char wild5_X8huW wild4_i8hrH
+                              }
+                          }
+                      }
+                      } } in
+                case GHC.Foreign.charIsRepresentable3
+                       @ CInt
+                       ipv3_iaV4Q
+                       filepath_sbyoo
+                       (lvl12_sbyLE
+                        `cast` (<Foreign.C.String.CString>_R
+                                ->_R Sym (GHC.Types.N:IO[0] <CInt>_R)
+                                :: (Foreign.C.String.CString
+                                    -> State# RealWorld -> (# State# RealWorld, CInt #) :: *)
+                                   ~R# (Foreign.C.String.CString -> IO CInt :: *)))
+                       ipv2_iaV4P
+                of
+                { (# ipv4_X7ICQ, ipv5_X7ICS #) ->
+                case ipv5_X7ICS
+                     `cast` (Foreign.C.Types.N:CInt[0]
+                             :: (CInt :: *) ~R# (GHC.Int.Int32 :: *))
+                of wild3_i9h8o
+                { GHC.Int.I32# x_i9h8q ->
+                join {
+                  $j_sbyr8 [Dmd=<L,1*C1(C1(U(U,U)))>]
+                    :: State# RealWorld
+                       -> OpenNewFileResult -> (# State# RealWorld, (FilePath, Handle) #)
+                  [LclId[JoinId(2)], Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+                  $j_sbyr8 (ipv6_X7IGP [OS=OneShot] :: State# RealWorld)
+                           (ipv7_X7IGS [OS=OneShot] :: OpenNewFileResult)
+                    = case ipv7_X7IGS of {
+                        NewFileCreated fd_abxDR ->
+                          case GHC.IO.FD.$wmkFD
+                                 fd_abxDR
+                                 GHC.IO.IOMode.ReadWriteMode
+                                 (GHC.Base.Nothing @ (GHC.IO.Device.IODeviceType, CDev, CIno))
+                                 GHC.Types.True
+                                 ipv6_X7IGP
+                          of
+                          { (# ipv8_X7ID1, ipv9_X7ID3 #) ->
+                          case ipv9_X7ID3 of { (fD_abxDS, fd_type_abxDT) ->
+                          case GHC.IO.Encoding.getLocaleEncoding1 of
+                          { (getLocaleEncoding3_iby2p, setLocaleEncoding1_iby2q) ->
+                          case (getLocaleEncoding3_iby2p
+                                `cast` (GHC.Types.N:IO[0] <TextEncoding>_R
+                                        :: (IO TextEncoding :: *)
+                                           ~R# (State# RealWorld
+                                                -> (# State# RealWorld, TextEncoding #) :: *)))
+                                 ipv8_X7ID1
+                          of
+                          { (# ipv10_X7IDd, ipv11_X7IDf #) ->
+                          case GHC.IO.Handle.FD.fdToHandle5
+                                 fD_abxDS
+                                 fd_type_abxDT
+                                 filepath_sbyoo
+                                 GHC.IO.IOMode.ReadWriteMode
+                                 GHC.Types.False
+                                 (GHC.Base.Just @ TextEncoding ipv11_X7IDf)
+                                 ipv10_X7IDd
+                          of
+                          { (# ipv12_X7IDi, ipv13_X7IDk #) ->
+                          (# ipv12_X7IDi, (filepath_sbyoo, ipv13_X7IDk) #)
+                          }
+                          }
+                          }
+                          }
+                          };
+                        FileExists -> jump findTempName_sbyoj ipv6_X7IGP;
+                        OpenNewError errno_abxDQ -> jump exit_X20 ipv6_X7IGP errno_abxDQ
+                      } } in
+                case <# x_i9h8q 0# of {
+                  __DEFAULT ->
+                    jump $j_sbyr8
+                      ipv4_X7ICQ
+                      (System.IO.NewFileCreated
+                         (wild3_i9h8o
+                          `cast` (Sym (Foreign.C.Types.N:CInt[0])
+                                  :: (GHC.Int.Int32 :: *) ~R# (CInt :: *))));
+                  1# ->
+                    case {__pkg_ccall base-4.11.0.0 State# RealWorld
+                           -> (# State# RealWorld, Int# #)}_iaobJ
+                           ipv4_X7ICQ
+                    of
+                    { (# ds7_iaobM, ds8_iaobN #) ->
+                    case narrow32Int# ds8_iaobN of wild5_iaoc3 {
+                      __DEFAULT ->
+                        jump $j_sbyr8
+                          ds7_iaobM
+                          (System.IO.OpenNewError
+                             ((GHC.Int.I32# wild5_iaoc3)
+                              `cast` (Sym (Foreign.C.Types.N:CInt[0]) ; Sym (Foreign.C.Error.N:Errno[0])
+                                      :: (GHC.Int.Int32 :: *) ~R# (Errno :: *))));
+                      17# -> jump $j_sbyr8 ds7_iaobM System.IO.FileExists
+                    }
+                    }
+                }
+                }
+                }
+                }
+                }
+                }
+                }; } in
+          jump findTempName_sbyoj eta_B1;
+        True -> lvl11_rbyQl eta_B1 template_abxDA
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.openBinaryTempFileWithDefaultPermissions4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 110 0}]
+System.IO.openBinaryTempFileWithDefaultPermissions4
+  = "openBinaryTempFileWithDefaultPermissions"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.openBinaryTempFileWithDefaultPermissions3 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.openBinaryTempFileWithDefaultPermissions3
+  = unpackCString#
+      System.IO.openBinaryTempFileWithDefaultPermissions4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.openBinaryTempFileWithDefaultPermissions2
+  :: GHC.Word.Word32
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.openBinaryTempFileWithDefaultPermissions2
+  = GHC.Word.W32# 438##
+
+-- RHS size: {terms: 8, types: 2, coercions: 2, joins: 0/0}
+System.IO.openBinaryTempFileWithDefaultPermissions1
+  :: FilePath
+     -> String
+     -> State# RealWorld
+     -> (# State# RealWorld, (FilePath, Handle) #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (tmp_dir_abxDw [Occ=Once] :: FilePath)
+                 (template_abxDx [Occ=Once] :: String) ->
+                 System.IO.openBinaryTempFile5
+                   System.IO.openBinaryTempFileWithDefaultPermissions3
+                   tmp_dir_abxDw
+                   template_abxDx
+                   GHC.Types.True
+                   (System.IO.openBinaryTempFileWithDefaultPermissions2
+                    `cast` (Sym (System.Posix.Types.N:CMode[0])
+                            :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))}]
+System.IO.openBinaryTempFileWithDefaultPermissions1
+  = \ (tmp_dir_abxDw :: FilePath) (template_abxDx :: String) ->
+      System.IO.openBinaryTempFile5
+        System.IO.openBinaryTempFileWithDefaultPermissions3
+        tmp_dir_abxDw
+        template_abxDx
+        GHC.Types.True
+        (System.IO.openBinaryTempFileWithDefaultPermissions2
+         `cast` (Sym (System.Posix.Types.N:CMode[0])
+                 :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+openBinaryTempFileWithDefaultPermissions
+  :: FilePath -> String -> IO (FilePath, Handle)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.openBinaryTempFileWithDefaultPermissions1
+               `cast` (<FilePath>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+                       :: (FilePath
+                           -> String
+                           -> State# RealWorld
+                           -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+                          ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))}]
+openBinaryTempFileWithDefaultPermissions
+  = System.IO.openBinaryTempFileWithDefaultPermissions1
+    `cast` (<FilePath>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+            :: (FilePath
+                -> String
+                -> State# RealWorld
+                -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+               ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.openTempFileWithDefaultPermissions3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+System.IO.openTempFileWithDefaultPermissions3
+  = "openTempFileWithDefaultPermissions"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.openTempFileWithDefaultPermissions2 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.openTempFileWithDefaultPermissions2
+  = unpackCString# System.IO.openTempFileWithDefaultPermissions3
+
+-- RHS size: {terms: 8, types: 2, coercions: 2, joins: 0/0}
+System.IO.openTempFileWithDefaultPermissions1
+  :: FilePath
+     -> String
+     -> State# RealWorld
+     -> (# State# RealWorld, (FilePath, Handle) #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (tmp_dir_abxDu [Occ=Once] :: FilePath)
+                 (template_abxDv [Occ=Once] :: String) ->
+                 System.IO.openBinaryTempFile5
+                   System.IO.openTempFileWithDefaultPermissions2
+                   tmp_dir_abxDu
+                   template_abxDv
+                   GHC.Types.False
+                   (System.IO.openBinaryTempFileWithDefaultPermissions2
+                    `cast` (Sym (System.Posix.Types.N:CMode[0])
+                            :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))}]
+System.IO.openTempFileWithDefaultPermissions1
+  = \ (tmp_dir_abxDu :: FilePath) (template_abxDv :: String) ->
+      System.IO.openBinaryTempFile5
+        System.IO.openTempFileWithDefaultPermissions2
+        tmp_dir_abxDu
+        template_abxDv
+        GHC.Types.False
+        (System.IO.openBinaryTempFileWithDefaultPermissions2
+         `cast` (Sym (System.Posix.Types.N:CMode[0])
+                 :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+openTempFileWithDefaultPermissions
+  :: FilePath -> String -> IO (FilePath, Handle)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.openTempFileWithDefaultPermissions1
+               `cast` (<FilePath>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+                       :: (FilePath
+                           -> String
+                           -> State# RealWorld
+                           -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+                          ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))}]
+openTempFileWithDefaultPermissions
+  = System.IO.openTempFileWithDefaultPermissions1
+    `cast` (<FilePath>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+            :: (FilePath
+                -> String
+                -> State# RealWorld
+                -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+               ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.openBinaryTempFile4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+System.IO.openBinaryTempFile4 = "openBinaryTempFile"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.openBinaryTempFile3 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.openBinaryTempFile3
+  = unpackCString# System.IO.openBinaryTempFile4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.openBinaryTempFile2 :: GHC.Word.Word32
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.openBinaryTempFile2 = GHC.Word.W32# 384##
+
+-- RHS size: {terms: 8, types: 2, coercions: 2, joins: 0/0}
+System.IO.openBinaryTempFile1
+  :: FilePath
+     -> String
+     -> State# RealWorld
+     -> (# State# RealWorld, (FilePath, Handle) #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (tmp_dir_abxDs [Occ=Once] :: FilePath)
+                 (template_abxDt [Occ=Once] :: String) ->
+                 System.IO.openBinaryTempFile5
+                   System.IO.openBinaryTempFile3
+                   tmp_dir_abxDs
+                   template_abxDt
+                   GHC.Types.True
+                   (System.IO.openBinaryTempFile2
+                    `cast` (Sym (System.Posix.Types.N:CMode[0])
+                            :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))}]
+System.IO.openBinaryTempFile1
+  = \ (tmp_dir_abxDs :: FilePath) (template_abxDt :: String) ->
+      System.IO.openBinaryTempFile5
+        System.IO.openBinaryTempFile3
+        tmp_dir_abxDs
+        template_abxDt
+        GHC.Types.True
+        (System.IO.openBinaryTempFile2
+         `cast` (Sym (System.Posix.Types.N:CMode[0])
+                 :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+openBinaryTempFile :: FilePath -> String -> IO (FilePath, Handle)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.openBinaryTempFile1
+               `cast` (<FilePath>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+                       :: (FilePath
+                           -> String
+                           -> State# RealWorld
+                           -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+                          ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))}]
+openBinaryTempFile
+  = System.IO.openBinaryTempFile1
+    `cast` (<FilePath>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+            :: (FilePath
+                -> String
+                -> State# RealWorld
+                -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+               ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.openTempFile3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+System.IO.openTempFile3 = "openTempFile"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.openTempFile2 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.openTempFile2 = unpackCString# System.IO.openTempFile3
+
+-- RHS size: {terms: 8, types: 2, coercions: 2, joins: 0/0}
+System.IO.openTempFile1
+  :: FilePath
+     -> String
+     -> State# RealWorld
+     -> (# State# RealWorld, (FilePath, Handle) #)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (tmp_dir_abxDq [Occ=Once] :: FilePath)
+                 (template_abxDr [Occ=Once] :: String) ->
+                 System.IO.openBinaryTempFile5
+                   System.IO.openTempFile2
+                   tmp_dir_abxDq
+                   template_abxDr
+                   GHC.Types.False
+                   (System.IO.openBinaryTempFile2
+                    `cast` (Sym (System.Posix.Types.N:CMode[0])
+                            :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))}]
+System.IO.openTempFile1
+  = \ (tmp_dir_abxDq :: FilePath) (template_abxDr :: String) ->
+      System.IO.openBinaryTempFile5
+        System.IO.openTempFile2
+        tmp_dir_abxDq
+        template_abxDr
+        GHC.Types.False
+        (System.IO.openBinaryTempFile2
+         `cast` (Sym (System.Posix.Types.N:CMode[0])
+                 :: (GHC.Word.Word32 :: *) ~R# (CMode :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+openTempFile :: FilePath -> String -> IO (FilePath, Handle)
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.openTempFile1
+               `cast` (<FilePath>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+                       :: (FilePath
+                           -> String
+                           -> State# RealWorld
+                           -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+                          ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))}]
+openTempFile
+  = System.IO.openTempFile1
+    `cast` (<FilePath>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <(FilePath, Handle)>_R)
+            :: (FilePath
+                -> String
+                -> State# RealWorld
+                -> (# State# RealWorld, (FilePath, Handle) #) :: *)
+               ~R# (FilePath -> String -> IO (FilePath, Handle) :: *))
+
+

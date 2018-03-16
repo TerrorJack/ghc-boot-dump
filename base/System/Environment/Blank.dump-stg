@@ -1,0 +1,1224 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:19.088921355 UTC
+
+System.Environment.Blank.getEnv
+  :: GHC.Base.String -> GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] System.Environment.lookupEnv1 eta_B2 eta_B1;
+
+System.Environment.Blank.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.Blank.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule4];
+
+System.Environment.Blank.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.Blank"#;
+
+System.Environment.Blank.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule2];
+
+System.Environment.Blank.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.Blank.$trModule3
+                                     System.Environment.Blank.$trModule1];
+
+System.Environment.Blank.getEnvDefault1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.String #)
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqey fallback_scqez s_scqeA]
+        case GHC.IO.Encoding.getForeignEncoding s_scqeA of {
+          (#,#) ipv_scqeC [Occ=Once] ipv1_scqeD [Occ=Once] ->
+              case
+                  GHC.Foreign.charIsRepresentable3
+                      ipv1_scqeD name_scqey System.Environment.getEnv3 ipv_scqeC
+              of
+              { (#,#) ipv2_scqeF [Occ=Once] ipv3_scqeG [Occ=Once] ->
+                    let {
+                      sat_scqeH [Occ=Once] :: GHC.Base.String
+                      [LclId] =
+                          [fallback_scqez ipv3_scqeG] \u []
+                              Data.Maybe.fromMaybe fallback_scqez ipv3_scqeG;
+                    } in  (#,#) [ipv2_scqeF sat_scqeH];
+              };
+        };
+
+System.Environment.Blank.getEnvDefault
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.IO GHC.Base.String
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        System.Environment.Blank.getEnvDefault1 eta_B3 eta_B2 eta_B1;
+
+lvl_rcqet :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "unsetenv"#;
+
+lvl1_rcqeu :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_rcqet;
+
+System.Environment.Blank.unsetEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ds2_scqeI ds3_scqeJ]
+        case narrow32Int# [ds3_scqeJ] of sat_scqeK {
+          __DEFAULT -> Foreign.C.Error.$wlvl lvl1_rcqeu sat_scqeK ds2_scqeI;
+        };
+
+System.Environment.Blank.unsetEnv2
+  :: Foreign.C.String.CString
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [s_scqeL eta_scqeM]
+        case s_scqeL of {
+          GHC.Ptr.Ptr ds1_scqeO [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds1_scqeO eta_scqeM] of {
+                (#,#) ds2_scqeR [Occ=Once*] ds3_scqeS [Occ=Once] ->
+                    case narrow32Int# [ds3_scqeS] of {
+                      __DEFAULT -> (#,#) [ds2_scqeR GHC.Tuple.()];
+                      -1# ->
+                          case __pkg_ccall base-4.11.0.0 [ds2_scqeR] of {
+                            (#,#) ds4_scqeW [Occ=Once] ds5_scqeX [Occ=Once] ->
+                                System.Environment.Blank.unsetEnv3 ds4_scqeW ds5_scqeX;
+                          };
+                    };
+              };
+        };
+
+System.Environment.Blank.unsetEnv1
+  :: GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqeZ s_scqf0]
+        case GHC.IO.Encoding.getFileSystemEncoding s_scqf0 of {
+          (#,#) ipv_scqf2 [Occ=Once] ipv1_scqf3 [Occ=Once] ->
+              GHC.Foreign.charIsRepresentable3
+                  ipv1_scqf3 name_scqeZ System.Environment.Blank.unsetEnv2 ipv_scqf2;
+        };
+
+System.Environment.Blank.unsetEnv
+  :: GHC.Base.String -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        System.Environment.Blank.unsetEnv1 eta_B2 eta_B1;
+
+lvl2_rcqev :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setenv"#;
+
+lvl3_rcqew :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_rcqev;
+
+System.Environment.Blank.setEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ds2_scqf4 ds3_scqf5]
+        case narrow32Int# [ds3_scqf5] of sat_scqf6 {
+          __DEFAULT -> Foreign.C.Error.$wlvl lvl3_rcqew sat_scqf6 ds2_scqf4;
+        };
+
+System.Environment.Blank.setEnv2
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [key_scqf7 value_scqf8 s_scqf9]
+        case GHC.IO.Encoding.getFileSystemEncoding s_scqf9 of {
+          (#,#) ipv_scqfb [Occ=Once] ipv1_scqfc [Occ=Once] ->
+              let {
+                sat_scqfz [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                [LclId] =
+                    [value_scqf8] \r [keyP_scqfd s1_scqfe]
+                        case GHC.IO.Encoding.getFileSystemEncoding s1_scqfe of {
+                          (#,#) ipv2_scqfg [Occ=Once] ipv3_scqfh [Occ=Once] ->
+                              let {
+                                sat_scqfy [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                                [LclId] =
+                                    [keyP_scqfd] \r [valueP_scqfi eta_scqfj]
+                                        case keyP_scqfd of {
+                                          GHC.Ptr.Ptr ds3_scqfl [Occ=Once] ->
+                                              case valueP_scqfi of {
+                                                GHC.Ptr.Ptr ds5_scqfn [Occ=Once] ->
+                                                    case
+                                                        __pkg_ccall base-4.11.0.0 [ds3_scqfl
+                                                                                   ds5_scqfn
+                                                                                   1#
+                                                                                   eta_scqfj]
+                                                    of
+                                                    { (#,#) ds6_scqfq [Occ=Once*]
+                                                            ds7_scqfr [Occ=Once] ->
+                                                          case narrow32Int# [ds7_scqfr] of {
+                                                            __DEFAULT ->
+                                                                (#,#) [ds6_scqfq GHC.Tuple.()];
+                                                            -1# ->
+                                                                case
+                                                                    __pkg_ccall base-4.11.0.0 [ds6_scqfq]
+                                                                of
+                                                                { (#,#) ds8_scqfv [Occ=Once]
+                                                                        ds9_scqfw [Occ=Once] ->
+                                                                      System.Environment.Blank.setEnv3
+                                                                          ds8_scqfv ds9_scqfw;
+                                                                };
+                                                          };
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                GHC.Foreign.charIsRepresentable3
+                                    ipv3_scqfh value_scqf8 sat_scqfy ipv2_scqfg;
+                        };
+              } in 
+                GHC.Foreign.charIsRepresentable3
+                    ipv1_scqfc key_scqf7 sat_scqfz ipv_scqfb;
+        };
+
+System.Environment.Blank.setEnv9
+  :: GHC.Types.Char -> GHC.Types.Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_scqfA]
+        case ds_scqfA of {
+          GHC.Types.C# x_scqfC [Occ=Once!] ->
+              case x_scqfC of {
+                __DEFAULT -> GHC.Types.True [];
+                '\NUL'# -> GHC.Types.False [];
+              };
+        };
+
+System.Environment.Blank.setEnv8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setEnv"#;
+
+System.Environment.Blank.setEnv7 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# System.Environment.Blank.setEnv8;
+
+System.Environment.Blank.setEnv6 :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             System.Environment.Blank.setEnv7
+                                             GHC.Types.[]
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+System.Environment.Blank.setEnv5 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException
+            System.Environment.Blank.setEnv6;
+
+System.Environment.Blank.setEnv4 :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['='#];
+
+System.Environment.Blank.setEnv1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Types.Bool
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [key__scqfE value__scqfF overwrite_scqfG eta_scqfH]
+        case
+            GHC.List.takeWhile System.Environment.Blank.setEnv9 key__scqfE
+        of
+        wild_scqfI
+        { [] -> raiseIO# [System.Environment.Blank.setEnv5 eta_scqfH];
+          : _ [Occ=Dead] _ [Occ=Dead] ->
+              case
+                  GHC.List.elem
+                      GHC.Classes.$fEqChar System.Environment.Blank.setEnv4 wild_scqfI
+              of
+              { GHC.Types.False ->
+                    case overwrite_scqfG of {
+                      GHC.Types.False ->
+                          case GHC.IO.Encoding.getForeignEncoding eta_scqfH of {
+                            (#,#) ipv_scqfO [Occ=Once] ipv1_scqfP [Occ=Once] ->
+                                case
+                                    GHC.Foreign.charIsRepresentable3
+                                        ipv1_scqfP wild_scqfI System.Environment.getEnv3 ipv_scqfO
+                                of
+                                { (#,#) ipv2_scqfR [Occ=Once*] ipv3_scqfS [Occ=Once!] ->
+                                      case ipv3_scqfS of {
+                                        GHC.Base.Nothing ->
+                                            let {
+                                              sat_scqfU [Occ=Once] :: GHC.Base.String
+                                              [LclId] =
+                                                  [value__scqfF] \u []
+                                                      GHC.List.takeWhile
+                                                          System.Environment.Blank.setEnv9
+                                                          value__scqfF;
+                                            } in 
+                                              System.Environment.Blank.setEnv2
+                                                  wild_scqfI sat_scqfU ipv2_scqfR;
+                                        GHC.Base.Just _ [Occ=Dead] ->
+                                            (#,#) [ipv2_scqfR GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                      GHC.Types.True ->
+                          let {
+                            sat_scqfW [Occ=Once] :: GHC.Base.String
+                            [LclId] =
+                                [value__scqfF] \u []
+                                    GHC.List.takeWhile
+                                        System.Environment.Blank.setEnv9 value__scqfF;
+                          } in 
+                            System.Environment.Blank.setEnv2 wild_scqfI sat_scqfW eta_scqfH;
+                    };
+                GHC.Types.True ->
+                    raiseIO# [System.Environment.Blank.setEnv5 eta_scqfH];
+              };
+        };
+
+System.Environment.Blank.setEnv
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.Bool -> GHC.Types.IO ()
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        System.Environment.Blank.setEnv1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:19.093784574 UTC
+
+System.Environment.Blank.getEnv
+  :: GHC.Base.String -> GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        System.Environment.lookupEnv1 eta_B2 GHC.Prim.void#;
+
+System.Environment.Blank.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.Blank.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule4];
+
+System.Environment.Blank.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.Blank"#;
+
+System.Environment.Blank.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule2];
+
+System.Environment.Blank.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.Blank.$trModule3
+                                     System.Environment.Blank.$trModule1];
+
+System.Environment.Blank.getEnvDefault1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.String #)
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqey fallback_scqez void_0E]
+        case GHC.IO.Encoding.getForeignEncoding GHC.Prim.void# of {
+          Unit# ipv1_scqeD [Occ=Once] ->
+              case
+                  GHC.Foreign.charIsRepresentable3
+                      ipv1_scqeD name_scqey System.Environment.getEnv3 GHC.Prim.void#
+              of
+              { Unit# ipv3_scqeG [Occ=Once] ->
+                    let {
+                      sat_scqeH [Occ=Once] :: GHC.Base.String
+                      [LclId] =
+                          [fallback_scqez ipv3_scqeG] \u []
+                              Data.Maybe.fromMaybe fallback_scqez ipv3_scqeG;
+                    } in  Unit# [sat_scqeH];
+              };
+        };
+
+System.Environment.Blank.getEnvDefault
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.IO GHC.Base.String
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        System.Environment.Blank.getEnvDefault1
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+lvl_rcqet :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "unsetenv"#;
+
+lvl1_rcqeu :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_rcqet;
+
+System.Environment.Blank.unsetEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E ds3_scqeJ]
+        case narrow32Int# [ds3_scqeJ] of sat_scqeK {
+          __DEFAULT ->
+              Foreign.C.Error.$wlvl lvl1_rcqeu sat_scqeK GHC.Prim.void#;
+        };
+
+System.Environment.Blank.unsetEnv2
+  :: Foreign.C.String.CString
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [s_scqeL void_0E]
+        case s_scqeL of {
+          GHC.Ptr.Ptr ds1_scqeO [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds1_scqeO GHC.Prim.void#] of {
+                Unit# ds3_scqeS [Occ=Once] ->
+                    case narrow32Int# [ds3_scqeS] of {
+                      __DEFAULT -> Unit# [GHC.Tuple.()];
+                      -1# ->
+                          case __pkg_ccall base-4.11.0.0 [GHC.Prim.void#] of {
+                            Unit# ds5_scqeX [Occ=Once] ->
+                                System.Environment.Blank.unsetEnv3 GHC.Prim.void# ds5_scqeX;
+                          };
+                    };
+              };
+        };
+
+System.Environment.Blank.unsetEnv1
+  :: GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqeZ void_0E]
+        case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+          Unit# ipv1_scqf3 [Occ=Once] ->
+              GHC.Foreign.charIsRepresentable3
+                  ipv1_scqf3
+                  name_scqeZ
+                  System.Environment.Blank.unsetEnv2
+                  GHC.Prim.void#;
+        };
+
+System.Environment.Blank.unsetEnv
+  :: GHC.Base.String -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        System.Environment.Blank.unsetEnv1 eta_B2 GHC.Prim.void#;
+
+lvl2_rcqev :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setenv"#;
+
+lvl3_rcqew :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_rcqev;
+
+System.Environment.Blank.setEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E ds3_scqf5]
+        case narrow32Int# [ds3_scqf5] of sat_scqf6 {
+          __DEFAULT ->
+              Foreign.C.Error.$wlvl lvl3_rcqew sat_scqf6 GHC.Prim.void#;
+        };
+
+System.Environment.Blank.setEnv2
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [key_scqf7 value_scqf8 void_0E]
+        case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+          Unit# ipv1_scqfc [Occ=Once] ->
+              let {
+                sat_scqfz [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                [LclId] =
+                    [value_scqf8] \r [keyP_scqfd void_0E]
+                        case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+                          Unit# ipv3_scqfh [Occ=Once] ->
+                              let {
+                                sat_scqfy [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                                [LclId] =
+                                    [keyP_scqfd] \r [valueP_scqfi void_0E]
+                                        case keyP_scqfd of {
+                                          GHC.Ptr.Ptr ds3_scqfl [Occ=Once] ->
+                                              case valueP_scqfi of {
+                                                GHC.Ptr.Ptr ds5_scqfn [Occ=Once] ->
+                                                    case
+                                                        __pkg_ccall base-4.11.0.0 [ds3_scqfl
+                                                                                   ds5_scqfn
+                                                                                   1#
+                                                                                   GHC.Prim.void#]
+                                                    of
+                                                    { Unit# ds7_scqfr [Occ=Once] ->
+                                                          case narrow32Int# [ds7_scqfr] of {
+                                                            __DEFAULT -> Unit# [GHC.Tuple.()];
+                                                            -1# ->
+                                                                case
+                                                                    __pkg_ccall base-4.11.0.0 [GHC.Prim.void#]
+                                                                of
+                                                                { Unit# ds9_scqfw [Occ=Once] ->
+                                                                      System.Environment.Blank.setEnv3
+                                                                          GHC.Prim.void# ds9_scqfw;
+                                                                };
+                                                          };
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                GHC.Foreign.charIsRepresentable3
+                                    ipv3_scqfh value_scqf8 sat_scqfy GHC.Prim.void#;
+                        };
+              } in 
+                GHC.Foreign.charIsRepresentable3
+                    ipv1_scqfc key_scqf7 sat_scqfz GHC.Prim.void#;
+        };
+
+System.Environment.Blank.setEnv9
+  :: GHC.Types.Char -> GHC.Types.Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_scqfA]
+        case ds_scqfA of {
+          GHC.Types.C# x_scqfC [Occ=Once!] ->
+              case x_scqfC of {
+                __DEFAULT -> GHC.Types.True [];
+                '\NUL'# -> GHC.Types.False [];
+              };
+        };
+
+System.Environment.Blank.setEnv8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setEnv"#;
+
+System.Environment.Blank.setEnv7 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# System.Environment.Blank.setEnv8;
+
+System.Environment.Blank.setEnv6 :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             System.Environment.Blank.setEnv7
+                                             GHC.Types.[]
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+System.Environment.Blank.setEnv5 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException
+            System.Environment.Blank.setEnv6;
+
+System.Environment.Blank.setEnv4 :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['='#];
+
+System.Environment.Blank.setEnv1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Types.Bool
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [key__scqfE value__scqfF overwrite_scqfG void_0E]
+        case
+            GHC.List.takeWhile System.Environment.Blank.setEnv9 key__scqfE
+        of
+        wild_scqfI
+        { [] -> raiseIO# [System.Environment.Blank.setEnv5 GHC.Prim.void#];
+          : _ [Occ=Dead] _ [Occ=Dead] ->
+              case
+                  GHC.List.elem
+                      GHC.Classes.$fEqChar System.Environment.Blank.setEnv4 wild_scqfI
+              of
+              { GHC.Types.False ->
+                    case overwrite_scqfG of {
+                      GHC.Types.False ->
+                          case GHC.IO.Encoding.getForeignEncoding GHC.Prim.void# of {
+                            Unit# ipv1_scqfP [Occ=Once] ->
+                                case
+                                    GHC.Foreign.charIsRepresentable3
+                                        ipv1_scqfP
+                                        wild_scqfI
+                                        System.Environment.getEnv3
+                                        GHC.Prim.void#
+                                of
+                                { Unit# ipv3_scqfS [Occ=Once!] ->
+                                      case ipv3_scqfS of {
+                                        GHC.Base.Nothing ->
+                                            let {
+                                              sat_scqfU [Occ=Once] :: GHC.Base.String
+                                              [LclId] =
+                                                  [value__scqfF] \u []
+                                                      GHC.List.takeWhile
+                                                          System.Environment.Blank.setEnv9
+                                                          value__scqfF;
+                                            } in 
+                                              System.Environment.Blank.setEnv2
+                                                  wild_scqfI sat_scqfU GHC.Prim.void#;
+                                        GHC.Base.Just _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                      GHC.Types.True ->
+                          let {
+                            sat_scqfW [Occ=Once] :: GHC.Base.String
+                            [LclId] =
+                                [value__scqfF] \u []
+                                    GHC.List.takeWhile
+                                        System.Environment.Blank.setEnv9 value__scqfF;
+                          } in 
+                            System.Environment.Blank.setEnv2
+                                wild_scqfI sat_scqfW GHC.Prim.void#;
+                    };
+                GHC.Types.True ->
+                    raiseIO# [System.Environment.Blank.setEnv5 GHC.Prim.void#];
+              };
+        };
+
+System.Environment.Blank.setEnv
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.Bool -> GHC.Types.IO ()
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        System.Environment.Blank.setEnv1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:07:19.542956541 UTC
+
+System.Environment.Blank.getEnv
+  :: GHC.Base.String -> GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] System.Environment.lookupEnv1 eta_B2 eta_B1;
+
+System.Environment.Blank.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.Blank.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule4];
+
+System.Environment.Blank.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.Blank"#;
+
+System.Environment.Blank.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule2];
+
+System.Environment.Blank.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.Blank.$trModule3
+                                     System.Environment.Blank.$trModule1];
+
+System.Environment.Blank.getEnvDefault1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.String #)
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqyl fallback_scqym s_scqyn]
+        case GHC.IO.Encoding.getForeignEncoding s_scqyn of {
+          (#,#) ipv_scqyp [Occ=Once] ipv1_scqyq [Occ=Once] ->
+              case
+                  GHC.Foreign.charIsRepresentable3
+                      ipv1_scqyq name_scqyl System.Environment.getEnv3 ipv_scqyp
+              of
+              { (#,#) ipv2_scqys [Occ=Once] ipv3_scqyt [Occ=Once] ->
+                    let {
+                      sat_scqyu [Occ=Once] :: GHC.Base.String
+                      [LclId] =
+                          [fallback_scqym ipv3_scqyt] \u []
+                              Data.Maybe.fromMaybe fallback_scqym ipv3_scqyt;
+                    } in  (#,#) [ipv2_scqys sat_scqyu];
+              };
+        };
+
+System.Environment.Blank.getEnvDefault
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.IO GHC.Base.String
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        System.Environment.Blank.getEnvDefault1 eta_B3 eta_B2 eta_B1;
+
+lvl_rcqet :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "unsetenv"#;
+
+lvl1_rcqeu :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_rcqet;
+
+System.Environment.Blank.unsetEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ds2_scqyv ds3_scqyw]
+        case narrow32Int# [ds3_scqyw] of sat_scqyx {
+          __DEFAULT -> Foreign.C.Error.$wlvl lvl1_rcqeu sat_scqyx ds2_scqyv;
+        };
+
+System.Environment.Blank.unsetEnv2
+  :: Foreign.C.String.CString
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [s_scqyy eta_scqyz]
+        case s_scqyy of {
+          GHC.Ptr.Ptr ds1_scqyB [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds1_scqyB eta_scqyz] of {
+                (#,#) ds2_scqyE [Occ=Once*] ds3_scqyF [Occ=Once] ->
+                    case narrow32Int# [ds3_scqyF] of {
+                      __DEFAULT -> (#,#) [ds2_scqyE GHC.Tuple.()];
+                      -1# ->
+                          case __pkg_ccall base-4.11.0.0 [ds2_scqyE] of {
+                            (#,#) ds4_scqyJ [Occ=Once] ds5_scqyK [Occ=Once] ->
+                                System.Environment.Blank.unsetEnv3 ds4_scqyJ ds5_scqyK;
+                          };
+                    };
+              };
+        };
+
+System.Environment.Blank.unsetEnv1
+  :: GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqyM s_scqyN]
+        case GHC.IO.Encoding.getFileSystemEncoding s_scqyN of {
+          (#,#) ipv_scqyP [Occ=Once] ipv1_scqyQ [Occ=Once] ->
+              GHC.Foreign.charIsRepresentable3
+                  ipv1_scqyQ name_scqyM System.Environment.Blank.unsetEnv2 ipv_scqyP;
+        };
+
+System.Environment.Blank.unsetEnv
+  :: GHC.Base.String -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        System.Environment.Blank.unsetEnv1 eta_B2 eta_B1;
+
+lvl2_rcqev :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setenv"#;
+
+lvl3_rcqew :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_rcqev;
+
+System.Environment.Blank.setEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [ds2_scqyR ds3_scqyS]
+        case narrow32Int# [ds3_scqyS] of sat_scqyT {
+          __DEFAULT -> Foreign.C.Error.$wlvl lvl3_rcqew sat_scqyT ds2_scqyR;
+        };
+
+System.Environment.Blank.setEnv2
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [key_scqyU value_scqyV s_scqyW]
+        case GHC.IO.Encoding.getFileSystemEncoding s_scqyW of {
+          (#,#) ipv_scqyY [Occ=Once] ipv1_scqyZ [Occ=Once] ->
+              let {
+                sat_scqzm [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                [LclId] =
+                    [value_scqyV] \r [keyP_scqz0 s1_scqz1]
+                        case GHC.IO.Encoding.getFileSystemEncoding s1_scqz1 of {
+                          (#,#) ipv2_scqz3 [Occ=Once] ipv3_scqz4 [Occ=Once] ->
+                              let {
+                                sat_scqzl [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                                [LclId] =
+                                    [keyP_scqz0] \r [valueP_scqz5 eta_scqz6]
+                                        case keyP_scqz0 of {
+                                          GHC.Ptr.Ptr ds3_scqz8 [Occ=Once] ->
+                                              case valueP_scqz5 of {
+                                                GHC.Ptr.Ptr ds5_scqza [Occ=Once] ->
+                                                    case
+                                                        __pkg_ccall base-4.11.0.0 [ds3_scqz8
+                                                                                   ds5_scqza
+                                                                                   1#
+                                                                                   eta_scqz6]
+                                                    of
+                                                    { (#,#) ds6_scqzd [Occ=Once*]
+                                                            ds7_scqze [Occ=Once] ->
+                                                          case narrow32Int# [ds7_scqze] of {
+                                                            __DEFAULT ->
+                                                                (#,#) [ds6_scqzd GHC.Tuple.()];
+                                                            -1# ->
+                                                                case
+                                                                    __pkg_ccall base-4.11.0.0 [ds6_scqzd]
+                                                                of
+                                                                { (#,#) ds8_scqzi [Occ=Once]
+                                                                        ds9_scqzj [Occ=Once] ->
+                                                                      System.Environment.Blank.setEnv3
+                                                                          ds8_scqzi ds9_scqzj;
+                                                                };
+                                                          };
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                GHC.Foreign.charIsRepresentable3
+                                    ipv3_scqz4 value_scqyV sat_scqzl ipv2_scqz3;
+                        };
+              } in 
+                GHC.Foreign.charIsRepresentable3
+                    ipv1_scqyZ key_scqyU sat_scqzm ipv_scqyY;
+        };
+
+System.Environment.Blank.setEnv9
+  :: GHC.Types.Char -> GHC.Types.Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_scqzn]
+        case ds_scqzn of {
+          GHC.Types.C# x_scqzp [Occ=Once!] ->
+              case x_scqzp of {
+                __DEFAULT -> GHC.Types.True [];
+                '\NUL'# -> GHC.Types.False [];
+              };
+        };
+
+System.Environment.Blank.setEnv8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setEnv"#;
+
+System.Environment.Blank.setEnv7 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# System.Environment.Blank.setEnv8;
+
+System.Environment.Blank.setEnv6 :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             System.Environment.Blank.setEnv7
+                                             GHC.Types.[]
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+System.Environment.Blank.setEnv5 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException
+            System.Environment.Blank.setEnv6;
+
+System.Environment.Blank.setEnv4 :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['='#];
+
+System.Environment.Blank.setEnv1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Types.Bool
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [key__scqzr value__scqzs overwrite_scqzt eta_scqzu]
+        case
+            GHC.List.takeWhile System.Environment.Blank.setEnv9 key__scqzr
+        of
+        wild_scqzv
+        { [] -> raiseIO# [System.Environment.Blank.setEnv5 eta_scqzu];
+          : _ [Occ=Dead] _ [Occ=Dead] ->
+              case
+                  GHC.List.elem
+                      GHC.Classes.$fEqChar System.Environment.Blank.setEnv4 wild_scqzv
+              of
+              { GHC.Types.False ->
+                    case overwrite_scqzt of {
+                      GHC.Types.False ->
+                          case GHC.IO.Encoding.getForeignEncoding eta_scqzu of {
+                            (#,#) ipv_scqzB [Occ=Once] ipv1_scqzC [Occ=Once] ->
+                                case
+                                    GHC.Foreign.charIsRepresentable3
+                                        ipv1_scqzC wild_scqzv System.Environment.getEnv3 ipv_scqzB
+                                of
+                                { (#,#) ipv2_scqzE [Occ=Once*] ipv3_scqzF [Occ=Once!] ->
+                                      case ipv3_scqzF of {
+                                        GHC.Base.Nothing ->
+                                            let {
+                                              sat_scqzH [Occ=Once] :: GHC.Base.String
+                                              [LclId] =
+                                                  [value__scqzs] \u []
+                                                      GHC.List.takeWhile
+                                                          System.Environment.Blank.setEnv9
+                                                          value__scqzs;
+                                            } in 
+                                              System.Environment.Blank.setEnv2
+                                                  wild_scqzv sat_scqzH ipv2_scqzE;
+                                        GHC.Base.Just _ [Occ=Dead] ->
+                                            (#,#) [ipv2_scqzE GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                      GHC.Types.True ->
+                          let {
+                            sat_scqzJ [Occ=Once] :: GHC.Base.String
+                            [LclId] =
+                                [value__scqzs] \u []
+                                    GHC.List.takeWhile
+                                        System.Environment.Blank.setEnv9 value__scqzs;
+                          } in 
+                            System.Environment.Blank.setEnv2 wild_scqzv sat_scqzJ eta_scqzu;
+                    };
+                GHC.Types.True ->
+                    raiseIO# [System.Environment.Blank.setEnv5 eta_scqzu];
+              };
+        };
+
+System.Environment.Blank.setEnv
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.Bool -> GHC.Types.IO ()
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        System.Environment.Blank.setEnv1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:07:19.548293794 UTC
+
+System.Environment.Blank.getEnv
+  :: GHC.Base.String -> GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        System.Environment.lookupEnv1 eta_B2 GHC.Prim.void#;
+
+System.Environment.Blank.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+System.Environment.Blank.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule4];
+
+System.Environment.Blank.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "System.Environment.Blank"#;
+
+System.Environment.Blank.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [System.Environment.Blank.$trModule2];
+
+System.Environment.Blank.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [System.Environment.Blank.$trModule3
+                                     System.Environment.Blank.$trModule1];
+
+System.Environment.Blank.getEnvDefault1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.String #)
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqyl fallback_scqym void_0E]
+        case GHC.IO.Encoding.getForeignEncoding GHC.Prim.void# of {
+          Unit# ipv1_scqyq [Occ=Once] ->
+              case
+                  GHC.Foreign.charIsRepresentable3
+                      ipv1_scqyq name_scqyl System.Environment.getEnv3 GHC.Prim.void#
+              of
+              { Unit# ipv3_scqyt [Occ=Once] ->
+                    let {
+                      sat_scqyu [Occ=Once] :: GHC.Base.String
+                      [LclId] =
+                          [fallback_scqym ipv3_scqyt] \u []
+                              Data.Maybe.fromMaybe fallback_scqym ipv3_scqyt;
+                    } in  Unit# [sat_scqyu];
+              };
+        };
+
+System.Environment.Blank.getEnvDefault
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.IO GHC.Base.String
+[GblId, Arity=3, Str=<L,U><L,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        System.Environment.Blank.getEnvDefault1
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+lvl_rcqet :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "unsetenv"#;
+
+lvl1_rcqeu :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_rcqet;
+
+System.Environment.Blank.unsetEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E ds3_scqyw]
+        case narrow32Int# [ds3_scqyw] of sat_scqyx {
+          __DEFAULT ->
+              Foreign.C.Error.$wlvl lvl1_rcqeu sat_scqyx GHC.Prim.void#;
+        };
+
+System.Environment.Blank.unsetEnv2
+  :: Foreign.C.String.CString
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [s_scqyy void_0E]
+        case s_scqyy of {
+          GHC.Ptr.Ptr ds1_scqyB [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds1_scqyB GHC.Prim.void#] of {
+                Unit# ds3_scqyF [Occ=Once] ->
+                    case narrow32Int# [ds3_scqyF] of {
+                      __DEFAULT -> Unit# [GHC.Tuple.()];
+                      -1# ->
+                          case __pkg_ccall base-4.11.0.0 [GHC.Prim.void#] of {
+                            Unit# ds5_scqyK [Occ=Once] ->
+                                System.Environment.Blank.unsetEnv3 GHC.Prim.void# ds5_scqyK;
+                          };
+                    };
+              };
+        };
+
+System.Environment.Blank.unsetEnv1
+  :: GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [name_scqyM void_0E]
+        case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+          Unit# ipv1_scqyQ [Occ=Once] ->
+              GHC.Foreign.charIsRepresentable3
+                  ipv1_scqyQ
+                  name_scqyM
+                  System.Environment.Blank.unsetEnv2
+                  GHC.Prim.void#;
+        };
+
+System.Environment.Blank.unsetEnv
+  :: GHC.Base.String -> GHC.Types.IO ()
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        System.Environment.Blank.unsetEnv1 eta_B2 GHC.Prim.void#;
+
+lvl2_rcqev :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setenv"#;
+
+lvl3_rcqew :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_rcqev;
+
+System.Environment.Blank.setEnv3
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, Foreign.C.Types.CInt #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []] =
+    [] \r [void_0E ds3_scqyS]
+        case narrow32Int# [ds3_scqyS] of sat_scqyT {
+          __DEFAULT ->
+              Foreign.C.Error.$wlvl lvl3_rcqew sat_scqyT GHC.Prim.void#;
+        };
+
+System.Environment.Blank.setEnv2
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [key_scqyU value_scqyV void_0E]
+        case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+          Unit# ipv1_scqyZ [Occ=Once] ->
+              let {
+                sat_scqzm [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                [LclId] =
+                    [value_scqyV] \r [keyP_scqz0 void_0E]
+                        case GHC.IO.Encoding.getFileSystemEncoding GHC.Prim.void# of {
+                          Unit# ipv3_scqz4 [Occ=Once] ->
+                              let {
+                                sat_scqzl [Occ=Once] :: GHC.Foreign.CString -> GHC.Types.IO ()
+                                [LclId] =
+                                    [keyP_scqz0] \r [valueP_scqz5 void_0E]
+                                        case keyP_scqz0 of {
+                                          GHC.Ptr.Ptr ds3_scqz8 [Occ=Once] ->
+                                              case valueP_scqz5 of {
+                                                GHC.Ptr.Ptr ds5_scqza [Occ=Once] ->
+                                                    case
+                                                        __pkg_ccall base-4.11.0.0 [ds3_scqz8
+                                                                                   ds5_scqza
+                                                                                   1#
+                                                                                   GHC.Prim.void#]
+                                                    of
+                                                    { Unit# ds7_scqze [Occ=Once] ->
+                                                          case narrow32Int# [ds7_scqze] of {
+                                                            __DEFAULT -> Unit# [GHC.Tuple.()];
+                                                            -1# ->
+                                                                case
+                                                                    __pkg_ccall base-4.11.0.0 [GHC.Prim.void#]
+                                                                of
+                                                                { Unit# ds9_scqzj [Occ=Once] ->
+                                                                      System.Environment.Blank.setEnv3
+                                                                          GHC.Prim.void# ds9_scqzj;
+                                                                };
+                                                          };
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                GHC.Foreign.charIsRepresentable3
+                                    ipv3_scqz4 value_scqyV sat_scqzl GHC.Prim.void#;
+                        };
+              } in 
+                GHC.Foreign.charIsRepresentable3
+                    ipv1_scqyZ key_scqyU sat_scqzm GHC.Prim.void#;
+        };
+
+System.Environment.Blank.setEnv9
+  :: GHC.Types.Char -> GHC.Types.Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_scqzn]
+        case ds_scqzn of {
+          GHC.Types.C# x_scqzp [Occ=Once!] ->
+              case x_scqzp of {
+                __DEFAULT -> GHC.Types.True [];
+                '\NUL'# -> GHC.Types.False [];
+              };
+        };
+
+System.Environment.Blank.setEnv8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "setEnv"#;
+
+System.Environment.Blank.setEnv7 :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# System.Environment.Blank.setEnv8;
+
+System.Environment.Blank.setEnv6 :: GHC.IO.Exception.IOException
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.IO.Exception.IOError! [GHC.Base.Nothing
+                                             GHC.IO.Exception.InvalidArgument
+                                             System.Environment.Blank.setEnv7
+                                             GHC.Types.[]
+                                             GHC.Base.Nothing
+                                             GHC.Base.Nothing];
+
+System.Environment.Blank.setEnv5 :: GHC.Exception.SomeException
+[GblId] =
+    [] \u []
+        GHC.IO.Exception.$fExceptionIOException_$ctoException
+            System.Environment.Blank.setEnv6;
+
+System.Environment.Blank.setEnv4 :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['='#];
+
+System.Environment.Blank.setEnv1
+  :: GHC.Base.String
+     -> GHC.Base.String
+     -> GHC.Types.Bool
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [key__scqzr value__scqzs overwrite_scqzt void_0E]
+        case
+            GHC.List.takeWhile System.Environment.Blank.setEnv9 key__scqzr
+        of
+        wild_scqzv
+        { [] -> raiseIO# [System.Environment.Blank.setEnv5 GHC.Prim.void#];
+          : _ [Occ=Dead] _ [Occ=Dead] ->
+              case
+                  GHC.List.elem
+                      GHC.Classes.$fEqChar System.Environment.Blank.setEnv4 wild_scqzv
+              of
+              { GHC.Types.False ->
+                    case overwrite_scqzt of {
+                      GHC.Types.False ->
+                          case GHC.IO.Encoding.getForeignEncoding GHC.Prim.void# of {
+                            Unit# ipv1_scqzC [Occ=Once] ->
+                                case
+                                    GHC.Foreign.charIsRepresentable3
+                                        ipv1_scqzC
+                                        wild_scqzv
+                                        System.Environment.getEnv3
+                                        GHC.Prim.void#
+                                of
+                                { Unit# ipv3_scqzF [Occ=Once!] ->
+                                      case ipv3_scqzF of {
+                                        GHC.Base.Nothing ->
+                                            let {
+                                              sat_scqzH [Occ=Once] :: GHC.Base.String
+                                              [LclId] =
+                                                  [value__scqzs] \u []
+                                                      GHC.List.takeWhile
+                                                          System.Environment.Blank.setEnv9
+                                                          value__scqzs;
+                                            } in 
+                                              System.Environment.Blank.setEnv2
+                                                  wild_scqzv sat_scqzH GHC.Prim.void#;
+                                        GHC.Base.Just _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                      GHC.Types.True ->
+                          let {
+                            sat_scqzJ [Occ=Once] :: GHC.Base.String
+                            [LclId] =
+                                [value__scqzs] \u []
+                                    GHC.List.takeWhile
+                                        System.Environment.Blank.setEnv9 value__scqzs;
+                          } in 
+                            System.Environment.Blank.setEnv2
+                                wild_scqzv sat_scqzJ GHC.Prim.void#;
+                    };
+                GHC.Types.True ->
+                    raiseIO# [System.Environment.Blank.setEnv5 GHC.Prim.void#];
+              };
+        };
+
+System.Environment.Blank.setEnv
+  :: GHC.Base.String
+     -> GHC.Base.String -> GHC.Types.Bool -> GHC.Types.IO ()
+[GblId, Arity=4, Str=<S,1*U><L,1*U><S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        System.Environment.Blank.setEnv1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+

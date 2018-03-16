@@ -1,0 +1,178 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:04:59.61342608 UTC
+
+Result size of Tidy Core
+  = {terms: 52, types: 97, coercions: 17, joins: 0/0}
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+System.IO.Unsafe.unsafeFixIO2 :: forall a. a
+[GblId, Str=x]
+System.IO.Unsafe.unsafeFixIO2
+  = \ (@ a_a9UcP) ->
+      throw
+        @ NonTermination
+        @ a_a9UcP
+        Control.Exception.Base.$fExceptionNonTermination
+        Control.Exception.Base.NonTermination
+
+-- RHS size: {terms: 30, types: 63, coercions: 7, joins: 0/0}
+System.IO.Unsafe.unsafeFixIO1
+  :: forall a.
+     (a -> IO a) -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a9UcP)
+                 (k_a9Ucy [Occ=Once!] :: a_a9UcP -> IO a_a9UcP)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case newMutVar#
+                        @ a_a9UcP
+                        @ RealWorld
+                        (System.IO.Unsafe.unsafeFixIO2 @ a_a9UcP)
+                        s_i7IAv
+                 of
+                 { (# ipv_i8ttV [Occ=Once], ipv1_i8ttW #) ->
+                 case ((unsafeDupableInterleaveIO
+                          @ a_a9UcP
+                          ((\ (eta_i7IB0 [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                              readMutVar# @ RealWorld @ a_a9UcP ipv1_i8ttW eta_i7IB0)
+                           `cast` (Sym (GHC.Types.N:IO[0] <a_a9UcP>_R)
+                                   :: (State# RealWorld -> (# State# RealWorld, a_a9UcP #) :: *)
+                                      ~R# (IO a_a9UcP :: *))))
+                       `cast` (GHC.Types.N:IO[0] <a_a9UcP>_R
+                               :: (IO a_a9UcP :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, a_a9UcP #) :: *)))
+                        ipv_i8ttV
+                 of
+                 { (# ipv2_X7IAM [Occ=Once], ipv3_X7IAO [Occ=Once] #) ->
+                 case ((k_a9Ucy ipv3_X7IAO)
+                       `cast` (GHC.Types.N:IO[0] <a_a9UcP>_R
+                               :: (IO a_a9UcP :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, a_a9UcP #) :: *)))
+                        ipv2_X7IAM
+                 of
+                 { (# ipv4_X7IAR [Occ=Once], ipv5_X7IAT #) ->
+                 case writeMutVar#
+                        @ RealWorld @ a_a9UcP ipv1_i8ttW ipv5_X7IAT ipv4_X7IAR
+                 of s2#_i7IBe
+                 { __DEFAULT ->
+                 (# s2#_i7IBe, ipv5_X7IAT #)
+                 }
+                 }
+                 }
+                 }}]
+System.IO.Unsafe.unsafeFixIO1
+  = \ (@ a_a9UcP)
+      (k_a9Ucy :: a_a9UcP -> IO a_a9UcP)
+      (s_i7IAv :: State# RealWorld) ->
+      case newMutVar#
+             @ a_a9UcP
+             @ RealWorld
+             (System.IO.Unsafe.unsafeFixIO2 @ a_a9UcP)
+             s_i7IAv
+      of
+      { (# ipv_i8ttV, ipv1_i8ttW #) ->
+      case ((unsafeDupableInterleaveIO
+               @ a_a9UcP
+               ((\ (eta_i7IB0 [OS=OneShot] :: State# RealWorld) ->
+                   readMutVar# @ RealWorld @ a_a9UcP ipv1_i8ttW eta_i7IB0)
+                `cast` (Sym (GHC.Types.N:IO[0] <a_a9UcP>_R)
+                        :: (State# RealWorld -> (# State# RealWorld, a_a9UcP #) :: *)
+                           ~R# (IO a_a9UcP :: *))))
+            `cast` (GHC.Types.N:IO[0] <a_a9UcP>_R
+                    :: (IO a_a9UcP :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_a9UcP #) :: *)))
+             ipv_i8ttV
+      of
+      { (# ipv2_X7IAM, ipv3_X7IAO #) ->
+      case ((k_a9Ucy ipv3_X7IAO)
+            `cast` (GHC.Types.N:IO[0] <a_a9UcP>_R
+                    :: (IO a_a9UcP :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_a9UcP #) :: *)))
+             ipv2_X7IAM
+      of
+      { (# ipv4_X7IAR, ipv5_X7IAT #) ->
+      case writeMutVar#
+             @ RealWorld @ a_a9UcP ipv1_i8ttW ipv5_X7IAT ipv4_X7IAR
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (# s2#_i7IBe, ipv5_X7IAT #)
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+unsafeFixIO :: forall a. (a -> IO a) -> IO a
+[GblId,
+ Arity=2,
+ Str=<L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.IO.Unsafe.unsafeFixIO1
+               `cast` (forall (a :: <*>_N).
+                       <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           (a -> IO a) -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. (a -> IO a) -> IO a :: *))}]
+unsafeFixIO
+  = System.IO.Unsafe.unsafeFixIO1
+    `cast` (forall (a :: <*>_N).
+            <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                (a -> IO a) -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. (a -> IO a) -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.Unsafe.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.IO.Unsafe.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.Unsafe.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.Unsafe.$trModule3
+  = GHC.Types.TrNameS System.IO.Unsafe.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.IO.Unsafe.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+System.IO.Unsafe.$trModule2 = "System.IO.Unsafe"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.IO.Unsafe.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.IO.Unsafe.$trModule1
+  = GHC.Types.TrNameS System.IO.Unsafe.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.IO.Unsafe.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.IO.Unsafe.$trModule
+  = GHC.Types.Module
+      System.IO.Unsafe.$trModule3 System.IO.Unsafe.$trModule1
+
+

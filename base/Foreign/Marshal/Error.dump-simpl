@@ -1,0 +1,527 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:03:56.075611242 UTC
+
+Result size of Tidy Core
+  = {terms: 187, types: 368, coercions: 83, joins: 0/2}
+
+-- RHS size: {terms: 15, types: 13, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.throwIf2
+  :: forall a.
+     a -> (a -> String) -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId, Arity=3, Str=<B,U><B,1*C1(U)><B,U>x, Unf=OtherCon []]
+Foreign.Marshal.Error.throwIf2
+  = \ (@ a_a8M8N)
+      (x_i7Rxi :: a_a8M8N)
+      (msgfct_a8M2M :: a_a8M8N -> String)
+      (eta_i8rDX :: State# RealWorld) ->
+      raiseIO#
+        @ GHC.Exception.SomeException
+        @ a_a8M8N
+        (GHC.IO.Exception.$fExceptionIOException_$ctoException
+           (GHC.IO.Exception.IOError
+              (GHC.Base.Nothing @ GHC.IO.Handle.Types.Handle)
+              GHC.IO.Exception.UserError
+              (GHC.Types.[] @ Char)
+              (msgfct_a8M2M x_i7Rxi)
+              (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+              (GHC.Base.Nothing @ GHC.IO.FilePath)))
+        eta_i8rDX
+
+-- RHS size: {terms: 19, types: 23, coercions: 2, joins: 0/0}
+Foreign.Marshal.Error.throwIf1
+  :: forall a.
+     (a -> Bool)
+     -> (a -> String)
+     -> IO a
+     -> State# RealWorld
+     -> (# State# RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8M8N)
+                 (pred_a8M2L [Occ=Once!] :: a_a8M8N -> Bool)
+                 (msgfct_a8M2M [Occ=Once] :: a_a8M8N -> String)
+                 (act_a8M2N [Occ=Once] :: IO a_a8M8N)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case (act_a8M2N
+                       `cast` (GHC.Types.N:IO[0] <a_a8M8N>_R
+                               :: (IO a_a8M8N :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, a_a8M8N #) :: *)))
+                        s_i7IAv
+                 of
+                 { (# ipv_i7IAy [Occ=Once*], ipv1_i7IAz #) ->
+                 case pred_a8M2L ipv1_i7IAz of {
+                   False -> (# ipv_i7IAy, ipv1_i7IAz #);
+                   True ->
+                     Foreign.Marshal.Error.throwIf2
+                       @ a_a8M8N ipv1_i7IAz msgfct_a8M2M ipv_i7IAy
+                 }
+                 }}]
+Foreign.Marshal.Error.throwIf1
+  = \ (@ a_a8M8N)
+      (pred_a8M2L :: a_a8M8N -> Bool)
+      (msgfct_a8M2M :: a_a8M8N -> String)
+      (act_a8M2N :: IO a_a8M8N)
+      (s_i7IAv :: State# RealWorld) ->
+      case (act_a8M2N
+            `cast` (GHC.Types.N:IO[0] <a_a8M8N>_R
+                    :: (IO a_a8M8N :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_a8M8N #) :: *)))
+             s_i7IAv
+      of ds1_i7IAw
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case pred_a8M2L ipv1_i7IAz of {
+        False -> ds1_i7IAw;
+        True ->
+          Foreign.Marshal.Error.throwIf2
+            @ a_a8M8N ipv1_i7IAz msgfct_a8M2M ipv_i7IAy
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+throwIf :: forall a. (a -> Bool) -> (a -> String) -> IO a -> IO a
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S),1*C1(U(U,U))><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Error.throwIf1
+               `cast` (forall (a :: <*>_N).
+                       <a -> Bool>_R
+                       ->_R <a -> String>_R
+                       ->_R <IO a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           (a -> Bool)
+                           -> (a -> String)
+                           -> IO a
+                           -> State# RealWorld
+                           -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a.
+                               (a -> Bool) -> (a -> String) -> IO a -> IO a :: *))}]
+throwIf
+  = Foreign.Marshal.Error.throwIf1
+    `cast` (forall (a :: <*>_N).
+            <a -> Bool>_R
+            ->_R <a -> String>_R
+            ->_R <IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                (a -> Bool)
+                -> (a -> String)
+                -> IO a
+                -> State# RealWorld
+                -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. (a -> Bool) -> (a -> String) -> IO a -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.throwIfNeg1 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Foreign.Marshal.Error.throwIfNeg1 = 0
+
+-- RHS size: {terms: 26, types: 28, coercions: 11, joins: 0/1}
+throwIfNeg
+  :: forall a. (Ord a, Num a) => (a -> String) -> IO a -> IO a
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 30] 170 60}]
+throwIfNeg
+  = \ (@ a_a8M9r)
+      ($dOrd_a8M9t :: Ord a_a8M9r)
+      ($dNum_a8M9u :: Num a_a8M9r) ->
+      let {
+        ds_s8Mb4 :: a_a8M9r
+        [LclId]
+        ds_s8Mb4
+          = fromInteger
+              @ a_a8M9r $dNum_a8M9u Foreign.Marshal.Error.throwIfNeg1 } in
+      (\ (msgfct_X8M37 :: a_a8M9r -> String)
+         (act_X8M39 :: IO a_a8M9r)
+         (s_i7IAv :: State# RealWorld) ->
+         case (act_X8M39
+               `cast` (GHC.Types.N:IO[0] <a_a8M9r>_R
+                       :: (IO a_a8M9r :: *)
+                          ~R# (State# RealWorld -> (# State# RealWorld, a_a8M9r #) :: *)))
+                s_i7IAv
+         of ds1_i7IAw
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case < @ a_a8M9r $dOrd_a8M9t ipv1_i7IAz ds_s8Mb4 of {
+           False -> ds1_i7IAw;
+           True ->
+             Foreign.Marshal.Error.throwIf2
+               @ a_a8M9r ipv1_i7IAz msgfct_X8M37 ipv_i7IAy
+         }
+         })
+      `cast` (<a_a8M9r -> String>_R
+              ->_R <IO a_a8M9r>_R
+              ->_R Sym (GHC.Types.N:IO[0] <a_a8M9r>_R)
+              :: ((a_a8M9r -> String)
+                  -> IO a_a8M9r
+                  -> State# RealWorld
+                  -> (# State# RealWorld, a_a8M9r #) :: *)
+                 ~R# ((a_a8M9r -> String) -> IO a_a8M9r -> IO a_a8M9r :: *))
+
+-- RHS size: {terms: 13, types: 12, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.throwIfNull2
+  :: forall a.
+     String -> State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId, Arity=2, Str=<B,U><B,U>x, Unf=OtherCon []]
+Foreign.Marshal.Error.throwIfNull2
+  = \ (@ a_a8M9B)
+      (x_X7RxF :: String)
+      (eta_i8rDX :: State# RealWorld) ->
+      raiseIO#
+        @ GHC.Exception.SomeException
+        @ (Ptr a_a8M9B)
+        (GHC.IO.Exception.$fExceptionIOException_$ctoException
+           (GHC.IO.Exception.IOError
+              (GHC.Base.Nothing @ GHC.IO.Handle.Types.Handle)
+              GHC.IO.Exception.UserError
+              (GHC.Types.[] @ Char)
+              x_X7RxF
+              (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+              (GHC.Base.Nothing @ GHC.IO.FilePath)))
+        eta_i8rDX
+
+-- RHS size: {terms: 21, types: 26, coercions: 3, joins: 0/0}
+Foreign.Marshal.Error.throwIfNull1
+  :: forall a.
+     String
+     -> IO (Ptr a) -> State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8M9B)
+                 (x_X7RxF [Occ=Once] :: String)
+                 (eta_B2 [Occ=Once] :: IO (Ptr a_a8M9B))
+                 (eta1_B1 [Occ=Once] :: State# RealWorld) ->
+                 case (eta_B2
+                       `cast` (GHC.Types.N:IO[0] <Ptr a_a8M9B>_R
+                               :: (IO (Ptr a_a8M9B) :: *)
+                                  ~R# (State# RealWorld
+                                       -> (# State# RealWorld, Ptr a_a8M9B #) :: *)))
+                        eta1_B1
+                 of
+                 { (# ipv_i7IAy [Occ=Once*], ipv1_i7IAz [Occ=Once!] #) ->
+                 case ipv1_i7IAz of wild_i7JfF { GHC.Ptr.Ptr a1_i7JfH [Occ=Once] ->
+                 case eqAddr# a1_i7JfH __NULL of {
+                   __DEFAULT -> (# ipv_i7IAy, wild_i7JfF #);
+                   1# ->
+                     Foreign.Marshal.Error.throwIfNull2 @ a_a8M9B x_X7RxF ipv_i7IAy
+                 }
+                 }
+                 }}]
+Foreign.Marshal.Error.throwIfNull1
+  = \ (@ a_a8M9B)
+      (x_X7RxF :: String)
+      (eta_B2 :: IO (Ptr a_a8M9B))
+      (eta1_B1 :: State# RealWorld) ->
+      case (eta_B2
+            `cast` (GHC.Types.N:IO[0] <Ptr a_a8M9B>_R
+                    :: (IO (Ptr a_a8M9B) :: *)
+                       ~R# (State# RealWorld
+                            -> (# State# RealWorld, Ptr a_a8M9B #) :: *)))
+             eta1_B1
+      of ds1_i7IAw
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case ipv1_i7IAz of { GHC.Ptr.Ptr a1_i7JfH ->
+      case eqAddr# a1_i7JfH __NULL of {
+        __DEFAULT -> ds1_i7IAw;
+        1# ->
+          Foreign.Marshal.Error.throwIfNull2 @ a_a8M9B x_X7RxF ipv_i7IAy
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+throwIfNull :: forall a. String -> IO (Ptr a) -> IO (Ptr a)
+[GblId,
+ Arity=3,
+ Str=<L,U><C(S(LS(S))),1*C1(U(U,U(U)))><S,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Error.throwIfNull1
+               `cast` (forall (a :: <*>_N).
+                       <String>_R
+                       ->_R <IO (Ptr a)>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall a.
+                           String
+                           -> IO (Ptr a)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Ptr a #) :: *)
+                          ~R# (forall a. String -> IO (Ptr a) -> IO (Ptr a) :: *))}]
+throwIfNull
+  = Foreign.Marshal.Error.throwIfNull1
+    `cast` (forall (a :: <*>_N).
+            <String>_R
+            ->_R <IO (Ptr a)>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall a.
+                String
+                -> IO (Ptr a)
+                -> State# RealWorld
+                -> (# State# RealWorld, Ptr a #) :: *)
+               ~R# (forall a. String -> IO (Ptr a) -> IO (Ptr a) :: *))
+
+-- RHS size: {terms: 10, types: 24, coercions: 2, joins: 0/0}
+Foreign.Marshal.Error.void1
+  :: forall a. IO a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8M8D)
+                 (act_a8M2S [Occ=Once] :: IO a_a8M8D)
+                 (s_i7JiH [Occ=Once] :: State# RealWorld) ->
+                 case (act_a8M2S
+                       `cast` (GHC.Types.N:IO[0] <a_a8M8D>_R
+                               :: (IO a_a8M8D :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, a_a8M8D #) :: *)))
+                        s_i7JiH
+                 of
+                 { (# ipv_i7JiK [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv_i7JiK, GHC.Tuple.() #)
+                 }}]
+Foreign.Marshal.Error.void1
+  = \ (@ a_a8M8D)
+      (act_a8M2S :: IO a_a8M8D)
+      (s_i7JiH :: State# RealWorld) ->
+      case (act_a8M2S
+            `cast` (GHC.Types.N:IO[0] <a_a8M8D>_R
+                    :: (IO a_a8M8D :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_a8M8D #) :: *)))
+             s_i7JiH
+      of
+      { (# ipv_i7JiK, ipv1_i7JiL #) ->
+      (# ipv_i7JiK, GHC.Tuple.() #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+void :: forall a. IO a -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Error.void1
+               `cast` (forall (a :: <*>_N).
+                       <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           IO a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. IO a -> IO () :: *))}]
+void
+  = Foreign.Marshal.Error.void1
+    `cast` (forall (a :: <*>_N).
+            <IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                IO a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. IO a -> IO () :: *))
+
+-- RHS size: {terms: 22, types: 38, coercions: 2, joins: 0/0}
+Foreign.Marshal.Error.throwIf_1
+  :: forall a.
+     (a -> Bool)
+     -> (a -> String)
+     -> IO a
+     -> State# RealWorld
+     -> (# State# RealWorld, () #)
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8M9b)
+                 (pred_a8M2P [Occ=Once!] :: a_a8M9b -> Bool)
+                 (msgfct_a8M2Q [Occ=Once] :: a_a8M9b -> String)
+                 (act_a8M2R [Occ=Once] :: IO a_a8M9b)
+                 (s_i7JiH [Occ=Once] :: State# RealWorld) ->
+                 case (act_a8M2R
+                       `cast` (GHC.Types.N:IO[0] <a_a8M9b>_R
+                               :: (IO a_a8M9b :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, a_a8M9b #) :: *)))
+                        s_i7JiH
+                 of
+                 { (# ipv_i7IAy [Occ=Once*], ipv1_i7IAz #) ->
+                 case pred_a8M2P ipv1_i7IAz of {
+                   False -> (# ipv_i7IAy, GHC.Tuple.() #);
+                   True ->
+                     case Foreign.Marshal.Error.throwIf2
+                            @ a_a8M9b ipv1_i7IAz msgfct_a8M2Q ipv_i7IAy
+                     of {
+                     }
+                 }
+                 }}]
+Foreign.Marshal.Error.throwIf_1
+  = \ (@ a_a8M9b)
+      (pred_a8M2P :: a_a8M9b -> Bool)
+      (msgfct_a8M2Q :: a_a8M9b -> String)
+      (act_a8M2R :: IO a_a8M9b)
+      (s_i7JiH :: State# RealWorld) ->
+      case (act_a8M2R
+            `cast` (GHC.Types.N:IO[0] <a_a8M9b>_R
+                    :: (IO a_a8M9b :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, a_a8M9b #) :: *)))
+             s_i7JiH
+      of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      case pred_a8M2P ipv1_i7IAz of {
+        False -> (# ipv_i7IAy, GHC.Tuple.() #);
+        True ->
+          case Foreign.Marshal.Error.throwIf2
+                 @ a_a8M9b ipv1_i7IAz msgfct_a8M2Q ipv_i7IAy
+          of wild1_00 {
+          }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+throwIf_ :: forall a. (a -> Bool) -> (a -> String) -> IO a -> IO ()
+[GblId,
+ Arity=4,
+ Str=<L,1*C1(U)><L,1*C1(U)><C(S(SL)),1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Error.throwIf_1
+               `cast` (forall (a :: <*>_N).
+                       <a -> Bool>_R
+                       ->_R <a -> String>_R
+                       ->_R <IO a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           (a -> Bool)
+                           -> (a -> String)
+                           -> IO a
+                           -> State# RealWorld
+                           -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a.
+                               (a -> Bool) -> (a -> String) -> IO a -> IO () :: *))}]
+throwIf_
+  = Foreign.Marshal.Error.throwIf_1
+    `cast` (forall (a :: <*>_N).
+            <a -> Bool>_R
+            ->_R <a -> String>_R
+            ->_R <IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                (a -> Bool)
+                -> (a -> String)
+                -> IO a
+                -> State# RealWorld
+                -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. (a -> Bool) -> (a -> String) -> IO a -> IO () :: *))
+
+-- RHS size: {terms: 29, types: 43, coercions: 11, joins: 0/1}
+throwIfNeg_
+  :: forall a. (Ord a, Num a) => (a -> String) -> IO a -> IO ()
+[GblId,
+ Arity=2,
+ Str=<L,U(A,A,C(C1(U)),A,A,A,A,A)><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 30] 170 60}]
+throwIfNeg_
+  = \ (@ a_a8M9h)
+      ($dOrd_a8M9j :: Ord a_a8M9h)
+      ($dNum_a8M9k :: Num a_a8M9h) ->
+      let {
+        ds_s8Mb2 :: a_a8M9h
+        [LclId]
+        ds_s8Mb2
+          = fromInteger
+              @ a_a8M9h $dNum_a8M9k Foreign.Marshal.Error.throwIfNeg1 } in
+      (\ (msgfct_X8M3p :: a_a8M9h -> String)
+         (act_X8M3r :: IO a_a8M9h)
+         (s_i7JiH :: State# RealWorld) ->
+         case (act_X8M3r
+               `cast` (GHC.Types.N:IO[0] <a_a8M9h>_R
+                       :: (IO a_a8M9h :: *)
+                          ~R# (State# RealWorld -> (# State# RealWorld, a_a8M9h #) :: *)))
+                s_i7JiH
+         of
+         { (# ipv_i7IAy, ipv1_i7IAz #) ->
+         case < @ a_a8M9h $dOrd_a8M9j ipv1_i7IAz ds_s8Mb2 of {
+           False -> (# ipv_i7IAy, GHC.Tuple.() #);
+           True ->
+             case Foreign.Marshal.Error.throwIf2
+                    @ a_a8M9h ipv1_i7IAz msgfct_X8M3p ipv_i7IAy
+             of wild1_00 {
+             }
+         }
+         })
+      `cast` (<a_a8M9h -> String>_R
+              ->_R <IO a_a8M9h>_R
+              ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+              :: ((a_a8M9h -> String)
+                  -> IO a_a8M9h
+                  -> State# RealWorld
+                  -> (# State# RealWorld, () #) :: *)
+                 ~R# ((a_a8M9h -> String) -> IO a_a8M9h -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Error.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Foreign.Marshal.Error.$trModule3
+  = GHC.Types.TrNameS Foreign.Marshal.Error.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 70 0}]
+Foreign.Marshal.Error.$trModule2 = "Foreign.Marshal.Error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Foreign.Marshal.Error.$trModule1
+  = GHC.Types.TrNameS Foreign.Marshal.Error.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Error.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Foreign.Marshal.Error.$trModule
+  = GHC.Types.Module
+      Foreign.Marshal.Error.$trModule3 Foreign.Marshal.Error.$trModule1
+
+

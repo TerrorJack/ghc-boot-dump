@@ -1,0 +1,3125 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:04:02.296243506 UTC
+
+Result size of Tidy Core
+  = {terms: 1,858, types: 3,153, coercions: 263, joins: 36/67}
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Foreign.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Foreign.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Foreign.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Foreign.$trModule3 = GHC.Types.TrNameS GHC.Foreign.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Foreign.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Foreign.$trModule2 = "GHC.Foreign"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Foreign.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Foreign.$trModule1 = GHC.Types.TrNameS GHC.Foreign.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Foreign.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Foreign.$trModule
+  = GHC.Types.Module GHC.Foreign.$trModule3 GHC.Foreign.$trModule1
+
+-- RHS size: {terms: 304, types: 477, coercions: 32, joins: 6/13}
+$wpeekCStringLen_r8TNn
+  :: TextEncoding
+     -> Ptr CChar
+     -> Int
+     -> State# RealWorld
+     -> (# State# RealWorld, String #)
+[GblId,
+ Arity=4,
+ Str=<S,1*U><L,1*U(U)><L,1*U(U)><S,U>,
+ Unf=OtherCon []]
+$wpeekCStringLen_r8TNn
+  = \ (w_s8Tj2 :: TextEncoding)
+      (ww_s8Tj7 :: Ptr CChar)
+      (ww1_s8Tj8 :: Int)
+      (w1_s8Tj4 :: State# RealWorld) ->
+      case w_s8Tj2 of
+      { TextEncoding @ dstate_a8RPc @ estate_a8RPd ds_d8S43 ds1_d8S44
+                     ds2_d8S45 ->
+      GHC.IO.bracket1
+        @ (TextDecoder dstate_a8RPc)
+        @ ()
+        @ [CharBufElem]
+        ds1_d8S44
+        (close @ Word8 @ CharBufElem @ dstate_a8RPc)
+        ((\ (decoder_a8RKF [OS=OneShot] :: TextDecoder dstate_a8RPc)
+            (eta_Xd [OS=OneShot] :: State# RealWorld) ->
+            case ww_s8Tj7
+                 `cast` ((Ptr Univ(phantom phantom <*>_N :: CChar, Word8))_R
+                         :: (Ptr CChar :: *) ~R# (Ptr Word8 :: *))
+            of
+            { GHC.Ptr.Ptr obj_i8S8F ->
+            case newMutVar#
+                   @ GHC.ForeignPtr.Finalizers
+                   @ RealWorld
+                   GHC.ForeignPtr.NoFinalizers
+                   eta_Xd
+            of
+            { (# ipv_i8S8J, ipv1_i8S8K #) ->
+            case ww1_s8Tj8 of { I# x1_at56 ->
+            join {
+              $j_s8Swe [Dmd=<C(S),1*C1(U)>]
+                :: Int# -> (# State# RealWorld, [CharBufElem] #)
+              [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []]
+              $j_s8Swe (x_i8S9a [OS=OneShot] :: Int#)
+                = let {
+                    x2_s8Svc [Dmd=<S,U>] :: Int#
+                    [LclId]
+                    x2_s8Svc = *# x_i8S9a 4# } in
+                  case <# x2_s8Svc 0# of {
+                    __DEFAULT ->
+                      case newMutVar#
+                             @ GHC.ForeignPtr.Finalizers
+                             @ RealWorld
+                             GHC.ForeignPtr.NoFinalizers
+                             ipv_i8S8J
+                      of
+                      { (# ipv2_i8S9f, ipv3_i8S9g #) ->
+                      case newPinnedByteArray# @ RealWorld x2_s8Svc ipv2_i8S9f of
+                      { (# ipv4_i8S9k, ipv5_i8S9l #) ->
+                      let {
+                        ipv6_s8SvU :: Addr#
+                        [LclId]
+                        ipv6_s8SvU
+                          = byteArrayContents#
+                              (ipv5_i8S9l
+                               `cast` (UnsafeCo representational (MutableByteArray#
+                                                                    RealWorld) ByteArray#
+                                       :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                          ~R# (ByteArray# :: TYPE 'UnliftedRep))) } in
+                      let {
+                        ipv7_s8SvV :: GHC.ForeignPtr.ForeignPtrContents
+                        [LclId, Unf=OtherCon []]
+                        ipv7_s8SvV = GHC.ForeignPtr.MallocPtr ipv5_i8S9l ipv3_i8S9g } in
+                      let {
+                        ipv8_X7IBv :: CharBuffer
+                        [LclId, Unf=OtherCon []]
+                        ipv8_X7IBv
+                          = GHC.IO.Buffer.Buffer
+                              @ Char
+                              ipv6_s8SvU
+                              ipv7_s8SvV
+                              GHC.IO.Buffer.WriteBuffer
+                              x_i8S9a
+                              0#
+                              0# } in
+                      letrec {
+                        $wgo_s8Tj0 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                          :: Buffer Word8
+                             -> State# RealWorld -> (# State# RealWorld, [CharBufElem] #)
+                        [LclId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []]
+                        $wgo_s8Tj0
+                          = \ (w2_s8TiY :: Buffer Word8) (w3_s8TiZ :: State# RealWorld) ->
+                              case decoder_a8RKF of
+                              { BufferCodec ds6_i8S30 ds7_i8S31 ds8_i8S32 ds9_i8S33 ds10_i8S34 ->
+                              case ((ds6_i8S30 w2_s8TiY ipv8_X7IBv)
+                                    `cast` (GHC.Types.N:IO[0]
+                                                <(CodingProgress, Buffer Word8,
+                                                  Buffer CharBufElem)>_R
+                                            :: (IO
+                                                  (CodingProgress, Buffer Word8,
+                                                   Buffer CharBufElem) :: *)
+                                               ~R# (State# RealWorld
+                                                    -> (# State# RealWorld,
+                                                          (CodingProgress, Buffer Word8,
+                                                           Buffer CharBufElem) #) :: *)))
+                                     w3_s8TiZ
+                              of
+                              { (# ipv9_X7IBD, ipv10_X7IBF #) ->
+                              case ipv10_X7IBF of { (why_a8RKN, from'_a8RKO, to'_a8RKP) ->
+                              case from'_a8RKO of wild5_i8S1V
+                              { Buffer dt_i8S1X dt1_i8S1Y ds12_i8S1Z dt2_i8S20 dt3_i8S21
+                                       dt4_i8S22 ->
+                              case ==# dt3_i8S21 dt4_i8S22 of {
+                                __DEFAULT ->
+                                  join {
+                                    $w$j_s8TiR [InlPrag=NOUSERINLINE[0],
+                                                Dmd=<L,1*C1(C1(C1(C1(C1(C1(U(U,U)))))))>]
+                                      :: State# RealWorld
+                                         -> Buffer Word8
+                                         -> Addr#
+                                         -> GHC.ForeignPtr.ForeignPtrContents
+                                         -> Int#
+                                         -> Int#
+                                         -> (# State# RealWorld, [CharBufElem] #)
+                                    [LclId[JoinId(6)],
+                                     Arity=6,
+                                     Str=<S,U><L,U><L,U><L,U><S,U><S,U>,
+                                     Unf=OtherCon []]
+                                    $w$j_s8TiR (w4_s8TiB [OS=OneShot] :: State# RealWorld)
+                                               (ww2_s8TiF [OS=OneShot] :: Buffer Word8)
+                                               (ww3_s8TiJ [OS=OneShot] :: Addr#)
+                                               (ww4_s8TiK [OS=OneShot]
+                                                  :: GHC.ForeignPtr.ForeignPtrContents)
+                                               (ww5_s8TiN [OS=OneShot] :: Int#)
+                                               (ww6_s8TiO [OS=OneShot] :: Int#)
+                                      = let {
+                                          ww7_X8PFZ [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ww7_X8PFZ = -# ww6_s8TiO ww5_s8TiN } in
+                                        case <=# ww7_X8PFZ 0# of {
+                                          __DEFAULT ->
+                                            join {
+                                              exit_X11 [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+                                                :: [CharBufElem]
+                                                   -> State# RealWorld
+                                                   -> (# State# RealWorld, [CharBufElem] #)
+                                              [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>]
+                                              exit_X11 (w5_s8PDd [OS=OneShot] :: [CharBufElem])
+                                                       (w6_s8PDe [OS=OneShot] :: State# RealWorld)
+                                                = case readWideCharOffAddr#
+                                                         @ RealWorld ww3_s8TiJ 0# w6_s8PDe
+                                                  of
+                                                  { (# ipv11_i7O62, ipv12_i7O63 #) ->
+                                                  case touch#
+                                                         @ 'LiftedRep
+                                                         @ GHC.ForeignPtr.ForeignPtrContents
+                                                         ww4_s8TiK
+                                                         ipv11_i7O62
+                                                  of s'_i8S9U
+                                                  { __DEFAULT ->
+                                                  case $wgo_s8Tj0 ww2_s8TiF s'_i8S9U of
+                                                  { (# ipv13_X7Ve6, ipv14_X7Ve8 #) ->
+                                                  (# ipv13_X7Ve6,
+                                                     ++
+                                                       @ Char
+                                                       (GHC.Types.:
+                                                          @ CharBufElem
+                                                          (GHC.Types.C# ipv12_i7O63)
+                                                          w5_s8PDd)
+                                                       ipv14_X7Ve8 #)
+                                                  }
+                                                  }
+                                                  } } in
+                                            joinrec {
+                                              $wf_s8PDj [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                                                :: Int#
+                                                   -> [CharBufElem]
+                                                   -> State# RealWorld
+                                                   -> (# State# RealWorld, [CharBufElem] #)
+                                              [LclId[JoinId(3)],
+                                               Arity=3,
+                                               Str=<S,1*U><L,U><S,U>,
+                                               Unf=OtherCon []]
+                                              $wf_s8PDj (ww8_s8PDh :: Int#)
+                                                        (w5_s8PDd :: [CharBufElem])
+                                                        (w6_s8PDe :: State# RealWorld)
+                                                = case ww8_s8PDh of ds13_X8PjO {
+                                                    __DEFAULT ->
+                                                      case readWideCharOffAddr#
+                                                             @ RealWorld
+                                                             ww3_s8TiJ
+                                                             ds13_X8PjO
+                                                             w6_s8PDe
+                                                      of
+                                                      { (# ipv11_i7O62, ipv12_i7O63 #) ->
+                                                      jump $wf_s8PDj
+                                                        (-# ds13_X8PjO 1#)
+                                                        (GHC.Types.:
+                                                           @ CharBufElem
+                                                           (GHC.Types.C# ipv12_i7O63)
+                                                           w5_s8PDd)
+                                                        ipv11_i7O62
+                                                      };
+                                                    0# -> jump exit_X11 w5_s8PDd w6_s8PDe
+                                                  }; } in
+                                            jump $wf_s8PDj
+                                              (-# ww7_X8PFZ 1#)
+                                              (GHC.Types.[] @ CharBufElem)
+                                              w4_s8TiB;
+                                          1# ->
+                                            case touch#
+                                                   @ 'LiftedRep
+                                                   @ GHC.ForeignPtr.ForeignPtrContents
+                                                   ww4_s8TiK
+                                                   w4_s8TiB
+                                            of s'_i8S9U
+                                            { __DEFAULT ->
+                                            case $wgo_s8Tj0 ww2_s8TiF s'_i8S9U of
+                                            { (# ipv11_X7Ve6, ipv12_X7Ve8 #) ->
+                                            (# ipv11_X7Ve6,
+                                               ++ @ Char (GHC.Types.[] @ CharBufElem) ipv12_X7Ve8 #)
+                                            }
+                                            }
+                                        } } in
+                                  case why_a8RKN of {
+                                    __DEFAULT ->
+                                      case ((ds7_i8S31 wild5_i8S1V to'_a8RKP)
+                                            `cast` (GHC.Types.N:IO[0]
+                                                        <(Buffer Word8, Buffer CharBufElem)>_R
+                                                    :: (IO (Buffer Word8, Buffer CharBufElem) :: *)
+                                                       ~R# (State# RealWorld
+                                                            -> (# State# RealWorld,
+                                                                  (Buffer Word8,
+                                                                   Buffer CharBufElem) #) :: *)))
+                                             ipv9_X7IBD
+                                      of
+                                      { (# ipv11_X7IBU, ipv12_X7IBW #) ->
+                                      case ipv12_X7IBW of { (ww3_s8TiF, ww4_s8TiG) ->
+                                      case ww4_s8TiG of
+                                      { Buffer ww6_s8TiJ ww7_s8TiK ww8_s8TiL ww9_s8TiM ww10_s8TiN
+                                               ww11_s8TiO ->
+                                      jump $w$j_s8TiR
+                                        ipv11_X7IBU
+                                        ww3_s8TiF
+                                        ww6_s8TiJ
+                                        ww7_s8TiK
+                                        ww10_s8TiN
+                                        ww11_s8TiO
+                                      }
+                                      }
+                                      };
+                                    OutputUnderflow ->
+                                      case to'_a8RKP of
+                                      { Buffer ww3_s8TiJ ww4_s8TiK ww5_s8TiL ww6_s8TiM ww7_s8TiN
+                                               ww8_s8TiO ->
+                                      jump $w$j_s8TiR
+                                        ipv9_X7IBD
+                                        wild5_i8S1V
+                                        ww3_s8TiJ
+                                        ww4_s8TiK
+                                        ww7_s8TiN
+                                        ww8_s8TiO
+                                      }
+                                  };
+                                1# ->
+                                  case to'_a8RKP of
+                                  { Buffer dt7_i8S9I dt8_i8S9J ds13_i8S9K dt9_i8S9L dt10_i8S9M
+                                           dt11_i8S9N ->
+                                  let {
+                                    ww2_X8PFQ [Dmd=<S,U>] :: Int#
+                                    [LclId]
+                                    ww2_X8PFQ = -# dt11_i8S9N dt10_i8S9M } in
+                                  case <=# ww2_X8PFQ 0# of {
+                                    __DEFAULT ->
+                                      join {
+                                        exit_X11 [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+                                          :: [CharBufElem]
+                                             -> State# RealWorld
+                                             -> (# State# RealWorld, [CharBufElem] #)
+                                        [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>]
+                                        exit_X11 (w4_s8PDd [OS=OneShot] :: [CharBufElem])
+                                                 (w5_s8PDe [OS=OneShot] :: State# RealWorld)
+                                          = case readWideCharOffAddr#
+                                                   @ RealWorld dt7_i8S9I 0# w5_s8PDe
+                                            of
+                                            { (# ipv11_i7O62, ipv12_i7O63 #) ->
+                                            case touch#
+                                                   @ 'LiftedRep
+                                                   @ GHC.ForeignPtr.ForeignPtrContents
+                                                   dt8_i8S9J
+                                                   ipv11_i7O62
+                                            of s'_i8S9U
+                                            { __DEFAULT ->
+                                            (# s'_i8S9U,
+                                               GHC.Types.:
+                                                 @ CharBufElem
+                                                 (GHC.Types.C# ipv12_i7O63)
+                                                 w4_s8PDd #)
+                                            }
+                                            } } in
+                                      joinrec {
+                                        $wf_s8PDj [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                                          :: Int#
+                                             -> [CharBufElem]
+                                             -> State# RealWorld
+                                             -> (# State# RealWorld, [CharBufElem] #)
+                                        [LclId[JoinId(3)],
+                                         Arity=3,
+                                         Str=<S,1*U><L,U><S,U>,
+                                         Unf=OtherCon []]
+                                        $wf_s8PDj (ww3_s8PDh :: Int#)
+                                                  (w4_s8PDd :: [CharBufElem])
+                                                  (w5_s8PDe :: State# RealWorld)
+                                          = case ww3_s8PDh of ds14_X8PjO {
+                                              __DEFAULT ->
+                                                case readWideCharOffAddr#
+                                                       @ RealWorld dt7_i8S9I ds14_X8PjO w5_s8PDe
+                                                of
+                                                { (# ipv11_i7O62, ipv12_i7O63 #) ->
+                                                jump $wf_s8PDj
+                                                  (-# ds14_X8PjO 1#)
+                                                  (GHC.Types.:
+                                                     @ CharBufElem
+                                                     (GHC.Types.C# ipv12_i7O63)
+                                                     w4_s8PDd)
+                                                  ipv11_i7O62
+                                                };
+                                              0# -> jump exit_X11 w4_s8PDd w5_s8PDe
+                                            }; } in
+                                      jump $wf_s8PDj
+                                        (-# ww2_X8PFQ 1#) (GHC.Types.[] @ CharBufElem) ipv9_X7IBD;
+                                    1# ->
+                                      case touch#
+                                             @ 'LiftedRep
+                                             @ GHC.ForeignPtr.ForeignPtrContents
+                                             dt8_i8S9J
+                                             ipv9_X7IBD
+                                      of s'_i8S9U
+                                      { __DEFAULT ->
+                                      (# s'_i8S9U, GHC.Types.[] @ CharBufElem #)
+                                      }
+                                  }
+                                  }
+                              }
+                              }
+                              }
+                              }
+                              }; } in
+                      $wgo_s8Tj0
+                        (GHC.IO.Buffer.Buffer
+                           @ Word8
+                           obj_i8S8F
+                           (GHC.ForeignPtr.PlainForeignPtr ipv1_i8S8K)
+                           GHC.IO.Buffer.ReadBuffer
+                           x1_at56
+                           0#
+                           x1_at56)
+                        ipv4_i8S9k
+                      }
+                      };
+                    1# -> case GHC.ForeignPtr.mallocForeignPtrBytes2 of wild3_00 { }
+                  } } in
+            case <=# x1_at56 1# of {
+              __DEFAULT -> jump $j_s8Swe x1_at56;
+              1# -> jump $j_s8Swe 1#
+            }
+            }
+            }
+            })
+         `cast` (<TextDecoder dstate_a8RPc>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <[CharBufElem]>_R)
+                 :: (TextDecoder dstate_a8RPc
+                     -> State# RealWorld -> (# State# RealWorld, [CharBufElem] #) :: *)
+                    ~R# (TextDecoder dstate_a8RPc -> IO [CharBufElem] :: *)))
+        w1_s8Tj4
+      }
+
+-- RHS size: {terms: 11, types: 14, coercions: 0, joins: 0/0}
+peekCStringLen1_r8TNo
+  :: TextEncoding
+     -> (Ptr CChar, Int)
+     -> State# RealWorld
+     -> (# State# RealWorld, String #)
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U(1*U(U),1*U(U))><S,U>,
+ Unf=OtherCon []]
+peekCStringLen1_r8TNo
+  = \ (w_s8Tj2 :: TextEncoding)
+      (w1_s8Tj3 :: (Ptr CChar, Int))
+      (w2_s8Tj4 :: State# RealWorld) ->
+      case w1_s8Tj3 of { (ww1_s8Tj7, ww2_s8Tj8) ->
+      $wpeekCStringLen_r8TNn w_s8Tj2 ww1_s8Tj7 ww2_s8Tj8 w2_s8Tj4
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+peekCStringLen [InlPrag=INLINE (sat-args=2)]
+  :: TextEncoding -> CStringLen -> IO String
+[GblId,
+ Arity=3,
+ Str=<S,1*U><S,1*U(1*U(U),1*U(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (ds_X8S1Z [Occ=Once!] :: TextEncoding)
+                 (ds1_X8S21 [Occ=Once!] :: (Ptr CChar, Int)) ->
+                 case ds_X8S1Z of
+                 { TextEncoding @ dstate_a8RPc @ estate_a8RPd _ [Occ=Dead]
+                                ds3_d8S44 [Occ=Once] _ [Occ=Dead] ->
+                 case ds1_X8S21 of
+                 { (p_a8RKD [Occ=OnceL], sz_bytes_a8RKE [Occ=OnceL!]) ->
+                 (GHC.IO.bracket1
+                    @ (TextDecoder dstate_a8RPc)
+                    @ ()
+                    @ [CharBufElem]
+                    ds3_d8S44
+                    (close @ Word8 @ CharBufElem @ dstate_a8RPc)
+                    ((\ (decoder_a8RKF [Occ=OnceL!] :: TextDecoder dstate_a8RPc)
+                        (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                        case p_a8RKD
+                             `cast` ((Ptr Univ(phantom phantom <*>_N :: CChar, Word8))_R
+                                     :: (Ptr CChar :: *) ~R# (Ptr Word8 :: *))
+                        of
+                        { GHC.Ptr.Ptr obj_i8S8F [Occ=Once] ->
+                        case newMutVar#
+                               @ GHC.ForeignPtr.Finalizers
+                               @ RealWorld
+                               GHC.ForeignPtr.NoFinalizers
+                               s_i7IAv
+                        of
+                        { (# ipv_i8S8J [Occ=Once], ipv1_i8S8K [Occ=Once] #) ->
+                        case sz_bytes_a8RKE of { I# x1_at56 ->
+                        join {
+                          $j_s8SwK [Occ=Once*!T[1]]
+                            :: Int# -> (# State# RealWorld, [CharBufElem] #)
+                          [LclId[JoinId(1)], Arity=1, Unf=OtherCon []]
+                          $j_s8SwK (x_i8S9a [OS=OneShot] :: Int#)
+                            = let {
+                                x2_i8S99 :: Int#
+                                [LclId]
+                                x2_i8S99 = *# x_i8S9a 4# } in
+                              case <# x2_i8S99 0# of {
+                                __DEFAULT ->
+                                  case newMutVar#
+                                         @ GHC.ForeignPtr.Finalizers
+                                         @ RealWorld
+                                         GHC.ForeignPtr.NoFinalizers
+                                         ipv_i8S8J
+                                  of
+                                  { (# ipv2_i8S9f [Occ=Once], ipv3_i8S9g [Occ=OnceL] #) ->
+                                  case newPinnedByteArray# @ RealWorld x2_i8S99 ipv2_i8S9f of
+                                  { (# ipv4_i8S9k [Occ=Once], ipv5_i8S9l #) ->
+                                  let {
+                                    ipv6_s8Swq [Occ=OnceL] :: Addr#
+                                    [LclId]
+                                    ipv6_s8Swq
+                                      = byteArrayContents#
+                                          (ipv5_i8S9l
+                                           `cast` (UnsafeCo representational (MutableByteArray#
+                                                                                RealWorld) ByteArray#
+                                                   :: (MutableByteArray# RealWorld :: TYPE
+                                                                                        'UnliftedRep)
+                                                      ~R# (ByteArray# :: TYPE 'UnliftedRep))) } in
+                                  let {
+                                    ipv7_s8Swr [Occ=OnceL] :: GHC.ForeignPtr.ForeignPtrContents
+                                    [LclId, Unf=OtherCon []]
+                                    ipv7_s8Swr = GHC.ForeignPtr.MallocPtr ipv5_i8S9l ipv3_i8S9g } in
+                                  let {
+                                    ipv8_X7IBv [Occ=OnceL] :: CharBuffer
+                                    [LclId, Unf=OtherCon []]
+                                    ipv8_X7IBv
+                                      = GHC.IO.Buffer.Buffer
+                                          @ Char
+                                          ipv6_s8Swq
+                                          ipv7_s8Swr
+                                          GHC.IO.Buffer.WriteBuffer
+                                          x_i8S9a
+                                          0#
+                                          0# } in
+                                  letrec {
+                                    go_s8SaD [Occ=LoopBreaker]
+                                      :: Int
+                                         -> Buffer Word8
+                                         -> State# RealWorld
+                                         -> (# State# RealWorld, [CharBufElem] #)
+                                    [LclId, Arity=3, Unf=OtherCon []]
+                                    go_s8SaD
+                                      = \ (iteration_a8RKL [Occ=Once!] :: Int)
+                                          (from_a8RKM [Occ=Once] :: Buffer Word8)
+                                          (s1_X7IBx [Occ=Once] :: State# RealWorld) ->
+                                          case decoder_a8RKF of
+                                          { BufferCodec ds8_i8S30 [Occ=Once!] ds9_i8S31 [Occ=Once!]
+                                                        _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                                          case ((ds8_i8S30 from_a8RKM ipv8_X7IBv)
+                                                `cast` (GHC.Types.N:IO[0]
+                                                            <(CodingProgress, Buffer Word8,
+                                                              Buffer CharBufElem)>_R
+                                                        :: (IO
+                                                              (CodingProgress, Buffer Word8,
+                                                               Buffer CharBufElem) :: *)
+                                                           ~R# (State# RealWorld
+                                                                -> (# State# RealWorld,
+                                                                      (CodingProgress, Buffer Word8,
+                                                                       Buffer
+                                                                         CharBufElem) #) :: *)))
+                                                 s1_X7IBx
+                                          of
+                                          { (# ipv9_X7IBD [Occ=Once*], ipv10_X7IBF [Occ=Once!] #) ->
+                                          case ipv10_X7IBF of
+                                          { (why_a8RKN [Occ=Once!], from'_a8RKO [Occ=Once!],
+                                             to'_a8RKP [Occ=Once*]) ->
+                                          case from'_a8RKO of wild6_i8S1V
+                                          { Buffer _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead]
+                                                   _ [Occ=Dead] dt3_i8S21 [Occ=Once]
+                                                   dt4_i8S22 [Occ=Once] ->
+                                          case ==# dt3_i8S21 dt4_i8S22 of {
+                                            __DEFAULT ->
+                                              join {
+                                                $j1_s8SwD [Occ=Once*!T[2]]
+                                                  :: State# RealWorld
+                                                     -> (Buffer Word8, Buffer CharBufElem)
+                                                     -> (# State# RealWorld, [CharBufElem] #)
+                                                [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                                                $j1_s8SwD (ipv11_X7IBU [Occ=Once, OS=OneShot]
+                                                             :: State# RealWorld)
+                                                          (ipv12_X7IBW [Occ=Once!, OS=OneShot]
+                                                             :: (Buffer Word8, Buffer CharBufElem))
+                                                  = case ipv12_X7IBW of
+                                                    { (from''_a8RKQ [Occ=Once],
+                                                       to''_a8RKR [Occ=Once!]) ->
+                                                    case to''_a8RKR of
+                                                    { Buffer dt7_i8S9I [Occ=Once]
+                                                             dt8_i8S9J [Occ=Once] _ [Occ=Dead]
+                                                             _ [Occ=Dead] dt10_i8S9M [Occ=Once]
+                                                             dt11_i8S9N [Occ=Once] ->
+                                                    case Foreign.Marshal.Array.peekArray1
+                                                           @ CharBufElem
+                                                           Foreign.Storable.$fStorableChar
+                                                           (GHC.Types.I# (-# dt11_i8S9N dt10_i8S9M))
+                                                           (GHC.Ptr.Ptr @ CharBufElem dt7_i8S9I)
+                                                           ipv11_X7IBU
+                                                    of
+                                                    { (# ipv13_i8S9R [Occ=Once],
+                                                         ipv14_i8S9S [Occ=Once] #) ->
+                                                    case touch#
+                                                           @ 'LiftedRep
+                                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                                           dt8_i8S9J
+                                                           ipv13_i8S9R
+                                                    of s'_i8S9U
+                                                    { __DEFAULT ->
+                                                    case go_s8SaD
+                                                           (case iteration_a8RKL of
+                                                            { I# x3_i7MX1 [Occ=Once] ->
+                                                            GHC.Types.I# (+# x3_i7MX1 1#)
+                                                            })
+                                                           from''_a8RKQ
+                                                           s'_i8S9U
+                                                    of
+                                                    { (# ipv15_X7Ve6 [Occ=Once],
+                                                         ipv16_X7Ve8 [Occ=Once] #) ->
+                                                    (# ipv15_X7Ve6,
+                                                       augment
+                                                         @ Char
+                                                         (\ (@ b_i7JbU)
+                                                            (c_i7JbV [Occ=Once, OS=OneShot]
+                                                               :: Char -> b_i7JbU -> b_i7JbU)
+                                                            (n_i7JbW [Occ=Once, OS=OneShot]
+                                                               :: b_i7JbU) ->
+                                                            foldr
+                                                              @ Char
+                                                              @ b_i7JbU
+                                                              c_i7JbV
+                                                              n_i7JbW
+                                                              ipv14_i8S9S)
+                                                         ipv16_X7Ve8 #)
+                                                    }
+                                                    }
+                                                    }
+                                                    }
+                                                    } } in
+                                              case why_a8RKN of {
+                                                __DEFAULT ->
+                                                  case ((ds9_i8S31 wild6_i8S1V to'_a8RKP)
+                                                        `cast` (GHC.Types.N:IO[0]
+                                                                    <(Buffer Word8,
+                                                                      Buffer CharBufElem)>_R
+                                                                :: (IO
+                                                                      (Buffer Word8,
+                                                                       Buffer CharBufElem) :: *)
+                                                                   ~R# (State# RealWorld
+                                                                        -> (# State# RealWorld,
+                                                                              (Buffer Word8,
+                                                                               Buffer
+                                                                                 CharBufElem) #) :: *)))
+                                                         ipv9_X7IBD
+                                                  of
+                                                  { (# ipv11_X7IBU [Occ=Once],
+                                                       ipv12_X7IBW [Occ=Once] #) ->
+                                                  jump $j1_s8SwD ipv11_X7IBU ipv12_X7IBW
+                                                  };
+                                                OutputUnderflow ->
+                                                  jump $j1_s8SwD ipv9_X7IBD (wild6_i8S1V, to'_a8RKP)
+                                              };
+                                            1# ->
+                                              case to'_a8RKP of
+                                              { Buffer dt7_i8S9I [Occ=Once] dt8_i8S9J [Occ=Once]
+                                                       _ [Occ=Dead] _ [Occ=Dead]
+                                                       dt10_i8S9M [Occ=Once]
+                                                       dt11_i8S9N [Occ=Once] ->
+                                              case Foreign.Marshal.Array.peekArray1
+                                                     @ CharBufElem
+                                                     Foreign.Storable.$fStorableChar
+                                                     (GHC.Types.I# (-# dt11_i8S9N dt10_i8S9M))
+                                                     (GHC.Ptr.Ptr @ CharBufElem dt7_i8S9I)
+                                                     ipv9_X7IBD
+                                              of
+                                              { (# ipv11_i8S9R [Occ=Once],
+                                                   ipv12_i8S9S [Occ=Once] #) ->
+                                              case touch#
+                                                     @ 'LiftedRep
+                                                     @ GHC.ForeignPtr.ForeignPtrContents
+                                                     dt8_i8S9J
+                                                     ipv11_i8S9R
+                                              of s'_i8S9U
+                                              { __DEFAULT ->
+                                              (# s'_i8S9U, ipv12_i8S9S #)
+                                              }
+                                              }
+                                              }
+                                          }
+                                          }
+                                          }
+                                          }
+                                          }; } in
+                                  go_s8SaD
+                                    (GHC.Types.I# 0#)
+                                    (GHC.IO.Buffer.Buffer
+                                       @ Word8
+                                       obj_i8S8F
+                                       (GHC.ForeignPtr.PlainForeignPtr ipv1_i8S8K)
+                                       GHC.IO.Buffer.ReadBuffer
+                                       x1_at56
+                                       0#
+                                       x1_at56)
+                                    ipv4_i8S9k
+                                  }
+                                  };
+                                1# -> case GHC.ForeignPtr.mallocForeignPtrBytes2 of { }
+                              } } in
+                        case <=# x1_at56 1# of {
+                          __DEFAULT -> jump $j_s8SwK x1_at56;
+                          1# -> jump $j_s8SwK 1#
+                        }
+                        }
+                        }
+                        })
+                     `cast` (<TextDecoder dstate_a8RPc>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <[CharBufElem]>_R)
+                             :: (TextDecoder dstate_a8RPc
+                                 -> State# RealWorld -> (# State# RealWorld, [CharBufElem] #) :: *)
+                                ~R# (TextDecoder dstate_a8RPc -> IO [CharBufElem] :: *))))
+                 `cast` (Sym (GHC.Types.N:IO[0] <[CharBufElem]>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, [CharBufElem] #) :: *)
+                            ~R# (IO [CharBufElem] :: *))
+                 }
+                 }}]
+peekCStringLen
+  = peekCStringLen1_r8TNo
+    `cast` (<TextEncoding>_R
+            ->_R <(Ptr CChar, Int)>_R
+            ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+            :: (TextEncoding
+                -> (Ptr CChar, Int)
+                -> State# RealWorld
+                -> (# State# RealWorld, String #) :: *)
+               ~R# (TextEncoding -> (Ptr CChar, Int) -> IO String :: *))
+
+-- RHS size: {terms: 150, types: 260, coercions: 31, joins: 3/3}
+GHC.Foreign.$wtryFillBufferAndCall [InlPrag=NOUSERINLINE[0]]
+  :: forall dstate a.
+     CodeBuffer CharBufElem Word8
+     -> (Buffer CharBufElem
+         -> Buffer Word8 -> IO (Buffer CharBufElem, Buffer Word8))
+     -> Bool
+     -> Buffer Char
+     -> Addr#
+     -> Int
+     -> (CStringLen -> IO a)
+     -> State# RealWorld
+     -> (# State# RealWorld, Maybe a #)
+[GblId,
+ Arity=8,
+ Caf=NoCafRefs,
+ Str=<C(C(C(S(SS(LS(LLLLSS)L))))),C(C1(C1(U(U,1*U(1*U,1*U(U,U,U,U,U,U),U(U,U,U,U,U,U))))))><L,C(C1(C1(U(U,1*U(U,U)))))><L,U><L,U><L,U><L,1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [60 60 133 0 0 20 60 0] 438 0}]
+GHC.Foreign.$wtryFillBufferAndCall
+  = \ (@ dstate_s8Tjk)
+      (@ a_s8Tjl)
+      (ww_s8Tjv :: CodeBuffer CharBufElem Word8)
+      (ww1_s8Tjw
+         :: Buffer CharBufElem
+            -> Buffer Word8 -> IO (Buffer CharBufElem, Buffer Word8))
+      (w_s8Tjn :: Bool)
+      (w1_s8Tjo :: Buffer Char)
+      (ww2_s8TjD :: Addr#)
+      (w2_s8Tjq :: Int)
+      (w3_s8Tjr :: CStringLen -> IO a_s8Tjl)
+      (w4_s8Tjs :: State# RealWorld) ->
+      case newMutVar#
+             @ GHC.ForeignPtr.Finalizers
+             @ RealWorld
+             GHC.ForeignPtr.NoFinalizers
+             w4_s8Tjs
+      of
+      { (# ipv_i8S8J, ipv1_i8S8K #) ->
+      join {
+        exit_X11 [Dmd=<L,C(C1(U(U,U)))>]
+          :: State# RealWorld
+             -> Buffer Word8 -> (# State# RealWorld, Maybe a_s8Tjl #)
+        [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U(U,U,A,U,U,U)>]
+        exit_X11 (ipv2_X7IBu [OS=OneShot] :: State# RealWorld)
+                 (to'_a8RLC [OS=OneShot] :: Buffer Word8)
+          = join {
+              $j_s8Sx4 [Dmd=<L,1*U(U,U)>]
+                :: (# State# RealWorld, Maybe a_s8Tjl #)
+              [LclId[JoinId(0)]]
+              $j_s8Sx4
+                = case to'_a8RLC of
+                  { Buffer dt_i8S9I dt1_i8S9J ds2_i8S9K dt2_i8S9L dt3_i8S9M
+                           dt4_i8S9N ->
+                  case w_s8Tjn of {
+                    False ->
+                      case ((w3_s8Tjr
+                               ((GHC.Ptr.Ptr @ Word8 dt_i8S9I)
+                                `cast` ((Ptr Univ(phantom phantom <*>_N :: Word8, CChar))_R
+                                        :: (Ptr Word8 :: *) ~R# (Ptr CChar :: *)),
+                                GHC.Types.I# (-# dt4_i8S9N dt3_i8S9M)))
+                            `cast` (GHC.Types.N:IO[0] <a_s8Tjl>_R
+                                    :: (IO a_s8Tjl :: *)
+                                       ~R# (State# RealWorld
+                                            -> (# State# RealWorld, a_s8Tjl #) :: *)))
+                             ipv2_X7IBu
+                      of
+                      { (# ipv3_i7Vb3, ipv4_i7Vb4 #) ->
+                      case touch#
+                             @ 'LiftedRep
+                             @ GHC.ForeignPtr.ForeignPtrContents
+                             dt1_i8S9J
+                             ipv3_i7Vb3
+                      of s'_i8S9U
+                      { __DEFAULT ->
+                      (# s'_i8S9U, GHC.Base.Just @ a_s8Tjl ipv4_i7Vb4 #)
+                      }
+                      };
+                    True ->
+                      case writeWord8OffAddr#
+                             @ RealWorld dt_i8S9I dt4_i8S9N 0## ipv2_X7IBu
+                      of s2_i8Sb9
+                      { __DEFAULT ->
+                      case ((w3_s8Tjr
+                               ((GHC.Ptr.Ptr @ Word8 dt_i8S9I)
+                                `cast` ((Ptr Univ(phantom phantom <*>_N :: Word8, CChar))_R
+                                        :: (Ptr Word8 :: *) ~R# (Ptr CChar :: *)),
+                                GHC.Types.I# (-# dt4_i8S9N dt3_i8S9M)))
+                            `cast` (GHC.Types.N:IO[0] <a_s8Tjl>_R
+                                    :: (IO a_s8Tjl :: *)
+                                       ~R# (State# RealWorld
+                                            -> (# State# RealWorld, a_s8Tjl #) :: *)))
+                             s2_i8Sb9
+                      of
+                      { (# ipv3_i7Vb3, ipv4_i7Vb4 #) ->
+                      case touch#
+                             @ 'LiftedRep
+                             @ GHC.ForeignPtr.ForeignPtrContents
+                             dt1_i8S9J
+                             ipv3_i7Vb3
+                      of s'_i8S9U
+                      { __DEFAULT ->
+                      (# s'_i8S9U, GHC.Base.Just @ a_s8Tjl ipv4_i7Vb4 #)
+                      }
+                      }
+                      }
+                  }
+                  } } in
+            case w_s8Tjn of {
+              False -> jump $j_s8Sx4;
+              True ->
+                case to'_a8RLC of
+                { Buffer dt_i8S4g dt1_i8S4h ds2_i8S4i dt2_i8S4j dt3_i8S4k
+                         dt4_i8S4l ->
+                case -# dt2_i8S4j dt4_i8S4l of {
+                  __DEFAULT -> jump $j_s8Sx4;
+                  0# -> (# ipv2_X7IBu, GHC.Base.Nothing @ a_s8Tjl #)
+                }
+                }
+            } } in
+      joinrec {
+        $wgo_s8Tjj [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Buffer CharBufElem
+             -> Buffer Word8
+             -> State# RealWorld
+             -> (# State# RealWorld, Maybe a_s8Tjl #)
+        [LclId[JoinId(3)], Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []]
+        $wgo_s8Tjj (ww3_s8Tjg :: Buffer CharBufElem)
+                   (ww4_s8Tjh :: Buffer Word8)
+                   (w5_s8Tjd :: State# RealWorld)
+          = case ((ww_s8Tjv ww3_s8Tjg ww4_s8Tjh)
+                  `cast` (GHC.Types.N:IO[0]
+                              <(CodingProgress, Buffer CharBufElem, Buffer Word8)>_R
+                          :: (IO (CodingProgress, Buffer CharBufElem, Buffer Word8) :: *)
+                             ~R# (State# RealWorld
+                                  -> (# State# RealWorld,
+                                        (CodingProgress, Buffer CharBufElem,
+                                         Buffer Word8) #) :: *)))
+                   w5_s8Tjd
+            of
+            { (# ipv2_X7IBu, ipv3_X7IBw #) ->
+            case ipv3_X7IBw of { (why_a8RLA, from'_a8RLB, to'_a8RLC) ->
+            case from'_a8RLB of wild1_i8S1V
+            { Buffer dt_i8S1X dt1_i8S1Y ds3_i8S1Z dt2_i8S20 dt3_i8S21
+                     dt4_i8S22 ->
+            case ==# dt3_i8S21 dt4_i8S22 of {
+              __DEFAULT ->
+                case why_a8RLA of {
+                  __DEFAULT ->
+                    case ((ww1_s8Tjw wild1_i8S1V to'_a8RLC)
+                          `cast` (GHC.Types.N:IO[0] <(Buffer CharBufElem, Buffer Word8)>_R
+                                  :: (IO (Buffer CharBufElem, Buffer Word8) :: *)
+                                     ~R# (State# RealWorld
+                                          -> (# State# RealWorld,
+                                                (Buffer CharBufElem, Buffer Word8) #) :: *)))
+                           ipv2_X7IBu
+                    of
+                    { (# ipv4_X7IBP, ipv5_X7IBR #) ->
+                    case ipv5_X7IBR of { (ww6_X8Tl7, ww7_X8Tl9) ->
+                    jump $wgo_s8Tjj ww6_X8Tl7 ww7_X8Tl9 ipv4_X7IBP
+                    }
+                    };
+                  OutputUnderflow -> (# ipv2_X7IBu, GHC.Base.Nothing @ a_s8Tjl #)
+                };
+              1# -> jump exit_X11 ipv2_X7IBu to'_a8RLC
+            }
+            }
+            }
+            }; } in
+      jump $wgo_s8Tjj
+        w1_s8Tjo
+        (case w2_s8Tjq of { I# dt4_i8S3G ->
+         GHC.IO.Buffer.Buffer
+           @ Word8
+           ww2_s8TjD
+           (GHC.ForeignPtr.PlainForeignPtr ipv1_i8S8K)
+           GHC.IO.Buffer.WriteBuffer
+           dt4_i8S3G
+           0#
+           0#
+         })
+        ipv_i8S8J
+      }
+
+-- RHS size: {terms: 24, types: 44, coercions: 0, joins: 0/0}
+GHC.Foreign.newCStringLen1 [InlPrag=NOUSERINLINE[0]]
+  :: forall dstate a.
+     TextEncoder dstate
+     -> Bool
+     -> Buffer Char
+     -> Ptr Word8
+     -> Int
+     -> (CStringLen -> IO a)
+     -> State# RealWorld
+     -> (# State# RealWorld, Maybe a #)
+[GblId,
+ Arity=7,
+ Caf=NoCafRefs,
+ Str=<S(C(C(C(S(SS(LS(LLLLSS)L)))))LLLL),1*U(C(C1(C1(U(U,1*U(1*U,1*U(U,U,U,U,U,U),U(U,U,U,U,U,U)))))),C(C1(C1(U(U,1*U(U,U))))),A,A,A)><L,U><L,U><S(S),1*U(U)><L,1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=7,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ dstate_s8Tjk)
+                 (@ a_s8Tjl)
+                 (w_s8Tjm [Occ=Once!] :: TextEncoder dstate_s8Tjk)
+                 (w1_s8Tjn [Occ=Once] :: Bool)
+                 (w2_s8Tjo [Occ=Once] :: Buffer Char)
+                 (w3_s8Tjp [Occ=Once!] :: Ptr Word8)
+                 (w4_s8Tjq [Occ=Once] :: Int)
+                 (w5_s8Tjr [Occ=Once] :: CStringLen -> IO a_s8Tjl)
+                 (w6_s8Tjs [Occ=Once] :: State# RealWorld) ->
+                 case w_s8Tjm of
+                 { BufferCodec ww1_s8Tjv [Occ=Once] ww2_s8Tjw [Occ=Once]
+                               _ [Occ=Dead] _ [Occ=Dead] _ [Occ=Dead] ->
+                 case w3_s8Tjp of { GHC.Ptr.Ptr ww7_s8TjD [Occ=Once] ->
+                 GHC.Foreign.$wtryFillBufferAndCall
+                   @ dstate_s8Tjk
+                   @ a_s8Tjl
+                   ww1_s8Tjv
+                   ww2_s8Tjw
+                   w1_s8Tjn
+                   w2_s8Tjo
+                   ww7_s8TjD
+                   w4_s8Tjq
+                   w5_s8Tjr
+                   w6_s8Tjs
+                 }
+                 }}]
+GHC.Foreign.newCStringLen1
+  = \ (@ dstate_s8Tjk)
+      (@ a_s8Tjl)
+      (w_s8Tjm :: TextEncoder dstate_s8Tjk)
+      (w1_s8Tjn :: Bool)
+      (w2_s8Tjo :: Buffer Char)
+      (w3_s8Tjp :: Ptr Word8)
+      (w4_s8Tjq :: Int)
+      (w5_s8Tjr :: CStringLen -> IO a_s8Tjl)
+      (w6_s8Tjs :: State# RealWorld) ->
+      case w_s8Tjm of
+      { BufferCodec ww1_s8Tjv ww2_s8Tjw ww3_s8Tjx ww4_s8Tjy ww5_s8Tjz ->
+      case w3_s8Tjp of { GHC.Ptr.Ptr ww7_s8TjD ->
+      GHC.Foreign.$wtryFillBufferAndCall
+        @ dstate_s8Tjk
+        @ a_s8Tjl
+        ww1_s8Tjv
+        ww2_s8Tjw
+        w1_s8Tjn
+        w2_s8Tjo
+        ww7_s8TjD
+        w4_s8Tjq
+        w5_s8Tjr
+        w6_s8Tjs
+      }
+      }
+
+-- RHS size: {terms: 155, types: 258, coercions: 6, joins: 2/6}
+withEncodedCString1_r8TNp
+  :: forall a.
+     TextEncoding
+     -> Bool
+     -> String
+     -> (CStringLen -> IO a)
+     -> State# RealWorld
+     -> (# State# RealWorld, a #)
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,U><L,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []]
+withEncodedCString1_r8TNp
+  = \ (@ a_a8RVW)
+      (ds_d8S4P :: TextEncoding)
+      (null_terminate_a8RKU :: Bool)
+      (s_a8RKV :: String)
+      (act_a8RKW :: CStringLen -> IO a_a8RVW)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d8S4P of
+      { TextEncoding @ dstate_a8RVY @ estate_a8RVZ ds1_d8S5d ds2_d8S5e
+                     ds3_d8S5f ->
+      GHC.IO.bracket1
+        @ (TextEncoder estate_a8RVZ)
+        @ ()
+        @ a_a8RVW
+        ds3_d8S5f
+        (close @ CharBufElem @ Word8 @ estate_a8RVZ)
+        ((\ (encoder_a8RKX [OS=OneShot] :: TextEncoder estate_a8RVZ)
+            (eta1_Xa [OS=OneShot] :: State# RealWorld) ->
+            case GHC.List.$wlenAcc @ Char s_a8RKV 0# of ww2_i8PwI
+            { __DEFAULT ->
+            case newAlignedPinnedByteArray#
+                   @ RealWorld (*# ww2_i8PwI 4#) 4# eta1_Xa
+            of
+            { (# ipv_s8ML2, ipv1_s8ML3 #) ->
+            case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+            { (# ipv2_s8ML6, ipv3_s8ML7 #) ->
+            let {
+              ptr_s8Sv6 :: Addr#
+              [LclId]
+              ptr_s8Sv6 = byteArrayContents# ipv3_s8ML7 } in
+            join {
+              $w$j_s8TjQ [InlPrag=NOUSERINLINE[0], Dmd=<C(S),C(U)>]
+                :: State# RealWorld -> (# State# RealWorld, a_a8RVW #)
+              [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+              $w$j_s8TjQ (w_s8TjO [OS=OneShot] :: State# RealWorld)
+                = case newMutVar#
+                         @ GHC.ForeignPtr.Finalizers
+                         @ RealWorld
+                         GHC.ForeignPtr.NoFinalizers
+                         w_s8TjO
+                  of
+                  { (# ipv4_i8S8J, ipv5_i8S8K #) ->
+                  let {
+                    ipv6_s8Sxf :: GHC.ForeignPtr.ForeignPtrContents
+                    [LclId, Unf=OtherCon []]
+                    ipv6_s8Sxf = GHC.ForeignPtr.PlainForeignPtr ipv5_i8S8K } in
+                  let {
+                    ipv7_i7IAz :: Buffer Char
+                    [LclId, Unf=OtherCon []]
+                    ipv7_i7IAz
+                      = GHC.IO.Buffer.Buffer
+                          @ Char
+                          ptr_s8Sv6
+                          ipv6_s8Sxf
+                          GHC.IO.Buffer.ReadBuffer
+                          ww2_i8PwI
+                          0#
+                          ww2_i8PwI } in
+                  letrec {
+                    $wgo_s8TjN [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                      :: Int# -> State# RealWorld -> (# State# RealWorld, a_a8RVW #)
+                    [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+                    $wgo_s8TjN
+                      = \ (ww_s8TjL :: Int#) (w1_s8TjI :: State# RealWorld) ->
+                          case newPinnedByteArray# @ RealWorld ww_s8TjL w1_s8TjI of
+                          { (# ipv8_s8MKN, ipv9_s8MKO #) ->
+                          case unsafeFreezeByteArray# @ RealWorld ipv9_s8MKO ipv8_s8MKN of
+                          { (# ipv10_s8MKR, ipv11_s8MKS #) ->
+                          case encoder_a8RKX of
+                          { BufferCodec ww3_s8Tjv ww4_s8Tjw ww5_s8Tjx ww6_s8Tjy ww7_s8Tjz ->
+                          case GHC.Foreign.$wtryFillBufferAndCall
+                                 @ estate_a8RVZ
+                                 @ a_a8RVW
+                                 ww3_s8Tjv
+                                 ww4_s8Tjw
+                                 null_terminate_a8RKU
+                                 ipv7_i7IAz
+                                 (byteArrayContents# ipv11_s8MKS)
+                                 (GHC.Types.I# ww_s8TjL)
+                                 act_a8RKW
+                                 ipv10_s8MKR
+                          of
+                          { (# ipv12_X7IC3, ipv13_X7IC5 #) ->
+                          case ipv13_X7IC5 of {
+                            Nothing ->
+                              case $wgo_s8TjN (*# ww_s8TjL 2#) ipv12_X7IC3 of
+                              { (# ipv14_s8MKV, ipv15_s8MKW #) ->
+                              case touch# @ 'UnliftedRep @ ByteArray# ipv11_s8MKS ipv14_s8MKV
+                              of s4_a8MBp
+                              { __DEFAULT ->
+                              (# s4_a8MBp, ipv15_s8MKW #)
+                              }
+                              };
+                            Just res_a8RL7 ->
+                              case touch# @ 'UnliftedRep @ ByteArray# ipv11_s8MKS ipv12_X7IC3
+                              of s4_a8MBp
+                              { __DEFAULT ->
+                              (# s4_a8MBp, res_a8RL7 #)
+                              }
+                          }
+                          }
+                          }
+                          }
+                          }; } in
+                  case $wgo_s8TjN (+# ww2_i8PwI 1#) ipv4_i8S8J of
+                  { (# ipv8_s8MLa, ipv9_s8MLb #) ->
+                  case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv8_s8MLa
+                  of s4_a8MBC
+                  { __DEFAULT ->
+                  (# s4_a8MBC, ipv9_s8MLb #)
+                  }
+                  }
+                  } } in
+            joinrec {
+              go_s8Sv5 [Occ=LoopBreaker]
+                :: [Char]
+                   -> Int# -> State# RealWorld -> (# State# RealWorld, a_a8RVW #)
+              [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+              go_s8Sv5 (ds6_d8Pjf :: [Char])
+                       (ds7_d8Pjg :: Int#)
+                       (eta2_XS :: State# RealWorld)
+                = case ds6_d8Pjf of {
+                    [] -> jump $w$j_s8TjQ eta2_XS;
+                    : val_a8P1l vals_a8P1m ->
+                      case val_a8P1l of { C# x_i7O5d ->
+                      case writeWideCharOffAddr#
+                             @ RealWorld ptr_s8Sv6 ds7_d8Pjg x_i7O5d eta2_XS
+                      of s2_i7O5f
+                      { __DEFAULT ->
+                      jump go_s8Sv5 vals_a8P1m (+# ds7_d8Pjg 1#) s2_i7O5f
+                      }
+                      }
+                  }; } in
+            jump go_s8Sv5 s_a8RKV 0# ipv2_s8ML6
+            }
+            }
+            })
+         `cast` (<TextEncoder estate_a8RVZ>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <a_a8RVW>_R)
+                 :: (TextEncoder estate_a8RVZ
+                     -> State# RealWorld -> (# State# RealWorld, a_a8RVW #) :: *)
+                    ~R# (TextEncoder estate_a8RVZ -> IO a_a8RVW :: *)))
+        eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+withEncodedCString [InlPrag=INLINE (sat-args=4)]
+  :: forall a.
+     TextEncoding -> Bool -> String -> (CStringLen -> IO a) -> IO a
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,U><L,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_X8RWw)
+                 (ds_X8S5q [Occ=Once!] :: TextEncoding)
+                 (null_terminate_X8RLw [Occ=OnceL] :: Bool)
+                 (s_X8RLy :: String)
+                 (act_X8RLA [Occ=OnceL] :: CStringLen -> IO a_X8RWw) ->
+                 case ds_X8S5q of
+                 { TextEncoding @ dstate_a8RVY @ estate_a8RVZ _ [Occ=Dead]
+                                _ [Occ=Dead] ds3_d8S5f [Occ=Once] ->
+                 (GHC.IO.bracket1
+                    @ (TextEncoder estate_a8RVZ)
+                    @ ()
+                    @ a_X8RWw
+                    ds3_d8S5f
+                    (close @ CharBufElem @ Word8 @ estate_a8RVZ)
+                    ((\ (encoder_a8RKX [Occ=OnceL] :: TextEncoder estate_a8RVZ)
+                        (eta1_B1 [Occ=Once] :: State# RealWorld) ->
+                        case GHC.List.$wlenAcc @ Char s_X8RLy 0# of ww2_i8PwI
+                        { __DEFAULT ->
+                        case newAlignedPinnedByteArray#
+                               @ RealWorld (*# ww2_i8PwI 4#) 4# eta1_B1
+                        of
+                        { (# ipv_s8ML2 [Occ=Once], ipv1_s8ML3 [Occ=Once] #) ->
+                        case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+                        { (# ipv2_s8ML6 [Occ=Once], ipv3_s8ML7 #) ->
+                        let {
+                          ptr_s8ScH :: Addr#
+                          [LclId]
+                          ptr_s8ScH = byteArrayContents# ipv3_s8ML7 } in
+                        join {
+                          $j_s8SxM [Occ=OnceL!T[2]]
+                            :: State# RealWorld -> () -> (# State# RealWorld, a_X8RWw #)
+                          [LclId[JoinId(2)], Arity=2]
+                          $j_s8SxM (ipv4_i7JiK [Occ=Once, OS=OneShot] :: State# RealWorld)
+                                   _ [Occ=Dead, OS=OneShot]
+                            = case newMutVar#
+                                     @ GHC.ForeignPtr.Finalizers
+                                     @ RealWorld
+                                     GHC.ForeignPtr.NoFinalizers
+                                     ipv4_i7JiK
+                              of
+                              { (# ipv6_i8S8J [Occ=Once], ipv7_i8S8K [Occ=OnceL] #) ->
+                              let {
+                                ipv8_s8SxA [Occ=OnceL] :: GHC.ForeignPtr.ForeignPtrContents
+                                [LclId, Unf=OtherCon []]
+                                ipv8_s8SxA = GHC.ForeignPtr.PlainForeignPtr ipv7_i8S8K } in
+                              let {
+                                ipv9_i7IAz [Occ=OnceL] :: Buffer Char
+                                [LclId, Unf=OtherCon []]
+                                ipv9_i7IAz
+                                  = GHC.IO.Buffer.Buffer
+                                      @ Char
+                                      ptr_s8ScH
+                                      ipv8_s8SxA
+                                      GHC.IO.Buffer.ReadBuffer
+                                      ww2_i8PwI
+                                      0#
+                                      ww2_i8PwI } in
+                              letrec {
+                                go_s8Scz [Occ=LoopBreaker]
+                                  :: Int
+                                     -> Int -> State# RealWorld -> (# State# RealWorld, a_X8RWw #)
+                                [LclId, Arity=3, Unf=OtherCon []]
+                                go_s8Scz
+                                  = \ (iteration_a8RL3 [Occ=Once!] :: Int)
+                                      (to_sz_bytes_a8RL4 [Occ=Once!] :: Int)
+                                      (s1_i7JiH [Occ=Once] :: State# RealWorld) ->
+                                      case to_sz_bytes_a8RL4 of wild1_Xq { I# size_a8MBe ->
+                                      case newPinnedByteArray# @ RealWorld size_a8MBe s1_i7JiH of
+                                      { (# ipv10_s8MKN [Occ=Once], ipv11_s8MKO [Occ=Once] #) ->
+                                      case unsafeFreezeByteArray#
+                                             @ RealWorld ipv11_s8MKO ipv10_s8MKN
+                                      of
+                                      { (# ipv12_s8MKR [Occ=Once], ipv13_s8MKS #) ->
+                                      case GHC.Foreign.newCStringLen1
+                                             @ estate_a8RVZ
+                                             @ a_X8RWw
+                                             encoder_a8RKX
+                                             null_terminate_X8RLw
+                                             ipv9_i7IAz
+                                             (GHC.Ptr.Ptr @ Word8 (byteArrayContents# ipv13_s8MKS))
+                                             wild1_Xq
+                                             act_X8RLA
+                                             ipv12_s8MKR
+                                      of
+                                      { (# ipv14_X7IC3 [Occ=Once*], ipv15_X7IC5 [Occ=Once!] #) ->
+                                      case ipv15_X7IC5 of {
+                                        Nothing ->
+                                          case go_s8Scz
+                                                 (case iteration_a8RL3 of { I# x_i7MX1 [Occ=Once] ->
+                                                  GHC.Types.I# (+# x_i7MX1 1#)
+                                                  })
+                                                 (GHC.Types.I# (*# size_a8MBe 2#))
+                                                 ipv14_X7IC3
+                                          of
+                                          { (# ipv16_s8MKV [Occ=Once], ipv17_s8MKW [Occ=Once] #) ->
+                                          case touch#
+                                                 @ 'UnliftedRep @ ByteArray# ipv13_s8MKS ipv16_s8MKV
+                                          of s4_a8MBp
+                                          { __DEFAULT ->
+                                          (# s4_a8MBp, ipv17_s8MKW #)
+                                          }
+                                          };
+                                        Just res_a8RL7 [Occ=Once] ->
+                                          case touch#
+                                                 @ 'UnliftedRep @ ByteArray# ipv13_s8MKS ipv14_X7IC3
+                                          of s4_a8MBp
+                                          { __DEFAULT ->
+                                          (# s4_a8MBp, res_a8RL7 #)
+                                          }
+                                      }
+                                      }
+                                      }
+                                      }
+                                      }; } in
+                              case go_s8Scz
+                                     (GHC.Types.I# 0#) (GHC.Types.I# (+# ww2_i8PwI 1#)) ipv6_i8S8J
+                              of
+                              { (# ipv10_s8MLa [Occ=Once], ipv11_s8MLb [Occ=Once] #) ->
+                              case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv10_s8MLa
+                              of s4_a8MBC
+                              { __DEFAULT ->
+                              (# s4_a8MBC, ipv11_s8MLb #)
+                              }
+                              }
+                              } } in
+                        joinrec {
+                          go_s8PpD [Occ=LoopBreakerT[3]]
+                            :: [Char]
+                               -> Int# -> State# RealWorld -> (# State# RealWorld, a_X8RWw #)
+                          [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+                          go_s8PpD (ds6_d8Pjf [Occ=Once!] :: [Char])
+                                   (ds7_d8Pjg :: Int#)
+                                   (eta2_XS [Occ=Once*] :: State# RealWorld)
+                            = case ds6_d8Pjf of {
+                                [] -> jump $j_s8SxM eta2_XS GHC.Tuple.();
+                                : val_a8P1l [Occ=Once!] vals_a8P1m [Occ=Once] ->
+                                  case val_a8P1l of { C# x_i7O5d [Occ=Once] ->
+                                  case writeWideCharOffAddr#
+                                         @ RealWorld ptr_s8ScH ds7_d8Pjg x_i7O5d eta2_XS
+                                  of s2_i7O5f
+                                  { __DEFAULT ->
+                                  jump go_s8PpD vals_a8P1m (+# ds7_d8Pjg 1#) s2_i7O5f
+                                  }
+                                  }
+                              }; } in
+                        jump go_s8PpD s_X8RLy 0# ipv2_s8ML6
+                        }
+                        }
+                        })
+                     `cast` (<TextEncoder estate_a8RVZ>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <a_X8RWw>_R)
+                             :: (TextEncoder estate_a8RVZ
+                                 -> State# RealWorld -> (# State# RealWorld, a_X8RWw #) :: *)
+                                ~R# (TextEncoder estate_a8RVZ -> IO a_X8RWw :: *))))
+                 `cast` (Sym (GHC.Types.N:IO[0] <a_X8RWw>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, a_X8RWw #) :: *)
+                            ~R# (IO a_X8RWw :: *))
+                 }}]
+withEncodedCString
+  = withEncodedCString1_r8TNp
+    `cast` (forall (a :: <*>_N).
+            <TextEncoding>_R
+            ->_R <Bool>_R
+            ->_R <String>_R
+            ->_R <CStringLen -> IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                TextEncoding
+                -> Bool
+                -> String
+                -> (CStringLen -> IO a)
+                -> State# RealWorld
+                -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a.
+                    TextEncoding
+                    -> Bool -> String -> (CStringLen -> IO a) -> IO a :: *))
+
+-- RHS size: {terms: 245, types: 427, coercions: 28, joins: 5/9}
+GHC.Foreign.charIsRepresentable3
+  :: forall a.
+     TextEncoding
+     -> String
+     -> (CString -> IO a)
+     -> State# RealWorld
+     -> (# State# RealWorld, a #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [20 0 60 0] 628 0}]
+GHC.Foreign.charIsRepresentable3
+  = \ (@ a_a8RXH)
+      (enc_a8RKi :: TextEncoding)
+      (s_a8RKj :: String)
+      (act_a8RKk :: CString -> IO a_a8RXH)
+      (eta_B1 :: State# RealWorld) ->
+      case enc_a8RKi of
+      { TextEncoding @ dstate_a8RVY @ estate_a8RVZ ds_d8S5d ds1_d8S5e
+                     ds2_d8S5f ->
+      GHC.IO.bracket1
+        @ (TextEncoder estate_a8RVZ)
+        @ ()
+        @ a_a8RXH
+        ds2_d8S5f
+        (close @ CharBufElem @ Word8 @ estate_a8RVZ)
+        ((\ (encoder_a8RKX [OS=OneShot] :: TextEncoder estate_a8RVZ)
+            (eta1_Xb [OS=OneShot] :: State# RealWorld) ->
+            case GHC.List.$wlenAcc @ Char s_a8RKj 0# of ww2_i8PwI
+            { __DEFAULT ->
+            case newAlignedPinnedByteArray#
+                   @ RealWorld (*# ww2_i8PwI 4#) 4# eta1_Xb
+            of
+            { (# ipv_s8ML2, ipv1_s8ML3 #) ->
+            case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+            { (# ipv2_s8ML6, ipv3_s8ML7 #) ->
+            let {
+              ptr_s8Sv0 :: Addr#
+              [LclId]
+              ptr_s8Sv0 = byteArrayContents# ipv3_s8ML7 } in
+            join {
+              $w$j_s8Tkj [InlPrag=NOUSERINLINE[0], Dmd=<C(S),C(U)>]
+                :: State# RealWorld -> (# State# RealWorld, a_a8RXH #)
+              [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+              $w$j_s8Tkj (w_s8Tkh [OS=OneShot] :: State# RealWorld)
+                = case newMutVar#
+                         @ GHC.ForeignPtr.Finalizers
+                         @ RealWorld
+                         GHC.ForeignPtr.NoFinalizers
+                         w_s8Tkh
+                  of
+                  { (# ipv4_i8S8J, ipv5_i8S8K #) ->
+                  let {
+                    ipv6_s8SxW :: GHC.ForeignPtr.ForeignPtrContents
+                    [LclId, Unf=OtherCon []]
+                    ipv6_s8SxW = GHC.ForeignPtr.PlainForeignPtr ipv5_i8S8K } in
+                  let {
+                    ipv7_i7IAz :: Buffer Char
+                    [LclId, Unf=OtherCon []]
+                    ipv7_i7IAz
+                      = GHC.IO.Buffer.Buffer
+                          @ Char
+                          ptr_s8Sv0
+                          ipv6_s8SxW
+                          GHC.IO.Buffer.ReadBuffer
+                          ww2_i8PwI
+                          0#
+                          ww2_i8PwI } in
+                  letrec {
+                    $wgo_s8Tkg [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                      :: Int# -> State# RealWorld -> (# State# RealWorld, a_a8RXH #)
+                    [LclId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+                    $wgo_s8Tkg
+                      = \ (ww_s8Tke :: Int#) (w1_s8Tkb :: State# RealWorld) ->
+                          case newPinnedByteArray# @ RealWorld ww_s8Tke w1_s8Tkb of
+                          { (# ipv8_s8MKN, ipv9_s8MKO #) ->
+                          case unsafeFreezeByteArray# @ RealWorld ipv9_s8MKO ipv8_s8MKN of
+                          { (# ipv10_s8MKR, ipv11_s8MKS #) ->
+                          case newMutVar#
+                                 @ GHC.ForeignPtr.Finalizers
+                                 @ RealWorld
+                                 GHC.ForeignPtr.NoFinalizers
+                                 ipv10_s8MKR
+                          of
+                          { (# ipv12_X8SaI, ipv13_X8SaK #) ->
+                          join {
+                            exit_X1y [Dmd=<L,C(U(U,U))>]
+                              :: State# RealWorld -> (# State# RealWorld, a_a8RXH #)
+                            [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+                            exit_X1y (ipv14_X7IBu [OS=OneShot] :: State# RealWorld)
+                              = case $wgo_s8Tkg (*# ww_s8Tke 2#) ipv14_X7IBu of
+                                { (# ipv15_s8MKV, ipv16_s8MKW #) ->
+                                case touch# @ 'UnliftedRep @ ByteArray# ipv11_s8MKS ipv15_s8MKV
+                                of s4_a8MBp
+                                { __DEFAULT ->
+                                (# s4_a8MBp, ipv16_s8MKW #)
+                                }
+                                } } in
+                          join {
+                            exit1_X36 [Dmd=<L,C(C1(U(U,U)))>]
+                              :: State# RealWorld
+                                 -> Buffer Word8 -> (# State# RealWorld, a_a8RXH #)
+                            [LclId[JoinId(2)], Arity=2, Str=<S,U><S(LLLSLS),1*U(U,U,A,U,A,U)>]
+                            exit1_X36 (ipv14_X7IBu [OS=OneShot] :: State# RealWorld)
+                                      (to'_a8RLC [OS=OneShot] :: Buffer Word8)
+                              = case to'_a8RLC of
+                                { Buffer dt_i8S4g dt1_i8S4h ds9_i8S4i dt2_i8S4j dt3_i8S4k
+                                         dt4_i8S4l ->
+                                case -# dt2_i8S4j dt4_i8S4l of {
+                                  __DEFAULT ->
+                                    case writeWord8OffAddr#
+                                           @ RealWorld dt_i8S4g dt4_i8S4l 0## ipv14_X7IBu
+                                    of s2_i8Sb9
+                                    { __DEFAULT ->
+                                    case ((act_a8RKk
+                                             ((GHC.Ptr.Ptr @ Word8 dt_i8S4g)
+                                              `cast` ((Ptr
+                                                         Univ(phantom phantom <*>_N
+                                                              :: Word8, CChar))_R
+                                                      :: (Ptr Word8 :: *) ~R# (Ptr CChar :: *))))
+                                          `cast` (GHC.Types.N:IO[0] <a_a8RXH>_R
+                                                  :: (IO a_a8RXH :: *)
+                                                     ~R# (State# RealWorld
+                                                          -> (# State# RealWorld, a_a8RXH #) :: *)))
+                                           s2_i8Sb9
+                                    of
+                                    { (# ipv15_i7Vb3, ipv16_i7Vb4 #) ->
+                                    case touch#
+                                           @ 'LiftedRep
+                                           @ GHC.ForeignPtr.ForeignPtrContents
+                                           dt1_i8S4h
+                                           ipv15_i7Vb3
+                                    of s'_i8S9U
+                                    { __DEFAULT ->
+                                    case touch# @ 'UnliftedRep @ ByteArray# ipv11_s8MKS s'_i8S9U
+                                    of s4_a8MBp
+                                    { __DEFAULT ->
+                                    (# s4_a8MBp, ipv16_i7Vb4 #)
+                                    }
+                                    }
+                                    }
+                                    };
+                                  0# ->
+                                    case $wgo_s8Tkg (*# ww_s8Tke 2#) ipv14_X7IBu of
+                                    { (# ipv15_s8MKV, ipv16_s8MKW #) ->
+                                    case touch# @ 'UnliftedRep @ ByteArray# ipv11_s8MKS ipv15_s8MKV
+                                    of s4_a8MBp
+                                    { __DEFAULT ->
+                                    (# s4_a8MBp, ipv16_s8MKW #)
+                                    }
+                                    }
+                                }
+                                } } in
+                          joinrec {
+                            $wgo1_s8Tk8 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                              :: Buffer CharBufElem
+                                 -> Buffer Word8
+                                 -> State# RealWorld
+                                 -> (# State# RealWorld, a_a8RXH #)
+                            [LclId[JoinId(3)], Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []]
+                            $wgo1_s8Tk8 (ww1_s8Tk5 :: Buffer CharBufElem)
+                                        (ww3_s8Tk6 :: Buffer Word8)
+                                        (w2_s8Tk2 :: State# RealWorld)
+                              = case encoder_a8RKX of
+                                { BufferCodec ds9_i8S30 ds10_i8S31 ds11_i8S32 ds12_i8S33
+                                              ds13_i8S34 ->
+                                case ((ds9_i8S30 ww1_s8Tk5 ww3_s8Tk6)
+                                      `cast` (GHC.Types.N:IO[0]
+                                                  <(CodingProgress, Buffer CharBufElem,
+                                                    Buffer Word8)>_R
+                                              :: (IO
+                                                    (CodingProgress, Buffer CharBufElem,
+                                                     Buffer Word8) :: *)
+                                                 ~R# (State# RealWorld
+                                                      -> (# State# RealWorld,
+                                                            (CodingProgress, Buffer CharBufElem,
+                                                             Buffer Word8) #) :: *)))
+                                       w2_s8Tk2
+                                of
+                                { (# ipv14_X7IBu, ipv15_X7IBw #) ->
+                                case ipv15_X7IBw of { (why_a8RLA, from'_a8RLB, to'_a8RLC) ->
+                                case from'_a8RLB of wild3_i8S1V
+                                { Buffer dt_i8S1X dt1_i8S1Y ds15_i8S1Z dt2_i8S20 dt3_i8S21
+                                         dt4_i8S22 ->
+                                case ==# dt3_i8S21 dt4_i8S22 of {
+                                  __DEFAULT ->
+                                    case why_a8RLA of {
+                                      __DEFAULT ->
+                                        case ((ds10_i8S31 wild3_i8S1V to'_a8RLC)
+                                              `cast` (GHC.Types.N:IO[0]
+                                                          <(Buffer CharBufElem, Buffer Word8)>_R
+                                                      :: (IO
+                                                            (Buffer CharBufElem, Buffer Word8) :: *)
+                                                         ~R# (State# RealWorld
+                                                              -> (# State# RealWorld,
+                                                                    (Buffer CharBufElem,
+                                                                     Buffer Word8) #) :: *)))
+                                               ipv14_X7IBu
+                                        of
+                                        { (# ipv16_X7IBP, ipv17_X7IBR #) ->
+                                        case ipv17_X7IBR of { (ww5_X8TmQ, ww6_X8TmS) ->
+                                        jump $wgo1_s8Tk8 ww5_X8TmQ ww6_X8TmS ipv16_X7IBP
+                                        }
+                                        };
+                                      OutputUnderflow -> jump exit_X1y ipv14_X7IBu
+                                    };
+                                  1# -> jump exit1_X36 ipv14_X7IBu to'_a8RLC
+                                }
+                                }
+                                }
+                                }
+                                }; } in
+                          jump $wgo1_s8Tk8
+                            ipv7_i7IAz
+                            (GHC.IO.Buffer.Buffer
+                               @ Word8
+                               (byteArrayContents# ipv11_s8MKS)
+                               (GHC.ForeignPtr.PlainForeignPtr ipv13_X8SaK)
+                               GHC.IO.Buffer.WriteBuffer
+                               ww_s8Tke
+                               0#
+                               0#)
+                            ipv12_X8SaI
+                          }
+                          }
+                          }; } in
+                  case $wgo_s8Tkg (+# ww2_i8PwI 1#) ipv4_i8S8J of
+                  { (# ipv8_s8MLa, ipv9_s8MLb #) ->
+                  case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv8_s8MLa
+                  of s4_a8MBC
+                  { __DEFAULT ->
+                  (# s4_a8MBC, ipv9_s8MLb #)
+                  }
+                  }
+                  } } in
+            joinrec {
+              go_s8SuY [Occ=LoopBreaker]
+                :: [Char]
+                   -> Int# -> State# RealWorld -> (# State# RealWorld, a_a8RXH #)
+              [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+              go_s8SuY (ds5_d8Pjf :: [Char])
+                       (ds6_d8Pjg :: Int#)
+                       (eta2_XS :: State# RealWorld)
+                = case ds5_d8Pjf of {
+                    [] -> jump $w$j_s8Tkj eta2_XS;
+                    : val_a8P1l vals_a8P1m ->
+                      case val_a8P1l of { C# x_i7O5d ->
+                      case writeWideCharOffAddr#
+                             @ RealWorld ptr_s8Sv0 ds6_d8Pjg x_i7O5d eta2_XS
+                      of s2_i7O5f
+                      { __DEFAULT ->
+                      jump go_s8SuY vals_a8P1m (+# ds6_d8Pjg 1#) s2_i7O5f
+                      }
+                      }
+                  }; } in
+            jump go_s8SuY s_a8RKj 0# ipv2_s8ML6
+            }
+            }
+            })
+         `cast` (<TextEncoder estate_a8RVZ>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <a_a8RXH>_R)
+                 :: (TextEncoder estate_a8RVZ
+                     -> State# RealWorld -> (# State# RealWorld, a_a8RXH #) :: *)
+                    ~R# (TextEncoder estate_a8RVZ -> IO a_a8RXH :: *)))
+        eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+withCString
+  :: forall a. TextEncoding -> String -> (CString -> IO a) -> IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Foreign.charIsRepresentable3
+               `cast` (forall (a :: <*>_N).
+                       <TextEncoding>_R
+                       ->_R <String>_R
+                       ->_R <CString -> IO a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           TextEncoding
+                           -> String
+                           -> (CString -> IO a)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a.
+                               TextEncoding -> String -> (CString -> IO a) -> IO a :: *))}]
+withCString
+  = GHC.Foreign.charIsRepresentable3
+    `cast` (forall (a :: <*>_N).
+            <TextEncoding>_R
+            ->_R <String>_R
+            ->_R <CString -> IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                TextEncoding
+                -> String
+                -> (CString -> IO a)
+                -> State# RealWorld
+                -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a.
+                    TextEncoding -> String -> (CString -> IO a) -> IO a :: *))
+
+-- RHS size: {terms: 35, types: 47, coercions: 7, joins: 0/1}
+GHC.Foreign.withCStringsLen1
+  :: forall a.
+     TextEncoding
+     -> [String]
+     -> (Int -> Ptr CString -> IO a)
+     -> State# RealWorld
+     -> (# State# RealWorld, a #)
+[GblId,
+ Arity=4,
+ Str=<L,U><S,1*U><L,C(C1(C1(U)))><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0 0] 230 0}]
+GHC.Foreign.withCStringsLen1
+  = \ (@ a_a8RXM)
+      (enc_a8RKo :: TextEncoding)
+      (strs_a8RKp :: [String])
+      (f_a8RKq :: Int -> Ptr CString -> IO a_a8RXM)
+      (eta_B1 :: State# RealWorld) ->
+      letrec {
+        go_s8SuU [Occ=LoopBreaker]
+          :: [CString]
+             -> [String] -> State# RealWorld -> (# State# RealWorld, a_a8RXM #)
+        [LclId, Arity=3, Str=<L,U><S,1*U><S,U>, Unf=OtherCon []]
+        go_s8SuU
+          = \ (cs_a8RKs :: [CString])
+              (ds_d8S5n :: [String])
+              (eta1_XQ :: State# RealWorld) ->
+              case ds_d8S5n of {
+                [] ->
+                  ((withArrayLen
+                      @ CString
+                      @ a_a8RXM
+                      (Foreign.Storable.$fStorablePtr @ CChar)
+                      (reverse @ CString cs_a8RKs)
+                      f_a8RKq)
+                   `cast` (GHC.Types.N:IO[0] <a_a8RXM>_R
+                           :: (IO a_a8RXM :: *)
+                              ~R# (State# RealWorld -> (# State# RealWorld, a_a8RXM #) :: *)))
+                    eta1_XQ;
+                : s_a8RKt ss_a8RKu ->
+                  GHC.Foreign.charIsRepresentable3
+                    @ a_a8RXM
+                    enc_a8RKo
+                    s_a8RKt
+                    ((\ (c_a8RKv :: CString)
+                        (eta2_XV [OS=OneShot] :: State# RealWorld) ->
+                        go_s8SuU (GHC.Types.: @ CString c_a8RKv cs_a8RKs) ss_a8RKu eta2_XV)
+                     `cast` (<CString>_R ->_R Sym (GHC.Types.N:IO[0] <a_a8RXM>_R)
+                             :: (CString
+                                 -> State# RealWorld -> (# State# RealWorld, a_a8RXM #) :: *)
+                                ~R# (CString -> IO a_a8RXM :: *)))
+                    eta1_XQ
+              }; } in
+      go_s8SuU (GHC.Types.[] @ CString) strs_a8RKp eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+withCStringsLen
+  :: forall a.
+     TextEncoding -> [String] -> (Int -> Ptr CString -> IO a) -> IO a
+[GblId,
+ Arity=4,
+ Str=<L,U><S,1*U><L,C(C1(C1(U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Foreign.withCStringsLen1
+               `cast` (forall (a :: <*>_N).
+                       <TextEncoding>_R
+                       ->_R <[String]>_R
+                       ->_R <Int -> Ptr CString -> IO a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           TextEncoding
+                           -> [String]
+                           -> (Int -> Ptr CString -> IO a)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a.
+                               TextEncoding
+                               -> [String] -> (Int -> Ptr CString -> IO a) -> IO a :: *))}]
+withCStringsLen
+  = GHC.Foreign.withCStringsLen1
+    `cast` (forall (a :: <*>_N).
+            <TextEncoding>_R
+            ->_R <[String]>_R
+            ->_R <Int -> Ptr CString -> IO a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                TextEncoding
+                -> [String]
+                -> (Int -> Ptr CString -> IO a)
+                -> State# RealWorld
+                -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a.
+                    TextEncoding
+                    -> [String] -> (Int -> Ptr CString -> IO a) -> IO a :: *))
+
+-- RHS size: {terms: 5, types: 4, coercions: 0, joins: 0/0}
+withCStringLen
+  :: forall a. TextEncoding -> String -> (CStringLen -> IO a) -> IO a
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8RYO) (enc_a8RKn [Occ=Once] :: TextEncoding) ->
+                 withEncodedCString @ a_a8RYO enc_a8RKn GHC.Types.False}]
+withCStringLen
+  = \ (@ a_a8RYO) (enc_a8RKn :: TextEncoding) ->
+      withEncodedCString @ a_a8RYO enc_a8RKn GHC.Types.False
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Foreign.newCString2 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Foreign.newCString2 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 183, types: 260, coercions: 11, joins: 4/8}
+newEncodedCString1_r8TNq
+  :: TextEncoding
+     -> Bool
+     -> String
+     -> State# RealWorld
+     -> (# State# RealWorld, CStringLen #)
+[GblId, Arity=4, Str=<S,1*U><L,U><L,U><S,U>, Unf=OtherCon []]
+newEncodedCString1_r8TNq
+  = \ (ds_d8S61 :: TextEncoding)
+      (null_terminate_a8RL9 :: Bool)
+      (s_a8RLa :: String)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d8S61 of
+      { TextEncoding @ dstate_a8RYS @ estate_a8RYT ds1_d8S6s ds2_d8S6t
+                     ds3_d8S6u ->
+      GHC.IO.bracket1
+        @ (TextEncoder estate_a8RYT)
+        @ ()
+        @ CStringLen
+        ds3_d8S6u
+        (close @ CharBufElem @ Word8 @ estate_a8RYT)
+        ((\ (encoder_a8RLb [OS=OneShot] :: TextEncoder estate_a8RYT)
+            (eta1_Xa [OS=OneShot] :: State# RealWorld) ->
+            case GHC.List.$wlenAcc @ Char s_a8RLa 0# of ww2_i8PwI
+            { __DEFAULT ->
+            case newAlignedPinnedByteArray#
+                   @ RealWorld (*# ww2_i8PwI 4#) 4# eta1_Xa
+            of
+            { (# ipv_s8ML2, ipv1_s8ML3 #) ->
+            case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+            { (# ipv2_s8ML6, ipv3_s8ML7 #) ->
+            let {
+              ptr_s8SuM :: Addr#
+              [LclId]
+              ptr_s8SuM = byteArrayContents# ipv3_s8ML7 } in
+            join {
+              $w$j_s8TkN [InlPrag=NOUSERINLINE[0], Dmd=<C(S),C(U)>]
+                :: State# RealWorld -> (# State# RealWorld, CStringLen #)
+              [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+              $w$j_s8TkN (w_s8TkL [OS=OneShot] :: State# RealWorld)
+                = case newMutVar#
+                         @ GHC.ForeignPtr.Finalizers
+                         @ RealWorld
+                         GHC.ForeignPtr.NoFinalizers
+                         w_s8TkL
+                  of
+                  { (# ipv4_i8S8J, ipv5_i8S8K #) ->
+                  let {
+                    to_sz_bytes_s8SuQ [Dmd=<S,U>] :: Int#
+                    [LclId]
+                    to_sz_bytes_s8SuQ = +# ww2_i8PwI 1# } in
+                  case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+                         (int2Word# to_sz_bytes_s8SuQ) ipv4_i8S8J
+                  of
+                  { (# ds7_d8MKF, ds8_d8MKE #) ->
+                  case eqAddr# ds8_d8MKE __NULL of {
+                    __DEFAULT ->
+                      let {
+                        ipv6_s8Syi :: GHC.ForeignPtr.ForeignPtrContents
+                        [LclId, Unf=OtherCon []]
+                        ipv6_s8Syi = GHC.ForeignPtr.PlainForeignPtr ipv5_i8S8K } in
+                      let {
+                        ipv7_i7IAz :: Buffer Char
+                        [LclId, Unf=OtherCon []]
+                        ipv7_i7IAz
+                          = GHC.IO.Buffer.Buffer
+                              @ Char
+                              ptr_s8SuM
+                              ipv6_s8Syi
+                              GHC.IO.Buffer.ReadBuffer
+                              ww2_i8PwI
+                              0#
+                              ww2_i8PwI } in
+                      join {
+                        $j_s8TcH [Dmd=<L,C(C1(U))>]
+                          :: State# RealWorld
+                             -> CStringLen -> (# State# RealWorld, CStringLen #)
+                        [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>]
+                        $j_s8TcH (ipv8_s8MLa [OS=OneShot] :: State# RealWorld)
+                                 (ipv9_s8MLb [OS=OneShot] :: CStringLen)
+                          = case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv8_s8MLa
+                            of s4_a8MBC
+                            { __DEFAULT ->
+                            (# s4_a8MBC, ipv9_s8MLb #)
+                            } } in
+                      joinrec {
+                        $wgo_s8TkK [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                          :: Addr#
+                             -> Int -> State# RealWorld -> (# State# RealWorld, CStringLen #)
+                        [LclId[JoinId(3)],
+                         Arity=3,
+                         Str=<S,U><L,U(U)><S,U>,
+                         Unf=OtherCon []]
+                        $wgo_s8TkK (ww_s8TkI :: Addr#)
+                                   (w1_s8TkE :: Int)
+                                   (w2_s8TkF :: State# RealWorld)
+                          = case encoder_a8RLb of
+                            { BufferCodec ww3_s8Tjv ww4_s8Tjw ww5_s8Tjx ww6_s8Tjy ww7_s8Tjz ->
+                            case GHC.Foreign.$wtryFillBufferAndCall
+                                   @ estate_a8RYT
+                                   @ CStringLen
+                                   ww3_s8Tjv
+                                   ww4_s8Tjw
+                                   null_terminate_a8RL9
+                                   ipv7_i7IAz
+                                   ww_s8TkI
+                                   w1_s8TkE
+                                   ((GHC.Base.$fApplicativeIO4 @ CStringLen)
+                                    `cast` (<CStringLen>_R
+                                            ->_R Sym (GHC.Types.N:IO[0] <CStringLen>_R)
+                                            :: (CStringLen
+                                                -> State# RealWorld
+                                                -> (# State# RealWorld, CStringLen #) :: *)
+                                               ~R# (CStringLen -> IO CStringLen :: *)))
+                                   w2_s8TkF
+                            of
+                            { (# ipv8_X7IC0, ipv9_X7IC2 #) ->
+                            case ipv9_X7IC2 of {
+                              Nothing ->
+                                case w1_s8TkE of { I# x_X7MYK ->
+                                case *# x_X7MYK 2# of ds10_X8MJu {
+                                  __DEFAULT ->
+                                    case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKo
+                                           ww_s8TkI (int2Word# ds10_X8MJu) ipv8_X7IC0
+                                    of
+                                    { (# ds11_d8MKm, ds12_d8MKl #) ->
+                                    case eqAddr# ds12_d8MKl __NULL of {
+                                      __DEFAULT ->
+                                        jump $wgo_s8TkK
+                                          ds12_d8MKl (GHC.Types.I# ds10_X8MJu) ds11_d8MKm;
+                                      1# ->
+                                        case raiseIO#
+                                               @ GHC.Exception.SomeException
+                                               @ (Ptr Word8)
+                                               Foreign.Marshal.Alloc.realloc2
+                                               ds11_d8MKm
+                                        of wild5_00 {
+                                        }
+                                    }
+                                    };
+                                  0# ->
+                                    case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld #)}_d8MKd
+                                           ww_s8TkI ipv8_X7IC0
+                                    of
+                                    { (# ds11_d8MKb #) ->
+                                    jump $wgo_s8TkK __NULL GHC.Foreign.newCString2 ds11_d8MKb
+                                    }
+                                }
+                                };
+                              Just res_a8RLn -> jump $j_s8TcH ipv8_X7IC0 res_a8RLn
+                            }
+                            }
+                            }; } in
+                      jump $wgo_s8TkK
+                        ds8_d8MKE (GHC.Types.I# to_sz_bytes_s8SuQ) ds7_d8MKF;
+                    1# ->
+                      case raiseIO#
+                             @ GHC.Exception.SomeException
+                             @ (Ptr Word8)
+                             Foreign.Marshal.Alloc.malloc1
+                             ds7_d8MKF
+                      of wild2_00 {
+                      }
+                  }
+                  }
+                  } } in
+            joinrec {
+              go_s8SuL [Occ=LoopBreaker]
+                :: [Char]
+                   -> Int# -> State# RealWorld -> (# State# RealWorld, CStringLen #)
+              [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+              go_s8SuL (ds6_d8Pjf :: [Char])
+                       (ds7_d8Pjg :: Int#)
+                       (eta2_XS :: State# RealWorld)
+                = case ds6_d8Pjf of {
+                    [] -> jump $w$j_s8TkN eta2_XS;
+                    : val_a8P1l vals_a8P1m ->
+                      case val_a8P1l of { C# x_i7O5d ->
+                      case writeWideCharOffAddr#
+                             @ RealWorld ptr_s8SuM ds7_d8Pjg x_i7O5d eta2_XS
+                      of s2_i7O5f
+                      { __DEFAULT ->
+                      jump go_s8SuL vals_a8P1m (+# ds7_d8Pjg 1#) s2_i7O5f
+                      }
+                      }
+                  }; } in
+            jump go_s8SuL s_a8RLa 0# ipv2_s8ML6
+            }
+            }
+            })
+         `cast` (<TextEncoder estate_a8RYT>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <CStringLen>_R)
+                 :: (TextEncoder estate_a8RYT
+                     -> State# RealWorld -> (# State# RealWorld, CStringLen #) :: *)
+                    ~R# (TextEncoder estate_a8RYT -> IO CStringLen :: *)))
+        eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+newEncodedCString [InlPrag=INLINE (sat-args=3)]
+  :: TextEncoding -> Bool -> String -> IO CStringLen
+[GblId,
+ Arity=4,
+ Str=<S,1*U><L,U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (ds_X8S6T [Occ=Once!] :: TextEncoding)
+                 (null_terminate_X8RM2 [Occ=OnceL] :: Bool)
+                 (s_X8RM4 :: String) ->
+                 case ds_X8S6T of
+                 { TextEncoding @ dstate_a8RYS @ estate_a8RYT _ [Occ=Dead]
+                                _ [Occ=Dead] ds3_d8S6u [Occ=Once] ->
+                 (GHC.IO.bracket1
+                    @ (TextEncoder estate_a8RYT)
+                    @ ()
+                    @ CStringLen
+                    ds3_d8S6u
+                    (close @ CharBufElem @ Word8 @ estate_a8RYT)
+                    ((\ (encoder_a8RLb [Occ=OnceL] :: TextEncoder estate_a8RYT)
+                        (eta1_B1 [Occ=Once] :: State# RealWorld) ->
+                        case GHC.List.$wlenAcc @ Char s_X8RM4 0# of ww2_i8PwI
+                        { __DEFAULT ->
+                        case newAlignedPinnedByteArray#
+                               @ RealWorld (*# ww2_i8PwI 4#) 4# eta1_B1
+                        of
+                        { (# ipv_s8ML2 [Occ=Once], ipv1_s8ML3 [Occ=Once] #) ->
+                        case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+                        { (# ipv2_s8ML6 [Occ=Once], ipv3_s8ML7 #) ->
+                        let {
+                          ptr_s8Se4 :: Addr#
+                          [LclId]
+                          ptr_s8Se4 = byteArrayContents# ipv3_s8ML7 } in
+                        join {
+                          $j_s8SyL [Occ=OnceL!T[2]]
+                            :: State# RealWorld -> () -> (# State# RealWorld, CStringLen #)
+                          [LclId[JoinId(2)], Arity=2]
+                          $j_s8SyL (ipv4_i7JiK [Occ=Once, OS=OneShot] :: State# RealWorld)
+                                   _ [Occ=Dead, OS=OneShot]
+                            = case newMutVar#
+                                     @ GHC.ForeignPtr.Finalizers
+                                     @ RealWorld
+                                     GHC.ForeignPtr.NoFinalizers
+                                     ipv4_i7JiK
+                              of
+                              { (# ipv6_i8S8J [Occ=Once], ipv7_i8S8K [Occ=OnceL] #) ->
+                              let {
+                                ipv8_s8SyB [Occ=OnceL] :: GHC.ForeignPtr.ForeignPtrContents
+                                [LclId, Unf=OtherCon []]
+                                ipv8_s8SyB = GHC.ForeignPtr.PlainForeignPtr ipv7_i8S8K } in
+                              let {
+                                ipv9_i7IAz [Occ=OnceL] :: Buffer Char
+                                [LclId, Unf=OtherCon []]
+                                ipv9_i7IAz
+                                  = GHC.IO.Buffer.Buffer
+                                      @ Char
+                                      ptr_s8Se4
+                                      ipv8_s8SyB
+                                      GHC.IO.Buffer.ReadBuffer
+                                      ww2_i8PwI
+                                      0#
+                                      ww2_i8PwI } in
+                              let {
+                                to_sz_bytes_s8SjU :: Int#
+                                [LclId]
+                                to_sz_bytes_s8SjU = +# ww2_i8PwI 1# } in
+                              case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+                                     (int2Word# to_sz_bytes_s8SjU) ipv6_i8S8J
+                              of
+                              { (# ds7_d8MKF [Occ=Once*], ds8_d8MKE #) ->
+                              case eqAddr# ds8_d8MKE __NULL of {
+                                __DEFAULT ->
+                                  letrec {
+                                    go_s8SdY [Occ=LoopBreaker]
+                                      :: Int
+                                         -> Ptr Word8
+                                         -> Int
+                                         -> State# RealWorld
+                                         -> (# State# RealWorld, CStringLen #)
+                                    [LclId, Arity=4, Unf=OtherCon []]
+                                    go_s8SdY
+                                      = \ (iteration_a8RLh [Occ=Once!] :: Int)
+                                          (to_p_a8RLi :: Ptr Word8)
+                                          (to_sz_bytes1_a8RLj :: Int)
+                                          (s1_i7JiH [Occ=Once] :: State# RealWorld) ->
+                                          case GHC.Foreign.newCStringLen1
+                                                 @ estate_a8RYT
+                                                 @ CStringLen
+                                                 encoder_a8RLb
+                                                 null_terminate_X8RM2
+                                                 ipv9_i7IAz
+                                                 to_p_a8RLi
+                                                 to_sz_bytes1_a8RLj
+                                                 ((GHC.Base.$fApplicativeIO4 @ CStringLen)
+                                                  `cast` (<CStringLen>_R
+                                                          ->_R Sym (GHC.Types.N:IO[0]
+                                                                        <CStringLen>_R)
+                                                          :: (CStringLen
+                                                              -> State# RealWorld
+                                                              -> (# State# RealWorld,
+                                                                    CStringLen #) :: *)
+                                                             ~R# (CStringLen
+                                                                  -> IO CStringLen :: *)))
+                                                 s1_i7JiH
+                                          of
+                                          { (# ipv10_X7IC0 [Occ=Once*],
+                                               ipv11_X7IC2 [Occ=Once!] #) ->
+                                          case ipv11_X7IC2 of {
+                                            Nothing ->
+                                              let {
+                                                to_sz_bytes'_a8RLl :: Int
+                                                [LclId]
+                                                to_sz_bytes'_a8RLl
+                                                  = case to_sz_bytes1_a8RLj of
+                                                    { I# x_X7MYN [Occ=Once] ->
+                                                    GHC.Types.I# (*# x_X7MYN 2#)
+                                                    } } in
+                                              case Foreign.Marshal.Alloc.reallocBytes1
+                                                     @ Word8
+                                                     to_p_a8RLi
+                                                     to_sz_bytes'_a8RLl
+                                                     ipv10_X7IC0
+                                              of
+                                              { (# ipv12_X7ICc [Occ=Once],
+                                                   ipv13_X7ICe [Occ=Once] #) ->
+                                              go_s8SdY
+                                                (case iteration_a8RLh of { I# x_X7MZa [Occ=Once] ->
+                                                 GHC.Types.I# (+# x_X7MZa 1#)
+                                                 })
+                                                ipv13_X7ICe
+                                                to_sz_bytes'_a8RLl
+                                                ipv12_X7ICc
+                                              };
+                                            Just res_a8RLn [Occ=Once] ->
+                                              (# ipv10_X7IC0, res_a8RLn #)
+                                          }
+                                          }; } in
+                                  case go_s8SdY
+                                         (GHC.Types.I# 0#)
+                                         (GHC.Ptr.Ptr @ Word8 ds8_d8MKE)
+                                         (GHC.Types.I# to_sz_bytes_s8SjU)
+                                         ds7_d8MKF
+                                  of
+                                  { (# ipv10_s8MLa [Occ=Once], ipv11_s8MLb [Occ=Once] #) ->
+                                  case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv10_s8MLa
+                                  of s4_a8MBC
+                                  { __DEFAULT ->
+                                  (# s4_a8MBC, ipv11_s8MLb #)
+                                  }
+                                  };
+                                1# ->
+                                  case raiseIO#
+                                         @ GHC.Exception.SomeException
+                                         @ (Ptr Word8)
+                                         Foreign.Marshal.Alloc.malloc1
+                                         ds7_d8MKF
+                                  of {
+                                  }
+                              }
+                              }
+                              } } in
+                        joinrec {
+                          go_s8PpD [Occ=LoopBreakerT[3]]
+                            :: [Char]
+                               -> Int# -> State# RealWorld -> (# State# RealWorld, CStringLen #)
+                          [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+                          go_s8PpD (ds6_d8Pjf [Occ=Once!] :: [Char])
+                                   (ds7_d8Pjg :: Int#)
+                                   (eta2_XS [Occ=Once*] :: State# RealWorld)
+                            = case ds6_d8Pjf of {
+                                [] -> jump $j_s8SyL eta2_XS GHC.Tuple.();
+                                : val_a8P1l [Occ=Once!] vals_a8P1m [Occ=Once] ->
+                                  case val_a8P1l of { C# x_i7O5d [Occ=Once] ->
+                                  case writeWideCharOffAddr#
+                                         @ RealWorld ptr_s8Se4 ds7_d8Pjg x_i7O5d eta2_XS
+                                  of s2_i7O5f
+                                  { __DEFAULT ->
+                                  jump go_s8PpD vals_a8P1m (+# ds7_d8Pjg 1#) s2_i7O5f
+                                  }
+                                  }
+                              }; } in
+                        jump go_s8PpD s_X8RM4 0# ipv2_s8ML6
+                        }
+                        }
+                        })
+                     `cast` (<TextEncoder estate_a8RYT>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <CStringLen>_R)
+                             :: (TextEncoder estate_a8RYT
+                                 -> State# RealWorld -> (# State# RealWorld, CStringLen #) :: *)
+                                ~R# (TextEncoder estate_a8RYT -> IO CStringLen :: *))))
+                 `cast` (Sym (GHC.Types.N:IO[0] <CStringLen>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, CStringLen #) :: *)
+                            ~R# (IO CStringLen :: *))
+                 }}]
+newEncodedCString
+  = newEncodedCString1_r8TNq
+    `cast` (<TextEncoding>_R
+            ->_R <Bool>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <CStringLen>_R)
+            :: (TextEncoding
+                -> Bool
+                -> String
+                -> State# RealWorld
+                -> (# State# RealWorld, CStringLen #) :: *)
+               ~R# (TextEncoding -> Bool -> String -> IO CStringLen :: *))
+
+-- RHS size: {terms: 285, types: 448, coercions: 26, joins: 8/12}
+GHC.Foreign.newCString1
+  :: TextEncoding
+     -> String -> State# RealWorld -> (# State# RealWorld, Ptr CChar #)
+[GblId,
+ Arity=3,
+ Str=<S,1*U><L,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 0 0] 765 30}]
+GHC.Foreign.newCString1
+  = \ (enc_a8RKg :: TextEncoding)
+      (eta_B2 :: String)
+      (eta1_B1 :: State# RealWorld) ->
+      case enc_a8RKg of
+      { TextEncoding @ dstate_a8RYS @ estate_a8RYT ds_d8S6s ds1_d8S6t
+                     ds2_d8S6u ->
+      case GHC.IO.bracket1
+             @ (TextEncoder estate_a8RYT)
+             @ ()
+             @ CStringLen
+             ds2_d8S6u
+             (close @ CharBufElem @ Word8 @ estate_a8RYT)
+             ((\ (encoder_a8RLb [OS=OneShot] :: TextEncoder estate_a8RYT)
+                 (eta2_Xe [OS=OneShot] :: State# RealWorld) ->
+                 case GHC.List.$wlenAcc @ Char eta_B2 0# of ww2_i8PwI { __DEFAULT ->
+                 case newAlignedPinnedByteArray#
+                        @ RealWorld (*# ww2_i8PwI 4#) 4# eta2_Xe
+                 of
+                 { (# ipv_s8ML2, ipv1_s8ML3 #) ->
+                 case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+                 { (# ipv2_s8ML6, ipv3_s8ML7 #) ->
+                 let {
+                   ptr_s8SuC :: Addr#
+                   [LclId]
+                   ptr_s8SuC = byteArrayContents# ipv3_s8ML7 } in
+                 join {
+                   $w$j_s8Tl8 [InlPrag=NOUSERINLINE[0], Dmd=<C(S),C(U)>]
+                     :: State# RealWorld -> (# State# RealWorld, CStringLen #)
+                   [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+                   $w$j_s8Tl8 (w_s8Tl6 [OS=OneShot] :: State# RealWorld)
+                     = case newMutVar#
+                              @ GHC.ForeignPtr.Finalizers
+                              @ RealWorld
+                              GHC.ForeignPtr.NoFinalizers
+                              w_s8Tl6
+                       of
+                       { (# ipv4_i8S8J, ipv5_i8S8K #) ->
+                       let {
+                         to_sz_bytes_s8SuG [Dmd=<S,U>] :: Int#
+                         [LclId]
+                         to_sz_bytes_s8SuG = +# ww2_i8PwI 1# } in
+                       case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+                              (int2Word# to_sz_bytes_s8SuG) ipv4_i8S8J
+                       of
+                       { (# ds6_d8MKF, ds7_d8MKE #) ->
+                       case eqAddr# ds7_d8MKE __NULL of {
+                         __DEFAULT ->
+                           let {
+                             ipv6_s8SyU :: GHC.ForeignPtr.ForeignPtrContents
+                             [LclId, Unf=OtherCon []]
+                             ipv6_s8SyU = GHC.ForeignPtr.PlainForeignPtr ipv5_i8S8K } in
+                           let {
+                             ipv7_i7IAz :: Buffer Char
+                             [LclId, Unf=OtherCon []]
+                             ipv7_i7IAz
+                               = GHC.IO.Buffer.Buffer
+                                   @ Char
+                                   ptr_s8SuC
+                                   ipv6_s8SyU
+                                   GHC.IO.Buffer.ReadBuffer
+                                   ww2_i8PwI
+                                   0#
+                                   ww2_i8PwI } in
+                           join {
+                             $j_s8Tdk [Dmd=<L,C(C1(U))>]
+                               :: State# RealWorld
+                                  -> CStringLen -> (# State# RealWorld, CStringLen #)
+                             [LclId[JoinId(2)], Arity=2, Str=<S,U><L,U>]
+                             $j_s8Tdk (ipv8_s8MLa [OS=OneShot] :: State# RealWorld)
+                                      (ipv9_s8MLb [OS=OneShot] :: CStringLen)
+                               = case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv8_s8MLa
+                                 of s4_a8MBC
+                                 { __DEFAULT ->
+                                 (# s4_a8MBC, ipv9_s8MLb #)
+                                 } } in
+                           joinrec {
+                             $wgo_s8Tl5 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                               :: Addr#
+                                  -> Int -> State# RealWorld -> (# State# RealWorld, CStringLen #)
+                             [LclId[JoinId(3)],
+                              Arity=3,
+                              Str=<L,U><L,U(U)><S,U>,
+                              Unf=OtherCon []]
+                             $wgo_s8Tl5 (ww_s8Tl3 :: Addr#)
+                                        (w1_s8TkZ :: Int)
+                                        (w2_s8Tl0 :: State# RealWorld)
+                               = case encoder_a8RLb of
+                                 { BufferCodec ww3_s8Tjv ww4_s8Tjw ww5_s8Tjx ww6_s8Tjy ww7_s8Tjz ->
+                                 case newMutVar#
+                                        @ GHC.ForeignPtr.Finalizers
+                                        @ RealWorld
+                                        GHC.ForeignPtr.NoFinalizers
+                                        w2_s8Tl0
+                                 of
+                                 { (# ipv8_X8SaG, ipv9_X8SaI #) ->
+                                 join {
+                                   $j1_s8Tue [Dmd=<L,C(C1(U))>]
+                                     :: State# RealWorld
+                                        -> Maybe CStringLen -> (# State# RealWorld, CStringLen #)
+                                   [LclId[JoinId(2)], Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+                                   $j1_s8Tue (ipv10_X7IC0 [OS=OneShot] :: State# RealWorld)
+                                             (ipv11_X7IC2 [OS=OneShot] :: Maybe CStringLen)
+                                     = case ipv11_X7IC2 of {
+                                         Nothing ->
+                                           case w1_s8TkZ of { I# x_X7MYQ ->
+                                           case *# x_X7MYQ 2# of ds9_X8MJu {
+                                             __DEFAULT ->
+                                               case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKo
+                                                      ww_s8Tl3 (int2Word# ds9_X8MJu) ipv10_X7IC0
+                                               of
+                                               { (# ds10_d8MKm, ds11_d8MKl #) ->
+                                               case eqAddr# ds11_d8MKl __NULL of {
+                                                 __DEFAULT ->
+                                                   jump $wgo_s8Tl5
+                                                     ds11_d8MKl (GHC.Types.I# ds9_X8MJu) ds10_d8MKm;
+                                                 1# ->
+                                                   case raiseIO#
+                                                          @ GHC.Exception.SomeException
+                                                          @ (Ptr Word8)
+                                                          Foreign.Marshal.Alloc.realloc2
+                                                          ds10_d8MKm
+                                                   of wild5_00 {
+                                                   }
+                                               }
+                                               };
+                                             0# ->
+                                               case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld #)}_d8MKd
+                                                      ww_s8Tl3 ipv10_X7IC0
+                                               of
+                                               { (# ds10_d8MKb #) ->
+                                               jump $wgo_s8Tl5
+                                                 __NULL GHC.Foreign.newCString2 ds10_d8MKb
+                                               }
+                                           }
+                                           };
+                                         Just res_a8RLn -> jump $j_s8Tdk ipv10_X7IC0 res_a8RLn
+                                       } } in
+                                 join {
+                                   exit_X1y [Dmd=<L,C(U)>]
+                                     :: State# RealWorld -> (# State# RealWorld, CStringLen #)
+                                   [LclId[JoinId(1)], Arity=1, Str=<S,U>]
+                                   exit_X1y (ipv10_X7IBu [OS=OneShot] :: State# RealWorld)
+                                     = jump $j1_s8Tue
+                                         ipv10_X7IBu (GHC.Base.Nothing @ CStringLen) } in
+                                 join {
+                                   exit1_X36 [Dmd=<L,C(C1(U))>]
+                                     :: State# RealWorld
+                                        -> Buffer Word8 -> (# State# RealWorld, CStringLen #)
+                                   [LclId[JoinId(2)],
+                                    Arity=2,
+                                    Str=<S,U><S(LLLSLS),1*U(U,U,A,U,U,U)>]
+                                   exit1_X36 (ipv10_X7IBu [OS=OneShot] :: State# RealWorld)
+                                             (to'_a8RLC [OS=OneShot] :: Buffer Word8)
+                                     = case to'_a8RLC of
+                                       { Buffer dt_i8S4g dt1_i8S4h ds9_i8S4i dt2_i8S4j dt3_i8S4k
+                                                dt4_i8S4l ->
+                                       case -# dt2_i8S4j dt4_i8S4l of {
+                                         __DEFAULT ->
+                                           case writeWord8OffAddr#
+                                                  @ RealWorld dt_i8S4g dt4_i8S4l 0## ipv10_X7IBu
+                                           of s2_i8Sb9
+                                           { __DEFAULT ->
+                                           case touch#
+                                                  @ 'LiftedRep
+                                                  @ GHC.ForeignPtr.ForeignPtrContents
+                                                  dt1_i8S4h
+                                                  s2_i8Sb9
+                                           of s'_i8S9U
+                                           { __DEFAULT ->
+                                           jump $j1_s8Tue
+                                             s'_i8S9U
+                                             (GHC.Base.Just
+                                                @ CStringLen
+                                                ((GHC.Ptr.Ptr @ Word8 dt_i8S4g)
+                                                 `cast` ((Ptr
+                                                            Univ(phantom phantom <*>_N
+                                                                 :: Word8, CChar))_R
+                                                         :: (Ptr Word8 :: *) ~R# (Ptr CChar :: *)),
+                                                 GHC.Types.I# (-# dt4_i8S4l dt3_i8S4k)))
+                                           }
+                                           };
+                                         0# ->
+                                           jump $j1_s8Tue
+                                             ipv10_X7IBu (GHC.Base.Nothing @ CStringLen)
+                                       }
+                                       } } in
+                                 joinrec {
+                                   $wgo1_s8Tjj [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                                     :: Buffer CharBufElem
+                                        -> Buffer Word8
+                                        -> State# RealWorld
+                                        -> (# State# RealWorld, CStringLen #)
+                                   [LclId[JoinId(3)], Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []]
+                                   $wgo1_s8Tjj (ww8_s8Tjg :: Buffer CharBufElem)
+                                               (ww9_s8Tjh :: Buffer Word8)
+                                               (w3_s8Tjd :: State# RealWorld)
+                                     = case ((ww3_s8Tjv ww8_s8Tjg ww9_s8Tjh)
+                                             `cast` (GHC.Types.N:IO[0]
+                                                         <(CodingProgress, Buffer CharBufElem,
+                                                           Buffer Word8)>_R
+                                                     :: (IO
+                                                           (CodingProgress, Buffer CharBufElem,
+                                                            Buffer Word8) :: *)
+                                                        ~R# (State# RealWorld
+                                                             -> (# State# RealWorld,
+                                                                   (CodingProgress,
+                                                                    Buffer CharBufElem,
+                                                                    Buffer Word8) #) :: *)))
+                                              w3_s8Tjd
+                                       of
+                                       { (# ipv10_X7IBu, ipv11_X7IBw #) ->
+                                       case ipv11_X7IBw of { (why_a8RLA, from'_a8RLB, to'_a8RLC) ->
+                                       case from'_a8RLB of wild3_i8S1V
+                                       { Buffer dt_i8S1X dt1_i8S1Y ds10_i8S1Z dt2_i8S20 dt3_i8S21
+                                                dt4_i8S22 ->
+                                       case ==# dt3_i8S21 dt4_i8S22 of {
+                                         __DEFAULT ->
+                                           case why_a8RLA of {
+                                             __DEFAULT ->
+                                               case ((ww4_s8Tjw wild3_i8S1V to'_a8RLC)
+                                                     `cast` (GHC.Types.N:IO[0]
+                                                                 <(Buffer CharBufElem,
+                                                                   Buffer Word8)>_R
+                                                             :: (IO
+                                                                   (Buffer CharBufElem,
+                                                                    Buffer Word8) :: *)
+                                                                ~R# (State# RealWorld
+                                                                     -> (# State# RealWorld,
+                                                                           (Buffer CharBufElem,
+                                                                            Buffer Word8) #) :: *)))
+                                                      ipv10_X7IBu
+                                               of
+                                               { (# ipv12_X7IBP, ipv13_X7IBR #) ->
+                                               case ipv13_X7IBR of { (ww11_X8Tl7, ww12_X8Tl9) ->
+                                               jump $wgo1_s8Tjj ww11_X8Tl7 ww12_X8Tl9 ipv12_X7IBP
+                                               }
+                                               };
+                                             OutputUnderflow -> jump exit_X1y ipv10_X7IBu
+                                           };
+                                         1# -> jump exit1_X36 ipv10_X7IBu to'_a8RLC
+                                       }
+                                       }
+                                       }
+                                       }; } in
+                                 jump $wgo1_s8Tjj
+                                   ipv7_i7IAz
+                                   (case w1_s8TkZ of { I# dt4_i8S3G ->
+                                    GHC.IO.Buffer.Buffer
+                                      @ Word8
+                                      ww_s8Tl3
+                                      (GHC.ForeignPtr.PlainForeignPtr ipv9_X8SaI)
+                                      GHC.IO.Buffer.WriteBuffer
+                                      dt4_i8S3G
+                                      0#
+                                      0#
+                                    })
+                                   ipv8_X8SaG
+                                 }
+                                 }; } in
+                           jump $wgo_s8Tl5
+                             ds7_d8MKE (GHC.Types.I# to_sz_bytes_s8SuG) ds6_d8MKF;
+                         1# ->
+                           case raiseIO#
+                                  @ GHC.Exception.SomeException
+                                  @ (Ptr Word8)
+                                  Foreign.Marshal.Alloc.malloc1
+                                  ds6_d8MKF
+                           of wild2_00 {
+                           }
+                       }
+                       }
+                       } } in
+                 joinrec {
+                   go_s8SuB [Occ=LoopBreaker]
+                     :: [Char]
+                        -> Int# -> State# RealWorld -> (# State# RealWorld, CStringLen #)
+                   [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+                   go_s8SuB (ds5_d8Pjf :: [Char])
+                            (ds6_d8Pjg :: Int#)
+                            (eta3_XS :: State# RealWorld)
+                     = case ds5_d8Pjf of {
+                         [] -> jump $w$j_s8Tl8 eta3_XS;
+                         : val_a8P1l vals_a8P1m ->
+                           case val_a8P1l of { C# x_i7O5d ->
+                           case writeWideCharOffAddr#
+                                  @ RealWorld ptr_s8SuC ds6_d8Pjg x_i7O5d eta3_XS
+                           of s2_i7O5f
+                           { __DEFAULT ->
+                           jump go_s8SuB vals_a8P1m (+# ds6_d8Pjg 1#) s2_i7O5f
+                           }
+                           }
+                       }; } in
+                 jump go_s8SuB eta_B2 0# ipv2_s8ML6
+                 }
+                 }
+                 })
+              `cast` (<TextEncoder estate_a8RYT>_R
+                      ->_R Sym (GHC.Types.N:IO[0] <CStringLen>_R)
+                      :: (TextEncoder estate_a8RYT
+                          -> State# RealWorld -> (# State# RealWorld, CStringLen #) :: *)
+                         ~R# (TextEncoder estate_a8RYT -> IO CStringLen :: *)))
+             eta1_B1
+      of
+      { (# ipv_i7IAy, ipv1_i7IAz #) ->
+      (# ipv_i7IAy, fst @ (Ptr CChar) @ Int ipv1_i7IAz #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 8, joins: 0/0}
+newCString :: TextEncoding -> String -> IO CString
+[GblId,
+ Arity=3,
+ Str=<S,1*U><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Foreign.newCString1
+               `cast` (<TextEncoding>_R
+                       ->_R <String>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Ptr CChar>_R)
+                       :: (TextEncoding
+                           -> String
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Ptr CChar #) :: *)
+                          ~R# (TextEncoding -> String -> IO (Ptr CChar) :: *))}]
+newCString
+  = GHC.Foreign.newCString1
+    `cast` (<TextEncoding>_R
+            ->_R <String>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Ptr CChar>_R)
+            :: (TextEncoding
+                -> String
+                -> State# RealWorld
+                -> (# State# RealWorld, Ptr CChar #) :: *)
+               ~R# (TextEncoding -> String -> IO (Ptr CChar) :: *))
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+newCStringLen :: TextEncoding -> String -> IO CStringLen
+[GblId,
+ Arity=3,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (enc_a8RKh [Occ=Once] :: TextEncoding) ->
+                 newEncodedCString enc_a8RKh GHC.Types.False}]
+newCStringLen
+  = \ (enc_a8RKh :: TextEncoding) ->
+      newEncodedCString enc_a8RKh GHC.Types.False
+
+-- RHS size: {terms: 324, types: 511, coercions: 25, joins: 8/15}
+GHC.Foreign.$wpeekCString [InlPrag=NOUSERINLINE[0]]
+  :: TextEncoding
+     -> Addr# -> State# RealWorld -> (# State# RealWorld, String #)
+[GblId, Arity=3, Str=<S,U><S,U><S,U>, Unf=OtherCon []]
+GHC.Foreign.$wpeekCString
+  = \ (w_s8TlW :: TextEncoding)
+      (ww_s8Tm1 :: Addr#)
+      (w1_s8TlY :: State# RealWorld) ->
+      join {
+        exit_XG [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+          :: Int# -> State# RealWorld -> (# State# RealWorld, String #)
+        [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>]
+        exit_XG (ww1_s8TlT [OS=OneShot] :: Int#)
+                (ipv_i8SeU [OS=OneShot] :: State# RealWorld)
+          = case w_s8TlW of
+            { TextEncoding @ dstate_a8RPc @ estate_a8RPd ds_d8S43 ds1_d8S44
+                           ds2_d8S45 ->
+            GHC.IO.bracket1
+              @ (TextDecoder dstate_a8RPc)
+              @ ()
+              @ [CharBufElem]
+              ds1_d8S44
+              (close @ Word8 @ CharBufElem @ dstate_a8RPc)
+              ((\ (decoder_a8RKF [OS=OneShot] :: TextDecoder dstate_a8RPc)
+                  (s_X7IBK [OS=OneShot] :: State# RealWorld) ->
+                  case newMutVar#
+                         @ GHC.ForeignPtr.Finalizers
+                         @ RealWorld
+                         GHC.ForeignPtr.NoFinalizers
+                         s_X7IBK
+                  of
+                  { (# ipv1_i8S8J, ipv2_i8S8K #) ->
+                  join {
+                    $j_s8SzC [Dmd=<C(S),1*C1(U)>]
+                      :: Int# -> (# State# RealWorld, [CharBufElem] #)
+                    [LclId[JoinId(1)], Arity=1, Str=<S,U>, Unf=OtherCon []]
+                    $j_s8SzC (x_i8S9a [OS=OneShot] :: Int#)
+                      = let {
+                          x1_s8Suw [Dmd=<S,U>] :: Int#
+                          [LclId]
+                          x1_s8Suw = *# x_i8S9a 4# } in
+                        case <# x1_s8Suw 0# of {
+                          __DEFAULT ->
+                            case newMutVar#
+                                   @ GHC.ForeignPtr.Finalizers
+                                   @ RealWorld
+                                   GHC.ForeignPtr.NoFinalizers
+                                   ipv1_i8S8J
+                            of
+                            { (# ipv3_i8S9f, ipv4_i8S9g #) ->
+                            case newPinnedByteArray# @ RealWorld x1_s8Suw ipv3_i8S9f of
+                            { (# ipv5_i8S9k, ipv6_i8S9l #) ->
+                            let {
+                              ipv7_s8Szi :: Addr#
+                              [LclId]
+                              ipv7_s8Szi
+                                = byteArrayContents#
+                                    (ipv6_i8S9l
+                                     `cast` (UnsafeCo representational (MutableByteArray#
+                                                                          RealWorld) ByteArray#
+                                             :: (MutableByteArray# RealWorld :: TYPE 'UnliftedRep)
+                                                ~R# (ByteArray# :: TYPE 'UnliftedRep))) } in
+                            let {
+                              ipv8_s8Szj :: GHC.ForeignPtr.ForeignPtrContents
+                              [LclId, Unf=OtherCon []]
+                              ipv8_s8Szj = GHC.ForeignPtr.MallocPtr ipv6_i8S9l ipv4_i8S9g } in
+                            let {
+                              ipv9_X7IBv :: CharBuffer
+                              [LclId, Unf=OtherCon []]
+                              ipv9_X7IBv
+                                = GHC.IO.Buffer.Buffer
+                                    @ Char
+                                    ipv7_s8Szi
+                                    ipv8_s8Szj
+                                    GHC.IO.Buffer.WriteBuffer
+                                    x_i8S9a
+                                    0#
+                                    0# } in
+                            letrec {
+                              $wgo_s8TlL [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                                :: Buffer Word8
+                                   -> State# RealWorld -> (# State# RealWorld, [CharBufElem] #)
+                              [LclId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []]
+                              $wgo_s8TlL
+                                = \ (w2_s8TlJ :: Buffer Word8) (w3_s8TlK :: State# RealWorld) ->
+                                    case decoder_a8RKF of
+                                    { BufferCodec ds6_i8S30 ds7_i8S31 ds8_i8S32 ds9_i8S33
+                                                  ds10_i8S34 ->
+                                    case ((ds6_i8S30 w2_s8TlJ ipv9_X7IBv)
+                                          `cast` (GHC.Types.N:IO[0]
+                                                      <(CodingProgress, Buffer Word8,
+                                                        Buffer CharBufElem)>_R
+                                                  :: (IO
+                                                        (CodingProgress, Buffer Word8,
+                                                         Buffer CharBufElem) :: *)
+                                                     ~R# (State# RealWorld
+                                                          -> (# State# RealWorld,
+                                                                (CodingProgress, Buffer Word8,
+                                                                 Buffer CharBufElem) #) :: *)))
+                                           w3_s8TlK
+                                    of
+                                    { (# ipv10_X7IBD, ipv11_X7IBF #) ->
+                                    case ipv11_X7IBF of { (why_a8RKN, from'_a8RKO, to'_a8RKP) ->
+                                    case from'_a8RKO of wild3_i8S1V
+                                    { Buffer dt_i8S1X dt1_i8S1Y ds12_i8S1Z dt2_i8S20 dt3_i8S21
+                                             dt4_i8S22 ->
+                                    case ==# dt3_i8S21 dt4_i8S22 of {
+                                      __DEFAULT ->
+                                        join {
+                                          $w$j_s8TlC [InlPrag=NOUSERINLINE[0],
+                                                      Dmd=<L,1*C1(C1(C1(C1(C1(C1(U(U,U)))))))>]
+                                            :: State# RealWorld
+                                               -> Buffer Word8
+                                               -> Addr#
+                                               -> GHC.ForeignPtr.ForeignPtrContents
+                                               -> Int#
+                                               -> Int#
+                                               -> (# State# RealWorld, [CharBufElem] #)
+                                          [LclId[JoinId(6)],
+                                           Arity=6,
+                                           Str=<S,U><L,U><L,U><L,U><S,U><S,U>,
+                                           Unf=OtherCon []]
+                                          $w$j_s8TlC (w4_s8Tlm [OS=OneShot] :: State# RealWorld)
+                                                     (ww2_s8Tlq [OS=OneShot] :: Buffer Word8)
+                                                     (ww3_s8Tlu [OS=OneShot] :: Addr#)
+                                                     (ww4_s8Tlv [OS=OneShot]
+                                                        :: GHC.ForeignPtr.ForeignPtrContents)
+                                                     (ww5_s8Tly [OS=OneShot] :: Int#)
+                                                     (ww6_s8Tlz [OS=OneShot] :: Int#)
+                                            = let {
+                                                ww7_X8PGh [Dmd=<S,U>] :: Int#
+                                                [LclId]
+                                                ww7_X8PGh = -# ww6_s8Tlz ww5_s8Tly } in
+                                              case <=# ww7_X8PGh 0# of {
+                                                __DEFAULT ->
+                                                  join {
+                                                    exit1_X11 [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+                                                      :: [CharBufElem]
+                                                         -> State# RealWorld
+                                                         -> (# State# RealWorld, [CharBufElem] #)
+                                                    [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>]
+                                                    exit1_X11 (w5_s8PDd [OS=OneShot]
+                                                                 :: [CharBufElem])
+                                                              (w6_s8PDe [OS=OneShot]
+                                                                 :: State# RealWorld)
+                                                      = case readWideCharOffAddr#
+                                                               @ RealWorld ww3_s8Tlu 0# w6_s8PDe
+                                                        of
+                                                        { (# ipv12_i7O62, ipv13_i7O63 #) ->
+                                                        case touch#
+                                                               @ 'LiftedRep
+                                                               @ GHC.ForeignPtr.ForeignPtrContents
+                                                               ww4_s8Tlv
+                                                               ipv12_i7O62
+                                                        of s'_i8S9U
+                                                        { __DEFAULT ->
+                                                        case $wgo_s8TlL ww2_s8Tlq s'_i8S9U of
+                                                        { (# ipv14_X7Vex, ipv15_X7Vez #) ->
+                                                        (# ipv14_X7Vex,
+                                                           ++
+                                                             @ Char
+                                                             (GHC.Types.:
+                                                                @ CharBufElem
+                                                                (GHC.Types.C# ipv13_i7O63)
+                                                                w5_s8PDd)
+                                                             ipv15_X7Vez #)
+                                                        }
+                                                        }
+                                                        } } in
+                                                  joinrec {
+                                                    $wf_s8PDj [InlPrag=NOUSERINLINE[0],
+                                                               Occ=LoopBreaker]
+                                                      :: Int#
+                                                         -> [CharBufElem]
+                                                         -> State# RealWorld
+                                                         -> (# State# RealWorld, [CharBufElem] #)
+                                                    [LclId[JoinId(3)],
+                                                     Arity=3,
+                                                     Str=<S,1*U><L,U><S,U>,
+                                                     Unf=OtherCon []]
+                                                    $wf_s8PDj (ww8_s8PDh :: Int#)
+                                                              (w5_s8PDd :: [CharBufElem])
+                                                              (w6_s8PDe :: State# RealWorld)
+                                                      = case ww8_s8PDh of ds13_X8PjO {
+                                                          __DEFAULT ->
+                                                            case readWideCharOffAddr#
+                                                                   @ RealWorld
+                                                                   ww3_s8Tlu
+                                                                   ds13_X8PjO
+                                                                   w6_s8PDe
+                                                            of
+                                                            { (# ipv12_i7O62, ipv13_i7O63 #) ->
+                                                            jump $wf_s8PDj
+                                                              (-# ds13_X8PjO 1#)
+                                                              (GHC.Types.:
+                                                                 @ CharBufElem
+                                                                 (GHC.Types.C# ipv13_i7O63)
+                                                                 w5_s8PDd)
+                                                              ipv12_i7O62
+                                                            };
+                                                          0# -> jump exit1_X11 w5_s8PDd w6_s8PDe
+                                                        }; } in
+                                                  jump $wf_s8PDj
+                                                    (-# ww7_X8PGh 1#)
+                                                    (GHC.Types.[] @ CharBufElem)
+                                                    w4_s8Tlm;
+                                                1# ->
+                                                  case touch#
+                                                         @ 'LiftedRep
+                                                         @ GHC.ForeignPtr.ForeignPtrContents
+                                                         ww4_s8Tlv
+                                                         w4_s8Tlm
+                                                  of s'_i8S9U
+                                                  { __DEFAULT ->
+                                                  case $wgo_s8TlL ww2_s8Tlq s'_i8S9U of
+                                                  { (# ipv12_X7Vex, ipv13_X7Vez #) ->
+                                                  (# ipv12_X7Vex,
+                                                     ++
+                                                       @ Char
+                                                       (GHC.Types.[] @ CharBufElem)
+                                                       ipv13_X7Vez #)
+                                                  }
+                                                  }
+                                              } } in
+                                        case why_a8RKN of {
+                                          __DEFAULT ->
+                                            case ((ds7_i8S31 wild3_i8S1V to'_a8RKP)
+                                                  `cast` (GHC.Types.N:IO[0]
+                                                              <(Buffer Word8, Buffer CharBufElem)>_R
+                                                          :: (IO
+                                                                (Buffer Word8,
+                                                                 Buffer CharBufElem) :: *)
+                                                             ~R# (State# RealWorld
+                                                                  -> (# State# RealWorld,
+                                                                        (Buffer Word8,
+                                                                         Buffer
+                                                                           CharBufElem) #) :: *)))
+                                                   ipv10_X7IBD
+                                            of
+                                            { (# ipv12_X7IBU, ipv13_X7IBW #) ->
+                                            case ipv13_X7IBW of { (ww3_s8Tlq, ww4_s8Tlr) ->
+                                            case ww4_s8Tlr of
+                                            { Buffer ww6_s8Tlu ww7_s8Tlv ww8_s8Tlw ww9_s8Tlx
+                                                     ww10_s8Tly ww11_s8Tlz ->
+                                            jump $w$j_s8TlC
+                                              ipv12_X7IBU
+                                              ww3_s8Tlq
+                                              ww6_s8Tlu
+                                              ww7_s8Tlv
+                                              ww10_s8Tly
+                                              ww11_s8Tlz
+                                            }
+                                            }
+                                            };
+                                          OutputUnderflow ->
+                                            case to'_a8RKP of
+                                            { Buffer ww3_s8Tlu ww4_s8Tlv ww5_s8Tlw ww6_s8Tlx
+                                                     ww7_s8Tly ww8_s8Tlz ->
+                                            jump $w$j_s8TlC
+                                              ipv10_X7IBD
+                                              wild3_i8S1V
+                                              ww3_s8Tlu
+                                              ww4_s8Tlv
+                                              ww7_s8Tly
+                                              ww8_s8Tlz
+                                            }
+                                        };
+                                      1# ->
+                                        case to'_a8RKP of
+                                        { Buffer dt7_i8S9I dt8_i8S9J ds13_i8S9K dt9_i8S9L dt10_i8S9M
+                                                 dt11_i8S9N ->
+                                        let {
+                                          ww2_X8PG8 [Dmd=<S,U>] :: Int#
+                                          [LclId]
+                                          ww2_X8PG8 = -# dt11_i8S9N dt10_i8S9M } in
+                                        case <=# ww2_X8PG8 0# of {
+                                          __DEFAULT ->
+                                            join {
+                                              exit1_X11 [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+                                                :: [CharBufElem]
+                                                   -> State# RealWorld
+                                                   -> (# State# RealWorld, [CharBufElem] #)
+                                              [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>]
+                                              exit1_X11 (w4_s8PDd [OS=OneShot] :: [CharBufElem])
+                                                        (w5_s8PDe [OS=OneShot] :: State# RealWorld)
+                                                = case readWideCharOffAddr#
+                                                         @ RealWorld dt7_i8S9I 0# w5_s8PDe
+                                                  of
+                                                  { (# ipv12_i7O62, ipv13_i7O63 #) ->
+                                                  case touch#
+                                                         @ 'LiftedRep
+                                                         @ GHC.ForeignPtr.ForeignPtrContents
+                                                         dt8_i8S9J
+                                                         ipv12_i7O62
+                                                  of s'_i8S9U
+                                                  { __DEFAULT ->
+                                                  (# s'_i8S9U,
+                                                     GHC.Types.:
+                                                       @ CharBufElem
+                                                       (GHC.Types.C# ipv13_i7O63)
+                                                       w4_s8PDd #)
+                                                  }
+                                                  } } in
+                                            joinrec {
+                                              $wf_s8PDj [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+                                                :: Int#
+                                                   -> [CharBufElem]
+                                                   -> State# RealWorld
+                                                   -> (# State# RealWorld, [CharBufElem] #)
+                                              [LclId[JoinId(3)],
+                                               Arity=3,
+                                               Str=<S,1*U><L,U><S,U>,
+                                               Unf=OtherCon []]
+                                              $wf_s8PDj (ww3_s8PDh :: Int#)
+                                                        (w4_s8PDd :: [CharBufElem])
+                                                        (w5_s8PDe :: State# RealWorld)
+                                                = case ww3_s8PDh of ds14_X8PjO {
+                                                    __DEFAULT ->
+                                                      case readWideCharOffAddr#
+                                                             @ RealWorld
+                                                             dt7_i8S9I
+                                                             ds14_X8PjO
+                                                             w5_s8PDe
+                                                      of
+                                                      { (# ipv12_i7O62, ipv13_i7O63 #) ->
+                                                      jump $wf_s8PDj
+                                                        (-# ds14_X8PjO 1#)
+                                                        (GHC.Types.:
+                                                           @ CharBufElem
+                                                           (GHC.Types.C# ipv13_i7O63)
+                                                           w4_s8PDd)
+                                                        ipv12_i7O62
+                                                      };
+                                                    0# -> jump exit1_X11 w4_s8PDd w5_s8PDe
+                                                  }; } in
+                                            jump $wf_s8PDj
+                                              (-# ww2_X8PG8 1#)
+                                              (GHC.Types.[] @ CharBufElem)
+                                              ipv10_X7IBD;
+                                          1# ->
+                                            case touch#
+                                                   @ 'LiftedRep
+                                                   @ GHC.ForeignPtr.ForeignPtrContents
+                                                   dt8_i8S9J
+                                                   ipv10_X7IBD
+                                            of s'_i8S9U
+                                            { __DEFAULT ->
+                                            (# s'_i8S9U, GHC.Types.[] @ CharBufElem #)
+                                            }
+                                        }
+                                        }
+                                    }
+                                    }
+                                    }
+                                    }
+                                    }; } in
+                            $wgo_s8TlL
+                              (GHC.IO.Buffer.Buffer
+                                 @ Word8
+                                 ww_s8Tm1
+                                 (GHC.ForeignPtr.PlainForeignPtr ipv2_i8S8K)
+                                 GHC.IO.Buffer.ReadBuffer
+                                 ww1_s8TlT
+                                 0#
+                                 ww1_s8TlT)
+                              ipv5_i8S9k
+                            }
+                            };
+                          1# -> case GHC.ForeignPtr.mallocForeignPtrBytes2 of wild1_00 { }
+                        } } in
+                  case <=# ww1_s8TlT 1# of {
+                    __DEFAULT -> jump $j_s8SzC ww1_s8TlT;
+                    1# -> jump $j_s8SzC 1#
+                  }
+                  })
+               `cast` (<TextDecoder dstate_a8RPc>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <[CharBufElem]>_R)
+                       :: (TextDecoder dstate_a8RPc
+                           -> State# RealWorld -> (# State# RealWorld, [CharBufElem] #) :: *)
+                          ~R# (TextDecoder dstate_a8RPc -> IO [CharBufElem] :: *)))
+              ipv_i8SeU
+            } } in
+      joinrec {
+        $wloop_s8TlV [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: Int# -> State# RealWorld -> (# State# RealWorld, String #)
+        [LclId[JoinId(2)], Arity=2, Str=<S,U><S,U>, Unf=OtherCon []]
+        $wloop_s8TlV (ww1_s8TlT :: Int#) (w2_s8TlQ :: State# RealWorld)
+          = case readInt8OffAddr# @ RealWorld ww_s8Tm1 ww1_s8TlT w2_s8TlQ of
+            { (# ipv_i8SeU, ipv1_i8SeV #) ->
+            case ipv1_i8SeV of {
+              __DEFAULT -> jump $wloop_s8TlV (+# ww1_s8TlT 1#) ipv_i8SeU;
+              0# -> jump exit_XG ww1_s8TlT ipv_i8SeU
+            }
+            }; } in
+      jump $wloop_s8TlV 0# w1_s8TlY
+
+-- RHS size: {terms: 10, types: 6, coercions: 0, joins: 0/0}
+GHC.Foreign.peekCString1 [InlPrag=NOUSERINLINE[0]]
+  :: TextEncoding
+     -> CString -> State# RealWorld -> (# State# RealWorld, String #)
+[GblId,
+ Arity=3,
+ Str=<S,U><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s8TlW [Occ=Once] :: TextEncoding)
+                 (w1_s8TlX [Occ=Once!] :: CString)
+                 (w2_s8TlY [Occ=Once] :: State# RealWorld) ->
+                 case w1_s8TlX of { GHC.Ptr.Ptr ww1_s8Tm1 [Occ=Once] ->
+                 GHC.Foreign.$wpeekCString w_s8TlW ww1_s8Tm1 w2_s8TlY
+                 }}]
+GHC.Foreign.peekCString1
+  = \ (w_s8TlW :: TextEncoding)
+      (w1_s8TlX :: CString)
+      (w2_s8TlY :: State# RealWorld) ->
+      case w1_s8TlX of { GHC.Ptr.Ptr ww1_s8Tm1 ->
+      GHC.Foreign.$wpeekCString w_s8TlW ww1_s8Tm1 w2_s8TlY
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+peekCString :: TextEncoding -> CString -> IO String
+[GblId,
+ Arity=3,
+ Str=<S,U><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Foreign.peekCString1
+               `cast` (<TextEncoding>_R
+                       ->_R <CString>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+                       :: (TextEncoding
+                           -> CString
+                           -> State# RealWorld
+                           -> (# State# RealWorld, String #) :: *)
+                          ~R# (TextEncoding -> CString -> IO String :: *))}]
+peekCString
+  = GHC.Foreign.peekCString1
+    `cast` (<TextEncoding>_R
+            ->_R <CString>_R
+            ->_R Sym (GHC.Types.N:IO[0] <String>_R)
+            :: (TextEncoding
+                -> CString
+                -> State# RealWorld
+                -> (# State# RealWorld, String #) :: *)
+               ~R# (TextEncoding -> CString -> IO String :: *))
+
+-- RHS size: {terms: 18, types: 26, coercions: 4, joins: 0/0}
+GHC.Foreign.charIsRepresentable2
+  :: GHC.Exception.SomeException
+     -> State# RealWorld -> (# State# RealWorld, Bool #)
+[GblId,
+ Arity=2,
+ Str=<S,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (e1_i8SfX [Occ=Once!, OS=OneShot]
+                    :: GHC.Exception.SomeException)
+                 (eta_Xb [Occ=Once*, OS=OneShot] :: State# RealWorld) ->
+                 case e1_i8SfX of wild_i8Sgg
+                 { GHC.Exception.SomeException @ e2_i8Sgi
+                                               $dException1_i8Sgj [Occ=Once] _ [Occ=Dead] ->
+                 case Data.Typeable.Internal.sameTypeRep
+                        @ *
+                        @ *
+                        @ e2_i8Sgi
+                        @ IOException
+                        ((GHC.Exception.$p1Exception @ e2_i8Sgi $dException1_i8Sgj)
+                         `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e2_i8Sgi>_N
+                                 :: (Data.Typeable.Internal.Typeable e2_i8Sgi :: Constraint)
+                                    ~R# (Data.Typeable.Internal.TypeRep e2_i8Sgi :: *)))
+                        GHC.IO.Exception.$fExceptionIOException4
+                 of {
+                   False ->
+                     raiseIO# @ GHC.Exception.SomeException @ Bool wild_i8Sgg eta_Xb;
+                   True -> (# eta_Xb, GHC.Types.False #)
+                 }
+                 }}]
+GHC.Foreign.charIsRepresentable2
+  = \ (e1_i8SfX [OS=OneShot] :: GHC.Exception.SomeException)
+      (eta_Xb [OS=OneShot] :: State# RealWorld) ->
+      case e1_i8SfX of wild_i8Sgg
+      { GHC.Exception.SomeException @ e2_i8Sgi $dException1_i8Sgj
+                                    e3_i8Sgk ->
+      case Data.Typeable.Internal.sameTypeRep
+             @ *
+             @ *
+             @ e2_i8Sgi
+             @ IOException
+             ((GHC.Exception.$p1Exception @ e2_i8Sgi $dException1_i8Sgj)
+              `cast` (Data.Typeable.Internal.N:Typeable[0] <*>_N <e2_i8Sgi>_N
+                      :: (Data.Typeable.Internal.Typeable e2_i8Sgi :: Constraint)
+                         ~R# (Data.Typeable.Internal.TypeRep e2_i8Sgi :: *)))
+             GHC.IO.Exception.$fExceptionIOException4
+      of {
+        False ->
+          raiseIO# @ GHC.Exception.SomeException @ Bool wild_i8Sgg eta_Xb;
+        True -> (# eta_Xb, GHC.Types.False #)
+      }
+      }
+
+-- RHS size: {terms: 57, types: 80, coercions: 5, joins: 0/0}
+GHC.Foreign.charIsRepresentable1
+  :: TextEncoding
+     -> Char -> State# RealWorld -> (# State# RealWorld, Bool #)
+[GblId,
+ Arity=3,
+ Str=<S,1*U><L,U(U)><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [20 20 0] 205 0}]
+GHC.Foreign.charIsRepresentable1
+  = \ (enc_a8RKx :: TextEncoding)
+      (c_a8RKy :: Char)
+      (eta_B1 :: State# RealWorld) ->
+      case enc_a8RKx of enc1_X8RKP
+      { TextEncoding @ ipv_s8SfL @ ipv1_s8SfM ipv2_s8SfN ipv3_s8SfO
+                     ipv4_s8SfP ->
+      catch#
+        @ Bool
+        @ GHC.Exception.SomeException
+        (GHC.Foreign.charIsRepresentable3
+           @ Bool
+           enc1_X8RKP
+           (GHC.Types.: @ Char c_a8RKy (GHC.Types.[] @ Char))
+           ((\ (cstr_a8RKz :: CString)
+               (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case cstr_a8RKz of { GHC.Ptr.Ptr ww1_s8Tm1 ->
+               case GHC.Foreign.$wpeekCString enc1_X8RKP ww1_s8Tm1 s_i7IAv of
+               { (# ipv5_i7IAy, ipv6_i7IAz #) ->
+               case ipv6_i7IAz of {
+                 [] -> (# ipv5_i7IAy, GHC.Types.False #);
+                 : ch_a8RKB ds_d8S5R ->
+                   case ds_d8S5R of {
+                     [] ->
+                       case ch_a8RKB of { C# x_a5ih ->
+                       case c_a8RKy of { C# y_a5il ->
+                       case eqChar# x_a5ih y_a5il of {
+                         __DEFAULT -> (# ipv5_i7IAy, GHC.Types.False #);
+                         1# -> (# ipv5_i7IAy, GHC.Types.True #)
+                       }
+                       }
+                       };
+                     : ipv7_s8Sg8 ipv8_s8Sga -> (# ipv5_i7IAy, GHC.Types.False #)
+                   }
+               }
+               }
+               })
+            `cast` (<CString>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+                    :: (CString
+                        -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+                       ~R# (CString -> IO Bool :: *))))
+        GHC.Foreign.charIsRepresentable2
+        eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+charIsRepresentable :: TextEncoding -> Char -> IO Bool
+[GblId,
+ Arity=3,
+ Str=<S,1*U><L,U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Foreign.charIsRepresentable1
+               `cast` (<TextEncoding>_R
+                       ->_R <Char>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+                       :: (TextEncoding
+                           -> Char -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+                          ~R# (TextEncoding -> Char -> IO Bool :: *))}]
+charIsRepresentable
+  = GHC.Foreign.charIsRepresentable1
+    `cast` (<TextEncoding>_R
+            ->_R <Char>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+            :: (TextEncoding
+                -> Char -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+               ~R# (TextEncoding -> Char -> IO Bool :: *))
+
+

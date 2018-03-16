@@ -1,0 +1,821 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:00.651635451 UTC
+
+Result size of Tidy Core
+  = {terms: 298, types: 614, coercions: 99, joins: 0/0}
+
+-- RHS size: {terms: 13, types: 19, coercions: 0, joins: 0/0}
+GHC.MVar.$fEqMVar_$c== :: forall a. MVar a -> MVar a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amKB)
+                 (ds_dmMN [Occ=Once!] :: MVar a_amKB)
+                 (ds1_dmMO [Occ=Once!] :: MVar a_amKB) ->
+                 case ds_dmMN of { MVar mvar1#_amFI [Occ=Once] ->
+                 case ds1_dmMO of { MVar mvar2#_amFJ [Occ=Once] ->
+                 tagToEnum#
+                   @ Bool (sameMVar# @ RealWorld @ a_amKB mvar1#_amFI mvar2#_amFJ)
+                 }
+                 }}]
+GHC.MVar.$fEqMVar_$c==
+  = \ (@ a_amKB)
+      (ds_dmMN :: MVar a_amKB)
+      (ds1_dmMO :: MVar a_amKB) ->
+      case ds_dmMN of { MVar mvar1#_amFI ->
+      case ds1_dmMO of { MVar mvar2#_amFJ ->
+      tagToEnum#
+        @ Bool (sameMVar# @ RealWorld @ a_amKB mvar1#_amFI mvar2#_amFJ)
+      }
+      }
+
+-- RHS size: {terms: 17, types: 19, coercions: 0, joins: 0/0}
+GHC.MVar.$fEqMVar_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. MVar a -> MVar a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_amKB)
+                 (x_a22b [Occ=Once!] :: MVar a_amKB)
+                 (y_a22c [Occ=Once!] :: MVar a_amKB) ->
+                 case x_a22b of { MVar mvar1#_amFI [Occ=Once] ->
+                 case y_a22c of { MVar mvar2#_amFJ [Occ=Once] ->
+                 case sameMVar# @ RealWorld @ a_amKB mvar1#_amFI mvar2#_amFJ of {
+                   __DEFAULT -> GHC.Types.True;
+                   1# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.MVar.$fEqMVar_$c/=
+  = \ (@ a_amKB) (eta_B2 :: MVar a_amKB) (eta1_B1 :: MVar a_amKB) ->
+      case eta_B2 of { MVar mvar1#_amFI ->
+      case eta1_B1 of { MVar mvar2#_amFJ ->
+      case sameMVar# @ RealWorld @ a_amKB mvar1#_amFI mvar2#_amFJ of {
+        __DEFAULT -> GHC.Types.True;
+        1# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.MVar.$fEqMVar [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Eq (MVar a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_amFH) ->
+       GHC.Classes.C:Eq TYPE: MVar a_amFH
+                        GHC.MVar.$fEqMVar_$c== @ a_amFH
+                        GHC.MVar.$fEqMVar_$c/= @ a_amFH]
+GHC.MVar.$fEqMVar
+  = \ (@ a_amKB) ->
+      GHC.Classes.C:Eq
+        @ (MVar a_amKB)
+        (GHC.MVar.$fEqMVar_$c== @ a_amKB)
+        (GHC.MVar.$fEqMVar_$c/= @ a_amKB)
+
+-- RHS size: {terms: 10, types: 30, coercions: 0, joins: 0/0}
+GHC.MVar.newEmptyMVar1
+  :: forall a. State# RealWorld -> (# State# RealWorld, MVar a #)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJZ) (s#_XmGm [Occ=Once] :: State# RealWorld) ->
+                 case newMVar# @ RealWorld @ a_amJZ s#_XmGm of
+                 { (# ipv_smN6 [Occ=Once], ipv1_smN7 [Occ=Once] #) ->
+                 (# ipv_smN6, GHC.MVar.MVar @ a_amJZ ipv1_smN7 #)
+                 }}]
+GHC.MVar.newEmptyMVar1
+  = \ (@ a_amJZ) (s#_XmGm :: State# RealWorld) ->
+      case newMVar# @ RealWorld @ a_amJZ s#_XmGm of
+      { (# ipv_smN6, ipv1_smN7 #) ->
+      (# ipv_smN6, GHC.MVar.MVar @ a_amJZ ipv1_smN7 #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 7, joins: 0/0}
+newEmptyMVar :: forall a. IO (MVar a)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.newEmptyMVar1
+               `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <MVar a>_R)
+                       :: (forall a.
+                           State# RealWorld -> (# State# RealWorld, MVar a #) :: *)
+                          ~R# (forall a. IO (MVar a) :: *))}]
+newEmptyMVar
+  = GHC.MVar.newEmptyMVar1
+    `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <MVar a>_R)
+            :: (forall a.
+                State# RealWorld -> (# State# RealWorld, MVar a #) :: *)
+               ~R# (forall a. IO (MVar a) :: *))
+
+-- RHS size: {terms: 9, types: 13, coercions: 0, joins: 0/0}
+GHC.MVar.takeMVar1
+  :: forall a.
+     MVar a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJS)
+                 (ds_dmMz [Occ=Once!] :: MVar a_amJS)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmMz of { MVar mvar#_amFZ [Occ=Once] ->
+                 takeMVar# @ RealWorld @ a_amJS mvar#_amFZ eta_B1
+                 }}]
+GHC.MVar.takeMVar1
+  = \ (@ a_amJS)
+      (ds_dmMz :: MVar a_amJS)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmMz of { MVar mvar#_amFZ ->
+      takeMVar# @ RealWorld @ a_amJS mvar#_amFZ eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+takeMVar :: forall a. MVar a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.takeMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           MVar a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. MVar a -> IO a :: *))}]
+takeMVar
+  = GHC.MVar.takeMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                MVar a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. MVar a -> IO a :: *))
+
+-- RHS size: {terms: 9, types: 13, coercions: 0, joins: 0/0}
+GHC.MVar.readMVar1
+  :: forall a.
+     MVar a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJL)
+                 (ds_dmMu [Occ=Once!] :: MVar a_amJL)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmMu of { MVar mvar#_amG1 [Occ=Once] ->
+                 readMVar# @ RealWorld @ a_amJL mvar#_amG1 eta_B1
+                 }}]
+GHC.MVar.readMVar1
+  = \ (@ a_amJL)
+      (ds_dmMu :: MVar a_amJL)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmMu of { MVar mvar#_amG1 ->
+      readMVar# @ RealWorld @ a_amJL mvar#_amG1 eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+readMVar :: forall a. MVar a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.readMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           MVar a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. MVar a -> IO a :: *))}]
+readMVar
+  = GHC.MVar.readMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                MVar a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. MVar a -> IO a :: *))
+
+-- RHS size: {terms: 16, types: 23, coercions: 0, joins: 0/0}
+GHC.MVar.putMVar1
+  :: forall a.
+     MVar a -> a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJC)
+                 (ds_dmMo [Occ=Once!] :: MVar a_amJC)
+                 (x_amG4 [Occ=Once] :: a_amJC)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmMo of { MVar mvar#_amG3 [Occ=Once] ->
+                 case putMVar# @ RealWorld @ a_amJC mvar#_amG3 x_amG4 eta_B1
+                 of s2#_amG6
+                 { __DEFAULT ->
+                 (# s2#_amG6, GHC.Tuple.() #)
+                 }
+                 }}]
+GHC.MVar.putMVar1
+  = \ (@ a_amJC)
+      (ds_dmMo :: MVar a_amJC)
+      (x_amG4 :: a_amJC)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmMo of { MVar mvar#_amG3 ->
+      case putMVar# @ RealWorld @ a_amJC mvar#_amG3 x_amG4 eta_B1
+      of s2#_amG6
+      { __DEFAULT ->
+      (# s2#_amG6, GHC.Tuple.() #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+putMVar :: forall a. MVar a -> a -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.putMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R <a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           MVar a -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. MVar a -> a -> IO () :: *))}]
+putMVar
+  = GHC.MVar.putMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                MVar a -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. MVar a -> a -> IO () :: *))
+
+-- RHS size: {terms: 17, types: 35, coercions: 0, joins: 0/0}
+GHC.MVar.newMVar1
+  :: forall a.
+     a -> State# RealWorld -> (# State# RealWorld, MVar a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amK9)
+                 (value_amFX [Occ=Once] :: a_amK9)
+                 (s_imNz [Occ=Once] :: State# RealWorld) ->
+                 case newMVar# @ RealWorld @ a_amK9 s_imNz of
+                 { (# ipv_smN6 [Occ=Once], ipv1_smN7 #) ->
+                 case putMVar# @ RealWorld @ a_amK9 ipv1_smN7 value_amFX ipv_smN6
+                 of s2#_amG6
+                 { __DEFAULT ->
+                 (# s2#_amG6, GHC.MVar.MVar @ a_amK9 ipv1_smN7 #)
+                 }
+                 }}]
+GHC.MVar.newMVar1
+  = \ (@ a_amK9)
+      (value_amFX :: a_amK9)
+      (s_imNz :: State# RealWorld) ->
+      case newMVar# @ RealWorld @ a_amK9 s_imNz of
+      { (# ipv_smN6, ipv1_smN7 #) ->
+      case putMVar# @ RealWorld @ a_amK9 ipv1_smN7 value_amFX ipv_smN6
+      of s2#_amG6
+      { __DEFAULT ->
+      (# s2#_amG6, GHC.MVar.MVar @ a_amK9 ipv1_smN7 #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+newMVar :: forall a. a -> IO (MVar a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.newMVar1
+               `cast` (forall (a :: <*>_N).
+                       <a>_R ->_R Sym (GHC.Types.N:IO[0] <MVar a>_R)
+                       :: (forall a.
+                           a -> State# RealWorld -> (# State# RealWorld, MVar a #) :: *)
+                          ~R# (forall a. a -> IO (MVar a) :: *))}]
+newMVar
+  = GHC.MVar.newMVar1
+    `cast` (forall (a :: <*>_N).
+            <a>_R ->_R Sym (GHC.Types.N:IO[0] <MVar a>_R)
+            :: (forall a.
+                a -> State# RealWorld -> (# State# RealWorld, MVar a #) :: *)
+               ~R# (forall a. a -> IO (MVar a) :: *))
+
+-- RHS size: {terms: 22, types: 46, coercions: 0, joins: 0/0}
+GHC.MVar.tryTakeMVar1
+  :: forall a.
+     MVar a -> State# RealWorld -> (# State# RealWorld, Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJr)
+                 (ds_dmM5 [Occ=Once!] :: MVar a_amJr)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmM5 of { MVar m_amG7 [Occ=Once] ->
+                 case tryTakeMVar# @ RealWorld @ a_amJr m_amG7 eta_B1 of
+                 { (# ipv_smNZ [Occ=Once*], ipv1_smO0 [Occ=Once!],
+                      ipv2_smO1 [Occ=Once] #) ->
+                 case ipv1_smO0 of {
+                   __DEFAULT -> (# ipv_smNZ, GHC.Base.Just @ a_amJr ipv2_smO1 #);
+                   0# -> (# ipv_smNZ, GHC.Base.Nothing @ a_amJr #)
+                 }
+                 }
+                 }}]
+GHC.MVar.tryTakeMVar1
+  = \ (@ a_amJr)
+      (ds_dmM5 :: MVar a_amJr)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmM5 of { MVar m_amG7 ->
+      case tryTakeMVar# @ RealWorld @ a_amJr m_amG7 eta_B1 of
+      { (# ipv_smNZ, ipv1_smO0, ipv2_smO1 #) ->
+      case ipv1_smO0 of {
+        __DEFAULT -> (# ipv_smNZ, GHC.Base.Just @ a_amJr ipv2_smO1 #);
+        0# -> (# ipv_smNZ, GHC.Base.Nothing @ a_amJr #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+tryTakeMVar :: forall a. MVar a -> IO (Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.tryTakeMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <Maybe a>_R)
+                       :: (forall a.
+                           MVar a -> State# RealWorld -> (# State# RealWorld, Maybe a #) :: *)
+                          ~R# (forall a. MVar a -> IO (Maybe a) :: *))}]
+tryTakeMVar
+  = GHC.MVar.tryTakeMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <Maybe a>_R)
+            :: (forall a.
+                MVar a -> State# RealWorld -> (# State# RealWorld, Maybe a #) :: *)
+               ~R# (forall a. MVar a -> IO (Maybe a) :: *))
+
+-- RHS size: {terms: 23, types: 40, coercions: 0, joins: 0/0}
+GHC.MVar.tryPutMVar1
+  :: forall a.
+     MVar a -> a -> State# RealWorld -> (# State# RealWorld, Bool #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJi)
+                 (ds_dmLQ [Occ=Once!] :: MVar a_amJi)
+                 (x_amGd [Occ=Once] :: a_amJi)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmLQ of { MVar mvar#_amGc [Occ=Once] ->
+                 case tryPutMVar# @ RealWorld @ a_amJi mvar#_amGc x_amGd eta_B1 of
+                 { (# ipv_smO6 [Occ=Once*], ipv1_smO7 [Occ=Once!] #) ->
+                 case ipv1_smO7 of {
+                   __DEFAULT -> (# ipv_smO6, GHC.Types.True #);
+                   0# -> (# ipv_smO6, GHC.Types.False #)
+                 }
+                 }
+                 }}]
+GHC.MVar.tryPutMVar1
+  = \ (@ a_amJi)
+      (ds_dmLQ :: MVar a_amJi)
+      (x_amGd :: a_amJi)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmLQ of { MVar mvar#_amGc ->
+      case tryPutMVar# @ RealWorld @ a_amJi mvar#_amGc x_amGd eta_B1 of
+      { (# ipv_smO6, ipv1_smO7 #) ->
+      case ipv1_smO7 of {
+        __DEFAULT -> (# ipv_smO6, GHC.Types.True #);
+        0# -> (# ipv_smO6, GHC.Types.False #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+tryPutMVar :: forall a. MVar a -> a -> IO Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.tryPutMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R <a>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+                       :: (forall a.
+                           MVar a
+                           -> a -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+                          ~R# (forall a. MVar a -> a -> IO Bool :: *))}]
+tryPutMVar
+  = GHC.MVar.tryPutMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <a>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+            :: (forall a.
+                MVar a
+                -> a -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+               ~R# (forall a. MVar a -> a -> IO Bool :: *))
+
+-- RHS size: {terms: 22, types: 46, coercions: 0, joins: 0/0}
+GHC.MVar.tryReadMVar1
+  :: forall a.
+     MVar a -> State# RealWorld -> (# State# RealWorld, Maybe a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amJ7)
+                 (ds_dmLx [Occ=Once!] :: MVar a_amJ7)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmLx of { MVar m_amGh [Occ=Once] ->
+                 case tryReadMVar# @ RealWorld @ a_amJ7 m_amGh eta_B1 of
+                 { (# ipv_smOc [Occ=Once*], ipv1_smOd [Occ=Once!],
+                      ipv2_smOe [Occ=Once] #) ->
+                 case ipv1_smOd of {
+                   __DEFAULT -> (# ipv_smOc, GHC.Base.Just @ a_amJ7 ipv2_smOe #);
+                   0# -> (# ipv_smOc, GHC.Base.Nothing @ a_amJ7 #)
+                 }
+                 }
+                 }}]
+GHC.MVar.tryReadMVar1
+  = \ (@ a_amJ7)
+      (ds_dmLx :: MVar a_amJ7)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmLx of { MVar m_amGh ->
+      case tryReadMVar# @ RealWorld @ a_amJ7 m_amGh eta_B1 of
+      { (# ipv_smOc, ipv1_smOd, ipv2_smOe #) ->
+      case ipv1_smOd of {
+        __DEFAULT -> (# ipv_smOc, GHC.Base.Just @ a_amJ7 ipv2_smOe #);
+        0# -> (# ipv_smOc, GHC.Base.Nothing @ a_amJ7 #)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+tryReadMVar :: forall a. MVar a -> IO (Maybe a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.tryReadMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <Maybe a>_R)
+                       :: (forall a.
+                           MVar a -> State# RealWorld -> (# State# RealWorld, Maybe a #) :: *)
+                          ~R# (forall a. MVar a -> IO (Maybe a) :: *))}]
+tryReadMVar
+  = GHC.MVar.tryReadMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <Maybe a>_R)
+            :: (forall a.
+                MVar a -> State# RealWorld -> (# State# RealWorld, Maybe a #) :: *)
+               ~R# (forall a. MVar a -> IO (Maybe a) :: *))
+
+-- RHS size: {terms: 19, types: 32, coercions: 0, joins: 0/0}
+GHC.MVar.isEmptyMVar1
+  :: forall a.
+     MVar a -> State# RealWorld -> (# State# RealWorld, Bool #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amIY)
+                 (ds_dmLn [Occ=Once!] :: MVar a_amIY)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmLn of { MVar mv#_amGm [Occ=Once] ->
+                 case isEmptyMVar# @ RealWorld @ a_amIY mv#_amGm eta_B1 of
+                 { (# ipv_smOj [Occ=Once], ipv1_smOk [Occ=Once!] #) ->
+                 (# ipv_smOj,
+                    case ipv1_smOk of {
+                      __DEFAULT -> GHC.Types.True;
+                      0# -> GHC.Types.False
+                    } #)
+                 }
+                 }}]
+GHC.MVar.isEmptyMVar1
+  = \ (@ a_amIY)
+      (ds_dmLn :: MVar a_amIY)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmLn of { MVar mv#_amGm ->
+      case isEmptyMVar# @ RealWorld @ a_amIY mv#_amGm eta_B1 of
+      { (# ipv_smOj, ipv1_smOk #) ->
+      (# ipv_smOj,
+         case ipv1_smOk of {
+           __DEFAULT -> GHC.Types.True;
+           0# -> GHC.Types.False
+         } #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+isEmptyMVar :: forall a. MVar a -> IO Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.isEmptyMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+                       :: (forall a.
+                           MVar a -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+                          ~R# (forall a. MVar a -> IO Bool :: *))}]
+isEmptyMVar
+  = GHC.MVar.isEmptyMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R Sym (GHC.Types.N:IO[0] <Bool>_R)
+            :: (forall a.
+                MVar a -> State# RealWorld -> (# State# RealWorld, Bool #) :: *)
+               ~R# (forall a. MVar a -> IO Bool :: *))
+
+-- RHS size: {terms: 17, types: 39, coercions: 2, joins: 0/0}
+GHC.MVar.addMVarFinalizer1
+  :: forall a.
+     MVar a -> IO () -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_amIJ)
+                 (ds_dmL2 [Occ=Once!] :: MVar a_amIJ)
+                 (ds1_dmL3 [Occ=Once] :: IO ())
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_dmL2 of { MVar m_amGq [Occ=Once] ->
+                 case mkWeak#
+                        @ 'UnliftedRep
+                        @ (MVar# RealWorld a_amIJ)
+                        @ ()
+                        @ ()
+                        m_amGq
+                        GHC.Tuple.()
+                        (ds1_dmL3
+                         `cast` (GHC.Types.N:IO[0] <()>_R
+                                 :: (IO () :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                        eta_B1
+                 of
+                 { (# ipv_smOp [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv_smOp, GHC.Tuple.() #)
+                 }
+                 }}]
+GHC.MVar.addMVarFinalizer1
+  = \ (@ a_amIJ)
+      (ds_dmL2 :: MVar a_amIJ)
+      (ds1_dmL3 :: IO ())
+      (eta_B1 :: State# RealWorld) ->
+      case ds_dmL2 of { MVar m_amGq ->
+      case mkWeak#
+             @ 'UnliftedRep
+             @ (MVar# RealWorld a_amIJ)
+             @ ()
+             @ ()
+             m_amGq
+             GHC.Tuple.()
+             (ds1_dmL3
+              `cast` (GHC.Types.N:IO[0] <()>_R
+                      :: (IO () :: *)
+                         ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+             eta_B1
+      of
+      { (# ipv_smOp, ipv1_smOq #) ->
+      (# ipv_smOp, GHC.Tuple.() #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+addMVarFinalizer :: forall a. MVar a -> IO () -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.addMVarFinalizer1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           MVar a
+                           -> IO () -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. MVar a -> IO () -> IO () :: *))}]
+addMVarFinalizer
+  = GHC.MVar.addMVarFinalizer1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                MVar a
+                -> IO () -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. MVar a -> IO () -> IO () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.MVar.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.MVar.$trModule3 = GHC.Types.TrNameS GHC.MVar.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.MVar.$trModule2 = "GHC.MVar"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.MVar.$trModule1 = GHC.Types.TrNameS GHC.MVar.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.MVar.$trModule
+  = GHC.Types.Module GHC.MVar.$trModule3 GHC.MVar.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rmUX :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rmUX
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcRealWorld (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_rmUY :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_rmUY = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_rmUZ :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_rmUZ
+  = GHC.Types.: @ KindRep $krep1_rmUY (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep3_rmV0 :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_rmV0 = GHC.Types.: @ KindRep $krep_rmUX $krep2_rmUZ
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_rmV1 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_rmV1
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcMVar# $krep3_rmV0
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tcMVar2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.MVar.$tcMVar2 = "MVar"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tcMVar1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.MVar.$tcMVar1 = GHC.Types.TrNameS GHC.MVar.$tcMVar2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tcMVar :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.MVar.$tcMVar
+  = GHC.Types.TyCon
+      4036113818353836845##
+      5005913288165264115##
+      GHC.MVar.$trModule
+      GHC.MVar.$tcMVar1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_rmV2 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_rmV2
+  = GHC.Types.KindRepTyConApp GHC.MVar.$tcMVar $krep2_rmUZ
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tc'MVar1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.MVar.$tc'MVar1 = GHC.Types.KindRepFun $krep4_rmV1 $krep5_rmV2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tc'MVar3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.MVar.$tc'MVar3 = "'MVar"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tc'MVar2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.MVar.$tc'MVar2 = GHC.Types.TrNameS GHC.MVar.$tc'MVar3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.MVar.$tc'MVar :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.MVar.$tc'MVar
+  = GHC.Types.TyCon
+      1422225975627779673##
+      4396512866399833428##
+      GHC.MVar.$trModule
+      GHC.MVar.$tc'MVar2
+      1#
+      GHC.MVar.$tc'MVar1
+
+

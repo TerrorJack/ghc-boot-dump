@@ -1,0 +1,2040 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:00:06.122921778 UTC
+
+Result size of Tidy Core
+  = {terms: 738, types: 1,926, coercions: 148, joins: 0/7}
+
+-- RHS size: {terms: 4, types: 8, coercions: 3, joins: 0/0}
+testCoercion [InlPrag=INLINE]
+  :: forall k (f :: k -> *).
+     TestCoercion f =>
+     forall (a :: k) (b :: k). f a -> f b -> Maybe (Coercion a b)
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=True)
+         Tmpl= \ (@ k_a590P)
+                 (@ (f_a58Zn :: k_a590P -> *))
+                 (v_B1 [Occ=Once] :: TestCoercion f_a58Zn) ->
+                 v_B1
+                 `cast` (Data.Type.Coercion.N:TestCoercion[0]
+                             <k_a590P>_N <f_a58Zn>_N
+                         :: (TestCoercion f_a58Zn :: Constraint)
+                            ~R# (forall (a :: k) (b :: k).
+                                 f_a58Zn a -> f_a58Zn b -> Maybe (Coercion a b) :: *))}]
+testCoercion
+  = \ (@ k_a590P)
+      (@ (f_a58Zn :: k_a590P -> *))
+      (v_B1 :: TestCoercion f_a58Zn) ->
+      v_B1
+      `cast` (Data.Type.Coercion.N:TestCoercion[0]
+                  <k_a590P>_N <f_a58Zn>_N
+              :: (TestCoercion f_a58Zn :: Constraint)
+                 ~R# (forall (a :: k) (b :: k).
+                      f_a58Zn a -> f_a58Zn b -> Maybe (Coercion a b) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r59Bb :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_r59Bb = "Data.Type.Coercion.toEnum: bad argument"#
+
+-- RHS size: {terms: 6, types: 9, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion1
+  :: forall k (a :: k) (b :: k). Coercion a b
+[GblId, Str=x]
+Data.Type.Coercion.$fEnumCoercion1
+  = \ (@ k_a598Y)
+      (@ (a_a598Z :: k_a598Y))
+      (@ (b_a5990 :: k_a598Y)) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ (Coercion a_a598Z b_a5990)
+        (unpackCString# lvl_r59Bb)
+
+-- RHS size: {terms: 15, types: 18, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion_$ctoEnum
+  :: forall k (a :: k) (b :: k). Coercible a b => Int -> Coercion a b
+[GblId,
+ Arity=2,
+ Str=<L,U><S(S),1*U(1*U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a598Y)
+                 (@ (a_a598Z :: k_a598Y))
+                 (@ (b_a5990 :: k_a598Y))
+                 ($dCoercible_a5991 [Occ=Once] :: Coercible a_a598Z b_a5990)
+                 (ds_d59cf [Occ=Once!] :: Int) ->
+                 case ds_d59cf of { I# ds1_d59cj [Occ=Once!] ->
+                 case ds1_d59cj of {
+                   __DEFAULT ->
+                     Data.Type.Coercion.$fEnumCoercion1 @ k_a598Y @ a_a598Z @ b_a5990;
+                   0# ->
+                     Data.Type.Coercion.Coercion
+                       @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991
+                 }
+                 }}]
+Data.Type.Coercion.$fEnumCoercion_$ctoEnum
+  = \ (@ k_a598Y)
+      (@ (a_a598Z :: k_a598Y))
+      (@ (b_a5990 :: k_a598Y))
+      ($dCoercible_a5991 :: Coercible a_a598Z b_a5990)
+      (ds_d59cf :: Int) ->
+      case ds_d59cf of { I# ds1_d59cj ->
+      case ds1_d59cj of {
+        __DEFAULT ->
+          Data.Type.Coercion.$fEnumCoercion1 @ k_a598Y @ a_a598Z @ b_a5990;
+        0# ->
+          Data.Type.Coercion.Coercion
+            @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991
+      }
+      }
+
+-- RHS size: {terms: 29, types: 43, coercions: 0, joins: 0/2}
+Data.Type.Coercion.$w$cenumFromTo [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b -> Coercion a b -> [Coercion a b]
+[GblId,
+ Arity=3,
+ Str=<L,U><L,A><L,A>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 131 0}]
+Data.Type.Coercion.$w$cenumFromTo
+  = \ (@ k_s59q0)
+      (@ (a_s59q1 :: k_s59q0))
+      (@ (b_s59q2 :: k_s59q0))
+      (w_s59q3 :: Coercible a_s59q1 b_s59q2)
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      let {
+        lvl5_s59wT :: Coercion a_s59q1 b_s59q2
+        [LclId, Unf=OtherCon []]
+        lvl5_s59wT
+          = Data.Type.Coercion.Coercion
+              @ k_s59q0 @ a_s59q1 @ b_s59q2 w_s59q3 } in
+      letrec {
+        go_i1MGC [Occ=LoopBreaker] :: Int# -> [Coercion a_s59q1 b_s59q2]
+        [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+        go_i1MGC
+          = \ (x_i1MGD :: Int#) ->
+              GHC.Types.:
+                @ (Coercion a_s59q1 b_s59q2)
+                (case x_i1MGD of {
+                   __DEFAULT ->
+                     Data.Type.Coercion.$fEnumCoercion1 @ k_s59q0 @ a_s59q1 @ b_s59q2;
+                   0# -> lvl5_s59wT
+                 })
+                (case x_i1MGD of wild_X1L {
+                   __DEFAULT -> go_i1MGC (+# wild_X1L 1#);
+                   0# -> GHC.Types.[] @ (Coercion a_s59q1 b_s59q2)
+                 }); } in
+      go_i1MGC 0#
+
+-- RHS size: {terms: 16, types: 35, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion_$cenumFromTo [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b -> Coercion a b -> [Coercion a b]
+[GblId,
+ Arity=3,
+ Str=<L,U><S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_s59q0)
+                 (@ (a_s59q1 :: k_s59q0))
+                 (@ (b_s59q2 :: k_s59q0))
+                 (w_s59q3 [Occ=Once] :: Coercible a_s59q1 b_s59q2)
+                 (w1_s59q4 [Occ=Once!] :: Coercion a_s59q1 b_s59q2)
+                 (w2_s59q5 [Occ=Once!] :: Coercion a_s59q1 b_s59q2) ->
+                 case w1_s59q4 of w3_X59qb { Coercion _ [Occ=Dead] ->
+                 case w2_s59q5 of w4_X59qd { Coercion _ [Occ=Dead] ->
+                 Data.Type.Coercion.$w$cenumFromTo
+                   @ k_s59q0 @ a_s59q1 @ b_s59q2 w_s59q3 w3_X59qb w4_X59qd
+                 }
+                 }}]
+Data.Type.Coercion.$fEnumCoercion_$cenumFromTo
+  = \ (@ k_s59q0)
+      (@ (a_s59q1 :: k_s59q0))
+      (@ (b_s59q2 :: k_s59q0))
+      (w_s59q3 :: Coercible a_s59q1 b_s59q2)
+      (w1_s59q4 :: Coercion a_s59q1 b_s59q2)
+      (w2_s59q5 :: Coercion a_s59q1 b_s59q2) ->
+      case w1_s59q4 of w3_X59rB { Coercion ipv_s59r3 ->
+      case w2_s59q5 of w4_X59rH { Coercion ipv1_s59r6 ->
+      Data.Type.Coercion.$w$cenumFromTo
+        @ k_s59q0 @ a_s59q1 @ b_s59q2 w_s59q3 w3_X59rB w4_X59rH
+      }
+      }
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+lvl1_r59Bc :: [Int]
+[GblId]
+lvl1_r59Bc = GHC.Enum.efdInt 0# 0#
+
+-- RHS size: {terms: 16, types: 40, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion_$cenumFromThen
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b -> Coercion a b -> [Coercion a b]
+[GblId,
+ Arity=3,
+ Str=<L,U><S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a598Y)
+                 (@ (a_a598Z :: k_a598Y))
+                 (@ (b_a5990 :: k_a598Y))
+                 ($dCoercible_a5991 [Occ=Once] :: Coercible a_a598Z b_a5990)
+                 (x_i55bR [Occ=Once!] :: Coercion a_a598Z b_a5990)
+                 (y_i55bS [Occ=Once!] :: Coercion a_a598Z b_a5990) ->
+                 case x_i55bR of { Coercion _ [Occ=Dead] ->
+                 case y_i55bS of { Coercion _ [Occ=Dead] ->
+                 build
+                   @ (Coercion a_a598Z b_a5990)
+                   (\ (@ b1_i2hQ7)
+                      (c_i2hQ8 [Occ=Once, OS=OneShot]
+                         :: Coercion a_a598Z b_a5990 -> b1_i2hQ7 -> b1_i2hQ7)
+                      (n_i2hQ9 [Occ=Once, OS=OneShot] :: b1_i2hQ7) ->
+                      foldr
+                        @ Int
+                        @ b1_i2hQ7
+                        (mapFB
+                           @ (Coercion a_a598Z b_a5990)
+                           @ b1_i2hQ7
+                           @ Int
+                           c_i2hQ8
+                           (Data.Type.Coercion.$fEnumCoercion_$ctoEnum
+                              @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991))
+                        n_i2hQ9
+                        (GHC.Enum.efdInt 0# 0#))
+                 }
+                 }}]
+Data.Type.Coercion.$fEnumCoercion_$cenumFromThen
+  = \ (@ k_a598Y)
+      (@ (a_a598Z :: k_a598Y))
+      (@ (b_a5990 :: k_a598Y))
+      ($dCoercible_a5991 :: Coercible a_a598Z b_a5990)
+      (x_i55bR :: Coercion a_a598Z b_a5990)
+      (y_i55bS :: Coercion a_a598Z b_a5990) ->
+      case x_i55bR of { Coercion $dCoercible1_a599u ->
+      case y_i55bS of { Coercion $dCoercible2_X59bC ->
+      map
+        @ Int
+        @ (Coercion a_a598Z b_a5990)
+        (Data.Type.Coercion.$fEnumCoercion_$ctoEnum
+           @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991)
+        lvl1_r59Bc
+      }
+      }
+
+-- RHS size: {terms: 28, types: 39, coercions: 0, joins: 0/2}
+Data.Type.Coercion.$w$cenumFrom [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b -> [Coercion a b]
+[GblId,
+ Arity=2,
+ Str=<L,U><L,A>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 131 0}]
+Data.Type.Coercion.$w$cenumFrom
+  = \ (@ k_s59q8)
+      (@ (a_s59q9 :: k_s59q8))
+      (@ (b_s59qa :: k_s59q8))
+      (w_s59qb :: Coercible a_s59q9 b_s59qa)
+      _ [Occ=Dead] ->
+      let {
+        lvl5_s59wV :: Coercion a_s59q9 b_s59qa
+        [LclId, Unf=OtherCon []]
+        lvl5_s59wV
+          = Data.Type.Coercion.Coercion
+              @ k_s59q8 @ a_s59q9 @ b_s59qa w_s59qb } in
+      letrec {
+        go_i1MGC [Occ=LoopBreaker] :: Int# -> [Coercion a_s59q9 b_s59qa]
+        [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+        go_i1MGC
+          = \ (x_i1MGD :: Int#) ->
+              GHC.Types.:
+                @ (Coercion a_s59q9 b_s59qa)
+                (case x_i1MGD of {
+                   __DEFAULT ->
+                     Data.Type.Coercion.$fEnumCoercion1 @ k_s59q8 @ a_s59q9 @ b_s59qa;
+                   0# -> lvl5_s59wV
+                 })
+                (case x_i1MGD of wild_X1H {
+                   __DEFAULT -> go_i1MGC (+# wild_X1H 1#);
+                   9223372036854775807# -> GHC.Types.[] @ (Coercion a_s59q9 b_s59qa)
+                 }); } in
+      go_i1MGC 0#
+
+-- RHS size: {terms: 11, types: 23, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion_$cenumFrom [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b -> [Coercion a b]
+[GblId,
+ Arity=2,
+ Str=<L,U><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_s59q8)
+                 (@ (a_s59q9 :: k_s59q8))
+                 (@ (b_s59qa :: k_s59q8))
+                 (w_s59qb [Occ=Once] :: Coercible a_s59q9 b_s59qa)
+                 (w1_s59qc [Occ=Once!] :: Coercion a_s59q9 b_s59qa) ->
+                 case w1_s59qc of w2_X59qi { Coercion _ [Occ=Dead] ->
+                 Data.Type.Coercion.$w$cenumFrom
+                   @ k_s59q8 @ a_s59q9 @ b_s59qa w_s59qb w2_X59qi
+                 }}]
+Data.Type.Coercion.$fEnumCoercion_$cenumFrom
+  = \ (@ k_s59q8)
+      (@ (a_s59q9 :: k_s59q8))
+      (@ (b_s59qa :: k_s59q8))
+      (w_s59qb :: Coercible a_s59q9 b_s59qa)
+      (w1_s59qc :: Coercion a_s59q9 b_s59qa) ->
+      case w1_s59qc of w2_X59rL { Coercion ipv_s59rl ->
+      Data.Type.Coercion.$w$cenumFrom
+        @ k_s59q8 @ a_s59q9 @ b_s59qa w_s59qb w2_X59rL
+      }
+
+-- RHS size: {terms: 39, types: 66, coercions: 0, joins: 0/2}
+Data.Type.Coercion.$w$cenumFromThenTo [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b
+     -> Coercion a b
+     -> Coercion a b
+     -> (# Coercion a b, [Coercion a b] #)
+[GblId,
+ Arity=4,
+ Str=<L,U><L,A><L,A><L,A>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0 0] 161 30}]
+Data.Type.Coercion.$w$cenumFromThenTo
+  = \ (@ k_s59qf)
+      (@ (a_s59qg :: k_s59qf))
+      (@ (b_s59qh :: k_s59qf))
+      (w_s59qi :: Coercible a_s59qg b_s59qh)
+      _ [Occ=Dead]
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      let {
+        lvl5_s59wW :: Coercion a_s59qg b_s59qh
+        [LclId, Unf=OtherCon []]
+        lvl5_s59wW
+          = Data.Type.Coercion.Coercion
+              @ k_s59qf @ a_s59qg @ b_s59qh w_s59qi } in
+      (# lvl5_s59wW,
+         letrec {
+           go_up_i2ioZ [Occ=LoopBreaker] :: Int# -> [Coercion a_s59qg b_s59qh]
+           [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+           go_up_i2ioZ
+             = \ (x_i2ip0 :: Int#) ->
+                 case ># x_i2ip0 0# of {
+                   __DEFAULT ->
+                     GHC.Types.:
+                       @ (Coercion a_s59qg b_s59qh)
+                       (case x_i2ip0 of {
+                          __DEFAULT ->
+                            Data.Type.Coercion.$fEnumCoercion1 @ k_s59qf @ a_s59qg @ b_s59qh;
+                          0# -> lvl5_s59wW
+                        })
+                       (go_up_i2ioZ x_i2ip0);
+                   1# ->
+                     GHC.Types.:
+                       @ (Coercion a_s59qg b_s59qh)
+                       (case x_i2ip0 of {
+                          __DEFAULT ->
+                            Data.Type.Coercion.$fEnumCoercion1 @ k_s59qf @ a_s59qg @ b_s59qh;
+                          0# -> lvl5_s59wW
+                        })
+                       (GHC.Types.[] @ (Coercion a_s59qg b_s59qh))
+                 }; } in
+         go_up_i2ioZ 0# #)
+
+-- RHS size: {terms: 26, types: 72, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion_$cenumFromThenTo [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Coercion a b -> Coercion a b -> Coercion a b -> [Coercion a b]
+[GblId,
+ Arity=4,
+ Str=<L,U><S,1*H><S,1*H><S,1*H>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_s59qf)
+                 (@ (a_s59qg :: k_s59qf))
+                 (@ (b_s59qh :: k_s59qf))
+                 (w_s59qi [Occ=Once] :: Coercible a_s59qg b_s59qh)
+                 (w1_s59qj [Occ=Once!] :: Coercion a_s59qg b_s59qh)
+                 (w2_s59qk [Occ=Once!] :: Coercion a_s59qg b_s59qh)
+                 (w3_s59ql [Occ=Once!] :: Coercion a_s59qg b_s59qh) ->
+                 case w1_s59qj of w4_X59qr { Coercion _ [Occ=Dead] ->
+                 case w2_s59qk of w5_X59qt { Coercion _ [Occ=Dead] ->
+                 case w3_s59ql of w6_X59qv { Coercion _ [Occ=Dead] ->
+                 case Data.Type.Coercion.$w$cenumFromThenTo
+                        @ k_s59qf @ a_s59qg @ b_s59qh w_s59qi w4_X59qr w5_X59qt w6_X59qv
+                 of
+                 { (# ww1_s59qP [Occ=Once], ww2_s59qQ [Occ=Once] #) ->
+                 GHC.Types.: @ (Coercion a_s59qg b_s59qh) ww1_s59qP ww2_s59qQ
+                 }
+                 }
+                 }
+                 }}]
+Data.Type.Coercion.$fEnumCoercion_$cenumFromThenTo
+  = \ (@ k_s59qf)
+      (@ (a_s59qg :: k_s59qf))
+      (@ (b_s59qh :: k_s59qf))
+      (w_s59qi :: Coercible a_s59qg b_s59qh)
+      (w1_s59qj :: Coercion a_s59qg b_s59qh)
+      (w2_s59qk :: Coercion a_s59qg b_s59qh)
+      (w3_s59ql :: Coercion a_s59qg b_s59qh) ->
+      case w1_s59qj of w4_X59rW { Coercion ipv_s59ru ->
+      case w2_s59qk of w5_X59s2 { Coercion ipv1_s59rx ->
+      case w3_s59ql of w6_X59s8 { Coercion ipv2_s59rA ->
+      case Data.Type.Coercion.$w$cenumFromThenTo
+             @ k_s59qf @ a_s59qg @ b_s59qh w_s59qi w4_X59rW w5_X59s2 w6_X59s8
+      of
+      { (# ww1_s59qP, ww2_s59qQ #) ->
+      GHC.Types.: @ (Coercion a_s59qg b_s59qh) ww1_s59qP ww2_s59qQ
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl2_r59Bd :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl2_r59Bd = GHC.Types.I# 0#
+
+-- RHS size: {terms: 8, types: 16, coercions: 0, joins: 0/0}
+lvl3_r59Be :: forall k (a :: k) (b :: k). Coercion a b -> Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*H>m, Unf=OtherCon []]
+lvl3_r59Be
+  = \ (@ k_a598Y)
+      (@ (a_a598Z :: k_a598Y))
+      (@ (b_a5990 :: k_a598Y))
+      (ds_d59cm :: Coercion a_a598Z b_a5990) ->
+      case ds_d59cm of { Coercion $dCoercible_a599u -> lvl2_r59Bd }
+
+-- RHS size: {terms: 8, types: 19, coercions: 0, joins: 0/0}
+lvl4_r59Bf
+  :: forall k (a :: k) (b :: k). Coercion a b -> Coercion a b
+[GblId, Arity=1, Str=<B,1*H>x, Unf=OtherCon []]
+lvl4_r59Bf
+  = \ (@ k_a598Y)
+      (@ (a_a598Z :: k_a598Y))
+      (@ (b_a5990 :: k_a598Y))
+      (x_i55aZ :: Coercion a_a598Z b_a5990) ->
+      case x_i55aZ of { Coercion $dCoercible_a599u ->
+      Data.Type.Coercion.$fEnumCoercion1 @ k_a598Y @ a_a598Z @ b_a5990
+      }
+
+-- RHS size: {terms: 18, types: 36, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEnumCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k (a :: k) (b :: k). Coercible a b => Enum (Coercion a b)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U>m,
+ Unf=DFun: \ (@ k_a590z)
+             (@ (a_a58Zx :: k_a590z))
+             (@ (b_a58Zy :: k_a590z))
+             (v_B1 :: Coercible a_a58Zx b_a58Zy) ->
+       GHC.Enum.C:Enum TYPE: Coercion a_a58Zx b_a58Zy
+                       \ (x_i55aZ [Occ=Once!] :: Coercion a_a58Zx b_a58Zy) ->
+                         case x_i55aZ of { Coercion _ [Occ=Dead] ->
+                         Data.Type.Coercion.$fEnumCoercion1 @ k_a590z @ a_a58Zx @ b_a58Zy
+                         }
+                       \ (x_i55b8 [Occ=Once!] :: Coercion a_a58Zx b_a58Zy) ->
+                         case x_i55b8 of { Coercion _ [Occ=Dead] ->
+                         Data.Type.Coercion.$fEnumCoercion1 @ k_a590z @ a_a58Zx @ b_a58Zy
+                         }
+                       Data.Type.Coercion.$fEnumCoercion_$ctoEnum
+                         @ k_a590z @ a_a58Zx @ b_a58Zy v_B1
+                       \ (ds_d59cm [Occ=Once!] :: Coercion a_a58Zx b_a58Zy) ->
+                         case ds_d59cm of { Coercion _ [Occ=Dead] -> GHC.Types.I# 0# }
+                       Data.Type.Coercion.$fEnumCoercion_$cenumFrom
+                         @ k_a590z @ a_a58Zx @ b_a58Zy v_B1
+                       Data.Type.Coercion.$fEnumCoercion_$cenumFromThen
+                         @ k_a590z @ a_a58Zx @ b_a58Zy v_B1
+                       Data.Type.Coercion.$fEnumCoercion_$cenumFromTo
+                         @ k_a590z @ a_a58Zx @ b_a58Zy v_B1
+                       Data.Type.Coercion.$fEnumCoercion_$cenumFromThenTo
+                         @ k_a590z @ a_a58Zx @ b_a58Zy v_B1]
+Data.Type.Coercion.$fEnumCoercion
+  = \ (@ k_a598Y)
+      (@ (a_a598Z :: k_a598Y))
+      (@ (b_a5990 :: k_a598Y))
+      ($dCoercible_a5991 :: Coercible a_a598Z b_a5990) ->
+      GHC.Enum.C:Enum
+        @ (Coercion a_a598Z b_a5990)
+        (lvl4_r59Bf @ k_a598Y @ a_a598Z @ b_a5990)
+        (lvl4_r59Bf @ k_a598Y @ a_a598Z @ b_a5990)
+        (Data.Type.Coercion.$fEnumCoercion_$ctoEnum
+           @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991)
+        (lvl3_r59Be @ k_a598Y @ a_a598Z @ b_a5990)
+        (Data.Type.Coercion.$fEnumCoercion_$cenumFrom
+           @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991)
+        (Data.Type.Coercion.$fEnumCoercion_$cenumFromThen
+           @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991)
+        (Data.Type.Coercion.$fEnumCoercion_$cenumFromTo
+           @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991)
+        (Data.Type.Coercion.$fEnumCoercion_$cenumFromThenTo
+           @ k_a598Y @ a_a598Z @ b_a5990 $dCoercible_a5991)
+
+-- RHS size: {terms: 15, types: 41, coercions: 9, joins: 0/0}
+Data.Type.Coercion.$fTestCoercionk:~:_$ctestCoercion
+  :: forall k (a1 :: k) (a2 :: k) (b :: k).
+     (a1 Eq.:~: a2) -> (a1 Eq.:~: b) -> Maybe (Coercion a2 b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)><S,1*U(U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a598E)
+                 (@ (a_a598F :: k_a598E))
+                 (@ (a1_a598J :: k_a598E))
+                 (@ (b_a598K :: k_a598E))
+                 (ds_d59c4 [Occ=Once!] :: a_a598F Eq.:~: a1_a598J)
+                 (ds1_d59c5 [Occ=Once!] :: a_a598F Eq.:~: b_a598K) ->
+                 case ds_d59c4 of { Eq.Refl co_a598M ->
+                 case ds1_d59c5 of { Eq.Refl co1_a598N ->
+                 GHC.Base.Just
+                   @ (Coercion a1_a598J b_a598K)
+                   (Data.Type.Coercion.Coercion
+                      @ k_a598E
+                      @ a1_a598J
+                      @ b_a598K
+                      ((GHC.Types.MkCoercible
+                          @ k_a598E
+                          @ a_a598F
+                          @ a_a598F
+                          @~ (<a_a598F>_R :: (a_a598F :: k_a598E) ~R# (a_a598F :: k_a598E)))
+                       `cast` ((Coercible
+                                  <k_a598E>_N (Sub (Sym co_a598M)) (Sub (Sym co1_a598N)))_R
+                               :: (Coercible a_a598F a_a598F :: Constraint)
+                                  ~R# (Coercible a1_a598J b_a598K :: Constraint))))
+                 }
+                 }}]
+Data.Type.Coercion.$fTestCoercionk:~:_$ctestCoercion
+  = \ (@ k_a598E)
+      (@ (a_a598F :: k_a598E))
+      (@ (a1_a598J :: k_a598E))
+      (@ (b_a598K :: k_a598E))
+      (ds_d59c4 :: a_a598F Eq.:~: a1_a598J)
+      (ds1_d59c5 :: a_a598F Eq.:~: b_a598K) ->
+      case ds_d59c4 of { Eq.Refl co_a598M ->
+      case ds1_d59c5 of { Eq.Refl co1_a598N ->
+      GHC.Base.Just
+        @ (Coercion a1_a598J b_a598K)
+        (Data.Type.Coercion.Coercion
+           @ k_a598E
+           @ a1_a598J
+           @ b_a598K
+           ((GHC.Types.MkCoercible
+               @ k_a598E
+               @ a_a598F
+               @ a_a598F
+               @~ (<a_a598F>_R :: (a_a598F :: k_a598E) ~R# (a_a598F :: k_a598E)))
+            `cast` ((Coercible
+                       <k_a598E>_N (Sub (Sym co_a598M)) (Sub (Sym co1_a598N)))_R
+                    :: (Coercible a_a598F a_a598F :: Constraint)
+                       ~R# (Coercible a1_a598J b_a598K :: Constraint))))
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+Data.Type.Coercion.$fTestCoercionk:~: [InlPrag=INLINE (sat-args=0)]
+  :: forall k (a :: k). TestCoercion ((Eq.:~:) a)
+[GblId[DFunId(nt)],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)><S,1*U(U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= Data.Type.Coercion.$fTestCoercionk:~:_$ctestCoercion
+               `cast` (forall (k :: <*>_N) (a :: <k>_N).
+                       Sym (Data.Type.Coercion.N:TestCoercion[0] <k>_N <(Eq.:~:) a>_N)
+                       :: (forall k (a :: k) (a :: k) (b :: k).
+                           (a Eq.:~: a) -> (a Eq.:~: b) -> Maybe (Coercion a b) :: *)
+                          ~R# (forall k (a :: k). TestCoercion ((Eq.:~:) a) :: Constraint))}]
+Data.Type.Coercion.$fTestCoercionk:~:
+  = Data.Type.Coercion.$fTestCoercionk:~:_$ctestCoercion
+    `cast` (forall (k :: <*>_N) (a :: <k>_N).
+            Sym (Data.Type.Coercion.N:TestCoercion[0] <k>_N <(Eq.:~:) a>_N)
+            :: (forall k (a :: k) (a :: k) (b :: k).
+                (a Eq.:~: a) -> (a Eq.:~: b) -> Maybe (Coercion a b) :: *)
+               ~R# (forall k (a :: k). TestCoercion ((Eq.:~:) a) :: Constraint))
+
+-- RHS size: {terms: 16, types: 61, coercions: 10, joins: 0/0}
+Data.Type.Coercion.$fTestCoercionk:~~:_$ctestCoercion
+  :: forall k k1 (a1 :: k1) (a2 :: k) (b :: k).
+     (a1 Eq.:~~: a2) -> (a1 Eq.:~~: b) -> Maybe (Coercion a2 b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U)><S,1*U(A,U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a598h)
+                 (@ k1_a598i)
+                 (@ (a_a598j :: k1_a598i))
+                 (@ (a1_a598n :: k_a598h))
+                 (@ (b_a598o :: k_a598h))
+                 (ds_d59bK [Occ=Once!] :: a_a598j Eq.:~~: a1_a598n)
+                 (ds1_d59bL [Occ=Once!] :: a_a598j Eq.:~~: b_a598o) ->
+                 case ds_d59bK of { Eq.HRefl co_a598q co1_a598r ->
+                 case ds1_d59bL of { Eq.HRefl _ [Occ=Dead] co3_a598t ->
+                 GHC.Base.Just
+                   @ (Coercion a1_a598n b_a598o)
+                   (Data.Type.Coercion.Coercion
+                      @ k_a598h
+                      @ a1_a598n
+                      @ b_a598o
+                      ((GHC.Types.MkCoercible
+                          @ k1_a598i
+                          @ a_a598j
+                          @ a_a598j
+                          @~ (<a_a598j>_R
+                              :: (a_a598j :: k1_a598i) ~R# (a_a598j :: k1_a598i)))
+                       `cast` ((Coercible
+                                  (Sym co_a598q) (Sub (Sym co1_a598r)) (Sub (Sym co3_a598t)))_R
+                               :: (Coercible a_a598j a_a598j :: Constraint)
+                                  ~R# (Coercible a1_a598n b_a598o :: Constraint))))
+                 }
+                 }}]
+Data.Type.Coercion.$fTestCoercionk:~~:_$ctestCoercion
+  = \ (@ k_a598h)
+      (@ k1_a598i)
+      (@ (a_a598j :: k1_a598i))
+      (@ (a1_a598n :: k_a598h))
+      (@ (b_a598o :: k_a598h))
+      (ds_d59bK :: a_a598j Eq.:~~: a1_a598n)
+      (ds1_d59bL :: a_a598j Eq.:~~: b_a598o) ->
+      case ds_d59bK of { Eq.HRefl co_a598q co1_a598r ->
+      case ds1_d59bL of { Eq.HRefl co2_a598s [Dmd=<L,A>] co3_a598t ->
+      GHC.Base.Just
+        @ (Coercion a1_a598n b_a598o)
+        (Data.Type.Coercion.Coercion
+           @ k_a598h
+           @ a1_a598n
+           @ b_a598o
+           ((GHC.Types.MkCoercible
+               @ k1_a598i
+               @ a_a598j
+               @ a_a598j
+               @~ (<a_a598j>_R
+                   :: (a_a598j :: k1_a598i) ~R# (a_a598j :: k1_a598i)))
+            `cast` ((Coercible
+                       (Sym co_a598q) (Sub (Sym co1_a598r)) (Sub (Sym co3_a598t)))_R
+                    :: (Coercible a_a598j a_a598j :: Constraint)
+                       ~R# (Coercible a1_a598n b_a598o :: Constraint))))
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+Data.Type.Coercion.$fTestCoercionk:~~: [InlPrag=INLINE (sat-args=0)]
+  :: forall k k1 (a :: k1). TestCoercion ((Eq.:~~:) a)
+[GblId[DFunId(nt)],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U)><S,1*U(A,U)>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= Data.Type.Coercion.$fTestCoercionk:~~:_$ctestCoercion
+               `cast` (forall (k :: <*>_N) (k1 :: <*>_N) (a :: <k1>_N).
+                       Sym (Data.Type.Coercion.N:TestCoercion[0] <k>_N <(Eq.:~~:) a>_N)
+                       :: (forall k k1 (a :: k1) (a :: k) (b :: k).
+                           (a Eq.:~~: a) -> (a Eq.:~~: b) -> Maybe (Coercion a b) :: *)
+                          ~R# (forall k k1 (a :: k1).
+                               TestCoercion ((Eq.:~~:) a) :: Constraint))}]
+Data.Type.Coercion.$fTestCoercionk:~~:
+  = Data.Type.Coercion.$fTestCoercionk:~~:_$ctestCoercion
+    `cast` (forall (k :: <*>_N) (k1 :: <*>_N) (a :: <k1>_N).
+            Sym (Data.Type.Coercion.N:TestCoercion[0] <k>_N <(Eq.:~~:) a>_N)
+            :: (forall k k1 (a :: k1) (a :: k) (b :: k).
+                (a Eq.:~~: a) -> (a Eq.:~~: b) -> Maybe (Coercion a b) :: *)
+               ~R# (forall k k1 (a :: k1).
+                    TestCoercion ((Eq.:~~:) a) :: Constraint))
+
+-- RHS size: {terms: 23, types: 55, coercions: 4, joins: 0/0}
+Data.Type.Coercion.$fTestCoercionkCoercion_$ctestCoercion [InlPrag=NOUSERINLINE[0]]
+  :: forall k (a1 :: k) (a2 :: k) (b :: k).
+     Coercion a1 a2 -> Coercion a1 b -> Maybe (Coercion a2 b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S(S)),1*U(1*U(1*U))><S(S(S)),1*U(1*U(1*U))>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_s59qq)
+                 (@ (a_s59qr :: k_s59qq))
+                 (@ (a1_s59qs :: k_s59qq))
+                 (@ (b_s59qt :: k_s59qq))
+                 (w_s59qu [Occ=Once!] :: Coercion a_s59qr a1_s59qs)
+                 (w1_s59qv [Occ=Once!] :: Coercion a_s59qr b_s59qt) ->
+                 case w_s59qu of { Coercion ww1_s59qy [Occ=Once] ->
+                 case w1_s59qv of { Coercion ww3_s59qC [Occ=Once] ->
+                 case GHC.Types.coercible_sel
+                        @ k_s59qq @ a_s59qr @ a1_s59qs ww1_s59qy
+                 of co_a59ah
+                 { __DEFAULT ->
+                 case GHC.Types.coercible_sel
+                        @ k_s59qq @ a_s59qr @ b_s59qt ww3_s59qC
+                 of co1_a59ai
+                 { __DEFAULT ->
+                 GHC.Base.Just
+                   @ (Coercion a1_s59qs b_s59qt)
+                   (Data.Type.Coercion.Coercion
+                      @ k_s59qq
+                      @ a1_s59qs
+                      @ b_s59qt
+                      (GHC.Types.MkCoercible
+                         @ k_s59qq
+                         @ a1_s59qs
+                         @ b_s59qt
+                         @~ (Sym co_a59ah ; co1_a59ai
+                             :: (a1_s59qs :: k_s59qq) ~R# (b_s59qt :: k_s59qq))))
+                 }
+                 }
+                 }
+                 }}]
+Data.Type.Coercion.$fTestCoercionkCoercion_$ctestCoercion
+  = \ (@ k_s59qq)
+      (@ (a_s59qr :: k_s59qq))
+      (@ (a1_s59qs :: k_s59qq))
+      (@ (b_s59qt :: k_s59qq))
+      (w_s59qu :: Coercion a_s59qr a1_s59qs)
+      (w1_s59qv :: Coercion a_s59qr b_s59qt) ->
+      case w_s59qu of { Coercion ww1_s59qy ->
+      case w1_s59qv of { Coercion ww3_s59qC ->
+      case GHC.Types.coercible_sel
+             @ k_s59qq @ a_s59qr @ a1_s59qs ww1_s59qy
+      of co_a59ah
+      { __DEFAULT ->
+      case GHC.Types.coercible_sel
+             @ k_s59qq @ a_s59qr @ b_s59qt ww3_s59qC
+      of co1_a59ai
+      { __DEFAULT ->
+      GHC.Base.Just
+        @ (Coercion a1_s59qs b_s59qt)
+        (Data.Type.Coercion.Coercion
+           @ k_s59qq
+           @ a1_s59qs
+           @ b_s59qt
+           (GHC.Types.MkCoercible
+              @ k_s59qq
+              @ a1_s59qs
+              @ b_s59qt
+              @~ (Sym co_a59ah ; co1_a59ai
+                  :: (a1_s59qs :: k_s59qq) ~R# (b_s59qt :: k_s59qq))))
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+Data.Type.Coercion.$fTestCoercionkCoercion [InlPrag=INLINE (sat-args=0)]
+  :: forall k (a :: k). TestCoercion (Coercion a)
+[GblId[DFunId(nt)],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S(S)),1*U(1*U(1*U))><S(S(S)),1*U(1*U(1*U))>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=True)
+         Tmpl= Data.Type.Coercion.$fTestCoercionkCoercion_$ctestCoercion
+               `cast` (forall (k :: <*>_N) (a :: <k>_N).
+                       Sym (Data.Type.Coercion.N:TestCoercion[0] <k>_N <Coercion a>_N)
+                       :: (forall k (a :: k) (a :: k) (b :: k).
+                           Coercion a a -> Coercion a b -> Maybe (Coercion a b) :: *)
+                          ~R# (forall k (a :: k). TestCoercion (Coercion a) :: Constraint))}]
+Data.Type.Coercion.$fTestCoercionkCoercion
+  = Data.Type.Coercion.$fTestCoercionkCoercion_$ctestCoercion
+    `cast` (forall (k :: <*>_N) (a :: <k>_N).
+            Sym (Data.Type.Coercion.N:TestCoercion[0] <k>_N <Coercion a>_N)
+            :: (forall k (a :: k) (a :: k) (b :: k).
+                Coercion a a -> Coercion a b -> Maybe (Coercion a b) :: *)
+               ~R# (forall k (a :: k). TestCoercion (Coercion a) :: Constraint))
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEqCoercion_$c==
+  :: forall k (a :: k) (b :: k). Coercion a b -> Coercion a b -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a597F)
+                 (@ (a_a597G :: k_a597F))
+                 (@ (b_a597H :: k_a597F))
+                 (ds_d59bu [Occ=Once!] :: Coercion a_a597G b_a597H)
+                 (ds1_d59bv [Occ=Once!] :: Coercion a_a597G b_a597H) ->
+                 case ds_d59bu of { Coercion _ [Occ=Dead] ->
+                 case ds1_d59bv of { Coercion _ [Occ=Dead] -> GHC.Types.True }
+                 }}]
+Data.Type.Coercion.$fEqCoercion_$c==
+  = \ (@ k_a597F)
+      (@ (a_a597G :: k_a597F))
+      (@ (b_a597H :: k_a597F))
+      (ds_d59bu :: Coercion a_a597G b_a597H)
+      (ds1_d59bv :: Coercion a_a597G b_a597H) ->
+      case ds_d59bu of { Coercion $dCoercible_a597M ->
+      case ds1_d59bv of { Coercion $dCoercible1_a597N -> GHC.Types.True }
+      }
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEqCoercion_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall k (a :: k) (b :: k). Coercion a b -> Coercion a b -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ k_a597F)
+                 (@ (a_a597G :: k_a597F))
+                 (@ (b_a597H :: k_a597F))
+                 (x_a22b [Occ=Once!] :: Coercion a_a597G b_a597H)
+                 (y_a22c [Occ=Once!] :: Coercion a_a597G b_a597H) ->
+                 case x_a22b of { Coercion _ [Occ=Dead] ->
+                 case y_a22c of { Coercion _ [Occ=Dead] -> GHC.Types.False }
+                 }}]
+Data.Type.Coercion.$fEqCoercion_$c/=
+  = \ (@ k_a597F)
+      (@ (a_a597G :: k_a597F))
+      (@ (b_a597H :: k_a597F))
+      (eta_B2 :: Coercion a_a597G b_a597H)
+      (eta1_B1 :: Coercion a_a597G b_a597H) ->
+      case eta_B2 of { Coercion $dCoercible_a597M ->
+      case eta1_B1 of { Coercion $dCoercible1_a597N -> GHC.Types.False }
+      }
+
+-- RHS size: {terms: 6, types: 14, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fEqCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k (a :: k) (b :: k). Eq (Coercion a b)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ k_a592h)
+             (@ (a_a58ZV :: k_a592h))
+             (@ (b_a58ZW :: k_a592h)) ->
+       GHC.Classes.C:Eq TYPE: Coercion a_a58ZV b_a58ZW
+                        Data.Type.Coercion.$fEqCoercion_$c== @ k_a592h @ a_a58ZV @ b_a58ZW
+                        Data.Type.Coercion.$fEqCoercion_$c/= @ k_a592h @ a_a58ZV @ b_a58ZW]
+Data.Type.Coercion.$fEqCoercion
+  = \ (@ k_a597F)
+      (@ (a_a597G :: k_a597F))
+      (@ (b_a597H :: k_a597F)) ->
+      GHC.Classes.C:Eq
+        @ (Coercion a_a597G b_a597H)
+        (Data.Type.Coercion.$fEqCoercion_$c==
+           @ k_a597F @ a_a597G @ b_a597H)
+        (Data.Type.Coercion.$fEqCoercion_$c/=
+           @ k_a597F @ a_a597G @ b_a597H)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Data.Type.Coercion.$fReadCoercion3 = "Coercion"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion2 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Type.Coercion.$fReadCoercion2
+  = unpackCString# Data.Type.Coercion.$fReadCoercion3
+
+-- RHS size: {terms: 12, types: 19, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fShowCoercion_$cshowsPrec
+  :: forall k (a :: k) (b :: k). Int -> Coercion a b -> ShowS
+[GblId,
+ Arity=3,
+ Str=<L,A><S,1*H><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a597k)
+                 (@ (a_a597l :: k_a597k))
+                 (@ (b_a597m :: k_a597k))
+                 _ [Occ=Dead]
+                 (ds1_d59bt [Occ=Once!] :: Coercion a_a597l b_a597m)
+                 (eta_B1 [Occ=Once] :: String) ->
+                 case ds1_d59bt of { Coercion _ [Occ=Dead] ->
+                 augment
+                   @ Char
+                   (\ (@ b1_i1Jmb)
+                      (c_i1Jmc [Occ=Once, OS=OneShot] :: Char -> b1_i1Jmb -> b1_i1Jmb)
+                      (n_i1Jmd [Occ=Once, OS=OneShot] :: b1_i1Jmb) ->
+                      foldr
+                        @ Char
+                        @ b1_i1Jmb
+                        c_i1Jmc
+                        n_i1Jmd
+                        Data.Type.Coercion.$fReadCoercion2)
+                   eta_B1
+                 }}]
+Data.Type.Coercion.$fShowCoercion_$cshowsPrec
+  = \ (@ k_a597k)
+      (@ (a_a597l :: k_a597k))
+      (@ (b_a597m :: k_a597k))
+      _ [Occ=Dead]
+      (ds1_d59bt :: Coercion a_a597l b_a597m)
+      (eta_B1 :: String) ->
+      case ds1_d59bt of { Coercion $dCoercible_a597r ->
+      ++ @ Char Data.Type.Coercion.$fReadCoercion2 eta_B1
+      }
+
+-- RHS size: {terms: 8, types: 16, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fShowCoercion_$cshow
+  :: forall k (a :: k) (b :: k). Coercion a b -> String
+[GblId,
+ Arity=1,
+ Str=<S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a597k)
+                 (@ (a_a597l :: k_a597k))
+                 (@ (b_a597m :: k_a597k))
+                 (x_i1Jj2 [Occ=Once!] :: Coercion a_a597l b_a597m) ->
+                 case x_i1Jj2 of { Coercion _ [Occ=Dead] ->
+                 Data.Type.Coercion.$fReadCoercion2
+                 }}]
+Data.Type.Coercion.$fShowCoercion_$cshow
+  = \ (@ k_a597k)
+      (@ (a_a597l :: k_a597k))
+      (@ (b_a597m :: k_a597k))
+      (x_i1Jj2 :: Coercion a_a597l b_a597m) ->
+      case x_i1Jj2 of { Coercion $dCoercible_a597r ->
+      Data.Type.Coercion.$fReadCoercion2
+      }
+
+-- RHS size: {terms: 11, types: 18, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fShowCoercion1
+  :: forall k (a :: k) (b :: k). Coercion a b -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*H><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a597k)
+                 (@ (a_a597l :: k_a597k))
+                 (@ (b_a597m :: k_a597k))
+                 (ds_d59bt [Occ=Once!] :: Coercion a_a597l b_a597m)
+                 (eta_B1 [Occ=Once] :: String) ->
+                 case ds_d59bt of { Coercion _ [Occ=Dead] ->
+                 augment
+                   @ Char
+                   (\ (@ b1_i1Jmb)
+                      (c_i1Jmc [Occ=Once, OS=OneShot] :: Char -> b1_i1Jmb -> b1_i1Jmb)
+                      (n_i1Jmd [Occ=Once, OS=OneShot] :: b1_i1Jmb) ->
+                      foldr
+                        @ Char
+                        @ b1_i1Jmb
+                        c_i1Jmc
+                        n_i1Jmd
+                        Data.Type.Coercion.$fReadCoercion2)
+                   eta_B1
+                 }}]
+Data.Type.Coercion.$fShowCoercion1
+  = \ (@ k_a597k)
+      (@ (a_a597l :: k_a597k))
+      (@ (b_a597m :: k_a597k))
+      (ds_d59bt :: Coercion a_a597l b_a597m)
+      (eta_B1 :: String) ->
+      case ds_d59bt of { Coercion $dCoercible_a597r ->
+      ++ @ Char Data.Type.Coercion.$fReadCoercion2 eta_B1
+      }
+
+-- RHS size: {terms: 9, types: 17, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fShowCoercion_$cshowList
+  :: forall k (a :: k) (b :: k). [Coercion a b] -> ShowS
+[GblId,
+ Arity=2,
+ Str=<S,1*U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a597k)
+                 (@ (a_a597l :: k_a597k))
+                 (@ (b_a597m :: k_a597k))
+                 (ls_i1Mix [Occ=Once] :: [Coercion a_a597l b_a597m])
+                 (s_i1Miy [Occ=Once] :: String) ->
+                 showList__
+                   @ (Coercion a_a597l b_a597m)
+                   (Data.Type.Coercion.$fShowCoercion1 @ k_a597k @ a_a597l @ b_a597m)
+                   ls_i1Mix
+                   s_i1Miy}]
+Data.Type.Coercion.$fShowCoercion_$cshowList
+  = \ (@ k_a597k)
+      (@ (a_a597l :: k_a597k))
+      (@ (b_a597m :: k_a597k))
+      (ls_i1Mix :: [Coercion a_a597l b_a597m])
+      (s_i1Miy :: String) ->
+      showList__
+        @ (Coercion a_a597l b_a597m)
+        (Data.Type.Coercion.$fShowCoercion1 @ k_a597k @ a_a597l @ b_a597m)
+        ls_i1Mix
+        s_i1Miy
+
+-- RHS size: {terms: 7, types: 17, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fShowCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k (a :: k) (b :: k). Show (Coercion a b)
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ (@ k_a592b)
+             (@ (a_a58ZT :: k_a592b))
+             (@ (b_a58ZU :: k_a592b)) ->
+       GHC.Show.C:Show TYPE: Coercion a_a58ZT b_a58ZU
+                       Data.Type.Coercion.$fShowCoercion_$cshowsPrec
+                         @ k_a592b @ a_a58ZT @ b_a58ZU
+                       Data.Type.Coercion.$fShowCoercion_$cshow
+                         @ k_a592b @ a_a58ZT @ b_a58ZU
+                       Data.Type.Coercion.$fShowCoercion_$cshowList
+                         @ k_a592b @ a_a58ZT @ b_a58ZU]
+Data.Type.Coercion.$fShowCoercion
+  = \ (@ k_a597k)
+      (@ (a_a597l :: k_a597k))
+      (@ (b_a597m :: k_a597k)) ->
+      GHC.Show.C:Show
+        @ (Coercion a_a597l b_a597m)
+        (Data.Type.Coercion.$fShowCoercion_$cshowsPrec
+           @ k_a597k @ a_a597l @ b_a597m)
+        (Data.Type.Coercion.$fShowCoercion_$cshow
+           @ k_a597k @ a_a597l @ b_a597m)
+        (Data.Type.Coercion.$fShowCoercion_$cshowList
+           @ k_a597k @ a_a597l @ b_a597m)
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion_$c<
+  :: forall k (a :: k) (b :: k). Coercion a b -> Coercion a b -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a596l)
+                 (@ (a_a596m :: k_a596l))
+                 (@ (b_a596n :: k_a596l))
+                 (a1_a592C [Occ=Once!] :: Coercion a_a596m b_a596n)
+                 (b1_a592D [Occ=Once!] :: Coercion a_a596m b_a596n) ->
+                 case a1_a592C of { Coercion _ [Occ=Dead] ->
+                 case b1_a592D of { Coercion _ [Occ=Dead] -> GHC.Types.False }
+                 }}]
+Data.Type.Coercion.$fOrdCoercion_$c<
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l))
+      (a1_a592C :: Coercion a_a596m b_a596n)
+      (b1_a592D :: Coercion a_a596m b_a596n) ->
+      case a1_a592C of { Coercion $dCoercible_a596K ->
+      case b1_a592D of { Coercion $dCoercible1_a596N -> GHC.Types.False }
+      }
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion_$ccompare
+  :: forall k (a :: k) (b :: k).
+     Coercion a b -> Coercion a b -> Ordering
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a596l)
+                 (@ (a_a596m :: k_a596l))
+                 (@ (b_a596n :: k_a596l))
+                 (a1_a592A [Occ=Once!] :: Coercion a_a596m b_a596n)
+                 (b1_a592B [Occ=Once!] :: Coercion a_a596m b_a596n) ->
+                 case a1_a592A of { Coercion _ [Occ=Dead] ->
+                 case b1_a592B of { Coercion _ [Occ=Dead] -> GHC.Types.EQ }
+                 }}]
+Data.Type.Coercion.$fOrdCoercion_$ccompare
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l))
+      (a1_a592A :: Coercion a_a596m b_a596n)
+      (b1_a592B :: Coercion a_a596m b_a596n) ->
+      case a1_a592A of { Coercion $dCoercible_a596y ->
+      case b1_a592B of { Coercion $dCoercible1_a596B -> GHC.Types.EQ }
+      }
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion_$c<=
+  :: forall k (a :: k) (b :: k). Coercion a b -> Coercion a b -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a596l)
+                 (@ (a_a596m :: k_a596l))
+                 (@ (b_a596n :: k_a596l))
+                 (a1_a592E [Occ=Once!] :: Coercion a_a596m b_a596n)
+                 (b1_a592F [Occ=Once!] :: Coercion a_a596m b_a596n) ->
+                 case b1_a592F of { Coercion _ [Occ=Dead] ->
+                 case a1_a592E of { Coercion _ [Occ=Dead] -> GHC.Types.True }
+                 }}]
+Data.Type.Coercion.$fOrdCoercion_$c<=
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l))
+      (a1_a592E :: Coercion a_a596m b_a596n)
+      (b1_a592F :: Coercion a_a596m b_a596n) ->
+      case b1_a592F of { Coercion $dCoercible_a596K ->
+      case a1_a592E of { Coercion $dCoercible1_a596N -> GHC.Types.True }
+      }
+
+-- RHS size: {terms: 9, types: 20, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion_$cmax
+  :: forall k (a :: k) (b :: k).
+     Coercion a b -> Coercion a b -> Coercion a b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a596l)
+                 (@ (a_a596m :: k_a596l))
+                 (@ (b_a596n :: k_a596l))
+                 (x_a55d [Occ=Once!] :: Coercion a_a596m b_a596n)
+                 (y_a55e [Occ=Once!] :: Coercion a_a596m b_a596n) ->
+                 case y_a55e of wild_X1l { Coercion _ [Occ=Dead] ->
+                 case x_a55d of { Coercion _ [Occ=Dead] -> wild_X1l }
+                 }}]
+Data.Type.Coercion.$fOrdCoercion_$cmax
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l))
+      (x_a55d :: Coercion a_a596m b_a596n)
+      (y_a55e :: Coercion a_a596m b_a596n) ->
+      case x_a55d of { Coercion $dCoercible_a596N -> y_a55e }
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion_$c>
+  :: forall k (a :: k) (b :: k). Coercion a b -> Coercion a b -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*H><S,1*H>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a596l)
+                 (@ (a_a596m :: k_a596l))
+                 (@ (b_a596n :: k_a596l))
+                 (a1_a592G [Occ=Once!] :: Coercion a_a596m b_a596n)
+                 (b1_a592H [Occ=Once!] :: Coercion a_a596m b_a596n) ->
+                 case b1_a592H of { Coercion _ [Occ=Dead] ->
+                 case a1_a592G of { Coercion _ [Occ=Dead] -> GHC.Types.False }
+                 }}]
+Data.Type.Coercion.$fOrdCoercion_$c>
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l))
+      (a1_a592G :: Coercion a_a596m b_a596n)
+      (b1_a592H :: Coercion a_a596m b_a596n) ->
+      case b1_a592H of { Coercion $dCoercible_a596K ->
+      case a1_a592G of { Coercion $dCoercible1_a596N -> GHC.Types.False }
+      }
+
+-- RHS size: {terms: 9, types: 20, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion_$cmin
+  :: forall k (a :: k) (b :: k).
+     Coercion a b -> Coercion a b -> Coercion a b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)><S,1*H>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a596l)
+                 (@ (a_a596m :: k_a596l))
+                 (@ (b_a596n :: k_a596l))
+                 (x_a55m [Occ=Once] :: Coercion a_a596m b_a596n)
+                 (y_a55n [Occ=Once!] :: Coercion a_a596m b_a596n) ->
+                 case y_a55n of { Coercion _ [Occ=Dead] -> x_a55m }}]
+Data.Type.Coercion.$fOrdCoercion_$cmin
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l))
+      (x_a55m :: Coercion a_a596m b_a596n)
+      (y_a55n :: Coercion a_a596m b_a596n) ->
+      case y_a55n of { Coercion $dCoercible_a596K -> x_a55m }
+
+-- RHS size: {terms: 12, types: 32, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fOrdCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k (a :: k) (b :: k). Ord (Coercion a b)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ k_a5925)
+             (@ (a_a58ZR :: k_a5925))
+             (@ (b_a58ZS :: k_a5925)) ->
+       GHC.Classes.C:Ord TYPE: Coercion a_a58ZR b_a58ZS
+                         Data.Type.Coercion.$fEqCoercion @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fOrdCoercion_$ccompare
+                           @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fOrdCoercion_$c< @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fOrdCoercion_$c<= @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fOrdCoercion_$c> @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fEqCoercion_$c== @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fOrdCoercion_$cmax
+                           @ k_a5925 @ a_a58ZR @ b_a58ZS
+                         Data.Type.Coercion.$fOrdCoercion_$cmin
+                           @ k_a5925 @ a_a58ZR @ b_a58ZS]
+Data.Type.Coercion.$fOrdCoercion
+  = \ (@ k_a596l)
+      (@ (a_a596m :: k_a596l))
+      (@ (b_a596n :: k_a596l)) ->
+      GHC.Classes.C:Ord
+        @ (Coercion a_a596m b_a596n)
+        (Data.Type.Coercion.$fEqCoercion @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fOrdCoercion_$ccompare
+           @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fOrdCoercion_$c<
+           @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fOrdCoercion_$c<=
+           @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fOrdCoercion_$c>
+           @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fEqCoercion_$c==
+           @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fOrdCoercion_$cmax
+           @ k_a596l @ a_a596m @ b_a596n)
+        (Data.Type.Coercion.$fOrdCoercion_$cmin
+           @ k_a596l @ a_a596m @ b_a596n)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion_lexeme :: Text.Read.Lex.Lexeme
+[GblId,
+ Str=m4,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Type.Coercion.$fReadCoercion_lexeme
+  = Text.Read.Lex.Ident Data.Type.Coercion.$fReadCoercion2
+
+-- RHS size: {terms: 25, types: 49, coercions: 15, joins: 0/1}
+Data.Type.Coercion.$fReadCoercion1
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Text.ParserCombinators.ReadPrec.Prec
+     -> forall b1.
+        (Coercion a b -> Text.ParserCombinators.ReadP.P b1)
+        -> Text.ParserCombinators.ReadP.P b1
+[GblId,
+ Arity=3,
+ Str=<L,U><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 160 0}]
+Data.Type.Coercion.$fReadCoercion1
+  = \ (@ k_a595I)
+      (@ (a_a595J :: k_a595I))
+      (@ (b_a595K :: k_a595I))
+      ($dCoercible_a595L :: Coercible a_a595J b_a595K)
+      (eta_B2 :: Text.ParserCombinators.ReadPrec.Prec)
+      (@ b1_a3ngn)
+      (eta1_B1
+         :: Coercion a_a595J b_a595K
+            -> Text.ParserCombinators.ReadP.P b1_a3ngn) ->
+      GHC.Read.list3
+        @ (Coercion a_a595J b_a595K)
+        (let {
+           x_s59gj :: Coercion a_a595J b_a595K
+           [LclId, Unf=OtherCon []]
+           x_s59gj
+             = Data.Type.Coercion.Coercion
+                 @ k_a595I @ a_a595J @ b_a595K $dCoercible_a595L } in
+         (\ _ [Occ=Dead]
+            (@ b2_X3ngt)
+            (eta2_X8
+               :: Coercion a_a595J b_a595K
+                  -> Text.ParserCombinators.ReadP.P b2_X3ngt) ->
+            case Text.Read.Lex.$wexpect
+                   Data.Type.Coercion.$fReadCoercion_lexeme
+                   @ b2_X3ngt
+                   (\ _ [Occ=Dead, OS=OneShot] -> eta2_X8 x_s59gj)
+            of
+            { (# ww1_s3xlt #) ->
+            Text.ParserCombinators.ReadP.Look @ b2_X3ngt ww1_s3xlt
+            })
+         `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                  ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                <Coercion
+                                   a_a595J
+                                   b_a595K>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                           <Coercion a_a595J b_a595K>_R)
+                 :: (Text.ParserCombinators.ReadPrec.Prec
+                     -> forall b.
+                        (Coercion a_a595J b_a595K -> Text.ParserCombinators.ReadP.P b)
+                        -> Text.ParserCombinators.ReadP.P b :: *)
+                    ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                           (Coercion a_a595J b_a595K) :: *)))
+        eta_B2
+        @ b1_a3ngn
+        eta1_B1
+
+-- RHS size: {terms: 10, types: 24, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion_$creadsPrec
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Int -> ReadS (Coercion a b)
+[GblId,
+ Arity=2,
+ Str=<L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_X597f)
+                 (@ (a_X597h :: k_X597f))
+                 (@ (b_X597j :: k_X597f))
+                 ($dCoercible_X597l [Occ=Once] :: Coercible a_X597h b_X597j)
+                 (n_a3tmE [Occ=Once] :: Int) ->
+                 Text.ParserCombinators.ReadP.run
+                   @ (Coercion a_X597h b_X597j)
+                   (Data.Type.Coercion.$fReadCoercion1
+                      @ k_X597f
+                      @ a_X597h
+                      @ b_X597j
+                      $dCoercible_X597l
+                      n_a3tmE
+                      @ (Coercion a_X597h b_X597j)
+                      (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+                         @ (Coercion a_X597h b_X597j)))}]
+Data.Type.Coercion.$fReadCoercion_$creadsPrec
+  = \ (@ k_X597f)
+      (@ (a_X597h :: k_X597f))
+      (@ (b_X597j :: k_X597f))
+      ($dCoercible_X597l :: Coercible a_X597h b_X597j)
+      (n_a3tmE :: Int) ->
+      Text.ParserCombinators.ReadP.run
+        @ (Coercion a_X597h b_X597j)
+        (Data.Type.Coercion.$fReadCoercion1
+           @ k_X597f
+           @ a_X597h
+           @ b_X597j
+           $dCoercible_X597l
+           n_a3tmE
+           @ (Coercion a_X597h b_X597j)
+           (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+              @ (Coercion a_X597h b_X597j)))
+
+-- RHS size: {terms: 7, types: 15, coercions: 15, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion_$creadListPrec
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Text.ParserCombinators.ReadPrec.ReadPrec [Coercion a b]
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_X597d)
+                 (@ (a_X597f :: k_X597d))
+                 (@ (b_X597h :: k_X597d))
+                 ($dCoercible_X597j [Occ=Once] :: Coercible a_X597f b_X597h) ->
+                 list
+                   @ (Coercion a_X597f b_X597h)
+                   ((Data.Type.Coercion.$fReadCoercion1
+                       @ k_X597d @ a_X597f @ b_X597h $dCoercible_X597j)
+                    `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                             ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                           <Coercion
+                                              a_X597f
+                                              b_X597h>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                                      <Coercion a_X597f b_X597h>_R)
+                            :: (Text.ParserCombinators.ReadPrec.Prec
+                                -> forall b.
+                                   (Coercion a_X597f b_X597h -> Text.ParserCombinators.ReadP.P b)
+                                   -> Text.ParserCombinators.ReadP.P b :: *)
+                               ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                                      (Coercion a_X597f b_X597h) :: *)))}]
+Data.Type.Coercion.$fReadCoercion_$creadListPrec
+  = \ (@ k_X597d)
+      (@ (a_X597f :: k_X597d))
+      (@ (b_X597h :: k_X597d))
+      ($dCoercible_X597j :: Coercible a_X597f b_X597h) ->
+      list
+        @ (Coercion a_X597f b_X597h)
+        ((Data.Type.Coercion.$fReadCoercion1
+            @ k_X597d @ a_X597f @ b_X597h $dCoercible_X597j)
+         `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                  ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                <Coercion
+                                   a_X597f
+                                   b_X597h>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                           <Coercion a_X597f b_X597h>_R)
+                 :: (Text.ParserCombinators.ReadPrec.Prec
+                     -> forall b.
+                        (Coercion a_X597f b_X597h -> Text.ParserCombinators.ReadP.P b)
+                        -> Text.ParserCombinators.ReadP.P b :: *)
+                    ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                           (Coercion a_X597f b_X597h) :: *)))
+
+-- RHS size: {terms: 10, types: 30, coercions: 27, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion_$creadList
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     ReadS [Coercion a b]
+[GblId,
+ Arity=1,
+ Str=<L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_X597e)
+                 (@ (a_X597g :: k_X597e))
+                 (@ (b_X597i :: k_X597e))
+                 ($dCoercible_X597k [Occ=Once] :: Coercible a_X597g b_X597i) ->
+                 Text.ParserCombinators.ReadP.run
+                   @ [Coercion a_X597g b_X597i]
+                   (((((list
+                          @ (Coercion a_X597g b_X597i)
+                          ((Data.Type.Coercion.$fReadCoercion1
+                              @ k_X597e @ a_X597g @ b_X597i $dCoercible_X597k)
+                           `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                                    ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                                  <Coercion
+                                                     a_X597g
+                                                     b_X597i>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                                             <Coercion
+                                                                                a_X597g b_X597i>_R)
+                                   :: (Text.ParserCombinators.ReadPrec.Prec
+                                       -> forall b.
+                                          (Coercion a_X597g b_X597i
+                                           -> Text.ParserCombinators.ReadP.P b)
+                                          -> Text.ParserCombinators.ReadP.P b :: *)
+                                      ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                                             (Coercion a_X597g b_X597i) :: *))))
+                       `cast` (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                   <[Coercion a_X597g b_X597i]>_R
+                               :: (Text.ParserCombinators.ReadPrec.ReadPrec
+                                     [Coercion a_X597g b_X597i] :: *)
+                                  ~R# (Text.ParserCombinators.ReadPrec.Prec
+                                       -> Text.ParserCombinators.ReadP.ReadP
+                                            [Coercion a_X597g b_X597i] :: *)))
+                        GHC.Read.$fRead()7)
+                     `cast` (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                 <[Coercion a_X597g b_X597i]>_R
+                             :: (Text.ParserCombinators.ReadP.ReadP
+                                   [Coercion a_X597g b_X597i] :: *)
+                                ~R# (forall b.
+                                     ([Coercion a_X597g b_X597i]
+                                      -> Text.ParserCombinators.ReadP.P b)
+                                     -> Text.ParserCombinators.ReadP.P b :: *)))
+                      @ [Coercion a_X597g b_X597i]
+                      (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+                         @ [Coercion a_X597g b_X597i]))}]
+Data.Type.Coercion.$fReadCoercion_$creadList
+  = \ (@ k_X597e)
+      (@ (a_X597g :: k_X597e))
+      (@ (b_X597i :: k_X597e))
+      ($dCoercible_X597k :: Coercible a_X597g b_X597i) ->
+      Text.ParserCombinators.ReadP.run
+        @ [Coercion a_X597g b_X597i]
+        (((((list
+               @ (Coercion a_X597g b_X597i)
+               ((Data.Type.Coercion.$fReadCoercion1
+                   @ k_X597e @ a_X597g @ b_X597i $dCoercible_X597k)
+                `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                         ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                       <Coercion
+                                          a_X597g
+                                          b_X597i>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                                  <Coercion a_X597g b_X597i>_R)
+                        :: (Text.ParserCombinators.ReadPrec.Prec
+                            -> forall b.
+                               (Coercion a_X597g b_X597i -> Text.ParserCombinators.ReadP.P b)
+                               -> Text.ParserCombinators.ReadP.P b :: *)
+                           ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                                  (Coercion a_X597g b_X597i) :: *))))
+            `cast` (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                        <[Coercion a_X597g b_X597i]>_R
+                    :: (Text.ParserCombinators.ReadPrec.ReadPrec
+                          [Coercion a_X597g b_X597i] :: *)
+                       ~R# (Text.ParserCombinators.ReadPrec.Prec
+                            -> Text.ParserCombinators.ReadP.ReadP
+                                 [Coercion a_X597g b_X597i] :: *)))
+             GHC.Read.$fRead()7)
+          `cast` (Text.ParserCombinators.ReadP.N:ReadP[0]
+                      <[Coercion a_X597g b_X597i]>_R
+                  :: (Text.ParserCombinators.ReadP.ReadP
+                        [Coercion a_X597g b_X597i] :: *)
+                     ~R# (forall b.
+                          ([Coercion a_X597g b_X597i] -> Text.ParserCombinators.ReadP.P b)
+                          -> Text.ParserCombinators.ReadP.P b :: *)))
+           @ [Coercion a_X597g b_X597i]
+           (Text.ParserCombinators.ReadP.$fApplicativeP_$cpure
+              @ [Coercion a_X597g b_X597i]))
+
+-- RHS size: {terms: 13, types: 24, coercions: 15, joins: 0/0}
+Data.Type.Coercion.$fReadCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k (a :: k) (b :: k). Coercible a b => Read (Coercion a b)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U>m,
+ Unf=DFun: \ (@ k_a591Z)
+             (@ (a_a58ZP :: k_a591Z))
+             (@ (b_a58ZQ :: k_a591Z))
+             (v_B1 :: Coercible a_a58ZP b_a58ZQ) ->
+       GHC.Read.C:Read TYPE: Coercion a_a58ZP b_a58ZQ
+                       Data.Type.Coercion.$fReadCoercion_$creadsPrec
+                         @ k_a591Z @ a_a58ZP @ b_a58ZQ v_B1
+                       Data.Type.Coercion.$fReadCoercion_$creadList
+                         @ k_a591Z @ a_a58ZP @ b_a58ZQ v_B1
+                       (Data.Type.Coercion.$fReadCoercion1
+                          @ k_a591Z @ a_a58ZP @ b_a58ZQ v_B1)
+                       `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                                ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                              <Coercion
+                                                 a_a58ZP
+                                                 b_a58ZQ>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                                         <Coercion
+                                                                            a_a58ZP b_a58ZQ>_R)
+                               :: (Text.ParserCombinators.ReadPrec.Prec
+                                   -> forall b.
+                                      (Coercion a_a58ZP b_a58ZQ -> Text.ParserCombinators.ReadP.P b)
+                                      -> Text.ParserCombinators.ReadP.P b :: *)
+                                  ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                                         (Coercion a_a58ZP b_a58ZQ) :: *))
+                       Data.Type.Coercion.$fReadCoercion_$creadListPrec
+                         @ k_a591Z @ a_a58ZP @ b_a58ZQ v_B1]
+Data.Type.Coercion.$fReadCoercion
+  = \ (@ k_X597c)
+      (@ (a_X597e :: k_X597c))
+      (@ (b_X597g :: k_X597c))
+      ($dCoercible_X597i :: Coercible a_X597e b_X597g) ->
+      GHC.Read.C:Read
+        @ (Coercion a_X597e b_X597g)
+        (Data.Type.Coercion.$fReadCoercion_$creadsPrec
+           @ k_X597c @ a_X597e @ b_X597g $dCoercible_X597i)
+        (Data.Type.Coercion.$fReadCoercion_$creadList
+           @ k_X597c @ a_X597e @ b_X597g $dCoercible_X597i)
+        ((Data.Type.Coercion.$fReadCoercion1
+            @ k_X597c @ a_X597e @ b_X597g $dCoercible_X597i)
+         `cast` ((<Text.ParserCombinators.ReadPrec.Prec>_R
+                  ->_R Sym (Text.ParserCombinators.ReadP.N:ReadP[0]
+                                <Coercion
+                                   a_X597e
+                                   b_X597g>_R)) ; Sym (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                                                           <Coercion a_X597e b_X597g>_R)
+                 :: (Text.ParserCombinators.ReadPrec.Prec
+                     -> forall b.
+                        (Coercion a_X597e b_X597g -> Text.ParserCombinators.ReadP.P b)
+                        -> Text.ParserCombinators.ReadP.P b :: *)
+                    ~R# (Text.ParserCombinators.ReadPrec.ReadPrec
+                           (Coercion a_X597e b_X597g) :: *)))
+        (Data.Type.Coercion.$fReadCoercion_$creadListPrec
+           @ k_X597c @ a_X597e @ b_X597g $dCoercible_X597i)
+
+-- RHS size: {terms: 9, types: 18, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$fBoundedCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k (a :: k) (b :: k).
+     Coercible a b =>
+     Bounded (Coercion a b)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=DFun: \ (@ k_a591S)
+             (@ (a_a58ZN :: k_a591S))
+             (@ (b_a58ZO :: k_a591S))
+             (v_B1 :: Coercible a_a58ZN b_a58ZO) ->
+       GHC.Enum.C:Bounded TYPE: Coercion a_a58ZN b_a58ZO
+                          Data.Type.Coercion.Coercion @ k_a591S @ a_a58ZN @ b_a58ZO v_B1
+                          Data.Type.Coercion.Coercion @ k_a591S @ a_a58ZN @ b_a58ZO v_B1]
+Data.Type.Coercion.$fBoundedCoercion
+  = \ (@ k_a595m)
+      (@ (a_a595n :: k_a595m))
+      (@ (b_a595o :: k_a595m))
+      ($dCoercible_a595p :: Coercible a_a595n b_a595o) ->
+      GHC.Enum.C:Bounded
+        @ (Coercion a_a595n b_a595o)
+        (Data.Type.Coercion.Coercion
+           @ k_a595m @ a_a595n @ b_a595o $dCoercible_a595p)
+        (Data.Type.Coercion.Coercion
+           @ k_a595m @ a_a595n @ b_a595o $dCoercible_a595p)
+
+-- RHS size: {terms: 11, types: 32, coercions: 1, joins: 0/0}
+coerceWith :: forall a b. Coercion a b -> a -> b
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U(U))><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a595c)
+                 (@ b_a595d)
+                 (ds_d59bi [Occ=Once!] :: Coercion a_a595c b_a595d)
+                 (x_a58ZL [Occ=Once] :: a_a595c) ->
+                 case ds_d59bi of { Coercion $dCoercible_a595f [Occ=Once!] ->
+                 case $dCoercible_a595f of { GHC.Types.MkCoercible v_B3 ->
+                 x_a58ZL `cast` (v_B3 :: (a_a595c :: *) ~R# (b_a595d :: *))
+                 }
+                 }}]
+coerceWith
+  = \ (@ a_a595c)
+      (@ b_a595d)
+      (ds_d59bi :: Coercion a_a595c b_a595d)
+      (x_a58ZL :: a_a595c) ->
+      case ds_d59bi of { Coercion $dCoercible_a595f ->
+      case $dCoercible_a595f of { GHC.Types.MkCoercible v_B3 ->
+      x_a58ZL `cast` (v_B3 :: (a_a595c :: *) ~R# (b_a595d :: *))
+      }
+      }
+
+-- RHS size: {terms: 11, types: 23, coercions: 0, joins: 0/0}
+gcoerceWith
+  :: forall k0 (a :: k0) (b :: k0) r.
+     Coercion a b -> (Coercible a b => r) -> r
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)><C(S),1*C1(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k0_a5953)
+                 (@ (a_a5954 :: k0_a5953))
+                 (@ (b_a5955 :: k0_a5953))
+                 (@ r_a5956)
+                 (ds_d59bc [Occ=Once!] :: Coercion a_a5954 b_a5955)
+                 (x_a58ZM [Occ=Once!] :: Coercible a_a5954 b_a5955 => r_a5956) ->
+                 case ds_d59bc of { Coercion $dCoercible_a5958 [Occ=Once] ->
+                 x_a58ZM $dCoercible_a5958
+                 }}]
+gcoerceWith
+  = \ (@ k0_a5953)
+      (@ (a_a5954 :: k0_a5953))
+      (@ (b_a5955 :: k0_a5953))
+      (@ r_a5956)
+      (ds_d59bc :: Coercion a_a5954 b_a5955)
+      (x_a58ZM :: Coercible a_a5954 b_a5955 => r_a5956) ->
+      case ds_d59bc of { Coercion $dCoercible_a5958 ->
+      x_a58ZM $dCoercible_a5958
+      }
+
+-- RHS size: {terms: 13, types: 30, coercions: 2, joins: 0/0}
+sym :: forall k (a :: k) (b :: k). Coercion a b -> Coercion b a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S(S)),1*U(1*U(1*U))>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a594S)
+                 (@ (a_a594T :: k_a594S))
+                 (@ (b_a594U :: k_a594S))
+                 (ds_d59b6 [Occ=Once!] :: Coercion a_a594T b_a594U) ->
+                 case ds_d59b6 of { Coercion $dCoercible_a594W [Occ=Once] ->
+                 case GHC.Types.coercible_sel
+                        @ k_a594S @ a_a594T @ b_a594U $dCoercible_a594W
+                 of co_a59a0
+                 { __DEFAULT ->
+                 Data.Type.Coercion.Coercion
+                   @ k_a594S
+                   @ b_a594U
+                   @ a_a594T
+                   (GHC.Types.MkCoercible
+                      @ k_a594S
+                      @ b_a594U
+                      @ a_a594T
+                      @~ (Sym co_a59a0 :: (b_a594U :: k_a594S) ~R# (a_a594T :: k_a594S)))
+                 }
+                 }}]
+sym
+  = \ (@ k_a594S)
+      (@ (a_a594T :: k_a594S))
+      (@ (b_a594U :: k_a594S))
+      (ds_d59b6 :: Coercion a_a594T b_a594U) ->
+      case ds_d59b6 of { Coercion $dCoercible_a594W ->
+      case GHC.Types.coercible_sel
+             @ k_a594S @ a_a594T @ b_a594U $dCoercible_a594W
+      of co_a59a0
+      { __DEFAULT ->
+      Data.Type.Coercion.Coercion
+        @ k_a594S
+        @ b_a594U
+        @ a_a594T
+        (GHC.Types.MkCoercible
+           @ k_a594S
+           @ b_a594U
+           @ a_a594T
+           @~ (Sym co_a59a0 :: (b_a594U :: k_a594S) ~R# (a_a594T :: k_a594S)))
+      }
+      }
+
+-- RHS size: {terms: 22, types: 51, coercions: 3, joins: 0/0}
+trans
+  :: forall k (a :: k) (b :: k) (c :: k).
+     Coercion a b -> Coercion b c -> Coercion a c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S(S)),1*U(1*U(1*U))><S(S(S)),1*U(1*U(1*U))>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a594E)
+                 (@ (a_a594F :: k_a594E))
+                 (@ (b_a594G :: k_a594E))
+                 (@ (c_a594H :: k_a594E))
+                 (ds_d59aT [Occ=Once!] :: Coercion a_a594F b_a594G)
+                 (ds1_d59aU [Occ=Once!] :: Coercion b_a594G c_a594H) ->
+                 case ds_d59aT of { Coercion $dCoercible_a594J [Occ=Once] ->
+                 case GHC.Types.coercible_sel
+                        @ k_a594E @ a_a594F @ b_a594G $dCoercible_a594J
+                 of co_a599V
+                 { __DEFAULT ->
+                 case ds1_d59aU of { Coercion $dCoercible1_a594K [Occ=Once] ->
+                 case GHC.Types.coercible_sel
+                        @ k_a594E @ b_a594G @ c_a594H $dCoercible1_a594K
+                 of co1_a599W
+                 { __DEFAULT ->
+                 Data.Type.Coercion.Coercion
+                   @ k_a594E
+                   @ a_a594F
+                   @ c_a594H
+                   (GHC.Types.MkCoercible
+                      @ k_a594E
+                      @ a_a594F
+                      @ c_a594H
+                      @~ (co_a599V ; co1_a599W
+                          :: (a_a594F :: k_a594E) ~R# (c_a594H :: k_a594E)))
+                 }
+                 }
+                 }
+                 }}]
+trans
+  = \ (@ k_a594E)
+      (@ (a_a594F :: k_a594E))
+      (@ (b_a594G :: k_a594E))
+      (@ (c_a594H :: k_a594E))
+      (ds_d59aT :: Coercion a_a594F b_a594G)
+      (ds1_d59aU :: Coercion b_a594G c_a594H) ->
+      case ds_d59aT of { Coercion $dCoercible_a594J ->
+      case GHC.Types.coercible_sel
+             @ k_a594E @ a_a594F @ b_a594G $dCoercible_a594J
+      of co_a599V
+      { __DEFAULT ->
+      case ds1_d59aU of { Coercion $dCoercible1_a594K ->
+      case GHC.Types.coercible_sel
+             @ k_a594E @ b_a594G @ c_a594H $dCoercible1_a594K
+      of co1_a599W
+      { __DEFAULT ->
+      Data.Type.Coercion.Coercion
+        @ k_a594E
+        @ a_a594F
+        @ c_a594H
+        (GHC.Types.MkCoercible
+           @ k_a594E
+           @ a_a594F
+           @ c_a594H
+           @~ (co_a599V ; co1_a599W
+               :: (a_a594F :: k_a594E) ~R# (c_a594H :: k_a594E)))
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 9, types: 23, coercions: 7, joins: 0/0}
+repr :: forall k (a :: k) (b :: k). (a Eq.:~: b) -> Coercion a b
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a594t)
+                 (@ (a_a594u :: k_a594t))
+                 (@ (b_a594v :: k_a594t))
+                 (ds_d59aN [Occ=Once!] :: a_a594u Eq.:~: b_a594v) ->
+                 case ds_d59aN of { Eq.Refl co_a594x ->
+                 Data.Type.Coercion.Coercion
+                   @ k_a594t
+                   @ a_a594u
+                   @ b_a594v
+                   ((GHC.Types.MkCoercible
+                       @ k_a594t
+                       @ a_a594u
+                       @ a_a594u
+                       @~ (<a_a594u>_R :: (a_a594u :: k_a594t) ~R# (a_a594u :: k_a594t)))
+                    `cast` ((Coercible <k_a594t>_N <a_a594u>_R (Sub (Sym co_a594x)))_R
+                            :: (Coercible a_a594u a_a594u :: Constraint)
+                               ~R# (Coercible a_a594u b_a594v :: Constraint)))
+                 }}]
+repr
+  = \ (@ k_a594t)
+      (@ (a_a594u :: k_a594t))
+      (@ (b_a594v :: k_a594t))
+      (ds_d59aN :: a_a594u Eq.:~: b_a594v) ->
+      case ds_d59aN of { Eq.Refl co_a594x ->
+      Data.Type.Coercion.Coercion
+        @ k_a594t
+        @ a_a594u
+        @ b_a594v
+        ((GHC.Types.MkCoercible
+            @ k_a594t
+            @ a_a594u
+            @ a_a594u
+            @~ (<a_a594u>_R :: (a_a594u :: k_a594t) ~R# (a_a594u :: k_a594t)))
+         `cast` ((Coercible <k_a594t>_N <a_a594u>_R (Sub (Sym co_a594x)))_R
+                 :: (Coercible a_a594u a_a594u :: Constraint)
+                    ~R# (Coercible a_a594u b_a594v :: Constraint)))
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Type.Coercion.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Type.Coercion.$trModule3
+  = GHC.Types.TrNameS Data.Type.Coercion.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+Data.Type.Coercion.$trModule2 = "Data.Type.Coercion"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Type.Coercion.$trModule1
+  = GHC.Types.TrNameS Data.Type.Coercion.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Type.Coercion.$trModule
+  = GHC.Types.Module
+      Data.Type.Coercion.$trModule3 Data.Type.Coercion.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r59Bg :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r59Bg
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r59Bh :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r59Bh = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep2_r59Bi :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep2_r59Bi = GHC.Types.KindRepFun $krep1_r59Bh GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcCoercion1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Data.Type.Coercion.$tcCoercion1
+  = GHC.Types.KindRepFun $krep1_r59Bh $krep2_r59Bi
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcTestCoercion1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Data.Type.Coercion.$tcTestCoercion1
+  = GHC.Types.KindRepFun $krep2_r59Bi $krep_r59Bg
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep3_r59Bj :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r59Bj = GHC.Types.KindRepVar 2#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep4_r59Bk :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep4_r59Bk = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep5_r59Bl :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep5_r59Bl
+  = GHC.Types.: @ KindRep $krep3_r59Bj (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep6_r59Bm :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep6_r59Bm = GHC.Types.: @ KindRep $krep4_r59Bk $krep5_r59Bl
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep7_r59Bn :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep7_r59Bn = GHC.Types.: @ KindRep $krep1_r59Bh $krep6_r59Bm
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep8_r59Bo :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep8_r59Bo
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcCoercible $krep7_r59Bn
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcCoercion2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Type.Coercion.$tcCoercion2
+  = GHC.Types.TrNameS Data.Type.Coercion.$fReadCoercion3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcCoercion :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.Type.Coercion.$tcCoercion
+  = GHC.Types.TyCon
+      14885566513674463733##
+      8268940906925368652##
+      Data.Type.Coercion.$trModule
+      Data.Type.Coercion.$tcCoercion2
+      1#
+      Data.Type.Coercion.$tcCoercion1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep9_r59Bp :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep9_r59Bp
+  = GHC.Types.KindRepTyConApp
+      Data.Type.Coercion.$tcCoercion $krep7_r59Bn
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tc'Coercion1 [InlPrag=NOUSERINLINE[~]]
+  :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Data.Type.Coercion.$tc'Coercion1
+  = GHC.Types.KindRepFun $krep8_r59Bo $krep9_r59Bp
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tc'Coercion3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Type.Coercion.$tc'Coercion3 = "'Coercion"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tc'Coercion2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Type.Coercion.$tc'Coercion2
+  = GHC.Types.TrNameS Data.Type.Coercion.$tc'Coercion3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tc'Coercion :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.Type.Coercion.$tc'Coercion
+  = GHC.Types.TyCon
+      16177208673276072700##
+      13187043378465993605##
+      Data.Type.Coercion.$trModule
+      Data.Type.Coercion.$tc'Coercion2
+      3#
+      Data.Type.Coercion.$tc'Coercion1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcTestCoercion3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Type.Coercion.$tcTestCoercion3 = "TestCoercion"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcTestCoercion2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Type.Coercion.$tcTestCoercion2
+  = GHC.Types.TrNameS Data.Type.Coercion.$tcTestCoercion3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.Type.Coercion.$tcTestCoercion :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.Type.Coercion.$tcTestCoercion
+  = GHC.Types.TyCon
+      14520160333183018944##
+      2439357669602544154##
+      Data.Type.Coercion.$trModule
+      Data.Type.Coercion.$tcTestCoercion2
+      1#
+      Data.Type.Coercion.$tcTestCoercion1
+
+

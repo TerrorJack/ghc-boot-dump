@@ -1,0 +1,388 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:08:34.658346982 UTC
+
+GHC.ExecutionStack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ExecutionStack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule4];
+
+GHC.ExecutionStack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ExecutionStack"#;
+
+GHC.ExecutionStack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule2];
+
+GHC.ExecutionStack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ExecutionStack.$trModule3
+                                     GHC.ExecutionStack.$trModule1];
+
+GHC.ExecutionStack.getStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sdnA1]
+        case GHC.ExecutionStack.Internal.collectStackTrace1 s_sdnA1 of {
+          (#,#) ipv_sdnA3 [Occ=Once] ipv1_sdnA4 [Occ=Once!] ->
+              let {
+                sat_sdnA7 [Occ=Once]
+                  :: GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location]
+                [LclId] =
+                    [ipv1_sdnA4] \u []
+                        case ipv1_sdnA4 of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnA6 [Occ=Once] ->
+                              GHC.ExecutionStack.Internal.stackFrames a1_sdnA6;
+                        };
+              } in  (#,#) [ipv_sdnA3 sat_sdnA7];
+        };
+
+GHC.ExecutionStack.getStackTrace
+  :: GHC.Types.IO
+       (GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location])
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.ExecutionStack.getStackTrace1 eta_B1;
+
+GHC.ExecutionStack.showStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe GHC.Base.String #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sdnA8]
+        case GHC.ExecutionStack.Internal.collectStackTrace1 s_sdnA8 of {
+          (#,#) ipv_sdnAa [Occ=Once] ipv1_sdnAb [Occ=Once!] ->
+              let {
+                sat_sdnAi [Occ=Once] :: GHC.Base.Maybe GHC.Base.String
+                [LclId] =
+                    [ipv1_sdnAb] \u []
+                        case ipv1_sdnAb of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnAd [Occ=Once] ->
+                              case GHC.ExecutionStack.Internal.stackFrames a1_sdnAd of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just a2_sdnAf [Occ=Once] ->
+                                    let {
+                                      sat_sdnAh [Occ=Once] :: GHC.Base.String
+                                      [LclId] =
+                                          [a2_sdnAf] \u []
+                                              let {
+                                                sat_sdnAg [Occ=Once] :: [GHC.Types.Char]
+                                                [LclId] =
+                                                    [a2_sdnAf] \u []
+                                                        GHC.ExecutionStack.Internal.showStackFrames_go
+                                                            a2_sdnAf GHC.Types.[];
+                                              } in 
+                                                GHC.CString.unpackAppendCString#
+                                                    GHC.ExecutionStack.Internal.showStackFrames1
+                                                    sat_sdnAg;
+                                    } in  GHC.Base.Just [sat_sdnAh];
+                              };
+                        };
+              } in  (#,#) [ipv_sdnAa sat_sdnAi];
+        };
+
+GHC.ExecutionStack.showStackTrace
+  :: GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.ExecutionStack.showStackTrace1 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:08:34.660318376 UTC
+
+GHC.ExecutionStack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ExecutionStack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule4];
+
+GHC.ExecutionStack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ExecutionStack"#;
+
+GHC.ExecutionStack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule2];
+
+GHC.ExecutionStack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ExecutionStack.$trModule3
+                                     GHC.ExecutionStack.$trModule1];
+
+GHC.ExecutionStack.getStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case
+            GHC.ExecutionStack.Internal.collectStackTrace1 GHC.Prim.void#
+        of
+        { Unit# ipv1_sdnA4 [Occ=Once!] ->
+              let {
+                sat_sdnA7 [Occ=Once]
+                  :: GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location]
+                [LclId] =
+                    [ipv1_sdnA4] \u []
+                        case ipv1_sdnA4 of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnA6 [Occ=Once] ->
+                              GHC.ExecutionStack.Internal.stackFrames a1_sdnA6;
+                        };
+              } in  Unit# [sat_sdnA7];
+        };
+
+GHC.ExecutionStack.getStackTrace
+  :: GHC.Types.IO
+       (GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location])
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.ExecutionStack.getStackTrace1 GHC.Prim.void#;
+
+GHC.ExecutionStack.showStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe GHC.Base.String #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case
+            GHC.ExecutionStack.Internal.collectStackTrace1 GHC.Prim.void#
+        of
+        { Unit# ipv1_sdnAb [Occ=Once!] ->
+              let {
+                sat_sdnAi [Occ=Once] :: GHC.Base.Maybe GHC.Base.String
+                [LclId] =
+                    [ipv1_sdnAb] \u []
+                        case ipv1_sdnAb of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnAd [Occ=Once] ->
+                              case GHC.ExecutionStack.Internal.stackFrames a1_sdnAd of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just a2_sdnAf [Occ=Once] ->
+                                    let {
+                                      sat_sdnAh [Occ=Once] :: GHC.Base.String
+                                      [LclId] =
+                                          [a2_sdnAf] \u []
+                                              let {
+                                                sat_sdnAg [Occ=Once] :: [GHC.Types.Char]
+                                                [LclId] =
+                                                    [a2_sdnAf] \u []
+                                                        GHC.ExecutionStack.Internal.showStackFrames_go
+                                                            a2_sdnAf GHC.Types.[];
+                                              } in 
+                                                GHC.CString.unpackAppendCString#
+                                                    GHC.ExecutionStack.Internal.showStackFrames1
+                                                    sat_sdnAg;
+                                    } in  GHC.Base.Just [sat_sdnAh];
+                              };
+                        };
+              } in  Unit# [sat_sdnAi];
+        };
+
+GHC.ExecutionStack.showStackTrace
+  :: GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.ExecutionStack.showStackTrace1 GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:08:34.78600088 UTC
+
+GHC.ExecutionStack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ExecutionStack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule4];
+
+GHC.ExecutionStack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ExecutionStack"#;
+
+GHC.ExecutionStack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule2];
+
+GHC.ExecutionStack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ExecutionStack.$trModule3
+                                     GHC.ExecutionStack.$trModule1];
+
+GHC.ExecutionStack.getStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sdnH2]
+        case GHC.ExecutionStack.Internal.collectStackTrace1 s_sdnH2 of {
+          (#,#) ipv_sdnH4 [Occ=Once] ipv1_sdnH5 [Occ=Once!] ->
+              let {
+                sat_sdnH8 [Occ=Once]
+                  :: GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location]
+                [LclId] =
+                    [ipv1_sdnH5] \u []
+                        case ipv1_sdnH5 of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnH7 [Occ=Once] ->
+                              GHC.ExecutionStack.Internal.stackFrames a1_sdnH7;
+                        };
+              } in  (#,#) [ipv_sdnH4 sat_sdnH8];
+        };
+
+GHC.ExecutionStack.getStackTrace
+  :: GHC.Types.IO
+       (GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location])
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.ExecutionStack.getStackTrace1 eta_B1;
+
+GHC.ExecutionStack.showStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe GHC.Base.String #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sdnH9]
+        case GHC.ExecutionStack.Internal.collectStackTrace1 s_sdnH9 of {
+          (#,#) ipv_sdnHb [Occ=Once] ipv1_sdnHc [Occ=Once!] ->
+              let {
+                sat_sdnHj [Occ=Once] :: GHC.Base.Maybe GHC.Base.String
+                [LclId] =
+                    [ipv1_sdnHc] \u []
+                        case ipv1_sdnHc of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnHe [Occ=Once] ->
+                              case GHC.ExecutionStack.Internal.stackFrames a1_sdnHe of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just a2_sdnHg [Occ=Once] ->
+                                    let {
+                                      sat_sdnHi [Occ=Once] :: GHC.Base.String
+                                      [LclId] =
+                                          [a2_sdnHg] \u []
+                                              let {
+                                                sat_sdnHh [Occ=Once] :: [GHC.Types.Char]
+                                                [LclId] =
+                                                    [a2_sdnHg] \u []
+                                                        GHC.ExecutionStack.Internal.showStackFrames_go
+                                                            a2_sdnHg GHC.Types.[];
+                                              } in 
+                                                GHC.CString.unpackAppendCString#
+                                                    GHC.ExecutionStack.Internal.showStackFrames1
+                                                    sat_sdnHh;
+                                    } in  GHC.Base.Just [sat_sdnHi];
+                              };
+                        };
+              } in  (#,#) [ipv_sdnHb sat_sdnHj];
+        };
+
+GHC.ExecutionStack.showStackTrace
+  :: GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.ExecutionStack.showStackTrace1 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:08:34.788297544 UTC
+
+GHC.ExecutionStack.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.ExecutionStack.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule4];
+
+GHC.ExecutionStack.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.ExecutionStack"#;
+
+GHC.ExecutionStack.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.ExecutionStack.$trModule2];
+
+GHC.ExecutionStack.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.ExecutionStack.$trModule3
+                                     GHC.ExecutionStack.$trModule1];
+
+GHC.ExecutionStack.getStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case
+            GHC.ExecutionStack.Internal.collectStackTrace1 GHC.Prim.void#
+        of
+        { Unit# ipv1_sdnH5 [Occ=Once!] ->
+              let {
+                sat_sdnH8 [Occ=Once]
+                  :: GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location]
+                [LclId] =
+                    [ipv1_sdnH5] \u []
+                        case ipv1_sdnH5 of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnH7 [Occ=Once] ->
+                              GHC.ExecutionStack.Internal.stackFrames a1_sdnH7;
+                        };
+              } in  Unit# [sat_sdnH8];
+        };
+
+GHC.ExecutionStack.getStackTrace
+  :: GHC.Types.IO
+       (GHC.Base.Maybe [GHC.ExecutionStack.Internal.Location])
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.ExecutionStack.getStackTrace1 GHC.Prim.void#;
+
+GHC.ExecutionStack.showStackTrace1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Base.Maybe GHC.Base.String #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case
+            GHC.ExecutionStack.Internal.collectStackTrace1 GHC.Prim.void#
+        of
+        { Unit# ipv1_sdnHc [Occ=Once!] ->
+              let {
+                sat_sdnHj [Occ=Once] :: GHC.Base.Maybe GHC.Base.String
+                [LclId] =
+                    [ipv1_sdnHc] \u []
+                        case ipv1_sdnHc of {
+                          GHC.Base.Nothing -> GHC.Base.Nothing [];
+                          GHC.Base.Just a1_sdnHe [Occ=Once] ->
+                              case GHC.ExecutionStack.Internal.stackFrames a1_sdnHe of {
+                                GHC.Base.Nothing -> GHC.Base.Nothing [];
+                                GHC.Base.Just a2_sdnHg [Occ=Once] ->
+                                    let {
+                                      sat_sdnHi [Occ=Once] :: GHC.Base.String
+                                      [LclId] =
+                                          [a2_sdnHg] \u []
+                                              let {
+                                                sat_sdnHh [Occ=Once] :: [GHC.Types.Char]
+                                                [LclId] =
+                                                    [a2_sdnHg] \u []
+                                                        GHC.ExecutionStack.Internal.showStackFrames_go
+                                                            a2_sdnHg GHC.Types.[];
+                                              } in 
+                                                GHC.CString.unpackAppendCString#
+                                                    GHC.ExecutionStack.Internal.showStackFrames1
+                                                    sat_sdnHh;
+                                    } in  GHC.Base.Just [sat_sdnHi];
+                              };
+                        };
+              } in  Unit# [sat_sdnHj];
+        };
+
+GHC.ExecutionStack.showStackTrace
+  :: GHC.Types.IO (GHC.Base.Maybe GHC.Base.String)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.ExecutionStack.showStackTrace1 GHC.Prim.void#;
+

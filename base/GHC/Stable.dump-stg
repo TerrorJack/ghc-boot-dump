@@ -1,0 +1,940 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:59:01.792863942 UTC
+
+GHC.Stable.$fEqStablePtr_$c==
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s490r ds1_s490s]
+        case ds_s490r of {
+          GHC.Stable.StablePtr sp1_s490u [Occ=Once] ->
+              case ds1_s490s of {
+                GHC.Stable.StablePtr sp2_s490w [Occ=Once] ->
+                    case eqStablePtr# [sp1_s490u sp2_s490w] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      0# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s490y eta1_s490z]
+        case eta_s490y of {
+          GHC.Stable.StablePtr sp1_s490B [Occ=Once] ->
+              case eta1_s490z of {
+                GHC.Stable.StablePtr sp2_s490D [Occ=Once] ->
+                    case eqStablePtr# [sp1_s490B sp2_s490D] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      0# -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.Stable.StablePtr a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Stable.$fEqStablePtr_$c==
+                                     GHC.Stable.$fEqStablePtr_$c/=];
+
+GHC.Stable.newStablePtr1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Stable.StablePtr a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [a1_s490F s_s490G]
+        case makeStablePtr# [a1_s490F s_s490G] of {
+          (#,#) ipv_s490I [Occ=Once] ipv1_s490J [Occ=Once] ->
+              let {
+                sat_s490K [Occ=Once] :: GHC.Stable.StablePtr a_a48Vu
+                [LclId] =
+                    CCCS GHC.Stable.StablePtr! [ipv1_s490J];
+              } in  (#,#) [ipv_s490I sat_s490K];
+        };
+
+GHC.Stable.newStablePtr
+  :: forall a. a -> GHC.Types.IO (GHC.Stable.StablePtr a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stable.newStablePtr1 eta_B2 eta_B1;
+
+GHC.Stable.deRefStablePtr1
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s490L eta_s490M]
+        case ds_s490L of {
+          GHC.Stable.StablePtr sp_s490O [Occ=Once] ->
+              deRefStablePtr# [sp_s490O eta_s490M];
+        };
+
+GHC.Stable.deRefStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stable.deRefStablePtr1 eta_B2 eta_B1;
+
+GHC.Stable.castStablePtrToPtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Ptr.Ptr ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s490P]
+        case ds_s490P of {
+          GHC.Stable.StablePtr s_s490R [Occ=Once] -> GHC.Ptr.Ptr [s_s490R];
+        };
+
+GHC.Stable.castPtrToStablePtr
+  :: forall a. GHC.Ptr.Ptr () -> GHC.Stable.StablePtr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s490S]
+        case ds_s490S of {
+          GHC.Ptr.Ptr a1_s490U [Occ=Once] -> GHC.Stable.StablePtr [a1_s490U];
+        };
+
+GHC.Stable.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stable.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule4];
+
+GHC.Stable.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stable"#;
+
+GHC.Stable.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule2];
+
+GHC.Stable.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stable.$trModule3
+                                     GHC.Stable.$trModule1];
+
+$krep_r490l :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r490m :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r490l GHC.Types.[]];
+
+$krep2_r490n :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcStablePtr#
+                                              $krep1_r490m];
+
+GHC.Stable.$tcStablePtr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "StablePtr"#;
+
+GHC.Stable.$tcStablePtr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tcStablePtr2];
+
+GHC.Stable.$tcStablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2212012310673685839##
+                                    12855461380626358372##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tcStablePtr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r490o :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Stable.$tcStablePtr
+                                              $krep1_r490m];
+
+GHC.Stable.$tc'StablePtr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r490n $krep3_r490o];
+
+GHC.Stable.$tc'StablePtr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'StablePtr"#;
+
+GHC.Stable.$tc'StablePtr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tc'StablePtr3];
+
+GHC.Stable.$tc'StablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2898738257036715821##
+                                    1170603501179803931##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tc'StablePtr2
+                                    1#
+                                    GHC.Stable.$tc'StablePtr1];
+
+freeStablePtr1_r490p
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s490V eta_s490W]
+        case ds_s490V of {
+          GHC.Stable.StablePtr ds2_s490Y [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds2_s490Y eta_s490W] of {
+                Unit# ds3_s4911 [Occ=Once] -> (#,#) [ds3_s4911 GHC.Tuple.()];
+              };
+        };
+
+GHC.Stable.freeStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] freeStablePtr1_r490p eta_B2 eta_B1;
+
+GHC.Stable.StablePtr
+  :: forall a. GHC.Prim.StablePtr# a -> GHC.Stable.StablePtr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Stable.StablePtr [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:59:01.796458715 UTC
+
+GHC.Stable.$fEqStablePtr_$c==
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s490r ds1_s490s]
+        case ds_s490r of {
+          GHC.Stable.StablePtr sp1_s490u [Occ=Once] ->
+              case ds1_s490s of {
+                GHC.Stable.StablePtr sp2_s490w [Occ=Once] ->
+                    case eqStablePtr# [sp1_s490u sp2_s490w] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      0# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s490y eta1_s490z]
+        case eta_s490y of {
+          GHC.Stable.StablePtr sp1_s490B [Occ=Once] ->
+              case eta1_s490z of {
+                GHC.Stable.StablePtr sp2_s490D [Occ=Once] ->
+                    case eqStablePtr# [sp1_s490B sp2_s490D] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      0# -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.Stable.StablePtr a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Stable.$fEqStablePtr_$c==
+                                     GHC.Stable.$fEqStablePtr_$c/=];
+
+GHC.Stable.newStablePtr1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Stable.StablePtr a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [a1_s490F void_0E]
+        case makeStablePtr# [a1_s490F GHC.Prim.void#] of {
+          Unit# ipv1_s490J [Occ=Once] ->
+              let {
+                sat_s490K [Occ=Once] :: GHC.Stable.StablePtr a_a48Vu
+                [LclId] =
+                    CCCS GHC.Stable.StablePtr! [ipv1_s490J];
+              } in  Unit# [sat_s490K];
+        };
+
+GHC.Stable.newStablePtr
+  :: forall a. a -> GHC.Types.IO (GHC.Stable.StablePtr a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stable.newStablePtr1 eta_B2 GHC.Prim.void#;
+
+GHC.Stable.deRefStablePtr1
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s490L void_0E]
+        case ds_s490L of {
+          GHC.Stable.StablePtr sp_s490O [Occ=Once] ->
+              deRefStablePtr# [sp_s490O GHC.Prim.void#];
+        };
+
+GHC.Stable.deRefStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stable.deRefStablePtr1 eta_B2 GHC.Prim.void#;
+
+GHC.Stable.castStablePtrToPtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Ptr.Ptr ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s490P]
+        case ds_s490P of {
+          GHC.Stable.StablePtr s_s490R [Occ=Once] -> GHC.Ptr.Ptr [s_s490R];
+        };
+
+GHC.Stable.castPtrToStablePtr
+  :: forall a. GHC.Ptr.Ptr () -> GHC.Stable.StablePtr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s490S]
+        case ds_s490S of {
+          GHC.Ptr.Ptr a1_s490U [Occ=Once] -> GHC.Stable.StablePtr [a1_s490U];
+        };
+
+GHC.Stable.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stable.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule4];
+
+GHC.Stable.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stable"#;
+
+GHC.Stable.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule2];
+
+GHC.Stable.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stable.$trModule3
+                                     GHC.Stable.$trModule1];
+
+$krep_r490l :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r490m :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r490l GHC.Types.[]];
+
+$krep2_r490n :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcStablePtr#
+                                              $krep1_r490m];
+
+GHC.Stable.$tcStablePtr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "StablePtr"#;
+
+GHC.Stable.$tcStablePtr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tcStablePtr2];
+
+GHC.Stable.$tcStablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2212012310673685839##
+                                    12855461380626358372##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tcStablePtr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r490o :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Stable.$tcStablePtr
+                                              $krep1_r490m];
+
+GHC.Stable.$tc'StablePtr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r490n $krep3_r490o];
+
+GHC.Stable.$tc'StablePtr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'StablePtr"#;
+
+GHC.Stable.$tc'StablePtr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tc'StablePtr3];
+
+GHC.Stable.$tc'StablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2898738257036715821##
+                                    1170603501179803931##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tc'StablePtr2
+                                    1#
+                                    GHC.Stable.$tc'StablePtr1];
+
+freeStablePtr1_r490p
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s490V void_0E]
+        case ds_s490V of {
+          GHC.Stable.StablePtr ds2_s490Y [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds2_s490Y GHC.Prim.void#] of {
+                (##) -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.Stable.freeStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] freeStablePtr1_r490p eta_B2 GHC.Prim.void#;
+
+GHC.Stable.StablePtr
+  :: forall a. GHC.Prim.StablePtr# a -> GHC.Stable.StablePtr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Stable.StablePtr [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:59:02.081318203 UTC
+
+GHC.Stable.$fEqStablePtr_$c==
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s49bL ds1_s49bM]
+        case ds_s49bL of {
+          GHC.Stable.StablePtr sp1_s49bO [Occ=Once] ->
+              case ds1_s49bM of {
+                GHC.Stable.StablePtr sp2_s49bQ [Occ=Once] ->
+                    case eqStablePtr# [sp1_s49bO sp2_s49bQ] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      0# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s49bS eta1_s49bT]
+        case eta_s49bS of {
+          GHC.Stable.StablePtr sp1_s49bV [Occ=Once] ->
+              case eta1_s49bT of {
+                GHC.Stable.StablePtr sp2_s49bX [Occ=Once] ->
+                    case eqStablePtr# [sp1_s49bV sp2_s49bX] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      0# -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.Stable.StablePtr a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Stable.$fEqStablePtr_$c==
+                                     GHC.Stable.$fEqStablePtr_$c/=];
+
+GHC.Stable.newStablePtr1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Stable.StablePtr a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [a1_s49bZ s_s49c0]
+        case makeStablePtr# [a1_s49bZ s_s49c0] of {
+          (#,#) ipv_s49c2 [Occ=Once] ipv1_s49c3 [Occ=Once] ->
+              let {
+                sat_s49c4 [Occ=Once] :: GHC.Stable.StablePtr a_a48Vu
+                [LclId] =
+                    CCCS GHC.Stable.StablePtr! [ipv1_s49c3];
+              } in  (#,#) [ipv_s49c2 sat_s49c4];
+        };
+
+GHC.Stable.newStablePtr
+  :: forall a. a -> GHC.Types.IO (GHC.Stable.StablePtr a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stable.newStablePtr1 eta_B2 eta_B1;
+
+GHC.Stable.deRefStablePtr1
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s49c5 eta_s49c6]
+        case ds_s49c5 of {
+          GHC.Stable.StablePtr sp_s49c8 [Occ=Once] ->
+              deRefStablePtr# [sp_s49c8 eta_s49c6];
+        };
+
+GHC.Stable.deRefStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stable.deRefStablePtr1 eta_B2 eta_B1;
+
+GHC.Stable.castStablePtrToPtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Ptr.Ptr ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s49c9]
+        case ds_s49c9 of {
+          GHC.Stable.StablePtr s_s49cb [Occ=Once] -> GHC.Ptr.Ptr [s_s49cb];
+        };
+
+GHC.Stable.castPtrToStablePtr
+  :: forall a. GHC.Ptr.Ptr () -> GHC.Stable.StablePtr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s49cc]
+        case ds_s49cc of {
+          GHC.Ptr.Ptr a1_s49ce [Occ=Once] -> GHC.Stable.StablePtr [a1_s49ce];
+        };
+
+GHC.Stable.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stable.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule4];
+
+GHC.Stable.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stable"#;
+
+GHC.Stable.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule2];
+
+GHC.Stable.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stable.$trModule3
+                                     GHC.Stable.$trModule1];
+
+$krep_r490l :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r490m :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r490l GHC.Types.[]];
+
+$krep2_r490n :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcStablePtr#
+                                              $krep1_r490m];
+
+GHC.Stable.$tcStablePtr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "StablePtr"#;
+
+GHC.Stable.$tcStablePtr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tcStablePtr2];
+
+GHC.Stable.$tcStablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2212012310673685839##
+                                    12855461380626358372##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tcStablePtr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r490o :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Stable.$tcStablePtr
+                                              $krep1_r490m];
+
+GHC.Stable.$tc'StablePtr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r490n $krep3_r490o];
+
+GHC.Stable.$tc'StablePtr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'StablePtr"#;
+
+GHC.Stable.$tc'StablePtr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tc'StablePtr3];
+
+GHC.Stable.$tc'StablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2898738257036715821##
+                                    1170603501179803931##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tc'StablePtr2
+                                    1#
+                                    GHC.Stable.$tc'StablePtr1];
+
+freeStablePtr1_r490p
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s49cf eta_s49cg]
+        case ds_s49cf of {
+          GHC.Stable.StablePtr ds2_s49ci [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds2_s49ci eta_s49cg] of {
+                Unit# ds3_s49cl [Occ=Once] -> (#,#) [ds3_s49cl GHC.Tuple.()];
+              };
+        };
+
+GHC.Stable.freeStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] freeStablePtr1_r490p eta_B2 eta_B1;
+
+GHC.Stable.StablePtr
+  :: forall a. GHC.Prim.StablePtr# a -> GHC.Stable.StablePtr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Stable.StablePtr [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:59:02.086749978 UTC
+
+GHC.Stable.$fEqStablePtr_$c==
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s49bL ds1_s49bM]
+        case ds_s49bL of {
+          GHC.Stable.StablePtr sp1_s49bO [Occ=Once] ->
+              case ds1_s49bM of {
+                GHC.Stable.StablePtr sp2_s49bQ [Occ=Once] ->
+                    case eqStablePtr# [sp1_s49bO sp2_s49bQ] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      0# -> GHC.Types.False [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     GHC.Stable.StablePtr a -> GHC.Stable.StablePtr a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_s49bS eta1_s49bT]
+        case eta_s49bS of {
+          GHC.Stable.StablePtr sp1_s49bV [Occ=Once] ->
+              case eta1_s49bT of {
+                GHC.Stable.StablePtr sp2_s49bX [Occ=Once] ->
+                    case eqStablePtr# [sp1_s49bV sp2_s49bX] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      0# -> GHC.Types.True [];
+                    };
+              };
+        };
+
+GHC.Stable.$fEqStablePtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (GHC.Stable.StablePtr a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Stable.$fEqStablePtr_$c==
+                                     GHC.Stable.$fEqStablePtr_$c/=];
+
+GHC.Stable.newStablePtr1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Stable.StablePtr a #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [a1_s49bZ void_0E]
+        case makeStablePtr# [a1_s49bZ GHC.Prim.void#] of {
+          Unit# ipv1_s49c3 [Occ=Once] ->
+              let {
+                sat_s49c4 [Occ=Once] :: GHC.Stable.StablePtr a_a48Vu
+                [LclId] =
+                    CCCS GHC.Stable.StablePtr! [ipv1_s49c3];
+              } in  Unit# [sat_s49c4];
+        };
+
+GHC.Stable.newStablePtr
+  :: forall a. a -> GHC.Types.IO (GHC.Stable.StablePtr a)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stable.newStablePtr1 eta_B2 GHC.Prim.void#;
+
+GHC.Stable.deRefStablePtr1
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s49c5 void_0E]
+        case ds_s49c5 of {
+          GHC.Stable.StablePtr sp_s49c8 [Occ=Once] ->
+              deRefStablePtr# [sp_s49c8 GHC.Prim.void#];
+        };
+
+GHC.Stable.deRefStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stable.deRefStablePtr1 eta_B2 GHC.Prim.void#;
+
+GHC.Stable.castStablePtrToPtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Ptr.Ptr ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s49c9]
+        case ds_s49c9 of {
+          GHC.Stable.StablePtr s_s49cb [Occ=Once] -> GHC.Ptr.Ptr [s_s49cb];
+        };
+
+GHC.Stable.castPtrToStablePtr
+  :: forall a. GHC.Ptr.Ptr () -> GHC.Stable.StablePtr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=OtherCon []] =
+    [] \r [ds_s49cc]
+        case ds_s49cc of {
+          GHC.Ptr.Ptr a1_s49ce [Occ=Once] -> GHC.Stable.StablePtr [a1_s49ce];
+        };
+
+GHC.Stable.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stable.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule4];
+
+GHC.Stable.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stable"#;
+
+GHC.Stable.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$trModule2];
+
+GHC.Stable.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stable.$trModule3
+                                     GHC.Stable.$trModule1];
+
+$krep_r490l :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r490m :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r490l GHC.Types.[]];
+
+$krep2_r490n :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcStablePtr#
+                                              $krep1_r490m];
+
+GHC.Stable.$tcStablePtr2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "StablePtr"#;
+
+GHC.Stable.$tcStablePtr1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tcStablePtr2];
+
+GHC.Stable.$tcStablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2212012310673685839##
+                                    12855461380626358372##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tcStablePtr1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r490o :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Stable.$tcStablePtr
+                                              $krep1_r490m];
+
+GHC.Stable.$tc'StablePtr1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r490n $krep3_r490o];
+
+GHC.Stable.$tc'StablePtr3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'StablePtr"#;
+
+GHC.Stable.$tc'StablePtr2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stable.$tc'StablePtr3];
+
+GHC.Stable.$tc'StablePtr :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [2898738257036715821##
+                                    1170603501179803931##
+                                    GHC.Stable.$trModule
+                                    GHC.Stable.$tc'StablePtr2
+                                    1#
+                                    GHC.Stable.$tc'StablePtr1];
+
+freeStablePtr1_r490p
+  :: forall a.
+     GHC.Stable.StablePtr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    sat-only [] \r [ds_s49cf void_0E]
+        case ds_s49cf of {
+          GHC.Stable.StablePtr ds2_s49ci [Occ=Once] ->
+              case __pkg_ccall base-4.11.0.0 [ds2_s49ci GHC.Prim.void#] of {
+                (##) -> Unit# [GHC.Tuple.()];
+              };
+        };
+
+GHC.Stable.freeStablePtr
+  :: forall a. GHC.Stable.StablePtr a -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] freeStablePtr1_r490p eta_B2 GHC.Prim.void#;
+
+GHC.Stable.StablePtr
+  :: forall a. GHC.Prim.StablePtr# a -> GHC.Stable.StablePtr a
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Stable.StablePtr [eta_B1];
+

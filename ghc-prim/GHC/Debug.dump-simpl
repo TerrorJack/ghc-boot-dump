@@ -1,0 +1,190 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:50:22.319810477 UTC
+
+Result size of Tidy Core
+  = {terms: 118, types: 148, coercions: 12, joins: 0/0}
+
+Rec {
+-- RHS size: {terms: 12, types: 8, coercions: 0, joins: 0/0}
+GHC.Debug.debugErrLn_len [Occ=LoopBreaker]
+  :: Int# -> [Char] -> Int#
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,1*U>, Unf=OtherCon []]
+GHC.Debug.debugErrLn_len
+  = \ (l_aAYJ :: Int#) (ds_dB1f :: [Char]) ->
+      case ds_dB1f of {
+        [] -> l_aAYJ;
+        : ds1_dB1m xs'_aAYL ->
+          GHC.Debug.debugErrLn_len (+# l_aAYJ 1#) xs'_aAYL
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 30, types: 18, coercions: 0, joins: 0/0}
+GHC.Debug.debugErrLn_write [Occ=LoopBreaker]
+  :: MutableByteArray# RealWorld
+     -> Int# -> [Char] -> State# RealWorld -> State# RealWorld
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []]
+GHC.Debug.debugErrLn_write
+  = \ (mba_aAYM :: MutableByteArray# RealWorld)
+      (offset_aAYN :: Int#)
+      (ds_dB1n :: [Char])
+      (s_aAYO :: State# RealWorld) ->
+      case ds_dB1n of {
+        [] ->
+          writeCharArray# @ RealWorld mba_aAYM offset_aAYN '\NUL'# s_aAYO;
+        : ds1_dB1w xs'_aAYS ->
+          case ds1_dB1w of { C# x_aAYR ->
+          case writeCharArray# @ RealWorld mba_aAYM offset_aAYN x_aAYR s_aAYO
+          of s'_aAYU
+          { __DEFAULT ->
+          GHC.Debug.debugErrLn_write
+            mba_aAYM (+# offset_aAYN 1#) xs'_aAYS s'_aAYU
+          }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Debug.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Debug.$trModule4 = "ghc-prim"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Debug.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Debug.$trModule3 = GHC.Types.TrNameS GHC.Debug.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Debug.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Debug.$trModule2 = "GHC.Debug"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Debug.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Debug.$trModule1 = GHC.Types.TrNameS GHC.Debug.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Debug.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Debug.$trModule
+  = GHC.Types.Module GHC.Debug.$trModule3 GHC.Debug.$trModule1
+
+-- RHS size: {terms: 27, types: 36, coercions: 0, joins: 0/0}
+GHC.Debug.debugLn1
+  :: [Char] -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 123 30}]
+GHC.Debug.debugLn1
+  = \ (xs_aAYv :: [Char]) (s0_aAYw :: State# RealWorld) ->
+      case GHC.Debug.debugErrLn_len 1# xs_aAYv of l_aAYV { __DEFAULT ->
+      case newByteArray# @ RealWorld l_aAYV s0_aAYw of
+      { (# ipv_sB28, ipv1_sB29 #) ->
+      case GHC.Debug.debugErrLn_write ipv1_sB29 0# xs_aAYv ipv_sB28
+      of s2_aAYY
+      { __DEFAULT ->
+      case {__pkg_ccall ghc-prim-0.5.2.0 MutableByteArray# RealWorld
+                              -> State# RealWorld -> (# State# RealWorld #)}_dB21
+             ipv1_sB29 s2_aAYY
+      of
+      { (# ds1_dB1Z #) ->
+      (# ds1_dB1Z, GHC.Tuple.() #)
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 6, joins: 0/0}
+debugLn :: [Char] -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Debug.debugLn1
+               `cast` (<[Char]>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: ([Char] -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# ([Char] -> IO () :: *))}]
+debugLn
+  = GHC.Debug.debugLn1
+    `cast` (<[Char]>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: ([Char] -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# ([Char] -> IO () :: *))
+
+-- RHS size: {terms: 27, types: 36, coercions: 0, joins: 0/0}
+GHC.Debug.debugErrLn1
+  :: [Char] -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 123 30}]
+GHC.Debug.debugErrLn1
+  = \ (xs_aAYA :: [Char]) (s0_aAYB :: State# RealWorld) ->
+      case GHC.Debug.debugErrLn_len 1# xs_aAYA of l_aAYV { __DEFAULT ->
+      case newByteArray# @ RealWorld l_aAYV s0_aAYB of
+      { (# ipv_sB28, ipv1_sB29 #) ->
+      case GHC.Debug.debugErrLn_write ipv1_sB29 0# xs_aAYA ipv_sB28
+      of s2_aAYY
+      { __DEFAULT ->
+      case {__pkg_ccall ghc-prim-0.5.2.0 MutableByteArray# RealWorld
+                              -> State# RealWorld -> (# State# RealWorld #)}_dB1W
+             ipv1_sB29 s2_aAYY
+      of
+      { (# ds1_dB1U #) ->
+      (# ds1_dB1U, GHC.Tuple.() #)
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 6, joins: 0/0}
+debugErrLn :: [Char] -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Debug.debugErrLn1
+               `cast` (<[Char]>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: ([Char] -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# ([Char] -> IO () :: *))}]
+debugErrLn
+  = GHC.Debug.debugErrLn1
+    `cast` (<[Char]>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: ([Char] -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# ([Char] -> IO () :: *))
+
+

@@ -1,0 +1,548 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:00:08.294730543 UTC
+
+Result size of Tidy Core
+  = {terms: 155, types: 433, coercions: 22, joins: 0/0}
+
+-- RHS size: {terms: 7, types: 28, coercions: 0, joins: 0/0}
+id
+  :: forall k (cat :: k -> k -> *).
+     Category cat =>
+     forall (a :: k). cat a a
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SL),U(U,A)>,
+ RULES: Built in rule for id: "Class op id"]
+id
+  = \ (@ k_a5b56)
+      (@ (cat_a5b4I :: k_a5b56 -> k_a5b56 -> *))
+      (v_B1 :: Category cat_a5b4I) ->
+      case v_B1 of v_B1 { Control.Category.C:Category v_B2 v_B3 -> v_B2 }
+
+-- RHS size: {terms: 7, types: 28, coercions: 0, joins: 0/0}
+. :: forall k (cat :: k -> k -> *).
+     Category cat =>
+     forall (b :: k) (c :: k) (a :: k). cat b c -> cat a b -> cat a c
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LS),U(A,U)>,
+ RULES: Built in rule for .: "Class op ."]
+. = \ (@ k_a5b56)
+      (@ (cat_a5b4I :: k_a5b56 -> k_a5b56 -> *))
+      (v_B1 :: Category cat_a5b4I) ->
+      case v_B1 of v_B1 { Control.Category.C:Category v_B2 v_B3 -> v_B3 }
+
+-- RHS size: {terms: 3, types: 5, coercions: 0, joins: 0/0}
+Control.Category.$fCategoryTYPE(->) [InlPrag=NOUSERINLINE CONLIKE]
+  :: Category (->)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Category.C:Category TYPE: *
+                                   TYPE: (->)
+                                   GHC.Base.id
+                                   GHC.Base..]
+Control.Category.$fCategoryTYPE(->)
+  = Control.Category.C:Category @ * @ (->) GHC.Base.id GHC.Base..
+
+-- RHS size: {terms: 13, types: 33, coercions: 8, joins: 0/0}
+Control.Category.$fCategoryk:~:_$c.
+  :: forall k (b :: k) (c :: k) (a :: k).
+     (b :~: c) -> (a :~: b) -> a :~: c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U)><S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a5b8K)
+                 (@ (b_a5b8V :: k_a5b8K))
+                 (@ (c_a5b8W :: k_a5b8K))
+                 (@ (a_a5b8X :: k_a5b8K))
+                 (ds_d5bbm [Occ=Once!] :: b_a5b8V :~: c_a5b8W)
+                 (ds1_d5bbn [Occ=Once!] :: a_a5b8X :~: b_a5b8V) ->
+                 case ds_d5bbm of { Refl co_a5b8Z ->
+                 case ds1_d5bbn of { Refl co1_a5b90 ->
+                 (Data.Type.Equality.$WRefl @ k_a5b8K @ a_a5b8X)
+                 `cast` (((:~:)
+                            <k_a5b8K>_N <a_a5b8X>_N (Sym co1_a5b90 ; Sym co_a5b8Z))_R
+                         :: (a_a5b8X :~: a_a5b8X :: *) ~R# (a_a5b8X :~: c_a5b8W :: *))
+                 }
+                 }}]
+Control.Category.$fCategoryk:~:_$c.
+  = \ (@ k_a5b8K)
+      (@ (b_a5b8V :: k_a5b8K))
+      (@ (c_a5b8W :: k_a5b8K))
+      (@ (a_a5b8X :: k_a5b8K))
+      (ds_d5bbm :: b_a5b8V :~: c_a5b8W)
+      (ds1_d5bbn :: a_a5b8X :~: b_a5b8V) ->
+      case ds_d5bbm of { Refl co_a5b8Z ->
+      case ds1_d5bbn of { Refl co1_a5b90 ->
+      (Data.Type.Equality.$WRefl @ k_a5b8K @ a_a5b8X)
+      `cast` (((:~:)
+                 <k_a5b8K>_N <a_a5b8X>_N (Sym co1_a5b90 ; Sym co_a5b8Z))_R
+              :: (a_a5b8X :~: a_a5b8X :: *) ~R# (a_a5b8X :~: c_a5b8W :: *))
+      }
+      }
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+Control.Category.$fCategoryk:~: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k. Category (:~:)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ k_a5b6i) ->
+       Control.Category.C:Category TYPE: k_a5b6i
+                                   TYPE: (:~:)
+                                   Data.Type.Equality.$WRefl @ k_a5b6i
+                                   Control.Category.$fCategoryk:~:_$c. @ k_a5b6i]
+Control.Category.$fCategoryk:~:
+  = \ (@ k_a5b8K) ->
+      Control.Category.C:Category
+        @ k_a5b8K
+        @ (:~:)
+        (Data.Type.Equality.$WRefl @ k_a5b8K)
+        (Control.Category.$fCategoryk:~:_$c. @ k_a5b8K)
+
+-- RHS size: {terms: 13, types: 51, coercions: 9, joins: 0/0}
+Control.Category.$fCategoryk:~~:_$c.
+  :: forall k (b :: k) (c :: k) (a :: k).
+     (b :~~: c) -> (a :~~: b) -> a :~~: c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U(A,U)><S,1*U(A,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a5b8j)
+                 (@ (b_a5b8u :: k_a5b8j))
+                 (@ (c_a5b8v :: k_a5b8j))
+                 (@ (a_a5b8w :: k_a5b8j))
+                 (ds_d5bb7 [Occ=Once!] :: b_a5b8u :~~: c_a5b8v)
+                 (ds1_d5bb8 [Occ=Once!] :: a_a5b8w :~~: b_a5b8u) ->
+                 case ds_d5bb7 of { HRefl _ [Occ=Dead] co1_a5b8z ->
+                 case ds1_d5bb8 of { HRefl _ [Occ=Dead] co3_a5b8B ->
+                 (Data.Type.Equality.$WHRefl @ k_a5b8j @ a_a5b8w)
+                 `cast` (((:~~:)
+                            <k_a5b8j>_N
+                            <k_a5b8j>_N
+                            <a_a5b8w>_N
+                            (Sym co3_a5b8B ; Sym co1_a5b8z))_R
+                         :: (a_a5b8w :~~: a_a5b8w :: *) ~R# (a_a5b8w :~~: c_a5b8v :: *))
+                 }
+                 }}]
+Control.Category.$fCategoryk:~~:_$c.
+  = \ (@ k_a5b8j)
+      (@ (b_a5b8u :: k_a5b8j))
+      (@ (c_a5b8v :: k_a5b8j))
+      (@ (a_a5b8w :: k_a5b8j))
+      (ds_d5bb7 :: b_a5b8u :~~: c_a5b8v)
+      (ds1_d5bb8 :: a_a5b8w :~~: b_a5b8u) ->
+      case ds_d5bb7 of { HRefl co_a5b8y [Dmd=<L,A>] co1_a5b8z ->
+      case ds1_d5bb8 of { HRefl co2_a5b8A [Dmd=<L,A>] co3_a5b8B ->
+      (Data.Type.Equality.$WHRefl @ k_a5b8j @ a_a5b8w)
+      `cast` (((:~~:)
+                 <k_a5b8j>_N
+                 <k_a5b8j>_N
+                 <a_a5b8w>_N
+                 (Sym co3_a5b8B ; Sym co1_a5b8z))_R
+              :: (a_a5b8w :~~: a_a5b8w :: *) ~R# (a_a5b8w :~~: c_a5b8v :: *))
+      }
+      }
+
+-- RHS size: {terms: 4, types: 8, coercions: 0, joins: 0/0}
+Control.Category.$fCategoryk:~~: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k. Category (:~~:)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ k_a5b6b) ->
+       Control.Category.C:Category TYPE: k_a5b6b
+                                   TYPE: (:~~:)
+                                   Data.Type.Equality.$WHRefl @ k_a5b6b
+                                   Control.Category.$fCategoryk:~~:_$c. @ k_a5b6b]
+Control.Category.$fCategoryk:~~:
+  = \ (@ k_a5b8j) ->
+      Control.Category.C:Category
+        @ k_a5b8j
+        @ (:~~:)
+        (Data.Type.Equality.$WHRefl @ k_a5b8j)
+        (Control.Category.$fCategoryk:~~:_$c. @ k_a5b8j)
+
+-- RHS size: {terms: 14, types: 29, coercions: 4, joins: 0/0}
+Control.Category.$fCategorykCoercion_$c.
+  :: forall k (b :: k) (c :: k) (a :: k).
+     Coercion b c -> Coercion a b -> Coercion a c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S(S)),1*U(1*U(1*U))><S,1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ k_a5b7T)
+                 (@ (b_a5b87 :: k_a5b7T))
+                 (@ (c_a5b88 :: k_a5b7T))
+                 (@ (a_a5b89 :: k_a5b7T))
+                 (ds_d5bb0 [Occ=Once!] :: Coercion b_a5b87 c_a5b88)
+                 (eta_B1 [Occ=Once] :: Coercion a_a5b89 b_a5b87) ->
+                 case ds_d5bb0 of { Coercion $dCoercible_a5b8b [Occ=Once] ->
+                 case GHC.Types.coercible_sel
+                        @ k_a5b7T @ b_a5b87 @ c_a5b88 $dCoercible_a5b8b
+                 of co_a5baI
+                 { __DEFAULT ->
+                 eta_B1
+                 `cast` ((Coercion <k_a5b7T>_N <a_a5b89>_R co_a5baI)_R
+                         :: (Coercion a_a5b89 b_a5b87 :: *)
+                            ~R# (Coercion a_a5b89 c_a5b88 :: *))
+                 }
+                 }}]
+Control.Category.$fCategorykCoercion_$c.
+  = \ (@ k_a5b7T)
+      (@ (b_a5b87 :: k_a5b7T))
+      (@ (c_a5b88 :: k_a5b7T))
+      (@ (a_a5b89 :: k_a5b7T))
+      (ds_d5bb0 :: Coercion b_a5b87 c_a5b88)
+      (eta_B1 :: Coercion a_a5b89 b_a5b87) ->
+      case ds_d5bb0 of { Coercion $dCoercible_a5b8b ->
+      case GHC.Types.coercible_sel
+             @ k_a5b7T @ b_a5b87 @ c_a5b88 $dCoercible_a5b8b
+      of co_a5baI
+      { __DEFAULT ->
+      eta_B1
+      `cast` ((Coercion <k_a5b7T>_N <a_a5b89>_R co_a5baI)_R
+              :: (Coercion a_a5b89 b_a5b87 :: *)
+                 ~R# (Coercion a_a5b89 c_a5b88 :: *))
+      }
+      }
+
+-- RHS size: {terms: 3, types: 6, coercions: 1, joins: 0/0}
+Control.Category.$fCategorykCoercion1
+  :: forall k (a :: k). Coercible a a
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 0 10}]
+Control.Category.$fCategorykCoercion1
+  = \ (@ k_a5b7T) (@ (a_a5b7X :: k_a5b7T)) ->
+      GHC.Types.MkCoercible
+        @ k_a5b7T
+        @ a_a5b7X
+        @ a_a5b7X
+        @~ (<a_a5b7X>_R :: (a_a5b7X :: k_a5b7T) ~R# (a_a5b7X :: k_a5b7T))
+
+-- RHS size: {terms: 4, types: 8, coercions: 0, joins: 0/0}
+Control.Category.$fCategorykCoercion_$cid
+  :: forall k (a :: k). Coercion a a
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Category.$fCategorykCoercion_$cid
+  = \ (@ k_a5b7T) (@ (a_a5b7X :: k_a5b7T)) ->
+      Data.Type.Coercion.Coercion
+        @ k_a5b7T
+        @ a_a5b7X
+        @ a_a5b7X
+        (Control.Category.$fCategorykCoercion1 @ k_a5b7T @ a_a5b7X)
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+Control.Category.$fCategorykCoercion [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall k. Category Coercion
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ k_a5b65) ->
+       Control.Category.C:Category TYPE: k_a5b65
+                                   TYPE: Coercion
+                                   Control.Category.$fCategorykCoercion_$cid @ k_a5b65
+                                   Control.Category.$fCategorykCoercion_$c. @ k_a5b65]
+Control.Category.$fCategorykCoercion
+  = \ (@ k_a5b7T) ->
+      Control.Category.C:Category
+        @ k_a5b7T
+        @ Coercion
+        (Control.Category.$fCategorykCoercion_$cid @ k_a5b7T)
+        (Control.Category.$fCategorykCoercion_$c. @ k_a5b7T)
+
+-- RHS size: {terms: 8, types: 17, coercions: 0, joins: 0/0}
+<<<
+  :: forall k (cat :: k -> k -> *) (b :: k) (c :: k) (a :: k).
+     Category cat =>
+     cat b c -> cat a b -> cat a c
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ k_a5b7E)
+                 (@ (cat_a5b7F :: k_a5b7E -> k_a5b7E -> *))
+                 (@ (b_a5b7G :: k_a5b7E))
+                 (@ (c_a5b7H :: k_a5b7E))
+                 (@ (a_a5b7I :: k_a5b7E))
+                 ($dCategory_a5b7K [Occ=Once] :: Category cat_a5b7F) ->
+                 . @ k_a5b7E
+                   @ cat_a5b7F
+                   $dCategory_a5b7K
+                   @ b_a5b7G
+                   @ c_a5b7H
+                   @ a_a5b7I}]
+<<<
+  = \ (@ k_a5b7E)
+      (@ (cat_a5b7F :: k_a5b7E -> k_a5b7E -> *))
+      (@ (b_a5b7G :: k_a5b7E))
+      (@ (c_a5b7H :: k_a5b7E))
+      (@ (a_a5b7I :: k_a5b7E))
+      ($dCategory_a5b7K :: Category cat_a5b7F) ->
+      . @ k_a5b7E
+        @ cat_a5b7F
+        $dCategory_a5b7K
+        @ b_a5b7G
+        @ c_a5b7H
+        @ a_a5b7I
+
+-- RHS size: {terms: 12, types: 23, coercions: 0, joins: 0/0}
+>>>
+  :: forall k (cat :: k -> k -> *) (a :: k) (b :: k) (c :: k).
+     Category cat =>
+     cat a b -> cat b c -> cat a c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(S))),1*U(A,1*C1(C1(U)))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ k_a5b7q)
+                 (@ (cat_a5b7r :: k_a5b7q -> k_a5b7q -> *))
+                 (@ (a_a5b7s :: k_a5b7q))
+                 (@ (b_a5b7t :: k_a5b7q))
+                 (@ (c_a5b7u :: k_a5b7q))
+                 ($dCategory_a5b7w [Occ=Once] :: Category cat_a5b7r)
+                 (f_a5b4V [Occ=Once] :: cat_a5b7r a_a5b7s b_a5b7t)
+                 (g_a5b4W [Occ=Once] :: cat_a5b7r b_a5b7t c_a5b7u) ->
+                 . @ k_a5b7q
+                   @ cat_a5b7r
+                   $dCategory_a5b7w
+                   @ b_a5b7t
+                   @ c_a5b7u
+                   @ a_a5b7s
+                   g_a5b4W
+                   f_a5b4V}]
+>>>
+  = \ (@ k_a5b7q)
+      (@ (cat_a5b7r :: k_a5b7q -> k_a5b7q -> *))
+      (@ (a_a5b7s :: k_a5b7q))
+      (@ (b_a5b7t :: k_a5b7q))
+      (@ (c_a5b7u :: k_a5b7q))
+      ($dCategory_a5b7w :: Category cat_a5b7r)
+      (f_a5b4V :: cat_a5b7r a_a5b7s b_a5b7t)
+      (g_a5b4W :: cat_a5b7r b_a5b7t c_a5b7u) ->
+      . @ k_a5b7q
+        @ cat_a5b7r
+        $dCategory_a5b7w
+        @ b_a5b7t
+        @ c_a5b7u
+        @ a_a5b7s
+        g_a5b4W
+        f_a5b4V
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Category.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Category.$trModule3
+  = GHC.Types.TrNameS Control.Category.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+Control.Category.$trModule2 = "Control.Category"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Category.$trModule1
+  = GHC.Types.TrNameS Control.Category.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Category.$trModule
+  = GHC.Types.Module
+      Control.Category.$trModule3 Control.Category.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r5bdq :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r5bdq
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r5bdr :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r5bdr = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep2_r5bds :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep2_r5bds = GHC.Types.KindRepFun $krep1_r5bdr GHC.Types.krep$*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r5bdt :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep3_r5bdt = GHC.Types.KindRepFun $krep1_r5bdr $krep2_r5bds
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$tcCategory1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Control.Category.$tcCategory1
+  = GHC.Types.KindRepFun $krep3_r5bdt $krep_r5bdq
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$tcCategory3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Control.Category.$tcCategory3 = "Category"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$tcCategory2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Category.$tcCategory2
+  = GHC.Types.TrNameS Control.Category.$tcCategory3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Control.Category.$tcCategory :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Control.Category.$tcCategory
+  = GHC.Types.TyCon
+      2937510523604756154##
+      3642248471217903215##
+      Control.Category.$trModule
+      Control.Category.$tcCategory2
+      1#
+      Control.Category.$tcCategory1
+
+
+------ Local rules for imported ids --------
+"identity/left"
+    forall (@ k_a5b9A)
+           (@ (cat_a5b9v :: k_a5b9A -> k_a5b9A -> *))
+           (@ (a_a5b9z :: k_a5b9A))
+           (@ (c_a5b9y :: k_a5b9A))
+           ($dCategory_a5b9w :: Category cat_a5b9v)
+           ($dCategory1_a5b9C :: Category cat_a5b9v)
+           (p_a5b4X :: cat_a5b9v a_a5b9z c_a5b9y).
+      . @ k_a5b9A
+        @ cat_a5b9v
+        $dCategory_a5b9w
+        @ c_a5b9y
+        @ c_a5b9y
+        @ a_a5b9z
+        (id @ k_a5b9A @ cat_a5b9v $dCategory1_a5b9C @ c_a5b9y)
+        p_a5b4X
+      = p_a5b4X
+"identity/right"
+    forall (@ k_a5b9T)
+           (@ (cat_a5b9O :: k_a5b9T -> k_a5b9T -> *))
+           (@ (b_a5b9Q :: k_a5b9T))
+           (@ (c_a5b9R :: k_a5b9T))
+           ($dCategory_a5b9P :: Category cat_a5b9O)
+           ($dCategory1_a5b9V :: Category cat_a5b9O)
+           (p_a5b4Y :: cat_a5b9O b_a5b9Q c_a5b9R).
+      . @ k_a5b9T
+        @ cat_a5b9O
+        $dCategory_a5b9P
+        @ b_a5b9Q
+        @ c_a5b9R
+        @ b_a5b9Q
+        p_a5b4Y
+        (id @ k_a5b9T @ cat_a5b9O $dCategory1_a5b9V @ b_a5b9Q)
+      = p_a5b4Y
+"association"
+    forall (@ k_a5bag)
+           (@ (cat_a5bau :: k_a5bag -> k_a5bag -> *))
+           (@ (a_a5bas :: k_a5bag))
+           (@ (c_a5bar :: k_a5bag))
+           (@ (c1_a5bax :: k_a5bag))
+           (@ (b_a5baw :: k_a5bag))
+           ($dCategory_a5bac :: Category cat_a5bau)
+           ($dCategory1_a5bai :: Category cat_a5bau)
+           (p_a5b4Z :: cat_a5bau c1_a5bax c_a5bar)
+           (q_a5b50 :: cat_a5bau b_a5baw c1_a5bax)
+           (r_a5b51 :: cat_a5bau a_a5bas b_a5baw).
+      . @ k_a5bag
+        @ cat_a5bau
+        $dCategory_a5bac
+        @ b_a5baw
+        @ c_a5bar
+        @ a_a5bas
+        (. @ k_a5bag
+           @ cat_a5bau
+           $dCategory1_a5bai
+           @ c1_a5bax
+           @ c_a5bar
+           @ b_a5baw
+           p_a5b4Z
+           q_a5b50)
+        r_a5b51
+      = . @ k_a5bag
+          @ cat_a5bau
+          $dCategory_a5bac
+          @ c1_a5bax
+          @ c_a5bar
+          @ a_a5bas
+          p_a5b4Z
+          (. @ k_a5bag
+             @ cat_a5bau
+             $dCategory_a5bac
+             @ b_a5baw
+             @ c1_a5bax
+             @ a_a5bas
+             q_a5b50
+             r_a5b51)
+

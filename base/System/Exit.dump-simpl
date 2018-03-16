@@ -1,0 +1,336 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:15.945071148 UTC
+
+Result size of Tidy Core
+  = {terms: 118, types: 173, coercions: 31, joins: 0/0}
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl_rcmP9 :: GHC.Exception.SomeException
+[GblId]
+lvl_rcmP9
+  = GHC.IO.Exception.$fExceptionExitCode_$ctoException
+      GHC.IO.Exception.ExitSuccess
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+System.Exit.exitSuccess1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+System.Exit.exitSuccess1
+  = \ (@ a_acmLe)
+      (eta_icmMQ :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      GHC.Prim.raiseIO#
+        @ GHC.Exception.SomeException @ a_acmLe lvl_rcmP9 eta_icmMQ
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_rcmPa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_rcmPa = "exitWith"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl2_rcmPb :: [Char]
+[GblId]
+lvl2_rcmPb = GHC.CString.unpackCString# lvl1_rcmPa
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl3_rcmPc :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl3_rcmPc = "ExitFailure 0"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl4_rcmPd :: [Char]
+[GblId]
+lvl4_rcmPd = GHC.CString.unpackCString# lvl3_rcmPc
+
+-- RHS size: {terms: 7, types: 3, coercions: 0, joins: 0/0}
+lvl5_rcmPe :: IOException
+[GblId, Str=m, Unf=OtherCon []]
+lvl5_rcmPe
+  = GHC.IO.Exception.IOError
+      (GHC.Base.Nothing @ Handle)
+      GHC.IO.Exception.InvalidArgument
+      lvl2_rcmPb
+      lvl4_rcmPd
+      (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+      (GHC.Base.Nothing @ FilePath)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl6_rcmPf :: GHC.Exception.SomeException
+[GblId]
+lvl6_rcmPf
+  = GHC.IO.Exception.$fExceptionIOException_$ctoException lvl5_rcmPe
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+System.Exit.exitWith1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+System.Exit.exitWith1
+  = \ (@ a_acmLe)
+      (eta_icmMX :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      GHC.Prim.raiseIO#
+        @ GHC.Exception.SomeException @ a_acmLe lvl6_rcmPf eta_icmMX
+
+-- RHS size: {terms: 20, types: 14, coercions: 9, joins: 0/0}
+exitWith :: forall a. ExitCode -> IO a
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_acmLe) (ds_dcmMo [Occ=Once!] :: ExitCode) ->
+                 case ds_dcmMo of wild_X8 {
+                   ExitSuccess ->
+                     (System.Exit.exitSuccess1 @ a_acmLe)
+                     `cast` (Sym (GHC.Types.N:IO[0] <a_acmLe>_R)
+                             :: (GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #) :: *)
+                                ~R# (IO a_acmLe :: *));
+                   ExitFailure n_acmKy [Occ=Once!] ->
+                     case n_acmKy of { GHC.Types.I# x_aPOG [Occ=Once!] ->
+                     case x_aPOG of {
+                       __DEFAULT ->
+                         (\ (eta_icmMQ [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            GHC.Prim.raiseIO#
+                              @ GHC.Exception.SomeException
+                              @ a_acmLe
+                              (GHC.IO.Exception.$fExceptionExitCode_$ctoException wild_X8)
+                              eta_icmMQ)
+                         `cast` (Sym (GHC.Types.N:IO[0] <a_acmLe>_R)
+                                 :: (GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #) :: *)
+                                    ~R# (IO a_acmLe :: *));
+                       0# ->
+                         (System.Exit.exitWith1 @ a_acmLe)
+                         `cast` (Sym (GHC.Types.N:IO[0] <a_acmLe>_R)
+                                 :: (GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #) :: *)
+                                    ~R# (IO a_acmLe :: *))
+                     }
+                     }
+                 }}]
+exitWith
+  = \ (@ a_acmLe) (ds_dcmMo :: ExitCode) ->
+      case ds_dcmMo of wild_X8 {
+        ExitSuccess ->
+          (System.Exit.exitSuccess1 @ a_acmLe)
+          `cast` (Sym (GHC.Types.N:IO[0] <a_acmLe>_R)
+                  :: (GHC.Prim.State# GHC.Prim.RealWorld
+                      -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #) :: *)
+                     ~R# (IO a_acmLe :: *));
+        ExitFailure n_acmKy ->
+          case n_acmKy of { GHC.Types.I# x_aPOG ->
+          case x_aPOG of {
+            __DEFAULT ->
+              (\ (eta_icmMQ :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 GHC.Prim.raiseIO#
+                   @ GHC.Exception.SomeException
+                   @ a_acmLe
+                   (GHC.IO.Exception.$fExceptionExitCode_$ctoException wild_X8)
+                   eta_icmMQ)
+              `cast` (Sym (GHC.Types.N:IO[0] <a_acmLe>_R)
+                      :: (GHC.Prim.State# GHC.Prim.RealWorld
+                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #) :: *)
+                         ~R# (IO a_acmLe :: *));
+            0# ->
+              (System.Exit.exitWith1 @ a_acmLe)
+              `cast` (Sym (GHC.Types.N:IO[0] <a_acmLe>_R)
+                      :: (GHC.Prim.State# GHC.Prim.RealWorld
+                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_acmLe #) :: *)
+                         ~R# (IO a_acmLe :: *))
+          }
+          }
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_rcmPg :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl7_rcmPg = GHC.Types.I# 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl8_rcmPh :: ExitCode
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+lvl8_rcmPh = GHC.IO.Exception.ExitFailure lvl7_rcmPg
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl9_rcmPi :: GHC.Exception.SomeException
+[GblId]
+lvl9_rcmPi
+  = GHC.IO.Exception.$fExceptionExitCode_$ctoException lvl8_rcmPh
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+System.Exit.exitFailure1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+System.Exit.exitFailure1
+  = \ (@ a_acmM5)
+      (eta_XcmNf :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      GHC.Prim.raiseIO#
+        @ GHC.Exception.SomeException @ a_acmM5 lvl9_rcmPi eta_XcmNf
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+exitFailure2_rcmPj
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+exitFailure2_rcmPj
+  = \ (@ a_acmM5) (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      GHC.Prim.raiseIO#
+        @ GHC.Exception.SomeException @ a_acmM5 lvl9_rcmPi eta_B1
+
+-- RHS size: {terms: 1, types: 0, coercions: 6, joins: 0/0}
+exitFailure :: forall a. IO a
+[GblId,
+ Arity=1,
+ Str=<B,U>x,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.Exit.exitFailure1
+               `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                          ~R# (forall a. IO a :: *))}]
+exitFailure
+  = exitFailure2_rcmPj
+    `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+               ~R# (forall a. IO a :: *))
+
+-- RHS size: {terms: 13, types: 18, coercions: 2, joins: 0/0}
+System.Exit.die1
+  :: forall a.
+     String
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=2, Str=<L,1*U><S,U>, Unf=OtherCon []]
+System.Exit.die1
+  = \ (@ a_acmM8)
+      (err_acmKz :: String)
+      (s_i7JiH :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case ((GHC.IO.Handle.Text.hPutStr' stderr err_acmKz GHC.Types.True)
+            `cast` (GHC.Types.N:IO[0] <()>_R
+                    :: (IO () :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) :: *)))
+             s_i7JiH
+      of
+      { (# ipv_i7JiK, ipv1_i7JiL #) ->
+      GHC.Prim.raiseIO#
+        @ GHC.Exception.SomeException @ a_acmM8 lvl9_rcmPi ipv_i7JiK
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 8, joins: 0/0}
+die :: forall a. String -> IO a
+[GblId,
+ Arity=2,
+ Str=<L,1*U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.Exit.die1
+               `cast` (forall (a :: <*>_N).
+                       <String>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           String
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                          ~R# (forall a. String -> IO a :: *))}]
+die
+  = System.Exit.die1
+    `cast` (forall (a :: <*>_N).
+            <String>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                String
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+               ~R# (forall a. String -> IO a :: *))
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+exitSuccess2_rcmPk
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+exitSuccess2_rcmPk
+  = \ (@ a_acmLe) (eta_XM :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      GHC.Prim.raiseIO#
+        @ GHC.Exception.SomeException @ a_acmLe lvl_rcmP9 eta_XM
+
+-- RHS size: {terms: 1, types: 0, coercions: 6, joins: 0/0}
+exitSuccess :: forall a. IO a
+[GblId,
+ Arity=1,
+ Str=<B,U>x,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= System.Exit.exitSuccess1
+               `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                          ~R# (forall a. IO a :: *))}]
+exitSuccess
+  = exitSuccess2_rcmPk
+    `cast` (forall (a :: <*>_N). Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+               ~R# (forall a. IO a :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Exit.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+System.Exit.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Exit.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Exit.$trModule3 = GHC.Types.TrNameS System.Exit.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+System.Exit.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+System.Exit.$trModule2 = "System.Exit"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+System.Exit.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+System.Exit.$trModule1 = GHC.Types.TrNameS System.Exit.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+System.Exit.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+System.Exit.$trModule
+  = GHC.Types.Module System.Exit.$trModule3 System.Exit.$trModule1
+
+

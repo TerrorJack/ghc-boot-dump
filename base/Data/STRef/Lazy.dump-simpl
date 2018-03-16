@@ -1,0 +1,361 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:07:34.115072722 UTC
+
+Result size of Tidy Core
+  = {terms: 110, types: 245, coercions: 61, joins: 0/0}
+
+-- RHS size: {terms: 17, types: 36, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.newSTRef1
+  :: forall a s.
+     a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (ST.STRef s a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_acEDe)
+                 (@ s_acEDf)
+                 (x_i7Rxi [Occ=Once] :: a_acEDe)
+                 (eta_B1 [Occ=Once!] :: Control.Monad.ST.Lazy.Imp.State s_acEDf) ->
+                 case eta_B1 of
+                 { Control.Monad.ST.Lazy.Imp.S# s1_acDeN [Occ=Once] ->
+                 case GHC.Prim.newMutVar# @ a_acEDe @ s_acEDf x_i7Rxi s1_acDeN of
+                 { (# ipv_i7IAN [Occ=Once], ipv1_i7IAO [Occ=Once] #) ->
+                 (GHC.STRef.STRef @ s_acEDf @ a_acEDe ipv1_i7IAO,
+                  Control.Monad.ST.Lazy.Imp.S# @ s_acEDf ipv_i7IAN)
+                 }
+                 }}]
+Data.STRef.Lazy.newSTRef1
+  = \ (@ a_acEDe)
+      (@ s_acEDf)
+      (x_i7Rxi :: a_acEDe)
+      (eta_B1 :: Control.Monad.ST.Lazy.Imp.State s_acEDf) ->
+      case eta_B1 of { Control.Monad.ST.Lazy.Imp.S# s1_acDeN ->
+      case GHC.Prim.newMutVar# @ a_acEDe @ s_acEDf x_i7Rxi s1_acDeN of
+      { (# ipv_i7IAN, ipv1_i7IAO #) ->
+      (GHC.STRef.STRef @ s_acEDf @ a_acEDe ipv1_i7IAO,
+       Control.Monad.ST.Lazy.Imp.S# @ s_acEDf ipv_i7IAN)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+newSTRef :: forall a s. a -> ST s (ST.STRef s a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.STRef.Lazy.newSTRef1
+               `cast` (forall (a :: <*>_N) (s :: <*>_N).
+                       <a>_R
+                       ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <ST.STRef s a>_R)
+                       :: (forall a s.
+                           a
+                           -> Control.Monad.ST.Lazy.Imp.State s
+                           -> (ST.STRef s a, Control.Monad.ST.Lazy.Imp.State s) :: *)
+                          ~R# (forall a s. a -> ST s (ST.STRef s a) :: *))}]
+newSTRef
+  = Data.STRef.Lazy.newSTRef1
+    `cast` (forall (a :: <*>_N) (s :: <*>_N).
+            <a>_R
+            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <ST.STRef s a>_R)
+            :: (forall a s.
+                a
+                -> Control.Monad.ST.Lazy.Imp.State s
+                -> (ST.STRef s a, Control.Monad.ST.Lazy.Imp.State s) :: *)
+               ~R# (forall a s. a -> ST s (ST.STRef s a) :: *))
+
+-- RHS size: {terms: 19, types: 36, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.readSTRef1
+  :: forall s a.
+     ST.STRef s a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> (a, Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acED4)
+                 (@ a_acED5)
+                 (x_X7Rxz [Occ=Once!] :: ST.STRef s_acED4 a_acED5)
+                 (eta_B1 [Occ=Once!] :: Control.Monad.ST.Lazy.Imp.State s_acED4) ->
+                 case eta_B1 of
+                 { Control.Monad.ST.Lazy.Imp.S# s1_acDeN [Occ=Once] ->
+                 case x_X7Rxz of { GHC.STRef.STRef var#_i7IB3 [Occ=Once] ->
+                 case GHC.Prim.readMutVar# @ s_acED4 @ a_acED5 var#_i7IB3 s1_acDeN
+                 of
+                 { (# ipv_scDtv [Occ=Once], ipv1_scDtw [Occ=Once] #) ->
+                 (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_acED4 ipv_scDtv)
+                 }
+                 }
+                 }}]
+Data.STRef.Lazy.readSTRef1
+  = \ (@ s_acED4)
+      (@ a_acED5)
+      (x_X7Rxz :: ST.STRef s_acED4 a_acED5)
+      (eta_B1 :: Control.Monad.ST.Lazy.Imp.State s_acED4) ->
+      case eta_B1 of { Control.Monad.ST.Lazy.Imp.S# s1_acDeN ->
+      case x_X7Rxz of { GHC.STRef.STRef var#_i7IB3 ->
+      case GHC.Prim.readMutVar# @ s_acED4 @ a_acED5 var#_i7IB3 s1_acDeN
+      of
+      { (# ipv_scDtv, ipv1_scDtw #) ->
+      (ipv1_scDtw, Control.Monad.ST.Lazy.Imp.S# @ s_acED4 ipv_scDtv)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+readSTRef :: forall s a. ST.STRef s a -> ST s a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.STRef.Lazy.readSTRef1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST.STRef s a>_R
+                       ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+                       :: (forall s a.
+                           ST.STRef s a
+                           -> Control.Monad.ST.Lazy.Imp.State s
+                           -> (a, Control.Monad.ST.Lazy.Imp.State s) :: *)
+                          ~R# (forall s a. ST.STRef s a -> ST s a :: *))}]
+readSTRef
+  = Data.STRef.Lazy.readSTRef1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST.STRef s a>_R
+            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <a>_R)
+            :: (forall s a.
+                ST.STRef s a
+                -> Control.Monad.ST.Lazy.Imp.State s
+                -> (a, Control.Monad.ST.Lazy.Imp.State s) :: *)
+               ~R# (forall s a. ST.STRef s a -> ST s a :: *))
+
+-- RHS size: {terms: 21, types: 28, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.writeSTRef1
+  :: forall s a.
+     ST.STRef s a
+     -> a
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acECX)
+                 (@ a_acECY)
+                 (r_acEBM [Occ=Once!] :: ST.STRef s_acECX a_acECY)
+                 (a1_acEBN [Occ=Once] :: a_acECY)
+                 (eta_B1 [Occ=Once!] :: Control.Monad.ST.Lazy.Imp.State s_acECX) ->
+                 case eta_B1 of
+                 { Control.Monad.ST.Lazy.Imp.S# s1_acDeN [Occ=Once] ->
+                 case r_acEBM of { GHC.STRef.STRef var#_i7IBc [Occ=Once] ->
+                 case GHC.Prim.writeMutVar#
+                        @ s_acECX @ a_acECY var#_i7IBc a1_acEBN s1_acDeN
+                 of s2#_i7IBe
+                 { __DEFAULT ->
+                 (GHC.Tuple.(), Control.Monad.ST.Lazy.Imp.S# @ s_acECX s2#_i7IBe)
+                 }
+                 }
+                 }}]
+Data.STRef.Lazy.writeSTRef1
+  = \ (@ s_acECX)
+      (@ a_acECY)
+      (r_acEBM :: ST.STRef s_acECX a_acECY)
+      (a1_acEBN :: a_acECY)
+      (eta_B1 :: Control.Monad.ST.Lazy.Imp.State s_acECX) ->
+      case eta_B1 of { Control.Monad.ST.Lazy.Imp.S# s1_acDeN ->
+      case r_acEBM of { GHC.STRef.STRef var#_i7IBc ->
+      case GHC.Prim.writeMutVar#
+             @ s_acECX @ a_acECY var#_i7IBc a1_acEBN s1_acDeN
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (GHC.Tuple.(), Control.Monad.ST.Lazy.Imp.S# @ s_acECX s2#_i7IBe)
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+writeSTRef :: forall s a. ST.STRef s a -> a -> ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.STRef.Lazy.writeSTRef1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST.STRef s a>_R
+                       ->_R <a>_R
+                       ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <()>_R)
+                       :: (forall s a.
+                           ST.STRef s a
+                           -> a
+                           -> Control.Monad.ST.Lazy.Imp.State s
+                           -> ((), Control.Monad.ST.Lazy.Imp.State s) :: *)
+                          ~R# (forall s a. ST.STRef s a -> a -> ST s () :: *))}]
+writeSTRef
+  = Data.STRef.Lazy.writeSTRef1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST.STRef s a>_R
+            ->_R <a>_R
+            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <()>_R)
+            :: (forall s a.
+                ST.STRef s a
+                -> a
+                -> Control.Monad.ST.Lazy.Imp.State s
+                -> ((), Control.Monad.ST.Lazy.Imp.State s) :: *)
+               ~R# (forall s a. ST.STRef s a -> a -> ST s () :: *))
+
+-- RHS size: {terms: 27, types: 42, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.modifySTRef1
+  :: forall s a.
+     ST.STRef s a
+     -> (a -> a)
+     -> Control.Monad.ST.Lazy.Imp.State s
+     -> ((), Control.Monad.ST.Lazy.Imp.State s)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ s_acECQ)
+                 (@ a_acECR)
+                 (r_acEBO [Occ=Once!] :: ST.STRef s_acECQ a_acECR)
+                 (f_acEBP [Occ=Once!] :: a_acECR -> a_acECR)
+                 (eta_B1 [Occ=Once!] :: Control.Monad.ST.Lazy.Imp.State s_acECQ) ->
+                 case eta_B1 of
+                 { Control.Monad.ST.Lazy.Imp.S# s1_acDeN [Occ=Once] ->
+                 case r_acEBO of { GHC.STRef.STRef var#_i7IB3 ->
+                 case GHC.Prim.readMutVar# @ s_acECQ @ a_acECR var#_i7IB3 s1_acDeN
+                 of
+                 { (# ipv_i80sE [Occ=Once], ipv1_i80sF [Occ=Once] #) ->
+                 case GHC.Prim.writeMutVar#
+                        @ s_acECQ @ a_acECR var#_i7IB3 (f_acEBP ipv1_i80sF) ipv_i80sE
+                 of s2#_i7IBe
+                 { __DEFAULT ->
+                 (GHC.Tuple.(), Control.Monad.ST.Lazy.Imp.S# @ s_acECQ s2#_i7IBe)
+                 }
+                 }
+                 }
+                 }}]
+Data.STRef.Lazy.modifySTRef1
+  = \ (@ s_acECQ)
+      (@ a_acECR)
+      (r_acEBO :: ST.STRef s_acECQ a_acECR)
+      (f_acEBP :: a_acECR -> a_acECR)
+      (eta_B1 :: Control.Monad.ST.Lazy.Imp.State s_acECQ) ->
+      case eta_B1 of { Control.Monad.ST.Lazy.Imp.S# s1_acDeN ->
+      case r_acEBO of { GHC.STRef.STRef var#_i7IB3 ->
+      case GHC.Prim.readMutVar# @ s_acECQ @ a_acECR var#_i7IB3 s1_acDeN
+      of
+      { (# ipv_i80sE, ipv1_i80sF #) ->
+      case GHC.Prim.writeMutVar#
+             @ s_acECQ @ a_acECR var#_i7IB3 (f_acEBP ipv1_i80sF) ipv_i80sE
+      of s2#_i7IBe
+      { __DEFAULT ->
+      (GHC.Tuple.(), Control.Monad.ST.Lazy.Imp.S# @ s_acECQ s2#_i7IBe)
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+modifySTRef :: forall s a. ST.STRef s a -> (a -> a) -> ST s ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(U)><S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.STRef.Lazy.modifySTRef1
+               `cast` (forall (s :: <*>_N) (a :: <*>_N).
+                       <ST.STRef s a>_R
+                       ->_R <a -> a>_R
+                       ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <()>_R)
+                       :: (forall s a.
+                           ST.STRef s a
+                           -> (a -> a)
+                           -> Control.Monad.ST.Lazy.Imp.State s
+                           -> ((), Control.Monad.ST.Lazy.Imp.State s) :: *)
+                          ~R# (forall s a. ST.STRef s a -> (a -> a) -> ST s () :: *))}]
+modifySTRef
+  = Data.STRef.Lazy.modifySTRef1
+    `cast` (forall (s :: <*>_N) (a :: <*>_N).
+            <ST.STRef s a>_R
+            ->_R <a -> a>_R
+            ->_R Sym (Control.Monad.ST.Lazy.Imp.N:ST[0] <s>_N <()>_R)
+            :: (forall s a.
+                ST.STRef s a
+                -> (a -> a)
+                -> Control.Monad.ST.Lazy.Imp.State s
+                -> ((), Control.Monad.ST.Lazy.Imp.State s) :: *)
+               ~R# (forall s a. ST.STRef s a -> (a -> a) -> ST s () :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.STRef.Lazy.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.STRef.Lazy.$trModule3
+  = GHC.Types.TrNameS Data.STRef.Lazy.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+Data.STRef.Lazy.$trModule2 = "Data.STRef.Lazy"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.STRef.Lazy.$trModule1
+  = GHC.Types.TrNameS Data.STRef.Lazy.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.STRef.Lazy.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.STRef.Lazy.$trModule
+  = GHC.Types.Module
+      Data.STRef.Lazy.$trModule3 Data.STRef.Lazy.$trModule1
+
+

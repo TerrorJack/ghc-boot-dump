@@ -1,0 +1,3755 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:00:18.392092592 UTC
+
+Result size of Tidy Core
+  = {terms: 2,670, types: 5,414, coercions: 0, joins: 11/63}
+
+-- RHS size: {terms: 11, types: 10, coercions: 0, joins: 0/0}
+Data.OldList.$WSnocBuilder [InlPrag=INLINE[2]]
+  :: forall a. Word -> [a] -> [a] -> SnocBuilder a
+[GblId[DataConWrapper],
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5ifE)
+                 (dt_a5iox [Occ=Once!] :: Word)
+                 (dt_a5ioy [Occ=Once] :: [a_a5ifE[sk:1]])
+                 (dt_a5ioz [Occ=Once] :: [a_a5ifE[sk:1]]) ->
+                 case dt_a5iox of { W# dt_a5ioA [Occ=Once] ->
+                 Data.OldList.SnocBuilder @ a_a5ifE dt_a5ioA dt_a5ioy dt_a5ioz
+                 }}]
+Data.OldList.$WSnocBuilder
+  = \ (@ a_a5ifE)
+      (dt_a5iox [Occ=Once!] :: Word)
+      (dt_a5ioy [Occ=Once] :: [a_a5ifE[sk:1]])
+      (dt_a5ioz [Occ=Once] :: [a_a5ifE[sk:1]]) ->
+      case dt_a5iox of { W# dt_a5ioA [Occ=Once] ->
+      Data.OldList.SnocBuilder @ a_a5ifE dt_a5ioA dt_a5ioy dt_a5ioz
+      }
+
+-- RHS size: {terms: 30, types: 27, coercions: 0, joins: 0/1}
+dropWhileEnd :: forall a. (a -> Bool) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0] 180 0}]
+dropWhileEnd
+  = \ (@ a_a5jar)
+      (p_a5ii3 :: a_a5jar -> Bool)
+      (eta_B1 :: [a_a5jar]) ->
+      letrec {
+        go_i1y1b [Occ=LoopBreaker] :: [a_a5jar] -> [a_a5jar]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go_i1y1b
+          = \ (ds_i1y1c :: [a_a5jar]) ->
+              case ds_i1y1c of {
+                [] -> GHC.Types.[] @ a_a5jar;
+                : y_i1y1h ys_i1y1i ->
+                  case p_a5ii3 y_i1y1h of {
+                    False -> GHC.Types.: @ a_a5jar y_i1y1h (go_i1y1b ys_i1y1i);
+                    True ->
+                      case go_i1y1b ys_i1y1i of wild2_i2KaD {
+                        [] -> GHC.Types.[] @ a_a5jar;
+                        : ds1_i2Mqv ds2_i2Mqw -> GHC.Types.: @ a_a5jar y_i1y1h wild2_i2KaD
+                      }
+                  }
+              }; } in
+      go_i1y1b eta_B1
+
+Rec {
+-- RHS size: {terms: 27, types: 27, coercions: 0, joins: 0/0}
+stripPrefix [Occ=LoopBreaker]
+  :: forall a. Eq a => [a] -> [a] -> Maybe [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A)><S,1*U><L,U>,
+ Unf=OtherCon []]
+stripPrefix
+  = \ (@ a_a5jah)
+      ($dEq_a5jaj :: Eq a_a5jah)
+      (ds_d5jwM :: [a_a5jah])
+      (ys_a5ii6 :: [a_a5jah]) ->
+      case ds_d5jwM of {
+        [] -> GHC.Base.Just @ [a_a5jah] ys_a5ii6;
+        : x_a5ii7 xs_a5ii8 ->
+          case ys_a5ii6 of {
+            [] -> GHC.Base.Nothing @ [a_a5jah];
+            : y_a5ii9 ys1_a5iia ->
+              case == @ a_a5jah $dEq_a5jaj x_a5ii7 y_a5ii9 of {
+                False -> GHC.Base.Nothing @ [a_a5jah];
+                True -> stripPrefix @ a_a5jah $dEq_a5jaj xs_a5ii8 ys1_a5iia
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 21, types: 20, coercions: 0, joins: 1/1}
+find :: forall a. (a -> Bool) -> [a] -> Maybe a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j9W)
+                 (p_a5iid [Occ=OnceL!] :: a_a5j9W -> Bool)
+                 (x_i1Mhr [Occ=Once] :: [a_a5j9W]) ->
+                 joinrec {
+                   go_i1y1b [Occ=LoopBreakerT[1]] :: [a_a5j9W] -> Maybe a_a5j9W
+                   [LclId[JoinId(1)], Arity=1, Unf=OtherCon []]
+                   go_i1y1b (ds_i1y1c [Occ=Once!] :: [a_a5j9W])
+                     = case ds_i1y1c of {
+                         [] -> GHC.Base.Nothing @ a_a5j9W;
+                         : y_i1y1h ys_i1y1i [Occ=Once] ->
+                           case p_a5iid y_i1y1h of {
+                             False -> jump go_i1y1b ys_i1y1i;
+                             True -> GHC.Base.Just @ a_a5j9W y_i1y1h
+                           }
+                       }; } in
+                 jump go_i1y1b x_i1Mhr}]
+find
+  = \ (@ a_a5j9W)
+      (p_a5iid :: a_a5j9W -> Bool)
+      (x_i1Mhr :: [a_a5j9W]) ->
+      joinrec {
+        go_i1y1b [Occ=LoopBreaker] :: [a_a5j9W] -> Maybe a_a5j9W
+        [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go_i1y1b (ds_i1y1c :: [a_a5j9W])
+          = case ds_i1y1c of {
+              [] -> GHC.Base.Nothing @ a_a5j9W;
+              : y_i1y1h ys_i1y1i ->
+                case p_a5iid y_i1y1h of {
+                  False -> jump go_i1y1b ys_i1y1i;
+                  True -> GHC.Base.Just @ a_a5j9W y_i1y1h
+                }
+            }; } in
+      jump go_i1y1b x_i1Mhr
+
+-- RHS size: {terms: 32, types: 26, coercions: 0, joins: 1/2}
+elemIndex :: forall a. Eq a => a -> [a] -> Maybe Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C(U)),A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 143 60}]
+elemIndex
+  = \ (@ a_a5jaa) ($dEq_a5jac :: Eq a_a5jaa) (x_a5iib :: a_a5jaa) ->
+      let {
+        p_a5iie [Dmd=<L,C(U)>] :: a_a5jaa -> Bool
+        [LclId]
+        p_a5iie = == @ a_a5jaa $dEq_a5jac x_a5iib } in
+      \ (x1_i1Mhr :: [a_a5jaa]) ->
+        joinrec {
+          go_i1y1b [Occ=LoopBreaker] :: [a_a5jaa] -> Int# -> Maybe Int
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+          go_i1y1b (ds_i1y1c :: [a_a5jaa]) (eta_B1 :: Int#)
+            = case ds_i1y1c of {
+                [] -> GHC.Base.Nothing @ Int;
+                : y_i1y1h ys_i1y1i ->
+                  case p_a5iie y_i1y1h of {
+                    False -> jump go_i1y1b ys_i1y1i (+# eta_B1 1#);
+                    True -> GHC.Base.Just @ Int (GHC.Types.I# eta_B1)
+                  }
+              }; } in
+        jump go_i1y1b x1_i1Mhr 0#
+
+-- RHS size: {terms: 27, types: 22, coercions: 0, joins: 1/1}
+findIndex :: forall a. (a -> Bool) -> [a] -> Maybe Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 0] 93 0}]
+findIndex
+  = \ (@ a_a5j9N)
+      (p_a5iie :: a_a5j9N -> Bool)
+      (x_i1Mhr :: [a_a5j9N]) ->
+      joinrec {
+        go_i1y1b [Occ=LoopBreaker] :: [a_a5j9N] -> Int# -> Maybe Int
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        go_i1y1b (ds_i1y1c :: [a_a5j9N]) (eta_B1 :: Int#)
+          = case ds_i1y1c of {
+              [] -> GHC.Base.Nothing @ Int;
+              : y_i1y1h ys_i1y1i ->
+                case p_a5iie y_i1y1h of {
+                  False -> jump go_i1y1b ys_i1y1i (+# eta_B1 1#);
+                  True -> GHC.Base.Just @ Int (GHC.Types.I# eta_B1)
+                }
+            }; } in
+      jump go_i1y1b x_i1Mhr 0#
+
+-- RHS size: {terms: 32, types: 22, coercions: 0, joins: 0/1}
+findIndices [InlPrag=INLINE (sat-args=2)]
+  :: forall a. (a -> Bool) -> [a] -> [Int]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a5j9e)
+                 (p_a5iif [Occ=OnceL!] :: a_a5j9e -> Bool)
+                 (ls_a5iig [Occ=Once] :: [a_a5j9e]) ->
+                 build
+                   @ Int
+                   (\ (@ b_a5j9k)
+                      (c_a5iih [Occ=OnceL!, OS=OneShot] :: Int -> b_a5j9k -> b_a5j9k)
+                      (n_a5iii [Occ=OnceL, OS=OneShot] :: b_a5j9k) ->
+                      foldr
+                        @ a_a5j9e
+                        @ (Int# -> b_a5j9k)
+                        (\ (x_a5iik [Occ=Once] :: a_a5j9e)
+                           (r_a5iil [Occ=Once*!, OS=OneShot] :: Int# -> b_a5j9k)
+                           (k_a5iim :: Int#) ->
+                           case p_a5iif x_a5iik of {
+                             False -> r_a5iil (+# k_a5iim 1#);
+                             True -> c_a5iih (GHC.Types.I# k_a5iim) (r_a5iil (+# k_a5iim 1#))
+                           })
+                        (\ _ [Occ=Dead] -> n_a5iii)
+                        ls_a5iig
+                        0#)}]
+findIndices
+  = \ (@ a_a5j9e)
+      (p_a5iif :: a_a5j9e -> Bool)
+      (ls_a5iig :: [a_a5j9e]) ->
+      letrec {
+        go_i1y1b [Occ=LoopBreaker] :: [a_a5j9e] -> Int# -> [Int]
+        [LclId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        go_i1y1b
+          = \ (ds_i1y1c :: [a_a5j9e]) (eta_B1 :: Int#) ->
+              case ds_i1y1c of {
+                [] -> GHC.Types.[] @ Int;
+                : y_i1y1h ys_i1y1i ->
+                  case p_a5iif y_i1y1h of {
+                    False -> go_i1y1b ys_i1y1i (+# eta_B1 1#);
+                    True ->
+                      GHC.Types.:
+                        @ Int (GHC.Types.I# eta_B1) (go_i1y1b ys_i1y1i (+# eta_B1 1#))
+                  }
+              }; } in
+      go_i1y1b ls_a5iig 0#
+
+-- RHS size: {terms: 7, types: 7, coercions: 0, joins: 0/0}
+elemIndices :: forall a. Eq a => a -> [a] -> [Int]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C1(C(U)),A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5ja3)
+                 ($dEq_a5ja5 [Occ=Once] :: Eq a_a5ja3)
+                 (x_a5iic [Occ=Once] :: a_a5ja3) ->
+                 findIndices @ a_a5ja3 (== @ a_a5ja3 $dEq_a5ja5 x_a5iic)}]
+elemIndices
+  = \ (@ a_a5ja3) ($dEq_a5ja5 :: Eq a_a5ja3) (x_a5iic :: a_a5ja3) ->
+      findIndices @ a_a5ja3 (== @ a_a5ja3 $dEq_a5ja5 x_a5iic)
+
+Rec {
+-- RHS size: {terms: 26, types: 21, coercions: 0, joins: 0/0}
+isPrefixOf [Occ=LoopBreaker]
+  :: forall a. Eq a => [a] -> [a] -> Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A)><S,1*U><L,1*U>,
+ Unf=OtherCon []]
+isPrefixOf
+  = \ (@ a_a5j8Y)
+      ($dEq_a5j90 :: Eq a_a5j8Y)
+      (ds_d5jwc :: [a_a5j8Y])
+      (ds1_d5jwd :: [a_a5j8Y]) ->
+      case ds_d5jwc of {
+        [] -> GHC.Types.True;
+        : ipv_s5jD7 ipv1_s5jD8 ->
+          case ds1_d5jwd of {
+            [] -> GHC.Types.False;
+            : ipv2_s5jDb ipv3_s5jDc ->
+              case == @ a_a5j8Y $dEq_a5j90 ipv_s5jD7 ipv2_s5jDb of {
+                False -> GHC.Types.False;
+                True -> isPrefixOf @ a_a5j8Y $dEq_a5j90 ipv1_s5jD8 ipv3_s5jDc
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 23, types: 20, coercions: 0, joins: 1/1}
+isInfixOf :: forall a. Eq a => [a] -> [a] -> Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A)><S,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j96)
+                 ($dEq_a5j98 [Occ=OnceL] :: Eq a_a5j96)
+                 (needle_a5iiA [Occ=OnceL] :: [a_a5j96])
+                 (haystack_a5iiB [Occ=Once] :: [a_a5j96]) ->
+                 joinrec {
+                   tailsGo_s5jNO [Occ=LoopBreakerT[1]] :: [a_a5j96] -> Bool
+                   [LclId[JoinId(1)], Arity=1, Unf=OtherCon []]
+                   tailsGo_s5jNO (xs_a5im5 :: [a_a5j96])
+                     = case isPrefixOf @ a_a5j96 $dEq_a5j98 needle_a5iiA xs_a5im5 of {
+                         False ->
+                           case xs_a5im5 of {
+                             [] -> GHC.Types.False;
+                             : _ [Occ=Dead] xs'_a5im6 [Occ=Once] -> jump tailsGo_s5jNO xs'_a5im6
+                           };
+                         True -> GHC.Types.True
+                       }; } in
+                 jump tailsGo_s5jNO haystack_a5iiB}]
+isInfixOf
+  = \ (@ a_a5j96)
+      ($dEq_a5j98 :: Eq a_a5j96)
+      (needle_a5iiA :: [a_a5j96])
+      (haystack_a5iiB :: [a_a5j96]) ->
+      joinrec {
+        tailsGo_s5jNO [Occ=LoopBreaker] :: [a_a5j96] -> Bool
+        [LclId[JoinId(1)], Arity=1, Str=<L,U>, Unf=OtherCon []]
+        tailsGo_s5jNO (xs_a5im5 :: [a_a5j96])
+          = case isPrefixOf @ a_a5j96 $dEq_a5j98 needle_a5iiA xs_a5im5 of {
+              False ->
+                case xs_a5im5 of {
+                  [] -> GHC.Types.False;
+                  : ds_d5jih xs'_a5im6 -> jump tailsGo_s5jNO xs'_a5im6
+                };
+              True -> GHC.Types.True
+            }; } in
+      jump tailsGo_s5jNO haystack_a5iiB
+
+Rec {
+-- RHS size: {terms: 17, types: 21, coercions: 0, joins: 0/0}
+dropLength [Occ=LoopBreaker] :: forall a b. [a] -> [b] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []]
+dropLength
+  = \ (@ a_a5j8v)
+      (@ b_a5j8w)
+      (ds_d5jvP :: [a_a5j8v])
+      (y_a5iiu :: [b_a5j8w]) ->
+      case ds_d5jvP of {
+        [] -> y_a5iiu;
+        : ipv_s5jCN ipv1_s5jCO ->
+          case y_a5iiu of {
+            [] -> GHC.Types.[] @ b_a5j8w;
+            : ipv2_s5jCR ipv3_s5jCS ->
+              dropLength @ a_a5j8v @ b_a5j8w ipv1_s5jCO ipv3_s5jCS
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 18, types: 24, coercions: 0, joins: 0/0}
+dropLengthMaybe [Occ=LoopBreaker]
+  :: forall a b. [a] -> [b] -> Maybe [b]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+dropLengthMaybe
+  = \ (@ a_a5j8o)
+      (@ b_a5j8p)
+      (ds_d5jvu :: [a_a5j8o])
+      (y_a5iix :: [b_a5j8p]) ->
+      case ds_d5jvu of {
+        [] -> GHC.Base.Just @ [b_a5j8p] y_a5iix;
+        : ipv_s5jCF ipv1_s5jCG ->
+          case y_a5iix of {
+            [] -> GHC.Base.Nothing @ [b_a5j8p];
+            : ipv2_s5jCJ ipv3_s5jCK ->
+              dropLengthMaybe @ a_a5j8o @ b_a5j8p ipv1_s5jCG ipv3_s5jCK
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 17, types: 18, coercions: 0, joins: 0/0}
+isSuffixOf :: forall a. Eq a => [a] -> [a] -> Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(C(C1(U)),A)><S,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 120 10}]
+isSuffixOf
+  = \ (@ a_a5j8A)
+      ($dEq_a5j8C :: Eq a_a5j8A)
+      (ns_a5iir :: [a_a5j8A])
+      (hs_a5iis :: [a_a5j8A]) ->
+      case dropLengthMaybe @ a_a5j8A @ a_a5j8A ns_a5iir hs_a5iis of {
+        Nothing -> GHC.Types.False;
+        Just x_i5jD1 ->
+          GHC.Classes.$fEq[]_$c==
+            @ a_a5j8A
+            $dEq_a5j8C
+            ns_a5iir
+            (dropLength @ a_a5j8A @ a_a5j8A x_i5jD1 hs_a5iis)
+      }
+
+Rec {
+-- RHS size: {terms: 20, types: 15, coercions: 0, joins: 0/0}
+elem_by [Occ=LoopBreaker]
+  :: forall a. (a -> a -> Bool) -> a -> [a] -> Bool
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []]
+elem_by
+  = \ (@ a_a5j7u)
+      (ds_d5jv6 :: a_a5j7u -> a_a5j7u -> Bool)
+      (ds1_d5jv7 :: a_a5j7u)
+      (ds2_d5jv8 :: [a_a5j7u]) ->
+      case ds2_d5jv8 of {
+        [] -> GHC.Types.False;
+        : x_a5iiK xs_a5iiL ->
+          case ds_d5jv6 x_a5iiK ds1_d5jv7 of {
+            False -> elem_by @ a_a5j7u ds_d5jv6 ds1_d5jv7 xs_a5iiL;
+            True -> GHC.Types.True
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 31, types: 28, coercions: 0, joins: 0/1}
+nubBy :: forall a. (a -> a -> Bool) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 220 0}]
+nubBy
+  = \ (@ a_a5j7x)
+      (eq_a5iiC :: a_a5j7x -> a_a5j7x -> Bool)
+      (l_a5iiD :: [a_a5j7x]) ->
+      letrec {
+        nubBy'_s5jNM [Occ=LoopBreaker]
+          :: [a_a5j7x] -> [a_a5j7x] -> [a_a5j7x]
+        [LclId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        nubBy'_s5jNM
+          = \ (ds_d5jvh :: [a_a5j7x]) (ds1_d5jvi :: [a_a5j7x]) ->
+              case ds_d5jvh of {
+                [] -> GHC.Types.[] @ a_a5j7x;
+                : y_a5iiF ys_a5iiG ->
+                  case elem_by @ a_a5j7x eq_a5iiC y_a5iiF ds1_d5jvi of {
+                    False ->
+                      GHC.Types.:
+                        @ a_a5j7x
+                        y_a5iiF
+                        (nubBy'_s5jNM ys_a5iiG (GHC.Types.: @ a_a5j7x y_a5iiF ds1_d5jvi));
+                    True -> nubBy'_s5jNM ys_a5iiG ds1_d5jvi
+                  }
+              }; } in
+      nubBy'_s5jNM l_a5iiD (GHC.Types.[] @ a_a5j7x)
+
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+nub :: forall a. Eq a => [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C(C1(U)),A)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j8h)
+                 ($dEq_a5j8j [Occ=Once] :: Eq a_a5j8h)
+                 (eta_B1 [Occ=Once] :: [a_a5j8h]) ->
+                 nubBy @ a_a5j8h (== @ a_a5j8h $dEq_a5j8j) eta_B1}]
+nub
+  = \ (@ a_a5j8h) ($dEq_a5j8j :: Eq a_a5j8h) (eta_B1 :: [a_a5j8h]) ->
+      nubBy @ a_a5j8h (== @ a_a5j8h $dEq_a5j8j) eta_B1
+
+Rec {
+-- RHS size: {terms: 22, types: 17, coercions: 0, joins: 0/0}
+deleteBy [Occ=LoopBreaker]
+  :: forall a. (a -> a -> Bool) -> a -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []]
+deleteBy
+  = \ (@ a_a5j6X)
+      (ds_d5juL :: a_a5j6X -> a_a5j6X -> Bool)
+      (ds1_d5juM :: a_a5j6X)
+      (ds2_d5juN :: [a_a5j6X]) ->
+      case ds2_d5juN of {
+        [] -> GHC.Types.[] @ a_a5j6X;
+        : y_a5iiO ys_a5iiP ->
+          case ds_d5juL ds1_d5juM y_a5iiO of {
+            False ->
+              GHC.Types.:
+                @ a_a5j6X y_a5iiO (deleteBy @ a_a5j6X ds_d5juL ds1_d5juM ys_a5iiP);
+            True -> ys_a5iiP
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 21, types: 25, coercions: 0, joins: 1/1}
+deleteFirstsBy :: forall a. (a -> a -> Bool) -> [a] -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j71)
+                 (eq_a5ilV [Occ=OnceL] :: a_a5j71 -> a_a5j71 -> Bool)
+                 (eta_B2 [Occ=Once] :: [a_a5j71])
+                 (eta1_B1 [Occ=Once] :: [a_a5j71]) ->
+                 joinrec {
+                   go_i1y1b [Occ=LoopBreakerT[2]]
+                     :: [a_a5j71] -> [a_a5j71] -> [a_a5j71]
+                   [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                   go_i1y1b (ds_i1y1c [Occ=Once!] :: [a_a5j71])
+                            (eta2_X2x [Occ=Once*] :: [a_a5j71])
+                     = case ds_i1y1c of {
+                         [] -> eta2_X2x;
+                         : y_i1y1h [Occ=Once] ys_i1y1i [Occ=Once] ->
+                           jump go_i1y1b
+                             ys_i1y1i (deleteBy @ a_a5j71 eq_a5ilV y_i1y1h eta2_X2x)
+                       }; } in
+                 jump go_i1y1b eta1_B1 eta_B2}]
+deleteFirstsBy
+  = \ (@ a_a5j71)
+      (eq_a5ilV :: a_a5j71 -> a_a5j71 -> Bool)
+      (eta_B2 :: [a_a5j71])
+      (eta1_B1 :: [a_a5j71]) ->
+      joinrec {
+        go_i1y1b [Occ=LoopBreaker] :: [a_a5j71] -> [a_a5j71] -> [a_a5j71]
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+        go_i1y1b (ds_i1y1c :: [a_a5j71]) (eta2_X2x :: [a_a5j71])
+          = case ds_i1y1c of {
+              [] -> eta2_X2x;
+              : y_i1y1h ys_i1y1i ->
+                jump go_i1y1b
+                  ys_i1y1i (deleteBy @ a_a5j71 eq_a5ilV y_i1y1h eta2_X2x)
+            }; } in
+      jump go_i1y1b eta1_B1 eta_B2
+
+-- RHS size: {terms: 9, types: 9, coercions: 0, joins: 0/0}
+delete :: forall a. Eq a => a -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C(C1(U)),A)><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j7c)
+                 ($dEq_a5j7e [Occ=Once] :: Eq a_a5j7c)
+                 (eta_B2 [Occ=Once] :: a_a5j7c)
+                 (eta1_B1 [Occ=Once] :: [a_a5j7c]) ->
+                 deleteBy @ a_a5j7c (== @ a_a5j7c $dEq_a5j7e) eta_B2 eta1_B1}]
+delete
+  = \ (@ a_a5j7c)
+      ($dEq_a5j7e :: Eq a_a5j7c)
+      (eta_B2 :: a_a5j7c)
+      (eta1_B1 :: [a_a5j7c]) ->
+      deleteBy @ a_a5j7c (== @ a_a5j7c $dEq_a5j7e) eta_B2 eta1_B1
+
+-- RHS size: {terms: 24, types: 28, coercions: 0, joins: 1/2}
+\\ :: forall a. Eq a => [a] -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C(C1(U)),A)><S,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j7j)
+                 ($dEq_a5j7l [Occ=OnceL] :: Eq a_a5j7j)
+                 (eta_B2 [Occ=Once] :: [a_a5j7j])
+                 (eta1_B1 [Occ=Once] :: [a_a5j7j]) ->
+                 joinrec {
+                   go_i1y1b [Occ=LoopBreakerT[2]]
+                     :: [a_a5j7j] -> [a_a5j7j] -> [a_a5j7j]
+                   [LclId[JoinId(2)], Arity=2, Unf=OtherCon []]
+                   go_i1y1b (ds_i1y1c [Occ=Once!] :: [a_a5j7j])
+                            (eta2_X2z [Occ=Once*] :: [a_a5j7j])
+                     = case ds_i1y1c of {
+                         [] -> eta2_X2z;
+                         : y_i1y1h [Occ=Once] ys_i1y1i [Occ=Once] ->
+                           jump go_i1y1b
+                             ys_i1y1i (delete @ a_a5j7j $dEq_a5j7l y_i1y1h eta2_X2z)
+                       }; } in
+                 jump go_i1y1b eta1_B1 eta_B2}]
+\\
+  = \ (@ a_a5j7j)
+      ($dEq_a5j7l :: Eq a_a5j7j)
+      (eta_B2 :: [a_a5j7j])
+      (eta1_B1 :: [a_a5j7j]) ->
+      let {
+        lvl12_s5kHg [Dmd=<L,C(C1(U))>] :: a_a5j7j -> a_a5j7j -> Bool
+        [LclId]
+        lvl12_s5kHg = == @ a_a5j7j $dEq_a5j7l } in
+      joinrec {
+        go_i1y1b [Occ=LoopBreaker] :: [a_a5j7j] -> [a_a5j7j] -> [a_a5j7j]
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+        go_i1y1b (ds_i1y1c :: [a_a5j7j]) (eta2_X2z :: [a_a5j7j])
+          = case ds_i1y1c of {
+              [] -> eta2_X2z;
+              : y_i1y1h ys_i1y1i ->
+                jump go_i1y1b
+                  ys_i1y1i (deleteBy @ a_a5j7j lvl12_s5kHg y_i1y1h eta2_X2z)
+            }; } in
+      jump go_i1y1b eta1_B1 eta_B2
+
+-- RHS size: {terms: 25, types: 27, coercions: 0, joins: 1/1}
+unionBy :: forall a. (a -> a -> Bool) -> [a] -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,U><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 132 0}]
+unionBy
+  = \ (@ a_a5j80)
+      (eq_a5iiQ :: a_a5j80 -> a_a5j80 -> Bool)
+      (xs_a5iiR :: [a_a5j80])
+      (ys_a5iiS :: [a_a5j80]) ->
+      ++
+        @ a_a5j80
+        xs_a5iiR
+        (joinrec {
+           go_i1y1b [Occ=LoopBreaker] :: [a_a5j80] -> [a_a5j80] -> [a_a5j80]
+           [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+           go_i1y1b (ds_i1y1c :: [a_a5j80]) (eta_B1 :: [a_a5j80])
+             = case ds_i1y1c of {
+                 [] -> eta_B1;
+                 : y_i1y1h ys1_i1y1i ->
+                   jump go_i1y1b
+                     ys1_i1y1i (deleteBy @ a_a5j80 eq_a5iiQ y_i1y1h eta_B1)
+               }; } in
+         jump go_i1y1b xs_a5iiR (nubBy @ a_a5j80 eq_a5iiQ ys_a5iiS))
+
+-- RHS size: {terms: 9, types: 10, coercions: 0, joins: 0/0}
+union :: forall a. Eq a => [a] -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C(C1(U)),A)><S,U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j8a)
+                 ($dEq_a5j8c [Occ=Once] :: Eq a_a5j8a)
+                 (eta_B2 [Occ=Once] :: [a_a5j8a])
+                 (eta1_B1 [Occ=Once] :: [a_a5j8a]) ->
+                 unionBy @ a_a5j8a (== @ a_a5j8a $dEq_a5j8c) eta_B2 eta1_B1}]
+union
+  = \ (@ a_a5j8a)
+      ($dEq_a5j8c :: Eq a_a5j8a)
+      (eta_B2 :: [a_a5j8a])
+      (eta1_B1 :: [a_a5j8a]) ->
+      unionBy @ a_a5j8a (== @ a_a5j8a $dEq_a5j8c) eta_B2 eta1_B1
+
+-- RHS size: {terms: 36, types: 36, coercions: 0, joins: 0/1}
+intersectBy :: forall a. (a -> a -> Bool) -> [a] -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [60 30 30] 220 20}]
+intersectBy
+  = \ (@ a_a5j6L)
+      (ds_d5juj :: a_a5j6L -> a_a5j6L -> Bool)
+      (ds1_d5juk :: [a_a5j6L])
+      (ds2_d5jul :: [a_a5j6L]) ->
+      case ds1_d5juk of wild_X2W {
+        [] -> GHC.Types.[] @ a_a5j6L;
+        : ipv_s5jCm ipv1_s5jCn ->
+          case ds2_d5jul of wild1_Xq {
+            [] -> GHC.Types.[] @ a_a5j6L;
+            : ipv2_s5jCq ipv3_s5jCr ->
+              letrec {
+                go_i1y1b [Occ=LoopBreaker] :: [a_a5j6L] -> [a_a5j6L]
+                [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+                go_i1y1b
+                  = \ (ds3_i1y1c :: [a_a5j6L]) ->
+                      case ds3_i1y1c of {
+                        [] -> GHC.Types.[] @ a_a5j6L;
+                        : y_i1y1h ys_i1y1i ->
+                          case any @ a_a5j6L (ds_d5juj y_i1y1h) wild1_Xq of {
+                            False -> go_i1y1b ys_i1y1i;
+                            True -> GHC.Types.: @ a_a5j6L y_i1y1h (go_i1y1b ys_i1y1i)
+                          }
+                      }; } in
+              go_i1y1b wild_X2W
+          }
+      }
+
+-- RHS size: {terms: 9, types: 10, coercions: 0, joins: 0/0}
+intersect :: forall a. Eq a => [a] -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C(C(U)),A)><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j6Q)
+                 ($dEq_a5j6S [Occ=Once] :: Eq a_a5j6Q)
+                 (eta_B2 [Occ=Once] :: [a_a5j6Q])
+                 (eta1_B1 [Occ=Once] :: [a_a5j6Q]) ->
+                 intersectBy @ a_a5j6Q (== @ a_a5j6Q $dEq_a5j6S) eta_B2 eta1_B1}]
+intersect
+  = \ (@ a_a5j6Q)
+      ($dEq_a5j6S :: Eq a_a5j6Q)
+      (eta_B2 :: [a_a5j6Q])
+      (eta1_B1 :: [a_a5j6Q]) ->
+      intersectBy @ a_a5j6Q (== @ a_a5j6Q $dEq_a5j6S) eta_B2 eta1_B1
+
+Rec {
+-- RHS size: {terms: 15, types: 14, coercions: 0, joins: 0/0}
+prependToAll [Occ=LoopBreaker] :: forall a. a -> [a] -> [a]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,1*U>, Unf=OtherCon []]
+prependToAll
+  = \ (@ a_a5j6w) (ds_d5ju1 :: a_a5j6w) (ds1_d5ju2 :: [a_a5j6w]) ->
+      case ds1_d5ju2 of {
+        [] -> GHC.Types.[] @ a_a5j6w;
+        : x_a5ij1 xs_a5ij2 ->
+          GHC.Types.:
+            @ a_a5j6w
+            ds_d5ju1
+            (GHC.Types.:
+               @ a_a5j6w x_a5ij1 (prependToAll @ a_a5j6w ds_d5ju1 xs_a5ij2))
+      }
+end Rec }
+
+-- RHS size: {terms: 13, types: 13, coercions: 0, joins: 0/0}
+intersperse :: forall a. a -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j6B)
+                 (ds_d5ju9 [Occ=Once] :: a_a5j6B)
+                 (ds1_d5jua [Occ=Once!] :: [a_a5j6B]) ->
+                 case ds1_d5jua of {
+                   [] -> GHC.Types.[] @ a_a5j6B;
+                   : x_a5iiY [Occ=Once] xs_a5iiZ [Occ=Once] ->
+                     GHC.Types.:
+                       @ a_a5j6B x_a5iiY (prependToAll @ a_a5j6B ds_d5ju9 xs_a5iiZ)
+                 }}]
+intersperse
+  = \ (@ a_a5j6B) (ds_d5ju9 :: a_a5j6B) (ds1_d5jua :: [a_a5j6B]) ->
+      case ds1_d5jua of {
+        [] -> GHC.Types.[] @ a_a5j6B;
+        : x_a5iiY xs_a5iiZ ->
+          GHC.Types.:
+            @ a_a5j6B x_a5iiY (prependToAll @ a_a5j6B ds_d5ju9 xs_a5iiZ)
+      }
+
+Rec {
+-- RHS size: {terms: 11, types: 16, coercions: 0, joins: 0/0}
+Data.OldList.intercalate1 [Occ=LoopBreaker]
+  :: forall a. [[a]] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.OldList.intercalate1
+  = \ (@ a_a5j6F) (ds_i1y1c :: [[a_a5j6F]]) ->
+      case ds_i1y1c of {
+        [] -> GHC.Types.[] @ a_a5j6F;
+        : y_i1y1h ys_i1y1i ->
+          ++ @ a_a5j6F y_i1y1h (Data.OldList.intercalate1 @ a_a5j6F ys_i1y1i)
+      }
+end Rec }
+
+-- RHS size: {terms: 14, types: 21, coercions: 0, joins: 0/0}
+intercalate :: forall a. [a] -> [[a]] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 30] 80 10}]
+intercalate
+  = \ (@ a_a5j6F)
+      (xs_a5ij3 :: [a_a5j6F])
+      (xss_a5ij4 :: [[a_a5j6F]]) ->
+      case xss_a5ij4 of {
+        [] -> GHC.Types.[] @ a_a5j6F;
+        : x_a5iiY xs1_a5iiZ ->
+          Data.OldList.intercalate1
+            @ a_a5j6F
+            (GHC.Types.:
+               @ [a_a5j6F] x_a5iiY (prependToAll @ [a_a5j6F] xs_a5ij3 xs1_a5iiZ))
+      }
+
+Rec {
+-- RHS size: {terms: 17, types: 24, coercions: 0, joins: 0/0}
+poly_go_r5kSf :: forall a. [[a]] -> [[a]]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+poly_go_r5kSf
+  = \ (@ a_a5j6n) (ds_i1y1c :: [[a_a5j6n]]) ->
+      case ds_i1y1c of {
+        [] -> GHC.Types.[] @ [a_a5j6n];
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of {
+            [] -> poly_go_r5kSf @ a_a5j6n ys_i1y1i;
+            : ds1_d5jtO t_a5ija ->
+              GHC.Types.: @ [a_a5j6n] t_a5ija (poly_go_r5kSf @ a_a5j6n ys_i1y1i)
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 17, types: 22, coercions: 0, joins: 0/0}
+poly_go1_r5kSg :: forall a. [[a]] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+poly_go1_r5kSg
+  = \ (@ a_a5j6n) (ds_i1y1c :: [[a_a5j6n]]) ->
+      case ds_i1y1c of {
+        [] -> GHC.Types.[] @ a_a5j6n;
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of {
+            [] -> poly_go1_r5kSg @ a_a5j6n ys_i1y1i;
+            : h_a5ij9 ds1_d5jtz ->
+              GHC.Types.: @ a_a5j6n h_a5ij9 (poly_go1_r5kSg @ a_a5j6n ys_i1y1i)
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 23, types: 29, coercions: 0, joins: 0/0}
+transpose [Occ=LoopBreaker] :: forall a. [[a]] -> [[a]]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+transpose
+  = \ (@ a_a5j6n) (ds_d5jtm :: [[a_a5j6n]]) ->
+      case ds_d5jtm of {
+        [] -> GHC.Types.[] @ [a_a5j6n];
+        : ds1_d5ju0 xss_a5ij5 ->
+          case ds1_d5ju0 of {
+            [] -> transpose @ a_a5j6n xss_a5ij5;
+            : x_a5ij6 xs_a5ij7 ->
+              GHC.Types.:
+                @ [a_a5j6n]
+                (GHC.Types.:
+                   @ a_a5j6n x_a5ij6 (poly_go1_r5kSg @ a_a5j6n xss_a5ij5))
+                (transpose
+                   @ a_a5j6n
+                   (GHC.Types.:
+                      @ [a_a5j6n] xs_a5ij7 (poly_go_r5kSf @ a_a5j6n xss_a5ij5)))
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 31, types: 57, coercions: 0, joins: 0/0}
+select [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> Bool) -> a -> ([a], [a]) -> ([a], [a])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)><L,U><L,U(1*U,1*U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5krI)
+                 (w_s5krJ [Occ=Once!] :: a_s5krI -> Bool)
+                 (w1_s5krK :: a_s5krI)
+                 (w2_s5krL :: ([a_s5krI], [a_s5krI])) ->
+                 case w_s5krJ w1_s5krK of {
+                   False ->
+                     (case w2_s5krL of { (ts_X5im8 [Occ=Once], _ [Occ=Dead]) ->
+                      ts_X5im8
+                      },
+                      GHC.Types.:
+                        @ a_s5krI
+                        w1_s5krK
+                        (case w2_s5krL of { (_ [Occ=Dead], fs_X5imb [Occ=Once]) ->
+                         fs_X5imb
+                         }));
+                   True ->
+                     (GHC.Types.:
+                        @ a_s5krI
+                        w1_s5krK
+                        (case w2_s5krL of { (ts_X5im8 [Occ=Once], _ [Occ=Dead]) ->
+                         ts_X5im8
+                         }),
+                      case w2_s5krL of { (_ [Occ=Dead], fs_X5imb [Occ=Once]) ->
+                      fs_X5imb
+                      })
+                 }}]
+select
+  = \ (@ a_s5krI)
+      (w_s5krJ :: a_s5krI -> Bool)
+      (w1_s5krK :: a_s5krI)
+      (w2_s5krL :: ([a_s5krI], [a_s5krI])) ->
+      case w_s5krJ w1_s5krK of {
+        False ->
+          (case w2_s5krL of { (ts_X5im8, fs_X5ime) -> ts_X5im8 },
+           GHC.Types.:
+             @ a_s5krI
+             w1_s5krK
+             (case w2_s5krL of { (ts_X5ijM, fs_X5imb) -> fs_X5imb }));
+        True ->
+          (GHC.Types.:
+             @ a_s5krI
+             w1_s5krK
+             (case w2_s5krL of { (ts_X5im8, fs_X5ime) -> ts_X5im8 }),
+           case w2_s5krL of { (ts_X5ijM, fs_X5imb) -> fs_X5imb })
+      }
+
+-- RHS size: {terms: 54, types: 116, coercions: 0, joins: 0/2}
+partition [InlPrag=INLINE (sat-args=2)]
+  :: forall a. (a -> Bool) -> [a] -> ([a], [a])
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a5j6i)
+                 (p_a5ijb [Occ=Once] :: a_a5j6i -> Bool)
+                 (xs_a5ijc [Occ=Once] :: [a_a5j6i]) ->
+                 foldr
+                   @ a_a5j6i
+                   @ ([a_a5j6i], [a_a5j6i])
+                   (select @ a_a5j6i p_a5ijb)
+                   (GHC.Types.[] @ a_a5j6i, GHC.Types.[] @ a_a5j6i)
+                   xs_a5ijc}]
+partition
+  = \ (@ a_a5j6i)
+      (p_a5ijb :: a_a5j6i -> Bool)
+      (xs_a5ijc :: [a_a5j6i]) ->
+      letrec {
+        $wgo_s5krU [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+          :: [a_a5j6i] -> (# [a_a5j6i], [a_a5j6i] #)
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        $wgo_s5krU
+          = \ (w_s5krQ :: [a_a5j6i]) ->
+              case w_s5krQ of {
+                [] -> (# GHC.Types.[] @ a_a5j6i, GHC.Types.[] @ a_a5j6i #);
+                : y_i1y1h ys_i1y1i ->
+                  let {
+                    w1_s5krL [Dmd=<L,U(1*U,1*U)>] :: ([a_a5j6i], [a_a5j6i])
+                    [LclId]
+                    w1_s5krL
+                      = case $wgo_s5krU ys_i1y1i of { (# ww1_s5ktV, ww2_s5ktW #) ->
+                        (ww1_s5ktV, ww2_s5ktW)
+                        } } in
+                  case p_a5ijb y_i1y1h of {
+                    False ->
+                      (# case w1_s5krL of { (ts_X5im8, fs_X5ime) -> ts_X5im8 },
+                         GHC.Types.:
+                           @ a_a5j6i
+                           y_i1y1h
+                           (case w1_s5krL of { (ts_X5ijM, fs_X5imb) -> fs_X5imb }) #);
+                    True ->
+                      (# GHC.Types.:
+                           @ a_a5j6i
+                           y_i1y1h
+                           (case w1_s5krL of { (ts_X5im8, fs_X5ime) -> ts_X5im8 }),
+                         case w1_s5krL of { (ts_X5ijM, fs_X5imb) -> fs_X5imb } #)
+                  }
+              }; } in
+      case $wgo_s5krU xs_a5ijc of { (# ww1_s5ktV, ww2_s5ktW #) ->
+      (ww1_s5ktV, ww2_s5ktW)
+      }
+
+-- RHS size: {terms: 6, types: 9, coercions: 0, joins: 0/0}
+pairWithNil [InlPrag=INLINE[0] (sat-args=1)]
+  :: forall acc y. acc -> (acc, [y])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ acc_a5j5D)
+                 (@ y_a5j5E)
+                 (x_a5ijq [Occ=Once] :: acc_a5j5D) ->
+                 (x_a5ijq, GHC.Types.[] @ y_a5j5E)}]
+pairWithNil
+  = \ (@ acc_a5j5D) (@ y_a5j5E) (x_a5ijq :: acc_a5j5D) ->
+      (x_a5ijq, GHC.Types.[] @ y_a5j5E)
+
+-- RHS size: {terms: 31, types: 53, coercions: 0, joins: 0/2}
+mapAccumLF [InlPrag=INLINE[0] (sat-args=1)]
+  :: forall acc x y.
+     (acc -> x -> (acc, y))
+     -> x -> (acc -> (acc, [y])) -> acc -> (acc, [y])
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(1*U,1*U)))><L,U><L,1*C1(U(1*U,1*U))><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ acc_a5j4Z)
+                 (@ x_a5j50)
+                 (@ y_a5j51)
+                 (f_a5ijr [Occ=Once!]
+                    :: acc_a5j4Z -> x_a5j50 -> (acc_a5j4Z, y_a5j51))
+                 (x1_a5ijs [Occ=Once] :: x_a5j50)
+                 (r_a5ijt [Occ=Once!] :: acc_a5j4Z -> (acc_a5j4Z, [y_a5j51]))
+                 (v_B2 [Occ=Once, OS=OneShot] :: acc_a5j4Z) ->
+                 let {
+                   ds_d5jss :: (acc_a5j4Z, y_a5j51)
+                   [LclId]
+                   ds_d5jss = f_a5ijr v_B2 x1_a5ijs } in
+                 let {
+                   ds1_d5jsi :: (acc_a5j4Z, [y_a5j51])
+                   [LclId]
+                   ds1_d5jsi
+                     = r_a5ijt
+                         (case ds_d5jss of { (s'_a5j5d [Occ=Once], _ [Occ=Dead]) ->
+                          s'_a5j5d
+                          }) } in
+                 (case ds1_d5jsi of { (s''_a5j5s [Occ=Once], _ [Occ=Dead]) ->
+                  s''_a5j5s
+                  },
+                  GHC.Types.:
+                    @ y_a5j51
+                    (case ds_d5jss of { (_ [Occ=Dead], y1_a5j5f [Occ=Once]) ->
+                     y1_a5j5f
+                     })
+                    (case ds1_d5jsi of { (_ [Occ=Dead], ys_a5j5u [Occ=Once]) ->
+                     ys_a5j5u
+                     }))}]
+mapAccumLF
+  = \ (@ acc_a5j4Z)
+      (@ x_a5j50)
+      (@ y_a5j51)
+      (f_a5ijr :: acc_a5j4Z -> x_a5j50 -> (acc_a5j4Z, y_a5j51))
+      (x1_a5ijs :: x_a5j50)
+      (r_a5ijt :: acc_a5j4Z -> (acc_a5j4Z, [y_a5j51]))
+      (v_B2 [OS=OneShot] :: acc_a5j4Z) ->
+      let {
+        ds_s5jNI [Dmd=<L,U(1*U,1*U)>] :: (acc_a5j4Z, y_a5j51)
+        [LclId]
+        ds_s5jNI = f_a5ijr v_B2 x1_a5ijs } in
+      let {
+        ds1_s5jNK [Dmd=<L,U(1*U,1*U)>] :: (acc_a5j4Z, [y_a5j51])
+        [LclId]
+        ds1_s5jNK
+          = r_a5ijt
+              (case ds_s5jNI of { (s'_a5j5d, y1_a5j5f) -> s'_a5j5d }) } in
+      (case ds1_s5jNK of { (s''_a5j5s, ys_a5j5u) -> s''_a5j5s },
+       GHC.Types.:
+         @ y_a5j51
+         (case ds_s5jNI of { (s'_a5j5d, y1_a5j5f) -> y1_a5j5f })
+         (case ds1_s5jNK of { (s''_a5j5s, ys_a5j5u) -> ys_a5j5u }))
+
+Rec {
+-- RHS size: {terms: 44, types: 77, coercions: 0, joins: 0/2}
+Data.OldList.$wmapAccumL [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall acc x y.
+     (acc -> x -> (acc, y)) -> acc -> [x] -> (# acc, [y] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U(1*U,1*U)))><L,U><S,1*U>,
+ Unf=OtherCon []]
+Data.OldList.$wmapAccumL
+  = \ (@ acc_s5kry)
+      (@ x_s5krz)
+      (@ y_s5krA)
+      (w_s5krB :: acc_s5kry -> x_s5krz -> (acc_s5kry, y_s5krA))
+      (w1_s5krC :: acc_s5kry)
+      (w2_s5krD :: [x_s5krz]) ->
+      case w2_s5krD of {
+        [] -> (# w1_s5krC, GHC.Types.[] @ y_s5krA #);
+        : x1_a5ijk xs_a5ijl ->
+          let {
+            ds_s5jNE [Dmd=<L,U(1*U,1*U)>] :: (acc_s5kry, y_s5krA)
+            [LclId]
+            ds_s5jNE = w_s5krB w1_s5krC x1_a5ijk } in
+          let {
+            ds1_s5jNG [Dmd=<L,U(1*U,1*U)>] :: (acc_s5kry, [y_s5krA])
+            [LclId]
+            ds1_s5jNG
+              = case Data.OldList.$wmapAccumL
+                       @ acc_s5kry
+                       @ x_s5krz
+                       @ y_s5krA
+                       w_s5krB
+                       (case ds_s5jNE of { (s'_a5j5Q, y1_a5j5S) -> s'_a5j5Q })
+                       xs_a5ijl
+                of
+                { (# ww1_s5ktP, ww2_s5ktQ #) ->
+                (ww1_s5ktP, ww2_s5ktQ)
+                } } in
+          (# case ds1_s5jNG of { (s''_a5j63, ys_a5j65) -> s''_a5j63 },
+             GHC.Types.:
+               @ y_s5krA
+               (case ds_s5jNE of { (s'_a5j5Q, y1_a5j5S) -> y1_a5j5S })
+               (case ds1_s5jNG of { (s''_a5j63, ys_a5j65) -> ys_a5j65 }) #)
+      }
+end Rec }
+
+-- RHS size: {terms: 15, types: 29, coercions: 0, joins: 0/0}
+mapAccumL [InlPrag=NOUSERINLINE[0]]
+  :: forall acc x y.
+     (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U(1*U,1*U)))><L,U><S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ acc_s5kry)
+                 (@ x_s5krz)
+                 (@ y_s5krA)
+                 (w_s5krB [Occ=Once]
+                    :: acc_s5kry -> x_s5krz -> (acc_s5kry, y_s5krA))
+                 (w1_s5krC [Occ=Once] :: acc_s5kry)
+                 (w2_s5krD [Occ=Once] :: [x_s5krz]) ->
+                 case Data.OldList.$wmapAccumL
+                        @ acc_s5kry @ x_s5krz @ y_s5krA w_s5krB w1_s5krC w2_s5krD
+                 of
+                 { (# ww1_s5ktP [Occ=Once], ww2_s5ktQ [Occ=Once] #) ->
+                 (ww1_s5ktP, ww2_s5ktQ)
+                 }}]
+mapAccumL
+  = \ (@ acc_s5kry)
+      (@ x_s5krz)
+      (@ y_s5krA)
+      (w_s5krB :: acc_s5kry -> x_s5krz -> (acc_s5kry, y_s5krA))
+      (w1_s5krC :: acc_s5kry)
+      (w2_s5krD :: [x_s5krz]) ->
+      case Data.OldList.$wmapAccumL
+             @ acc_s5kry @ x_s5krz @ y_s5krA w_s5krB w1_s5krC w2_s5krD
+      of
+      { (# ww1_s5ktP, ww2_s5ktQ #) ->
+      (ww1_s5ktP, ww2_s5ktQ)
+      }
+
+Rec {
+-- RHS size: {terms: 44, types: 77, coercions: 0, joins: 0/2}
+Data.OldList.$wmapAccumR [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall acc x y.
+     (acc -> x -> (acc, y)) -> acc -> [x] -> (# acc, [y] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U(1*U,1*U)))><L,U><S,1*U>,
+ Unf=OtherCon []]
+Data.OldList.$wmapAccumR
+  = \ (@ acc_s5kro)
+      (@ x_s5krp)
+      (@ y_s5krq)
+      (w_s5krr :: acc_s5kro -> x_s5krp -> (acc_s5kro, y_s5krq))
+      (w1_s5krs :: acc_s5kro)
+      (w2_s5krt :: [x_s5krp]) ->
+      case w2_s5krt of {
+        [] -> (# w1_s5krs, GHC.Types.[] @ y_s5krq #);
+        : x1_a5ijC xs_a5ijD ->
+          let {
+            ds_s5jNA [Dmd=<L,U(1*U,1*U)>] :: (acc_s5kro, [y_s5krq])
+            [LclId]
+            ds_s5jNA
+              = case Data.OldList.$wmapAccumR
+                       @ acc_s5kro @ x_s5krp @ y_s5krq w_s5krr w1_s5krs xs_a5ijD
+                of
+                { (# ww1_s5ktM, ww2_s5ktN #) ->
+                (ww1_s5ktM, ww2_s5ktN)
+                } } in
+          let {
+            ds1_s5jNC [Dmd=<L,U(1*U,1*U)>] :: (acc_s5kro, y_s5krq)
+            [LclId]
+            ds1_s5jNC
+              = w_s5krr
+                  (case ds_s5jNA of { (s'_a5j4B, ys_a5j4D) -> s'_a5j4B })
+                  x1_a5ijC } in
+          (# case ds1_s5jNC of { (s''_a5j4R, y1_a5j4T) -> s''_a5j4R },
+             GHC.Types.:
+               @ y_s5krq
+               (case ds1_s5jNC of { (s''_a5j4R, y1_a5j4T) -> y1_a5j4T })
+               (case ds_s5jNA of { (s'_a5j4B, ys_a5j4D) -> ys_a5j4D }) #)
+      }
+end Rec }
+
+-- RHS size: {terms: 15, types: 29, coercions: 0, joins: 0/0}
+mapAccumR [InlPrag=NOUSERINLINE[0]]
+  :: forall acc x y.
+     (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U(1*U,1*U)))><L,U><S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ acc_s5kro)
+                 (@ x_s5krp)
+                 (@ y_s5krq)
+                 (w_s5krr [Occ=Once]
+                    :: acc_s5kro -> x_s5krp -> (acc_s5kro, y_s5krq))
+                 (w1_s5krs [Occ=Once] :: acc_s5kro)
+                 (w2_s5krt [Occ=Once] :: [x_s5krp]) ->
+                 case Data.OldList.$wmapAccumR
+                        @ acc_s5kro @ x_s5krp @ y_s5krq w_s5krr w1_s5krs w2_s5krt
+                 of
+                 { (# ww1_s5ktM [Occ=Once], ww2_s5ktN [Occ=Once] #) ->
+                 (ww1_s5ktM, ww2_s5ktN)
+                 }}]
+mapAccumR
+  = \ (@ acc_s5kro)
+      (@ x_s5krp)
+      (@ y_s5krq)
+      (w_s5krr :: acc_s5kro -> x_s5krp -> (acc_s5kro, y_s5krq))
+      (w1_s5krs :: acc_s5kro)
+      (w2_s5krt :: [x_s5krp]) ->
+      case Data.OldList.$wmapAccumR
+             @ acc_s5kro @ x_s5krp @ y_s5krq w_s5krr w1_s5krs w2_s5krt
+      of
+      { (# ww1_s5ktM, ww2_s5ktN #) ->
+      (ww1_s5ktM, ww2_s5ktN)
+      }
+
+Rec {
+-- RHS size: {terms: 13, types: 19, coercions: 0, joins: 0/0}
+insertBy [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> a -> Ordering) -> a -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5krg)
+                 (w_s5krh [Occ=Once] :: a_s5krg -> a_s5krg -> Ordering)
+                 (w1_s5kri [Occ=Once] :: a_s5krg)
+                 (w2_s5krj [Occ=Once] :: [a_s5krg]) ->
+                 case Data.OldList.$winsertBy @ a_s5krg w_s5krh w1_s5kri w2_s5krj of
+                 { (# ww1_s5ktJ [Occ=Once], ww2_s5ktK [Occ=Once] #) ->
+                 GHC.Types.: @ a_s5krg ww1_s5ktJ ww2_s5ktK
+                 }}]
+insertBy
+  = \ (@ a_s5krg)
+      (w_s5krh :: a_s5krg -> a_s5krg -> Ordering)
+      (w1_s5kri :: a_s5krg)
+      (w2_s5krj :: [a_s5krg]) ->
+      case Data.OldList.$winsertBy @ a_s5krg w_s5krh w1_s5kri w2_s5krj of
+      { (# ww1_s5ktJ, ww2_s5ktK #) ->
+      GHC.Types.: @ a_s5krg ww1_s5ktJ ww2_s5ktK
+      }
+
+-- RHS size: {terms: 26, types: 31, coercions: 0, joins: 0/0}
+Data.OldList.$winsertBy [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a. (a -> a -> Ordering) -> a -> [a] -> (# a, [a] #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=OtherCon []]
+Data.OldList.$winsertBy
+  = \ (@ a_s5krg)
+      (w_s5krh :: a_s5krg -> a_s5krg -> Ordering)
+      (w1_s5kri :: a_s5krg)
+      (w2_s5krj :: [a_s5krg]) ->
+      case w2_s5krj of wild_X2J {
+        [] -> (# w1_s5kri, GHC.Types.[] @ a_s5krg #);
+        : y_a5ijO ys'_a5ijP ->
+          case w_s5krh w1_s5kri y_a5ijO of {
+            __DEFAULT -> (# w1_s5kri, wild_X2J #);
+            GT -> (# y_a5ijO, insertBy @ a_s5krg w_s5krh w1_s5kri ys'_a5ijP #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 14, types: 19, coercions: 0, joins: 0/0}
+insert :: forall a. Ord a => a -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C(C1(U)),A,A,A,A,A,A)><L,U><S,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5j4k)
+                 ($dOrd_a5j4m [Occ=Once] :: Ord a_a5j4k)
+                 (e_a5ijI [Occ=Once] :: a_a5j4k)
+                 (ls_a5ijJ [Occ=Once] :: [a_a5j4k]) ->
+                 insertBy
+                   @ a_a5j4k (compare @ a_a5j4k $dOrd_a5j4m) e_a5ijI ls_a5ijJ}]
+insert
+  = \ (@ a_a5j4k)
+      ($dOrd_a5j4m :: Ord a_a5j4k)
+      (e_a5ijI :: a_a5j4k)
+      (ls_a5ijJ :: [a_a5j4k]) ->
+      case Data.OldList.$winsertBy
+             @ a_a5j4k (compare @ a_a5j4k $dOrd_a5j4m) e_a5ijI ls_a5ijJ
+      of
+      { (# ww1_s5ktJ, ww2_s5ktK #) ->
+      GHC.Types.: @ a_a5j4k ww1_s5ktJ ww2_s5ktK
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r5kSh :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_r5kSh = "List.maximumBy: empty list"#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+Data.OldList.maximumBy1 :: forall a. a
+[GblId, Str=x]
+Data.OldList.maximumBy1
+  = \ (@ a_a5j3S) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_a5j3S (unpackCString# lvl_r5kSh)
+
+-- RHS size: {terms: 29, types: 26, coercions: 0, joins: 1/1}
+maximumBy :: forall a. (a -> a -> Ordering) -> [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 30] 102 0}]
+maximumBy
+  = \ (@ a_a5j3S)
+      (ds_d5jr7 :: a_a5j3S -> a_a5j3S -> Ordering)
+      (ds1_d5jr8 :: [a_a5j3S]) ->
+      case ds1_d5jr8 of {
+        [] -> Data.OldList.maximumBy1 @ a_a5j3S;
+        : ipv_s5jBx ipv1_s5jBy ->
+          joinrec {
+            go_i1y1b [Occ=LoopBreaker] :: [a_a5j3S] -> a_a5j3S -> a_a5j3S
+            [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+            go_i1y1b (ds2_i1y1c :: [a_a5j3S]) (eta_B1 :: a_a5j3S)
+              = case ds2_i1y1c of {
+                  [] -> eta_B1;
+                  : y_i1y1h ys_i1y1i ->
+                    jump go_i1y1b
+                      ys_i1y1i
+                      (case ds_d5jr7 eta_B1 y_i1y1h of {
+                         __DEFAULT -> y_i1y1h;
+                         GT -> eta_B1
+                       })
+                }; } in
+          jump go_i1y1b ipv1_s5jBy ipv_s5jBx
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_r5kSi :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_r5kSi = "List.minimumBy: empty list"#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+Data.OldList.minimumBy1 :: forall a. a
+[GblId, Str=x]
+Data.OldList.minimumBy1
+  = \ (@ a_a5j3v) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_a5j3v (unpackCString# lvl1_r5kSi)
+
+-- RHS size: {terms: 29, types: 26, coercions: 0, joins: 1/1}
+minimumBy :: forall a. (a -> a -> Ordering) -> [a] -> a
+[GblId,
+ Arity=2,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [60 30] 102 0}]
+minimumBy
+  = \ (@ a_a5j3v)
+      (ds_d5jqD :: a_a5j3v -> a_a5j3v -> Ordering)
+      (ds1_d5jqE :: [a_a5j3v]) ->
+      case ds1_d5jqE of {
+        [] -> Data.OldList.minimumBy1 @ a_a5j3v;
+        : ipv_s5jBq ipv1_s5jBr ->
+          joinrec {
+            go_i1y1b [Occ=LoopBreaker] :: [a_a5j3v] -> a_a5j3v -> a_a5j3v
+            [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+            go_i1y1b (ds2_i1y1c :: [a_a5j3v]) (eta_B1 :: a_a5j3v)
+              = case ds2_i1y1c of {
+                  [] -> eta_B1;
+                  : y_i1y1h ys_i1y1i ->
+                    jump go_i1y1b
+                      ys_i1y1i
+                      (case ds_d5jqD eta_B1 y_i1y1h of {
+                         __DEFAULT -> eta_B1;
+                         GT -> y_i1y1h
+                       })
+                }; } in
+          jump go_i1y1b ipv1_s5jBr ipv_s5jBq
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.genericLength2 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Data.OldList.genericLength2 = 1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.genericLength1 :: Integer
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 100 0}]
+Data.OldList.genericLength1 = 0
+
+-- RHS size: {terms: 30, types: 25, coercions: 0, joins: 1/2}
+strictGenericLength :: forall i b. Num i => [b] -> i
+[GblId,
+ Arity=2,
+ Str=<L,U(C(C1(U)),A,A,A,A,A,C(U))><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [90 0] 152 0}]
+strictGenericLength
+  = \ (@ i_a5j2k)
+      (@ b_a5j2l)
+      ($dNum_a5j2n :: Num i_a5j2k)
+      (l_a5ik1 :: [b_a5j2l]) ->
+      let {
+        lvl12_s5jO0 :: i_a5j2k
+        [LclId]
+        lvl12_s5jO0
+          = fromInteger
+              @ i_a5j2k $dNum_a5j2n Data.OldList.genericLength2 } in
+      joinrec {
+        gl_s5jNy [Occ=LoopBreaker] :: [b_a5j2l] -> i_a5j2k -> i_a5j2k
+        [LclId[JoinId(2)], Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []]
+        gl_s5jNy (ds_d5jqm :: [b_a5j2l]) (a_a5ik3 :: i_a5j2k)
+          = case ds_d5jqm of {
+              [] -> a_a5ik3;
+              : ds1_d5jqu xs_a5ik4 ->
+                case + @ i_a5j2k $dNum_a5j2n a_a5ik3 lvl12_s5jO0 of a'_a5ik6
+                { __DEFAULT ->
+                jump gl_s5jNy xs_a5ik4 a'_a5ik6
+                }
+            }; } in
+      jump gl_s5jNy
+        l_a5ik1
+        (fromInteger @ i_a5j2k $dNum_a5j2n Data.OldList.genericLength1)
+
+Rec {
+-- RHS size: {terms: 19, types: 18, coercions: 0, joins: 0/0}
+genericLength [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall i a. Num i => [a] -> i
+[GblId,
+ Arity=2,
+ Str=<S,U(C(C1(U)),A,A,A,A,A,C(U))><S,1*U>,
+ Unf=OtherCon []]
+genericLength
+  = \ (@ i_a5j3h)
+      (@ a_a5j3i)
+      ($dNum_a5j3k :: Num i_a5j3h)
+      (ds_d5jqv :: [a_a5j3i]) ->
+      case ds_d5jqv of {
+        [] ->
+          fromInteger @ i_a5j3h $dNum_a5j3k Data.OldList.genericLength1;
+        : ds1_d5jqC l_a5ik0 ->
+          + @ i_a5j3h
+            $dNum_a5j3k
+            (fromInteger @ i_a5j3h $dNum_a5j3k Data.OldList.genericLength2)
+            (genericLength @ i_a5j3h @ a_a5j3i $dNum_a5j3k l_a5ik0)
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 38, types: 31, coercions: 0, joins: 0/2}
+genericTake [Occ=LoopBreaker]
+  :: forall i a. Integral i => i -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(LLLC(C(S))LLLL)L)LLLLLLLL),U(U(U(A,C(C1(U)),A,A,A,A,C(U)),U(A,A,A,C(C1(U)),A,A,A,A),A),A,A,A,A,A,A,A,A)><L,U><L,1*U>,
+ Unf=OtherCon []]
+genericTake
+  = \ (@ i_a5j1U)
+      (@ a_a5j1V)
+      ($dIntegral_a5j1X :: Integral i_a5j1U)
+      (eta_B2 :: i_a5j1U)
+      (eta1_B1 :: [a_a5j1V]) ->
+      let {
+        $dReal_s5jNw [Dmd=<S(LS(LLLC(C(S))LLLL)L),U(1*U(A,1*C1(C1(U)),A,A,A,A,C(U)),1*U(A,A,A,1*C1(C1(U)),A,A,A,A),A)>]
+          :: Real i_a5j1U
+        [LclId]
+        $dReal_s5jNw = GHC.Real.$p1Integral @ i_a5j1U $dIntegral_a5j1X } in
+      let {
+        $dNum_s5jNv [Dmd=<L,U(A,1*C1(C1(U)),A,A,A,A,C(U))>] :: Num i_a5j1U
+        [LclId]
+        $dNum_s5jNv = GHC.Real.$p1Real @ i_a5j1U $dReal_s5jNw } in
+      case <=
+             @ i_a5j1U
+             (GHC.Real.$p2Real @ i_a5j1U $dReal_s5jNw)
+             eta_B2
+             (fromInteger @ i_a5j1U $dNum_s5jNv Data.OldList.genericLength1)
+      of {
+        False ->
+          case eta1_B1 of {
+            [] -> GHC.Types.[] @ a_a5j1V;
+            : x_a5ik9 xs_a5ika ->
+              GHC.Types.:
+                @ a_a5j1V
+                x_a5ik9
+                (genericTake
+                   @ i_a5j1U
+                   @ a_a5j1V
+                   $dIntegral_a5j1X
+                   (- @ i_a5j1U
+                      $dNum_s5jNv
+                      eta_B2
+                      (fromInteger @ i_a5j1U $dNum_s5jNv Data.OldList.genericLength2))
+                   xs_a5ika)
+          };
+        True -> GHC.Types.[] @ a_a5j1V
+      }
+end Rec }
+
+-- RHS size: {terms: 10, types: 11, coercions: 0, joins: 0/0}
+genericReplicate :: forall i a. Integral i => i -> a -> [a]
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(LLLC(C(S))LLLL)L)LLLLLLLL),U(U(U(A,C(C1(U)),A,A,A,A,C(U)),U(A,A,A,C(C1(U)),A,A,A,A),A),A,A,A,A,A,A,A,A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ i_a5j2b)
+                 (@ a_a5j2c)
+                 ($dIntegral_a5j2e [Occ=Once] :: Integral i_a5j2b)
+                 (n_a5ikp [Occ=Once] :: i_a5j2b)
+                 (x_a5ikq [Occ=Once] :: a_a5j2c) ->
+                 genericTake
+                   @ i_a5j2b
+                   @ a_a5j2c
+                   $dIntegral_a5j2e
+                   n_a5ikp
+                   (build
+                      @ a_a5j2c
+                      (\ (@ b_i2KX3)
+                         (c_i2KX4 [Occ=Once, OS=OneShot] :: a_a5j2c -> b_i2KX3 -> b_i2KX3)
+                         _ [Occ=Dead, OS=OneShot] ->
+                         GHC.List.repeatFB @ a_a5j2c @ b_i2KX3 c_i2KX4 x_a5ikq))}]
+genericReplicate
+  = \ (@ i_a5j2b)
+      (@ a_a5j2c)
+      ($dIntegral_a5j2e :: Integral i_a5j2b)
+      (n_a5ikp :: i_a5j2b)
+      (x_a5ikq :: a_a5j2c) ->
+      genericTake
+        @ i_a5j2b
+        @ a_a5j2c
+        $dIntegral_a5j2e
+        n_a5ikp
+        (repeat @ a_a5j2c x_a5ikq)
+
+Rec {
+-- RHS size: {terms: 36, types: 29, coercions: 0, joins: 0/2}
+genericDrop [Occ=LoopBreaker]
+  :: forall i a. Integral i => i -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(LLLC(C(S))LLLL)L)LLLLLLLL),U(U(U(A,C(C1(U)),A,A,A,A,C(U)),U(A,A,A,C(C1(U)),A,A,A,A),A),A,A,A,A,A,A,A,A)><L,U><S,1*U>,
+ Unf=OtherCon []]
+genericDrop
+  = \ (@ i_a5j1E)
+      (@ a_a5j1F)
+      ($dIntegral_a5j1H :: Integral i_a5j1E)
+      (eta_B2 :: i_a5j1E)
+      (eta1_B1 :: [a_a5j1F]) ->
+      let {
+        $dReal_s5jNs [Dmd=<S(LS(LLLC(C(S))LLLL)L),U(1*U(A,1*C1(C1(U)),A,A,A,A,C(U)),1*U(A,A,A,1*C1(C1(U)),A,A,A,A),A)>]
+          :: Real i_a5j1E
+        [LclId]
+        $dReal_s5jNs = GHC.Real.$p1Integral @ i_a5j1E $dIntegral_a5j1H } in
+      let {
+        $dNum_s5jNr [Dmd=<L,U(A,1*C1(C1(U)),A,A,A,A,C(U))>] :: Num i_a5j1E
+        [LclId]
+        $dNum_s5jNr = GHC.Real.$p1Real @ i_a5j1E $dReal_s5jNs } in
+      case <=
+             @ i_a5j1E
+             (GHC.Real.$p2Real @ i_a5j1E $dReal_s5jNs)
+             eta_B2
+             (fromInteger @ i_a5j1E $dNum_s5jNr Data.OldList.genericLength1)
+      of {
+        False ->
+          case eta1_B1 of {
+            [] -> GHC.Types.[] @ a_a5j1F;
+            : ds_d5jpX xs_a5ike ->
+              genericDrop
+                @ i_a5j1E
+                @ a_a5j1F
+                $dIntegral_a5j1H
+                (- @ i_a5j1E
+                   $dNum_s5jNr
+                   eta_B2
+                   (fromInteger @ i_a5j1E $dNum_s5jNr Data.OldList.genericLength2))
+                xs_a5ike
+          };
+        True -> eta1_B1
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 57, types: 88, coercions: 0, joins: 0/3}
+Data.OldList.$wgenericSplitAt [InlPrag=NOUSERINLINE[0],
+                               Occ=LoopBreaker]
+  :: forall i a. Integral i => i -> [a] -> (# [a], [a] #)
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(LLLC(C(S))LLLL)L)LLLLLLLL),U(U(U(A,C(C1(U)),A,A,A,A,C(U)),U(A,A,A,C(C1(U)),A,A,A,A),A),A,A,A,A,A,A,A,A)><L,U><L,U>,
+ Unf=OtherCon []]
+Data.OldList.$wgenericSplitAt
+  = \ (@ i_s5kqD)
+      (@ a_s5kqE)
+      (w_s5kqF :: Integral i_s5kqD)
+      (w1_s5kqG :: i_s5kqD)
+      (w2_s5kqH :: [a_s5kqE]) ->
+      let {
+        $dReal_s5jNm [Dmd=<S(LS(LLLC(C(S))LLLL)L),U(1*U(A,1*C1(C1(U)),A,A,A,A,C(U)),1*U(A,A,A,1*C1(C1(U)),A,A,A,A),A)>]
+          :: Real i_s5kqD
+        [LclId]
+        $dReal_s5jNm = GHC.Real.$p1Integral @ i_s5kqD w_s5kqF } in
+      let {
+        $dNum_s5jNl [Dmd=<L,U(A,1*C1(C1(U)),A,A,A,A,C(U))>] :: Num i_s5kqD
+        [LclId]
+        $dNum_s5jNl = GHC.Real.$p1Real @ i_s5kqD $dReal_s5jNm } in
+      case <=
+             @ i_s5kqD
+             (GHC.Real.$p2Real @ i_s5kqD $dReal_s5jNm)
+             w1_s5kqG
+             (fromInteger @ i_s5kqD $dNum_s5jNl Data.OldList.genericLength1)
+      of {
+        False ->
+          case w2_s5kqH of {
+            [] -> (# GHC.Types.[] @ a_s5kqE, GHC.Types.[] @ a_s5kqE #);
+            : x_a5iki xs_a5ikj ->
+              let {
+                ds_s5jNo [Dmd=<L,U(1*U,1*U)>] :: ([a_s5kqE], [a_s5kqE])
+                [LclId]
+                ds_s5jNo
+                  = case Data.OldList.$wgenericSplitAt
+                           @ i_s5kqD
+                           @ a_s5kqE
+                           w_s5kqF
+                           (- @ i_s5kqD
+                              $dNum_s5jNl
+                              w1_s5kqG
+                              (fromInteger @ i_s5kqD $dNum_s5jNl Data.OldList.genericLength2))
+                           xs_a5ikj
+                    of
+                    { (# ww1_s5ktG, ww2_s5ktH #) ->
+                    (ww1_s5ktG, ww2_s5ktH)
+                    } } in
+              (# GHC.Types.:
+                   @ a_s5kqE
+                   x_a5iki
+                   (case ds_s5jNo of { (xs'_a5j1n, xs''_a5j1p) -> xs'_a5j1n }),
+                 case ds_s5jNo of { (xs'_a5j1n, xs''_a5j1p) -> xs''_a5j1p } #)
+          };
+        True -> (# GHC.Types.[] @ a_s5kqE, w2_s5kqH #)
+      }
+end Rec }
+
+-- RHS size: {terms: 14, types: 26, coercions: 0, joins: 0/0}
+genericSplitAt [InlPrag=NOUSERINLINE[0]]
+  :: forall i a. Integral i => i -> [a] -> ([a], [a])
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(LLLC(C(S))LLLL)L)LLLLLLLL),U(U(U(A,C(C1(U)),A,A,A,A,C(U)),U(A,A,A,C(C1(U)),A,A,A,A),A),A,A,A,A,A,A,A,A)><L,U><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ i_s5kqD)
+                 (@ a_s5kqE)
+                 (w_s5kqF [Occ=Once] :: Integral i_s5kqD)
+                 (w1_s5kqG [Occ=Once] :: i_s5kqD)
+                 (w2_s5kqH [Occ=Once] :: [a_s5kqE]) ->
+                 case Data.OldList.$wgenericSplitAt
+                        @ i_s5kqD @ a_s5kqE w_s5kqF w1_s5kqG w2_s5kqH
+                 of
+                 { (# ww1_s5ktG [Occ=Once], ww2_s5ktH [Occ=Once] #) ->
+                 (ww1_s5ktG, ww2_s5ktH)
+                 }}]
+genericSplitAt
+  = \ (@ i_s5kqD)
+      (@ a_s5kqE)
+      (w_s5kqF :: Integral i_s5kqD)
+      (w1_s5kqG :: i_s5kqD)
+      (w2_s5kqH :: [a_s5kqE]) ->
+      case Data.OldList.$wgenericSplitAt
+             @ i_s5kqD @ a_s5kqE w_s5kqF w1_s5kqG w2_s5kqH
+      of
+      { (# ww1_s5ktG, ww2_s5ktH #) ->
+      (ww1_s5ktG, ww2_s5ktH)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl2_r5kSj :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl2_r5kSj = "List.genericIndex: negative argument."#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+lvl3_r5kSk :: forall a. a
+[GblId, Str=x]
+lvl3_r5kSk
+  = \ (@ a_a5j0M) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_a5j0M (unpackCString# lvl2_r5kSj)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl4_r5kSl :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl4_r5kSl = "List.genericIndex: index too large."#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+lvl5_r5kSm :: forall a. a
+[GblId, Str=x]
+lvl5_r5kSm
+  = \ (@ a_a5j0M) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_a5j0M (unpackCString# lvl4_r5kSl)
+
+Rec {
+-- RHS size: {terms: 49, types: 36, coercions: 0, joins: 0/3}
+genericIndex [Occ=LoopBreaker]
+  :: forall i a. Integral i => [a] -> i -> a
+[GblId,
+ Arity=3,
+ Str=<S(S(LS(S(C(C(S))L)LLLLLLL)L)LLLLLLLL),U(U(U(A,C(C1(U)),A,A,A,A,C(U)),U(U(C(C1(U)),A),A,A,A,C(C1(U)),A,A,A),A),A,A,A,A,A,A,A,A)><S,1*U><L,U>,
+ Unf=OtherCon []]
+genericIndex
+  = \ (@ i_a5j0L)
+      (@ a_a5j0M)
+      ($dIntegral_a5j0O :: Integral i_a5j0L)
+      (eta_B2 :: [a_a5j0M])
+      (eta1_B1 :: i_a5j0L) ->
+      case eta_B2 of {
+        [] -> lvl5_r5kSm @ a_a5j0M;
+        : x_a5ikm ds_d5jp2 ->
+          let {
+            $dReal_s5jNi [Dmd=<S(LS(S(C(C(S))L)LLLLLLL)L),U(1*U(A,1*C1(C1(U)),A,A,A,A,C(U)),1*U(1*U(1*C1(C1(U)),A),A,A,A,1*C1(C1(U)),A,A,A),A)>]
+              :: Real i_a5j0L
+            [LclId]
+            $dReal_s5jNi = GHC.Real.$p1Integral @ i_a5j0L $dIntegral_a5j0O } in
+          let {
+            $dNum_s5jNh [Dmd=<L,U(A,1*C1(C1(U)),A,A,A,A,C(U))>] :: Num i_a5j0L
+            [LclId]
+            $dNum_s5jNh = GHC.Real.$p1Real @ i_a5j0L $dReal_s5jNi } in
+          let {
+            $dOrd_s5jNg [Dmd=<S(S(C(C(S))L)LLLLLLL),U(1*U(1*C1(C1(U)),A),A,A,A,1*C1(C1(U)),A,A,A)>]
+              :: Ord i_a5j0L
+            [LclId]
+            $dOrd_s5jNg = GHC.Real.$p2Real @ i_a5j0L $dReal_s5jNi } in
+          case ==
+                 @ i_a5j0L
+                 (GHC.Classes.$p1Ord @ i_a5j0L $dOrd_s5jNg)
+                 eta1_B1
+                 (fromInteger @ i_a5j0L $dNum_s5jNh Data.OldList.genericLength1)
+          of {
+            False ->
+              case > @ i_a5j0L
+                     $dOrd_s5jNg
+                     eta1_B1
+                     (fromInteger @ i_a5j0L $dNum_s5jNh Data.OldList.genericLength1)
+              of {
+                False -> lvl3_r5kSk @ a_a5j0M;
+                True ->
+                  genericIndex
+                    @ i_a5j0L
+                    @ a_a5j0M
+                    $dIntegral_a5j0O
+                    ds_d5jp2
+                    (- @ i_a5j0L
+                       $dNum_s5jNh
+                       eta1_B1
+                       (fromInteger @ i_a5j0L $dNum_s5jNh Data.OldList.genericLength2))
+              };
+            True -> x_a5ikm
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 42, types: 53, coercions: 0, joins: 0/0}
+zipWith4 [Occ=LoopBreaker]
+  :: forall a b c d e.
+     (a -> b -> c -> d -> e) -> [a] -> [b] -> [c] -> [d] -> [e]
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(C1(U))))><S,1*U><L,1*U><L,1*U><L,1*U>,
+ Unf=OtherCon []]
+zipWith4
+  = \ (@ a_a5iZn)
+      (@ b_a5iZo)
+      (@ c_a5iZp)
+      (@ d_a5iZq)
+      (@ e_a5iZr)
+      (z_a5ikr :: a_a5iZn -> b_a5iZo -> c_a5iZp -> d_a5iZq -> e_a5iZr)
+      (ds_d5jog :: [a_a5iZn])
+      (ds1_d5joh :: [b_a5iZo])
+      (ds2_d5joi :: [c_a5iZp])
+      (ds3_d5joj :: [d_a5iZq]) ->
+      case ds_d5jog of {
+        [] -> GHC.Types.[] @ e_a5iZr;
+        : a1_a5iks as_a5ikt ->
+          case ds1_d5joh of {
+            [] -> GHC.Types.[] @ e_a5iZr;
+            : b1_a5iku bs_a5ikv ->
+              case ds2_d5joi of {
+                [] -> GHC.Types.[] @ e_a5iZr;
+                : c1_a5ikw cs_a5ikx ->
+                  case ds3_d5joj of {
+                    [] -> GHC.Types.[] @ e_a5iZr;
+                    : d1_a5iky ds4_a5ikz ->
+                      GHC.Types.:
+                        @ e_a5iZr
+                        (z_a5ikr a1_a5iks b1_a5iku c1_a5ikw d1_a5iky)
+                        (zipWith4
+                           @ a_a5iZn
+                           @ b_a5iZo
+                           @ c_a5iZp
+                           @ d_a5iZq
+                           @ e_a5iZr
+                           z_a5ikr
+                           as_a5ikt
+                           bs_a5ikv
+                           cs_a5ikx
+                           ds4_a5ikz)
+                  }
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 6, types: 21, coercions: 0, joins: 0/0}
+zip4 :: forall a b c d. [a] -> [b] -> [c] -> [d] -> [(a, b, c, d)]
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+zip4
+  = \ (@ a_a5j0x) (@ b_a5j0y) (@ c_a5j0z) (@ d_a5j0A) ->
+      zipWith4
+        @ a_a5j0x
+        @ b_a5j0y
+        @ c_a5j0z
+        @ d_a5j0A
+        @ (a_a5j0x, b_a5j0y, c_a5j0z, d_a5j0A)
+        (GHC.Tuple.(,,,) @ a_a5j0x @ b_a5j0y @ c_a5j0z @ d_a5j0A)
+
+Rec {
+-- RHS size: {terms: 51, types: 65, coercions: 0, joins: 0/0}
+zipWith5 [Occ=LoopBreaker]
+  :: forall a b c d e f.
+     (a -> b -> c -> d -> e -> f)
+     -> [a] -> [b] -> [c] -> [d] -> [e] -> [f]
+[GblId,
+ Arity=6,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(C1(C1(U)))))><S,1*U><L,1*U><L,1*U><L,1*U><L,1*U>,
+ Unf=OtherCon []]
+zipWith5
+  = \ (@ a_a5iZ9)
+      (@ b_a5iZa)
+      (@ c_a5iZb)
+      (@ d_a5iZc)
+      (@ e_a5iZd)
+      (@ f_a5iZe)
+      (z_a5ikA
+         :: a_a5iZ9 -> b_a5iZa -> c_a5iZb -> d_a5iZc -> e_a5iZd -> f_a5iZe)
+      (ds_d5jnI :: [a_a5iZ9])
+      (ds1_d5jnJ :: [b_a5iZa])
+      (ds2_d5jnK :: [c_a5iZb])
+      (ds3_d5jnL :: [d_a5iZc])
+      (ds4_d5jnM :: [e_a5iZd]) ->
+      case ds_d5jnI of {
+        [] -> GHC.Types.[] @ f_a5iZe;
+        : a1_a5ikB as_a5ikC ->
+          case ds1_d5jnJ of {
+            [] -> GHC.Types.[] @ f_a5iZe;
+            : b1_a5ikD bs_a5ikE ->
+              case ds2_d5jnK of {
+                [] -> GHC.Types.[] @ f_a5iZe;
+                : c1_a5ikF cs_a5ikG ->
+                  case ds3_d5jnL of {
+                    [] -> GHC.Types.[] @ f_a5iZe;
+                    : d1_a5ikH ds5_a5ikI ->
+                      case ds4_d5jnM of {
+                        [] -> GHC.Types.[] @ f_a5iZe;
+                        : e1_a5ikJ es_a5ikK ->
+                          GHC.Types.:
+                            @ f_a5iZe
+                            (z_a5ikA a1_a5ikB b1_a5ikD c1_a5ikF d1_a5ikH e1_a5ikJ)
+                            (zipWith5
+                               @ a_a5iZ9
+                               @ b_a5iZa
+                               @ c_a5iZb
+                               @ d_a5iZc
+                               @ e_a5iZd
+                               @ f_a5iZe
+                               z_a5ikA
+                               as_a5ikC
+                               bs_a5ikE
+                               cs_a5ikG
+                               ds5_a5ikI
+                               es_a5ikK)
+                      }
+                  }
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 7, types: 26, coercions: 0, joins: 0/0}
+zip5
+  :: forall a b c d e.
+     [a] -> [b] -> [c] -> [d] -> [e] -> [(a, b, c, d, e)]
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+zip5
+  = \ (@ a_a5j0g) (@ b_a5j0h) (@ c_a5j0i) (@ d_a5j0j) (@ e_a5j0k) ->
+      zipWith5
+        @ a_a5j0g
+        @ b_a5j0h
+        @ c_a5j0i
+        @ d_a5j0j
+        @ e_a5j0k
+        @ (a_a5j0g, b_a5j0h, c_a5j0i, d_a5j0j, e_a5j0k)
+        (GHC.Tuple.(,,,,)
+           @ a_a5j0g @ b_a5j0h @ c_a5j0i @ d_a5j0j @ e_a5j0k)
+
+Rec {
+-- RHS size: {terms: 60, types: 77, coercions: 0, joins: 0/0}
+zipWith6 [Occ=LoopBreaker]
+  :: forall a b c d e f g.
+     (a -> b -> c -> d -> e -> f -> g)
+     -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g]
+[GblId,
+ Arity=7,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(C1(C1(C1(U))))))><S,1*U><L,1*U><L,1*U><L,1*U><L,1*U><L,1*U>,
+ Unf=OtherCon []]
+zipWith6
+  = \ (@ a_a5iYT)
+      (@ b_a5iYU)
+      (@ c_a5iYV)
+      (@ d_a5iYW)
+      (@ e_a5iYX)
+      (@ f_a5iYY)
+      (@ g_a5iYZ)
+      (z_a5ikL
+         :: a_a5iYT
+            -> b_a5iYU -> c_a5iYV -> d_a5iYW -> e_a5iYX -> f_a5iYY -> g_a5iYZ)
+      (ds_d5jn4 :: [a_a5iYT])
+      (ds1_d5jn5 :: [b_a5iYU])
+      (ds2_d5jn6 :: [c_a5iYV])
+      (ds3_d5jn7 :: [d_a5iYW])
+      (ds4_d5jn8 :: [e_a5iYX])
+      (ds5_d5jn9 :: [f_a5iYY]) ->
+      case ds_d5jn4 of {
+        [] -> GHC.Types.[] @ g_a5iYZ;
+        : a1_a5ikM as_a5ikN ->
+          case ds1_d5jn5 of {
+            [] -> GHC.Types.[] @ g_a5iYZ;
+            : b1_a5ikO bs_a5ikP ->
+              case ds2_d5jn6 of {
+                [] -> GHC.Types.[] @ g_a5iYZ;
+                : c1_a5ikQ cs_a5ikR ->
+                  case ds3_d5jn7 of {
+                    [] -> GHC.Types.[] @ g_a5iYZ;
+                    : d1_a5ikS ds6_a5ikT ->
+                      case ds4_d5jn8 of {
+                        [] -> GHC.Types.[] @ g_a5iYZ;
+                        : e1_a5ikU es_a5ikV ->
+                          case ds5_d5jn9 of {
+                            [] -> GHC.Types.[] @ g_a5iYZ;
+                            : f1_a5ikW fs_a5ikX ->
+                              GHC.Types.:
+                                @ g_a5iYZ
+                                (z_a5ikL a1_a5ikM b1_a5ikO c1_a5ikQ d1_a5ikS e1_a5ikU f1_a5ikW)
+                                (zipWith6
+                                   @ a_a5iYT
+                                   @ b_a5iYU
+                                   @ c_a5iYV
+                                   @ d_a5iYW
+                                   @ e_a5iYX
+                                   @ f_a5iYY
+                                   @ g_a5iYZ
+                                   z_a5ikL
+                                   as_a5ikN
+                                   bs_a5ikP
+                                   cs_a5ikR
+                                   ds6_a5ikT
+                                   es_a5ikV
+                                   fs_a5ikX)
+                          }
+                      }
+                  }
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 8, types: 31, coercions: 0, joins: 0/0}
+zip6
+  :: forall a b c d e f.
+     [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [(a, b, c, d, e, f)]
+[GblId,
+ Arity=6,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+zip6
+  = \ (@ a_a5iZW)
+      (@ b_a5iZX)
+      (@ c_a5iZY)
+      (@ d_a5iZZ)
+      (@ e_a5j00)
+      (@ f_a5j01) ->
+      zipWith6
+        @ a_a5iZW
+        @ b_a5iZX
+        @ c_a5iZY
+        @ d_a5iZZ
+        @ e_a5j00
+        @ f_a5j01
+        @ (a_a5iZW, b_a5iZX, c_a5iZY, d_a5iZZ, e_a5j00, f_a5j01)
+        (GHC.Tuple.(,,,,,)
+           @ a_a5iZW @ b_a5iZX @ c_a5iZY @ d_a5iZZ @ e_a5j00 @ f_a5j01)
+
+Rec {
+-- RHS size: {terms: 69, types: 89, coercions: 0, joins: 0/0}
+zipWith7 [Occ=LoopBreaker]
+  :: forall a b c d e f g h.
+     (a -> b -> c -> d -> e -> f -> g -> h)
+     -> [a] -> [b] -> [c] -> [d] -> [e] -> [f] -> [g] -> [h]
+[GblId,
+ Arity=8,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(C1(C1(C1(C1(C1(U)))))))><S,1*U><L,1*U><L,1*U><L,1*U><L,1*U><L,1*U><L,1*U>,
+ Unf=OtherCon []]
+zipWith7
+  = \ (@ a_a5iYB)
+      (@ b_a5iYC)
+      (@ c_a5iYD)
+      (@ d_a5iYE)
+      (@ e_a5iYF)
+      (@ f_a5iYG)
+      (@ g_a5iYH)
+      (@ h_a5iYI)
+      (z_a5ikY
+         :: a_a5iYB
+            -> b_a5iYC
+            -> c_a5iYD
+            -> d_a5iYE
+            -> e_a5iYF
+            -> f_a5iYG
+            -> g_a5iYH
+            -> h_a5iYI)
+      (ds_d5jmk :: [a_a5iYB])
+      (ds1_d5jml :: [b_a5iYC])
+      (ds2_d5jmm :: [c_a5iYD])
+      (ds3_d5jmn :: [d_a5iYE])
+      (ds4_d5jmo :: [e_a5iYF])
+      (ds5_d5jmp :: [f_a5iYG])
+      (ds6_d5jmq :: [g_a5iYH]) ->
+      case ds_d5jmk of {
+        [] -> GHC.Types.[] @ h_a5iYI;
+        : a1_a5ikZ as_a5il0 ->
+          case ds1_d5jml of {
+            [] -> GHC.Types.[] @ h_a5iYI;
+            : b1_a5il1 bs_a5il2 ->
+              case ds2_d5jmm of {
+                [] -> GHC.Types.[] @ h_a5iYI;
+                : c1_a5il3 cs_a5il4 ->
+                  case ds3_d5jmn of {
+                    [] -> GHC.Types.[] @ h_a5iYI;
+                    : d1_a5il5 ds7_a5il6 ->
+                      case ds4_d5jmo of {
+                        [] -> GHC.Types.[] @ h_a5iYI;
+                        : e1_a5il7 es_a5il8 ->
+                          case ds5_d5jmp of {
+                            [] -> GHC.Types.[] @ h_a5iYI;
+                            : f1_a5il9 fs_a5ila ->
+                              case ds6_d5jmq of {
+                                [] -> GHC.Types.[] @ h_a5iYI;
+                                : g1_a5ilb gs_a5ilc ->
+                                  GHC.Types.:
+                                    @ h_a5iYI
+                                    (z_a5ikY
+                                       a1_a5ikZ
+                                       b1_a5il1
+                                       c1_a5il3
+                                       d1_a5il5
+                                       e1_a5il7
+                                       f1_a5il9
+                                       g1_a5ilb)
+                                    (zipWith7
+                                       @ a_a5iYB
+                                       @ b_a5iYC
+                                       @ c_a5iYD
+                                       @ d_a5iYE
+                                       @ e_a5iYF
+                                       @ f_a5iYG
+                                       @ g_a5iYH
+                                       @ h_a5iYI
+                                       z_a5ikY
+                                       as_a5il0
+                                       bs_a5il2
+                                       cs_a5il4
+                                       ds7_a5il6
+                                       es_a5il8
+                                       fs_a5ila
+                                       gs_a5ilc)
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 36, coercions: 0, joins: 0/0}
+zip7
+  :: forall a b c d e f g.
+     [a]
+     -> [b]
+     -> [c]
+     -> [d]
+     -> [e]
+     -> [f]
+     -> [g]
+     -> [(a, b, c, d, e, f, g)]
+[GblId,
+ Arity=7,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 60}]
+zip7
+  = \ (@ a_a5iZz)
+      (@ b_a5iZA)
+      (@ c_a5iZB)
+      (@ d_a5iZC)
+      (@ e_a5iZD)
+      (@ f_a5iZE)
+      (@ g_a5iZF) ->
+      zipWith7
+        @ a_a5iZz
+        @ b_a5iZA
+        @ c_a5iZB
+        @ d_a5iZC
+        @ e_a5iZD
+        @ f_a5iZE
+        @ g_a5iZF
+        @ (a_a5iZz, b_a5iZA, c_a5iZB, d_a5iZC, e_a5iZD, f_a5iZE, g_a5iZF)
+        (GHC.Tuple.(,,,,,,)
+           @ a_a5iZz
+           @ b_a5iZA
+           @ c_a5iZB
+           @ d_a5iZC
+           @ e_a5iZD
+           @ f_a5iZE
+           @ g_a5iZF)
+
+Rec {
+-- RHS size: {terms: 52, types: 182, coercions: 0, joins: 0/1}
+Data.OldList.$wunzip4 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a b c d. [(a, b, c, d)] -> (# [a], [b], [c], [d] #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.OldList.$wunzip4
+  = \ (@ a_s5kpz)
+      (@ b_s5kpA)
+      (@ c_s5kpB)
+      (@ d_s5kpC)
+      (w_s5kpD :: [(a_s5kpz, b_s5kpA, c_s5kpB, d_s5kpC)]) ->
+      case w_s5kpD of {
+        [] ->
+          (# GHC.Types.[] @ a_s5kpz, GHC.Types.[] @ b_s5kpA,
+             GHC.Types.[] @ c_s5kpB, GHC.Types.[] @ d_s5kpC #);
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of { (a1_a5ild, b1_a5ile, c1_a5ilf, d1_a5ilg) ->
+          let {
+            ds_d5jlM [Dmd=<L,U(1*U,1*U,1*U,1*U)>]
+              :: ([a_s5kpz], [b_s5kpA], [c_s5kpB], [d_s5kpC])
+            [LclId]
+            ds_d5jlM
+              = case Data.OldList.$wunzip4
+                       @ a_s5kpz @ b_s5kpA @ c_s5kpB @ d_s5kpC ys_i1y1i
+                of
+                { (# ww1_s5ktB, ww2_s5ktC, ww3_s5ktD, ww4_s5ktE #) ->
+                (ww1_s5ktB, ww2_s5ktC, ww3_s5ktD, ww4_s5ktE)
+                } } in
+          (# GHC.Types.:
+               @ a_s5kpz
+               a1_a5ild
+               (case ds_d5jlM of { (as_a5ilh, bs_a5ili, cs_a5ilj, ds1_a5ilk) ->
+                as_a5ilh
+                }),
+             GHC.Types.:
+               @ b_s5kpA
+               b1_a5ile
+               (case ds_d5jlM of { (as_a5ilh, bs_a5ili, cs_a5ilj, ds1_a5ilk) ->
+                bs_a5ili
+                }),
+             GHC.Types.:
+               @ c_s5kpB
+               c1_a5ilf
+               (case ds_d5jlM of { (as_a5ilh, bs_a5ili, cs_a5ilj, ds1_a5ilk) ->
+                cs_a5ilj
+                }),
+             GHC.Types.:
+               @ d_s5kpC
+               d1_a5ilg
+               (case ds_d5jlM of { (as_a5ilh, bs_a5ili, cs_a5ilj, ds1_a5ilk) ->
+                ds1_a5ilk
+                }) #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 14, types: 47, coercions: 0, joins: 0/0}
+unzip4 [InlPrag=NOUSERINLINE[0]]
+  :: forall a b c d. [(a, b, c, d)] -> ([a], [b], [c], [d])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5kpz)
+                 (@ b_s5kpA)
+                 (@ c_s5kpB)
+                 (@ d_s5kpC)
+                 (w_s5kpD [Occ=Once] :: [(a_s5kpz, b_s5kpA, c_s5kpB, d_s5kpC)]) ->
+                 case Data.OldList.$wunzip4
+                        @ a_s5kpz @ b_s5kpA @ c_s5kpB @ d_s5kpC w_s5kpD
+                 of
+                 { (# ww1_s5ktB [Occ=Once], ww2_s5ktC [Occ=Once],
+                      ww3_s5ktD [Occ=Once], ww4_s5ktE [Occ=Once] #) ->
+                 (ww1_s5ktB, ww2_s5ktC, ww3_s5ktD, ww4_s5ktE)
+                 }}]
+unzip4
+  = \ (@ a_s5kpz)
+      (@ b_s5kpA)
+      (@ c_s5kpB)
+      (@ d_s5kpC)
+      (w_s5kpD :: [(a_s5kpz, b_s5kpA, c_s5kpB, d_s5kpC)]) ->
+      case Data.OldList.$wunzip4
+             @ a_s5kpz @ b_s5kpA @ c_s5kpB @ d_s5kpC w_s5kpD
+      of
+      { (# ww1_s5ktB, ww2_s5ktC, ww3_s5ktD, ww4_s5ktE #) ->
+      (ww1_s5ktB, ww2_s5ktC, ww3_s5ktD, ww4_s5ktE)
+      }
+
+Rec {
+-- RHS size: {terms: 61, types: 245, coercions: 0, joins: 0/1}
+Data.OldList.$wunzip5 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a b c d e.
+     [(a, b, c, d, e)] -> (# [a], [b], [c], [d], [e] #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.OldList.$wunzip5
+  = \ (@ a_s5kpp)
+      (@ b_s5kpq)
+      (@ c_s5kpr)
+      (@ d_s5kps)
+      (@ e_s5kpt)
+      (w_s5kpu :: [(a_s5kpp, b_s5kpq, c_s5kpr, d_s5kps, e_s5kpt)]) ->
+      case w_s5kpu of {
+        [] ->
+          (# GHC.Types.[] @ a_s5kpp, GHC.Types.[] @ b_s5kpq,
+             GHC.Types.[] @ c_s5kpr, GHC.Types.[] @ d_s5kps,
+             GHC.Types.[] @ e_s5kpt #);
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of
+          { (a1_a5ill, b1_a5ilm, c1_a5iln, d1_a5ilo, e1_a5ilp) ->
+          let {
+            ds_d5jl1 [Dmd=<L,U(1*U,1*U,1*U,1*U,1*U)>]
+              :: ([a_s5kpp], [b_s5kpq], [c_s5kpr], [d_s5kps], [e_s5kpt])
+            [LclId]
+            ds_d5jl1
+              = case Data.OldList.$wunzip5
+                       @ a_s5kpp @ b_s5kpq @ c_s5kpr @ d_s5kps @ e_s5kpt ys_i1y1i
+                of
+                { (# ww1_s5ktv, ww2_s5ktw, ww3_s5ktx, ww4_s5kty, ww5_s5ktz #) ->
+                (ww1_s5ktv, ww2_s5ktw, ww3_s5ktx, ww4_s5kty, ww5_s5ktz)
+                } } in
+          (# GHC.Types.:
+               @ a_s5kpp
+               a1_a5ill
+               (case ds_d5jl1 of
+                { (as_a5ilq, bs_a5ilr, cs_a5ils, ds1_a5ilt, es_a5ilu) ->
+                as_a5ilq
+                }),
+             GHC.Types.:
+               @ b_s5kpq
+               b1_a5ilm
+               (case ds_d5jl1 of
+                { (as_a5ilq, bs_a5ilr, cs_a5ils, ds1_a5ilt, es_a5ilu) ->
+                bs_a5ilr
+                }),
+             GHC.Types.:
+               @ c_s5kpr
+               c1_a5iln
+               (case ds_d5jl1 of
+                { (as_a5ilq, bs_a5ilr, cs_a5ils, ds1_a5ilt, es_a5ilu) ->
+                cs_a5ils
+                }),
+             GHC.Types.:
+               @ d_s5kps
+               d1_a5ilo
+               (case ds_d5jl1 of
+                { (as_a5ilq, bs_a5ilr, cs_a5ils, ds1_a5ilt, es_a5ilu) ->
+                ds1_a5ilt
+                }),
+             GHC.Types.:
+               @ e_s5kpt
+               e1_a5ilp
+               (case ds_d5jl1 of
+                { (as_a5ilq, bs_a5ilr, cs_a5ils, ds1_a5ilt, es_a5ilu) ->
+                es_a5ilu
+                }) #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 16, types: 58, coercions: 0, joins: 0/0}
+unzip5 [InlPrag=NOUSERINLINE[0]]
+  :: forall a b c d e. [(a, b, c, d, e)] -> ([a], [b], [c], [d], [e])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5kpp)
+                 (@ b_s5kpq)
+                 (@ c_s5kpr)
+                 (@ d_s5kps)
+                 (@ e_s5kpt)
+                 (w_s5kpu [Occ=Once]
+                    :: [(a_s5kpp, b_s5kpq, c_s5kpr, d_s5kps, e_s5kpt)]) ->
+                 case Data.OldList.$wunzip5
+                        @ a_s5kpp @ b_s5kpq @ c_s5kpr @ d_s5kps @ e_s5kpt w_s5kpu
+                 of
+                 { (# ww1_s5ktv [Occ=Once], ww2_s5ktw [Occ=Once],
+                      ww3_s5ktx [Occ=Once], ww4_s5kty [Occ=Once],
+                      ww5_s5ktz [Occ=Once] #) ->
+                 (ww1_s5ktv, ww2_s5ktw, ww3_s5ktx, ww4_s5kty, ww5_s5ktz)
+                 }}]
+unzip5
+  = \ (@ a_s5kpp)
+      (@ b_s5kpq)
+      (@ c_s5kpr)
+      (@ d_s5kps)
+      (@ e_s5kpt)
+      (w_s5kpu :: [(a_s5kpp, b_s5kpq, c_s5kpr, d_s5kps, e_s5kpt)]) ->
+      case Data.OldList.$wunzip5
+             @ a_s5kpp @ b_s5kpq @ c_s5kpr @ d_s5kps @ e_s5kpt w_s5kpu
+      of
+      { (# ww1_s5ktv, ww2_s5ktw, ww3_s5ktx, ww4_s5kty, ww5_s5ktz #) ->
+      (ww1_s5ktv, ww2_s5ktw, ww3_s5ktx, ww4_s5kty, ww5_s5ktz)
+      }
+
+Rec {
+-- RHS size: {terms: 70, types: 316, coercions: 0, joins: 0/1}
+Data.OldList.$wunzip6 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a b c d e f.
+     [(a, b, c, d, e, f)] -> (# [a], [b], [c], [d], [e], [f] #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.OldList.$wunzip6
+  = \ (@ a_s5kpe)
+      (@ b_s5kpf)
+      (@ c_s5kpg)
+      (@ d_s5kph)
+      (@ e_s5kpi)
+      (@ f_s5kpj)
+      (w_s5kpk
+         :: [(a_s5kpe, b_s5kpf, c_s5kpg, d_s5kph, e_s5kpi, f_s5kpj)]) ->
+      case w_s5kpk of {
+        [] ->
+          (# GHC.Types.[] @ a_s5kpe, GHC.Types.[] @ b_s5kpf,
+             GHC.Types.[] @ c_s5kpg, GHC.Types.[] @ d_s5kph,
+             GHC.Types.[] @ e_s5kpi, GHC.Types.[] @ f_s5kpj #);
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of
+          { (a1_a5ilv, b1_a5ilw, c1_a5ilx, d1_a5ily, e1_a5ilz, f1_a5ilA) ->
+          let {
+            ds_d5jk2 [Dmd=<L,U(1*U,1*U,1*U,1*U,1*U,1*U)>]
+              :: ([a_s5kpe], [b_s5kpf], [c_s5kpg], [d_s5kph], [e_s5kpi],
+                  [f_s5kpj])
+            [LclId]
+            ds_d5jk2
+              = case Data.OldList.$wunzip6
+                       @ a_s5kpe
+                       @ b_s5kpf
+                       @ c_s5kpg
+                       @ d_s5kph
+                       @ e_s5kpi
+                       @ f_s5kpj
+                       ys_i1y1i
+                of
+                { (# ww1_s5kto, ww2_s5ktp, ww3_s5ktq, ww4_s5ktr, ww5_s5kts,
+                     ww6_s5ktt #) ->
+                (ww1_s5kto, ww2_s5ktp, ww3_s5ktq, ww4_s5ktr, ww5_s5kts, ww6_s5ktt)
+                } } in
+          (# GHC.Types.:
+               @ a_s5kpe
+               a1_a5ilv
+               (case ds_d5jk2 of
+                { (as_a5ilB, bs_a5ilC, cs_a5ilD, ds1_a5ilE, es_a5ilF, fs_a5ilG) ->
+                as_a5ilB
+                }),
+             GHC.Types.:
+               @ b_s5kpf
+               b1_a5ilw
+               (case ds_d5jk2 of
+                { (as_a5ilB, bs_a5ilC, cs_a5ilD, ds1_a5ilE, es_a5ilF, fs_a5ilG) ->
+                bs_a5ilC
+                }),
+             GHC.Types.:
+               @ c_s5kpg
+               c1_a5ilx
+               (case ds_d5jk2 of
+                { (as_a5ilB, bs_a5ilC, cs_a5ilD, ds1_a5ilE, es_a5ilF, fs_a5ilG) ->
+                cs_a5ilD
+                }),
+             GHC.Types.:
+               @ d_s5kph
+               d1_a5ily
+               (case ds_d5jk2 of
+                { (as_a5ilB, bs_a5ilC, cs_a5ilD, ds1_a5ilE, es_a5ilF, fs_a5ilG) ->
+                ds1_a5ilE
+                }),
+             GHC.Types.:
+               @ e_s5kpi
+               e1_a5ilz
+               (case ds_d5jk2 of
+                { (as_a5ilB, bs_a5ilC, cs_a5ilD, ds1_a5ilE, es_a5ilF, fs_a5ilG) ->
+                es_a5ilF
+                }),
+             GHC.Types.:
+               @ f_s5kpj
+               f1_a5ilA
+               (case ds_d5jk2 of
+                { (as_a5ilB, bs_a5ilC, cs_a5ilD, ds1_a5ilE, es_a5ilF, fs_a5ilG) ->
+                fs_a5ilG
+                }) #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 18, types: 69, coercions: 0, joins: 0/0}
+unzip6 [InlPrag=NOUSERINLINE[0]]
+  :: forall a b c d e f.
+     [(a, b, c, d, e, f)] -> ([a], [b], [c], [d], [e], [f])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5kpe)
+                 (@ b_s5kpf)
+                 (@ c_s5kpg)
+                 (@ d_s5kph)
+                 (@ e_s5kpi)
+                 (@ f_s5kpj)
+                 (w_s5kpk [Occ=Once]
+                    :: [(a_s5kpe, b_s5kpf, c_s5kpg, d_s5kph, e_s5kpi, f_s5kpj)]) ->
+                 case Data.OldList.$wunzip6
+                        @ a_s5kpe @ b_s5kpf @ c_s5kpg @ d_s5kph @ e_s5kpi @ f_s5kpj w_s5kpk
+                 of
+                 { (# ww1_s5kto [Occ=Once], ww2_s5ktp [Occ=Once],
+                      ww3_s5ktq [Occ=Once], ww4_s5ktr [Occ=Once], ww5_s5kts [Occ=Once],
+                      ww6_s5ktt [Occ=Once] #) ->
+                 (ww1_s5kto, ww2_s5ktp, ww3_s5ktq, ww4_s5ktr, ww5_s5kts, ww6_s5ktt)
+                 }}]
+unzip6
+  = \ (@ a_s5kpe)
+      (@ b_s5kpf)
+      (@ c_s5kpg)
+      (@ d_s5kph)
+      (@ e_s5kpi)
+      (@ f_s5kpj)
+      (w_s5kpk
+         :: [(a_s5kpe, b_s5kpf, c_s5kpg, d_s5kph, e_s5kpi, f_s5kpj)]) ->
+      case Data.OldList.$wunzip6
+             @ a_s5kpe @ b_s5kpf @ c_s5kpg @ d_s5kph @ e_s5kpi @ f_s5kpj w_s5kpk
+      of
+      { (# ww1_s5kto, ww2_s5ktp, ww3_s5ktq, ww4_s5ktr, ww5_s5kts,
+           ww6_s5ktt #) ->
+      (ww1_s5kto, ww2_s5ktp, ww3_s5ktq, ww4_s5ktr, ww5_s5kts, ww6_s5ktt)
+      }
+
+Rec {
+-- RHS size: {terms: 79, types: 395, coercions: 0, joins: 0/1}
+Data.OldList.$wunzip7 [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall a b c d e f g.
+     [(a, b, c, d, e, f, g)] -> (# [a], [b], [c], [d], [e], [f], [g] #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.OldList.$wunzip7
+  = \ (@ a_s5kp2)
+      (@ b_s5kp3)
+      (@ c_s5kp4)
+      (@ d_s5kp5)
+      (@ e_s5kp6)
+      (@ f_s5kp7)
+      (@ g_s5kp8)
+      (w_s5kp9
+         :: [(a_s5kp2, b_s5kp3, c_s5kp4, d_s5kp5, e_s5kp6, f_s5kp7,
+              g_s5kp8)]) ->
+      case w_s5kp9 of {
+        [] ->
+          (# GHC.Types.[] @ a_s5kp2, GHC.Types.[] @ b_s5kp3,
+             GHC.Types.[] @ c_s5kp4, GHC.Types.[] @ d_s5kp5,
+             GHC.Types.[] @ e_s5kp6, GHC.Types.[] @ f_s5kp7,
+             GHC.Types.[] @ g_s5kp8 #);
+        : y_i1y1h ys_i1y1i ->
+          case y_i1y1h of
+          { (a1_a5ilH, b1_a5ilI, c1_a5ilJ, d1_a5ilK, e1_a5ilL, f1_a5ilM,
+             g1_a5ilN) ->
+          let {
+            ds_d5jiN [Dmd=<L,U(1*U,1*U,1*U,1*U,1*U,1*U,1*U)>]
+              :: ([a_s5kp2], [b_s5kp3], [c_s5kp4], [d_s5kp5], [e_s5kp6],
+                  [f_s5kp7], [g_s5kp8])
+            [LclId]
+            ds_d5jiN
+              = case Data.OldList.$wunzip7
+                       @ a_s5kp2
+                       @ b_s5kp3
+                       @ c_s5kp4
+                       @ d_s5kp5
+                       @ e_s5kp6
+                       @ f_s5kp7
+                       @ g_s5kp8
+                       ys_i1y1i
+                of
+                { (# ww1_s5ktg, ww2_s5kth, ww3_s5kti, ww4_s5ktj, ww5_s5ktk,
+                     ww6_s5ktl, ww7_s5ktm #) ->
+                (ww1_s5ktg, ww2_s5kth, ww3_s5kti, ww4_s5ktj, ww5_s5ktk, ww6_s5ktl,
+                 ww7_s5ktm)
+                } } in
+          (# GHC.Types.:
+               @ a_s5kp2
+               a1_a5ilH
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                as_a5ilO
+                }),
+             GHC.Types.:
+               @ b_s5kp3
+               b1_a5ilI
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                bs_a5ilP
+                }),
+             GHC.Types.:
+               @ c_s5kp4
+               c1_a5ilJ
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                cs_a5ilQ
+                }),
+             GHC.Types.:
+               @ d_s5kp5
+               d1_a5ilK
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                ds1_a5ilR
+                }),
+             GHC.Types.:
+               @ e_s5kp6
+               e1_a5ilL
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                es_a5ilS
+                }),
+             GHC.Types.:
+               @ f_s5kp7
+               f1_a5ilM
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                fs_a5ilT
+                }),
+             GHC.Types.:
+               @ g_s5kp8
+               g1_a5ilN
+               (case ds_d5jiN of
+                { (as_a5ilO, bs_a5ilP, cs_a5ilQ, ds1_a5ilR, es_a5ilS, fs_a5ilT,
+                   gs_a5ilU) ->
+                gs_a5ilU
+                }) #)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 20, types: 80, coercions: 0, joins: 0/0}
+unzip7 [InlPrag=NOUSERINLINE[0]]
+  :: forall a b c d e f g.
+     [(a, b, c, d, e, f, g)] -> ([a], [b], [c], [d], [e], [f], [g])
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5kp2)
+                 (@ b_s5kp3)
+                 (@ c_s5kp4)
+                 (@ d_s5kp5)
+                 (@ e_s5kp6)
+                 (@ f_s5kp7)
+                 (@ g_s5kp8)
+                 (w_s5kp9 [Occ=Once]
+                    :: [(a_s5kp2, b_s5kp3, c_s5kp4, d_s5kp5, e_s5kp6, f_s5kp7,
+                         g_s5kp8)]) ->
+                 case Data.OldList.$wunzip7
+                        @ a_s5kp2
+                        @ b_s5kp3
+                        @ c_s5kp4
+                        @ d_s5kp5
+                        @ e_s5kp6
+                        @ f_s5kp7
+                        @ g_s5kp8
+                        w_s5kp9
+                 of
+                 { (# ww1_s5ktg [Occ=Once], ww2_s5kth [Occ=Once],
+                      ww3_s5kti [Occ=Once], ww4_s5ktj [Occ=Once], ww5_s5ktk [Occ=Once],
+                      ww6_s5ktl [Occ=Once], ww7_s5ktm [Occ=Once] #) ->
+                 (ww1_s5ktg, ww2_s5kth, ww3_s5kti, ww4_s5ktj, ww5_s5ktk, ww6_s5ktl,
+                  ww7_s5ktm)
+                 }}]
+unzip7
+  = \ (@ a_s5kp2)
+      (@ b_s5kp3)
+      (@ c_s5kp4)
+      (@ d_s5kp5)
+      (@ e_s5kp6)
+      (@ f_s5kp7)
+      (@ g_s5kp8)
+      (w_s5kp9
+         :: [(a_s5kp2, b_s5kp3, c_s5kp4, d_s5kp5, e_s5kp6, f_s5kp7,
+              g_s5kp8)]) ->
+      case Data.OldList.$wunzip7
+             @ a_s5kp2
+             @ b_s5kp3
+             @ c_s5kp4
+             @ d_s5kp5
+             @ e_s5kp6
+             @ f_s5kp7
+             @ g_s5kp8
+             w_s5kp9
+      of
+      { (# ww1_s5ktg, ww2_s5kth, ww3_s5kti, ww4_s5ktj, ww5_s5ktk,
+           ww6_s5ktl, ww7_s5ktm #) ->
+      (ww1_s5ktg, ww2_s5kth, ww3_s5kti, ww4_s5ktj, ww5_s5ktk, ww6_s5ktl,
+       ww7_s5ktm)
+      }
+
+Rec {
+-- RHS size: {terms: 31, types: 57, coercions: 0, joins: 0/1}
+groupBy [Occ=LoopBreaker]
+  :: forall a. (a -> a -> Bool) -> [a] -> [[a]]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(C(U))><S,1*U>,
+ Unf=OtherCon []]
+groupBy
+  = \ (@ a_a5iWz)
+      (ds_d5jit :: a_a5iWz -> a_a5iWz -> Bool)
+      (ds1_d5jiu :: [a_a5iWz]) ->
+      case ds1_d5jiu of {
+        [] -> GHC.Types.[] @ [a_a5iWz];
+        : x_a5ilX xs_a5ilY ->
+          let {
+            ds2_s5jNc [Dmd=<L,U(1*U,1*U)>] :: ([a_a5iWz], [a_a5iWz])
+            [LclId]
+            ds2_s5jNc
+              = case GHC.List.$wspan @ a_a5iWz (ds_d5jit x_a5ilX) xs_a5ilY of
+                { (# ww1_i3vwN, ww2_i3vwO #) ->
+                (ww1_i3vwN, ww2_i3vwO)
+                } } in
+          GHC.Types.:
+            @ [a_a5iWz]
+            (GHC.Types.:
+               @ a_a5iWz
+               x_a5ilX
+               (case ds2_s5jNc of { (ys_a5iWH, zs_a5iWJ) -> ys_a5iWH }))
+            (case ds2_s5jNc of { (ys_a5iWH, zs_a5iWJ) ->
+             groupBy @ a_a5iWz ds_d5jit zs_a5iWJ
+             })
+      }
+end Rec }
+
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+group :: forall a. Eq a => [a] -> [[a]]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*C(C(U)),A)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5iWS)
+                 ($dEq_a5iWU [Occ=Once] :: Eq a_a5iWS)
+                 (eta_B1 [Occ=Once] :: [a_a5iWS]) ->
+                 groupBy @ a_a5iWS (== @ a_a5iWS $dEq_a5iWU) eta_B1}]
+group
+  = \ (@ a_a5iWS) ($dEq_a5iWU :: Eq a_a5iWS) (eta_B1 :: [a_a5iWS]) ->
+      groupBy @ a_a5iWS (== @ a_a5iWS $dEq_a5iWU) eta_B1
+
+Rec {
+-- RHS size: {terms: 11, types: 14, coercions: 0, joins: 0/0}
+poly_tailsGo_r5kSn :: forall a. [a] -> [[a]]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>m2, Unf=OtherCon []]
+poly_tailsGo_r5kSn
+  = \ (@ a_a5iVR) (xs_a5im5 :: [a_a5iVR]) ->
+      GHC.Types.:
+        @ [a_a5iVR]
+        xs_a5im5
+        (case xs_a5im5 of {
+           [] -> GHC.Types.[] @ [a_a5iVR];
+           : ds_d5jih xs'_a5im6 -> poly_tailsGo_r5kSn @ a_a5iVR xs'_a5im6
+         })
+end Rec }
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+tails [InlPrag=INLINABLE] :: forall a. [a] -> [[a]]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 130 40
+         Tmpl= \ (@ a_a5iVR) (lst_a5im1 [Occ=Once] :: [a_a5iVR]) ->
+                 build
+                   @ [a_a5iVR]
+                   (\ (@ b_a5iVV)
+                      (c_a5im2 [Occ=OnceL!, OS=OneShot]
+                         :: [a_a5iVR] -> b_a5iVV -> b_a5iVV)
+                      (n_a5im3 [Occ=OnceL, OS=OneShot] :: b_a5iVV) ->
+                      letrec {
+                        tailsGo_a5iVY [Occ=LoopBreaker] :: [a_a5iVR] -> b_a5iVV
+                        [LclId, Arity=1, Unf=OtherCon []]
+                        tailsGo_a5iVY
+                          = \ (xs_a5im5 :: [a_a5iVR]) ->
+                              c_a5im2
+                                xs_a5im5
+                                (case xs_a5im5 of {
+                                   [] -> n_a5im3;
+                                   : _ [Occ=Dead] xs'_a5im6 [Occ=Once] -> tailsGo_a5iVY xs'_a5im6
+                                 }); } in
+                      tailsGo_a5iVY lst_a5im1)}]
+tails
+  = \ (@ a_a5iVR) (lst_a5im1 :: [a_a5iVR]) ->
+      poly_tailsGo_r5kSn @ a_a5iVR lst_a5im1
+
+Rec {
+-- RHS size: {terms: 29, types: 40, coercions: 0, joins: 0/1}
+nonEmptySubsequences [Occ=LoopBreaker] :: forall a. [a] -> [[a]]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+nonEmptySubsequences
+  = \ (@ a_a5iVp) (ds_d5jhW :: [a_a5iVp]) ->
+      case ds_d5jhW of {
+        [] -> GHC.Types.[] @ [a_a5iVp];
+        : x_a5im8 xs_a5im9 ->
+          GHC.Types.:
+            @ [a_a5iVp]
+            (GHC.Types.: @ a_a5iVp x_a5im8 (GHC.Types.[] @ a_a5iVp))
+            (letrec {
+               go_i1y1b [Occ=LoopBreaker] :: [[a_a5iVp]] -> [[a_a5iVp]]
+               [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+               go_i1y1b
+                 = \ (ds1_i1y1c :: [[a_a5iVp]]) ->
+                     case ds1_i1y1c of {
+                       [] -> GHC.Types.[] @ [a_a5iVp];
+                       : y_i1y1h ys_i1y1i ->
+                         GHC.Types.:
+                           @ [a_a5iVp]
+                           y_i1y1h
+                           (GHC.Types.:
+                              @ [a_a5iVp]
+                              (GHC.Types.: @ a_a5iVp x_a5im8 y_i1y1h)
+                              (go_i1y1b ys_i1y1i))
+                     }; } in
+             go_i1y1b (nonEmptySubsequences @ a_a5iVp xs_a5im9))
+      }
+end Rec }
+
+-- RHS size: {terms: 6, types: 8, coercions: 0, joins: 0/0}
+subsequences :: forall a. [a] -> [[a]]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5iVM) (xs_a5im7 [Occ=Once] :: [a_a5iVM]) ->
+                 GHC.Types.:
+                   @ [a_a5iVM]
+                   (GHC.Types.[] @ a_a5iVM)
+                   (nonEmptySubsequences @ a_a5iVM xs_a5im7)}]
+subsequences
+  = \ (@ a_a5iVM) (xs_a5im7 :: [a_a5iVM]) ->
+      GHC.Types.:
+        @ [a_a5iVM]
+        (GHC.Types.[] @ a_a5iVM)
+        (nonEmptySubsequences @ a_a5iVM xs_a5im7)
+
+Rec {
+-- RHS size: {terms: 81, types: 146, coercions: 0, joins: 0/5}
+Data.OldList.permutations1 [Occ=LoopBreaker]
+  :: forall a. [a] -> [a] -> [[a]]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,1*U><L,U>, Unf=OtherCon []]
+Data.OldList.permutations1
+  = \ (@ a_a5iTf) (ds_d5jhn :: [a_a5iTf]) (ds1_d5jho :: [a_a5iTf]) ->
+      case ds_d5jhn of {
+        [] -> GHC.Types.[] @ [a_a5iTf];
+        : t_a5imf ts_a5img ->
+          letrec {
+            $winterleave'_s5koO [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+              :: forall c.
+                 ([a_a5iTf] -> c) -> [a_a5iTf] -> [c] -> (# [a_a5iTf], [c] #)
+            [LclId, Arity=3, Str=<L,C(U)><S,1*U><L,U>, Unf=OtherCon []]
+            $winterleave'_s5koO
+              = \ (@ c_s5koH)
+                  (w_s5koI :: [a_a5iTf] -> c_s5koH)
+                  (w1_s5koJ :: [a_a5iTf])
+                  (w2_s5koK :: [c_s5koH]) ->
+                  case w1_s5koJ of {
+                    [] -> (# ts_a5img, w2_s5koK #);
+                    : y_a5imp ys_a5imq ->
+                      let {
+                        ds2_s5jN8 [Dmd=<L,U(1*U,1*U)>] :: ([a_a5iTf], [c_s5koH])
+                        [LclId]
+                        ds2_s5jN8
+                          = case $winterleave'_s5koO
+                                   @ c_s5koH
+                                   (\ (x_i1Mhr :: [a_a5iTf]) ->
+                                      w_s5koI (GHC.Types.: @ a_a5iTf y_a5imp x_i1Mhr))
+                                   ys_a5imq
+                                   w2_s5koK
+                            of
+                            { (# ww1_s5ktd, ww2_s5kte #) ->
+                            (ww1_s5ktd, ww2_s5kte)
+                            } } in
+                      let {
+                        us_s5jN7 :: [a_a5iTf]
+                        [LclId]
+                        us_s5jN7
+                          = case ds2_s5jN8 of { (us1_a5iTT, zs_a5iTV) -> us1_a5iTT } } in
+                      (# GHC.Types.: @ a_a5iTf y_a5imp us_s5jN7,
+                         GHC.Types.:
+                           @ c_s5koH
+                           (w_s5koI
+                              (GHC.Types.:
+                                 @ a_a5iTf t_a5imf (GHC.Types.: @ a_a5iTf y_a5imp us_s5jN7)))
+                           (case ds2_s5jN8 of { (us1_a5iTT, zs_a5iTV) -> zs_a5iTV }) #)
+                  }; } in
+          let {
+            z_i1y1a :: [[a_a5iTf]]
+            [LclId]
+            z_i1y1a
+              = Data.OldList.permutations1
+                  @ a_a5iTf ts_a5img (GHC.Types.: @ a_a5iTf t_a5imf ds1_d5jho) } in
+          letrec {
+            go_i1y1b [Occ=LoopBreaker] :: [[a_a5iTf]] -> [[a_a5iTf]]
+            [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+            go_i1y1b
+              = \ (ds2_i1y1c :: [[a_a5iTf]]) ->
+                  case ds2_i1y1c of {
+                    [] -> z_i1y1a;
+                    : y_i1y1h ys_i1y1i ->
+                      case $winterleave'_s5koO
+                             @ [a_a5iTf] (id @ [a_a5iTf]) y_i1y1h (go_i1y1b ys_i1y1i)
+                      of
+                      { (# ww1_s5ktd, ww2_s5kte #) ->
+                      ww2_s5kte
+                      }
+                  }; } in
+          go_i1y1b
+            (GHC.Types.:
+               @ [a_a5iTf]
+               ds1_d5jho
+               (Data.OldList.permutations1
+                  @ a_a5iTf ds1_d5jho (GHC.Types.[] @ a_a5iTf)))
+      }
+end Rec }
+
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+permutations :: forall a. [a] -> [[a]]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5iTf) (xs0_a5imd :: [a_a5iTf]) ->
+                 GHC.Types.:
+                   @ [a_a5iTf]
+                   xs0_a5imd
+                   (Data.OldList.permutations1
+                      @ a_a5iTf xs0_a5imd (GHC.Types.[] @ a_a5iTf))}]
+permutations
+  = \ (@ a_a5iTf) (xs0_a5imd :: [a_a5iTf]) ->
+      GHC.Types.:
+        @ [a_a5iTf]
+        xs0_a5imd
+        (Data.OldList.permutations1
+           @ a_a5iTf xs0_a5imd (GHC.Types.[] @ a_a5iTf))
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+lvl6_r5kSo :: forall a. [[a]]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+lvl6_r5kSo
+  = \ (@ a_a5iQ6) ->
+      GHC.Types.:
+        @ [a_a5iQ6] (GHC.Types.[] @ a_a5iQ6) (GHC.Types.[] @ [a_a5iQ6])
+
+-- RHS size: {terms: 181, types: 184, coercions: 0, joins: 1/8}
+sortBy :: forall a. (a -> a -> Ordering) -> [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U>,
+ Unf=OtherCon []]
+sortBy
+  = \ (@ a_a5iQ6)
+      (cmp_a5imu :: a_a5iQ6 -> a_a5iQ6 -> Ordering)
+      (eta_B1 :: [a_a5iQ6]) ->
+      letrec {
+        merge_s5jMY [Occ=LoopBreaker]
+          :: [a_a5iQ6] -> [a_a5iQ6] -> [a_a5iQ6]
+        [LclId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []]
+        merge_s5jMY
+          = \ (as_a5in2 :: [a_a5iQ6]) (bs_a5in5 :: [a_a5iQ6]) ->
+              case as_a5in2 of wild_X28 {
+                [] -> bs_a5in5;
+                : a1_a5in3 as'_a5in4 ->
+                  case bs_a5in5 of wild1_X19 {
+                    [] -> wild_X28;
+                    : b_a5in6 bs'_a5in7 ->
+                      case cmp_a5imu a1_a5in3 b_a5in6 of {
+                        __DEFAULT ->
+                          GHC.Types.: @ a_a5iQ6 a1_a5in3 (merge_s5jMY as'_a5in4 wild1_X19);
+                        GT ->
+                          GHC.Types.: @ a_a5iQ6 b_a5in6 (merge_s5jMY wild_X28 bs'_a5in7)
+                      }
+                  }
+              }; } in
+      letrec {
+        mergePairs_s5jMX [Occ=LoopBreaker] :: [[a_a5iQ6]] -> [[a_a5iQ6]]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        mergePairs_s5jMX
+          = \ (ds_d5jgt :: [[a_a5iQ6]]) ->
+              case ds_d5jgt of wild_X2c {
+                [] -> GHC.Types.[] @ [a_a5iQ6];
+                : a1_a5imX ds1_d5jgE ->
+                  case ds1_d5jgE of {
+                    [] -> wild_X2c;
+                    : b_a5imY xs_a5imZ ->
+                      case merge_s5jMY a1_a5imX b_a5imY of x_a5in0 { __DEFAULT ->
+                      GHC.Types.: @ [a_a5iQ6] x_a5in0 (mergePairs_s5jMX xs_a5imZ)
+                      }
+                  }
+              }; } in
+      let {
+        lvl12_s5jOp :: [[a_a5iQ6]]
+        [LclId]
+        lvl12_s5jOp = mergePairs_s5jMX (GHC.Types.[] @ [a_a5iQ6]) } in
+      letrec {
+        sequences_s5jMU :: [a_a5iQ6] -> [[a_a5iQ6]]
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        sequences_s5jMU
+          = \ (ds_d5jfx :: [a_a5iQ6]) ->
+              case ds_d5jfx of wild_X2f {
+                [] -> lvl6_r5kSo @ a_a5iQ6;
+                : a1_a5imB ds1_d5jfP ->
+                  case ds1_d5jfP of {
+                    [] -> GHC.Types.: @ [a_a5iQ6] wild_X2f (GHC.Types.[] @ [a_a5iQ6]);
+                    : b_a5imC xs_a5imD ->
+                      case cmp_a5imu a1_a5imB b_a5imC of {
+                        __DEFAULT ->
+                          ascending_s5jMW b_a5imC (GHC.Types.: @ a_a5iQ6 a1_a5imB) xs_a5imD;
+                        GT ->
+                          descending_s5jMV
+                            b_a5imC
+                            (GHC.Types.: @ a_a5iQ6 a1_a5imB (GHC.Types.[] @ a_a5iQ6))
+                            xs_a5imD
+                      }
+                  }
+              };
+        lvl13_s5jOo :: [[a_a5iQ6]]
+        [LclId]
+        lvl13_s5jOo = sequences_s5jMU (GHC.Types.[] @ a_a5iQ6);
+        descending_s5jMV [Occ=LoopBreaker]
+          :: a_a5iQ6 -> [a_a5iQ6] -> [a_a5iQ6] -> [[a_a5iQ6]]
+        [LclId, Arity=3, Str=<L,U><L,U><S,1*U>, Unf=OtherCon []]
+        descending_s5jMV
+          = \ (a1_a5imF :: a_a5iQ6)
+              (as_a5imG :: [a_a5iQ6])
+              (ds_d5jfU :: [a_a5iQ6]) ->
+              case ds_d5jfU of wild_X2i {
+                [] ->
+                  GHC.Types.:
+                    @ [a_a5iQ6] (GHC.Types.: @ a_a5iQ6 a1_a5imF as_a5imG) lvl13_s5jOo;
+                : b_a5imH bs_a5imI ->
+                  case cmp_a5imu a1_a5imF b_a5imH of {
+                    __DEFAULT ->
+                      GHC.Types.:
+                        @ [a_a5iQ6]
+                        (GHC.Types.: @ a_a5iQ6 a1_a5imF as_a5imG)
+                        (sequences_s5jMU wild_X2i);
+                    GT ->
+                      descending_s5jMV
+                        b_a5imH (GHC.Types.: @ a_a5iQ6 a1_a5imF as_a5imG) bs_a5imI
+                  }
+              };
+        ascending_s5jMW [Occ=LoopBreaker]
+          :: a_a5iQ6 -> ([a_a5iQ6] -> [a_a5iQ6]) -> [a_a5iQ6] -> [[a_a5iQ6]]
+        [LclId, Arity=3, Str=<L,U><C(S),1*C1(U)><S,1*U>, Unf=OtherCon []]
+        ascending_s5jMW
+          = \ (a1_a5imM :: a_a5iQ6)
+              (as_a5imN :: [a_a5iQ6] -> [a_a5iQ6])
+              (ds_d5jg2 :: [a_a5iQ6]) ->
+              case ds_d5jg2 of wild_X2k {
+                [] ->
+                  case as_a5imN
+                         (GHC.Types.: @ a_a5iQ6 a1_a5imM (GHC.Types.[] @ a_a5iQ6))
+                  of x_a5imU
+                  { __DEFAULT ->
+                  GHC.Types.: @ [a_a5iQ6] x_a5imU lvl13_s5jOo
+                  };
+                : b_a5imO bs_a5imP ->
+                  case cmp_a5imu a1_a5imM b_a5imO of {
+                    __DEFAULT ->
+                      ascending_s5jMW
+                        b_a5imO
+                        (\ (ys_a5imQ [OS=OneShot] :: [a_a5iQ6]) ->
+                           as_a5imN (GHC.Types.: @ a_a5iQ6 a1_a5imM ys_a5imQ))
+                        bs_a5imP;
+                    GT ->
+                      case as_a5imN
+                             (GHC.Types.: @ a_a5iQ6 a1_a5imM (GHC.Types.[] @ a_a5iQ6))
+                      of x_a5imU
+                      { __DEFAULT ->
+                      GHC.Types.: @ [a_a5iQ6] x_a5imU (sequences_s5jMU wild_X2k)
+                      }
+                  }
+              }; } in
+      joinrec {
+        mergeAll_s5jMT [Occ=LoopBreaker] :: [[a_a5iQ6]] -> [a_a5iQ6]
+        [LclId[JoinId(1)], Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        mergeAll_s5jMT (ds_d5jgg :: [[a_a5iQ6]])
+          = case ds_d5jgg of wild_X2k {
+              [] -> jump mergeAll_s5jMT lvl12_s5jOp;
+              : x_a5imV ds1_d5jgq ->
+                case ds1_d5jgq of {
+                  [] -> x_a5imV;
+                  : ipv_s5jzu ipv1_s5jzv ->
+                    jump mergeAll_s5jMT (mergePairs_s5jMX wild_X2k)
+                }
+            }; } in
+      jump mergeAll_s5jMT (sequences_s5jMU eta_B1)
+
+-- RHS size: {terms: 30, types: 44, coercions: 0, joins: 0/0}
+sortOn :: forall b a. Ord b => (a -> b) -> [a] -> [a]
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(A,C(C1(U)),A,A,A,A,A,A)><L,C(U)><S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 220 0}]
+sortOn
+  = \ (@ b_a5iSt)
+      (@ a_a5iSu)
+      ($dOrd_a5iSw :: Ord b_a5iSt)
+      (f_a5ina :: a_a5iSu -> b_a5iSt)
+      (eta_B1 :: [a_a5iSu]) ->
+      map
+        @ (b_a5iSt, a_a5iSu)
+        @ a_a5iSu
+        (snd @ b_a5iSt @ a_a5iSu)
+        (sortBy
+           @ (b_a5iSt, a_a5iSu)
+           (\ (x_a5cis :: (b_a5iSt, a_a5iSu))
+              (y_a5cit [OS=OneShot] :: (b_a5iSt, a_a5iSu)) ->
+              compare
+                @ b_a5iSt
+                $dOrd_a5iSw
+                (case x_a5cis of { (x1_i5jhb, ds1_i5jhc) -> x1_i5jhb })
+                (case y_a5cit of { (x1_i5jhb, ds1_i5jhc) -> x1_i5jhb }))
+           (map
+              @ a_a5iSu
+              @ (b_a5iSt, a_a5iSu)
+              (\ (x_a5inb :: a_a5iSu) ->
+                 case f_a5ina x_a5inb of y_a5inc { __DEFAULT ->
+                 (y_a5inc, x_a5inb)
+                 })
+              eta_B1))
+
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+sort :: forall a. Ord a => [a] -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C(C1(U)),A,A,A,A,A,A)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a5iT8)
+                 ($dOrd_a5iTa [Occ=Once] :: Ord a_a5iT8)
+                 (eta_B1 [Occ=Once] :: [a_a5iT8]) ->
+                 sortBy @ a_a5iT8 (compare @ a_a5iT8 $dOrd_a5iTa) eta_B1}]
+sort
+  = \ (@ a_a5iT8)
+      ($dOrd_a5iTa :: Ord a_a5iT8)
+      (eta_B1 :: [a_a5iT8]) ->
+      sortBy @ a_a5iT8 (compare @ a_a5iT8 $dOrd_a5iTa) eta_B1
+
+-- RHS size: {terms: 21, types: 28, coercions: 0, joins: 0/1}
+unfoldr [InlPrag=INLINE (sat-args=2)]
+  :: forall b a. (b -> Maybe (a, b)) -> b -> [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(S),C(U)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ b_a5iPE)
+                 (@ a_a5iPF)
+                 (f_a5ind [Occ=OnceL!] :: b_a5iPE -> Maybe (a_a5iPF, b_a5iPE))
+                 (b0_a5ine [Occ=Once] :: b_a5iPE) ->
+                 build
+                   @ a_a5iPF
+                   (\ (@ b1_a5iPJ)
+                      (c_a5inf [Occ=OnceL!, OS=OneShot]
+                         :: a_a5iPF -> b1_a5iPJ -> b1_a5iPJ)
+                      (n_a5ing [Occ=OnceL, OS=OneShot] :: b1_a5iPJ) ->
+                      letrec {
+                        go_a5iPM [Occ=LoopBreaker] :: b_a5iPE -> b1_a5iPJ
+                        [LclId, Arity=1, Unf=OtherCon []]
+                        go_a5iPM
+                          = \ (b2_a5ini [Occ=Once] :: b_a5iPE) ->
+                              case f_a5ind b2_a5ini of {
+                                Nothing -> n_a5ing;
+                                Just ds_d5jfs [Occ=Once!] ->
+                                  case ds_d5jfs of
+                                  { (a1_a5inj [Occ=Once], new_b_a5ink [Occ=Once]) ->
+                                  c_a5inf a1_a5inj (go_a5iPM new_b_a5ink)
+                                  }
+                              }; } in
+                      go_a5iPM b0_a5ine)}]
+unfoldr
+  = \ (@ b_a5iPE)
+      (@ a_a5iPF)
+      (f_a5ind :: b_a5iPE -> Maybe (a_a5iPF, b_a5iPE))
+      (b0_a5ine :: b_a5iPE) ->
+      letrec {
+        go_s5jMO [Occ=LoopBreaker] :: b_a5iPE -> [a_a5iPF]
+        [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []]
+        go_s5jMO
+          = \ (b1_a5ini :: b_a5iPE) ->
+              case f_a5ind b1_a5ini of {
+                Nothing -> GHC.Types.[] @ a_a5iPF;
+                Just ds_d5jfs ->
+                  case ds_d5jfs of { (a1_a5inj, new_b_a5ink) ->
+                  GHC.Types.: @ a_a5iPF a1_a5inj (go_s5jMO new_b_a5ink)
+                  }
+              }; } in
+      go_s5jMO b0_a5ine
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_r5kSp :: Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl7_r5kSp = GHC.Types.C# '\n'#
+
+Rec {
+-- RHS size: {terms: 12, types: 10, coercions: 0, joins: 0/0}
+unlines [Occ=LoopBreaker] :: [String] -> String
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+unlines
+  = \ (ds_d5jeE :: [String]) ->
+      case ds_d5jeE of {
+        [] -> GHC.Types.[] @ Char;
+        : l_a5ins ls_a5int ->
+          ++
+            @ Char l_a5ins (GHC.Types.: @ Char lvl7_r5kSp (unlines ls_a5int))
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 34, types: 59, coercions: 0, joins: 0/2}
+wordsFB [InlPrag=INLINE[0] (sat-args=2), Occ=LoopBreaker!]
+  :: forall b. ([Char] -> b -> b) -> b -> String -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ b_a5iOj)
+                 (c_a5iny [Occ=OnceL!] :: [Char] -> b_a5iOj -> b_a5iOj)
+                 (n_a5inz [Occ=OnceL] :: b_a5iOj) ->
+                 letrec {
+                   go_a5iOn [Occ=LoopBreaker] :: [Char] -> b_a5iOj
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   go_a5iOn
+                     = \ (s_a5inB [Occ=Once] :: [Char]) ->
+                         case dropWhile @ Char isSpace s_a5inB of wild_X23 {
+                           [] -> n_a5inz;
+                           : _ [Occ=Dead] _ [Occ=Dead] ->
+                             let {
+                               ds_d5je9 :: ([Char], [Char])
+                               [LclId]
+                               ds_d5je9
+                                 = case GHC.List.$wbreak @ Char isSpace wild_X23 of
+                                   { (# ww1_i5je5 [Occ=Once], ww2_i5je6 [Occ=Once] #) ->
+                                   (ww1_i5je5, ww2_i5je6)
+                                   } } in
+                             c_a5iny
+                               (case ds_d5je9 of { (w_a5iOD [Occ=Once], _ [Occ=Dead]) ->
+                                w_a5iOD
+                                })
+                               (go_a5iOn
+                                  (case ds_d5je9 of { (_ [Occ=Dead], s''_a5iOF [Occ=Once]) ->
+                                   s''_a5iOF
+                                   }))
+                         }; } in
+                 go_a5iOn}]
+wordsFB
+  = \ (@ b_a5iOj)
+      (c_a5iny :: [Char] -> b_a5iOj -> b_a5iOj)
+      (n_a5inz :: b_a5iOj)
+      (eta_B1 :: [Char]) ->
+      letrec {
+        go_s5jMI [Occ=LoopBreaker] :: [Char] -> b_a5iOj
+        [LclId, Arity=1, Str=<S,1*U>, Unf=OtherCon []]
+        go_s5jMI
+          = \ (s_a5inB :: [Char]) ->
+              case dropWhile @ Char isSpace s_a5inB of wild_X23 {
+                [] -> n_a5inz;
+                : ipv_s5jy2 ipv1_s5jy3 ->
+                  let {
+                    ds_s5jMK [Dmd=<L,U(1*U,1*U)>] :: ([Char], [Char])
+                    [LclId]
+                    ds_s5jMK
+                      = case GHC.List.$wbreak @ Char isSpace wild_X23 of
+                        { (# ww1_i5je5, ww2_i5je6 #) ->
+                        (ww1_i5je5, ww2_i5je6)
+                        } } in
+                  c_a5iny
+                    (case ds_s5jMK of { (w_a5iOD, s''_a5iOF) -> w_a5iOD })
+                    (case ds_s5jMK of { (w_a5iOD, s''_a5iOF) -> go_s5jMI s''_a5iOF })
+              }; } in
+      go_s5jMI eta_B1
+
+-- RHS size: {terms: 27, types: 49, coercions: 0, joins: 0/1}
+words [InlPrag=NOINLINE[1], Occ=LoopBreaker] :: String -> [String]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+words
+  = \ (s_a5inu :: String) ->
+      case dropWhile @ Char isSpace s_a5inu of wild_X20 {
+        [] -> GHC.Types.[] @ String;
+        : ipv_s5jyf ipv1_s5jyg ->
+          let {
+            ds_s5jMM [Dmd=<L,U(1*U,1*U)>] :: ([Char], [Char])
+            [LclId]
+            ds_s5jMM
+              = case GHC.List.$wbreak @ Char isSpace wild_X20 of
+                { (# ww1_i5je5, ww2_i5je6 #) ->
+                (ww1_i5je5, ww2_i5je6)
+                } } in
+          GHC.Types.:
+            @ [Char]
+            (case ds_s5jMM of { (w_a5iP3, s''_a5iP5) -> w_a5iP3 })
+            (case ds_s5jMM of { (w_a5iP3, s''_a5iP5) -> words s''_a5iP5 })
+      }
+end Rec }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl8_r5kSq :: Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl8_r5kSq = GHC.Types.C# ' '#
+
+-- RHS size: {terms: 7, types: 4, coercions: 0, joins: 0/0}
+unwordsFB [InlPrag=INLINE[0] (sat-args=2)]
+  :: String -> String -> String
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (w_a5inL [Occ=Once] :: String)
+                 (r_a5inM [Occ=Once] :: String) ->
+                 GHC.Types.:
+                   @ Char (GHC.Types.C# ' '#) (++ @ Char w_a5inL r_a5inM)}]
+unwordsFB
+  = \ (w_a5inL :: String) (r_a5inM :: String) ->
+      GHC.Types.: @ Char lvl8_r5kSq (++ @ Char w_a5inL r_a5inM)
+
+Rec {
+-- RHS size: {terms: 12, types: 14, coercions: 0, joins: 0/0}
+Data.OldList.unwords_go [Occ=LoopBreaker] :: [[Char]] -> [Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.OldList.unwords_go
+  = \ (ds_d5jdM :: [[Char]]) ->
+      case ds_d5jdM of {
+        [] -> GHC.Types.[] @ Char;
+        : v_a5inI vs_a5inJ ->
+          GHC.Types.:
+            @ Char
+            lvl8_r5kSq
+            (++ @ Char v_a5inI (Data.OldList.unwords_go vs_a5inJ))
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 7, types: 8, coercions: 0, joins: 0/0}
+tailUnwords [InlPrag=INLINE[0] (sat-args=1), Occ=LoopBreaker!]
+  :: String -> String
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (ds_d5jdy [Occ=Once!] :: [Char]) ->
+                 case ds_d5jdy of {
+                   [] -> GHC.Types.[] @ Char;
+                   : _ [Occ=Dead] xs_a5inK [Occ=Once] -> xs_a5inK
+                 }}]
+tailUnwords
+  = \ (ds_d5jdy :: [Char]) ->
+      case ds_d5jdy of {
+        [] -> GHC.Types.[] @ Char;
+        : ds1_d5jdF xs_a5inK -> xs_a5inK
+      }
+
+-- RHS size: {terms: 10, types: 9, coercions: 0, joins: 0/0}
+unwords [InlPrag=NOINLINE[1], Occ=LoopBreaker!]
+  :: [String] -> String
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30] 70 10}]
+unwords
+  = \ (ds_d5jdG :: [String]) ->
+      case ds_d5jdG of {
+        [] -> GHC.Types.[] @ Char;
+        : w_a5inF ws_a5inG ->
+          ++ @ Char w_a5inF (Data.OldList.unwords_go ws_a5inG)
+      }
+end Rec }
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+lvl9_r5kSr :: forall a. [a]
+[GblId]
+lvl9_r5kSr
+  = \ (@ a_s5koc) ->
+      GHC.List.reverse1
+        @ a_s5koc (GHC.Types.[] @ a_s5koc) (GHC.Types.[] @ a_s5koc)
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+lvl10_r5kSs :: forall a. [a]
+[GblId]
+lvl10_r5kSs
+  = \ (@ a_s5koc) ->
+      ++ @ a_s5koc (GHC.Types.[] @ a_s5koc) (lvl9_r5kSr @ a_s5koc)
+
+Rec {
+-- RHS size: {terms: 75, types: 49, coercions: 0, joins: 0/4}
+poly_$wgo_r5kSt :: forall a. [a] -> Word# -> [a] -> [a] -> [[a]]
+[GblId, Arity=4, Str=<S,1*U><L,U><L,U><L,U>, Unf=OtherCon []]
+poly_$wgo_r5kSt
+  = \ (@ a_s5koc)
+      (w_s5ko3 :: [a_s5koc])
+      (ww_s5ko7 :: Word#)
+      (ww1_s5ko8 :: [a_s5koc])
+      (ww2_s5ko9 :: [a_s5koc]) ->
+      case w_s5ko3 of {
+        [] -> GHC.Types.[] @ [a_s5koc];
+        : y_i1y1h ys_i1y1i ->
+          let {
+            lp_s5jME [Dmd=<S,U>] :: Word#
+            [LclId]
+            lp_s5jME = plusWord# ww_s5ko7 1## } in
+          case ltWord# lp_s5jME 255## of {
+            __DEFAULT ->
+              case and# lp_s5jME (plusWord# lp_s5jME 1##) of {
+                __DEFAULT ->
+                  let {
+                    b'_s5kdz :: [a_s5koc]
+                    [LclId, Unf=OtherCon []]
+                    b'_s5kdz = GHC.Types.: @ a_s5koc y_i1y1h ww2_s5ko9 } in
+                  GHC.Types.:
+                    @ [a_s5koc]
+                    (++
+                       @ a_s5koc
+                       ww1_s5ko8
+                       (GHC.List.reverse1 @ a_s5koc b'_s5kdz (GHC.Types.[] @ a_s5koc)))
+                    (poly_$wgo_r5kSt @ a_s5koc ys_i1y1i lp_s5jME ww1_s5ko8 b'_s5kdz);
+                0## ->
+                  let {
+                    b'_s5kdA :: [a_s5koc]
+                    [LclId]
+                    b'_s5kdA
+                      = ++
+                          @ a_s5koc
+                          ww1_s5ko8
+                          (GHC.List.reverse1
+                             @ a_s5koc
+                             (GHC.Types.: @ a_s5koc y_i1y1h ww2_s5ko9)
+                             (GHC.Types.[] @ a_s5koc)) } in
+                  GHC.Types.:
+                    @ [a_s5koc]
+                    (++ @ a_s5koc b'_s5kdA (lvl9_r5kSr @ a_s5koc))
+                    (poly_$wgo_r5kSt
+                       @ a_s5koc ys_i1y1i lp_s5jME b'_s5kdA (GHC.Types.[] @ a_s5koc))
+              };
+            1# ->
+              let {
+                b'_s5kdB :: [a_s5koc]
+                [LclId, Unf=OtherCon []]
+                b'_s5kdB = GHC.Types.: @ a_s5koc y_i1y1h ww2_s5ko9 } in
+              GHC.Types.:
+                @ [a_s5koc]
+                (++
+                   @ a_s5koc
+                   ww1_s5ko8
+                   (GHC.List.reverse1 @ a_s5koc b'_s5kdB (GHC.Types.[] @ a_s5koc)))
+                (poly_$wgo_r5kSt @ a_s5koc ys_i1y1i lp_s5jME ww1_s5ko8 b'_s5kdB)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 9, types: 15, coercions: 0, joins: 0/0}
+Data.OldList.$winits [InlPrag=NOINLINE]
+  :: forall a. [a] -> (# [a], [[a]] #)
+[GblId, Arity=1, Str=<L,1*U>, Unf=OtherCon []]
+Data.OldList.$winits
+  = \ (@ a_s5koc) (w_s5kod :: [a_s5koc]) ->
+      (# lvl10_r5kSs @ a_s5koc,
+         poly_$wgo_r5kSt
+           @ a_s5koc
+           w_s5kod
+           0##
+           (GHC.Types.[] @ a_s5koc)
+           (GHC.Types.[] @ a_s5koc) #)
+
+-- RHS size: {terms: 9, types: 20, coercions: 0, joins: 0/0}
+inits [InlPrag=NOUSERINLINE[0]] :: forall a. [a] -> [[a]]
+[GblId,
+ Arity=1,
+ Str=<L,1*U>m2,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s5koc) (w_s5kod [Occ=Once] :: [a_s5koc]) ->
+                 case Data.OldList.$winits @ a_s5koc w_s5kod of
+                 { (# ww1_s5kta [Occ=Once], ww2_s5ktb [Occ=Once] #) ->
+                 GHC.Types.: @ [a_s5koc] ww1_s5kta ww2_s5ktb
+                 }}]
+inits
+  = \ (@ a_s5koc) (w_s5kod :: [a_s5koc]) ->
+      case Data.OldList.$winits @ a_s5koc w_s5kod of
+      { (# ww1_s5kta, ww2_s5ktb #) ->
+      GHC.Types.: @ [a_s5koc] ww1_s5kta ww2_s5ktb
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tc'SnocBuilder3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.OldList.$tc'SnocBuilder3 = "'SnocBuilder"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tc'SnocBuilder2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.OldList.$tc'SnocBuilder2
+  = GHC.Types.TrNameS Data.OldList.$tc'SnocBuilder3
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tcSnocBuilder2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.OldList.$tcSnocBuilder2 = "SnocBuilder"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tcSnocBuilder1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.OldList.$tcSnocBuilder1
+  = GHC.Types.TrNameS Data.OldList.$tcSnocBuilder2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.OldList.$trModule2 = "Data.OldList"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.OldList.$trModule1 = GHC.Types.TrNameS Data.OldList.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.OldList.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.OldList.$trModule3 = GHC.Types.TrNameS Data.OldList.$trModule4
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.OldList.$trModule
+  = GHC.Types.Module Data.OldList.$trModule3 Data.OldList.$trModule1
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tcSnocBuilder :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.OldList.$tcSnocBuilder
+  = GHC.Types.TyCon
+      17650604350574790456##
+      3021529305462083578##
+      Data.OldList.$trModule
+      Data.OldList.$tcSnocBuilder1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r5kSu :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r5kSu
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcWord (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r5kSv :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r5kSv = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_r5kSw :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r5kSw
+  = GHC.Types.: @ KindRep $krep1_r5kSv (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r5kSx :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r5kSx
+  = GHC.Types.KindRepTyConApp GHC.Types.$tc[] $krep2_r5kSw
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r5kSy :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r5kSy
+  = GHC.Types.KindRepTyConApp
+      Data.OldList.$tcSnocBuilder $krep2_r5kSw
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r5kSz :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep5_r5kSz = GHC.Types.KindRepFun $krep3_r5kSx $krep4_r5kSy
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep6_r5kSA :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep6_r5kSA = GHC.Types.KindRepFun $krep3_r5kSx $krep5_r5kSz
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tc'SnocBuilder1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Data.OldList.$tc'SnocBuilder1
+  = GHC.Types.KindRepFun $krep_r5kSu $krep6_r5kSA
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.OldList.$tc'SnocBuilder :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.OldList.$tc'SnocBuilder
+  = GHC.Types.TyCon
+      6719263830224029004##
+      9134053658265160069##
+      Data.OldList.$trModule
+      Data.OldList.$tc'SnocBuilder2
+      1#
+      Data.OldList.$tc'SnocBuilder1
+
+-- RHS size: {terms: 10, types: 4, coercions: 0, joins: 0/0}
+lvl11_r5kSB :: Char -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []]
+lvl11_r5kSB
+  = \ (ds_d5jeL :: Char) ->
+      case ds_d5jeL of { C# x_a5ih ->
+      case x_a5ih of {
+        __DEFAULT -> GHC.Types.False;
+        '\n'# -> GHC.Types.True
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 30, types: 62, coercions: 0, joins: 0/1}
+lines [Occ=LoopBreaker] :: String -> [String]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+lines
+  = \ (ds_d5jeK :: [Char]) ->
+      case ds_d5jeK of wild_X1s {
+        [] -> GHC.Types.[] @ String;
+        : ipv_s5jx8 ipv1_s5jx9 ->
+          let {
+            ds1_s5jMA [Dmd=<L,U(1*U,1*U)>] :: ([Char], [[Char]])
+            [LclId]
+            ds1_s5jMA
+              = case GHC.List.$wbreak @ Char lvl11_r5kSB wild_X1s of
+                { (# ww1_i5je5, ww2_i5je6 #) ->
+                (ww1_i5je5,
+                 case ww2_i5je6 of {
+                   [] -> GHC.Types.[] @ [Char];
+                   : ds2_d5jeW s''_a5inr -> lines s''_a5inr
+                 })
+                } } in
+          GHC.Types.:
+            @ [Char]
+            (case ds1_s5jMA of { (h_a5inn, t_a5ino) -> h_a5inn })
+            (case ds1_s5jMA of { (h_a5inn, t_a5ino) -> t_a5ino })
+      }
+end Rec }
+
+
+------ Local rules for imported ids --------
+"mapAccumL" [~1]
+    forall (@ acc_a5jc8)
+           (@ y_a5jca)
+           (@ x_a5jc3)
+           (f_a5io3 :: acc_a5jc8 -> x_a5jc3 -> (acc_a5jc8, y_a5jca))
+           (s_a5io4 :: acc_a5jc8)
+           (xs_a5io5 :: [x_a5jc3]).
+      mapAccumL @ acc_a5jc8 @ x_a5jc3 @ y_a5jca f_a5io3 s_a5io4 xs_a5io5
+      = foldr
+          @ x_a5jc3
+          @ (acc_a5jc8 -> (acc_a5jc8, [y_a5jca]))
+          (mapAccumLF @ acc_a5jc8 @ x_a5jc3 @ y_a5jca f_a5io3)
+          (pairWithNil @ acc_a5jc8 @ y_a5jca)
+          xs_a5io5
+          s_a5io4
+"genericLengthInteger"
+    forall (@ a_a5jbP) ($dNum_a5jby :: Num Integer).
+      genericLength @ Integer @ a_a5jbP $dNum_a5jby
+      = strictGenericLength @ Integer @ a_a5jbP GHC.Num.$fNumInteger
+"genericLengthInt"
+    forall (@ a_a5jbo) ($dNum_a5jb7 :: Num Int).
+      genericLength @ Int @ a_a5jbo $dNum_a5jb7
+      = strictGenericLength @ Int @ a_a5jbo GHC.Num.$fNumInt
+"wordsList" [1]
+    forall.
+      wordsFB @ [[Char]] (GHC.Types.: @ [Char]) (GHC.Types.[] @ [Char])
+      = words
+"words" [~1]
+    forall (s_a5inY :: String).
+      words s_a5inY
+      = build
+          @ String
+          (\ (@ b_a5jaR)
+             (c_a5inZ [OS=OneShot] :: String -> b_a5jaR -> b_a5jaR)
+             (n_a5io0 [OS=OneShot] :: b_a5jaR) ->
+             wordsFB @ b_a5jaR c_a5inZ n_a5io0 s_a5inY)
+"unwordsList" [1]
+    forall (ws_a5inX :: [String]).
+      tailUnwords (foldr
+                     @ String @ String unwordsFB (GHC.Types.[] @ Char) ws_a5inX)
+      = unwords ws_a5inX
+"unwords" [~1]
+    forall (ws_a5inW :: [String]).
+      unwords ws_a5inW
+      = tailUnwords
+          (foldr @ String @ String unwordsFB (GHC.Types.[] @ Char) ws_a5inW)
+"mapAccumLList" [1]
+    forall (@ acc_a5jct)
+           (@ y_a5jcv)
+           (@ x_a5jco)
+           (f_a5io6 :: acc_a5jct -> x_a5jco -> (acc_a5jct, y_a5jcv))
+           (s_a5io7 :: acc_a5jct)
+           (xs_a5io8 :: [x_a5jco]).
+      foldr @ x_a5jco
+            @ (acc_a5jct -> (acc_a5jct, [y_a5jcv]))
+            (mapAccumLF @ acc_a5jct @ x_a5jco @ y_a5jcv f_a5io6)
+            (pairWithNil @ acc_a5jct @ y_a5jcv)
+            xs_a5io8
+            s_a5io7
+      = mapAccumL
+          @ acc_a5jct @ x_a5jco @ y_a5jcv f_a5io6 s_a5io7 xs_a5io8
+

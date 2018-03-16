@@ -1,0 +1,2784 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:09:10.609814593 UTC
+
+Control.Concurrent.Chan.$WChItem [InlPrag=INLINE[2]]
+  :: forall a.
+     a
+     -> Control.Concurrent.Chan.Stream a
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdV12 dt_sdV13]
+        case dt_sdV13 of {
+          GHC.MVar.MVar dt_sdV15 [Occ=Once] ->
+              Control.Concurrent.Chan.ChItem [dt_sdV12 dt_sdV15];
+        };
+
+Control.Concurrent.Chan.$WChan [InlPrag=INLINE[2]]
+  :: forall a.
+     GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdV16 dt_sdV17]
+        case dt_sdV16 of {
+          GHC.MVar.MVar dt_sdV19 [Occ=Once] ->
+              case dt_sdV17 of {
+                GHC.MVar.MVar dt_sdV1b [Occ=Once] ->
+                    Control.Concurrent.Chan.Chan [dt_sdV19 dt_sdV1b];
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c==
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdV1c ds1_sdV1d]
+        case ds_sdV1c of {
+          Control.Concurrent.Chan.Chan dt_sdV1f [Occ=Once]
+                                       dt1_sdV1g [Occ=Once] ->
+              case ds1_sdV1d of {
+                Control.Concurrent.Chan.Chan dt2_sdV1i [Occ=Once]
+                                             dt3_sdV1j [Occ=Once] ->
+                    case sameMVar# [dt_sdV1f dt2_sdV1i] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      1# ->
+                          case sameMVar# [dt1_sdV1g dt3_sdV1j] of sat_sdV1l {
+                            __DEFAULT -> tagToEnum# [sat_sdV1l];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_sdV1m eta1_sdV1n]
+        case eta_sdV1m of {
+          Control.Concurrent.Chan.Chan dt_sdV1p [Occ=Once]
+                                       dt1_sdV1q [Occ=Once] ->
+              case eta1_sdV1n of {
+                Control.Concurrent.Chan.Chan dt2_sdV1s [Occ=Once]
+                                             dt3_sdV1t [Occ=Once] ->
+                    case sameMVar# [dt_sdV1p dt2_sdV1s] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# ->
+                          case sameMVar# [dt1_sdV1q dt3_sdV1t] of {
+                            __DEFAULT -> GHC.Types.True [];
+                            1# -> GHC.Types.False [];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (Control.Concurrent.Chan.Chan a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [Control.Concurrent.Chan.$fEqChan_$c==
+                                     Control.Concurrent.Chan.$fEqChan_$c/=];
+
+Control.Concurrent.Chan.newChan1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sdV1w]
+        case newMVar# [s_sdV1w] of {
+          (#,#) ipv_sdV1y [Occ=Once] ipv1_sdV1z [Occ=OnceL] ->
+              case newMVar# [ipv_sdV1y] of {
+                (#,#) ipv2_sdV1B [Occ=Once] ipv3_sdV1C ->
+                    let {
+                      ipv4_sdV1D
+                        :: GHC.MVar.MVar (Control.Concurrent.Chan.ChItem a_adUHO)
+                      [LclId, Unf=OtherCon []] =
+                          CCCS GHC.MVar.MVar! [ipv1_sdV1z];
+                    } in 
+                      case putMVar# [ipv3_sdV1C ipv4_sdV1D ipv2_sdV1B] of s2#_sdV1E {
+                        __DEFAULT ->
+                            case newMVar# [s2#_sdV1E] of {
+                              (#,#) ipv5_sdV1G [Occ=Once] ipv6_sdV1H ->
+                                  case putMVar# [ipv6_sdV1H ipv4_sdV1D ipv5_sdV1G] of s2#1_sdV1I {
+                                    __DEFAULT ->
+                                        let {
+                                          sat_sdV1J [Occ=Once]
+                                            :: Control.Concurrent.Chan.Chan a_adUHO
+                                          [LclId] =
+                                              CCCS Control.Concurrent.Chan.Chan! [ipv3_sdV1C
+                                                                                  ipv6_sdV1H];
+                                        } in  (#,#) [s2#1_sdV1I sat_sdV1J];
+                                  };
+                            };
+                      };
+              };
+        };
+
+Control.Concurrent.Chan.newChan
+  :: forall a. GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Concurrent.Chan.newChan1 eta_B1;
+
+Control.Concurrent.Chan.$wwriteChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdV1K ww1_sdV1L w_sdV1M w1_sdV1N]
+        case newMVar# [w1_sdV1N] of {
+          (#,#) ipv_sdV1P [Occ=Once] ipv1_sdV1Q ->
+              case getMaskingState# [ipv_sdV1P] of {
+                (#,#) ipv2_sdV1S [Occ=Once*] ipv3_sdV1T [Occ=Once!] ->
+                    case ipv3_sdV1T of {
+                      __DEFAULT ->
+                          case takeMVar# [ww1_sdV1L ipv2_sdV1S] of {
+                            (#,#) ipv4_sdV1W [Occ=Once] ipv5_sdV1X [Occ=Once!] ->
+                                case ipv5_sdV1X of {
+                                  GHC.MVar.MVar mvar#_sdV1Z [Occ=Once] ->
+                                      let {
+                                        sat_sdV20 [Occ=Once]
+                                          :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                        [LclId] =
+                                            CCCS Control.Concurrent.Chan.ChItem! [w_sdV1M
+                                                                                  ipv1_sdV1Q];
+                                      } in 
+                                        case
+                                            putMVar# [mvar#_sdV1Z sat_sdV20 ipv4_sdV1W]
+                                        of
+                                        s2#_sdV21
+                                        { __DEFAULT ->
+                                              let {
+                                                sat_sdV22 [Occ=Once]
+                                                  :: Control.Concurrent.Chan.Stream a_sdUV1
+                                                [LclId] =
+                                                    CCCS GHC.MVar.MVar! [ipv1_sdV1Q];
+                                              } in 
+                                                case
+                                                    putMVar# [ww1_sdV1L sat_sdV22 s2#_sdV21]
+                                                of
+                                                s2#1_sdV23
+                                                { __DEFAULT -> (#,#) [s2#1_sdV23 GHC.Tuple.()];
+                                                };
+                                        };
+                                };
+                          };
+                      0# ->
+                          let {
+                            sat_sdV2e [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                            [LclId] =
+                                [ww1_sdV1L w_sdV1M ipv1_sdV1Q] \r [s_sdV24]
+                                    case takeMVar# [ww1_sdV1L s_sdV24] of {
+                                      (#,#) ipv4_sdV26 [Occ=Once] ipv5_sdV27 [Occ=Once!] ->
+                                          case ipv5_sdV27 of {
+                                            GHC.MVar.MVar mvar#_sdV29 [Occ=Once] ->
+                                                let {
+                                                  sat_sdV2a [Occ=Once]
+                                                    :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                                  [LclId] =
+                                                      CCCS Control.Concurrent.Chan.ChItem! [w_sdV1M
+                                                                                            ipv1_sdV1Q];
+                                                } in 
+                                                  case
+                                                      putMVar# [mvar#_sdV29 sat_sdV2a ipv4_sdV26]
+                                                  of
+                                                  s2#_sdV2b
+                                                  { __DEFAULT ->
+                                                        let {
+                                                          sat_sdV2c [Occ=Once]
+                                                            :: Control.Concurrent.Chan.Stream
+                                                                 a_sdUV1
+                                                          [LclId] =
+                                                              CCCS GHC.MVar.MVar! [ipv1_sdV1Q];
+                                                        } in 
+                                                          case
+                                                              putMVar# [ww1_sdV1L
+                                                                        sat_sdV2c
+                                                                        s2#_sdV2b]
+                                                          of
+                                                          s2#1_sdV2d
+                                                          { __DEFAULT ->
+                                                                (#,#) [s2#1_sdV2d GHC.Tuple.()];
+                                                          };
+                                                  };
+                                          };
+                                    };
+                          } in  maskAsyncExceptions# [sat_sdV2e ipv2_sdV1S];
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.writeChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdV2f w1_sdV2g w2_sdV2h]
+        case w_sdV2f of {
+          Control.Concurrent.Chan.Chan ww1_sdV2j [Occ=Once]
+                                       ww2_sdV2k [Occ=Once] ->
+              Control.Concurrent.Chan.$wwriteChan
+                  ww1_sdV2j ww2_sdV2k w1_sdV2g w2_sdV2h;
+        };
+
+Control.Concurrent.Chan.writeChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.Chan.writeChan1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.writeList2Chan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> [a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdV2l ls_sdV2m eta_sdV2n]
+        let-no-escape {
+          go_sdV2o [Occ=LoopBreakerT[2]]
+            :: [a_adUHD]
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [ch_sdV2l go_sdV2o] \r [ds_sdV2p eta1_sdV2q]
+                  case ds_sdV2p of {
+                    [] -> (#,#) [eta1_sdV2q GHC.Tuple.()];
+                    : y_sdV2s [Occ=Once] ys_sdV2t [Occ=Once] ->
+                        case ch_sdV2l of {
+                          Control.Concurrent.Chan.Chan ww1_sdV2v [Occ=Once]
+                                                       ww2_sdV2w [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wwriteChan
+                                      ww1_sdV2v ww2_sdV2w y_sdV2s eta1_sdV2q
+                              of
+                              { (#,#) ipv_sdV2y [Occ=Once] _ [Occ=Dead] ->
+                                    go_sdV2o ys_sdV2t ipv_sdV2y;
+                              };
+                        };
+                  };
+        } in  go_sdV2o ls_sdV2m eta_sdV2n;
+
+Control.Concurrent.Chan.writeList2Chan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a -> [a] -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.Chan.writeList2Chan1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.$wreadChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdV2A ww1_sdV2B w_sdV2C]
+        case getMaskingState# [w_sdV2C] of {
+          (#,#) ipv_sdV2E [Occ=Once*] ipv1_sdV2F [Occ=Once!] ->
+              let {
+                io1_sdV2G [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sdUVe #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sdV2A] \r [s_sdV2H]
+                        case takeMVar# [ww_sdV2A s_sdV2H] of {
+                          (#,#) ipv2_sdV2J [Occ=Once] ipv3_sdV2K ->
+                              let {
+                                sat_sdV30 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ww_sdV2A ipv3_sdV2K] \r [e1_sdV2X s1_sdV2Y]
+                                        case putMVar# [ww_sdV2A ipv3_sdV2K s1_sdV2Y] of s2#_sdV2Z {
+                                          __DEFAULT -> raiseIO# [e1_sdV2X s2#_sdV2Z];
+                                        }; } in
+                              let {
+                                sat_sdV2W [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ipv3_sdV2K] \r [s1_sdV2L]
+                                        case ipv3_sdV2K of {
+                                          GHC.MVar.MVar mvar#_sdV2N [Occ=Once] ->
+                                              case readMVar# [mvar#_sdV2N s1_sdV2L] of {
+                                                (#,#) ipv4_sdV2P [Occ=Once]
+                                                      ipv5_sdV2Q [Occ=Once!] ->
+                                                    case ipv5_sdV2Q of {
+                                                      Control.Concurrent.Chan.ChItem val_sdV2S [Occ=Once]
+                                                                                     dt_sdV2T [Occ=Once] ->
+                                                          let {
+                                                            sat_sdV2U [Occ=Once]
+                                                              :: Control.Concurrent.Chan.Stream
+                                                                   a_sdUVe
+                                                            [LclId] =
+                                                                CCCS GHC.MVar.MVar! [dt_sdV2T]; } in
+                                                          let {
+                                                            sat_sdV2V [Occ=Once]
+                                                              :: (Control.Concurrent.Chan.Stream
+                                                                    a_sdUVe,
+                                                                  a_sdUVe)
+                                                            [LclId] =
+                                                                CCCS (,)! [sat_sdV2U val_sdV2S];
+                                                          } in  (#,#) [ipv4_sdV2P sat_sdV2V];
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                case catch# [sat_sdV2W sat_sdV30 ipv2_sdV2J] of {
+                                  (#,#) ipv4_sdV32 [Occ=Once] ipv5_sdV33 [Occ=Once!] ->
+                                      case ipv5_sdV33 of {
+                                        (,) a'_sdV35 [Occ=Once] b1_sdV36 [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sdV2A a'_sdV35 ipv4_sdV32]
+                                            of
+                                            s2#_sdV37
+                                            { __DEFAULT -> (#,#) [s2#_sdV37 b1_sdV36];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sdV2F of {
+                  __DEFAULT -> io1_sdV2G ipv_sdV2E;
+                  0# -> maskAsyncExceptions# [io1_sdV2G ipv_sdV2E];
+                };
+        };
+
+Control.Concurrent.Chan.readChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdV39 w1_sdV3a]
+        case w_sdV39 of {
+          Control.Concurrent.Chan.Chan ww1_sdV3c [Occ=Once]
+                                       ww2_sdV3d [Occ=Once] ->
+              Control.Concurrent.Chan.$wreadChan ww1_sdV3c ww2_sdV3d w1_sdV3a;
+        };
+
+Control.Concurrent.Chan.readChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.readChan1 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.getChanContents1 [Occ=LoopBreaker]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdV3e eta_sdV3f]
+        let {
+          sat_sdV3s [Occ=Once] :: GHC.Types.IO [a_adUGY]
+          [LclId] =
+              [ch_sdV3e] \r [s_sdV3g]
+                  case noDuplicate# [s_sdV3g] of s'_sdV3h {
+                    __DEFAULT ->
+                        case ch_sdV3e of ww_sdV3i {
+                          Control.Concurrent.Chan.Chan ww1_sdV3j [Occ=Once]
+                                                       ww2_sdV3k [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wreadChan ww1_sdV3j ww2_sdV3k s'_sdV3h
+                              of
+                              { (#,#) ipv_sdV3m [Occ=Once] ipv1_sdV3n [Occ=Once] ->
+                                    case
+                                        Control.Concurrent.Chan.getChanContents1 ww_sdV3i ipv_sdV3m
+                                    of
+                                    { (#,#) ipv2_sdV3p [Occ=Once] ipv3_sdV3q [Occ=Once] ->
+                                          let {
+                                            sat_sdV3r [Occ=Once] :: [a_adUGY]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sdV3n ipv3_sdV3q];
+                                          } in  (#,#) [ipv2_sdV3p sat_sdV3r];
+                                    };
+                              };
+                        };
+                  };
+        } in  GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_sdV3s eta_sdV3f;
+
+Control.Concurrent.Chan.getChanContents
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.getChanContents1 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.dupChan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdV3t eta_sdV3u]
+        case ds_sdV3t of {
+          Control.Concurrent.Chan.Chan _ [Occ=Dead] dt1_sdV3x ->
+              case readMVar# [dt1_sdV3x eta_sdV3u] of {
+                (#,#) ipv_sdV3z [Occ=Once] ipv1_sdV3A [Occ=Once] ->
+                    case newMVar# [ipv_sdV3z] of {
+                      (#,#) ipv2_sdV3C [Occ=Once] ipv3_sdV3D ->
+                          case putMVar# [ipv3_sdV3D ipv1_sdV3A ipv2_sdV3C] of s2#_sdV3E {
+                            __DEFAULT ->
+                                let {
+                                  sat_sdV3F [Occ=Once] :: Control.Concurrent.Chan.Chan a_adUGn
+                                  [LclId] =
+                                      CCCS Control.Concurrent.Chan.Chan! [ipv3_sdV3D dt1_sdV3x];
+                                } in  (#,#) [s2#_sdV3E sat_sdV3F];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.dupChan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.dupChan1 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.Chan.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule4];
+
+Control.Concurrent.Chan.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.Chan"#;
+
+Control.Concurrent.Chan.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule2];
+
+Control.Concurrent.Chan.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.Chan.$trModule3
+                                     Control.Concurrent.Chan.$trModule1];
+
+$krep_rdV0R :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+Control.Concurrent.Chan.$tcChItem2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ChItem"#;
+
+Control.Concurrent.Chan.$tcChItem1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChItem2];
+
+Control.Concurrent.Chan.$tcChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6476193138296826625##
+                                    14259015418390681910##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChItem1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep1_rdV0S :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rdV0R GHC.Types.[]];
+
+$krep2_rdV0T :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChItem
+                                              $krep1_rdV0S];
+
+$krep3_rdV0U :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_rdV0T GHC.Types.[]];
+
+$krep4_rdV0V :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep3_rdV0U];
+
+$krep5_rdV0W :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rdV0V $krep2_rdV0T];
+
+Control.Concurrent.Chan.$tc'ChItem1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rdV0R $krep5_rdV0W];
+
+Control.Concurrent.Chan.$tc'ChItem3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ChItem"#;
+
+Control.Concurrent.Chan.$tc'ChItem2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'ChItem3];
+
+Control.Concurrent.Chan.$tc'ChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10690021181819663847##
+                                    14453345100680315478##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'ChItem2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'ChItem1];
+
+$krep6_rdV0X :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rdV0V GHC.Types.[]];
+
+$krep7_rdV0Y :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep6_rdV0X];
+
+Control.Concurrent.Chan.$tcChan2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Chan"#;
+
+Control.Concurrent.Chan.$tcChan1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChan2];
+
+Control.Concurrent.Chan.$tcChan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [8939098401262630739##
+                                    12846644923708574499##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChan1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep8_rdV0Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChan
+                                              $krep1_rdV0S];
+
+$krep9_rdV10 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep8_rdV0Z];
+
+Control.Concurrent.Chan.$tc'Chan1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep9_rdV10];
+
+Control.Concurrent.Chan.$tc'Chan3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Chan"#;
+
+Control.Concurrent.Chan.$tc'Chan2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'Chan3];
+
+Control.Concurrent.Chan.$tc'Chan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [735828590425899369##
+                                    13090399282914560069##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'Chan2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'Chan1];
+
+Control.Concurrent.Chan.ChItem
+  :: forall a.
+     a
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.ChItem a)
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.ChItem [eta_B2 eta_B1];
+
+Control.Concurrent.Chan.Chan
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Concurrent.Chan.Chan [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:09:10.622125166 UTC
+
+Control.Concurrent.Chan.$WChItem [InlPrag=INLINE[2]]
+  :: forall a.
+     a
+     -> Control.Concurrent.Chan.Stream a
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdV12 dt_sdV13]
+        case dt_sdV13 of {
+          GHC.MVar.MVar dt_sdV15 [Occ=Once] ->
+              Control.Concurrent.Chan.ChItem [dt_sdV12 dt_sdV15];
+        };
+
+Control.Concurrent.Chan.$WChan [InlPrag=INLINE[2]]
+  :: forall a.
+     GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdV16 dt_sdV17]
+        case dt_sdV16 of {
+          GHC.MVar.MVar dt_sdV19 [Occ=Once] ->
+              case dt_sdV17 of {
+                GHC.MVar.MVar dt_sdV1b [Occ=Once] ->
+                    Control.Concurrent.Chan.Chan [dt_sdV19 dt_sdV1b];
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c==
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdV1c ds1_sdV1d]
+        case ds_sdV1c of {
+          Control.Concurrent.Chan.Chan dt_sdV1f [Occ=Once]
+                                       dt1_sdV1g [Occ=Once] ->
+              case ds1_sdV1d of {
+                Control.Concurrent.Chan.Chan dt2_sdV1i [Occ=Once]
+                                             dt3_sdV1j [Occ=Once] ->
+                    case sameMVar# [dt_sdV1f dt2_sdV1i] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      1# ->
+                          case sameMVar# [dt1_sdV1g dt3_sdV1j] of sat_sdV1l {
+                            __DEFAULT -> tagToEnum# [sat_sdV1l];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_sdV1m eta1_sdV1n]
+        case eta_sdV1m of {
+          Control.Concurrent.Chan.Chan dt_sdV1p [Occ=Once]
+                                       dt1_sdV1q [Occ=Once] ->
+              case eta1_sdV1n of {
+                Control.Concurrent.Chan.Chan dt2_sdV1s [Occ=Once]
+                                             dt3_sdV1t [Occ=Once] ->
+                    case sameMVar# [dt_sdV1p dt2_sdV1s] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# ->
+                          case sameMVar# [dt1_sdV1q dt3_sdV1t] of {
+                            __DEFAULT -> GHC.Types.True [];
+                            1# -> GHC.Types.False [];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (Control.Concurrent.Chan.Chan a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [Control.Concurrent.Chan.$fEqChan_$c==
+                                     Control.Concurrent.Chan.$fEqChan_$c/=];
+
+Control.Concurrent.Chan.newChan1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_sdV1z [Occ=OnceL] ->
+              case newMVar# [GHC.Prim.void#] of {
+                Unit# ipv3_sdV1C ->
+                    let {
+                      ipv4_sdV1D
+                        :: GHC.MVar.MVar (Control.Concurrent.Chan.ChItem a_adUHO)
+                      [LclId, Unf=OtherCon []] =
+                          CCCS GHC.MVar.MVar! [ipv1_sdV1z];
+                    } in 
+                      case putMVar# [ipv3_sdV1C ipv4_sdV1D GHC.Prim.void#] of s2#_sdV1E {
+                        (##) ->
+                            case newMVar# [GHC.Prim.void#] of {
+                              Unit# ipv6_sdV1H ->
+                                  case
+                                      putMVar# [ipv6_sdV1H ipv4_sdV1D GHC.Prim.void#]
+                                  of
+                                  s2#1_sdV1I
+                                  { (##) ->
+                                        let {
+                                          sat_sdV1J [Occ=Once]
+                                            :: Control.Concurrent.Chan.Chan a_adUHO
+                                          [LclId] =
+                                              CCCS Control.Concurrent.Chan.Chan! [ipv3_sdV1C
+                                                                                  ipv6_sdV1H];
+                                        } in  Unit# [sat_sdV1J];
+                                  };
+                            };
+                      };
+              };
+        };
+
+Control.Concurrent.Chan.newChan
+  :: forall a. GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] Control.Concurrent.Chan.newChan1 GHC.Prim.void#;
+
+Control.Concurrent.Chan.$wwriteChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdV1K ww1_sdV1L w_sdV1M void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_sdV1Q ->
+              case getMaskingState# [GHC.Prim.void#] of {
+                Unit# ipv3_sdV1T [Occ=Once!] ->
+                    case ipv3_sdV1T of {
+                      __DEFAULT ->
+                          case takeMVar# [ww1_sdV1L GHC.Prim.void#] of {
+                            Unit# ipv5_sdV1X [Occ=Once!] ->
+                                case ipv5_sdV1X of {
+                                  GHC.MVar.MVar mvar#_sdV1Z [Occ=Once] ->
+                                      let {
+                                        sat_sdV20 [Occ=Once]
+                                          :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                        [LclId] =
+                                            CCCS Control.Concurrent.Chan.ChItem! [w_sdV1M
+                                                                                  ipv1_sdV1Q];
+                                      } in 
+                                        case
+                                            putMVar# [mvar#_sdV1Z sat_sdV20 GHC.Prim.void#]
+                                        of
+                                        s2#_sdV21
+                                        { (##) ->
+                                              let {
+                                                sat_sdV22 [Occ=Once]
+                                                  :: Control.Concurrent.Chan.Stream a_sdUV1
+                                                [LclId] =
+                                                    CCCS GHC.MVar.MVar! [ipv1_sdV1Q];
+                                              } in 
+                                                case
+                                                    putMVar# [ww1_sdV1L sat_sdV22 GHC.Prim.void#]
+                                                of
+                                                s2#1_sdV23
+                                                { (##) -> Unit# [GHC.Tuple.()];
+                                                };
+                                        };
+                                };
+                          };
+                      0# ->
+                          let {
+                            sat_sdV2e [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                            [LclId] =
+                                [ww1_sdV1L w_sdV1M ipv1_sdV1Q] \r [void_0E]
+                                    case takeMVar# [ww1_sdV1L GHC.Prim.void#] of {
+                                      Unit# ipv5_sdV27 [Occ=Once!] ->
+                                          case ipv5_sdV27 of {
+                                            GHC.MVar.MVar mvar#_sdV29 [Occ=Once] ->
+                                                let {
+                                                  sat_sdV2a [Occ=Once]
+                                                    :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                                  [LclId] =
+                                                      CCCS Control.Concurrent.Chan.ChItem! [w_sdV1M
+                                                                                            ipv1_sdV1Q];
+                                                } in 
+                                                  case
+                                                      putMVar# [mvar#_sdV29
+                                                                sat_sdV2a
+                                                                GHC.Prim.void#]
+                                                  of
+                                                  s2#_sdV2b
+                                                  { (##) ->
+                                                        let {
+                                                          sat_sdV2c [Occ=Once]
+                                                            :: Control.Concurrent.Chan.Stream
+                                                                 a_sdUV1
+                                                          [LclId] =
+                                                              CCCS GHC.MVar.MVar! [ipv1_sdV1Q];
+                                                        } in 
+                                                          case
+                                                              putMVar# [ww1_sdV1L
+                                                                        sat_sdV2c
+                                                                        GHC.Prim.void#]
+                                                          of
+                                                          s2#1_sdV2d
+                                                          { (##) -> Unit# [GHC.Tuple.()];
+                                                          };
+                                                  };
+                                          };
+                                    };
+                          } in  maskAsyncExceptions# [sat_sdV2e GHC.Prim.void#];
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.writeChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdV2f w1_sdV2g void_0E]
+        case w_sdV2f of {
+          Control.Concurrent.Chan.Chan ww1_sdV2j [Occ=Once]
+                                       ww2_sdV2k [Occ=Once] ->
+              Control.Concurrent.Chan.$wwriteChan
+                  ww1_sdV2j ww2_sdV2k w1_sdV2g GHC.Prim.void#;
+        };
+
+Control.Concurrent.Chan.writeChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.Chan.writeChan1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.writeList2Chan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> [a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdV2l ls_sdV2m void_0E]
+        let-no-escape {
+          go_sdV2o [Occ=LoopBreakerT[2]]
+            :: [a_adUHD]
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [ch_sdV2l go_sdV2o] \r [ds_sdV2p void_0E]
+                  case ds_sdV2p of {
+                    [] -> Unit# [GHC.Tuple.()];
+                    : y_sdV2s [Occ=Once] ys_sdV2t [Occ=Once] ->
+                        case ch_sdV2l of {
+                          Control.Concurrent.Chan.Chan ww1_sdV2v [Occ=Once]
+                                                       ww2_sdV2w [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wwriteChan
+                                      ww1_sdV2v ww2_sdV2w y_sdV2s GHC.Prim.void#
+                              of
+                              { Unit# _ [Occ=Dead] -> go_sdV2o ys_sdV2t GHC.Prim.void#;
+                              };
+                        };
+                  };
+        } in  go_sdV2o ls_sdV2m GHC.Prim.void#;
+
+Control.Concurrent.Chan.writeList2Chan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a -> [a] -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.Chan.writeList2Chan1
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.$wreadChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdV2A ww1_sdV2B void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sdV2F [Occ=Once!] ->
+              let {
+                io1_sdV2G [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sdUVe #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sdV2A] \r [void_0E]
+                        case takeMVar# [ww_sdV2A GHC.Prim.void#] of {
+                          Unit# ipv3_sdV2K ->
+                              let {
+                                sat_sdV30 [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ww_sdV2A ipv3_sdV2K] \r [e1_sdV2X void_0E]
+                                        case
+                                            putMVar# [ww_sdV2A ipv3_sdV2K GHC.Prim.void#]
+                                        of
+                                        s2#_sdV2Z
+                                        { (##) -> raiseIO# [e1_sdV2X GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sdV2W [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ipv3_sdV2K] \r [void_0E]
+                                        case ipv3_sdV2K of {
+                                          GHC.MVar.MVar mvar#_sdV2N [Occ=Once] ->
+                                              case readMVar# [mvar#_sdV2N GHC.Prim.void#] of {
+                                                Unit# ipv5_sdV2Q [Occ=Once!] ->
+                                                    case ipv5_sdV2Q of {
+                                                      Control.Concurrent.Chan.ChItem val_sdV2S [Occ=Once]
+                                                                                     dt_sdV2T [Occ=Once] ->
+                                                          let {
+                                                            sat_sdV2U [Occ=Once]
+                                                              :: Control.Concurrent.Chan.Stream
+                                                                   a_sdUVe
+                                                            [LclId] =
+                                                                CCCS GHC.MVar.MVar! [dt_sdV2T]; } in
+                                                          let {
+                                                            sat_sdV2V [Occ=Once]
+                                                              :: (Control.Concurrent.Chan.Stream
+                                                                    a_sdUVe,
+                                                                  a_sdUVe)
+                                                            [LclId] =
+                                                                CCCS (,)! [sat_sdV2U val_sdV2S];
+                                                          } in  Unit# [sat_sdV2V];
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                case catch# [sat_sdV2W sat_sdV30 GHC.Prim.void#] of {
+                                  Unit# ipv5_sdV33 [Occ=Once!] ->
+                                      case ipv5_sdV33 of {
+                                        (,) a'_sdV35 [Occ=Once] b1_sdV36 [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sdV2A a'_sdV35 GHC.Prim.void#]
+                                            of
+                                            s2#_sdV37
+                                            { (##) -> Unit# [b1_sdV36];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sdV2F of {
+                  __DEFAULT -> io1_sdV2G GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io1_sdV2G GHC.Prim.void#];
+                };
+        };
+
+Control.Concurrent.Chan.readChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdV39 void_0E]
+        case w_sdV39 of {
+          Control.Concurrent.Chan.Chan ww1_sdV3c [Occ=Once]
+                                       ww2_sdV3d [Occ=Once] ->
+              Control.Concurrent.Chan.$wreadChan
+                  ww1_sdV3c ww2_sdV3d GHC.Prim.void#;
+        };
+
+Control.Concurrent.Chan.readChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Concurrent.Chan.readChan1 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.getChanContents1 [Occ=LoopBreaker]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdV3e void_0E]
+        let {
+          sat_sdV3s [Occ=Once] :: GHC.Types.IO [a_adUGY]
+          [LclId] =
+              [ch_sdV3e] \r [void_0E]
+                  case noDuplicate# [GHC.Prim.void#] of s'_sdV3h {
+                    (##) ->
+                        case ch_sdV3e of ww_sdV3i {
+                          Control.Concurrent.Chan.Chan ww1_sdV3j [Occ=Once]
+                                                       ww2_sdV3k [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wreadChan
+                                      ww1_sdV3j ww2_sdV3k GHC.Prim.void#
+                              of
+                              { Unit# ipv1_sdV3n [Occ=Once] ->
+                                    case
+                                        Control.Concurrent.Chan.getChanContents1
+                                            ww_sdV3i GHC.Prim.void#
+                                    of
+                                    { Unit# ipv3_sdV3q [Occ=Once] ->
+                                          let {
+                                            sat_sdV3r [Occ=Once] :: [a_adUGY]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sdV3n ipv3_sdV3q];
+                                          } in  Unit# [sat_sdV3r];
+                                    };
+                              };
+                        };
+                  };
+        } in 
+          GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_sdV3s GHC.Prim.void#;
+
+Control.Concurrent.Chan.getChanContents
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Concurrent.Chan.getChanContents1 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.dupChan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdV3t void_0E]
+        case ds_sdV3t of {
+          Control.Concurrent.Chan.Chan _ [Occ=Dead] dt1_sdV3x ->
+              case readMVar# [dt1_sdV3x GHC.Prim.void#] of {
+                Unit# ipv1_sdV3A [Occ=Once] ->
+                    case newMVar# [GHC.Prim.void#] of {
+                      Unit# ipv3_sdV3D ->
+                          case putMVar# [ipv3_sdV3D ipv1_sdV3A GHC.Prim.void#] of s2#_sdV3E {
+                            (##) ->
+                                let {
+                                  sat_sdV3F [Occ=Once] :: Control.Concurrent.Chan.Chan a_adUGn
+                                  [LclId] =
+                                      CCCS Control.Concurrent.Chan.Chan! [ipv3_sdV3D dt1_sdV3x];
+                                } in  Unit# [sat_sdV3F];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.dupChan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Concurrent.Chan.dupChan1 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.Chan.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule4];
+
+Control.Concurrent.Chan.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.Chan"#;
+
+Control.Concurrent.Chan.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule2];
+
+Control.Concurrent.Chan.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.Chan.$trModule3
+                                     Control.Concurrent.Chan.$trModule1];
+
+$krep_rdV0R :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+Control.Concurrent.Chan.$tcChItem2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ChItem"#;
+
+Control.Concurrent.Chan.$tcChItem1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChItem2];
+
+Control.Concurrent.Chan.$tcChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6476193138296826625##
+                                    14259015418390681910##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChItem1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep1_rdV0S :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rdV0R GHC.Types.[]];
+
+$krep2_rdV0T :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChItem
+                                              $krep1_rdV0S];
+
+$krep3_rdV0U :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_rdV0T GHC.Types.[]];
+
+$krep4_rdV0V :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep3_rdV0U];
+
+$krep5_rdV0W :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rdV0V $krep2_rdV0T];
+
+Control.Concurrent.Chan.$tc'ChItem1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rdV0R $krep5_rdV0W];
+
+Control.Concurrent.Chan.$tc'ChItem3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ChItem"#;
+
+Control.Concurrent.Chan.$tc'ChItem2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'ChItem3];
+
+Control.Concurrent.Chan.$tc'ChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10690021181819663847##
+                                    14453345100680315478##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'ChItem2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'ChItem1];
+
+$krep6_rdV0X :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rdV0V GHC.Types.[]];
+
+$krep7_rdV0Y :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep6_rdV0X];
+
+Control.Concurrent.Chan.$tcChan2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Chan"#;
+
+Control.Concurrent.Chan.$tcChan1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChan2];
+
+Control.Concurrent.Chan.$tcChan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [8939098401262630739##
+                                    12846644923708574499##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChan1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep8_rdV0Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChan
+                                              $krep1_rdV0S];
+
+$krep9_rdV10 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep8_rdV0Z];
+
+Control.Concurrent.Chan.$tc'Chan1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep9_rdV10];
+
+Control.Concurrent.Chan.$tc'Chan3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Chan"#;
+
+Control.Concurrent.Chan.$tc'Chan2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'Chan3];
+
+Control.Concurrent.Chan.$tc'Chan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [735828590425899369##
+                                    13090399282914560069##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'Chan2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'Chan1];
+
+Control.Concurrent.Chan.ChItem
+  :: forall a.
+     a
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.ChItem a)
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.ChItem [eta_B2 eta_B1];
+
+Control.Concurrent.Chan.Chan
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Concurrent.Chan.Chan [eta_B2 eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:09:11.559822586 UTC
+
+Control.Concurrent.Chan.$WChItem [InlPrag=INLINE[2]]
+  :: forall a.
+     a
+     -> Control.Concurrent.Chan.Stream a
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdVxT dt_sdVxU]
+        case dt_sdVxU of {
+          GHC.MVar.MVar dt_sdVxW [Occ=Once] ->
+              Control.Concurrent.Chan.ChItem [dt_sdVxT dt_sdVxW];
+        };
+
+Control.Concurrent.Chan.$WChan [InlPrag=INLINE[2]]
+  :: forall a.
+     GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdVxX dt_sdVxY]
+        case dt_sdVxX of {
+          GHC.MVar.MVar dt_sdVy0 [Occ=Once] ->
+              case dt_sdVxY of {
+                GHC.MVar.MVar dt_sdVy2 [Occ=Once] ->
+                    Control.Concurrent.Chan.Chan [dt_sdVy0 dt_sdVy2];
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c==
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdVy3 ds1_sdVy4]
+        case ds_sdVy3 of {
+          Control.Concurrent.Chan.Chan dt_sdVy6 [Occ=Once]
+                                       dt1_sdVy7 [Occ=Once] ->
+              case ds1_sdVy4 of {
+                Control.Concurrent.Chan.Chan dt2_sdVy9 [Occ=Once]
+                                             dt3_sdVya [Occ=Once] ->
+                    case sameMVar# [dt_sdVy6 dt2_sdVy9] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      1# ->
+                          case sameMVar# [dt1_sdVy7 dt3_sdVya] of sat_sdVyc {
+                            __DEFAULT -> tagToEnum# [sat_sdVyc];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_sdVyd eta1_sdVye]
+        case eta_sdVyd of {
+          Control.Concurrent.Chan.Chan dt_sdVyg [Occ=Once]
+                                       dt1_sdVyh [Occ=Once] ->
+              case eta1_sdVye of {
+                Control.Concurrent.Chan.Chan dt2_sdVyj [Occ=Once]
+                                             dt3_sdVyk [Occ=Once] ->
+                    case sameMVar# [dt_sdVyg dt2_sdVyj] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# ->
+                          case sameMVar# [dt1_sdVyh dt3_sdVyk] of {
+                            __DEFAULT -> GHC.Types.True [];
+                            1# -> GHC.Types.False [];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (Control.Concurrent.Chan.Chan a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [Control.Concurrent.Chan.$fEqChan_$c==
+                                     Control.Concurrent.Chan.$fEqChan_$c/=];
+
+Control.Concurrent.Chan.newChan1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sdVyn]
+        case newMVar# [s_sdVyn] of {
+          (#,#) ipv_sdVyp [Occ=Once] ipv1_sdVyq [Occ=OnceL] ->
+              case newMVar# [ipv_sdVyp] of {
+                (#,#) ipv2_sdVys [Occ=Once] ipv3_sdVyt ->
+                    let {
+                      ipv4_sdVyu
+                        :: GHC.MVar.MVar (Control.Concurrent.Chan.ChItem a_adUHO)
+                      [LclId, Unf=OtherCon []] =
+                          CCCS GHC.MVar.MVar! [ipv1_sdVyq];
+                    } in 
+                      case putMVar# [ipv3_sdVyt ipv4_sdVyu ipv2_sdVys] of s2#_sdVyv {
+                        __DEFAULT ->
+                            case newMVar# [s2#_sdVyv] of {
+                              (#,#) ipv5_sdVyx [Occ=Once] ipv6_sdVyy ->
+                                  case putMVar# [ipv6_sdVyy ipv4_sdVyu ipv5_sdVyx] of s2#1_sdVyz {
+                                    __DEFAULT ->
+                                        let {
+                                          sat_sdVyA [Occ=Once]
+                                            :: Control.Concurrent.Chan.Chan a_adUHO
+                                          [LclId] =
+                                              CCCS Control.Concurrent.Chan.Chan! [ipv3_sdVyt
+                                                                                  ipv6_sdVyy];
+                                        } in  (#,#) [s2#1_sdVyz sat_sdVyA];
+                                  };
+                            };
+                      };
+              };
+        };
+
+Control.Concurrent.Chan.newChan
+  :: forall a. GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] Control.Concurrent.Chan.newChan1 eta_B1;
+
+Control.Concurrent.Chan.$wwriteChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdVyB ww1_sdVyC w_sdVyD w1_sdVyE]
+        case newMVar# [w1_sdVyE] of {
+          (#,#) ipv_sdVyG [Occ=Once] ipv1_sdVyH ->
+              case getMaskingState# [ipv_sdVyG] of {
+                (#,#) ipv2_sdVyJ [Occ=Once*] ipv3_sdVyK [Occ=Once!] ->
+                    case ipv3_sdVyK of {
+                      __DEFAULT ->
+                          case takeMVar# [ww1_sdVyC ipv2_sdVyJ] of {
+                            (#,#) ipv4_sdVyN [Occ=Once] ipv5_sdVyO [Occ=Once!] ->
+                                case ipv5_sdVyO of {
+                                  GHC.MVar.MVar mvar#_sdVyQ [Occ=Once] ->
+                                      let {
+                                        sat_sdVyR [Occ=Once]
+                                          :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                        [LclId] =
+                                            CCCS Control.Concurrent.Chan.ChItem! [w_sdVyD
+                                                                                  ipv1_sdVyH];
+                                      } in 
+                                        case
+                                            putMVar# [mvar#_sdVyQ sat_sdVyR ipv4_sdVyN]
+                                        of
+                                        s2#_sdVyS
+                                        { __DEFAULT ->
+                                              let {
+                                                sat_sdVyT [Occ=Once]
+                                                  :: Control.Concurrent.Chan.Stream a_sdUV1
+                                                [LclId] =
+                                                    CCCS GHC.MVar.MVar! [ipv1_sdVyH];
+                                              } in 
+                                                case
+                                                    putMVar# [ww1_sdVyC sat_sdVyT s2#_sdVyS]
+                                                of
+                                                s2#1_sdVyU
+                                                { __DEFAULT -> (#,#) [s2#1_sdVyU GHC.Tuple.()];
+                                                };
+                                        };
+                                };
+                          };
+                      0# ->
+                          let {
+                            sat_sdVz5 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                            [LclId] =
+                                [ww1_sdVyC w_sdVyD ipv1_sdVyH] \r [s_sdVyV]
+                                    case takeMVar# [ww1_sdVyC s_sdVyV] of {
+                                      (#,#) ipv4_sdVyX [Occ=Once] ipv5_sdVyY [Occ=Once!] ->
+                                          case ipv5_sdVyY of {
+                                            GHC.MVar.MVar mvar#_sdVz0 [Occ=Once] ->
+                                                let {
+                                                  sat_sdVz1 [Occ=Once]
+                                                    :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                                  [LclId] =
+                                                      CCCS Control.Concurrent.Chan.ChItem! [w_sdVyD
+                                                                                            ipv1_sdVyH];
+                                                } in 
+                                                  case
+                                                      putMVar# [mvar#_sdVz0 sat_sdVz1 ipv4_sdVyX]
+                                                  of
+                                                  s2#_sdVz2
+                                                  { __DEFAULT ->
+                                                        let {
+                                                          sat_sdVz3 [Occ=Once]
+                                                            :: Control.Concurrent.Chan.Stream
+                                                                 a_sdUV1
+                                                          [LclId] =
+                                                              CCCS GHC.MVar.MVar! [ipv1_sdVyH];
+                                                        } in 
+                                                          case
+                                                              putMVar# [ww1_sdVyC
+                                                                        sat_sdVz3
+                                                                        s2#_sdVz2]
+                                                          of
+                                                          s2#1_sdVz4
+                                                          { __DEFAULT ->
+                                                                (#,#) [s2#1_sdVz4 GHC.Tuple.()];
+                                                          };
+                                                  };
+                                          };
+                                    };
+                          } in  maskAsyncExceptions# [sat_sdVz5 ipv2_sdVyJ];
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.writeChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdVz6 w1_sdVz7 w2_sdVz8]
+        case w_sdVz6 of {
+          Control.Concurrent.Chan.Chan ww1_sdVza [Occ=Once]
+                                       ww2_sdVzb [Occ=Once] ->
+              Control.Concurrent.Chan.$wwriteChan
+                  ww1_sdVza ww2_sdVzb w1_sdVz7 w2_sdVz8;
+        };
+
+Control.Concurrent.Chan.writeChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.Chan.writeChan1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.writeList2Chan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> [a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdVzc ls_sdVzd eta_sdVze]
+        let-no-escape {
+          go_sdVzf [Occ=LoopBreakerT[2]]
+            :: [a_adUHD]
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [ch_sdVzc go_sdVzf] \r [ds_sdVzg eta1_sdVzh]
+                  case ds_sdVzg of {
+                    [] -> (#,#) [eta1_sdVzh GHC.Tuple.()];
+                    : y_sdVzj [Occ=Once] ys_sdVzk [Occ=Once] ->
+                        case ch_sdVzc of {
+                          Control.Concurrent.Chan.Chan ww1_sdVzm [Occ=Once]
+                                                       ww2_sdVzn [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wwriteChan
+                                      ww1_sdVzm ww2_sdVzn y_sdVzj eta1_sdVzh
+                              of
+                              { (#,#) ipv_sdVzp [Occ=Once] _ [Occ=Dead] ->
+                                    go_sdVzf ys_sdVzk ipv_sdVzp;
+                              };
+                        };
+                  };
+        } in  go_sdVzf ls_sdVzd eta_sdVze;
+
+Control.Concurrent.Chan.writeList2Chan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a -> [a] -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Control.Concurrent.Chan.writeList2Chan1 eta_B3 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.$wreadChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdVzr ww1_sdVzs w_sdVzt]
+        case getMaskingState# [w_sdVzt] of {
+          (#,#) ipv_sdVzv [Occ=Once*] ipv1_sdVzw [Occ=Once!] ->
+              let {
+                io1_sdVzx [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sdUVe #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sdVzr] \r [s_sdVzy]
+                        case takeMVar# [ww_sdVzr s_sdVzy] of {
+                          (#,#) ipv2_sdVzA [Occ=Once] ipv3_sdVzB ->
+                              let {
+                                sat_sdVzR [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ww_sdVzr ipv3_sdVzB] \r [e1_sdVzO s1_sdVzP]
+                                        case putMVar# [ww_sdVzr ipv3_sdVzB s1_sdVzP] of s2#_sdVzQ {
+                                          __DEFAULT -> raiseIO# [e1_sdVzO s2#_sdVzQ];
+                                        }; } in
+                              let {
+                                sat_sdVzN [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ipv3_sdVzB] \r [s1_sdVzC]
+                                        case ipv3_sdVzB of {
+                                          GHC.MVar.MVar mvar#_sdVzE [Occ=Once] ->
+                                              case readMVar# [mvar#_sdVzE s1_sdVzC] of {
+                                                (#,#) ipv4_sdVzG [Occ=Once]
+                                                      ipv5_sdVzH [Occ=Once!] ->
+                                                    case ipv5_sdVzH of {
+                                                      Control.Concurrent.Chan.ChItem val_sdVzJ [Occ=Once]
+                                                                                     dt_sdVzK [Occ=Once] ->
+                                                          let {
+                                                            sat_sdVzL [Occ=Once]
+                                                              :: Control.Concurrent.Chan.Stream
+                                                                   a_sdUVe
+                                                            [LclId] =
+                                                                CCCS GHC.MVar.MVar! [dt_sdVzK]; } in
+                                                          let {
+                                                            sat_sdVzM [Occ=Once]
+                                                              :: (Control.Concurrent.Chan.Stream
+                                                                    a_sdUVe,
+                                                                  a_sdUVe)
+                                                            [LclId] =
+                                                                CCCS (,)! [sat_sdVzL val_sdVzJ];
+                                                          } in  (#,#) [ipv4_sdVzG sat_sdVzM];
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                case catch# [sat_sdVzN sat_sdVzR ipv2_sdVzA] of {
+                                  (#,#) ipv4_sdVzT [Occ=Once] ipv5_sdVzU [Occ=Once!] ->
+                                      case ipv5_sdVzU of {
+                                        (,) a'_sdVzW [Occ=Once] b1_sdVzX [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sdVzr a'_sdVzW ipv4_sdVzT]
+                                            of
+                                            s2#_sdVzY
+                                            { __DEFAULT -> (#,#) [s2#_sdVzY b1_sdVzX];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sdVzw of {
+                  __DEFAULT -> io1_sdVzx ipv_sdVzv;
+                  0# -> maskAsyncExceptions# [io1_sdVzx ipv_sdVzv];
+                };
+        };
+
+Control.Concurrent.Chan.readChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdVA0 w1_sdVA1]
+        case w_sdVA0 of {
+          Control.Concurrent.Chan.Chan ww1_sdVA3 [Occ=Once]
+                                       ww2_sdVA4 [Occ=Once] ->
+              Control.Concurrent.Chan.$wreadChan ww1_sdVA3 ww2_sdVA4 w1_sdVA1;
+        };
+
+Control.Concurrent.Chan.readChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.readChan1 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.getChanContents1 [Occ=LoopBreaker]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdVA5 eta_sdVA6]
+        let {
+          sat_sdVAj [Occ=Once] :: GHC.Types.IO [a_adUGY]
+          [LclId] =
+              [ch_sdVA5] \r [s_sdVA7]
+                  case noDuplicate# [s_sdVA7] of s'_sdVA8 {
+                    __DEFAULT ->
+                        case ch_sdVA5 of ww_sdVA9 {
+                          Control.Concurrent.Chan.Chan ww1_sdVAa [Occ=Once]
+                                                       ww2_sdVAb [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wreadChan ww1_sdVAa ww2_sdVAb s'_sdVA8
+                              of
+                              { (#,#) ipv_sdVAd [Occ=Once] ipv1_sdVAe [Occ=Once] ->
+                                    case
+                                        Control.Concurrent.Chan.getChanContents1 ww_sdVA9 ipv_sdVAd
+                                    of
+                                    { (#,#) ipv2_sdVAg [Occ=Once] ipv3_sdVAh [Occ=Once] ->
+                                          let {
+                                            sat_sdVAi [Occ=Once] :: [a_adUGY]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sdVAe ipv3_sdVAh];
+                                          } in  (#,#) [ipv2_sdVAg sat_sdVAi];
+                                    };
+                              };
+                        };
+                  };
+        } in  GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_sdVAj eta_sdVA6;
+
+Control.Concurrent.Chan.getChanContents
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.getChanContents1 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.dupChan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdVAk eta_sdVAl]
+        case ds_sdVAk of {
+          Control.Concurrent.Chan.Chan _ [Occ=Dead] dt1_sdVAo ->
+              case readMVar# [dt1_sdVAo eta_sdVAl] of {
+                (#,#) ipv_sdVAq [Occ=Once] ipv1_sdVAr [Occ=Once] ->
+                    case newMVar# [ipv_sdVAq] of {
+                      (#,#) ipv2_sdVAt [Occ=Once] ipv3_sdVAu ->
+                          case putMVar# [ipv3_sdVAu ipv1_sdVAr ipv2_sdVAt] of s2#_sdVAv {
+                            __DEFAULT ->
+                                let {
+                                  sat_sdVAw [Occ=Once] :: Control.Concurrent.Chan.Chan a_adUGn
+                                  [LclId] =
+                                      CCCS Control.Concurrent.Chan.Chan! [ipv3_sdVAu dt1_sdVAo];
+                                } in  (#,#) [s2#_sdVAv sat_sdVAw];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.dupChan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.dupChan1 eta_B2 eta_B1;
+
+Control.Concurrent.Chan.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.Chan.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule4];
+
+Control.Concurrent.Chan.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.Chan"#;
+
+Control.Concurrent.Chan.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule2];
+
+Control.Concurrent.Chan.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.Chan.$trModule3
+                                     Control.Concurrent.Chan.$trModule1];
+
+$krep_rdV0R :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+Control.Concurrent.Chan.$tcChItem2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ChItem"#;
+
+Control.Concurrent.Chan.$tcChItem1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChItem2];
+
+Control.Concurrent.Chan.$tcChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6476193138296826625##
+                                    14259015418390681910##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChItem1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep1_rdV0S :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rdV0R GHC.Types.[]];
+
+$krep2_rdV0T :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChItem
+                                              $krep1_rdV0S];
+
+$krep3_rdV0U :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_rdV0T GHC.Types.[]];
+
+$krep4_rdV0V :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep3_rdV0U];
+
+$krep5_rdV0W :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rdV0V $krep2_rdV0T];
+
+Control.Concurrent.Chan.$tc'ChItem1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rdV0R $krep5_rdV0W];
+
+Control.Concurrent.Chan.$tc'ChItem3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ChItem"#;
+
+Control.Concurrent.Chan.$tc'ChItem2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'ChItem3];
+
+Control.Concurrent.Chan.$tc'ChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10690021181819663847##
+                                    14453345100680315478##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'ChItem2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'ChItem1];
+
+$krep6_rdV0X :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rdV0V GHC.Types.[]];
+
+$krep7_rdV0Y :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep6_rdV0X];
+
+Control.Concurrent.Chan.$tcChan2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Chan"#;
+
+Control.Concurrent.Chan.$tcChan1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChan2];
+
+Control.Concurrent.Chan.$tcChan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [8939098401262630739##
+                                    12846644923708574499##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChan1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep8_rdV0Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChan
+                                              $krep1_rdV0S];
+
+$krep9_rdV10 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep8_rdV0Z];
+
+Control.Concurrent.Chan.$tc'Chan1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep9_rdV10];
+
+Control.Concurrent.Chan.$tc'Chan3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Chan"#;
+
+Control.Concurrent.Chan.$tc'Chan2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'Chan3];
+
+Control.Concurrent.Chan.$tc'Chan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [735828590425899369##
+                                    13090399282914560069##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'Chan2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'Chan1];
+
+Control.Concurrent.Chan.ChItem
+  :: forall a.
+     a
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.ChItem a)
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.ChItem [eta_B2 eta_B1];
+
+Control.Concurrent.Chan.Chan
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Concurrent.Chan.Chan [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:09:11.575945507 UTC
+
+Control.Concurrent.Chan.$WChItem [InlPrag=INLINE[2]]
+  :: forall a.
+     a
+     -> Control.Concurrent.Chan.Stream a
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdVxT dt_sdVxU]
+        case dt_sdVxU of {
+          GHC.MVar.MVar dt_sdVxW [Occ=Once] ->
+              Control.Concurrent.Chan.ChItem [dt_sdVxT dt_sdVxW];
+        };
+
+Control.Concurrent.Chan.$WChan [InlPrag=INLINE[2]]
+  :: forall a.
+     GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> GHC.MVar.MVar (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataConWrapper],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U>m,
+ Unf=OtherCon []] =
+    [] \r [dt_sdVxX dt_sdVxY]
+        case dt_sdVxX of {
+          GHC.MVar.MVar dt_sdVy0 [Occ=Once] ->
+              case dt_sdVxY of {
+                GHC.MVar.MVar dt_sdVy2 [Occ=Once] ->
+                    Control.Concurrent.Chan.Chan [dt_sdVy0 dt_sdVy2];
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c==
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdVy3 ds1_sdVy4]
+        case ds_sdVy3 of {
+          Control.Concurrent.Chan.Chan dt_sdVy6 [Occ=Once]
+                                       dt1_sdVy7 [Occ=Once] ->
+              case ds1_sdVy4 of {
+                Control.Concurrent.Chan.Chan dt2_sdVy9 [Occ=Once]
+                                             dt3_sdVya [Occ=Once] ->
+                    case sameMVar# [dt_sdVy6 dt2_sdVy9] of {
+                      __DEFAULT -> GHC.Types.False [];
+                      1# ->
+                          case sameMVar# [dt1_sdVy7 dt3_sdVya] of sat_sdVyc {
+                            __DEFAULT -> tagToEnum# [sat_sdVyc];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> Control.Concurrent.Chan.Chan a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SL),1*U(U,U)><S(SL),1*U(U,U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_sdVyd eta1_sdVye]
+        case eta_sdVyd of {
+          Control.Concurrent.Chan.Chan dt_sdVyg [Occ=Once]
+                                       dt1_sdVyh [Occ=Once] ->
+              case eta1_sdVye of {
+                Control.Concurrent.Chan.Chan dt2_sdVyj [Occ=Once]
+                                             dt3_sdVyk [Occ=Once] ->
+                    case sameMVar# [dt_sdVyg dt2_sdVyj] of {
+                      __DEFAULT -> GHC.Types.True [];
+                      1# ->
+                          case sameMVar# [dt1_sdVyh dt3_sdVyk] of {
+                            __DEFAULT -> GHC.Types.True [];
+                            1# -> GHC.Types.False [];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.$fEqChan [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. GHC.Classes.Eq (Control.Concurrent.Chan.Chan a)
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [Control.Concurrent.Chan.$fEqChan_$c==
+                                     Control.Concurrent.Chan.$fEqChan_$c/=];
+
+Control.Concurrent.Chan.newChan1
+  :: forall a.
+     GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_sdVyq [Occ=OnceL] ->
+              case newMVar# [GHC.Prim.void#] of {
+                Unit# ipv3_sdVyt ->
+                    let {
+                      ipv4_sdVyu
+                        :: GHC.MVar.MVar (Control.Concurrent.Chan.ChItem a_adUHO)
+                      [LclId, Unf=OtherCon []] =
+                          CCCS GHC.MVar.MVar! [ipv1_sdVyq];
+                    } in 
+                      case putMVar# [ipv3_sdVyt ipv4_sdVyu GHC.Prim.void#] of s2#_sdVyv {
+                        (##) ->
+                            case newMVar# [GHC.Prim.void#] of {
+                              Unit# ipv6_sdVyy ->
+                                  case
+                                      putMVar# [ipv6_sdVyy ipv4_sdVyu GHC.Prim.void#]
+                                  of
+                                  s2#1_sdVyz
+                                  { (##) ->
+                                        let {
+                                          sat_sdVyA [Occ=Once]
+                                            :: Control.Concurrent.Chan.Chan a_adUHO
+                                          [LclId] =
+                                              CCCS Control.Concurrent.Chan.Chan! [ipv3_sdVyt
+                                                                                  ipv6_sdVyy];
+                                        } in  Unit# [sat_sdVyA];
+                                  };
+                            };
+                      };
+              };
+        };
+
+Control.Concurrent.Chan.newChan
+  :: forall a. GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] Control.Concurrent.Chan.newChan1 GHC.Prim.void#;
+
+Control.Concurrent.Chan.$wwriteChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><S,U><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdVyB ww1_sdVyC w_sdVyD void_0E]
+        case newMVar# [GHC.Prim.void#] of {
+          Unit# ipv1_sdVyH ->
+              case getMaskingState# [GHC.Prim.void#] of {
+                Unit# ipv3_sdVyK [Occ=Once!] ->
+                    case ipv3_sdVyK of {
+                      __DEFAULT ->
+                          case takeMVar# [ww1_sdVyC GHC.Prim.void#] of {
+                            Unit# ipv5_sdVyO [Occ=Once!] ->
+                                case ipv5_sdVyO of {
+                                  GHC.MVar.MVar mvar#_sdVyQ [Occ=Once] ->
+                                      let {
+                                        sat_sdVyR [Occ=Once]
+                                          :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                        [LclId] =
+                                            CCCS Control.Concurrent.Chan.ChItem! [w_sdVyD
+                                                                                  ipv1_sdVyH];
+                                      } in 
+                                        case
+                                            putMVar# [mvar#_sdVyQ sat_sdVyR GHC.Prim.void#]
+                                        of
+                                        s2#_sdVyS
+                                        { (##) ->
+                                              let {
+                                                sat_sdVyT [Occ=Once]
+                                                  :: Control.Concurrent.Chan.Stream a_sdUV1
+                                                [LclId] =
+                                                    CCCS GHC.MVar.MVar! [ipv1_sdVyH];
+                                              } in 
+                                                case
+                                                    putMVar# [ww1_sdVyC sat_sdVyT GHC.Prim.void#]
+                                                of
+                                                s2#1_sdVyU
+                                                { (##) -> Unit# [GHC.Tuple.()];
+                                                };
+                                        };
+                                };
+                          };
+                      0# ->
+                          let {
+                            sat_sdVz5 [Occ=Once]
+                              :: GHC.Prim.State# GHC.Prim.RealWorld
+                                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                            [LclId] =
+                                [ww1_sdVyC w_sdVyD ipv1_sdVyH] \r [void_0E]
+                                    case takeMVar# [ww1_sdVyC GHC.Prim.void#] of {
+                                      Unit# ipv5_sdVyY [Occ=Once!] ->
+                                          case ipv5_sdVyY of {
+                                            GHC.MVar.MVar mvar#_sdVz0 [Occ=Once] ->
+                                                let {
+                                                  sat_sdVz1 [Occ=Once]
+                                                    :: Control.Concurrent.Chan.ChItem a_sdUV1
+                                                  [LclId] =
+                                                      CCCS Control.Concurrent.Chan.ChItem! [w_sdVyD
+                                                                                            ipv1_sdVyH];
+                                                } in 
+                                                  case
+                                                      putMVar# [mvar#_sdVz0
+                                                                sat_sdVz1
+                                                                GHC.Prim.void#]
+                                                  of
+                                                  s2#_sdVz2
+                                                  { (##) ->
+                                                        let {
+                                                          sat_sdVz3 [Occ=Once]
+                                                            :: Control.Concurrent.Chan.Stream
+                                                                 a_sdUV1
+                                                          [LclId] =
+                                                              CCCS GHC.MVar.MVar! [ipv1_sdVyH];
+                                                        } in 
+                                                          case
+                                                              putMVar# [ww1_sdVyC
+                                                                        sat_sdVz3
+                                                                        GHC.Prim.void#]
+                                                          of
+                                                          s2#1_sdVz4
+                                                          { (##) -> Unit# [GHC.Tuple.()];
+                                                          };
+                                                  };
+                                          };
+                                    };
+                          } in  maskAsyncExceptions# [sat_sdVz5 GHC.Prim.void#];
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.writeChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdVz6 w1_sdVz7 void_0E]
+        case w_sdVz6 of {
+          Control.Concurrent.Chan.Chan ww1_sdVza [Occ=Once]
+                                       ww2_sdVzb [Occ=Once] ->
+              Control.Concurrent.Chan.$wwriteChan
+                  ww1_sdVza ww2_sdVzb w1_sdVz7 GHC.Prim.void#;
+        };
+
+Control.Concurrent.Chan.writeChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> a -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(1*U,U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.Chan.writeChan1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.writeList2Chan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> [a]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdVzc ls_sdVzd void_0E]
+        let-no-escape {
+          go_sdVzf [Occ=LoopBreakerT[2]]
+            :: [a_adUHD]
+               -> GHC.Prim.State# GHC.Prim.RealWorld
+               -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+          [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+              sat-only [ch_sdVzc go_sdVzf] \r [ds_sdVzg void_0E]
+                  case ds_sdVzg of {
+                    [] -> Unit# [GHC.Tuple.()];
+                    : y_sdVzj [Occ=Once] ys_sdVzk [Occ=Once] ->
+                        case ch_sdVzc of {
+                          Control.Concurrent.Chan.Chan ww1_sdVzm [Occ=Once]
+                                                       ww2_sdVzn [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wwriteChan
+                                      ww1_sdVzm ww2_sdVzn y_sdVzj GHC.Prim.void#
+                              of
+                              { Unit# _ [Occ=Dead] -> go_sdVzf ys_sdVzk GHC.Prim.void#;
+                              };
+                        };
+                  };
+        } in  go_sdVzf ls_sdVzd GHC.Prim.void#;
+
+Control.Concurrent.Chan.writeList2Chan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a -> [a] -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U(U,U)><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Control.Concurrent.Chan.writeList2Chan1
+            eta_B3 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.$wreadChan [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,A><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ww_sdVzr ww1_sdVzs void_0E]
+        case getMaskingState# [GHC.Prim.void#] of {
+          Unit# ipv1_sdVzw [Occ=Once!] ->
+              let {
+                io1_sdVzx [Occ=Once*, Dmd=<C(S),C(U(U,U))>]
+                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_sdUVe #)
+                [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+                    [ww_sdVzr] \r [void_0E]
+                        case takeMVar# [ww_sdVzr GHC.Prim.void#] of {
+                          Unit# ipv3_sdVzB ->
+                              let {
+                                sat_sdVzR [Occ=Once]
+                                  :: GHC.Exception.SomeException
+                                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ww_sdVzr ipv3_sdVzB] \r [e1_sdVzO void_0E]
+                                        case
+                                            putMVar# [ww_sdVzr ipv3_sdVzB GHC.Prim.void#]
+                                        of
+                                        s2#_sdVzQ
+                                        { (##) -> raiseIO# [e1_sdVzO GHC.Prim.void#];
+                                        }; } in
+                              let {
+                                sat_sdVzN [Occ=Once]
+                                  :: GHC.Prim.State# GHC.Prim.RealWorld
+                                     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           (Control.Concurrent.Chan.Stream a_sdUVe, a_sdUVe) #)
+                                [LclId] =
+                                    [ipv3_sdVzB] \r [void_0E]
+                                        case ipv3_sdVzB of {
+                                          GHC.MVar.MVar mvar#_sdVzE [Occ=Once] ->
+                                              case readMVar# [mvar#_sdVzE GHC.Prim.void#] of {
+                                                Unit# ipv5_sdVzH [Occ=Once!] ->
+                                                    case ipv5_sdVzH of {
+                                                      Control.Concurrent.Chan.ChItem val_sdVzJ [Occ=Once]
+                                                                                     dt_sdVzK [Occ=Once] ->
+                                                          let {
+                                                            sat_sdVzL [Occ=Once]
+                                                              :: Control.Concurrent.Chan.Stream
+                                                                   a_sdUVe
+                                                            [LclId] =
+                                                                CCCS GHC.MVar.MVar! [dt_sdVzK]; } in
+                                                          let {
+                                                            sat_sdVzM [Occ=Once]
+                                                              :: (Control.Concurrent.Chan.Stream
+                                                                    a_sdUVe,
+                                                                  a_sdUVe)
+                                                            [LclId] =
+                                                                CCCS (,)! [sat_sdVzL val_sdVzJ];
+                                                          } in  Unit# [sat_sdVzM];
+                                                    };
+                                              };
+                                        };
+                              } in 
+                                case catch# [sat_sdVzN sat_sdVzR GHC.Prim.void#] of {
+                                  Unit# ipv5_sdVzU [Occ=Once!] ->
+                                      case ipv5_sdVzU of {
+                                        (,) a'_sdVzW [Occ=Once] b1_sdVzX [Occ=Once] ->
+                                            case
+                                                putMVar# [ww_sdVzr a'_sdVzW GHC.Prim.void#]
+                                            of
+                                            s2#_sdVzY
+                                            { (##) -> Unit# [b1_sdVzX];
+                                            };
+                                      };
+                                };
+                        };
+              } in 
+                case ipv1_sdVzw of {
+                  __DEFAULT -> io1_sdVzx GHC.Prim.void#;
+                  0# -> maskAsyncExceptions# [io1_sdVzx GHC.Prim.void#];
+                };
+        };
+
+Control.Concurrent.Chan.readChan1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [w_sdVA0 void_0E]
+        case w_sdVA0 of {
+          Control.Concurrent.Chan.Chan ww1_sdVA3 [Occ=Once]
+                                       ww2_sdVA4 [Occ=Once] ->
+              Control.Concurrent.Chan.$wreadChan
+                  ww1_sdVA3 ww2_sdVA4 GHC.Prim.void#;
+        };
+
+Control.Concurrent.Chan.readChan
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(SS),1*U(U,1*U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Concurrent.Chan.readChan1 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.getChanContents1 [Occ=LoopBreaker]
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [a] #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ch_sdVA5 void_0E]
+        let {
+          sat_sdVAj [Occ=Once] :: GHC.Types.IO [a_adUGY]
+          [LclId] =
+              [ch_sdVA5] \r [void_0E]
+                  case noDuplicate# [GHC.Prim.void#] of s'_sdVA8 {
+                    (##) ->
+                        case ch_sdVA5 of ww_sdVA9 {
+                          Control.Concurrent.Chan.Chan ww1_sdVAa [Occ=Once]
+                                                       ww2_sdVAb [Occ=Once] ->
+                              case
+                                  Control.Concurrent.Chan.$wreadChan
+                                      ww1_sdVAa ww2_sdVAb GHC.Prim.void#
+                              of
+                              { Unit# ipv1_sdVAe [Occ=Once] ->
+                                    case
+                                        Control.Concurrent.Chan.getChanContents1
+                                            ww_sdVA9 GHC.Prim.void#
+                                    of
+                                    { Unit# ipv3_sdVAh [Occ=Once] ->
+                                          let {
+                                            sat_sdVAi [Occ=Once] :: [a_adUGY]
+                                            [LclId] =
+                                                CCCS :! [ipv1_sdVAe ipv3_sdVAh];
+                                          } in  Unit# [sat_sdVAi];
+                                    };
+                              };
+                        };
+                  };
+        } in 
+          GHC.IO.Unsafe.unsafeDupableInterleaveIO sat_sdVAj GHC.Prim.void#;
+
+Control.Concurrent.Chan.getChanContents
+  :: forall a. Control.Concurrent.Chan.Chan a -> GHC.Types.IO [a]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(U,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Concurrent.Chan.getChanContents1 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.dupChan1
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           Control.Concurrent.Chan.Chan a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_sdVAk void_0E]
+        case ds_sdVAk of {
+          Control.Concurrent.Chan.Chan _ [Occ=Dead] dt1_sdVAo ->
+              case readMVar# [dt1_sdVAo GHC.Prim.void#] of {
+                Unit# ipv1_sdVAr [Occ=Once] ->
+                    case newMVar# [GHC.Prim.void#] of {
+                      Unit# ipv3_sdVAu ->
+                          case putMVar# [ipv3_sdVAu ipv1_sdVAr GHC.Prim.void#] of s2#_sdVAv {
+                            (##) ->
+                                let {
+                                  sat_sdVAw [Occ=Once] :: Control.Concurrent.Chan.Chan a_adUGn
+                                  [LclId] =
+                                      CCCS Control.Concurrent.Chan.Chan! [ipv3_sdVAu dt1_sdVAo];
+                                } in  Unit# [sat_sdVAw];
+                          };
+                    };
+              };
+        };
+
+Control.Concurrent.Chan.dupChan
+  :: forall a.
+     Control.Concurrent.Chan.Chan a
+     -> GHC.Types.IO (Control.Concurrent.Chan.Chan a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LS),1*U(A,U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        Control.Concurrent.Chan.dupChan1 eta_B2 GHC.Prim.void#;
+
+Control.Concurrent.Chan.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Concurrent.Chan.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule4];
+
+Control.Concurrent.Chan.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Concurrent.Chan"#;
+
+Control.Concurrent.Chan.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$trModule2];
+
+Control.Concurrent.Chan.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Concurrent.Chan.$trModule3
+                                     Control.Concurrent.Chan.$trModule1];
+
+$krep_rdV0R :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+Control.Concurrent.Chan.$tcChItem2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ChItem"#;
+
+Control.Concurrent.Chan.$tcChItem1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChItem2];
+
+Control.Concurrent.Chan.$tcChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [6476193138296826625##
+                                    14259015418390681910##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChItem1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep1_rdV0S :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_rdV0R GHC.Types.[]];
+
+$krep2_rdV0T :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChItem
+                                              $krep1_rdV0S];
+
+$krep3_rdV0U :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep2_rdV0T GHC.Types.[]];
+
+$krep4_rdV0V :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep3_rdV0U];
+
+$krep5_rdV0W :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep4_rdV0V $krep2_rdV0T];
+
+Control.Concurrent.Chan.$tc'ChItem1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_rdV0R $krep5_rdV0W];
+
+Control.Concurrent.Chan.$tc'ChItem3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'ChItem"#;
+
+Control.Concurrent.Chan.$tc'ChItem2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'ChItem3];
+
+Control.Concurrent.Chan.$tc'ChItem :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10690021181819663847##
+                                    14453345100680315478##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'ChItem2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'ChItem1];
+
+$krep6_rdV0X :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep4_rdV0V GHC.Types.[]];
+
+$krep7_rdV0Y :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.MVar.$tcMVar
+                                              $krep6_rdV0X];
+
+Control.Concurrent.Chan.$tcChan2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Chan"#;
+
+Control.Concurrent.Chan.$tcChan1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tcChan2];
+
+Control.Concurrent.Chan.$tcChan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [8939098401262630739##
+                                    12846644923708574499##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tcChan1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep8_rdV0Z :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [Control.Concurrent.Chan.$tcChan
+                                              $krep1_rdV0S];
+
+$krep9_rdV10 :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep8_rdV0Z];
+
+Control.Concurrent.Chan.$tc'Chan1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep7_rdV0Y $krep9_rdV10];
+
+Control.Concurrent.Chan.$tc'Chan3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Chan"#;
+
+Control.Concurrent.Chan.$tc'Chan2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Concurrent.Chan.$tc'Chan3];
+
+Control.Concurrent.Chan.$tc'Chan :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [735828590425899369##
+                                    13090399282914560069##
+                                    Control.Concurrent.Chan.$trModule
+                                    Control.Concurrent.Chan.$tc'Chan2
+                                    1#
+                                    Control.Concurrent.Chan.$tc'Chan1];
+
+Control.Concurrent.Chan.ChItem
+  :: forall a.
+     a
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.ChItem a)
+     -> Control.Concurrent.Chan.ChItem a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Control.Concurrent.Chan.ChItem [eta_B2 eta_B1];
+
+Control.Concurrent.Chan.Chan
+  :: forall a.
+     GHC.Prim.MVar#
+       GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> GHC.Prim.MVar#
+          GHC.Prim.RealWorld (Control.Concurrent.Chan.Stream a)
+     -> Control.Concurrent.Chan.Chan a
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Concurrent.Chan.Chan [eta_B2 eta_B1];
+

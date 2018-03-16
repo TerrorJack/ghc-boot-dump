@@ -1,0 +1,2036 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:49:39.674335831 UTC
+
+GHC.CString.unpackCString# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_sjMo]
+        let {
+          unpack_sjMp [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMo unpack_sjMp] \r [nh_sjMq]
+                  case indexCharOffAddr# [addr_sjMo nh_sjMq] of ch_sjMr {
+                    __DEFAULT ->
+                        let {
+                          sat_sjMu [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_sjMp nh_sjMq] \u []
+                                  case +# [nh_sjMq 1#] of sat_sjMt {
+                                    __DEFAULT -> unpack_sjMp sat_sjMt;
+                                  }; } in
+                        let {
+                          sat_sjMs [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_sjMr];
+                        } in  : [sat_sjMs sat_sjMu];
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_sjMp 0#;
+
+GHC.CString.unpackAppendCString# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [addr_sjMv rest_sjMw]
+        let {
+          unpack_sjMx [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMv rest_sjMw unpack_sjMx] \r [nh_sjMy]
+                  case indexCharOffAddr# [addr_sjMv nh_sjMy] of ch_sjMz {
+                    __DEFAULT ->
+                        let {
+                          sat_sjMC [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_sjMx nh_sjMy] \u []
+                                  case +# [nh_sjMy 1#] of sat_sjMB {
+                                    __DEFAULT -> unpack_sjMx sat_sjMB;
+                                  }; } in
+                        let {
+                          sat_sjMA [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_sjMz];
+                        } in  : [sat_sjMA sat_sjMC];
+                    '\NUL'# -> rest_sjMw;
+                  };
+        } in  unpack_sjMx 0#;
+
+GHC.CString.unpackFoldrCString# [InlPrag=NOINLINE]
+  :: forall a. GHC.Prim.Addr# -> (GHC.Types.Char -> a -> a) -> a -> a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [addr_sjMD f_sjME z_sjMF]
+        let {
+          unpack_sjMG [Occ=LoopBreaker] :: GHC.Prim.Int# -> a_ajFd
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMD f_sjME z_sjMF unpack_sjMG] \r [nh_sjMH]
+                  case indexCharOffAddr# [addr_sjMD nh_sjMH] of ch_sjMI {
+                    __DEFAULT ->
+                        let {
+                          sat_sjML [Occ=Once] :: a_ajFd
+                          [LclId] =
+                              [unpack_sjMG nh_sjMH] \u []
+                                  case +# [nh_sjMH 1#] of sat_sjMK {
+                                    __DEFAULT -> unpack_sjMG sat_sjMK;
+                                  }; } in
+                        let {
+                          sat_sjMJ [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_sjMI];
+                        } in  f_sjME sat_sjMJ sat_sjML;
+                    '\NUL'# -> z_sjMF;
+                  };
+        } in  unpack_sjMG 0#;
+
+GHC.CString.unpackCStringUtf8# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_sjMM]
+        let {
+          unpack_sjMN [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMM unpack_sjMN] \r [nh_sjMO]
+                  case indexCharOffAddr# [addr_sjMM nh_sjMO] of ch_sjMP {
+                    __DEFAULT ->
+                        case leChar# [ch_sjMP '\DEL'#] of {
+                          __DEFAULT ->
+                              case leChar# [ch_sjMP '\223'#] of {
+                                __DEFAULT ->
+                                    case leChar# [ch_sjMP '\239'#] of {
+                                      __DEFAULT ->
+                                          case +# [nh_sjMO 3#] of sat_sjMT {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_sjMM sat_sjMT]
+                                                of
+                                                wild_sjMU
+                                                { __DEFAULT ->
+                                                      case +# [nh_sjMO 2#] of sat_sjMV {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_sjMM
+                                                                                   sat_sjMV]
+                                                            of
+                                                            wild1_sjMW
+                                                            { __DEFAULT ->
+                                                                  case +# [nh_sjMO 1#] of sat_sjMX {
+                                                                    __DEFAULT ->
+                                                                        case
+                                                                            indexCharOffAddr# [addr_sjMM
+                                                                                               sat_sjMX]
+                                                                        of
+                                                                        wild2_sjMY
+                                                                        { __DEFAULT ->
+                                                                              let {
+                                                                                sat_sjNg [Occ=Once]
+                                                                                  :: [GHC.Types.Char]
+                                                                                [LclId] =
+                                                                                    [unpack_sjMN
+                                                                                     nh_sjMO] \u []
+                                                                                        case
+                                                                                            +# [nh_sjMO
+                                                                                                4#]
+                                                                                        of
+                                                                                        sat_sjNf
+                                                                                        { __DEFAULT ->
+                                                                                              unpack_sjMN
+                                                                                                  sat_sjNf;
+                                                                                        };
+                                                                              } in 
+                                                                                case
+                                                                                    ord# [wild_sjMU]
+                                                                                of
+                                                                                sat_sjNa
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_sjNa
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_sjNb
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                ord# [wild1_sjMW]
+                                                                                            of
+                                                                                            sat_sjN6
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      -# [sat_sjN6
+                                                                                                          128#]
+                                                                                                  of
+                                                                                                  sat_sjN7
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            uncheckedIShiftL# [sat_sjN7
+                                                                                                                               6#]
+                                                                                                        of
+                                                                                                        sat_sjN8
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  ord# [wild2_sjMY]
+                                                                                                              of
+                                                                                                              sat_sjN2
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        -# [sat_sjN2
+                                                                                                                            128#]
+                                                                                                                    of
+                                                                                                                    sat_sjN3
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              uncheckedIShiftL# [sat_sjN3
+                                                                                                                                                 12#]
+                                                                                                                          of
+                                                                                                                          sat_sjN4
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    ord# [ch_sjMP]
+                                                                                                                                of
+                                                                                                                                sat_sjMZ
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      case
+                                                                                                                                          -# [sat_sjMZ
+                                                                                                                                              240#]
+                                                                                                                                      of
+                                                                                                                                      sat_sjN0
+                                                                                                                                      { __DEFAULT ->
+                                                                                                                                            case
+                                                                                                                                                uncheckedIShiftL# [sat_sjN0
+                                                                                                                                                                   18#]
+                                                                                                                                            of
+                                                                                                                                            sat_sjN1
+                                                                                                                                            { __DEFAULT ->
+                                                                                                                                                  case
+                                                                                                                                                      +# [sat_sjN1
+                                                                                                                                                          sat_sjN4]
+                                                                                                                                                  of
+                                                                                                                                                  sat_sjN5
+                                                                                                                                                  { __DEFAULT ->
+                                                                                                                                                        case
+                                                                                                                                                            +# [sat_sjN5
+                                                                                                                                                                sat_sjN8]
+                                                                                                                                                        of
+                                                                                                                                                        sat_sjN9
+                                                                                                                                                        { __DEFAULT ->
+                                                                                                                                                              case
+                                                                                                                                                                  +# [sat_sjN9
+                                                                                                                                                                      sat_sjNb]
+                                                                                                                                                              of
+                                                                                                                                                              sat_sjNc
+                                                                                                                                                              { __DEFAULT ->
+                                                                                                                                                                    case
+                                                                                                                                                                        chr# [sat_sjNc]
+                                                                                                                                                                    of
+                                                                                                                                                                    sat_sjNd
+                                                                                                                                                                    { __DEFAULT ->
+                                                                                                                                                                          let {
+                                                                                                                                                                            sat_sjNe [Occ=Once]
+                                                                                                                                                                              :: GHC.Types.Char
+                                                                                                                                                                            [LclId] =
+                                                                                                                                                                                CCCS GHC.Types.C#! [sat_sjNd];
+                                                                                                                                                                          } in 
+                                                                                                                                                                            : [sat_sjNe
+                                                                                                                                                                               sat_sjNg];
+                                                                                                                                                                    };
+                                                                                                                                                              };
+                                                                                                                                                        };
+                                                                                                                                                  };
+                                                                                                                                            };
+                                                                                                                                      };
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                        };
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                      1# ->
+                                          case +# [nh_sjMO 2#] of sat_sjNh {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_sjMM sat_sjNh]
+                                                of
+                                                wild_sjNi
+                                                { __DEFAULT ->
+                                                      case +# [nh_sjMO 1#] of sat_sjNj {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_sjMM
+                                                                                   sat_sjNj]
+                                                            of
+                                                            wild1_sjNk
+                                                            { __DEFAULT ->
+                                                                  let {
+                                                                    sat_sjNy [Occ=Once]
+                                                                      :: [GHC.Types.Char]
+                                                                    [LclId] =
+                                                                        [unpack_sjMN nh_sjMO] \u []
+                                                                            case
+                                                                                +# [nh_sjMO 3#]
+                                                                            of
+                                                                            sat_sjNx
+                                                                            { __DEFAULT ->
+                                                                                  unpack_sjMN
+                                                                                      sat_sjNx;
+                                                                            };
+                                                                  } in 
+                                                                    case
+                                                                        ord# [wild_sjNi]
+                                                                    of
+                                                                    sat_sjNs
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              -# [sat_sjNs 128#]
+                                                                          of
+                                                                          sat_sjNt
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    ord# [wild1_sjNk]
+                                                                                of
+                                                                                sat_sjNo
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_sjNo
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_sjNp
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                uncheckedIShiftL# [sat_sjNp
+                                                                                                                   6#]
+                                                                                            of
+                                                                                            sat_sjNq
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      ord# [ch_sjMP]
+                                                                                                  of
+                                                                                                  sat_sjNl
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            -# [sat_sjNl
+                                                                                                                224#]
+                                                                                                        of
+                                                                                                        sat_sjNm
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  uncheckedIShiftL# [sat_sjNm
+                                                                                                                                     12#]
+                                                                                                              of
+                                                                                                              sat_sjNn
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        +# [sat_sjNn
+                                                                                                                            sat_sjNq]
+                                                                                                                    of
+                                                                                                                    sat_sjNr
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              +# [sat_sjNr
+                                                                                                                                  sat_sjNt]
+                                                                                                                          of
+                                                                                                                          sat_sjNu
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    chr# [sat_sjNu]
+                                                                                                                                of
+                                                                                                                                sat_sjNv
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      let {
+                                                                                                                                        sat_sjNw [Occ=Once]
+                                                                                                                                          :: GHC.Types.Char
+                                                                                                                                        [LclId] =
+                                                                                                                                            CCCS GHC.Types.C#! [sat_sjNv];
+                                                                                                                                      } in 
+                                                                                                                                        : [sat_sjNw
+                                                                                                                                           sat_sjNy];
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                    };
+                                1# ->
+                                    case +# [nh_sjMO 1#] of sat_sjNz {
+                                      __DEFAULT ->
+                                          case indexCharOffAddr# [addr_sjMM sat_sjNz] of wild_sjNA {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_sjNK [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      [unpack_sjMN nh_sjMO] \u []
+                                                          case +# [nh_sjMO 2#] of sat_sjNJ {
+                                                            __DEFAULT -> unpack_sjMN sat_sjNJ;
+                                                          };
+                                                } in 
+                                                  case ord# [wild_sjNA] of sat_sjNE {
+                                                    __DEFAULT ->
+                                                        case -# [sat_sjNE 128#] of sat_sjNF {
+                                                          __DEFAULT ->
+                                                              case ord# [ch_sjMP] of sat_sjNB {
+                                                                __DEFAULT ->
+                                                                    case
+                                                                        -# [sat_sjNB 192#]
+                                                                    of
+                                                                    sat_sjNC
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              uncheckedIShiftL# [sat_sjNC
+                                                                                                 6#]
+                                                                          of
+                                                                          sat_sjND
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    +# [sat_sjND
+                                                                                        sat_sjNF]
+                                                                                of
+                                                                                sat_sjNG
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          chr# [sat_sjNG]
+                                                                                      of
+                                                                                      sat_sjNH
+                                                                                      { __DEFAULT ->
+                                                                                            let {
+                                                                                              sat_sjNI [Occ=Once]
+                                                                                                :: GHC.Types.Char
+                                                                                              [LclId] =
+                                                                                                  CCCS GHC.Types.C#! [sat_sjNH];
+                                                                                            } in 
+                                                                                              : [sat_sjNI
+                                                                                                 sat_sjNK];
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                          };
+                                    };
+                              };
+                          1# ->
+                              let {
+                                sat_sjNN [Occ=Once] :: [GHC.Types.Char]
+                                [LclId] =
+                                    [unpack_sjMN nh_sjMO] \u []
+                                        case +# [nh_sjMO 1#] of sat_sjNM {
+                                          __DEFAULT -> unpack_sjMN sat_sjNM;
+                                        }; } in
+                              let {
+                                sat_sjNL [Occ=Once] :: GHC.Types.Char
+                                [LclId] =
+                                    CCCS GHC.Types.C#! [ch_sjMP];
+                              } in  : [sat_sjNL sat_sjNN];
+                        };
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_sjMN 0#;
+
+GHC.CString.unpackNBytes# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> GHC.Prim.Int# -> [GHC.Types.Char]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [_addr_sjNO ds_sjNP]
+        case ds_sjNP of ds1_sjNQ {
+          __DEFAULT ->
+              case -# [ds1_sjNQ 1#] of sat_sjNZ {
+                __DEFAULT ->
+                    let-no-escape {
+                      unpack_sjNR [Occ=LoopBreakerT[2]]
+                        :: [GHC.Types.Char] -> GHC.Prim.Int# -> [GHC.Types.Char]
+                      [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+                          sat-only [_addr_sjNO unpack_sjNR] \r [acc_sjNS i#_sjNT]
+                              case <# [i#_sjNT 0#] of {
+                                __DEFAULT ->
+                                    case indexCharOffAddr# [_addr_sjNO i#_sjNT] of ch_sjNV {
+                                      __DEFAULT ->
+                                          case -# [i#_sjNT 1#] of sat_sjNY {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_sjNW [Occ=Once] :: GHC.Types.Char
+                                                  [LclId] =
+                                                      CCCS GHC.Types.C#! [ch_sjNV]; } in
+                                                let {
+                                                  sat_sjNX [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      CCCS :! [sat_sjNW acc_sjNS];
+                                                } in  unpack_sjNR sat_sjNX sat_sjNY;
+                                          };
+                                    };
+                                1# -> acc_sjNS;
+                              };
+                    } in  unpack_sjNR GHC.Types.[] sat_sjNZ;
+              };
+          0# -> [] [];
+        };
+
+GHC.CString.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.CString.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule4];
+
+GHC.CString.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.CString"#;
+
+GHC.CString.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule2];
+
+GHC.CString.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.CString.$trModule3
+                                     GHC.CString.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:49:39.683815203 UTC
+
+GHC.CString.unpackCString# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_sjMo]
+        let {
+          unpack_sjMp [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMo unpack_sjMp] \r [nh_sjMq]
+                  case indexCharOffAddr# [addr_sjMo nh_sjMq] of ch_sjMr {
+                    __DEFAULT ->
+                        let {
+                          sat_sjMu [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_sjMp nh_sjMq] \u []
+                                  case +# [nh_sjMq 1#] of sat_sjMt {
+                                    __DEFAULT -> unpack_sjMp sat_sjMt;
+                                  }; } in
+                        let {
+                          sat_sjMs [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_sjMr];
+                        } in  : [sat_sjMs sat_sjMu];
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_sjMp 0#;
+
+GHC.CString.unpackAppendCString# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [addr_sjMv rest_sjMw]
+        let {
+          unpack_sjMx [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMv rest_sjMw unpack_sjMx] \r [nh_sjMy]
+                  case indexCharOffAddr# [addr_sjMv nh_sjMy] of ch_sjMz {
+                    __DEFAULT ->
+                        let {
+                          sat_sjMC [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_sjMx nh_sjMy] \u []
+                                  case +# [nh_sjMy 1#] of sat_sjMB {
+                                    __DEFAULT -> unpack_sjMx sat_sjMB;
+                                  }; } in
+                        let {
+                          sat_sjMA [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_sjMz];
+                        } in  : [sat_sjMA sat_sjMC];
+                    '\NUL'# -> rest_sjMw;
+                  };
+        } in  unpack_sjMx 0#;
+
+GHC.CString.unpackFoldrCString# [InlPrag=NOINLINE]
+  :: forall a. GHC.Prim.Addr# -> (GHC.Types.Char -> a -> a) -> a -> a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [addr_sjMD f_sjME z_sjMF]
+        let {
+          unpack_sjMG [Occ=LoopBreaker] :: GHC.Prim.Int# -> a_ajFd
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMD f_sjME z_sjMF unpack_sjMG] \r [nh_sjMH]
+                  case indexCharOffAddr# [addr_sjMD nh_sjMH] of ch_sjMI {
+                    __DEFAULT ->
+                        let {
+                          sat_sjML [Occ=Once] :: a_ajFd
+                          [LclId] =
+                              [unpack_sjMG nh_sjMH] \u []
+                                  case +# [nh_sjMH 1#] of sat_sjMK {
+                                    __DEFAULT -> unpack_sjMG sat_sjMK;
+                                  }; } in
+                        let {
+                          sat_sjMJ [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_sjMI];
+                        } in  f_sjME sat_sjMJ sat_sjML;
+                    '\NUL'# -> z_sjMF;
+                  };
+        } in  unpack_sjMG 0#;
+
+GHC.CString.unpackCStringUtf8# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_sjMM]
+        let {
+          unpack_sjMN [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_sjMM unpack_sjMN] \r [nh_sjMO]
+                  case indexCharOffAddr# [addr_sjMM nh_sjMO] of ch_sjMP {
+                    __DEFAULT ->
+                        case leChar# [ch_sjMP '\DEL'#] of {
+                          __DEFAULT ->
+                              case leChar# [ch_sjMP '\223'#] of {
+                                __DEFAULT ->
+                                    case leChar# [ch_sjMP '\239'#] of {
+                                      __DEFAULT ->
+                                          case +# [nh_sjMO 3#] of sat_sjMT {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_sjMM sat_sjMT]
+                                                of
+                                                wild_sjMU
+                                                { __DEFAULT ->
+                                                      case +# [nh_sjMO 2#] of sat_sjMV {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_sjMM
+                                                                                   sat_sjMV]
+                                                            of
+                                                            wild1_sjMW
+                                                            { __DEFAULT ->
+                                                                  case +# [nh_sjMO 1#] of sat_sjMX {
+                                                                    __DEFAULT ->
+                                                                        case
+                                                                            indexCharOffAddr# [addr_sjMM
+                                                                                               sat_sjMX]
+                                                                        of
+                                                                        wild2_sjMY
+                                                                        { __DEFAULT ->
+                                                                              let {
+                                                                                sat_sjNg [Occ=Once]
+                                                                                  :: [GHC.Types.Char]
+                                                                                [LclId] =
+                                                                                    [unpack_sjMN
+                                                                                     nh_sjMO] \u []
+                                                                                        case
+                                                                                            +# [nh_sjMO
+                                                                                                4#]
+                                                                                        of
+                                                                                        sat_sjNf
+                                                                                        { __DEFAULT ->
+                                                                                              unpack_sjMN
+                                                                                                  sat_sjNf;
+                                                                                        };
+                                                                              } in 
+                                                                                case
+                                                                                    ord# [wild_sjMU]
+                                                                                of
+                                                                                sat_sjNa
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_sjNa
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_sjNb
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                ord# [wild1_sjMW]
+                                                                                            of
+                                                                                            sat_sjN6
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      -# [sat_sjN6
+                                                                                                          128#]
+                                                                                                  of
+                                                                                                  sat_sjN7
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            uncheckedIShiftL# [sat_sjN7
+                                                                                                                               6#]
+                                                                                                        of
+                                                                                                        sat_sjN8
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  ord# [wild2_sjMY]
+                                                                                                              of
+                                                                                                              sat_sjN2
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        -# [sat_sjN2
+                                                                                                                            128#]
+                                                                                                                    of
+                                                                                                                    sat_sjN3
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              uncheckedIShiftL# [sat_sjN3
+                                                                                                                                                 12#]
+                                                                                                                          of
+                                                                                                                          sat_sjN4
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    ord# [ch_sjMP]
+                                                                                                                                of
+                                                                                                                                sat_sjMZ
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      case
+                                                                                                                                          -# [sat_sjMZ
+                                                                                                                                              240#]
+                                                                                                                                      of
+                                                                                                                                      sat_sjN0
+                                                                                                                                      { __DEFAULT ->
+                                                                                                                                            case
+                                                                                                                                                uncheckedIShiftL# [sat_sjN0
+                                                                                                                                                                   18#]
+                                                                                                                                            of
+                                                                                                                                            sat_sjN1
+                                                                                                                                            { __DEFAULT ->
+                                                                                                                                                  case
+                                                                                                                                                      +# [sat_sjN1
+                                                                                                                                                          sat_sjN4]
+                                                                                                                                                  of
+                                                                                                                                                  sat_sjN5
+                                                                                                                                                  { __DEFAULT ->
+                                                                                                                                                        case
+                                                                                                                                                            +# [sat_sjN5
+                                                                                                                                                                sat_sjN8]
+                                                                                                                                                        of
+                                                                                                                                                        sat_sjN9
+                                                                                                                                                        { __DEFAULT ->
+                                                                                                                                                              case
+                                                                                                                                                                  +# [sat_sjN9
+                                                                                                                                                                      sat_sjNb]
+                                                                                                                                                              of
+                                                                                                                                                              sat_sjNc
+                                                                                                                                                              { __DEFAULT ->
+                                                                                                                                                                    case
+                                                                                                                                                                        chr# [sat_sjNc]
+                                                                                                                                                                    of
+                                                                                                                                                                    sat_sjNd
+                                                                                                                                                                    { __DEFAULT ->
+                                                                                                                                                                          let {
+                                                                                                                                                                            sat_sjNe [Occ=Once]
+                                                                                                                                                                              :: GHC.Types.Char
+                                                                                                                                                                            [LclId] =
+                                                                                                                                                                                CCCS GHC.Types.C#! [sat_sjNd];
+                                                                                                                                                                          } in 
+                                                                                                                                                                            : [sat_sjNe
+                                                                                                                                                                               sat_sjNg];
+                                                                                                                                                                    };
+                                                                                                                                                              };
+                                                                                                                                                        };
+                                                                                                                                                  };
+                                                                                                                                            };
+                                                                                                                                      };
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                        };
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                      1# ->
+                                          case +# [nh_sjMO 2#] of sat_sjNh {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_sjMM sat_sjNh]
+                                                of
+                                                wild_sjNi
+                                                { __DEFAULT ->
+                                                      case +# [nh_sjMO 1#] of sat_sjNj {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_sjMM
+                                                                                   sat_sjNj]
+                                                            of
+                                                            wild1_sjNk
+                                                            { __DEFAULT ->
+                                                                  let {
+                                                                    sat_sjNy [Occ=Once]
+                                                                      :: [GHC.Types.Char]
+                                                                    [LclId] =
+                                                                        [unpack_sjMN nh_sjMO] \u []
+                                                                            case
+                                                                                +# [nh_sjMO 3#]
+                                                                            of
+                                                                            sat_sjNx
+                                                                            { __DEFAULT ->
+                                                                                  unpack_sjMN
+                                                                                      sat_sjNx;
+                                                                            };
+                                                                  } in 
+                                                                    case
+                                                                        ord# [wild_sjNi]
+                                                                    of
+                                                                    sat_sjNs
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              -# [sat_sjNs 128#]
+                                                                          of
+                                                                          sat_sjNt
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    ord# [wild1_sjNk]
+                                                                                of
+                                                                                sat_sjNo
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_sjNo
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_sjNp
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                uncheckedIShiftL# [sat_sjNp
+                                                                                                                   6#]
+                                                                                            of
+                                                                                            sat_sjNq
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      ord# [ch_sjMP]
+                                                                                                  of
+                                                                                                  sat_sjNl
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            -# [sat_sjNl
+                                                                                                                224#]
+                                                                                                        of
+                                                                                                        sat_sjNm
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  uncheckedIShiftL# [sat_sjNm
+                                                                                                                                     12#]
+                                                                                                              of
+                                                                                                              sat_sjNn
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        +# [sat_sjNn
+                                                                                                                            sat_sjNq]
+                                                                                                                    of
+                                                                                                                    sat_sjNr
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              +# [sat_sjNr
+                                                                                                                                  sat_sjNt]
+                                                                                                                          of
+                                                                                                                          sat_sjNu
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    chr# [sat_sjNu]
+                                                                                                                                of
+                                                                                                                                sat_sjNv
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      let {
+                                                                                                                                        sat_sjNw [Occ=Once]
+                                                                                                                                          :: GHC.Types.Char
+                                                                                                                                        [LclId] =
+                                                                                                                                            CCCS GHC.Types.C#! [sat_sjNv];
+                                                                                                                                      } in 
+                                                                                                                                        : [sat_sjNw
+                                                                                                                                           sat_sjNy];
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                    };
+                                1# ->
+                                    case +# [nh_sjMO 1#] of sat_sjNz {
+                                      __DEFAULT ->
+                                          case indexCharOffAddr# [addr_sjMM sat_sjNz] of wild_sjNA {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_sjNK [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      [unpack_sjMN nh_sjMO] \u []
+                                                          case +# [nh_sjMO 2#] of sat_sjNJ {
+                                                            __DEFAULT -> unpack_sjMN sat_sjNJ;
+                                                          };
+                                                } in 
+                                                  case ord# [wild_sjNA] of sat_sjNE {
+                                                    __DEFAULT ->
+                                                        case -# [sat_sjNE 128#] of sat_sjNF {
+                                                          __DEFAULT ->
+                                                              case ord# [ch_sjMP] of sat_sjNB {
+                                                                __DEFAULT ->
+                                                                    case
+                                                                        -# [sat_sjNB 192#]
+                                                                    of
+                                                                    sat_sjNC
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              uncheckedIShiftL# [sat_sjNC
+                                                                                                 6#]
+                                                                          of
+                                                                          sat_sjND
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    +# [sat_sjND
+                                                                                        sat_sjNF]
+                                                                                of
+                                                                                sat_sjNG
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          chr# [sat_sjNG]
+                                                                                      of
+                                                                                      sat_sjNH
+                                                                                      { __DEFAULT ->
+                                                                                            let {
+                                                                                              sat_sjNI [Occ=Once]
+                                                                                                :: GHC.Types.Char
+                                                                                              [LclId] =
+                                                                                                  CCCS GHC.Types.C#! [sat_sjNH];
+                                                                                            } in 
+                                                                                              : [sat_sjNI
+                                                                                                 sat_sjNK];
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                          };
+                                    };
+                              };
+                          1# ->
+                              let {
+                                sat_sjNN [Occ=Once] :: [GHC.Types.Char]
+                                [LclId] =
+                                    [unpack_sjMN nh_sjMO] \u []
+                                        case +# [nh_sjMO 1#] of sat_sjNM {
+                                          __DEFAULT -> unpack_sjMN sat_sjNM;
+                                        }; } in
+                              let {
+                                sat_sjNL [Occ=Once] :: GHC.Types.Char
+                                [LclId] =
+                                    CCCS GHC.Types.C#! [ch_sjMP];
+                              } in  : [sat_sjNL sat_sjNN];
+                        };
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_sjMN 0#;
+
+GHC.CString.unpackNBytes# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> GHC.Prim.Int# -> [GHC.Types.Char]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [_addr_sjNO ds_sjNP]
+        case ds_sjNP of ds1_sjNQ {
+          __DEFAULT ->
+              case -# [ds1_sjNQ 1#] of sat_sjNZ {
+                __DEFAULT ->
+                    let-no-escape {
+                      unpack_sjNR [Occ=LoopBreakerT[2]]
+                        :: [GHC.Types.Char] -> GHC.Prim.Int# -> [GHC.Types.Char]
+                      [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+                          sat-only [_addr_sjNO unpack_sjNR] \r [acc_sjNS i#_sjNT]
+                              case <# [i#_sjNT 0#] of {
+                                __DEFAULT ->
+                                    case indexCharOffAddr# [_addr_sjNO i#_sjNT] of ch_sjNV {
+                                      __DEFAULT ->
+                                          case -# [i#_sjNT 1#] of sat_sjNY {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_sjNW [Occ=Once] :: GHC.Types.Char
+                                                  [LclId] =
+                                                      CCCS GHC.Types.C#! [ch_sjNV]; } in
+                                                let {
+                                                  sat_sjNX [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      CCCS :! [sat_sjNW acc_sjNS];
+                                                } in  unpack_sjNR sat_sjNX sat_sjNY;
+                                          };
+                                    };
+                                1# -> acc_sjNS;
+                              };
+                    } in  unpack_sjNR GHC.Types.[] sat_sjNZ;
+              };
+          0# -> [] [];
+        };
+
+GHC.CString.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.CString.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule4];
+
+GHC.CString.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.CString"#;
+
+GHC.CString.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule2];
+
+GHC.CString.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.CString.$trModule3
+                                     GHC.CString.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:49:39.998713465 UTC
+
+GHC.CString.unpackCString# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_skbd]
+        let {
+          unpack_skbe [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbd unpack_skbe] \r [nh_skbf]
+                  case indexCharOffAddr# [addr_skbd nh_skbf] of ch_skbg {
+                    __DEFAULT ->
+                        let {
+                          sat_skbj [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_skbe nh_skbf] \u []
+                                  case +# [nh_skbf 1#] of sat_skbi {
+                                    __DEFAULT -> unpack_skbe sat_skbi;
+                                  }; } in
+                        let {
+                          sat_skbh [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_skbg];
+                        } in  : [sat_skbh sat_skbj];
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_skbe 0#;
+
+GHC.CString.unpackAppendCString# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [addr_skbk rest_skbl]
+        let {
+          unpack_skbm [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbk rest_skbl unpack_skbm] \r [nh_skbn]
+                  case indexCharOffAddr# [addr_skbk nh_skbn] of ch_skbo {
+                    __DEFAULT ->
+                        let {
+                          sat_skbr [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_skbm nh_skbn] \u []
+                                  case +# [nh_skbn 1#] of sat_skbq {
+                                    __DEFAULT -> unpack_skbm sat_skbq;
+                                  }; } in
+                        let {
+                          sat_skbp [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_skbo];
+                        } in  : [sat_skbp sat_skbr];
+                    '\NUL'# -> rest_skbl;
+                  };
+        } in  unpack_skbm 0#;
+
+GHC.CString.unpackFoldrCString# [InlPrag=NOINLINE]
+  :: forall a. GHC.Prim.Addr# -> (GHC.Types.Char -> a -> a) -> a -> a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [addr_skbs f_skbt z_skbu]
+        let {
+          unpack_skbv [Occ=LoopBreaker] :: GHC.Prim.Int# -> a_ajFd
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbs f_skbt z_skbu unpack_skbv] \r [nh_skbw]
+                  case indexCharOffAddr# [addr_skbs nh_skbw] of ch_skbx {
+                    __DEFAULT ->
+                        let {
+                          sat_skbA [Occ=Once] :: a_ajFd
+                          [LclId] =
+                              [unpack_skbv nh_skbw] \u []
+                                  case +# [nh_skbw 1#] of sat_skbz {
+                                    __DEFAULT -> unpack_skbv sat_skbz;
+                                  }; } in
+                        let {
+                          sat_skby [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_skbx];
+                        } in  f_skbt sat_skby sat_skbA;
+                    '\NUL'# -> z_skbu;
+                  };
+        } in  unpack_skbv 0#;
+
+GHC.CString.unpackCStringUtf8# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_skbB]
+        let {
+          unpack_skbC [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbB unpack_skbC] \r [nh_skbD]
+                  case indexCharOffAddr# [addr_skbB nh_skbD] of ch_skbE {
+                    __DEFAULT ->
+                        case leChar# [ch_skbE '\DEL'#] of {
+                          __DEFAULT ->
+                              case leChar# [ch_skbE '\223'#] of {
+                                __DEFAULT ->
+                                    case leChar# [ch_skbE '\239'#] of {
+                                      __DEFAULT ->
+                                          case +# [nh_skbD 3#] of sat_skbI {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_skbB sat_skbI]
+                                                of
+                                                wild_skbJ
+                                                { __DEFAULT ->
+                                                      case +# [nh_skbD 2#] of sat_skbK {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_skbB
+                                                                                   sat_skbK]
+                                                            of
+                                                            wild1_skbL
+                                                            { __DEFAULT ->
+                                                                  case +# [nh_skbD 1#] of sat_skbM {
+                                                                    __DEFAULT ->
+                                                                        case
+                                                                            indexCharOffAddr# [addr_skbB
+                                                                                               sat_skbM]
+                                                                        of
+                                                                        wild2_skbN
+                                                                        { __DEFAULT ->
+                                                                              let {
+                                                                                sat_skc5 [Occ=Once]
+                                                                                  :: [GHC.Types.Char]
+                                                                                [LclId] =
+                                                                                    [unpack_skbC
+                                                                                     nh_skbD] \u []
+                                                                                        case
+                                                                                            +# [nh_skbD
+                                                                                                4#]
+                                                                                        of
+                                                                                        sat_skc4
+                                                                                        { __DEFAULT ->
+                                                                                              unpack_skbC
+                                                                                                  sat_skc4;
+                                                                                        };
+                                                                              } in 
+                                                                                case
+                                                                                    ord# [wild_skbJ]
+                                                                                of
+                                                                                sat_skbZ
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_skbZ
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_skc0
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                ord# [wild1_skbL]
+                                                                                            of
+                                                                                            sat_skbV
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      -# [sat_skbV
+                                                                                                          128#]
+                                                                                                  of
+                                                                                                  sat_skbW
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            uncheckedIShiftL# [sat_skbW
+                                                                                                                               6#]
+                                                                                                        of
+                                                                                                        sat_skbX
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  ord# [wild2_skbN]
+                                                                                                              of
+                                                                                                              sat_skbR
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        -# [sat_skbR
+                                                                                                                            128#]
+                                                                                                                    of
+                                                                                                                    sat_skbS
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              uncheckedIShiftL# [sat_skbS
+                                                                                                                                                 12#]
+                                                                                                                          of
+                                                                                                                          sat_skbT
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    ord# [ch_skbE]
+                                                                                                                                of
+                                                                                                                                sat_skbO
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      case
+                                                                                                                                          -# [sat_skbO
+                                                                                                                                              240#]
+                                                                                                                                      of
+                                                                                                                                      sat_skbP
+                                                                                                                                      { __DEFAULT ->
+                                                                                                                                            case
+                                                                                                                                                uncheckedIShiftL# [sat_skbP
+                                                                                                                                                                   18#]
+                                                                                                                                            of
+                                                                                                                                            sat_skbQ
+                                                                                                                                            { __DEFAULT ->
+                                                                                                                                                  case
+                                                                                                                                                      +# [sat_skbQ
+                                                                                                                                                          sat_skbT]
+                                                                                                                                                  of
+                                                                                                                                                  sat_skbU
+                                                                                                                                                  { __DEFAULT ->
+                                                                                                                                                        case
+                                                                                                                                                            +# [sat_skbU
+                                                                                                                                                                sat_skbX]
+                                                                                                                                                        of
+                                                                                                                                                        sat_skbY
+                                                                                                                                                        { __DEFAULT ->
+                                                                                                                                                              case
+                                                                                                                                                                  +# [sat_skbY
+                                                                                                                                                                      sat_skc0]
+                                                                                                                                                              of
+                                                                                                                                                              sat_skc1
+                                                                                                                                                              { __DEFAULT ->
+                                                                                                                                                                    case
+                                                                                                                                                                        chr# [sat_skc1]
+                                                                                                                                                                    of
+                                                                                                                                                                    sat_skc2
+                                                                                                                                                                    { __DEFAULT ->
+                                                                                                                                                                          let {
+                                                                                                                                                                            sat_skc3 [Occ=Once]
+                                                                                                                                                                              :: GHC.Types.Char
+                                                                                                                                                                            [LclId] =
+                                                                                                                                                                                CCCS GHC.Types.C#! [sat_skc2];
+                                                                                                                                                                          } in 
+                                                                                                                                                                            : [sat_skc3
+                                                                                                                                                                               sat_skc5];
+                                                                                                                                                                    };
+                                                                                                                                                              };
+                                                                                                                                                        };
+                                                                                                                                                  };
+                                                                                                                                            };
+                                                                                                                                      };
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                        };
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                      1# ->
+                                          case +# [nh_skbD 2#] of sat_skc6 {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_skbB sat_skc6]
+                                                of
+                                                wild_skc7
+                                                { __DEFAULT ->
+                                                      case +# [nh_skbD 1#] of sat_skc8 {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_skbB
+                                                                                   sat_skc8]
+                                                            of
+                                                            wild1_skc9
+                                                            { __DEFAULT ->
+                                                                  let {
+                                                                    sat_skcn [Occ=Once]
+                                                                      :: [GHC.Types.Char]
+                                                                    [LclId] =
+                                                                        [unpack_skbC nh_skbD] \u []
+                                                                            case
+                                                                                +# [nh_skbD 3#]
+                                                                            of
+                                                                            sat_skcm
+                                                                            { __DEFAULT ->
+                                                                                  unpack_skbC
+                                                                                      sat_skcm;
+                                                                            };
+                                                                  } in 
+                                                                    case
+                                                                        ord# [wild_skc7]
+                                                                    of
+                                                                    sat_skch
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              -# [sat_skch 128#]
+                                                                          of
+                                                                          sat_skci
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    ord# [wild1_skc9]
+                                                                                of
+                                                                                sat_skcd
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_skcd
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_skce
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                uncheckedIShiftL# [sat_skce
+                                                                                                                   6#]
+                                                                                            of
+                                                                                            sat_skcf
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      ord# [ch_skbE]
+                                                                                                  of
+                                                                                                  sat_skca
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            -# [sat_skca
+                                                                                                                224#]
+                                                                                                        of
+                                                                                                        sat_skcb
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  uncheckedIShiftL# [sat_skcb
+                                                                                                                                     12#]
+                                                                                                              of
+                                                                                                              sat_skcc
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        +# [sat_skcc
+                                                                                                                            sat_skcf]
+                                                                                                                    of
+                                                                                                                    sat_skcg
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              +# [sat_skcg
+                                                                                                                                  sat_skci]
+                                                                                                                          of
+                                                                                                                          sat_skcj
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    chr# [sat_skcj]
+                                                                                                                                of
+                                                                                                                                sat_skck
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      let {
+                                                                                                                                        sat_skcl [Occ=Once]
+                                                                                                                                          :: GHC.Types.Char
+                                                                                                                                        [LclId] =
+                                                                                                                                            CCCS GHC.Types.C#! [sat_skck];
+                                                                                                                                      } in 
+                                                                                                                                        : [sat_skcl
+                                                                                                                                           sat_skcn];
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                    };
+                                1# ->
+                                    case +# [nh_skbD 1#] of sat_skco {
+                                      __DEFAULT ->
+                                          case indexCharOffAddr# [addr_skbB sat_skco] of wild_skcp {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_skcz [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      [unpack_skbC nh_skbD] \u []
+                                                          case +# [nh_skbD 2#] of sat_skcy {
+                                                            __DEFAULT -> unpack_skbC sat_skcy;
+                                                          };
+                                                } in 
+                                                  case ord# [wild_skcp] of sat_skct {
+                                                    __DEFAULT ->
+                                                        case -# [sat_skct 128#] of sat_skcu {
+                                                          __DEFAULT ->
+                                                              case ord# [ch_skbE] of sat_skcq {
+                                                                __DEFAULT ->
+                                                                    case
+                                                                        -# [sat_skcq 192#]
+                                                                    of
+                                                                    sat_skcr
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              uncheckedIShiftL# [sat_skcr
+                                                                                                 6#]
+                                                                          of
+                                                                          sat_skcs
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    +# [sat_skcs
+                                                                                        sat_skcu]
+                                                                                of
+                                                                                sat_skcv
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          chr# [sat_skcv]
+                                                                                      of
+                                                                                      sat_skcw
+                                                                                      { __DEFAULT ->
+                                                                                            let {
+                                                                                              sat_skcx [Occ=Once]
+                                                                                                :: GHC.Types.Char
+                                                                                              [LclId] =
+                                                                                                  CCCS GHC.Types.C#! [sat_skcw];
+                                                                                            } in 
+                                                                                              : [sat_skcx
+                                                                                                 sat_skcz];
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                          };
+                                    };
+                              };
+                          1# ->
+                              let {
+                                sat_skcC [Occ=Once] :: [GHC.Types.Char]
+                                [LclId] =
+                                    [unpack_skbC nh_skbD] \u []
+                                        case +# [nh_skbD 1#] of sat_skcB {
+                                          __DEFAULT -> unpack_skbC sat_skcB;
+                                        }; } in
+                              let {
+                                sat_skcA [Occ=Once] :: GHC.Types.Char
+                                [LclId] =
+                                    CCCS GHC.Types.C#! [ch_skbE];
+                              } in  : [sat_skcA sat_skcC];
+                        };
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_skbC 0#;
+
+GHC.CString.unpackNBytes# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> GHC.Prim.Int# -> [GHC.Types.Char]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [_addr_skcD ds_skcE]
+        case ds_skcE of ds1_skcF {
+          __DEFAULT ->
+              case -# [ds1_skcF 1#] of sat_skcO {
+                __DEFAULT ->
+                    let-no-escape {
+                      unpack_skcG [Occ=LoopBreakerT[2]]
+                        :: [GHC.Types.Char] -> GHC.Prim.Int# -> [GHC.Types.Char]
+                      [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+                          sat-only [_addr_skcD unpack_skcG] \r [acc_skcH i#_skcI]
+                              case <# [i#_skcI 0#] of {
+                                __DEFAULT ->
+                                    case indexCharOffAddr# [_addr_skcD i#_skcI] of ch_skcK {
+                                      __DEFAULT ->
+                                          case -# [i#_skcI 1#] of sat_skcN {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_skcL [Occ=Once] :: GHC.Types.Char
+                                                  [LclId] =
+                                                      CCCS GHC.Types.C#! [ch_skcK]; } in
+                                                let {
+                                                  sat_skcM [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      CCCS :! [sat_skcL acc_skcH];
+                                                } in  unpack_skcG sat_skcM sat_skcN;
+                                          };
+                                    };
+                                1# -> acc_skcH;
+                              };
+                    } in  unpack_skcG GHC.Types.[] sat_skcO;
+              };
+          0# -> [] [];
+        };
+
+GHC.CString.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.CString.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule4];
+
+GHC.CString.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.CString"#;
+
+GHC.CString.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule2];
+
+GHC.CString.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.CString.$trModule3
+                                     GHC.CString.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:49:40.008751126 UTC
+
+GHC.CString.unpackCString# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_skbd]
+        let {
+          unpack_skbe [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbd unpack_skbe] \r [nh_skbf]
+                  case indexCharOffAddr# [addr_skbd nh_skbf] of ch_skbg {
+                    __DEFAULT ->
+                        let {
+                          sat_skbj [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_skbe nh_skbf] \u []
+                                  case +# [nh_skbf 1#] of sat_skbi {
+                                    __DEFAULT -> unpack_skbe sat_skbi;
+                                  }; } in
+                        let {
+                          sat_skbh [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_skbg];
+                        } in  : [sat_skbh sat_skbj];
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_skbe 0#;
+
+GHC.CString.unpackAppendCString# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char] -> [GHC.Types.Char]
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><L,U>, Unf=OtherCon []] =
+    [] \r [addr_skbk rest_skbl]
+        let {
+          unpack_skbm [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbk rest_skbl unpack_skbm] \r [nh_skbn]
+                  case indexCharOffAddr# [addr_skbk nh_skbn] of ch_skbo {
+                    __DEFAULT ->
+                        let {
+                          sat_skbr [Occ=Once] :: [GHC.Types.Char]
+                          [LclId] =
+                              [unpack_skbm nh_skbn] \u []
+                                  case +# [nh_skbn 1#] of sat_skbq {
+                                    __DEFAULT -> unpack_skbm sat_skbq;
+                                  }; } in
+                        let {
+                          sat_skbp [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_skbo];
+                        } in  : [sat_skbp sat_skbr];
+                    '\NUL'# -> rest_skbl;
+                  };
+        } in  unpack_skbm 0#;
+
+GHC.CString.unpackFoldrCString# [InlPrag=NOINLINE]
+  :: forall a. GHC.Prim.Addr# -> (GHC.Types.Char -> a -> a) -> a -> a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [addr_skbs f_skbt z_skbu]
+        let {
+          unpack_skbv [Occ=LoopBreaker] :: GHC.Prim.Int# -> a_ajFd
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbs f_skbt z_skbu unpack_skbv] \r [nh_skbw]
+                  case indexCharOffAddr# [addr_skbs nh_skbw] of ch_skbx {
+                    __DEFAULT ->
+                        let {
+                          sat_skbA [Occ=Once] :: a_ajFd
+                          [LclId] =
+                              [unpack_skbv nh_skbw] \u []
+                                  case +# [nh_skbw 1#] of sat_skbz {
+                                    __DEFAULT -> unpack_skbv sat_skbz;
+                                  }; } in
+                        let {
+                          sat_skby [Occ=Once] :: GHC.Types.Char
+                          [LclId] =
+                              CCCS GHC.Types.C#! [ch_skbx];
+                        } in  f_skbt sat_skby sat_skbA;
+                    '\NUL'# -> z_skbu;
+                  };
+        } in  unpack_skbv 0#;
+
+GHC.CString.unpackCStringUtf8# [InlPrag=NOINLINE CONLIKE]
+  :: GHC.Prim.Addr# -> [GHC.Types.Char]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [addr_skbB]
+        let {
+          unpack_skbC [Occ=LoopBreaker] :: GHC.Prim.Int# -> [GHC.Types.Char]
+          [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+              sat-only [addr_skbB unpack_skbC] \r [nh_skbD]
+                  case indexCharOffAddr# [addr_skbB nh_skbD] of ch_skbE {
+                    __DEFAULT ->
+                        case leChar# [ch_skbE '\DEL'#] of {
+                          __DEFAULT ->
+                              case leChar# [ch_skbE '\223'#] of {
+                                __DEFAULT ->
+                                    case leChar# [ch_skbE '\239'#] of {
+                                      __DEFAULT ->
+                                          case +# [nh_skbD 3#] of sat_skbI {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_skbB sat_skbI]
+                                                of
+                                                wild_skbJ
+                                                { __DEFAULT ->
+                                                      case +# [nh_skbD 2#] of sat_skbK {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_skbB
+                                                                                   sat_skbK]
+                                                            of
+                                                            wild1_skbL
+                                                            { __DEFAULT ->
+                                                                  case +# [nh_skbD 1#] of sat_skbM {
+                                                                    __DEFAULT ->
+                                                                        case
+                                                                            indexCharOffAddr# [addr_skbB
+                                                                                               sat_skbM]
+                                                                        of
+                                                                        wild2_skbN
+                                                                        { __DEFAULT ->
+                                                                              let {
+                                                                                sat_skc5 [Occ=Once]
+                                                                                  :: [GHC.Types.Char]
+                                                                                [LclId] =
+                                                                                    [unpack_skbC
+                                                                                     nh_skbD] \u []
+                                                                                        case
+                                                                                            +# [nh_skbD
+                                                                                                4#]
+                                                                                        of
+                                                                                        sat_skc4
+                                                                                        { __DEFAULT ->
+                                                                                              unpack_skbC
+                                                                                                  sat_skc4;
+                                                                                        };
+                                                                              } in 
+                                                                                case
+                                                                                    ord# [wild_skbJ]
+                                                                                of
+                                                                                sat_skbZ
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_skbZ
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_skc0
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                ord# [wild1_skbL]
+                                                                                            of
+                                                                                            sat_skbV
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      -# [sat_skbV
+                                                                                                          128#]
+                                                                                                  of
+                                                                                                  sat_skbW
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            uncheckedIShiftL# [sat_skbW
+                                                                                                                               6#]
+                                                                                                        of
+                                                                                                        sat_skbX
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  ord# [wild2_skbN]
+                                                                                                              of
+                                                                                                              sat_skbR
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        -# [sat_skbR
+                                                                                                                            128#]
+                                                                                                                    of
+                                                                                                                    sat_skbS
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              uncheckedIShiftL# [sat_skbS
+                                                                                                                                                 12#]
+                                                                                                                          of
+                                                                                                                          sat_skbT
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    ord# [ch_skbE]
+                                                                                                                                of
+                                                                                                                                sat_skbO
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      case
+                                                                                                                                          -# [sat_skbO
+                                                                                                                                              240#]
+                                                                                                                                      of
+                                                                                                                                      sat_skbP
+                                                                                                                                      { __DEFAULT ->
+                                                                                                                                            case
+                                                                                                                                                uncheckedIShiftL# [sat_skbP
+                                                                                                                                                                   18#]
+                                                                                                                                            of
+                                                                                                                                            sat_skbQ
+                                                                                                                                            { __DEFAULT ->
+                                                                                                                                                  case
+                                                                                                                                                      +# [sat_skbQ
+                                                                                                                                                          sat_skbT]
+                                                                                                                                                  of
+                                                                                                                                                  sat_skbU
+                                                                                                                                                  { __DEFAULT ->
+                                                                                                                                                        case
+                                                                                                                                                            +# [sat_skbU
+                                                                                                                                                                sat_skbX]
+                                                                                                                                                        of
+                                                                                                                                                        sat_skbY
+                                                                                                                                                        { __DEFAULT ->
+                                                                                                                                                              case
+                                                                                                                                                                  +# [sat_skbY
+                                                                                                                                                                      sat_skc0]
+                                                                                                                                                              of
+                                                                                                                                                              sat_skc1
+                                                                                                                                                              { __DEFAULT ->
+                                                                                                                                                                    case
+                                                                                                                                                                        chr# [sat_skc1]
+                                                                                                                                                                    of
+                                                                                                                                                                    sat_skc2
+                                                                                                                                                                    { __DEFAULT ->
+                                                                                                                                                                          let {
+                                                                                                                                                                            sat_skc3 [Occ=Once]
+                                                                                                                                                                              :: GHC.Types.Char
+                                                                                                                                                                            [LclId] =
+                                                                                                                                                                                CCCS GHC.Types.C#! [sat_skc2];
+                                                                                                                                                                          } in 
+                                                                                                                                                                            : [sat_skc3
+                                                                                                                                                                               sat_skc5];
+                                                                                                                                                                    };
+                                                                                                                                                              };
+                                                                                                                                                        };
+                                                                                                                                                  };
+                                                                                                                                            };
+                                                                                                                                      };
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                        };
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                      1# ->
+                                          case +# [nh_skbD 2#] of sat_skc6 {
+                                            __DEFAULT ->
+                                                case
+                                                    indexCharOffAddr# [addr_skbB sat_skc6]
+                                                of
+                                                wild_skc7
+                                                { __DEFAULT ->
+                                                      case +# [nh_skbD 1#] of sat_skc8 {
+                                                        __DEFAULT ->
+                                                            case
+                                                                indexCharOffAddr# [addr_skbB
+                                                                                   sat_skc8]
+                                                            of
+                                                            wild1_skc9
+                                                            { __DEFAULT ->
+                                                                  let {
+                                                                    sat_skcn [Occ=Once]
+                                                                      :: [GHC.Types.Char]
+                                                                    [LclId] =
+                                                                        [unpack_skbC nh_skbD] \u []
+                                                                            case
+                                                                                +# [nh_skbD 3#]
+                                                                            of
+                                                                            sat_skcm
+                                                                            { __DEFAULT ->
+                                                                                  unpack_skbC
+                                                                                      sat_skcm;
+                                                                            };
+                                                                  } in 
+                                                                    case
+                                                                        ord# [wild_skc7]
+                                                                    of
+                                                                    sat_skch
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              -# [sat_skch 128#]
+                                                                          of
+                                                                          sat_skci
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    ord# [wild1_skc9]
+                                                                                of
+                                                                                sat_skcd
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          -# [sat_skcd
+                                                                                              128#]
+                                                                                      of
+                                                                                      sat_skce
+                                                                                      { __DEFAULT ->
+                                                                                            case
+                                                                                                uncheckedIShiftL# [sat_skce
+                                                                                                                   6#]
+                                                                                            of
+                                                                                            sat_skcf
+                                                                                            { __DEFAULT ->
+                                                                                                  case
+                                                                                                      ord# [ch_skbE]
+                                                                                                  of
+                                                                                                  sat_skca
+                                                                                                  { __DEFAULT ->
+                                                                                                        case
+                                                                                                            -# [sat_skca
+                                                                                                                224#]
+                                                                                                        of
+                                                                                                        sat_skcb
+                                                                                                        { __DEFAULT ->
+                                                                                                              case
+                                                                                                                  uncheckedIShiftL# [sat_skcb
+                                                                                                                                     12#]
+                                                                                                              of
+                                                                                                              sat_skcc
+                                                                                                              { __DEFAULT ->
+                                                                                                                    case
+                                                                                                                        +# [sat_skcc
+                                                                                                                            sat_skcf]
+                                                                                                                    of
+                                                                                                                    sat_skcg
+                                                                                                                    { __DEFAULT ->
+                                                                                                                          case
+                                                                                                                              +# [sat_skcg
+                                                                                                                                  sat_skci]
+                                                                                                                          of
+                                                                                                                          sat_skcj
+                                                                                                                          { __DEFAULT ->
+                                                                                                                                case
+                                                                                                                                    chr# [sat_skcj]
+                                                                                                                                of
+                                                                                                                                sat_skck
+                                                                                                                                { __DEFAULT ->
+                                                                                                                                      let {
+                                                                                                                                        sat_skcl [Occ=Once]
+                                                                                                                                          :: GHC.Types.Char
+                                                                                                                                        [LclId] =
+                                                                                                                                            CCCS GHC.Types.C#! [sat_skck];
+                                                                                                                                      } in 
+                                                                                                                                        : [sat_skcl
+                                                                                                                                           sat_skcn];
+                                                                                                                                };
+                                                                                                                          };
+                                                                                                                    };
+                                                                                                              };
+                                                                                                        };
+                                                                                                  };
+                                                                                            };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                            };
+                                                      };
+                                                };
+                                          };
+                                    };
+                                1# ->
+                                    case +# [nh_skbD 1#] of sat_skco {
+                                      __DEFAULT ->
+                                          case indexCharOffAddr# [addr_skbB sat_skco] of wild_skcp {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_skcz [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      [unpack_skbC nh_skbD] \u []
+                                                          case +# [nh_skbD 2#] of sat_skcy {
+                                                            __DEFAULT -> unpack_skbC sat_skcy;
+                                                          };
+                                                } in 
+                                                  case ord# [wild_skcp] of sat_skct {
+                                                    __DEFAULT ->
+                                                        case -# [sat_skct 128#] of sat_skcu {
+                                                          __DEFAULT ->
+                                                              case ord# [ch_skbE] of sat_skcq {
+                                                                __DEFAULT ->
+                                                                    case
+                                                                        -# [sat_skcq 192#]
+                                                                    of
+                                                                    sat_skcr
+                                                                    { __DEFAULT ->
+                                                                          case
+                                                                              uncheckedIShiftL# [sat_skcr
+                                                                                                 6#]
+                                                                          of
+                                                                          sat_skcs
+                                                                          { __DEFAULT ->
+                                                                                case
+                                                                                    +# [sat_skcs
+                                                                                        sat_skcu]
+                                                                                of
+                                                                                sat_skcv
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          chr# [sat_skcv]
+                                                                                      of
+                                                                                      sat_skcw
+                                                                                      { __DEFAULT ->
+                                                                                            let {
+                                                                                              sat_skcx [Occ=Once]
+                                                                                                :: GHC.Types.Char
+                                                                                              [LclId] =
+                                                                                                  CCCS GHC.Types.C#! [sat_skcw];
+                                                                                            } in 
+                                                                                              : [sat_skcx
+                                                                                                 sat_skcz];
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                          };
+                                    };
+                              };
+                          1# ->
+                              let {
+                                sat_skcC [Occ=Once] :: [GHC.Types.Char]
+                                [LclId] =
+                                    [unpack_skbC nh_skbD] \u []
+                                        case +# [nh_skbD 1#] of sat_skcB {
+                                          __DEFAULT -> unpack_skbC sat_skcB;
+                                        }; } in
+                              let {
+                                sat_skcA [Occ=Once] :: GHC.Types.Char
+                                [LclId] =
+                                    CCCS GHC.Types.C#! [ch_skbE];
+                              } in  : [sat_skcA sat_skcC];
+                        };
+                    '\NUL'# -> [] [];
+                  };
+        } in  unpack_skbC 0#;
+
+GHC.CString.unpackNBytes# [InlPrag=NOINLINE]
+  :: GHC.Prim.Addr# -> GHC.Prim.Int# -> [GHC.Types.Char]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [_addr_skcD ds_skcE]
+        case ds_skcE of ds1_skcF {
+          __DEFAULT ->
+              case -# [ds1_skcF 1#] of sat_skcO {
+                __DEFAULT ->
+                    let-no-escape {
+                      unpack_skcG [Occ=LoopBreakerT[2]]
+                        :: [GHC.Types.Char] -> GHC.Prim.Int# -> [GHC.Types.Char]
+                      [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+                          sat-only [_addr_skcD unpack_skcG] \r [acc_skcH i#_skcI]
+                              case <# [i#_skcI 0#] of {
+                                __DEFAULT ->
+                                    case indexCharOffAddr# [_addr_skcD i#_skcI] of ch_skcK {
+                                      __DEFAULT ->
+                                          case -# [i#_skcI 1#] of sat_skcN {
+                                            __DEFAULT ->
+                                                let {
+                                                  sat_skcL [Occ=Once] :: GHC.Types.Char
+                                                  [LclId] =
+                                                      CCCS GHC.Types.C#! [ch_skcK]; } in
+                                                let {
+                                                  sat_skcM [Occ=Once] :: [GHC.Types.Char]
+                                                  [LclId] =
+                                                      CCCS :! [sat_skcL acc_skcH];
+                                                } in  unpack_skcG sat_skcM sat_skcN;
+                                          };
+                                    };
+                                1# -> acc_skcH;
+                              };
+                    } in  unpack_skcG GHC.Types.[] sat_skcO;
+              };
+          0# -> [] [];
+        };
+
+GHC.CString.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.CString.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule4];
+
+GHC.CString.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.CString"#;
+
+GHC.CString.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.CString.$trModule2];
+
+GHC.CString.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.CString.$trModule3
+                                     GHC.CString.$trModule1];
+

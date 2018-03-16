@@ -1,0 +1,496 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:50:22.328092149 UTC
+
+GHC.Debug.debugErrLn_len [Occ=LoopBreaker]
+  :: GHC.Prim.Int# -> [GHC.Types.Char] -> GHC.Prim.Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [l_sB59 ds_sB5a]
+        case ds_sB5a of {
+          [] -> l_sB59;
+          : _ [Occ=Dead] xs'_sB5d [Occ=Once] ->
+              case +# [l_sB59 1#] of sat_sB5e {
+                __DEFAULT -> GHC.Debug.debugErrLn_len sat_sB5e xs'_sB5d;
+              };
+        };
+
+GHC.Debug.debugErrLn_write [Occ=LoopBreaker]
+  :: GHC.Prim.MutableByteArray# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [mba_sB5f offset_sB5g ds_sB5h s_sB5i]
+        case ds_sB5h of {
+          [] -> writeCharArray# [mba_sB5f offset_sB5g '\NUL'# s_sB5i];
+          : ds1_sB5k [Occ=Once!] xs'_sB5l [Occ=Once] ->
+              case ds1_sB5k of {
+                GHC.Types.C# x_sB5n [Occ=Once] ->
+                    case
+                        writeCharArray# [mba_sB5f offset_sB5g x_sB5n s_sB5i]
+                    of
+                    s'_sB5o
+                    { __DEFAULT ->
+                          case +# [offset_sB5g 1#] of sat_sB5p {
+                            __DEFAULT ->
+                                GHC.Debug.debugErrLn_write mba_sB5f sat_sB5p xs'_sB5l s'_sB5o;
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.Debug.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule4];
+
+GHC.Debug.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Debug"#;
+
+GHC.Debug.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule2];
+
+GHC.Debug.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Debug.$trModule3
+                                     GHC.Debug.$trModule1];
+
+GHC.Debug.debugLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sB5q s0_sB5r]
+        case GHC.Debug.debugErrLn_len 1# xs_sB5q of l_sB5s {
+          __DEFAULT ->
+              case newByteArray# [l_sB5s s0_sB5r] of {
+                (#,#) ipv_sB5u [Occ=Once] ipv1_sB5v ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sB5v 0# xs_sB5q ipv_sB5u
+                    of
+                    s2_sB5w
+                    { __DEFAULT ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sB5v s2_sB5w] of {
+                            Unit# ds1_sB5z [Occ=Once] -> (#,#) [ds1_sB5z GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Debug.debugLn1 eta_B2 eta_B1;
+
+GHC.Debug.debugErrLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sB5A s0_sB5B]
+        case GHC.Debug.debugErrLn_len 1# xs_sB5A of l_sB5C {
+          __DEFAULT ->
+              case newByteArray# [l_sB5C s0_sB5B] of {
+                (#,#) ipv_sB5E [Occ=Once] ipv1_sB5F ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sB5F 0# xs_sB5A ipv_sB5E
+                    of
+                    s2_sB5G
+                    { __DEFAULT ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sB5F s2_sB5G] of {
+                            Unit# ds1_sB5J [Occ=Once] -> (#,#) [ds1_sB5J GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugErrLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Debug.debugErrLn1 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 15:50:22.33533267 UTC
+
+GHC.Debug.debugErrLn_len [Occ=LoopBreaker]
+  :: GHC.Prim.Int# -> [GHC.Types.Char] -> GHC.Prim.Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [l_sB59 ds_sB5a]
+        case ds_sB5a of {
+          [] -> l_sB59;
+          : _ [Occ=Dead] xs'_sB5d [Occ=Once] ->
+              case +# [l_sB59 1#] of sat_sB5e {
+                __DEFAULT -> GHC.Debug.debugErrLn_len sat_sB5e xs'_sB5d;
+              };
+        };
+
+GHC.Debug.debugErrLn_write [Occ=LoopBreaker]
+  :: GHC.Prim.MutableByteArray# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [mba_sB5f offset_sB5g ds_sB5h void_0E]
+        case ds_sB5h of {
+          [] ->
+              writeCharArray# [mba_sB5f offset_sB5g '\NUL'# GHC.Prim.void#];
+          : ds1_sB5k [Occ=Once!] xs'_sB5l [Occ=Once] ->
+              case ds1_sB5k of {
+                GHC.Types.C# x_sB5n [Occ=Once] ->
+                    case
+                        writeCharArray# [mba_sB5f offset_sB5g x_sB5n GHC.Prim.void#]
+                    of
+                    s'_sB5o
+                    { (##) ->
+                          case +# [offset_sB5g 1#] of sat_sB5p {
+                            __DEFAULT ->
+                                GHC.Debug.debugErrLn_write
+                                    mba_sB5f sat_sB5p xs'_sB5l GHC.Prim.void#;
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.Debug.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule4];
+
+GHC.Debug.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Debug"#;
+
+GHC.Debug.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule2];
+
+GHC.Debug.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Debug.$trModule3
+                                     GHC.Debug.$trModule1];
+
+GHC.Debug.debugLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sB5q void_0E]
+        case GHC.Debug.debugErrLn_len 1# xs_sB5q of l_sB5s {
+          __DEFAULT ->
+              case newByteArray# [l_sB5s GHC.Prim.void#] of {
+                Unit# ipv1_sB5v ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sB5v 0# xs_sB5q GHC.Prim.void#
+                    of
+                    s2_sB5w
+                    { (##) ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sB5v GHC.Prim.void#] of {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Debug.debugLn1 eta_B2 GHC.Prim.void#;
+
+GHC.Debug.debugErrLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sB5A void_0E]
+        case GHC.Debug.debugErrLn_len 1# xs_sB5A of l_sB5C {
+          __DEFAULT ->
+              case newByteArray# [l_sB5C GHC.Prim.void#] of {
+                Unit# ipv1_sB5F ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sB5F 0# xs_sB5A GHC.Prim.void#
+                    of
+                    s2_sB5G
+                    { (##) ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sB5F GHC.Prim.void#] of {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugErrLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Debug.debugErrLn1 eta_B2 GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:50:22.565358522 UTC
+
+GHC.Debug.debugErrLn_len [Occ=LoopBreaker]
+  :: GHC.Prim.Int# -> [GHC.Types.Char] -> GHC.Prim.Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [l_sBcC ds_sBcD]
+        case ds_sBcD of {
+          [] -> l_sBcC;
+          : _ [Occ=Dead] xs'_sBcG [Occ=Once] ->
+              case +# [l_sBcC 1#] of sat_sBcH {
+                __DEFAULT -> GHC.Debug.debugErrLn_len sat_sBcH xs'_sBcG;
+              };
+        };
+
+GHC.Debug.debugErrLn_write [Occ=LoopBreaker]
+  :: GHC.Prim.MutableByteArray# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [mba_sBcI offset_sBcJ ds_sBcK s_sBcL]
+        case ds_sBcK of {
+          [] -> writeCharArray# [mba_sBcI offset_sBcJ '\NUL'# s_sBcL];
+          : ds1_sBcN [Occ=Once!] xs'_sBcO [Occ=Once] ->
+              case ds1_sBcN of {
+                GHC.Types.C# x_sBcQ [Occ=Once] ->
+                    case
+                        writeCharArray# [mba_sBcI offset_sBcJ x_sBcQ s_sBcL]
+                    of
+                    s'_sBcR
+                    { __DEFAULT ->
+                          case +# [offset_sBcJ 1#] of sat_sBcS {
+                            __DEFAULT ->
+                                GHC.Debug.debugErrLn_write mba_sBcI sat_sBcS xs'_sBcO s'_sBcR;
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.Debug.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule4];
+
+GHC.Debug.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Debug"#;
+
+GHC.Debug.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule2];
+
+GHC.Debug.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Debug.$trModule3
+                                     GHC.Debug.$trModule1];
+
+GHC.Debug.debugLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sBcT s0_sBcU]
+        case GHC.Debug.debugErrLn_len 1# xs_sBcT of l_sBcV {
+          __DEFAULT ->
+              case newByteArray# [l_sBcV s0_sBcU] of {
+                (#,#) ipv_sBcX [Occ=Once] ipv1_sBcY ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sBcY 0# xs_sBcT ipv_sBcX
+                    of
+                    s2_sBcZ
+                    { __DEFAULT ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sBcY s2_sBcZ] of {
+                            Unit# ds1_sBd2 [Occ=Once] -> (#,#) [ds1_sBd2 GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Debug.debugLn1 eta_B2 eta_B1;
+
+GHC.Debug.debugErrLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sBd3 s0_sBd4]
+        case GHC.Debug.debugErrLn_len 1# xs_sBd3 of l_sBd5 {
+          __DEFAULT ->
+              case newByteArray# [l_sBd5 s0_sBd4] of {
+                (#,#) ipv_sBd7 [Occ=Once] ipv1_sBd8 ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sBd8 0# xs_sBd3 ipv_sBd7
+                    of
+                    s2_sBd9
+                    { __DEFAULT ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sBd8 s2_sBd9] of {
+                            Unit# ds1_sBdc [Occ=Once] -> (#,#) [ds1_sBdc GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugErrLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Debug.debugErrLn1 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 15:50:22.568151265 UTC
+
+GHC.Debug.debugErrLn_len [Occ=LoopBreaker]
+  :: GHC.Prim.Int# -> [GHC.Types.Char] -> GHC.Prim.Int#
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [l_sBcC ds_sBcD]
+        case ds_sBcD of {
+          [] -> l_sBcC;
+          : _ [Occ=Dead] xs'_sBcG [Occ=Once] ->
+              case +# [l_sBcC 1#] of sat_sBcH {
+                __DEFAULT -> GHC.Debug.debugErrLn_len sat_sBcH xs'_sBcG;
+              };
+        };
+
+GHC.Debug.debugErrLn_write [Occ=LoopBreaker]
+  :: GHC.Prim.MutableByteArray# GHC.Prim.RealWorld
+     -> GHC.Prim.Int#
+     -> [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [mba_sBcI offset_sBcJ ds_sBcK void_0E]
+        case ds_sBcK of {
+          [] ->
+              writeCharArray# [mba_sBcI offset_sBcJ '\NUL'# GHC.Prim.void#];
+          : ds1_sBcN [Occ=Once!] xs'_sBcO [Occ=Once] ->
+              case ds1_sBcN of {
+                GHC.Types.C# x_sBcQ [Occ=Once] ->
+                    case
+                        writeCharArray# [mba_sBcI offset_sBcJ x_sBcQ GHC.Prim.void#]
+                    of
+                    s'_sBcR
+                    { (##) ->
+                          case +# [offset_sBcJ 1#] of sat_sBcS {
+                            __DEFAULT ->
+                                GHC.Debug.debugErrLn_write
+                                    mba_sBcI sat_sBcS xs'_sBcO GHC.Prim.void#;
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "ghc-prim"#;
+
+GHC.Debug.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule4];
+
+GHC.Debug.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Debug"#;
+
+GHC.Debug.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Debug.$trModule2];
+
+GHC.Debug.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Debug.$trModule3
+                                     GHC.Debug.$trModule1];
+
+GHC.Debug.debugLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sBcT void_0E]
+        case GHC.Debug.debugErrLn_len 1# xs_sBcT of l_sBcV {
+          __DEFAULT ->
+              case newByteArray# [l_sBcV GHC.Prim.void#] of {
+                Unit# ipv1_sBcY ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sBcY 0# xs_sBcT GHC.Prim.void#
+                    of
+                    s2_sBcZ
+                    { (##) ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sBcY GHC.Prim.void#] of {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Debug.debugLn1 eta_B2 GHC.Prim.void#;
+
+GHC.Debug.debugErrLn1
+  :: [GHC.Types.Char]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [xs_sBd3 void_0E]
+        case GHC.Debug.debugErrLn_len 1# xs_sBd3 of l_sBd5 {
+          __DEFAULT ->
+              case newByteArray# [l_sBd5 GHC.Prim.void#] of {
+                Unit# ipv1_sBd8 ->
+                    case
+                        GHC.Debug.debugErrLn_write ipv1_sBd8 0# xs_sBd3 GHC.Prim.void#
+                    of
+                    s2_sBd9
+                    { (##) ->
+                          case __pkg_ccall ghc-prim-0.5.2.0 [ipv1_sBd8 GHC.Prim.void#] of {
+                            (##) -> Unit# [GHC.Tuple.()];
+                          };
+                    };
+              };
+        };
+
+GHC.Debug.debugErrLn :: [GHC.Types.Char] -> GHC.Types.IO ()
+[GblId, Arity=2, Caf=NoCafRefs, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Debug.debugErrLn1 eta_B2 GHC.Prim.void#;
+

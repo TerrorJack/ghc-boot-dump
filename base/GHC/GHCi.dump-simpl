@@ -1,0 +1,999 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:01.728232008 UTC
+
+Result size of Tidy Core
+  = {terms: 238, types: 475, coercions: 256, joins: 0/0}
+
+-- RHS size: {terms: 6, types: 16, coercions: 0, joins: 0/0}
+GHC.GHCi.$p1GHCiSandboxIO
+  :: forall (m :: * -> *). GHCiSandboxIO m => Monad m
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SL),U(U,A)>,
+ RULES: Built in rule for GHC.GHCi.$p1GHCiSandboxIO: "Class op $p1GHCiSandboxIO"]
+GHC.GHCi.$p1GHCiSandboxIO
+  = \ (@ (m_anGl :: * -> *)) (v_B1 :: GHCiSandboxIO m_anGl) ->
+      case v_B1 of v_B1 { GHC.GHCi.C:GHCiSandboxIO v_B2 v_B3 -> v_B2 }
+
+-- RHS size: {terms: 6, types: 16, coercions: 0, joins: 0/0}
+ghciStepIO
+  :: forall (m :: * -> *). GHCiSandboxIO m => forall a. m a -> IO a
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LS),U(A,U)>,
+ RULES: Built in rule for ghciStepIO: "Class op ghciStepIO"]
+ghciStepIO
+  = \ (@ (m_anGl :: * -> *)) (v_B1 :: GHCiSandboxIO m_anGl) ->
+      case v_B1 of v_B1 { GHC.GHCi.C:GHCiSandboxIO v_B2 v_B3 -> v_B3 }
+
+-- RHS size: {terms: 4, types: 5, coercions: 0, joins: 0/0}
+GHC.GHCi.$fGHCiSandboxIOIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHCiSandboxIO IO
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.GHCi.C:GHCiSandboxIO TYPE: IO
+                                GHC.Base.$fMonadIO
+                                \ (@ a_anLh) -> id @ (IO a_anLh)]
+GHC.GHCi.$fGHCiSandboxIOIO
+  = GHC.GHCi.C:GHCiSandboxIO
+      @ IO GHC.Base.$fMonadIO (\ (@ a_anLh) -> id @ (IO a_anLh))
+
+-- RHS size: {terms: 12, types: 27, coercions: 2, joins: 0/0}
+GHC.GHCi.$fFunctorNoIO1
+  :: forall a b.
+     a
+     -> IO b
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,U><C(S(SL)),1*C1(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_anL1)
+                 (@ b_anL2)
+                 (x_XnNh [Occ=Once] :: a_anL1)
+                 (x1_inMX [Occ=Once] :: IO b_anL2)
+                 (s_inMY [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case (x1_inMX
+                       `cast` (GHC.Types.N:IO[0] <b_anL2>_R
+                               :: (IO b_anL2 :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anL2 #) :: *)))
+                        s_inMY
+                 of
+                 { (# ipv_inN1 [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv_inN1, x_XnNh #)
+                 }}]
+GHC.GHCi.$fFunctorNoIO1
+  = \ (@ a_anL1)
+      (@ b_anL2)
+      (x_XnNh :: a_anL1)
+      (x1_inMX :: IO b_anL2)
+      (s_inMY :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case (x1_inMX
+            `cast` (GHC.Types.N:IO[0] <b_anL2>_R
+                    :: (IO b_anL2 :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anL2 #) :: *)))
+             s_inMY
+      of
+      { (# ipv_inN1, ipv1_inN2 #) ->
+      (# ipv_inN1, x_XnNh #)
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 39, joins: 0/0}
+GHC.GHCi.$fFunctorNoIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: Functor NoIO
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Base.C:Functor TYPE: NoIO
+                          GHC.Base.$fFunctorIO2
+                          `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                  <a -> b>_R
+                                  ->_R Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+                                  ->_R Sym (GHC.Types.N:IO[0]
+                                                <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+                                  :: (forall a b.
+                                      (a -> b)
+                                      -> IO a
+                                      -> GHC.Prim.State# GHC.Prim.RealWorld
+                                      -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                                     ~R# (forall a b. (a -> b) -> NoIO a -> NoIO b :: *))
+                          GHC.GHCi.$fFunctorNoIO1
+                          `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                  <a>_R
+                                  ->_R Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+                                  ->_R Sym (GHC.Types.N:IO[0]
+                                                <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+                                  :: (forall a b.
+                                      a
+                                      -> IO b
+                                      -> GHC.Prim.State# GHC.Prim.RealWorld
+                                      -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                                     ~R# (forall a b. a -> NoIO b -> NoIO a :: *))]
+GHC.GHCi.$fFunctorNoIO
+  = GHC.Base.C:Functor
+      @ NoIO
+      (GHC.Base.$fFunctorIO2
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <a -> b>_R
+               ->_R Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+               ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+               :: (forall a b.
+                   (a -> b)
+                   -> IO a
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                  ~R# (forall a b. (a -> b) -> NoIO a -> NoIO b :: *)))
+      (GHC.GHCi.$fFunctorNoIO1
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <a>_R
+               ->_R Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+               ->_R Sym (GHC.Types.N:IO[0] <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+               :: (forall a b.
+                   a
+                   -> IO b
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                  ~R# (forall a b. a -> NoIO b -> NoIO a :: *)))
+
+-- RHS size: {terms: 6, types: 12, coercions: 0, joins: 0/0}
+GHC.GHCi.$fApplicativeNoIO5
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_anJo)
+                 (a1_anGp [Occ=Once] :: a_anJo)
+                 (s_imNV [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 (# s_imNV, a1_anGp #)}]
+GHC.GHCi.$fApplicativeNoIO5
+  = \ (@ a_anJo)
+      (a1_anGp :: a_anJo)
+      (s_imNV :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      (# s_imNV, a1_anGp #)
+
+-- RHS size: {terms: 3, types: 4, coercions: 0, joins: 0/0}
+GHC.GHCi.$fGHCiSandboxIONoIO1 :: forall a. NoIO a -> NoIO a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_anHN) (ds_dnLA [Occ=Once] :: NoIO a_anHN) -> ds_dnLA}]
+GHC.GHCi.$fGHCiSandboxIONoIO1
+  = \ (@ a_anHN) (ds_dnLA :: NoIO a_anHN) -> ds_dnLA
+
+-- RHS size: {terms: 1, types: 0, coercions: 8, joins: 0/0}
+noio :: forall a. NoIO a -> IO a
+[GblId[[RecSel]],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.GHCi.$fGHCiSandboxIONoIO1
+               `cast` (forall (a :: <*>_N).
+                       <NoIO a>_R ->_R GHC.GHCi.N:NoIO[0] <a>_N
+                       :: (forall a. NoIO a -> NoIO a :: *)
+                          ~R# (forall a. NoIO a -> IO a :: *))}]
+noio
+  = GHC.GHCi.$fGHCiSandboxIONoIO1
+    `cast` (forall (a :: <*>_N).
+            <NoIO a>_R ->_R GHC.GHCi.N:NoIO[0] <a>_N
+            :: (forall a. NoIO a -> NoIO a :: *)
+               ~R# (forall a. NoIO a -> IO a :: *))
+
+-- RHS size: {terms: 12, types: 22, coercions: 10, joins: 0/0}
+GHC.GHCi.$fMonadNoIO1
+  :: forall a b.
+     NoIO a
+     -> (a -> NoIO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_anIl)
+                 (@ b_anIm)
+                 (k_anGn [Occ=Once] :: NoIO a_anIl)
+                 (f_anGo [Occ=Once!] :: a_anIl -> NoIO b_anIm)
+                 (s_imNz [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case (k_anGn
+                       `cast` (GHC.GHCi.N:NoIO[0] <a_anIl>_N ; GHC.Types.N:IO[0]
+                                                                   <a_anIl>_R
+                               :: (NoIO a_anIl :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anIl #) :: *)))
+                        s_imNz
+                 of
+                 { (# ipv_imNC [Occ=Once], ipv1_imND [Occ=Once] #) ->
+                 ((f_anGo ipv1_imND)
+                  `cast` (GHC.GHCi.N:NoIO[0] <b_anIm>_N ; GHC.Types.N:IO[0]
+                                                              <b_anIm>_R
+                          :: (NoIO b_anIm :: *)
+                             ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                  -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anIm #) :: *)))
+                   ipv_imNC
+                 }}]
+GHC.GHCi.$fMonadNoIO1
+  = \ (@ a_anIl)
+      (@ b_anIm)
+      (k_anGn :: NoIO a_anIl)
+      (f_anGo :: a_anIl -> NoIO b_anIm)
+      (s_imNz :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case (k_anGn
+            `cast` (GHC.GHCi.N:NoIO[0] <a_anIl>_N ; GHC.Types.N:IO[0]
+                                                        <a_anIl>_R
+                    :: (NoIO a_anIl :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anIl #) :: *)))
+             s_imNz
+      of
+      { (# ipv_imNC, ipv1_imND #) ->
+      ((f_anGo ipv1_imND)
+       `cast` (GHC.GHCi.N:NoIO[0] <b_anIm>_N ; GHC.Types.N:IO[0]
+                                                   <b_anIm>_R
+               :: (NoIO b_anIm :: *)
+                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anIm #) :: *)))
+        ipv_imNC
+      }
+
+-- RHS size: {terms: 17, types: 42, coercions: 12, joins: 0/0}
+GHC.GHCi.$fApplicativeNoIO4
+  :: forall b a.
+     NoIO (a -> b)
+     -> NoIO a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,1*C1(U)))><L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_anJB)
+                 (@ a_anJA)
+                 (m1_XnN5 [Occ=Once] :: NoIO (a_anJA -> b_anJB))
+                 (m2_XnN7 [Occ=Once] :: NoIO a_anJA)
+                 (s_imNz [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case (m1_XnN5
+                       `cast` (GHC.GHCi.N:NoIO[0] <a_anJA -> b_anJB>_N ; GHC.Types.N:IO[0]
+                                                                             <a_anJA -> b_anJB>_R
+                               :: (NoIO (a_anJA -> b_anJB) :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                             a_anJA -> b_anJB #) :: *)))
+                        s_imNz
+                 of
+                 { (# ipv_imNC [Occ=Once], ipv1_imND [Occ=Once!] #) ->
+                 case (m2_XnN7
+                       `cast` (GHC.GHCi.N:NoIO[0] <a_anJA>_N ; GHC.Types.N:IO[0]
+                                                                   <a_anJA>_R
+                               :: (NoIO a_anJA :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anJA #) :: *)))
+                        ipv_imNC
+                 of
+                 { (# ipv2_XmOM [Occ=Once], ipv3_XmOO [Occ=Once] #) ->
+                 (# ipv2_XmOM, ipv1_imND ipv3_XmOO #)
+                 }
+                 }}]
+GHC.GHCi.$fApplicativeNoIO4
+  = \ (@ b_anJB)
+      (@ a_anJA)
+      (m1_XnN5 :: NoIO (a_anJA -> b_anJB))
+      (m2_XnN7 :: NoIO a_anJA)
+      (s_imNz :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case (m1_XnN5
+            `cast` (GHC.GHCi.N:NoIO[0] <a_anJA -> b_anJB>_N ; GHC.Types.N:IO[0]
+                                                                  <a_anJA -> b_anJB>_R
+                    :: (NoIO (a_anJA -> b_anJB) :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                  a_anJA -> b_anJB #) :: *)))
+             s_imNz
+      of
+      { (# ipv_imNC, ipv1_imND #) ->
+      case (m2_XnN7
+            `cast` (GHC.GHCi.N:NoIO[0] <a_anJA>_N ; GHC.Types.N:IO[0]
+                                                        <a_anJA>_R
+                    :: (NoIO a_anJA :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anJA #) :: *)))
+             ipv_imNC
+      of
+      { (# ipv2_XmOM, ipv3_XmOO #) ->
+      (# ipv2_XmOM, ipv1_imND ipv3_XmOO #)
+      }
+      }
+
+-- RHS size: {terms: 11, types: 21, coercions: 10, joins: 0/0}
+GHC.GHCi.$fApplicativeNoIO2
+  :: forall a b.
+     NoIO a
+     -> NoIO b
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_anKf)
+                 (@ b_anKg)
+                 (a1_inMl [Occ=Once] :: NoIO a_anKf)
+                 (a2_inMm [Occ=Once] :: NoIO b_anKg)
+                 (eta_B1 [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case (a1_inMl
+                       `cast` (GHC.GHCi.N:NoIO[0] <a_anKf>_N ; GHC.Types.N:IO[0]
+                                                                   <a_anKf>_R
+                               :: (NoIO a_anKf :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anKf #) :: *)))
+                        eta_B1
+                 of
+                 { (# ipv_inN1 [Occ=Once], _ [Occ=Dead] #) ->
+                 (a2_inMm
+                  `cast` (GHC.GHCi.N:NoIO[0] <b_anKg>_N ; GHC.Types.N:IO[0]
+                                                              <b_anKg>_R
+                          :: (NoIO b_anKg :: *)
+                             ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                  -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anKg #) :: *)))
+                   ipv_inN1
+                 }}]
+GHC.GHCi.$fApplicativeNoIO2
+  = \ (@ a_anKf)
+      (@ b_anKg)
+      (a1_inMl :: NoIO a_anKf)
+      (a2_inMm :: NoIO b_anKg)
+      (eta_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case (a1_inMl
+            `cast` (GHC.GHCi.N:NoIO[0] <a_anKf>_N ; GHC.Types.N:IO[0]
+                                                        <a_anKf>_R
+                    :: (NoIO a_anKf :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anKf #) :: *)))
+             eta_B1
+      of
+      { (# ipv_inN1, ipv1_inN2 #) ->
+      (a2_inMm
+       `cast` (GHC.GHCi.N:NoIO[0] <b_anKg>_N ; GHC.Types.N:IO[0]
+                                                   <b_anKg>_R
+               :: (NoIO b_anKg :: *)
+                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anKg #) :: *)))
+        ipv_inN1
+      }
+
+-- RHS size: {terms: 20, types: 44, coercions: 10, joins: 0/0}
+GHC.GHCi.$fApplicativeNoIO3
+  :: forall a b c.
+     (a -> b -> c)
+     -> NoIO a
+     -> NoIO b
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, c #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S(SL)),1*C1(U(U,U))><L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_anJX)
+                 (@ b_anJY)
+                 (@ c_anJZ)
+                 (f1_inMe [Occ=Once!] :: a_anJX -> b_anJY -> c_anJZ)
+                 (x_inMf [Occ=Once] :: NoIO a_anJX)
+                 (eta_B2 [Occ=Once] :: NoIO b_anJY)
+                 (eta1_B1 [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case (x_inMf
+                       `cast` (GHC.GHCi.N:NoIO[0] <a_anJX>_N ; GHC.Types.N:IO[0]
+                                                                   <a_anJX>_R
+                               :: (NoIO a_anJX :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anJX #) :: *)))
+                        eta1_B1
+                 of
+                 { (# ipv_inN1 [Occ=Once], ipv1_inN2 [Occ=Once] #) ->
+                 case (eta_B2
+                       `cast` (GHC.GHCi.N:NoIO[0] <b_anJY>_N ; GHC.Types.N:IO[0]
+                                                                   <b_anJY>_R
+                               :: (NoIO b_anJY :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anJY #) :: *)))
+                        ipv_inN1
+                 of
+                 { (# ipv2_XmOM [Occ=Once], ipv3_XmOO [Occ=Once] #) ->
+                 (# ipv2_XmOM, f1_inMe ipv1_inN2 ipv3_XmOO #)
+                 }
+                 }}]
+GHC.GHCi.$fApplicativeNoIO3
+  = \ (@ a_anJX)
+      (@ b_anJY)
+      (@ c_anJZ)
+      (f1_inMe :: a_anJX -> b_anJY -> c_anJZ)
+      (x_inMf :: NoIO a_anJX)
+      (eta_B2 :: NoIO b_anJY)
+      (eta1_B1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case (x_inMf
+            `cast` (GHC.GHCi.N:NoIO[0] <a_anJX>_N ; GHC.Types.N:IO[0]
+                                                        <a_anJX>_R
+                    :: (NoIO a_anJX :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anJX #) :: *)))
+             eta1_B1
+      of
+      { (# ipv_inN1, ipv1_inN2 #) ->
+      case (eta_B2
+            `cast` (GHC.GHCi.N:NoIO[0] <b_anJY>_N ; GHC.Types.N:IO[0]
+                                                        <b_anJY>_R
+                    :: (NoIO b_anJY :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anJY #) :: *)))
+             ipv_inN1
+      of
+      { (# ipv2_XmOM, ipv3_XmOO #) ->
+      (# ipv2_XmOM, f1_inMe ipv1_inN2 ipv3_XmOO #)
+      }
+      }
+
+-- RHS size: {terms: 16, types: 39, coercions: 10, joins: 0/0}
+GHC.GHCi.$fApplicativeNoIO1
+  :: forall a b.
+     NoIO a
+     -> NoIO b
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,U))><L,1*C1(U(U,A))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_anKv)
+                 (@ b_anKw)
+                 (x_XnOd [Occ=Once] :: NoIO a_anKv)
+                 (eta_X22 [Occ=Once] :: NoIO b_anKw)
+                 (eta1_X14 [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case (x_XnOd
+                       `cast` (GHC.GHCi.N:NoIO[0] <a_anKv>_N ; GHC.Types.N:IO[0]
+                                                                   <a_anKv>_R
+                               :: (NoIO a_anKv :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anKv #) :: *)))
+                        eta1_X14
+                 of
+                 { (# ipv_inN1 [Occ=Once], ipv1_inN2 [Occ=Once] #) ->
+                 case (eta_X22
+                       `cast` (GHC.GHCi.N:NoIO[0] <b_anKw>_N ; GHC.Types.N:IO[0]
+                                                                   <b_anKw>_R
+                               :: (NoIO b_anKw :: *)
+                                  ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anKw #) :: *)))
+                        ipv_inN1
+                 of
+                 { (# ipv2_XmOM [Occ=Once], _ [Occ=Dead] #) ->
+                 (# ipv2_XmOM, ipv1_inN2 #)
+                 }
+                 }}]
+GHC.GHCi.$fApplicativeNoIO1
+  = \ (@ a_anKv)
+      (@ b_anKw)
+      (x_XnOd :: NoIO a_anKv)
+      (eta_X22 :: NoIO b_anKw)
+      (eta1_X14 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+      case (x_XnOd
+            `cast` (GHC.GHCi.N:NoIO[0] <a_anKv>_N ; GHC.Types.N:IO[0]
+                                                        <a_anKv>_R
+                    :: (NoIO a_anKv :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_anKv #) :: *)))
+             eta1_X14
+      of
+      { (# ipv_inN1, ipv1_inN2 #) ->
+      case (eta_X22
+            `cast` (GHC.GHCi.N:NoIO[0] <b_anKw>_N ; GHC.Types.N:IO[0]
+                                                        <b_anKw>_R
+                    :: (NoIO b_anKw :: *)
+                       ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                            -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_anKw #) :: *)))
+             ipv_inN1
+      of
+      { (# ipv2_XmOM, ipv3_XmOO #) ->
+      (# ipv2_XmOM, ipv1_inN2 #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 19, joins: 0/0}
+GHC.GHCi.$fMonadNoIO_$c>> [InlPrag=INLINE (sat-args=2)]
+  :: forall a b. NoIO a -> NoIO b -> NoIO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(S(SL)),1*C1(U(U,A))><L,1*C1(U(U,U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ a_XnJE)
+                  (@ b_XnJG)
+                  (m1_inLO [Occ=Once] :: NoIO a_XnJE)
+                  (k_inLP [Occ=Once] :: NoIO b_XnJG)
+                  (s_imNz [Occ=Once] :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                  case (m1_inLO
+                        `cast` (GHC.GHCi.N:NoIO[0] <a_XnJE>_N ; GHC.Types.N:IO[0]
+                                                                    <a_XnJE>_R
+                                :: (NoIO a_XnJE :: *)
+                                   ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                        -> (# GHC.Prim.State# GHC.Prim.RealWorld, a_XnJE #) :: *)))
+                         s_imNz
+                  of
+                  { (# ipv_imNC [Occ=Once], _ [Occ=Dead] #) ->
+                  (k_inLP
+                   `cast` (GHC.GHCi.N:NoIO[0] <b_XnJG>_N ; GHC.Types.N:IO[0]
+                                                               <b_XnJG>_R
+                           :: (NoIO b_XnJG :: *)
+                              ~R# (GHC.Prim.State# GHC.Prim.RealWorld
+                                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, b_XnJG #) :: *)))
+                    ipv_imNC
+                  })
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <NoIO a>_R
+                       ->_R <NoIO b>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+                       :: (forall a b.
+                           NoIO a
+                           -> NoIO b
+                           -> GHC.Prim.State# GHC.Prim.RealWorld
+                           -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                          ~R# (forall a b. NoIO a -> NoIO b -> NoIO b :: *))}]
+GHC.GHCi.$fMonadNoIO_$c>>
+  = GHC.GHCi.$fApplicativeNoIO2
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <NoIO a>_R
+            ->_R <NoIO b>_R
+            ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+            :: (forall a b.
+                NoIO a
+                -> NoIO b
+                -> GHC.Prim.State# GHC.Prim.RealWorld
+                -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+               ~R# (forall a b. NoIO a -> NoIO b -> NoIO b :: *))
+
+-- RHS size: {terms: 9, types: 7, coercions: 96, joins: 0/0}
+GHC.GHCi.$fApplicativeNoIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: Applicative NoIO
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Base.C:Applicative TYPE: NoIO
+                              GHC.GHCi.$fFunctorNoIO
+                              GHC.GHCi.$fApplicativeNoIO5
+                              `cast` (forall (a :: <*>_N).
+                                      <a>_R
+                                      ->_R Sym (GHC.Types.N:IO[0]
+                                                    <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+                                      :: (forall a.
+                                          a
+                                          -> GHC.Prim.State# GHC.Prim.RealWorld
+                                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                                         ~R# (forall a. a -> NoIO a :: *))
+                              (\ (@ a_anJA) (@ b_anJB) ->
+                                 GHC.GHCi.$fApplicativeNoIO4 @ b_anJB @ a_anJA)
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <NoIO (a -> b)>_R
+                                      ->_R <NoIO a>_R
+                                      ->_R Sym (GHC.Types.N:IO[0]
+                                                    <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+                                      :: (forall a b.
+                                          NoIO (a -> b)
+                                          -> NoIO a
+                                          -> GHC.Prim.State# GHC.Prim.RealWorld
+                                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                                         ~R# (forall a b. NoIO (a -> b) -> NoIO a -> NoIO b :: *))
+                              GHC.GHCi.$fApplicativeNoIO3
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                      <a -> b -> c>_R
+                                      ->_R <NoIO a>_R
+                                      ->_R <NoIO b>_R
+                                      ->_R Sym (GHC.Types.N:IO[0]
+                                                    <c>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <c>_N
+                                      :: (forall a b c.
+                                          (a -> b -> c)
+                                          -> NoIO a
+                                          -> NoIO b
+                                          -> GHC.Prim.State# GHC.Prim.RealWorld
+                                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, c #) :: *)
+                                         ~R# (forall a b c.
+                                              (a -> b -> c) -> NoIO a -> NoIO b -> NoIO c :: *))
+                              GHC.GHCi.$fApplicativeNoIO2
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <NoIO a>_R
+                                      ->_R <NoIO b>_R
+                                      ->_R Sym (GHC.Types.N:IO[0]
+                                                    <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+                                      :: (forall a b.
+                                          NoIO a
+                                          -> NoIO b
+                                          -> GHC.Prim.State# GHC.Prim.RealWorld
+                                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                                         ~R# (forall a b. NoIO a -> NoIO b -> NoIO b :: *))
+                              GHC.GHCi.$fApplicativeNoIO1
+                              `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                      <NoIO a>_R
+                                      ->_R <NoIO b>_R
+                                      ->_R Sym (GHC.Types.N:IO[0]
+                                                    <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+                                      :: (forall a b.
+                                          NoIO a
+                                          -> NoIO b
+                                          -> GHC.Prim.State# GHC.Prim.RealWorld
+                                          -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                                         ~R# (forall a b. NoIO a -> NoIO b -> NoIO a :: *))]
+GHC.GHCi.$fApplicativeNoIO
+  = GHC.Base.C:Applicative
+      @ NoIO
+      GHC.GHCi.$fFunctorNoIO
+      (GHC.GHCi.$fApplicativeNoIO5
+       `cast` (forall (a :: <*>_N).
+               <a>_R
+               ->_R Sym (GHC.Types.N:IO[0] <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+               :: (forall a.
+                   a
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                  ~R# (forall a. a -> NoIO a :: *)))
+      ((\ (@ a_anJA) (@ b_anJB) ->
+          GHC.GHCi.$fApplicativeNoIO4 @ b_anJB @ a_anJA)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <NoIO (a -> b)>_R
+               ->_R <NoIO a>_R
+               ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+               :: (forall a b.
+                   NoIO (a -> b)
+                   -> NoIO a
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                  ~R# (forall a b. NoIO (a -> b) -> NoIO a -> NoIO b :: *)))
+      (GHC.GHCi.$fApplicativeNoIO3
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <NoIO a>_R
+               ->_R <NoIO b>_R
+               ->_R Sym (GHC.Types.N:IO[0] <c>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <c>_N
+               :: (forall a b c.
+                   (a -> b -> c)
+                   -> NoIO a
+                   -> NoIO b
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, c #) :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> NoIO a -> NoIO b -> NoIO c :: *)))
+      (GHC.GHCi.$fApplicativeNoIO2
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <NoIO a>_R
+               ->_R <NoIO b>_R
+               ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+               :: (forall a b.
+                   NoIO a
+                   -> NoIO b
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                  ~R# (forall a b. NoIO a -> NoIO b -> NoIO b :: *)))
+      (GHC.GHCi.$fApplicativeNoIO1
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <NoIO a>_R
+               ->_R <NoIO b>_R
+               ->_R Sym (GHC.Types.N:IO[0] <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+               :: (forall a b.
+                   NoIO a
+                   -> NoIO b
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                  ~R# (forall a b. NoIO a -> NoIO b -> NoIO a :: *)))
+
+-- RHS size: {terms: 4, types: 7, coercions: 0, joins: 0/0}
+lvl_rnRg :: forall a. [GHC.Types.Char] -> NoIO a
+[GblId, Arity=1, Str=<B,U>x, Unf=OtherCon []]
+lvl_rnRg
+  = \ (@ a_anJ9) (eta_B1 :: [GHC.Types.Char]) ->
+      GHC.Err.errorWithoutStackTrace
+        @ 'GHC.Types.LiftedRep @ (NoIO a_anJ9) eta_B1
+
+-- RHS size: {terms: 6, types: 1, coercions: 32, joins: 0/0}
+GHC.GHCi.$fMonadNoIO [InlPrag=NOUSERINLINE CONLIKE] :: Monad NoIO
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.Base.C:Monad TYPE: NoIO
+                        GHC.GHCi.$fApplicativeNoIO
+                        GHC.GHCi.$fMonadNoIO1
+                        `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                <NoIO a>_R
+                                ->_R <a -> NoIO b>_R
+                                ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+                                :: (forall a b.
+                                    NoIO a
+                                    -> (a -> NoIO b)
+                                    -> GHC.Prim.State# GHC.Prim.RealWorld
+                                    -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                                   ~R# (forall a b. NoIO a -> (a -> NoIO b) -> NoIO b :: *))
+                        GHC.GHCi.$fMonadNoIO_$c>>
+                        GHC.GHCi.$fApplicativeNoIO5
+                        `cast` (forall (a :: <*>_N).
+                                <a>_R
+                                ->_R Sym (GHC.Types.N:IO[0] <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+                                :: (forall a.
+                                    a
+                                    -> GHC.Prim.State# GHC.Prim.RealWorld
+                                    -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                                   ~R# (forall a. a -> NoIO a :: *))
+                        \ (@ a_anJ9) ->
+                          GHC.Err.errorWithoutStackTrace
+                            @ 'GHC.Types.LiftedRep @ (NoIO a_anJ9)]
+GHC.GHCi.$fMonadNoIO
+  = GHC.Base.C:Monad
+      @ NoIO
+      GHC.GHCi.$fApplicativeNoIO
+      (GHC.GHCi.$fMonadNoIO1
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <NoIO a>_R
+               ->_R <a -> NoIO b>_R
+               ->_R Sym (GHC.Types.N:IO[0] <b>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <b>_N
+               :: (forall a b.
+                   NoIO a
+                   -> (a -> NoIO b)
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #) :: *)
+                  ~R# (forall a b. NoIO a -> (a -> NoIO b) -> NoIO b :: *)))
+      GHC.GHCi.$fMonadNoIO_$c>>
+      (GHC.GHCi.$fApplicativeNoIO5
+       `cast` (forall (a :: <*>_N).
+               <a>_R
+               ->_R Sym (GHC.Types.N:IO[0] <a>_R) ; Sym (GHC.GHCi.N:NoIO[0]) <a>_N
+               :: (forall a.
+                   a
+                   -> GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #) :: *)
+                  ~R# (forall a. a -> NoIO a :: *)))
+      lvl_rnRg
+
+-- RHS size: {terms: 3, types: 1, coercions: 8, joins: 0/0}
+GHC.GHCi.$fGHCiSandboxIONoIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHCiSandboxIO NoIO
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       GHC.GHCi.C:GHCiSandboxIO TYPE: NoIO
+                                GHC.GHCi.$fMonadNoIO
+                                GHC.GHCi.$fGHCiSandboxIONoIO1
+                                `cast` (forall (a :: <*>_N).
+                                        <NoIO a>_R ->_R GHC.GHCi.N:NoIO[0] <a>_N
+                                        :: (forall a. NoIO a -> NoIO a :: *)
+                                           ~R# (forall a. NoIO a -> IO a :: *))]
+GHC.GHCi.$fGHCiSandboxIONoIO
+  = GHC.GHCi.C:GHCiSandboxIO
+      @ NoIO
+      GHC.GHCi.$fMonadNoIO
+      (GHC.GHCi.$fGHCiSandboxIONoIO1
+       `cast` (forall (a :: <*>_N).
+               <NoIO a>_R ->_R GHC.GHCi.N:NoIO[0] <a>_N
+               :: (forall a. NoIO a -> NoIO a :: *)
+                  ~R# (forall a. NoIO a -> IO a :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.GHCi.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.GHCi.$trModule3 = GHC.Types.TrNameS GHC.GHCi.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.GHCi.$trModule2 = "GHC.GHCi"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.GHCi.$trModule1 = GHC.Types.TrNameS GHC.GHCi.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.GHCi.$trModule
+  = GHC.Types.Module GHC.GHCi.$trModule3 GHC.GHCi.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rnRh :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rnRh
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcGHCiSandboxIO1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.GHCi.$tcGHCiSandboxIO1
+  = GHC.Types.KindRepFun GHC.Types.krep$*Arr* $krep_rnRh
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_rnRi :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_rnRi = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_rnRj :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_rnRj
+  = GHC.Types.:
+      @ GHC.Types.KindRep $krep1_rnRi (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_rnRk :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_rnRk = GHC.Types.KindRepTyConApp GHC.Types.$tcIO $krep2_rnRj
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcGHCiSandboxIO3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.GHCi.$tcGHCiSandboxIO3 = "GHCiSandboxIO"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcGHCiSandboxIO2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.GHCi.$tcGHCiSandboxIO2
+  = GHC.Types.TrNameS GHC.GHCi.$tcGHCiSandboxIO3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcGHCiSandboxIO :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.GHCi.$tcGHCiSandboxIO
+  = GHC.Types.TyCon
+      6221156064250054927##
+      4417322204787188560##
+      GHC.GHCi.$trModule
+      GHC.GHCi.$tcGHCiSandboxIO2
+      0#
+      GHC.GHCi.$tcGHCiSandboxIO1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcNoIO2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.GHCi.$tcNoIO2 = "NoIO"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcNoIO1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.GHCi.$tcNoIO1 = GHC.Types.TrNameS GHC.GHCi.$tcNoIO2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tcNoIO :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.GHCi.$tcNoIO
+  = GHC.Types.TyCon
+      10516839389931644691##
+      13251969196347980517##
+      GHC.GHCi.$trModule
+      GHC.GHCi.$tcNoIO1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_rnRl :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_rnRl
+  = GHC.Types.KindRepTyConApp GHC.GHCi.$tcNoIO $krep2_rnRj
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tc'NoIO1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.GHCi.$tc'NoIO1 = GHC.Types.KindRepFun $krep3_rnRk $krep4_rnRl
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tc'NoIO3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.GHCi.$tc'NoIO3 = "'NoIO"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tc'NoIO2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.GHCi.$tc'NoIO2 = GHC.Types.TrNameS GHC.GHCi.$tc'NoIO3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.GHCi.$tc'NoIO :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.GHCi.$tc'NoIO
+  = GHC.Types.TyCon
+      11198799526314248800##
+      4496738896484332546##
+      GHC.GHCi.$trModule
+      GHC.GHCi.$tc'NoIO2
+      1#
+      GHC.GHCi.$tc'NoIO1
+
+

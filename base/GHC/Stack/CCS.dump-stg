@@ -1,0 +1,2412 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:04.234122631 UTC
+
+GHC.Stack.CCS.getCurrentCCS1
+  :: forall dummy.
+     dummy
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [dummy1_sa1ii s_sa1ij]
+        case getCurrentCCS# [dummy1_sa1ii s_sa1ij] of {
+          (#,#) s'_sa1il [Occ=Once] addr_sa1im [Occ=Once] ->
+              let {
+                sat_sa1in [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1im];
+              } in  (#,#) [s'_sa1il sat_sa1in];
+        };
+
+GHC.Stack.CCS.getCurrentCCS
+  :: forall dummy.
+     dummy -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.getCurrentCCS1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.getCCSOf1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1io s_sa1ip]
+        case getCCSOf# [obj_sa1io s_sa1ip] of {
+          (#,#) s'_sa1ir [Occ=Once] addr_sa1is [Occ=Once] ->
+              let {
+                sat_sa1it [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1is];
+              } in  (#,#) [s'_sa1ir sat_sa1it];
+        };
+
+GHC.Stack.CCS.getCCSOf
+  :: forall a.
+     a -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.getCCSOf1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.clearCCS
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] clearCCS# [eta_B2 eta_B1];
+
+f_ra1i8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "\n\
+    \  "#;
+
+f1_ra1i9 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# f_ra1i8;
+
+GHC.Stack.CCS.renderStack1 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CallStack (from -prof):"#;
+
+GHC.Stack.CCS.renderStack_go [Occ=LoopBreaker]
+  :: [[GHC.Types.Char]] -> [GHC.Types.Char]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sa1iu]
+        case ds_sa1iu of {
+          [] -> [] [];
+          : y_sa1iw [Occ=Once] ys_sa1ix [Occ=Once] ->
+              let {
+                sat_sa1iz [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                [LclId] =
+                    [y_sa1iw ys_sa1ix] \s []
+                        let {
+                          sat_sa1iy [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                          [LclId] =
+                              [ys_sa1ix] \s [] GHC.Stack.CCS.renderStack_go ys_sa1ix;
+                        } in  GHC.Base.++ y_sa1iw sat_sa1iy;
+              } in  GHC.Base.++ f1_ra1i9 sat_sa1iz;
+        };
+
+GHC.Stack.CCS.renderStack :: [GHC.Base.String] -> GHC.Base.String
+[GblId, Arity=1, Str=<L,1*U>, Unf=OtherCon []] =
+    [] \r [strs_sa1iA]
+        let {
+          sat_sa1iC [Occ=Once] :: [GHC.Types.Char]
+          [LclId] =
+              [strs_sa1iA] \u []
+                  case GHC.List.reverse1 strs_sa1iA GHC.Types.[] of sat_sa1iB {
+                    __DEFAULT -> GHC.Stack.CCS.renderStack_go sat_sa1iB;
+                  };
+        } in 
+          GHC.CString.unpackAppendCString#
+              GHC.Stack.CCS.renderStack1 sat_sa1iC;
+
+GHC.Stack.CCS.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.CCS.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule4];
+
+GHC.Stack.CCS.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack.CCS"#;
+
+GHC.Stack.CCS.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule2];
+
+GHC.Stack.CCS.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.CCS.$trModule3
+                                     GHC.Stack.CCS.$trModule1];
+
+GHC.Stack.CCS.$tcCostCentreStack2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentreStack"#;
+
+GHC.Stack.CCS.$tcCostCentreStack1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentreStack2];
+
+GHC.Stack.CCS.$tcCostCentreStack :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4388269014118491027##
+                                    5682182778281832541##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentreStack1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.$tcCostCentre2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentre"#;
+
+GHC.Stack.CCS.$tcCostCentre1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentre2];
+
+GHC.Stack.CCS.$tcCostCentre :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10996116669986307392##
+                                    5747049382639019202##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentre1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.ccsCC1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1iD eta_sa1iE]
+        case p_sa1iD of {
+          GHC.Ptr.Ptr addr_sa1iG [Occ=Once] ->
+              case plusAddr# [addr_sa1iG 8#] of sat_sa1iH {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1iH 0# eta_sa1iE] of {
+                      (#,#) ipv_sa1iJ [Occ=Once] ipv1_sa1iK [Occ=Once] ->
+                          let {
+                            sat_sa1iL [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1iK];
+                          } in  (#,#) [ipv_sa1iJ sat_sa1iL];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsCC
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccsCC1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccsParent1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1iM eta_sa1iN]
+        case p_sa1iM of {
+          GHC.Ptr.Ptr addr_sa1iP [Occ=Once] ->
+              case plusAddr# [addr_sa1iP 16#] of sat_sa1iQ {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1iQ 0# eta_sa1iN] of {
+                      (#,#) ipv_sa1iS [Occ=Once] ipv1_sa1iT [Occ=Once] ->
+                          let {
+                            sat_sa1iU [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1iT];
+                          } in  (#,#) [ipv_sa1iS sat_sa1iU];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsParent
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccsParent1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccSrcSpan1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1iV eta_sa1iW]
+        case p_sa1iV of {
+          GHC.Ptr.Ptr addr_sa1iY [Occ=Once] ->
+              case plusAddr# [addr_sa1iY 24#] of sat_sa1iZ {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1iZ 0# eta_sa1iW] of {
+                      (#,#) ipv_sa1j1 [Occ=Once] ipv1_sa1j2 [Occ=Once] ->
+                          let {
+                            sat_sa1j3 [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1j2];
+                          } in  (#,#) [ipv_sa1j1 sat_sa1j3];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccSrcSpan
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccSrcSpan1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccModule1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1j4 eta_sa1j5]
+        case p_sa1j4 of {
+          GHC.Ptr.Ptr addr_sa1j7 [Occ=Once] ->
+              case plusAddr# [addr_sa1j7 16#] of sat_sa1j8 {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1j8 0# eta_sa1j5] of {
+                      (#,#) ipv_sa1ja [Occ=Once] ipv1_sa1jb [Occ=Once] ->
+                          let {
+                            sat_sa1jc [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1jb];
+                          } in  (#,#) [ipv_sa1ja sat_sa1jc];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccModule
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccModule1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccLabel1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1jd eta_sa1je]
+        case p_sa1jd of {
+          GHC.Ptr.Ptr addr_sa1jg [Occ=Once] ->
+              case plusAddr# [addr_sa1jg 8#] of sat_sa1jh {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1jh 0# eta_sa1je] of {
+                      (#,#) ipv_sa1jj [Occ=Once] ipv1_sa1jk [Occ=Once] ->
+                          let {
+                            sat_sa1jl [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1jk];
+                          } in  (#,#) [ipv_sa1jj sat_sa1jl];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccLabel
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccLabel1 eta_B2 eta_B1;
+
+lvl_ra1ia :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MAIN"#;
+
+lvl1_ra1ib :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_ra1ia;
+
+lvl2_ra1ic :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    ")"#;
+
+lvl3_ra1id :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['('#];
+
+lvl4_ra1ie :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! [' '#];
+
+lvl5_ra1if :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['.'#];
+
+lvl6_ra1ig :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_ra1ic;
+
+GHC.Stack.CCS.$wgo [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: GHC.Prim.Addr#
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_sa1jm w_sa1jn w1_sa1jo]
+        case eqAddr# [ww_sa1jm __NULL] of {
+          __DEFAULT ->
+              case plusAddr# [ww_sa1jm 8#] of sat_sa1jq {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1jq 0# w1_sa1jo] of {
+                      (#,#) ipv_sa1js [Occ=Once] ipv1_sa1jt ->
+                          case plusAddr# [ipv1_sa1jt 8#] of sat_sa1ju {
+                            __DEFAULT ->
+                                case readAddrOffAddr# [sat_sa1ju 0# ipv_sa1js] of {
+                                  (#,#) ipv2_sa1jw [Occ=Once] ipv3_sa1jx [Occ=Once] ->
+                                      case
+                                          GHC.Foreign.$wpeekCString
+                                              GHC.IO.Encoding.UTF8.utf8 ipv3_sa1jx ipv2_sa1jw
+                                      of
+                                      { (#,#) ipv4_sa1jz [Occ=Once] ipv5_sa1jA ->
+                                            case plusAddr# [ipv1_sa1jt 16#] of sat_sa1jB {
+                                              __DEFAULT ->
+                                                  case
+                                                      readAddrOffAddr# [sat_sa1jB 0# ipv4_sa1jz]
+                                                  of
+                                                  { (#,#) ipv6_sa1jD [Occ=Once]
+                                                          ipv7_sa1jE [Occ=Once] ->
+                                                        case
+                                                            GHC.Foreign.$wpeekCString
+                                                                GHC.IO.Encoding.UTF8.utf8
+                                                                ipv7_sa1jE
+                                                                ipv6_sa1jD
+                                                        of
+                                                        { (#,#) ipv8_sa1jG [Occ=Once] ipv9_sa1jH ->
+                                                              case
+                                                                  plusAddr# [ipv1_sa1jt 24#]
+                                                              of
+                                                              sat_sa1jI
+                                                              { __DEFAULT ->
+                                                                    case
+                                                                        readAddrOffAddr# [sat_sa1jI
+                                                                                          0#
+                                                                                          ipv8_sa1jG]
+                                                                    of
+                                                                    { (#,#) ipv10_sa1jK [Occ=Once]
+                                                                            ipv11_sa1jL [Occ=Once] ->
+                                                                          case
+                                                                              GHC.Foreign.$wpeekCString
+                                                                                  GHC.IO.Encoding.UTF8.utf8
+                                                                                  ipv11_sa1jL
+                                                                                  ipv10_sa1jK
+                                                                          of
+                                                                          { (#,#) ipv12_sa1jN [Occ=Once]
+                                                                                  ipv13_sa1jO [Occ=Once] ->
+                                                                                case
+                                                                                    plusAddr# [ww_sa1jm
+                                                                                               16#]
+                                                                                of
+                                                                                sat_sa1jP
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          readAddrOffAddr# [sat_sa1jP
+                                                                                                            0#
+                                                                                                            ipv12_sa1jN]
+                                                                                      of
+                                                                                      { (#,#) ipv14_sa1jR
+                                                                                              ipv15_sa1jS [Occ=Once] ->
+                                                                                            let-no-escape {
+                                                                                              $j_sa1jT [Occ=Once*T[0],
+                                                                                                        Dmd=<L,1*U(U,U)>]
+                                                                                                :: (# GHC.Prim.State#
+                                                                                                        GHC.Prim.RealWorld,
+                                                                                                      [[GHC.Types.Char]] #)
+                                                                                              [LclId[JoinId(0)],
+                                                                                               Unf=OtherCon []] =
+                                                                                                  [w_sa1jn
+                                                                                                   ipv5_sa1jA
+                                                                                                   ipv9_sa1jH
+                                                                                                   ipv13_sa1jO
+                                                                                                   ipv14_sa1jR
+                                                                                                   ipv15_sa1jS] \r []
+                                                                                                      let {
+                                                                                                        sat_sa1jZ [Occ=Once]
+                                                                                                          :: [GHC.Types.Char]
+                                                                                                        [LclId] =
+                                                                                                            [ipv5_sa1jA
+                                                                                                             ipv9_sa1jH
+                                                                                                             ipv13_sa1jO] \u []
+                                                                                                                let {
+                                                                                                                  sat_sa1jX [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      [ipv5_sa1jA
+                                                                                                                       ipv13_sa1jO] \u []
+                                                                                                                          let {
+                                                                                                                            sat_sa1jU [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                [ipv13_sa1jO] \u []
+                                                                                                                                    GHC.Base.++
+                                                                                                                                        ipv13_sa1jO
+                                                                                                                                        lvl6_ra1ig; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1jV [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl3_ra1id
+                                                                                                                                         sat_sa1jU]; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1jW [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl4_ra1ie
+                                                                                                                                         sat_sa1jV];
+                                                                                                                          } in 
+                                                                                                                            GHC.Base.++
+                                                                                                                                ipv5_sa1jA
+                                                                                                                                sat_sa1jW; } in
+                                                                                                                let {
+                                                                                                                  sat_sa1jY [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      CCCS :! [lvl5_ra1if
+                                                                                                                               sat_sa1jX];
+                                                                                                                } in 
+                                                                                                                  GHC.Base.++
+                                                                                                                      ipv9_sa1jH
+                                                                                                                      sat_sa1jY; } in
+                                                                                                      let {
+                                                                                                        sat_sa1k0 [Occ=Once]
+                                                                                                          :: [[GHC.Types.Char]]
+                                                                                                        [LclId] =
+                                                                                                            CCCS :! [sat_sa1jZ
+                                                                                                                     w_sa1jn];
+                                                                                                      } in 
+                                                                                                        GHC.Stack.CCS.$wgo
+                                                                                                            ipv15_sa1jS
+                                                                                                            sat_sa1k0
+                                                                                                            ipv14_sa1jR;
+                                                                                            } in 
+                                                                                              case
+                                                                                                  GHC.Base.eqString
+                                                                                                      ipv9_sa1jH
+                                                                                                      lvl1_ra1ib
+                                                                                              of
+                                                                                              { GHC.Types.False ->
+                                                                                                    $j_sa1jT;
+                                                                                                GHC.Types.True ->
+                                                                                                    case
+                                                                                                        GHC.Base.eqString
+                                                                                                            ipv5_sa1jA
+                                                                                                            lvl1_ra1ib
+                                                                                                    of
+                                                                                                    { GHC.Types.False ->
+                                                                                                          $j_sa1jT;
+                                                                                                      GHC.Types.True ->
+                                                                                                          (#,#) [ipv14_sa1jR
+                                                                                                                 w_sa1jn];
+                                                                                                    };
+                                                                                              };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                            };
+                                      };
+                                };
+                          };
+                    };
+              };
+          1# -> (#,#) [w1_sa1jo w_sa1jn];
+        };
+
+GHC.Stack.CCS.ccsToStrings2 [InlPrag=NOUSERINLINE[0]]
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S(S),1*U(U)><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [w_sa1k3 w1_sa1k4 w2_sa1k5]
+        case w_sa1k3 of {
+          GHC.Ptr.Ptr ww1_sa1k7 [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1k7 w1_sa1k4 w2_sa1k5;
+        };
+
+GHC.Stack.CCS.ccsToStrings1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [ccs0_sa1k8 eta_sa1k9]
+        case ccs0_sa1k8 of {
+          GHC.Ptr.Ptr ww1_sa1kb [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1kb GHC.Types.[] eta_sa1k9;
+        };
+
+GHC.Stack.CCS.ccsToStrings
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccsToStrings1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.whoCreated1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1kc s_sa1kd]
+        case getCCSOf# [obj_sa1kc s_sa1kd] of {
+          (#,#) s'_sa1kf [Occ=Once] addr_sa1kg [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1kg GHC.Types.[] s'_sa1kf;
+        };
+
+GHC.Stack.CCS.whoCreated
+  :: forall a. a -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.whoCreated1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.currentCallStack1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sa1kh]
+        case getCurrentCCS# [GHC.Tuple.() s_sa1kh] of {
+          (#,#) s'_sa1kj [Occ=Once] addr_sa1kk [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1kk GHC.Types.[] s'_sa1kj;
+        };
+
+GHC.Stack.CCS.currentCallStack :: GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Stack.CCS.currentCallStack1 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:04.243261306 UTC
+
+GHC.Stack.CCS.getCurrentCCS1
+  :: forall dummy.
+     dummy
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [dummy1_sa1ii void_0E]
+        case getCurrentCCS# [dummy1_sa1ii GHC.Prim.void#] of {
+          Unit# addr_sa1im [Occ=Once] ->
+              let {
+                sat_sa1in [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1im];
+              } in  Unit# [sat_sa1in];
+        };
+
+GHC.Stack.CCS.getCurrentCCS
+  :: forall dummy.
+     dummy -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.getCurrentCCS1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.getCCSOf1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1io void_0E]
+        case getCCSOf# [obj_sa1io GHC.Prim.void#] of {
+          Unit# addr_sa1is [Occ=Once] ->
+              let {
+                sat_sa1it [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1is];
+              } in  Unit# [sat_sa1it];
+        };
+
+GHC.Stack.CCS.getCCSOf
+  :: forall a.
+     a -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.getCCSOf1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.clearCCS
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] clearCCS# [eta_B2 GHC.Prim.void#];
+
+f_ra1i8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "\n\
+    \  "#;
+
+f1_ra1i9 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# f_ra1i8;
+
+GHC.Stack.CCS.renderStack1 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CallStack (from -prof):"#;
+
+GHC.Stack.CCS.renderStack_go [Occ=LoopBreaker]
+  :: [[GHC.Types.Char]] -> [GHC.Types.Char]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sa1iu]
+        case ds_sa1iu of {
+          [] -> [] [];
+          : y_sa1iw [Occ=Once] ys_sa1ix [Occ=Once] ->
+              let {
+                sat_sa1iz [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                [LclId] =
+                    [y_sa1iw ys_sa1ix] \s []
+                        let {
+                          sat_sa1iy [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                          [LclId] =
+                              [ys_sa1ix] \s [] GHC.Stack.CCS.renderStack_go ys_sa1ix;
+                        } in  GHC.Base.++ y_sa1iw sat_sa1iy;
+              } in  GHC.Base.++ f1_ra1i9 sat_sa1iz;
+        };
+
+GHC.Stack.CCS.renderStack :: [GHC.Base.String] -> GHC.Base.String
+[GblId, Arity=1, Str=<L,1*U>, Unf=OtherCon []] =
+    [] \r [strs_sa1iA]
+        let {
+          sat_sa1iC [Occ=Once] :: [GHC.Types.Char]
+          [LclId] =
+              [strs_sa1iA] \u []
+                  case GHC.List.reverse1 strs_sa1iA GHC.Types.[] of sat_sa1iB {
+                    __DEFAULT -> GHC.Stack.CCS.renderStack_go sat_sa1iB;
+                  };
+        } in 
+          GHC.CString.unpackAppendCString#
+              GHC.Stack.CCS.renderStack1 sat_sa1iC;
+
+GHC.Stack.CCS.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.CCS.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule4];
+
+GHC.Stack.CCS.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack.CCS"#;
+
+GHC.Stack.CCS.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule2];
+
+GHC.Stack.CCS.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.CCS.$trModule3
+                                     GHC.Stack.CCS.$trModule1];
+
+GHC.Stack.CCS.$tcCostCentreStack2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentreStack"#;
+
+GHC.Stack.CCS.$tcCostCentreStack1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentreStack2];
+
+GHC.Stack.CCS.$tcCostCentreStack :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4388269014118491027##
+                                    5682182778281832541##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentreStack1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.$tcCostCentre2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentre"#;
+
+GHC.Stack.CCS.$tcCostCentre1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentre2];
+
+GHC.Stack.CCS.$tcCostCentre :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10996116669986307392##
+                                    5747049382639019202##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentre1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.ccsCC1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1iD void_0E]
+        case p_sa1iD of {
+          GHC.Ptr.Ptr addr_sa1iG [Occ=Once] ->
+              case plusAddr# [addr_sa1iG 8#] of sat_sa1iH {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1iH 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1iK [Occ=Once] ->
+                          let {
+                            sat_sa1iL [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1iK];
+                          } in  Unit# [sat_sa1iL];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsCC
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Stack.CCS.ccsCC1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccsParent1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1iM void_0E]
+        case p_sa1iM of {
+          GHC.Ptr.Ptr addr_sa1iP [Occ=Once] ->
+              case plusAddr# [addr_sa1iP 16#] of sat_sa1iQ {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1iQ 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1iT [Occ=Once] ->
+                          let {
+                            sat_sa1iU [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1iT];
+                          } in  Unit# [sat_sa1iU];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsParent
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccsParent1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccSrcSpan1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1iV void_0E]
+        case p_sa1iV of {
+          GHC.Ptr.Ptr addr_sa1iY [Occ=Once] ->
+              case plusAddr# [addr_sa1iY 24#] of sat_sa1iZ {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1iZ 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1j2 [Occ=Once] ->
+                          let {
+                            sat_sa1j3 [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1j2];
+                          } in  Unit# [sat_sa1j3];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccSrcSpan
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccSrcSpan1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccModule1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1j4 void_0E]
+        case p_sa1j4 of {
+          GHC.Ptr.Ptr addr_sa1j7 [Occ=Once] ->
+              case plusAddr# [addr_sa1j7 16#] of sat_sa1j8 {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1j8 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1jb [Occ=Once] ->
+                          let {
+                            sat_sa1jc [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1jb];
+                          } in  Unit# [sat_sa1jc];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccModule
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccModule1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccLabel1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1jd void_0E]
+        case p_sa1jd of {
+          GHC.Ptr.Ptr addr_sa1jg [Occ=Once] ->
+              case plusAddr# [addr_sa1jg 8#] of sat_sa1jh {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1jh 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1jk [Occ=Once] ->
+                          let {
+                            sat_sa1jl [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1jk];
+                          } in  Unit# [sat_sa1jl];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccLabel
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccLabel1 eta_B2 GHC.Prim.void#;
+
+lvl_ra1ia :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MAIN"#;
+
+lvl1_ra1ib :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_ra1ia;
+
+lvl2_ra1ic :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    ")"#;
+
+lvl3_ra1id :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['('#];
+
+lvl4_ra1ie :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! [' '#];
+
+lvl5_ra1if :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['.'#];
+
+lvl6_ra1ig :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_ra1ic;
+
+GHC.Stack.CCS.$wgo [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: GHC.Prim.Addr#
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_sa1jm w_sa1jn void_0E]
+        case eqAddr# [ww_sa1jm __NULL] of {
+          __DEFAULT ->
+              case plusAddr# [ww_sa1jm 8#] of sat_sa1jq {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1jq 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1jt ->
+                          case plusAddr# [ipv1_sa1jt 8#] of sat_sa1ju {
+                            __DEFAULT ->
+                                case readAddrOffAddr# [sat_sa1ju 0# GHC.Prim.void#] of {
+                                  Unit# ipv3_sa1jx [Occ=Once] ->
+                                      case
+                                          GHC.Foreign.$wpeekCString
+                                              GHC.IO.Encoding.UTF8.utf8 ipv3_sa1jx GHC.Prim.void#
+                                      of
+                                      { Unit# ipv5_sa1jA ->
+                                            case plusAddr# [ipv1_sa1jt 16#] of sat_sa1jB {
+                                              __DEFAULT ->
+                                                  case
+                                                      readAddrOffAddr# [sat_sa1jB 0# GHC.Prim.void#]
+                                                  of
+                                                  { Unit# ipv7_sa1jE [Occ=Once] ->
+                                                        case
+                                                            GHC.Foreign.$wpeekCString
+                                                                GHC.IO.Encoding.UTF8.utf8
+                                                                ipv7_sa1jE
+                                                                GHC.Prim.void#
+                                                        of
+                                                        { Unit# ipv9_sa1jH ->
+                                                              case
+                                                                  plusAddr# [ipv1_sa1jt 24#]
+                                                              of
+                                                              sat_sa1jI
+                                                              { __DEFAULT ->
+                                                                    case
+                                                                        readAddrOffAddr# [sat_sa1jI
+                                                                                          0#
+                                                                                          GHC.Prim.void#]
+                                                                    of
+                                                                    { Unit# ipv11_sa1jL [Occ=Once] ->
+                                                                          case
+                                                                              GHC.Foreign.$wpeekCString
+                                                                                  GHC.IO.Encoding.UTF8.utf8
+                                                                                  ipv11_sa1jL
+                                                                                  GHC.Prim.void#
+                                                                          of
+                                                                          { Unit# ipv13_sa1jO [Occ=Once] ->
+                                                                                case
+                                                                                    plusAddr# [ww_sa1jm
+                                                                                               16#]
+                                                                                of
+                                                                                sat_sa1jP
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          readAddrOffAddr# [sat_sa1jP
+                                                                                                            0#
+                                                                                                            GHC.Prim.void#]
+                                                                                      of
+                                                                                      { Unit# ipv15_sa1jS [Occ=Once] ->
+                                                                                            let-no-escape {
+                                                                                              $j_sa1jT [Occ=Once*T[0],
+                                                                                                        Dmd=<L,1*U(U,U)>]
+                                                                                                :: (# GHC.Prim.State#
+                                                                                                        GHC.Prim.RealWorld,
+                                                                                                      [[GHC.Types.Char]] #)
+                                                                                              [LclId[JoinId(0)],
+                                                                                               Unf=OtherCon []] =
+                                                                                                  [w_sa1jn
+                                                                                                   ipv5_sa1jA
+                                                                                                   ipv9_sa1jH
+                                                                                                   ipv13_sa1jO
+                                                                                                   ipv15_sa1jS] \r []
+                                                                                                      let {
+                                                                                                        sat_sa1jZ [Occ=Once]
+                                                                                                          :: [GHC.Types.Char]
+                                                                                                        [LclId] =
+                                                                                                            [ipv5_sa1jA
+                                                                                                             ipv9_sa1jH
+                                                                                                             ipv13_sa1jO] \u []
+                                                                                                                let {
+                                                                                                                  sat_sa1jX [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      [ipv5_sa1jA
+                                                                                                                       ipv13_sa1jO] \u []
+                                                                                                                          let {
+                                                                                                                            sat_sa1jU [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                [ipv13_sa1jO] \u []
+                                                                                                                                    GHC.Base.++
+                                                                                                                                        ipv13_sa1jO
+                                                                                                                                        lvl6_ra1ig; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1jV [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl3_ra1id
+                                                                                                                                         sat_sa1jU]; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1jW [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl4_ra1ie
+                                                                                                                                         sat_sa1jV];
+                                                                                                                          } in 
+                                                                                                                            GHC.Base.++
+                                                                                                                                ipv5_sa1jA
+                                                                                                                                sat_sa1jW; } in
+                                                                                                                let {
+                                                                                                                  sat_sa1jY [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      CCCS :! [lvl5_ra1if
+                                                                                                                               sat_sa1jX];
+                                                                                                                } in 
+                                                                                                                  GHC.Base.++
+                                                                                                                      ipv9_sa1jH
+                                                                                                                      sat_sa1jY; } in
+                                                                                                      let {
+                                                                                                        sat_sa1k0 [Occ=Once]
+                                                                                                          :: [[GHC.Types.Char]]
+                                                                                                        [LclId] =
+                                                                                                            CCCS :! [sat_sa1jZ
+                                                                                                                     w_sa1jn];
+                                                                                                      } in 
+                                                                                                        GHC.Stack.CCS.$wgo
+                                                                                                            ipv15_sa1jS
+                                                                                                            sat_sa1k0
+                                                                                                            GHC.Prim.void#;
+                                                                                            } in 
+                                                                                              case
+                                                                                                  GHC.Base.eqString
+                                                                                                      ipv9_sa1jH
+                                                                                                      lvl1_ra1ib
+                                                                                              of
+                                                                                              { GHC.Types.False ->
+                                                                                                    $j_sa1jT;
+                                                                                                GHC.Types.True ->
+                                                                                                    case
+                                                                                                        GHC.Base.eqString
+                                                                                                            ipv5_sa1jA
+                                                                                                            lvl1_ra1ib
+                                                                                                    of
+                                                                                                    { GHC.Types.False ->
+                                                                                                          $j_sa1jT;
+                                                                                                      GHC.Types.True ->
+                                                                                                          Unit# [w_sa1jn];
+                                                                                                    };
+                                                                                              };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                            };
+                                      };
+                                };
+                          };
+                    };
+              };
+          1# -> Unit# [w_sa1jn];
+        };
+
+GHC.Stack.CCS.ccsToStrings2 [InlPrag=NOUSERINLINE[0]]
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S(S),1*U(U)><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [w_sa1k3 w1_sa1k4 void_0E]
+        case w_sa1k3 of {
+          GHC.Ptr.Ptr ww1_sa1k7 [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1k7 w1_sa1k4 GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.ccsToStrings1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [ccs0_sa1k8 void_0E]
+        case ccs0_sa1k8 of {
+          GHC.Ptr.Ptr ww1_sa1kb [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1kb GHC.Types.[] GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.ccsToStrings
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccsToStrings1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.whoCreated1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1kc void_0E]
+        case getCCSOf# [obj_sa1kc GHC.Prim.void#] of {
+          Unit# addr_sa1kg [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1kg GHC.Types.[] GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.whoCreated
+  :: forall a. a -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.whoCreated1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.currentCallStack1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case getCurrentCCS# [GHC.Tuple.() GHC.Prim.void#] of {
+          Unit# addr_sa1kk [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1kk GHC.Types.[] GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.currentCallStack :: GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.Stack.CCS.currentCallStack1 GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:05:04.835936195 UTC
+
+GHC.Stack.CCS.getCurrentCCS1
+  :: forall dummy.
+     dummy
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [dummy1_sa1JA s_sa1JB]
+        case getCurrentCCS# [dummy1_sa1JA s_sa1JB] of {
+          (#,#) s'_sa1JD [Occ=Once] addr_sa1JE [Occ=Once] ->
+              let {
+                sat_sa1JF [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1JE];
+              } in  (#,#) [s'_sa1JD sat_sa1JF];
+        };
+
+GHC.Stack.CCS.getCurrentCCS
+  :: forall dummy.
+     dummy -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.getCurrentCCS1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.getCCSOf1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1JG s_sa1JH]
+        case getCCSOf# [obj_sa1JG s_sa1JH] of {
+          (#,#) s'_sa1JJ [Occ=Once] addr_sa1JK [Occ=Once] ->
+              let {
+                sat_sa1JL [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1JK];
+              } in  (#,#) [s'_sa1JJ sat_sa1JL];
+        };
+
+GHC.Stack.CCS.getCCSOf
+  :: forall a.
+     a -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.getCCSOf1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.clearCCS
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] clearCCS# [eta_B2 eta_B1];
+
+f_ra1i8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "\n\
+    \  "#;
+
+f1_ra1i9 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# f_ra1i8;
+
+GHC.Stack.CCS.renderStack1 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CallStack (from -prof):"#;
+
+GHC.Stack.CCS.renderStack_go [Occ=LoopBreaker]
+  :: [[GHC.Types.Char]] -> [GHC.Types.Char]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sa1JM]
+        case ds_sa1JM of {
+          [] -> [] [];
+          : y_sa1JO [Occ=Once] ys_sa1JP [Occ=Once] ->
+              let {
+                sat_sa1JR [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                [LclId] =
+                    [y_sa1JO ys_sa1JP] \s []
+                        let {
+                          sat_sa1JQ [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                          [LclId] =
+                              [ys_sa1JP] \s [] GHC.Stack.CCS.renderStack_go ys_sa1JP;
+                        } in  GHC.Base.++ y_sa1JO sat_sa1JQ;
+              } in  GHC.Base.++ f1_ra1i9 sat_sa1JR;
+        };
+
+GHC.Stack.CCS.renderStack :: [GHC.Base.String] -> GHC.Base.String
+[GblId, Arity=1, Str=<L,1*U>, Unf=OtherCon []] =
+    [] \r [strs_sa1JS]
+        let {
+          sat_sa1JU [Occ=Once] :: [GHC.Types.Char]
+          [LclId] =
+              [strs_sa1JS] \u []
+                  case GHC.List.reverse1 strs_sa1JS GHC.Types.[] of sat_sa1JT {
+                    __DEFAULT -> GHC.Stack.CCS.renderStack_go sat_sa1JT;
+                  };
+        } in 
+          GHC.CString.unpackAppendCString#
+              GHC.Stack.CCS.renderStack1 sat_sa1JU;
+
+GHC.Stack.CCS.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.CCS.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule4];
+
+GHC.Stack.CCS.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack.CCS"#;
+
+GHC.Stack.CCS.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule2];
+
+GHC.Stack.CCS.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.CCS.$trModule3
+                                     GHC.Stack.CCS.$trModule1];
+
+GHC.Stack.CCS.$tcCostCentreStack2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentreStack"#;
+
+GHC.Stack.CCS.$tcCostCentreStack1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentreStack2];
+
+GHC.Stack.CCS.$tcCostCentreStack :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4388269014118491027##
+                                    5682182778281832541##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentreStack1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.$tcCostCentre2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentre"#;
+
+GHC.Stack.CCS.$tcCostCentre1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentre2];
+
+GHC.Stack.CCS.$tcCostCentre :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10996116669986307392##
+                                    5747049382639019202##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentre1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.ccsCC1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1JV eta_sa1JW]
+        case p_sa1JV of {
+          GHC.Ptr.Ptr addr_sa1JY [Occ=Once] ->
+              case plusAddr# [addr_sa1JY 8#] of sat_sa1JZ {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1JZ 0# eta_sa1JW] of {
+                      (#,#) ipv_sa1K1 [Occ=Once] ipv1_sa1K2 [Occ=Once] ->
+                          let {
+                            sat_sa1K3 [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1K2];
+                          } in  (#,#) [ipv_sa1K1 sat_sa1K3];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsCC
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccsCC1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccsParent1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1K4 eta_sa1K5]
+        case p_sa1K4 of {
+          GHC.Ptr.Ptr addr_sa1K7 [Occ=Once] ->
+              case plusAddr# [addr_sa1K7 16#] of sat_sa1K8 {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1K8 0# eta_sa1K5] of {
+                      (#,#) ipv_sa1Ka [Occ=Once] ipv1_sa1Kb [Occ=Once] ->
+                          let {
+                            sat_sa1Kc [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1Kb];
+                          } in  (#,#) [ipv_sa1Ka sat_sa1Kc];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsParent
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccsParent1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccSrcSpan1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1Kd eta_sa1Ke]
+        case p_sa1Kd of {
+          GHC.Ptr.Ptr addr_sa1Kg [Occ=Once] ->
+              case plusAddr# [addr_sa1Kg 24#] of sat_sa1Kh {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1Kh 0# eta_sa1Ke] of {
+                      (#,#) ipv_sa1Kj [Occ=Once] ipv1_sa1Kk [Occ=Once] ->
+                          let {
+                            sat_sa1Kl [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1Kk];
+                          } in  (#,#) [ipv_sa1Kj sat_sa1Kl];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccSrcSpan
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccSrcSpan1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccModule1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1Km eta_sa1Kn]
+        case p_sa1Km of {
+          GHC.Ptr.Ptr addr_sa1Kp [Occ=Once] ->
+              case plusAddr# [addr_sa1Kp 16#] of sat_sa1Kq {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1Kq 0# eta_sa1Kn] of {
+                      (#,#) ipv_sa1Ks [Occ=Once] ipv1_sa1Kt [Occ=Once] ->
+                          let {
+                            sat_sa1Ku [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1Kt];
+                          } in  (#,#) [ipv_sa1Ks sat_sa1Ku];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccModule
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccModule1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.ccLabel1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1Kv eta_sa1Kw]
+        case p_sa1Kv of {
+          GHC.Ptr.Ptr addr_sa1Ky [Occ=Once] ->
+              case plusAddr# [addr_sa1Ky 8#] of sat_sa1Kz {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1Kz 0# eta_sa1Kw] of {
+                      (#,#) ipv_sa1KB [Occ=Once] ipv1_sa1KC [Occ=Once] ->
+                          let {
+                            sat_sa1KD [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1KC];
+                          } in  (#,#) [ipv_sa1KB sat_sa1KD];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccLabel
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccLabel1 eta_B2 eta_B1;
+
+lvl_ra1ia :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MAIN"#;
+
+lvl1_ra1ib :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_ra1ia;
+
+lvl2_ra1ic :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    ")"#;
+
+lvl3_ra1id :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['('#];
+
+lvl4_ra1ie :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! [' '#];
+
+lvl5_ra1if :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['.'#];
+
+lvl6_ra1ig :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_ra1ic;
+
+GHC.Stack.CCS.$wgo [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: GHC.Prim.Addr#
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_sa1KE w_sa1KF w1_sa1KG]
+        case eqAddr# [ww_sa1KE __NULL] of {
+          __DEFAULT ->
+              case plusAddr# [ww_sa1KE 8#] of sat_sa1KI {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1KI 0# w1_sa1KG] of {
+                      (#,#) ipv_sa1KK [Occ=Once] ipv1_sa1KL ->
+                          case plusAddr# [ipv1_sa1KL 8#] of sat_sa1KM {
+                            __DEFAULT ->
+                                case readAddrOffAddr# [sat_sa1KM 0# ipv_sa1KK] of {
+                                  (#,#) ipv2_sa1KO [Occ=Once] ipv3_sa1KP [Occ=Once] ->
+                                      case
+                                          GHC.Foreign.$wpeekCString
+                                              GHC.IO.Encoding.UTF8.utf8 ipv3_sa1KP ipv2_sa1KO
+                                      of
+                                      { (#,#) ipv4_sa1KR [Occ=Once] ipv5_sa1KS ->
+                                            case plusAddr# [ipv1_sa1KL 16#] of sat_sa1KT {
+                                              __DEFAULT ->
+                                                  case
+                                                      readAddrOffAddr# [sat_sa1KT 0# ipv4_sa1KR]
+                                                  of
+                                                  { (#,#) ipv6_sa1KV [Occ=Once]
+                                                          ipv7_sa1KW [Occ=Once] ->
+                                                        case
+                                                            GHC.Foreign.$wpeekCString
+                                                                GHC.IO.Encoding.UTF8.utf8
+                                                                ipv7_sa1KW
+                                                                ipv6_sa1KV
+                                                        of
+                                                        { (#,#) ipv8_sa1KY [Occ=Once] ipv9_sa1KZ ->
+                                                              case
+                                                                  plusAddr# [ipv1_sa1KL 24#]
+                                                              of
+                                                              sat_sa1L0
+                                                              { __DEFAULT ->
+                                                                    case
+                                                                        readAddrOffAddr# [sat_sa1L0
+                                                                                          0#
+                                                                                          ipv8_sa1KY]
+                                                                    of
+                                                                    { (#,#) ipv10_sa1L2 [Occ=Once]
+                                                                            ipv11_sa1L3 [Occ=Once] ->
+                                                                          case
+                                                                              GHC.Foreign.$wpeekCString
+                                                                                  GHC.IO.Encoding.UTF8.utf8
+                                                                                  ipv11_sa1L3
+                                                                                  ipv10_sa1L2
+                                                                          of
+                                                                          { (#,#) ipv12_sa1L5 [Occ=Once]
+                                                                                  ipv13_sa1L6 [Occ=Once] ->
+                                                                                case
+                                                                                    plusAddr# [ww_sa1KE
+                                                                                               16#]
+                                                                                of
+                                                                                sat_sa1L7
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          readAddrOffAddr# [sat_sa1L7
+                                                                                                            0#
+                                                                                                            ipv12_sa1L5]
+                                                                                      of
+                                                                                      { (#,#) ipv14_sa1L9
+                                                                                              ipv15_sa1La [Occ=Once] ->
+                                                                                            let-no-escape {
+                                                                                              $j_sa1Lb [Occ=Once*T[0],
+                                                                                                        Dmd=<L,1*U(U,U)>]
+                                                                                                :: (# GHC.Prim.State#
+                                                                                                        GHC.Prim.RealWorld,
+                                                                                                      [[GHC.Types.Char]] #)
+                                                                                              [LclId[JoinId(0)],
+                                                                                               Unf=OtherCon []] =
+                                                                                                  [w_sa1KF
+                                                                                                   ipv5_sa1KS
+                                                                                                   ipv9_sa1KZ
+                                                                                                   ipv13_sa1L6
+                                                                                                   ipv14_sa1L9
+                                                                                                   ipv15_sa1La] \r []
+                                                                                                      let {
+                                                                                                        sat_sa1Lh [Occ=Once]
+                                                                                                          :: [GHC.Types.Char]
+                                                                                                        [LclId] =
+                                                                                                            [ipv5_sa1KS
+                                                                                                             ipv9_sa1KZ
+                                                                                                             ipv13_sa1L6] \u []
+                                                                                                                let {
+                                                                                                                  sat_sa1Lf [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      [ipv5_sa1KS
+                                                                                                                       ipv13_sa1L6] \u []
+                                                                                                                          let {
+                                                                                                                            sat_sa1Lc [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                [ipv13_sa1L6] \u []
+                                                                                                                                    GHC.Base.++
+                                                                                                                                        ipv13_sa1L6
+                                                                                                                                        lvl6_ra1ig; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1Ld [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl3_ra1id
+                                                                                                                                         sat_sa1Lc]; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1Le [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl4_ra1ie
+                                                                                                                                         sat_sa1Ld];
+                                                                                                                          } in 
+                                                                                                                            GHC.Base.++
+                                                                                                                                ipv5_sa1KS
+                                                                                                                                sat_sa1Le; } in
+                                                                                                                let {
+                                                                                                                  sat_sa1Lg [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      CCCS :! [lvl5_ra1if
+                                                                                                                               sat_sa1Lf];
+                                                                                                                } in 
+                                                                                                                  GHC.Base.++
+                                                                                                                      ipv9_sa1KZ
+                                                                                                                      sat_sa1Lg; } in
+                                                                                                      let {
+                                                                                                        sat_sa1Li [Occ=Once]
+                                                                                                          :: [[GHC.Types.Char]]
+                                                                                                        [LclId] =
+                                                                                                            CCCS :! [sat_sa1Lh
+                                                                                                                     w_sa1KF];
+                                                                                                      } in 
+                                                                                                        GHC.Stack.CCS.$wgo
+                                                                                                            ipv15_sa1La
+                                                                                                            sat_sa1Li
+                                                                                                            ipv14_sa1L9;
+                                                                                            } in 
+                                                                                              case
+                                                                                                  GHC.Base.eqString
+                                                                                                      ipv9_sa1KZ
+                                                                                                      lvl1_ra1ib
+                                                                                              of
+                                                                                              { GHC.Types.False ->
+                                                                                                    $j_sa1Lb;
+                                                                                                GHC.Types.True ->
+                                                                                                    case
+                                                                                                        GHC.Base.eqString
+                                                                                                            ipv5_sa1KS
+                                                                                                            lvl1_ra1ib
+                                                                                                    of
+                                                                                                    { GHC.Types.False ->
+                                                                                                          $j_sa1Lb;
+                                                                                                      GHC.Types.True ->
+                                                                                                          (#,#) [ipv14_sa1L9
+                                                                                                                 w_sa1KF];
+                                                                                                    };
+                                                                                              };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                            };
+                                      };
+                                };
+                          };
+                    };
+              };
+          1# -> (#,#) [w1_sa1KG w_sa1KF];
+        };
+
+GHC.Stack.CCS.ccsToStrings2 [InlPrag=NOUSERINLINE[0]]
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S(S),1*U(U)><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [w_sa1Ll w1_sa1Lm w2_sa1Ln]
+        case w_sa1Ll of {
+          GHC.Ptr.Ptr ww1_sa1Lp [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1Lp w1_sa1Lm w2_sa1Ln;
+        };
+
+GHC.Stack.CCS.ccsToStrings1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [ccs0_sa1Lq eta_sa1Lr]
+        case ccs0_sa1Lq of {
+          GHC.Ptr.Ptr ww1_sa1Lt [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1Lt GHC.Types.[] eta_sa1Lr;
+        };
+
+GHC.Stack.CCS.ccsToStrings
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.ccsToStrings1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.whoCreated1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1Lu s_sa1Lv]
+        case getCCSOf# [obj_sa1Lu s_sa1Lv] of {
+          (#,#) s'_sa1Lx [Occ=Once] addr_sa1Ly [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1Ly GHC.Types.[] s'_sa1Lx;
+        };
+
+GHC.Stack.CCS.whoCreated
+  :: forall a. a -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Stack.CCS.whoCreated1 eta_B2 eta_B1;
+
+GHC.Stack.CCS.currentCallStack1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [s_sa1Lz]
+        case getCurrentCCS# [GHC.Tuple.() s_sa1Lz] of {
+          (#,#) s'_sa1LB [Occ=Once] addr_sa1LC [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1LC GHC.Types.[] s'_sa1LB;
+        };
+
+GHC.Stack.CCS.currentCallStack :: GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Stack.CCS.currentCallStack1 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:05:04.849103319 UTC
+
+GHC.Stack.CCS.getCurrentCCS1
+  :: forall dummy.
+     dummy
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [dummy1_sa1JA void_0E]
+        case getCurrentCCS# [dummy1_sa1JA GHC.Prim.void#] of {
+          Unit# addr_sa1JE [Occ=Once] ->
+              let {
+                sat_sa1JF [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1JE];
+              } in  Unit# [sat_sa1JF];
+        };
+
+GHC.Stack.CCS.getCurrentCCS
+  :: forall dummy.
+     dummy -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.getCurrentCCS1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.getCCSOf1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1JG void_0E]
+        case getCCSOf# [obj_sa1JG GHC.Prim.void#] of {
+          Unit# addr_sa1JK [Occ=Once] ->
+              let {
+                sat_sa1JL [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                [LclId] =
+                    CCCS GHC.Ptr.Ptr! [addr_sa1JK];
+              } in  Unit# [sat_sa1JL];
+        };
+
+GHC.Stack.CCS.getCCSOf
+  :: forall a.
+     a -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.getCCSOf1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.clearCCS
+  :: forall a. GHC.Types.IO a -> GHC.Types.IO a
+[GblId, Arity=2, Caf=NoCafRefs, Str=<L,U><L,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] clearCCS# [eta_B2 GHC.Prim.void#];
+
+f_ra1i8 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "\n\
+    \  "#;
+
+f1_ra1i9 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# f_ra1i8;
+
+GHC.Stack.CCS.renderStack1 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CallStack (from -prof):"#;
+
+GHC.Stack.CCS.renderStack_go [Occ=LoopBreaker]
+  :: [[GHC.Types.Char]] -> [GHC.Types.Char]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_sa1JM]
+        case ds_sa1JM of {
+          [] -> [] [];
+          : y_sa1JO [Occ=Once] ys_sa1JP [Occ=Once] ->
+              let {
+                sat_sa1JR [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                [LclId] =
+                    [y_sa1JO ys_sa1JP] \s []
+                        let {
+                          sat_sa1JQ [Occ=Once, Dmd=<L,1*U>] :: [GHC.Types.Char]
+                          [LclId] =
+                              [ys_sa1JP] \s [] GHC.Stack.CCS.renderStack_go ys_sa1JP;
+                        } in  GHC.Base.++ y_sa1JO sat_sa1JQ;
+              } in  GHC.Base.++ f1_ra1i9 sat_sa1JR;
+        };
+
+GHC.Stack.CCS.renderStack :: [GHC.Base.String] -> GHC.Base.String
+[GblId, Arity=1, Str=<L,1*U>, Unf=OtherCon []] =
+    [] \r [strs_sa1JS]
+        let {
+          sat_sa1JU [Occ=Once] :: [GHC.Types.Char]
+          [LclId] =
+              [strs_sa1JS] \u []
+                  case GHC.List.reverse1 strs_sa1JS GHC.Types.[] of sat_sa1JT {
+                    __DEFAULT -> GHC.Stack.CCS.renderStack_go sat_sa1JT;
+                  };
+        } in 
+          GHC.CString.unpackAppendCString#
+              GHC.Stack.CCS.renderStack1 sat_sa1JU;
+
+GHC.Stack.CCS.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Stack.CCS.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule4];
+
+GHC.Stack.CCS.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Stack.CCS"#;
+
+GHC.Stack.CCS.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$trModule2];
+
+GHC.Stack.CCS.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Stack.CCS.$trModule3
+                                     GHC.Stack.CCS.$trModule1];
+
+GHC.Stack.CCS.$tcCostCentreStack2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentreStack"#;
+
+GHC.Stack.CCS.$tcCostCentreStack1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentreStack2];
+
+GHC.Stack.CCS.$tcCostCentreStack :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [4388269014118491027##
+                                    5682182778281832541##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentreStack1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.$tcCostCentre2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "CostCentre"#;
+
+GHC.Stack.CCS.$tcCostCentre1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Stack.CCS.$tcCostCentre2];
+
+GHC.Stack.CCS.$tcCostCentre :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [10996116669986307392##
+                                    5747049382639019202##
+                                    GHC.Stack.CCS.$trModule
+                                    GHC.Stack.CCS.$tcCostCentre1
+                                    0#
+                                    GHC.Types.krep$*];
+
+GHC.Stack.CCS.ccsCC1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1JV void_0E]
+        case p_sa1JV of {
+          GHC.Ptr.Ptr addr_sa1JY [Occ=Once] ->
+              case plusAddr# [addr_sa1JY 8#] of sat_sa1JZ {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1JZ 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1K2 [Occ=Once] ->
+                          let {
+                            sat_sa1K3 [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1K2];
+                          } in  Unit# [sat_sa1K3];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsCC
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Stack.CCS.ccsCC1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccsParent1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1K4 void_0E]
+        case p_sa1K4 of {
+          GHC.Ptr.Ptr addr_sa1K7 [Occ=Once] ->
+              case plusAddr# [addr_sa1K7 16#] of sat_sa1K8 {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1K8 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1Kb [Occ=Once] ->
+                          let {
+                            sat_sa1Kc [Occ=Once] :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1Kb];
+                          } in  Unit# [sat_sa1Kc];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccsParent
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO (GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccsParent1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccSrcSpan1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1Kd void_0E]
+        case p_sa1Kd of {
+          GHC.Ptr.Ptr addr_sa1Kg [Occ=Once] ->
+              case plusAddr# [addr_sa1Kg 24#] of sat_sa1Kh {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1Kh 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1Kk [Occ=Once] ->
+                          let {
+                            sat_sa1Kl [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1Kk];
+                          } in  Unit# [sat_sa1Kl];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccSrcSpan
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccSrcSpan1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccModule1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1Km void_0E]
+        case p_sa1Km of {
+          GHC.Ptr.Ptr addr_sa1Kp [Occ=Once] ->
+              case plusAddr# [addr_sa1Kp 16#] of sat_sa1Kq {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1Kq 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1Kt [Occ=Once] ->
+                          let {
+                            sat_sa1Ku [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1Kt];
+                          } in  Unit# [sat_sa1Ku];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccModule
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccModule1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.ccLabel1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+           GHC.Ptr.Ptr Foreign.C.Types.CChar #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [p_sa1Kv void_0E]
+        case p_sa1Kv of {
+          GHC.Ptr.Ptr addr_sa1Ky [Occ=Once] ->
+              case plusAddr# [addr_sa1Ky 8#] of sat_sa1Kz {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1Kz 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1KC [Occ=Once] ->
+                          let {
+                            sat_sa1KD [Occ=Once] :: GHC.Ptr.Ptr Foreign.C.Types.CChar
+                            [LclId] =
+                                CCCS GHC.Ptr.Ptr! [ipv1_sa1KC];
+                          } in  Unit# [sat_sa1KD];
+                    };
+              };
+        };
+
+GHC.Stack.CCS.ccLabel
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentre
+     -> GHC.Types.IO Foreign.C.String.CString
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccLabel1 eta_B2 GHC.Prim.void#;
+
+lvl_ra1ia :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MAIN"#;
+
+lvl1_ra1ib :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_ra1ia;
+
+lvl2_ra1ic :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    ")"#;
+
+lvl3_ra1id :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['('#];
+
+lvl4_ra1ie :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! [' '#];
+
+lvl5_ra1if :: GHC.Types.Char
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.C#! ['.'#];
+
+lvl6_ra1ig :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl2_ra1ic;
+
+GHC.Stack.CCS.$wgo [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: GHC.Prim.Addr#
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ww_sa1KE w_sa1KF void_0E]
+        case eqAddr# [ww_sa1KE __NULL] of {
+          __DEFAULT ->
+              case plusAddr# [ww_sa1KE 8#] of sat_sa1KI {
+                __DEFAULT ->
+                    case readAddrOffAddr# [sat_sa1KI 0# GHC.Prim.void#] of {
+                      Unit# ipv1_sa1KL ->
+                          case plusAddr# [ipv1_sa1KL 8#] of sat_sa1KM {
+                            __DEFAULT ->
+                                case readAddrOffAddr# [sat_sa1KM 0# GHC.Prim.void#] of {
+                                  Unit# ipv3_sa1KP [Occ=Once] ->
+                                      case
+                                          GHC.Foreign.$wpeekCString
+                                              GHC.IO.Encoding.UTF8.utf8 ipv3_sa1KP GHC.Prim.void#
+                                      of
+                                      { Unit# ipv5_sa1KS ->
+                                            case plusAddr# [ipv1_sa1KL 16#] of sat_sa1KT {
+                                              __DEFAULT ->
+                                                  case
+                                                      readAddrOffAddr# [sat_sa1KT 0# GHC.Prim.void#]
+                                                  of
+                                                  { Unit# ipv7_sa1KW [Occ=Once] ->
+                                                        case
+                                                            GHC.Foreign.$wpeekCString
+                                                                GHC.IO.Encoding.UTF8.utf8
+                                                                ipv7_sa1KW
+                                                                GHC.Prim.void#
+                                                        of
+                                                        { Unit# ipv9_sa1KZ ->
+                                                              case
+                                                                  plusAddr# [ipv1_sa1KL 24#]
+                                                              of
+                                                              sat_sa1L0
+                                                              { __DEFAULT ->
+                                                                    case
+                                                                        readAddrOffAddr# [sat_sa1L0
+                                                                                          0#
+                                                                                          GHC.Prim.void#]
+                                                                    of
+                                                                    { Unit# ipv11_sa1L3 [Occ=Once] ->
+                                                                          case
+                                                                              GHC.Foreign.$wpeekCString
+                                                                                  GHC.IO.Encoding.UTF8.utf8
+                                                                                  ipv11_sa1L3
+                                                                                  GHC.Prim.void#
+                                                                          of
+                                                                          { Unit# ipv13_sa1L6 [Occ=Once] ->
+                                                                                case
+                                                                                    plusAddr# [ww_sa1KE
+                                                                                               16#]
+                                                                                of
+                                                                                sat_sa1L7
+                                                                                { __DEFAULT ->
+                                                                                      case
+                                                                                          readAddrOffAddr# [sat_sa1L7
+                                                                                                            0#
+                                                                                                            GHC.Prim.void#]
+                                                                                      of
+                                                                                      { Unit# ipv15_sa1La [Occ=Once] ->
+                                                                                            let-no-escape {
+                                                                                              $j_sa1Lb [Occ=Once*T[0],
+                                                                                                        Dmd=<L,1*U(U,U)>]
+                                                                                                :: (# GHC.Prim.State#
+                                                                                                        GHC.Prim.RealWorld,
+                                                                                                      [[GHC.Types.Char]] #)
+                                                                                              [LclId[JoinId(0)],
+                                                                                               Unf=OtherCon []] =
+                                                                                                  [w_sa1KF
+                                                                                                   ipv5_sa1KS
+                                                                                                   ipv9_sa1KZ
+                                                                                                   ipv13_sa1L6
+                                                                                                   ipv15_sa1La] \r []
+                                                                                                      let {
+                                                                                                        sat_sa1Lh [Occ=Once]
+                                                                                                          :: [GHC.Types.Char]
+                                                                                                        [LclId] =
+                                                                                                            [ipv5_sa1KS
+                                                                                                             ipv9_sa1KZ
+                                                                                                             ipv13_sa1L6] \u []
+                                                                                                                let {
+                                                                                                                  sat_sa1Lf [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      [ipv5_sa1KS
+                                                                                                                       ipv13_sa1L6] \u []
+                                                                                                                          let {
+                                                                                                                            sat_sa1Lc [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                [ipv13_sa1L6] \u []
+                                                                                                                                    GHC.Base.++
+                                                                                                                                        ipv13_sa1L6
+                                                                                                                                        lvl6_ra1ig; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1Ld [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl3_ra1id
+                                                                                                                                         sat_sa1Lc]; } in
+                                                                                                                          let {
+                                                                                                                            sat_sa1Le [Occ=Once]
+                                                                                                                              :: [GHC.Types.Char]
+                                                                                                                            [LclId] =
+                                                                                                                                CCCS :! [lvl4_ra1ie
+                                                                                                                                         sat_sa1Ld];
+                                                                                                                          } in 
+                                                                                                                            GHC.Base.++
+                                                                                                                                ipv5_sa1KS
+                                                                                                                                sat_sa1Le; } in
+                                                                                                                let {
+                                                                                                                  sat_sa1Lg [Occ=Once]
+                                                                                                                    :: [GHC.Types.Char]
+                                                                                                                  [LclId] =
+                                                                                                                      CCCS :! [lvl5_ra1if
+                                                                                                                               sat_sa1Lf];
+                                                                                                                } in 
+                                                                                                                  GHC.Base.++
+                                                                                                                      ipv9_sa1KZ
+                                                                                                                      sat_sa1Lg; } in
+                                                                                                      let {
+                                                                                                        sat_sa1Li [Occ=Once]
+                                                                                                          :: [[GHC.Types.Char]]
+                                                                                                        [LclId] =
+                                                                                                            CCCS :! [sat_sa1Lh
+                                                                                                                     w_sa1KF];
+                                                                                                      } in 
+                                                                                                        GHC.Stack.CCS.$wgo
+                                                                                                            ipv15_sa1La
+                                                                                                            sat_sa1Li
+                                                                                                            GHC.Prim.void#;
+                                                                                            } in 
+                                                                                              case
+                                                                                                  GHC.Base.eqString
+                                                                                                      ipv9_sa1KZ
+                                                                                                      lvl1_ra1ib
+                                                                                              of
+                                                                                              { GHC.Types.False ->
+                                                                                                    $j_sa1Lb;
+                                                                                                GHC.Types.True ->
+                                                                                                    case
+                                                                                                        GHC.Base.eqString
+                                                                                                            ipv5_sa1KS
+                                                                                                            lvl1_ra1ib
+                                                                                                    of
+                                                                                                    { GHC.Types.False ->
+                                                                                                          $j_sa1Lb;
+                                                                                                      GHC.Types.True ->
+                                                                                                          Unit# [w_sa1KF];
+                                                                                                    };
+                                                                                              };
+                                                                                      };
+                                                                                };
+                                                                          };
+                                                                    };
+                                                              };
+                                                        };
+                                                  };
+                                            };
+                                      };
+                                };
+                          };
+                    };
+              };
+          1# -> Unit# [w_sa1KF];
+        };
+
+GHC.Stack.CCS.ccsToStrings2 [InlPrag=NOUSERINLINE[0]]
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> [[GHC.Types.Char]]
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=3, Str=<S(S),1*U(U)><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [w_sa1Ll w1_sa1Lm void_0E]
+        case w_sa1Ll of {
+          GHC.Ptr.Ptr ww1_sa1Lp [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1Lp w1_sa1Lm GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.ccsToStrings1
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [[GHC.Types.Char]] #)
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [ccs0_sa1Lq void_0E]
+        case ccs0_sa1Lq of {
+          GHC.Ptr.Ptr ww1_sa1Lt [Occ=Once] ->
+              GHC.Stack.CCS.$wgo ww1_sa1Lt GHC.Types.[] GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.ccsToStrings
+  :: GHC.Ptr.Ptr GHC.Stack.CCS.CostCentreStack
+     -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<S(S),1*U(U)><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.ccsToStrings1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.whoCreated1
+  :: forall a.
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [obj_sa1Lu void_0E]
+        case getCCSOf# [obj_sa1Lu GHC.Prim.void#] of {
+          Unit# addr_sa1Ly [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1Ly GHC.Types.[] GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.whoCreated
+  :: forall a. a -> GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=2, Str=<L,U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E]
+        GHC.Stack.CCS.whoCreated1 eta_B2 GHC.Prim.void#;
+
+GHC.Stack.CCS.currentCallStack1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, [GHC.Base.String] #)
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E]
+        case getCurrentCCS# [GHC.Tuple.() GHC.Prim.void#] of {
+          Unit# addr_sa1LC [Occ=Once] ->
+              GHC.Stack.CCS.$wgo addr_sa1LC GHC.Types.[] GHC.Prim.void#;
+        };
+
+GHC.Stack.CCS.currentCallStack :: GHC.Types.IO [GHC.Base.String]
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [void_0E] GHC.Stack.CCS.currentCallStack1 GHC.Prim.void#;
+

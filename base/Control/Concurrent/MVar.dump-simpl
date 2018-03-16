@@ -1,0 +1,1620 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:05:17.070714974 UTC
+
+Result size of Tidy Core
+  = {terms: 719, types: 1,510, coercions: 165, joins: 0/3}
+
+-- RHS size: {terms: 43, types: 71, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.$wswapMVar [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     MVar# RealWorld a
+     -> a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0 0] 89 30}]
+Control.Concurrent.MVar.$wswapMVar
+  = \ (@ a_sag7s)
+      (ww_sag7y :: MVar# RealWorld a_sag7s)
+      (w_sag7u :: a_sag7s)
+      (w1_sag7v :: State# RealWorld) ->
+      case getMaskingState# w1_sag7v of { (# ipv_ia56X, ipv1_ia56Y #) ->
+      case ipv1_ia56Y of {
+        __DEFAULT ->
+          case takeMVar# @ RealWorld @ a_sag7s ww_sag7y ipv_ia56X of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case putMVar# @ RealWorld @ a_sag7s ww_sag7y w_sag7u ipv2_i7IAy
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv3_i7IAz #)
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ a_sag7s
+            (\ (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case takeMVar# @ RealWorld @ a_sag7s ww_sag7y s_i7IAv of
+               { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+               case putMVar# @ RealWorld @ a_sag7s ww_sag7y w_sag7u ipv2_i7IAy
+               of s2#_i9DsB
+               { __DEFAULT ->
+               (# s2#_i9DsB, ipv3_i7IAz #)
+               }
+               })
+            ipv_ia56X
+      }
+      }
+
+-- RHS size: {terms: 11, types: 13, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.swapMVar1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     MVar a -> a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sag7s)
+                 (w_sag7t [Occ=Once!] :: MVar a_sag7s)
+                 (w1_sag7u [Occ=Once] :: a_sag7s)
+                 (w2_sag7v [Occ=Once] :: State# RealWorld) ->
+                 case w_sag7t of { MVar ww1_sag7y [Occ=Once] ->
+                 Control.Concurrent.MVar.$wswapMVar
+                   @ a_sag7s ww1_sag7y w1_sag7u w2_sag7v
+                 }}]
+Control.Concurrent.MVar.swapMVar1
+  = \ (@ a_sag7s)
+      (w_sag7t :: MVar a_sag7s)
+      (w1_sag7u :: a_sag7s)
+      (w2_sag7v :: State# RealWorld) ->
+      case w_sag7t of { MVar ww1_sag7y ->
+      Control.Concurrent.MVar.$wswapMVar
+        @ a_sag7s ww1_sag7y w1_sag7u w2_sag7v
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 11, joins: 0/0}
+swapMVar :: forall a. MVar a -> a -> IO a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Concurrent.MVar.swapMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R <a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           MVar a -> a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. MVar a -> a -> IO a :: *))}]
+swapMVar
+  = Control.Concurrent.MVar.swapMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                MVar a -> a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. MVar a -> a -> IO a :: *))
+
+-- RHS size: {terms: 113, types: 168, coercions: 6, joins: 0/0}
+$wwithMVar_ragjT
+  :: forall a b.
+     MVar# RealWorld a
+     -> (a -> IO b) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []]
+$wwithMVar_ragjT
+  = \ (@ a_sag7B)
+      (@ b_sag7C)
+      (ww_sag7I :: MVar# RealWorld a_sag7B)
+      (w_sag7E :: a_sag7B -> IO b_sag7C)
+      (w1_sag7F :: State# RealWorld) ->
+      case getMaskingState# w1_sag7F of { (# ipv_iafMW, ipv1_iafMX #) ->
+      case ipv1_iafMX of {
+        __DEFAULT ->
+          case takeMVar# @ RealWorld @ a_sag7B ww_sag7I ipv_iafMW of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ b_sag7C
+                 @ SomeException
+                 (maskAsyncExceptions#
+                    @ b_sag7C
+                    ((w_sag7E ipv3_i7IAz)
+                     `cast` (GHC.Types.N:IO[0] <b_sag7C>_R
+                             :: (IO b_sag7C :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, b_sag7C #) :: *))))
+                 (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                    (s_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar# @ RealWorld @ a_sag7B ww_sag7I ipv3_i7IAz s_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ SomeException @ b_sag7C e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+          case putMVar# @ RealWorld @ a_sag7B ww_sag7I ipv3_i7IAz ipv4_X7IAZ
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv5_X7IB1 #)
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ b_sag7C
+            (\ (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case takeMVar# @ RealWorld @ a_sag7B ww_sag7I s_i7IAv of
+               { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+               case catch#
+                      @ b_sag7C
+                      @ SomeException
+                      (unmaskAsyncExceptions#
+                         @ b_sag7C
+                         ((w_sag7E ipv3_i7IAz)
+                          `cast` (GHC.Types.N:IO[0] <b_sag7C>_R
+                                  :: (IO b_sag7C :: *)
+                                     ~R# (State# RealWorld
+                                          -> (# State# RealWorld, b_sag7C #) :: *))))
+                      (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                         (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                         case putMVar# @ RealWorld @ a_sag7B ww_sag7I ipv3_i7IAz s1_iafNa
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         raiseIO# @ SomeException @ b_sag7C e1_iafN9 s2#_i9DsB
+                         })
+                      ipv2_i7IAy
+               of
+               { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+               case putMVar# @ RealWorld @ a_sag7B ww_sag7I ipv3_i7IAz ipv4_X7IAZ
+               of s2#_i9DsB
+               { __DEFAULT ->
+               (# s2#_i9DsB, ipv5_X7IB1 #)
+               }
+               }
+               })
+            ipv_iafMW;
+        1# ->
+          case takeMVar# @ RealWorld @ a_sag7B ww_sag7I ipv_iafMW of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ b_sag7C
+                 @ SomeException
+                 (maskUninterruptible#
+                    @ b_sag7C
+                    ((w_sag7E ipv3_i7IAz)
+                     `cast` (GHC.Types.N:IO[0] <b_sag7C>_R
+                             :: (IO b_sag7C :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, b_sag7C #) :: *))))
+                 (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                    (s_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar# @ RealWorld @ a_sag7B ww_sag7I ipv3_i7IAz s_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ SomeException @ b_sag7C e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+          case putMVar# @ RealWorld @ a_sag7B ww_sag7I ipv3_i7IAz ipv4_X7IAZ
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, ipv5_X7IB1 #)
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 12, types: 18, coercions: 0, joins: 0/0}
+withMVar1_ragjU
+  :: forall a b.
+     MVar a
+     -> (a -> IO b) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []]
+withMVar1_ragjU
+  = \ (@ a_sag7B)
+      (@ b_sag7C)
+      (w_sag7D :: MVar a_sag7B)
+      (w1_sag7E :: a_sag7B -> IO b_sag7C)
+      (w2_sag7F :: State# RealWorld) ->
+      case w_sag7D of { MVar ww1_sag7I ->
+      $wwithMVar_ragjT @ a_sag7B @ b_sag7C ww1_sag7I w1_sag7E w2_sag7F
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+withMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b. MVar a -> (a -> IO b) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ a_XafLm)
+                  (@ b_XafLo)
+                  (m_aafFD [Occ=Once*!] :: MVar a_XafLm)
+                  (io_aafFE [Occ=Once*!] :: a_XafLm -> IO b_XafLo)
+                  (s_iafMT [Occ=Once] :: State# RealWorld) ->
+                  case getMaskingState# s_iafMT of
+                  { (# ipv_iafMW [Occ=Once*], ipv1_iafMX [Occ=Once!] #) ->
+                  case ipv1_iafMX of {
+                    __DEFAULT ->
+                      case m_aafFD of { MVar mvar#_i9Dso ->
+                      case takeMVar# @ RealWorld @ a_XafLm mvar#_i9Dso ipv_iafMW of
+                      { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                      case catch#
+                             @ b_XafLo
+                             @ SomeException
+                             (maskAsyncExceptions#
+                                @ b_XafLo
+                                ((io_aafFE ipv3_i7IAz)
+                                 `cast` (GHC.Types.N:IO[0] <b_XafLo>_R
+                                         :: (IO b_XafLo :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, b_XafLo #) :: *))))
+                             (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                case putMVar# @ RealWorld @ a_XafLm mvar#_i9Dso ipv3_i7IAz s1_iafNa
+                                of s2#_i9DsB
+                                { __DEFAULT ->
+                                raiseIO# @ SomeException @ b_XafLo e1_iafN9 s2#_i9DsB
+                                })
+                             ipv2_i7IAy
+                      of
+                      { (# ipv4_X7IAZ [Occ=Once], ipv5_X7IB1 [Occ=Once] #) ->
+                      case putMVar#
+                             @ RealWorld @ a_XafLm mvar#_i9Dso ipv3_i7IAz ipv4_X7IAZ
+                      of s2#_i9DsB
+                      { __DEFAULT ->
+                      (# s2#_i9DsB, ipv5_X7IB1 #)
+                      }
+                      }
+                      }
+                      };
+                    0# ->
+                      maskAsyncExceptions#
+                        @ b_XafLo
+                        (\ (s1_i7IAv [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                           case m_aafFD of { MVar mvar#_i9Dso ->
+                           case takeMVar# @ RealWorld @ a_XafLm mvar#_i9Dso s1_i7IAv of
+                           { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                           case catch#
+                                  @ b_XafLo
+                                  @ SomeException
+                                  (unmaskAsyncExceptions#
+                                     @ b_XafLo
+                                     ((io_aafFE ipv3_i7IAz)
+                                      `cast` (GHC.Types.N:IO[0] <b_XafLo>_R
+                                              :: (IO b_XafLo :: *)
+                                                 ~R# (State# RealWorld
+                                                      -> (# State# RealWorld, b_XafLo #) :: *))))
+                                  (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                     (s2_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                     case putMVar#
+                                            @ RealWorld @ a_XafLm mvar#_i9Dso ipv3_i7IAz s2_iafNa
+                                     of s2#_i9DsB
+                                     { __DEFAULT ->
+                                     raiseIO# @ SomeException @ b_XafLo e1_iafN9 s2#_i9DsB
+                                     })
+                                  ipv2_i7IAy
+                           of
+                           { (# ipv4_X7IAZ [Occ=Once], ipv5_X7IB1 [Occ=Once] #) ->
+                           case putMVar#
+                                  @ RealWorld @ a_XafLm mvar#_i9Dso ipv3_i7IAz ipv4_X7IAZ
+                           of s2#_i9DsB
+                           { __DEFAULT ->
+                           (# s2#_i9DsB, ipv5_X7IB1 #)
+                           }
+                           }
+                           }
+                           })
+                        ipv_iafMW;
+                    1# ->
+                      case m_aafFD of { MVar mvar#_i9Dso ->
+                      case takeMVar# @ RealWorld @ a_XafLm mvar#_i9Dso ipv_iafMW of
+                      { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                      case catch#
+                             @ b_XafLo
+                             @ SomeException
+                             (maskUninterruptible#
+                                @ b_XafLo
+                                ((io_aafFE ipv3_i7IAz)
+                                 `cast` (GHC.Types.N:IO[0] <b_XafLo>_R
+                                         :: (IO b_XafLo :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, b_XafLo #) :: *))))
+                             (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                case putMVar# @ RealWorld @ a_XafLm mvar#_i9Dso ipv3_i7IAz s1_iafNa
+                                of s2#_i9DsB
+                                { __DEFAULT ->
+                                raiseIO# @ SomeException @ b_XafLo e1_iafN9 s2#_i9DsB
+                                })
+                             ipv2_i7IAy
+                      of
+                      { (# ipv4_X7IAZ [Occ=Once], ipv5_X7IB1 [Occ=Once] #) ->
+                      case putMVar#
+                             @ RealWorld @ a_XafLm mvar#_i9Dso ipv3_i7IAz ipv4_X7IAZ
+                      of s2#_i9DsB
+                      { __DEFAULT ->
+                      (# s2#_i9DsB, ipv5_X7IB1 #)
+                      }
+                      }
+                      }
+                      }
+                  }
+                  })
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <MVar a>_R ->_R <a -> IO b>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           MVar a
+                           -> (a -> IO b)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. MVar a -> (a -> IO b) -> IO b :: *))}]
+withMVar
+  = withMVar1_ragjU
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <MVar a>_R ->_R <a -> IO b>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                MVar a
+                -> (a -> IO b)
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. MVar a -> (a -> IO b) -> IO b :: *))
+
+-- RHS size: {terms: 51, types: 83, coercions: 2, joins: 0/1}
+$wwithMVarMasked_ragjV
+  :: forall a b.
+     MVar# RealWorld a
+     -> (a -> IO b) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []]
+$wwithMVarMasked_ragjV
+  = \ (@ a_sag7M)
+      (@ b_sag7N)
+      (ww_sag7T :: MVar# RealWorld a_sag7M)
+      (w_sag7P :: a_sag7M -> IO b_sag7N)
+      (w1_sag7Q :: State# RealWorld) ->
+      case getMaskingState# w1_sag7Q of { (# ipv_ia56X, ipv1_ia56Y #) ->
+      let {
+        io_safTj [Dmd=<C(S),C(U(U,U))>]
+          :: State# RealWorld -> (# State# RealWorld, b_sag7N #)
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        io_safTj
+          = \ (s_i7IAv :: State# RealWorld) ->
+              case takeMVar# @ RealWorld @ a_sag7M ww_sag7T s_i7IAv of
+              { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+              case catch#
+                     @ b_sag7N
+                     @ SomeException
+                     ((w_sag7P ipv3_i7IAz)
+                      `cast` (GHC.Types.N:IO[0] <b_sag7N>_R
+                              :: (IO b_sag7N :: *)
+                                 ~R# (State# RealWorld -> (# State# RealWorld, b_sag7N #) :: *)))
+                     (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                        (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                        case putMVar# @ RealWorld @ a_sag7M ww_sag7T ipv3_i7IAz s1_iafNa
+                        of s2#_i9DsB
+                        { __DEFAULT ->
+                        raiseIO# @ SomeException @ b_sag7N e1_iafN9 s2#_i9DsB
+                        })
+                     ipv2_i7IAy
+              of
+              { (# ipv4_X7IAZ, ipv5_X7IB1 #) ->
+              case putMVar# @ RealWorld @ a_sag7M ww_sag7T ipv3_i7IAz ipv4_X7IAZ
+              of s2#_i9DsB
+              { __DEFAULT ->
+              (# s2#_i9DsB, ipv5_X7IB1 #)
+              }
+              }
+              } } in
+      case ipv1_ia56Y of {
+        __DEFAULT -> io_safTj ipv_ia56X;
+        0# -> maskAsyncExceptions# @ b_sag7N io_safTj ipv_ia56X
+      }
+      }
+
+-- RHS size: {terms: 12, types: 18, coercions: 0, joins: 0/0}
+withMVarMasked1_ragjW
+  :: forall a b.
+     MVar a
+     -> (a -> IO b) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []]
+withMVarMasked1_ragjW
+  = \ (@ a_sag7M)
+      (@ b_sag7N)
+      (w_sag7O :: MVar a_sag7M)
+      (w1_sag7P :: a_sag7M -> IO b_sag7N)
+      (w2_sag7Q :: State# RealWorld) ->
+      case w_sag7O of { MVar ww1_sag7T ->
+      $wwithMVarMasked_ragjV
+        @ a_sag7M @ b_sag7N ww1_sag7T w1_sag7P w2_sag7Q
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+withMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b. MVar a -> (a -> IO b) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_XafL1)
+                 (@ b_XafL3)
+                 (m_aafFI [Occ=Once!] :: MVar a_XafL1)
+                 (io_aafFJ [Occ=Once!] :: a_XafL1 -> IO b_XafL3) ->
+                 let {
+                   io1_safNU [Occ=Once*]
+                     :: State# RealWorld -> (# State# RealWorld, b_XafL3 #)
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   io1_safNU
+                     = \ (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                         case m_aafFI of { MVar mvar#_i9Dso ->
+                         case takeMVar# @ RealWorld @ a_XafL1 mvar#_i9Dso s_i7IAv of
+                         { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz #) ->
+                         case catch#
+                                @ b_XafL3
+                                @ SomeException
+                                ((io_aafFJ ipv1_i7IAz)
+                                 `cast` (GHC.Types.N:IO[0] <b_XafL3>_R
+                                         :: (IO b_XafL3 :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, b_XafL3 #) :: *)))
+                                (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                   (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                   case putMVar#
+                                          @ RealWorld @ a_XafL1 mvar#_i9Dso ipv1_i7IAz s1_iafNa
+                                   of s2#_i9DsB
+                                   { __DEFAULT ->
+                                   raiseIO# @ SomeException @ b_XafL3 e1_iafN9 s2#_i9DsB
+                                   })
+                                ipv_i7IAy
+                         of
+                         { (# ipv2_X7IAZ [Occ=Once], ipv3_X7IB1 [Occ=Once] #) ->
+                         case putMVar#
+                                @ RealWorld @ a_XafL1 mvar#_i9Dso ipv1_i7IAz ipv2_X7IAZ
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         (# s2#_i9DsB, ipv3_X7IB1 #)
+                         }
+                         }
+                         }
+                         } } in
+                 (\ (eta_ia56U [Occ=Once] :: State# RealWorld) ->
+                    case getMaskingState# eta_ia56U of
+                    { (# ipv_ia56X [Occ=Once*], ipv1_ia56Y [Occ=Once!] #) ->
+                    case ipv1_ia56Y of {
+                      __DEFAULT -> io1_safNU ipv_ia56X;
+                      0# -> maskAsyncExceptions# @ b_XafL3 io1_safNU ipv_ia56X
+                    }
+                    })
+                 `cast` (Sym (GHC.Types.N:IO[0] <b_XafL3>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, b_XafL3 #) :: *)
+                            ~R# (IO b_XafL3 :: *))}]
+withMVarMasked
+  = withMVarMasked1_ragjW
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <MVar a>_R ->_R <a -> IO b>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                MVar a
+                -> (a -> IO b)
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. MVar a -> (a -> IO b) -> IO b :: *))
+
+-- RHS size: {terms: 112, types: 166, coercions: 6, joins: 0/0}
+$wmodifyMVar__ragjX
+  :: forall a.
+     MVar# RealWorld a
+     -> (a -> IO a) -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []]
+$wmodifyMVar__ragjX
+  = \ (@ a_sag7W)
+      (ww_sag82 :: MVar# RealWorld a_sag7W)
+      (w_sag7Y :: a_sag7W -> IO a_sag7W)
+      (w1_sag7Z :: State# RealWorld) ->
+      case getMaskingState# w1_sag7Z of { (# ipv_iafMW, ipv1_iafMX #) ->
+      case ipv1_iafMX of {
+        __DEFAULT ->
+          case takeMVar# @ RealWorld @ a_sag7W ww_sag82 ipv_iafMW of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ a_sag7W
+                 @ SomeException
+                 (maskAsyncExceptions#
+                    @ a_sag7W
+                    ((w_sag7Y ipv3_i7IAz)
+                     `cast` (GHC.Types.N:IO[0] <a_sag7W>_R
+                             :: (IO a_sag7W :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, a_sag7W #) :: *))))
+                 (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                    (s_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar# @ RealWorld @ a_sag7W ww_sag82 ipv3_i7IAz s_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ SomeException @ a_sag7W e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IB0, ipv5_X7IB2 #) ->
+          case putMVar# @ RealWorld @ a_sag7W ww_sag82 ipv5_X7IB2 ipv4_X7IB0
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, GHC.Tuple.() #)
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ ()
+            (\ (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case takeMVar# @ RealWorld @ a_sag7W ww_sag82 s_i7IAv of
+               { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+               case catch#
+                      @ a_sag7W
+                      @ SomeException
+                      (unmaskAsyncExceptions#
+                         @ a_sag7W
+                         ((w_sag7Y ipv3_i7IAz)
+                          `cast` (GHC.Types.N:IO[0] <a_sag7W>_R
+                                  :: (IO a_sag7W :: *)
+                                     ~R# (State# RealWorld
+                                          -> (# State# RealWorld, a_sag7W #) :: *))))
+                      (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                         (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                         case putMVar# @ RealWorld @ a_sag7W ww_sag82 ipv3_i7IAz s1_iafNa
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         raiseIO# @ SomeException @ a_sag7W e1_iafN9 s2#_i9DsB
+                         })
+                      ipv2_i7IAy
+               of
+               { (# ipv4_X7IB0, ipv5_X7IB2 #) ->
+               case putMVar# @ RealWorld @ a_sag7W ww_sag82 ipv5_X7IB2 ipv4_X7IB0
+               of s2#_i9DsB
+               { __DEFAULT ->
+               (# s2#_i9DsB, GHC.Tuple.() #)
+               }
+               }
+               })
+            ipv_iafMW;
+        1# ->
+          case takeMVar# @ RealWorld @ a_sag7W ww_sag82 ipv_iafMW of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ a_sag7W
+                 @ SomeException
+                 (maskUninterruptible#
+                    @ a_sag7W
+                    ((w_sag7Y ipv3_i7IAz)
+                     `cast` (GHC.Types.N:IO[0] <a_sag7W>_R
+                             :: (IO a_sag7W :: *)
+                                ~R# (State# RealWorld -> (# State# RealWorld, a_sag7W #) :: *))))
+                 (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                    (s_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar# @ RealWorld @ a_sag7W ww_sag82 ipv3_i7IAz s_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ SomeException @ a_sag7W e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IB0, ipv5_X7IB2 #) ->
+          case putMVar# @ RealWorld @ a_sag7W ww_sag82 ipv5_X7IB2 ipv4_X7IB0
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, GHC.Tuple.() #)
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 11, types: 15, coercions: 0, joins: 0/0}
+modifyMVar_1_ragjY
+  :: forall a.
+     MVar a
+     -> (a -> IO a) -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=OtherCon []]
+modifyMVar_1_ragjY
+  = \ (@ a_sag7W)
+      (w_sag7X :: MVar a_sag7W)
+      (w1_sag7Y :: a_sag7W -> IO a_sag7W)
+      (w2_sag7Z :: State# RealWorld) ->
+      case w_sag7X of { MVar ww1_sag82 ->
+      $wmodifyMVar__ragjX @ a_sag7W ww1_sag82 w1_sag7Y w2_sag7Z
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+modifyMVar_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a. MVar a -> (a -> IO a) -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ a_XafKM)
+                  (m_aafFM [Occ=Once*!] :: MVar a_XafKM)
+                  (io_aafFN [Occ=Once*!] :: a_XafKM -> IO a_XafKM)
+                  (s_iafMT [Occ=Once] :: State# RealWorld) ->
+                  case getMaskingState# s_iafMT of
+                  { (# ipv_iafMW [Occ=Once*], ipv1_iafMX [Occ=Once!] #) ->
+                  case ipv1_iafMX of {
+                    __DEFAULT ->
+                      case m_aafFM of { MVar mvar#_i9Dso ->
+                      case takeMVar# @ RealWorld @ a_XafKM mvar#_i9Dso ipv_iafMW of
+                      { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                      case catch#
+                             @ a_XafKM
+                             @ SomeException
+                             (maskAsyncExceptions#
+                                @ a_XafKM
+                                ((io_aafFN ipv3_i7IAz)
+                                 `cast` (GHC.Types.N:IO[0] <a_XafKM>_R
+                                         :: (IO a_XafKM :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, a_XafKM #) :: *))))
+                             (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                case putMVar# @ RealWorld @ a_XafKM mvar#_i9Dso ipv3_i7IAz s1_iafNa
+                                of s2#_i9DsB
+                                { __DEFAULT ->
+                                raiseIO# @ SomeException @ a_XafKM e1_iafN9 s2#_i9DsB
+                                })
+                             ipv2_i7IAy
+                      of
+                      { (# ipv4_X7IB0 [Occ=Once], ipv5_X7IB2 [Occ=Once] #) ->
+                      case putMVar#
+                             @ RealWorld @ a_XafKM mvar#_i9Dso ipv5_X7IB2 ipv4_X7IB0
+                      of s2#_i9DsB
+                      { __DEFAULT ->
+                      (# s2#_i9DsB, GHC.Tuple.() #)
+                      }
+                      }
+                      }
+                      };
+                    0# ->
+                      maskAsyncExceptions#
+                        @ ()
+                        (\ (s1_i7IAv [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                           case m_aafFM of { MVar mvar#_i9Dso ->
+                           case takeMVar# @ RealWorld @ a_XafKM mvar#_i9Dso s1_i7IAv of
+                           { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                           case catch#
+                                  @ a_XafKM
+                                  @ SomeException
+                                  (unmaskAsyncExceptions#
+                                     @ a_XafKM
+                                     ((io_aafFN ipv3_i7IAz)
+                                      `cast` (GHC.Types.N:IO[0] <a_XafKM>_R
+                                              :: (IO a_XafKM :: *)
+                                                 ~R# (State# RealWorld
+                                                      -> (# State# RealWorld, a_XafKM #) :: *))))
+                                  (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                     (s2_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                     case putMVar#
+                                            @ RealWorld @ a_XafKM mvar#_i9Dso ipv3_i7IAz s2_iafNa
+                                     of s2#_i9DsB
+                                     { __DEFAULT ->
+                                     raiseIO# @ SomeException @ a_XafKM e1_iafN9 s2#_i9DsB
+                                     })
+                                  ipv2_i7IAy
+                           of
+                           { (# ipv4_X7IB0 [Occ=Once], ipv5_X7IB2 [Occ=Once] #) ->
+                           case putMVar#
+                                  @ RealWorld @ a_XafKM mvar#_i9Dso ipv5_X7IB2 ipv4_X7IB0
+                           of s2#_i9DsB
+                           { __DEFAULT ->
+                           (# s2#_i9DsB, GHC.Tuple.() #)
+                           }
+                           }
+                           }
+                           })
+                        ipv_iafMW;
+                    1# ->
+                      case m_aafFM of { MVar mvar#_i9Dso ->
+                      case takeMVar# @ RealWorld @ a_XafKM mvar#_i9Dso ipv_iafMW of
+                      { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                      case catch#
+                             @ a_XafKM
+                             @ SomeException
+                             (maskUninterruptible#
+                                @ a_XafKM
+                                ((io_aafFN ipv3_i7IAz)
+                                 `cast` (GHC.Types.N:IO[0] <a_XafKM>_R
+                                         :: (IO a_XafKM :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, a_XafKM #) :: *))))
+                             (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                case putMVar# @ RealWorld @ a_XafKM mvar#_i9Dso ipv3_i7IAz s1_iafNa
+                                of s2#_i9DsB
+                                { __DEFAULT ->
+                                raiseIO# @ SomeException @ a_XafKM e1_iafN9 s2#_i9DsB
+                                })
+                             ipv2_i7IAy
+                      of
+                      { (# ipv4_X7IB0 [Occ=Once], ipv5_X7IB2 [Occ=Once] #) ->
+                      case putMVar#
+                             @ RealWorld @ a_XafKM mvar#_i9Dso ipv5_X7IB2 ipv4_X7IB0
+                      of s2#_i9DsB
+                      { __DEFAULT ->
+                      (# s2#_i9DsB, GHC.Tuple.() #)
+                      }
+                      }
+                      }
+                      }
+                  }
+                  })
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           MVar a
+                           -> (a -> IO a)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. MVar a -> (a -> IO a) -> IO () :: *))}]
+modifyMVar_
+  = modifyMVar_1_ragjY
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                MVar a
+                -> (a -> IO a)
+                -> State# RealWorld
+                -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. MVar a -> (a -> IO a) -> IO () :: *))
+
+-- RHS size: {terms: 143, types: 278, coercions: 12, joins: 0/0}
+$wmodifyMVar_ragjZ
+  :: forall a b.
+     MVar# RealWorld a
+     -> (a -> IO (a, b))
+     -> State# RealWorld
+     -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []]
+$wmodifyMVar_ragjZ
+  = \ (@ a_sag85)
+      (@ b_sag86)
+      (ww_sag8c :: MVar# RealWorld a_sag85)
+      (w_sag88 :: a_sag85 -> IO (a_sag85, b_sag86))
+      (w1_sag89 :: State# RealWorld) ->
+      case getMaskingState# w1_sag89 of { (# ipv_iafMW, ipv1_iafMX #) ->
+      case ipv1_iafMX of {
+        __DEFAULT ->
+          case takeMVar# @ RealWorld @ a_sag85 ww_sag8c ipv_iafMW of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ (a_sag85, b_sag86)
+                 @ SomeException
+                 (maskAsyncExceptions#
+                    @ (a_sag85, b_sag86)
+                    (\ (s_X7IAX [OS=OneShot] :: State# RealWorld) ->
+                       case ((w_sag88 ipv3_i7IAz)
+                             `cast` (GHC.Types.N:IO[0] <(a_sag85, b_sag86)>_R
+                                     :: (IO (a_sag85, b_sag86) :: *)
+                                        ~R# (State# RealWorld
+                                             -> (# State# RealWorld, (a_sag85, b_sag86) #) :: *)))
+                              s_X7IAX
+                       of
+                       { (# ipv4_X7IB3, ipv5_X7IB5 #) ->
+                       seq# @ (a_sag85, b_sag86) @ RealWorld ipv5_X7IB5 ipv4_X7IB3
+                       }))
+                 (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                    (s_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar# @ RealWorld @ a_sag85 ww_sag8c ipv3_i7IAz s_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ SomeException @ (a_sag85, b_sag86) e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IB2, ipv5_X7IB4 #) ->
+          case ipv5_X7IB4 of { (a'_aafFV, b1_aafFW) ->
+          case putMVar# @ RealWorld @ a_sag85 ww_sag8c a'_aafFV ipv4_X7IB2
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, b1_aafFW #)
+          }
+          }
+          }
+          };
+        0# ->
+          maskAsyncExceptions#
+            @ b_sag86
+            (\ (s_i7IAv [OS=OneShot] :: State# RealWorld) ->
+               case takeMVar# @ RealWorld @ a_sag85 ww_sag8c s_i7IAv of
+               { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+               case catch#
+                      @ (a_sag85, b_sag86)
+                      @ SomeException
+                      (unmaskAsyncExceptions#
+                         @ (a_sag85, b_sag86)
+                         (\ (s1_X7IAX [OS=OneShot] :: State# RealWorld) ->
+                            case ((w_sag88 ipv3_i7IAz)
+                                  `cast` (GHC.Types.N:IO[0] <(a_sag85, b_sag86)>_R
+                                          :: (IO (a_sag85, b_sag86) :: *)
+                                             ~R# (State# RealWorld
+                                                  -> (# State# RealWorld,
+                                                        (a_sag85, b_sag86) #) :: *)))
+                                   s1_X7IAX
+                            of
+                            { (# ipv4_X7IB3, ipv5_X7IB5 #) ->
+                            seq# @ (a_sag85, b_sag86) @ RealWorld ipv5_X7IB5 ipv4_X7IB3
+                            }))
+                      (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                         (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                         case putMVar# @ RealWorld @ a_sag85 ww_sag8c ipv3_i7IAz s1_iafNa
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         raiseIO# @ SomeException @ (a_sag85, b_sag86) e1_iafN9 s2#_i9DsB
+                         })
+                      ipv2_i7IAy
+               of
+               { (# ipv4_X7IB2, ipv5_X7IB4 #) ->
+               case ipv5_X7IB4 of { (a'_aafFV, b1_aafFW) ->
+               case putMVar# @ RealWorld @ a_sag85 ww_sag8c a'_aafFV ipv4_X7IB2
+               of s2#_i9DsB
+               { __DEFAULT ->
+               (# s2#_i9DsB, b1_aafFW #)
+               }
+               }
+               }
+               })
+            ipv_iafMW;
+        1# ->
+          case takeMVar# @ RealWorld @ a_sag85 ww_sag8c ipv_iafMW of
+          { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+          case catch#
+                 @ (a_sag85, b_sag86)
+                 @ SomeException
+                 (maskUninterruptible#
+                    @ (a_sag85, b_sag86)
+                    (\ (s_X7IAX [OS=OneShot] :: State# RealWorld) ->
+                       case ((w_sag88 ipv3_i7IAz)
+                             `cast` (GHC.Types.N:IO[0] <(a_sag85, b_sag86)>_R
+                                     :: (IO (a_sag85, b_sag86) :: *)
+                                        ~R# (State# RealWorld
+                                             -> (# State# RealWorld, (a_sag85, b_sag86) #) :: *)))
+                              s_X7IAX
+                       of
+                       { (# ipv4_X7IB3, ipv5_X7IB5 #) ->
+                       seq# @ (a_sag85, b_sag86) @ RealWorld ipv5_X7IB5 ipv4_X7IB3
+                       }))
+                 (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                    (s_iafNa [OS=OneShot] :: State# RealWorld) ->
+                    case putMVar# @ RealWorld @ a_sag85 ww_sag8c ipv3_i7IAz s_iafNa
+                    of s2#_i9DsB
+                    { __DEFAULT ->
+                    raiseIO# @ SomeException @ (a_sag85, b_sag86) e1_iafN9 s2#_i9DsB
+                    })
+                 ipv2_i7IAy
+          of
+          { (# ipv4_X7IB2, ipv5_X7IB4 #) ->
+          case ipv5_X7IB4 of { (a'_aafFV, b1_aafFW) ->
+          case putMVar# @ RealWorld @ a_sag85 ww_sag8c a'_aafFV ipv4_X7IB2
+          of s2#_i9DsB
+          { __DEFAULT ->
+          (# s2#_i9DsB, b1_aafFW #)
+          }
+          }
+          }
+          }
+      }
+      }
+
+-- RHS size: {terms: 12, types: 20, coercions: 0, joins: 0/0}
+modifyMVar1_ragk0
+  :: forall a b.
+     MVar a
+     -> (a -> IO (a, b))
+     -> State# RealWorld
+     -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []]
+modifyMVar1_ragk0
+  = \ (@ a_sag85)
+      (@ b_sag86)
+      (w_sag87 :: MVar a_sag85)
+      (w1_sag88 :: a_sag85 -> IO (a_sag85, b_sag86))
+      (w2_sag89 :: State# RealWorld) ->
+      case w_sag87 of { MVar ww1_sag8c ->
+      $wmodifyMVar_ragjZ @ a_sag85 @ b_sag86 ww1_sag8c w1_sag88 w2_sag89
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 18, joins: 0/0}
+modifyMVar [InlPrag=INLINE (sat-args=2)]
+  :: forall a b. MVar a -> (a -> IO (a, b)) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ a_XafKi)
+                  (@ b_XafKk)
+                  (m_aafFR [Occ=Once*!] :: MVar a_XafKi)
+                  (io_aafFS [Occ=Once*!] :: a_XafKi -> IO (a_XafKi, b_XafKk))
+                  (s_iafMT [Occ=Once] :: State# RealWorld) ->
+                  case getMaskingState# s_iafMT of
+                  { (# ipv_iafMW [Occ=Once*], ipv1_iafMX [Occ=Once!] #) ->
+                  case ipv1_iafMX of {
+                    __DEFAULT ->
+                      case m_aafFR of { MVar mvar#_i9Dso ->
+                      case takeMVar# @ RealWorld @ a_XafKi mvar#_i9Dso ipv_iafMW of
+                      { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                      case catch#
+                             @ (a_XafKi, b_XafKk)
+                             @ SomeException
+                             (maskAsyncExceptions#
+                                @ (a_XafKi, b_XafKk)
+                                (\ (s1_X7IAX [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                   case ((io_aafFS ipv3_i7IAz)
+                                         `cast` (GHC.Types.N:IO[0] <(a_XafKi, b_XafKk)>_R
+                                                 :: (IO (a_XafKi, b_XafKk) :: *)
+                                                    ~R# (State# RealWorld
+                                                         -> (# State# RealWorld,
+                                                               (a_XafKi, b_XafKk) #) :: *)))
+                                          s1_X7IAX
+                                   of
+                                   { (# ipv4_X7IB3 [Occ=Once], ipv5_X7IB5 [Occ=Once] #) ->
+                                   seq# @ (a_XafKi, b_XafKk) @ RealWorld ipv5_X7IB5 ipv4_X7IB3
+                                   }))
+                             (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                case putMVar# @ RealWorld @ a_XafKi mvar#_i9Dso ipv3_i7IAz s1_iafNa
+                                of s2#_i9DsB
+                                { __DEFAULT ->
+                                raiseIO# @ SomeException @ (a_XafKi, b_XafKk) e1_iafN9 s2#_i9DsB
+                                })
+                             ipv2_i7IAy
+                      of
+                      { (# ipv4_X7IB2 [Occ=Once], ipv5_X7IB4 [Occ=Once!] #) ->
+                      case ipv5_X7IB4 of { (a'_aafFV [Occ=Once], b1_aafFW [Occ=Once]) ->
+                      case putMVar# @ RealWorld @ a_XafKi mvar#_i9Dso a'_aafFV ipv4_X7IB2
+                      of s2#_i9DsB
+                      { __DEFAULT ->
+                      (# s2#_i9DsB, b1_aafFW #)
+                      }
+                      }
+                      }
+                      }
+                      };
+                    0# ->
+                      maskAsyncExceptions#
+                        @ b_XafKk
+                        (\ (s1_i7IAv [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                           case m_aafFR of { MVar mvar#_i9Dso ->
+                           case takeMVar# @ RealWorld @ a_XafKi mvar#_i9Dso s1_i7IAv of
+                           { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                           case catch#
+                                  @ (a_XafKi, b_XafKk)
+                                  @ SomeException
+                                  (unmaskAsyncExceptions#
+                                     @ (a_XafKi, b_XafKk)
+                                     (\ (s2_X7IAX [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                        case ((io_aafFS ipv3_i7IAz)
+                                              `cast` (GHC.Types.N:IO[0] <(a_XafKi, b_XafKk)>_R
+                                                      :: (IO (a_XafKi, b_XafKk) :: *)
+                                                         ~R# (State# RealWorld
+                                                              -> (# State# RealWorld,
+                                                                    (a_XafKi, b_XafKk) #) :: *)))
+                                               s2_X7IAX
+                                        of
+                                        { (# ipv4_X7IB3 [Occ=Once], ipv5_X7IB5 [Occ=Once] #) ->
+                                        seq# @ (a_XafKi, b_XafKk) @ RealWorld ipv5_X7IB5 ipv4_X7IB3
+                                        }))
+                                  (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                     (s2_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                     case putMVar#
+                                            @ RealWorld @ a_XafKi mvar#_i9Dso ipv3_i7IAz s2_iafNa
+                                     of s2#_i9DsB
+                                     { __DEFAULT ->
+                                     raiseIO#
+                                       @ SomeException @ (a_XafKi, b_XafKk) e1_iafN9 s2#_i9DsB
+                                     })
+                                  ipv2_i7IAy
+                           of
+                           { (# ipv4_X7IB2 [Occ=Once], ipv5_X7IB4 [Occ=Once!] #) ->
+                           case ipv5_X7IB4 of { (a'_aafFV [Occ=Once], b1_aafFW [Occ=Once]) ->
+                           case putMVar# @ RealWorld @ a_XafKi mvar#_i9Dso a'_aafFV ipv4_X7IB2
+                           of s2#_i9DsB
+                           { __DEFAULT ->
+                           (# s2#_i9DsB, b1_aafFW #)
+                           }
+                           }
+                           }
+                           }
+                           })
+                        ipv_iafMW;
+                    1# ->
+                      case m_aafFR of { MVar mvar#_i9Dso ->
+                      case takeMVar# @ RealWorld @ a_XafKi mvar#_i9Dso ipv_iafMW of
+                      { (# ipv2_i7IAy [Occ=Once], ipv3_i7IAz #) ->
+                      case catch#
+                             @ (a_XafKi, b_XafKk)
+                             @ SomeException
+                             (maskUninterruptible#
+                                @ (a_XafKi, b_XafKk)
+                                (\ (s1_X7IAX [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                   case ((io_aafFS ipv3_i7IAz)
+                                         `cast` (GHC.Types.N:IO[0] <(a_XafKi, b_XafKk)>_R
+                                                 :: (IO (a_XafKi, b_XafKk) :: *)
+                                                    ~R# (State# RealWorld
+                                                         -> (# State# RealWorld,
+                                                               (a_XafKi, b_XafKk) #) :: *)))
+                                          s1_X7IAX
+                                   of
+                                   { (# ipv4_X7IB3 [Occ=Once], ipv5_X7IB5 [Occ=Once] #) ->
+                                   seq# @ (a_XafKi, b_XafKk) @ RealWorld ipv5_X7IB5 ipv4_X7IB3
+                                   }))
+                             (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                case putMVar# @ RealWorld @ a_XafKi mvar#_i9Dso ipv3_i7IAz s1_iafNa
+                                of s2#_i9DsB
+                                { __DEFAULT ->
+                                raiseIO# @ SomeException @ (a_XafKi, b_XafKk) e1_iafN9 s2#_i9DsB
+                                })
+                             ipv2_i7IAy
+                      of
+                      { (# ipv4_X7IB2 [Occ=Once], ipv5_X7IB4 [Occ=Once!] #) ->
+                      case ipv5_X7IB4 of { (a'_aafFV [Occ=Once], b1_aafFW [Occ=Once]) ->
+                      case putMVar# @ RealWorld @ a_XafKi mvar#_i9Dso a'_aafFV ipv4_X7IB2
+                      of s2#_i9DsB
+                      { __DEFAULT ->
+                      (# s2#_i9DsB, b1_aafFW #)
+                      }
+                      }
+                      }
+                      }
+                      }
+                  }
+                  })
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <MVar a>_R
+                       ->_R <a -> IO (a, b)>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           MVar a
+                           -> (a -> IO (a, b))
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. MVar a -> (a -> IO (a, b)) -> IO b :: *))}]
+modifyMVar
+  = modifyMVar1_ragk0
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <MVar a>_R
+            ->_R <a -> IO (a, b)>_R
+            ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                MVar a
+                -> (a -> IO (a, b))
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. MVar a -> (a -> IO (a, b)) -> IO b :: *))
+
+-- RHS size: {terms: 50, types: 81, coercions: 2, joins: 0/1}
+$wmodifyMVarMasked__ragk1
+  :: forall a.
+     MVar# RealWorld a
+     -> (a -> IO a) -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U))><S,U>,
+ Unf=OtherCon []]
+$wmodifyMVarMasked__ragk1
+  = \ (@ a_sag8g)
+      (ww_sag8m :: MVar# RealWorld a_sag8g)
+      (w_sag8i :: a_sag8g -> IO a_sag8g)
+      (w1_sag8j :: State# RealWorld) ->
+      case getMaskingState# w1_sag8j of { (# ipv_ia56X, ipv1_ia56Y #) ->
+      let {
+        io_safTf [Dmd=<C(S),C(U(U,U))>]
+          :: State# RealWorld -> (# State# RealWorld, () #)
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        io_safTf
+          = \ (s_i7IAv :: State# RealWorld) ->
+              case takeMVar# @ RealWorld @ a_sag8g ww_sag8m s_i7IAv of
+              { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+              case catch#
+                     @ a_sag8g
+                     @ SomeException
+                     ((w_sag8i ipv3_i7IAz)
+                      `cast` (GHC.Types.N:IO[0] <a_sag8g>_R
+                              :: (IO a_sag8g :: *)
+                                 ~R# (State# RealWorld -> (# State# RealWorld, a_sag8g #) :: *)))
+                     (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                        (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                        case putMVar# @ RealWorld @ a_sag8g ww_sag8m ipv3_i7IAz s1_iafNa
+                        of s2#_i9DsB
+                        { __DEFAULT ->
+                        raiseIO# @ SomeException @ a_sag8g e1_iafN9 s2#_i9DsB
+                        })
+                     ipv2_i7IAy
+              of
+              { (# ipv4_X7IB1, ipv5_X7IB3 #) ->
+              case putMVar# @ RealWorld @ a_sag8g ww_sag8m ipv5_X7IB3 ipv4_X7IB1
+              of s2#_i9DsB
+              { __DEFAULT ->
+              (# s2#_i9DsB, GHC.Tuple.() #)
+              }
+              }
+              } } in
+      case ipv1_ia56Y of {
+        __DEFAULT -> io_safTf ipv_ia56X;
+        0# -> maskAsyncExceptions# @ () io_safTf ipv_ia56X
+      }
+      }
+
+-- RHS size: {terms: 11, types: 15, coercions: 0, joins: 0/0}
+modifyMVarMasked_1_ragk2
+  :: forall a.
+     MVar a
+     -> (a -> IO a) -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=OtherCon []]
+modifyMVarMasked_1_ragk2
+  = \ (@ a_sag8g)
+      (w_sag8h :: MVar a_sag8g)
+      (w1_sag8i :: a_sag8g -> IO a_sag8g)
+      (w2_sag8j :: State# RealWorld) ->
+      case w_sag8h of { MVar ww1_sag8m ->
+      $wmodifyMVarMasked__ragk1 @ a_sag8g ww1_sag8m w1_sag8i w2_sag8j
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 13, joins: 0/0}
+modifyMVarMasked_ [InlPrag=INLINE (sat-args=2)]
+  :: forall a. MVar a -> (a -> IO a) -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_XafK4)
+                 (m_aafFX [Occ=Once!] :: MVar a_XafK4)
+                 (io_aafFY [Occ=Once!] :: a_XafK4 -> IO a_XafK4) ->
+                 let {
+                   io1_safOV [Occ=Once*]
+                     :: State# RealWorld -> (# State# RealWorld, () #)
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   io1_safOV
+                     = \ (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                         case m_aafFX of { MVar mvar#_i9Dso ->
+                         case takeMVar# @ RealWorld @ a_XafK4 mvar#_i9Dso s_i7IAv of
+                         { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz #) ->
+                         case catch#
+                                @ a_XafK4
+                                @ SomeException
+                                ((io_aafFY ipv1_i7IAz)
+                                 `cast` (GHC.Types.N:IO[0] <a_XafK4>_R
+                                         :: (IO a_XafK4 :: *)
+                                            ~R# (State# RealWorld
+                                                 -> (# State# RealWorld, a_XafK4 #) :: *)))
+                                (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                   (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                   case putMVar#
+                                          @ RealWorld @ a_XafK4 mvar#_i9Dso ipv1_i7IAz s1_iafNa
+                                   of s2#_i9DsB
+                                   { __DEFAULT ->
+                                   raiseIO# @ SomeException @ a_XafK4 e1_iafN9 s2#_i9DsB
+                                   })
+                                ipv_i7IAy
+                         of
+                         { (# ipv2_X7IB1 [Occ=Once], ipv3_X7IB3 [Occ=Once] #) ->
+                         case putMVar#
+                                @ RealWorld @ a_XafK4 mvar#_i9Dso ipv3_X7IB3 ipv2_X7IB1
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         (# s2#_i9DsB, GHC.Tuple.() #)
+                         }
+                         }
+                         }
+                         } } in
+                 (\ (eta_ia56U [Occ=Once] :: State# RealWorld) ->
+                    case getMaskingState# eta_ia56U of
+                    { (# ipv_ia56X [Occ=Once*], ipv1_ia56Y [Occ=Once!] #) ->
+                    case ipv1_ia56Y of {
+                      __DEFAULT -> io1_safOV ipv_ia56X;
+                      0# -> maskAsyncExceptions# @ () io1_safOV ipv_ia56X
+                    }
+                    })
+                 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, () #) :: *)
+                            ~R# (IO () :: *))}]
+modifyMVarMasked_
+  = modifyMVarMasked_1_ragk2
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <a -> IO a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                MVar a
+                -> (a -> IO a)
+                -> State# RealWorld
+                -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. MVar a -> (a -> IO a) -> IO () :: *))
+
+-- RHS size: {terms: 61, types: 119, coercions: 4, joins: 0/1}
+$wmodifyMVarMasked_ragk3
+  :: forall a b.
+     MVar# RealWorld a
+     -> (a -> IO (a, b))
+     -> State# RealWorld
+     -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S,U><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []]
+$wmodifyMVarMasked_ragk3
+  = \ (@ a_sag8q)
+      (@ b_sag8r)
+      (ww_sag8x :: MVar# RealWorld a_sag8q)
+      (w_sag8t :: a_sag8q -> IO (a_sag8q, b_sag8r))
+      (w1_sag8u :: State# RealWorld) ->
+      case getMaskingState# w1_sag8u of { (# ipv_ia56X, ipv1_ia56Y #) ->
+      let {
+        io_safTd [Dmd=<C(S),C(U(U,U))>]
+          :: State# RealWorld -> (# State# RealWorld, b_sag8r #)
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        io_safTd
+          = \ (s_i7IAv :: State# RealWorld) ->
+              case takeMVar# @ RealWorld @ a_sag8q ww_sag8x s_i7IAv of
+              { (# ipv2_i7IAy, ipv3_i7IAz #) ->
+              case catch#
+                     @ (a_sag8q, b_sag8r)
+                     @ SomeException
+                     (\ (s1_X7IAY [OS=OneShot] :: State# RealWorld) ->
+                        case ((w_sag8t ipv3_i7IAz)
+                              `cast` (GHC.Types.N:IO[0] <(a_sag8q, b_sag8r)>_R
+                                      :: (IO (a_sag8q, b_sag8r) :: *)
+                                         ~R# (State# RealWorld
+                                              -> (# State# RealWorld, (a_sag8q, b_sag8r) #) :: *)))
+                               s1_X7IAY
+                        of
+                        { (# ipv4_X7IB4, ipv5_X7IB6 #) ->
+                        seq# @ (a_sag8q, b_sag8r) @ RealWorld ipv5_X7IB6 ipv4_X7IB4
+                        })
+                     (\ (e1_iafN9 [OS=OneShot] :: SomeException)
+                        (s1_iafNa [OS=OneShot] :: State# RealWorld) ->
+                        case putMVar# @ RealWorld @ a_sag8q ww_sag8x ipv3_i7IAz s1_iafNa
+                        of s2#_i9DsB
+                        { __DEFAULT ->
+                        raiseIO# @ SomeException @ (a_sag8q, b_sag8r) e1_iafN9 s2#_i9DsB
+                        })
+                     ipv2_i7IAy
+              of
+              { (# ipv4_X7IB3, ipv5_X7IB5 #) ->
+              case ipv5_X7IB5 of { (a'_aafG4, b1_aafG5) ->
+              case putMVar# @ RealWorld @ a_sag8q ww_sag8x a'_aafG4 ipv4_X7IB3
+              of s2#_i9DsB
+              { __DEFAULT ->
+              (# s2#_i9DsB, b1_aafG5 #)
+              }
+              }
+              }
+              } } in
+      case ipv1_ia56Y of {
+        __DEFAULT -> io_safTd ipv_ia56X;
+        0# -> maskAsyncExceptions# @ b_sag8r io_safTd ipv_ia56X
+      }
+      }
+
+-- RHS size: {terms: 12, types: 20, coercions: 0, joins: 0/0}
+modifyMVarMasked1_ragk4
+  :: forall a b.
+     MVar a
+     -> (a -> IO (a, b))
+     -> State# RealWorld
+     -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []]
+modifyMVarMasked1_ragk4
+  = \ (@ a_sag8q)
+      (@ b_sag8r)
+      (w_sag8s :: MVar a_sag8q)
+      (w1_sag8t :: a_sag8q -> IO (a_sag8q, b_sag8r))
+      (w2_sag8u :: State# RealWorld) ->
+      case w_sag8s of { MVar ww1_sag8x ->
+      $wmodifyMVarMasked_ragk3
+        @ a_sag8q @ b_sag8r ww1_sag8x w1_sag8t w2_sag8u
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 18, joins: 0/0}
+modifyMVarMasked [InlPrag=INLINE (sat-args=2)]
+  :: forall a b. MVar a -> (a -> IO (a, b)) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,C(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_XafJz)
+                 (@ b_XafJB)
+                 (m_aafG1 [Occ=Once!] :: MVar a_XafJz)
+                 (io_aafG2 [Occ=Once!] :: a_XafJz -> IO (a_XafJz, b_XafJB)) ->
+                 let {
+                   io1_safPd [Occ=Once*]
+                     :: State# RealWorld -> (# State# RealWorld, b_XafJB #)
+                   [LclId, Arity=1, Unf=OtherCon []]
+                   io1_safPd
+                     = \ (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                         case m_aafG1 of { MVar mvar#_i9Dso ->
+                         case takeMVar# @ RealWorld @ a_XafJz mvar#_i9Dso s_i7IAv of
+                         { (# ipv_i7IAy [Occ=Once], ipv1_i7IAz #) ->
+                         case catch#
+                                @ (a_XafJz, b_XafJB)
+                                @ SomeException
+                                (\ (s1_X7IAY [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                   case ((io_aafG2 ipv1_i7IAz)
+                                         `cast` (GHC.Types.N:IO[0] <(a_XafJz, b_XafJB)>_R
+                                                 :: (IO (a_XafJz, b_XafJB) :: *)
+                                                    ~R# (State# RealWorld
+                                                         -> (# State# RealWorld,
+                                                               (a_XafJz, b_XafJB) #) :: *)))
+                                          s1_X7IAY
+                                   of
+                                   { (# ipv2_X7IB4 [Occ=Once], ipv3_X7IB6 [Occ=Once] #) ->
+                                   seq# @ (a_XafJz, b_XafJB) @ RealWorld ipv3_X7IB6 ipv2_X7IB4
+                                   })
+                                (\ (e1_iafN9 [Occ=Once, OS=OneShot] :: SomeException)
+                                   (s1_iafNa [Occ=Once, OS=OneShot] :: State# RealWorld) ->
+                                   case putMVar#
+                                          @ RealWorld @ a_XafJz mvar#_i9Dso ipv1_i7IAz s1_iafNa
+                                   of s2#_i9DsB
+                                   { __DEFAULT ->
+                                   raiseIO# @ SomeException @ (a_XafJz, b_XafJB) e1_iafN9 s2#_i9DsB
+                                   })
+                                ipv_i7IAy
+                         of
+                         { (# ipv2_X7IB3 [Occ=Once], ipv3_X7IB5 [Occ=Once!] #) ->
+                         case ipv3_X7IB5 of { (a'_aafG4 [Occ=Once], b1_aafG5 [Occ=Once]) ->
+                         case putMVar# @ RealWorld @ a_XafJz mvar#_i9Dso a'_aafG4 ipv2_X7IB3
+                         of s2#_i9DsB
+                         { __DEFAULT ->
+                         (# s2#_i9DsB, b1_aafG5 #)
+                         }
+                         }
+                         }
+                         }
+                         } } in
+                 (\ (eta_ia56U [Occ=Once] :: State# RealWorld) ->
+                    case getMaskingState# eta_ia56U of
+                    { (# ipv_ia56X [Occ=Once*], ipv1_ia56Y [Occ=Once!] #) ->
+                    case ipv1_ia56Y of {
+                      __DEFAULT -> io1_safPd ipv_ia56X;
+                      0# -> maskAsyncExceptions# @ b_XafJB io1_safPd ipv_ia56X
+                    }
+                    })
+                 `cast` (Sym (GHC.Types.N:IO[0] <b_XafJB>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, b_XafJB #) :: *)
+                            ~R# (IO b_XafJB :: *))}]
+modifyMVarMasked
+  = modifyMVarMasked1_ragk4
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <MVar a>_R
+            ->_R <a -> IO (a, b)>_R
+            ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                MVar a
+                -> (a -> IO (a, b))
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. MVar a -> (a -> IO (a, b)) -> IO b :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+addMVarFinalizer :: forall a. MVar a -> IO () -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.MVar.addMVarFinalizer1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           MVar a
+                           -> IO () -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. MVar a -> IO () -> IO () :: *))}]
+addMVarFinalizer
+  = GHC.MVar.addMVarFinalizer1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R ->_R <IO ()>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                MVar a
+                -> IO () -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. MVar a -> IO () -> IO () :: *))
+
+-- RHS size: {terms: 18, types: 46, coercions: 2, joins: 0/0}
+Control.Concurrent.MVar.mkWeakMVar1
+  :: forall a.
+     MVar a
+     -> IO ()
+     -> State# RealWorld
+     -> (# State# RealWorld, Weak (MVar a) #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_aafIt)
+                 (m_aafG6 [Occ=Once!] :: MVar a_aafIt)
+                 (ds_dafLL [Occ=Once] :: IO ())
+                 (eta_X1T [Occ=Once] :: State# RealWorld) ->
+                 case m_aafG6 of wild_Xm { MVar m#_aafG7 [Occ=Once] ->
+                 case mkWeak#
+                        @ 'UnliftedRep
+                        @ (MVar# RealWorld a_aafIt)
+                        @ (MVar a_aafIt)
+                        @ ()
+                        m#_aafG7
+                        wild_Xm
+                        (ds_dafLL
+                         `cast` (GHC.Types.N:IO[0] <()>_R
+                                 :: (IO () :: *)
+                                    ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+                        eta_X1T
+                 of
+                 { (# ipv_safPi [Occ=Once], ipv1_safPj [Occ=Once] #) ->
+                 (# ipv_safPi, GHC.Weak.Weak @ (MVar a_aafIt) ipv1_safPj #)
+                 }
+                 }}]
+Control.Concurrent.MVar.mkWeakMVar1
+  = \ (@ a_aafIt)
+      (m_aafG6 :: MVar a_aafIt)
+      (ds_dafLL :: IO ())
+      (eta_X1T :: State# RealWorld) ->
+      case m_aafG6 of wild_Xm { MVar m#_aafG7 ->
+      case mkWeak#
+             @ 'UnliftedRep
+             @ (MVar# RealWorld a_aafIt)
+             @ (MVar a_aafIt)
+             @ ()
+             m#_aafG7
+             wild_Xm
+             (ds_dafLL
+              `cast` (GHC.Types.N:IO[0] <()>_R
+                      :: (IO () :: *)
+                         ~R# (State# RealWorld -> (# State# RealWorld, () #) :: *)))
+             eta_X1T
+      of
+      { (# ipv_safPi, ipv1_safPj #) ->
+      (# ipv_safPi, GHC.Weak.Weak @ (MVar a_aafIt) ipv1_safPj #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 14, joins: 0/0}
+mkWeakMVar :: forall a. MVar a -> IO () -> IO (Weak (MVar a))
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Control.Concurrent.MVar.mkWeakMVar1
+               `cast` (forall (a :: <*>_N).
+                       <MVar a>_R
+                       ->_R <IO ()>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Weak (MVar a)>_R)
+                       :: (forall a.
+                           MVar a
+                           -> IO ()
+                           -> State# RealWorld
+                           -> (# State# RealWorld, Weak (MVar a) #) :: *)
+                          ~R# (forall a. MVar a -> IO () -> IO (Weak (MVar a)) :: *))}]
+mkWeakMVar
+  = Control.Concurrent.MVar.mkWeakMVar1
+    `cast` (forall (a :: <*>_N).
+            <MVar a>_R
+            ->_R <IO ()>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Weak (MVar a)>_R)
+            :: (forall a.
+                MVar a
+                -> IO ()
+                -> State# RealWorld
+                -> (# State# RealWorld, Weak (MVar a) #) :: *)
+               ~R# (forall a. MVar a -> IO () -> IO (Weak (MVar a)) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Concurrent.MVar.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Concurrent.MVar.$trModule3
+  = GHC.Types.TrNameS Control.Concurrent.MVar.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 70 0}]
+Control.Concurrent.MVar.$trModule2 = "Control.Concurrent.MVar"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Concurrent.MVar.$trModule1
+  = GHC.Types.TrNameS Control.Concurrent.MVar.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Concurrent.MVar.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Concurrent.MVar.$trModule
+  = GHC.Types.Module
+      Control.Concurrent.MVar.$trModule3
+      Control.Concurrent.MVar.$trModule1
+
+

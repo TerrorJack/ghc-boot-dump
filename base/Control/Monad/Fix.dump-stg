@@ -1,0 +1,2640 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:06:34.157765204 UTC
+
+Control.Monad.Fix.$p1MonadFix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     GHC.Base.Monad m
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(SL),U(U,A)>] =
+    [] \r [v_sbGDe]
+        case v_sbGDe of {
+          Control.Monad.Fix.C:MonadFix v_sbGDg [Occ=Once] _ [Occ=Dead] ->
+              v_sbGDg;
+        };
+
+Control.Monad.Fix.mfix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     forall a. (a -> m a) -> m a
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(LS),U(A,U)>] =
+    [] \r [v_sbGDi]
+        case v_sbGDi of {
+          Control.Monad.Fix.C:MonadFix _ [Occ=Dead] v_sbGDl [Occ=Once] ->
+              v_sbGDl;
+        };
+
+lvl_rbGDa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Maybe: Nothing"#;
+
+Control.Monad.Fix.$fMonadFixFirst1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rbGDa of sat_sbGDm {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbGDm;
+        };
+
+Control.Monad.Fix.$fMonadFixMaybe_$cmfix
+  :: forall a. (a -> GHC.Base.Maybe a) -> GHC.Base.Maybe a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGDn]
+        let {
+          a1_sbGDo [Occ=LoopBreaker] :: GHC.Base.Maybe a_abGq2
+          [LclId] =
+              [f_sbGDn a1_sbGDo] \u []
+                  let {
+                    sat_sbGDr [Occ=Once] :: a_abGq2
+                    [LclId] =
+                        [a1_sbGDo] \u []
+                            case a1_sbGDo of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbGDq [Occ=Once] -> x_sbGDq;
+                            };
+                  } in  f_sbGDn sat_sbGDr;
+        } in  a1_sbGDo;
+
+Control.Monad.Fix.$fMonadFixMaybe [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.Maybe
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadMaybe
+                                                 Control.Monad.Fix.$fMonadFixMaybe_$cmfix];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 [Occ=LoopBreaker]
+  :: forall a. (a -> [a]) -> [a]
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGDs]
+        let {
+          x_sbGDt [Occ=LoopBreaker] :: [a_abGpB]
+          [LclId] =
+              [f_sbGDs x_sbGDt] \u []
+                  let {
+                    sat_sbGDu [Occ=Once] :: a_abGpB
+                    [LclId] =
+                        [x_sbGDt] \u [] GHC.List.head x_sbGDt;
+                  } in  f_sbGDs sat_sbGDu;
+        } in 
+          case x_sbGDt of {
+            [] -> [] [];
+            : x1_sbGDw [Occ=Once] _ [Occ=Dead] ->
+                let {
+                  sat_sbGDD [Occ=Once] :: [a_abGpB]
+                  [LclId] =
+                      [f_sbGDs] \u []
+                          let {
+                            sat_sbGDC [Occ=Once] :: a_abGpB -> [a_abGpB]
+                            [LclId] =
+                                [f_sbGDs] \r [x2_sbGDy]
+                                    case f_sbGDs x2_sbGDy of {
+                                      [] -> GHC.List.scanl2;
+                                      : _ [Occ=Dead] xs_sbGDB [Occ=Once] -> xs_sbGDB;
+                                    };
+                          } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbGDC;
+                } in  : [x1_sbGDw sat_sbGDD];
+          };
+
+Control.Monad.Fix.$fMonadFix[] [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix []
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad[]
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> GHC.Base.NonEmpty a) -> GHC.Base.NonEmpty a
+[GblId, Arity=1, Str=<L,C(U(U,U))>m, Unf=OtherCon []] =
+    [] \r [w_sbGDE]
+        let {
+          sat_sbGDT [Occ=Once] :: [a_sbGzU]
+          [LclId] =
+              [w_sbGDE] \u []
+                  let {
+                    sat_sbGDS [Occ=Once] :: a_sbGzU -> [a_sbGzU]
+                    [LclId] =
+                        [w_sbGDE] \r [x_sbGDO]
+                            case w_sbGDE x_sbGDO of {
+                              GHC.Base.:| _ [Occ=Dead] as_sbGDR [Occ=Once] -> as_sbGDR;
+                            };
+                  } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbGDS; } in
+        let {
+          sat_sbGDN [Occ=Once] :: a_sbGzU
+          [LclId] =
+              [w_sbGDE] \u []
+                  let {
+                    x_sbGDF [Occ=LoopBreaker] :: GHC.Base.NonEmpty a_sbGzU
+                    [LclId] =
+                        [w_sbGDE x_sbGDF] \u []
+                            let {
+                              sat_sbGDJ [Occ=Once] :: a_sbGzU
+                              [LclId] =
+                                  [x_sbGDF] \u []
+                                      case x_sbGDF of {
+                                        GHC.Base.:| a1_sbGDH [Occ=Once] _ [Occ=Dead] -> a1_sbGDH;
+                                      };
+                            } in  w_sbGDE sat_sbGDJ;
+                  } in 
+                    case x_sbGDF of {
+                      GHC.Base.:| x1_sbGDL [Occ=Once] _ [Occ=Dead] -> x1_sbGDL;
+                    };
+        } in  GHC.Base.:| [sat_sbGDN sat_sbGDT];
+
+Control.Monad.Fix.$fMonadFixNonEmpty [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.NonEmpty
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadNonEmpty
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix];
+
+Control.Monad.Fix.$fMonadFixIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Types.IO
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadIO
+                                                 System.IO.fixIO1];
+
+Control.Monad.Fix.$fMonadFix(->)_$cmfix
+  :: forall r a. (a -> r -> a) -> r -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sbGDU r1_sbGDV]
+        let {
+          a1_sbGDW [Occ=LoopBreaker] :: a_abGoe
+          [LclId] =
+              [f_sbGDU r1_sbGDV a1_sbGDW] \u [] f_sbGDU a1_sbGDW r1_sbGDV;
+        } in  a1_sbGDW;
+
+Control.Monad.Fix.$fMonadFix(->) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall r. Control.Monad.Fix.MonadFix ((->) r)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad(->)
+                                                 Control.Monad.Fix.$fMonadFix(->)_$cmfix];
+
+lvl1_rbGDb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Either: Left"#;
+
+Control.Monad.Fix.$fMonadFixEither1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl1_rbGDb of sat_sbGDX {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbGDX;
+        };
+
+Control.Monad.Fix.$fMonadFixEither_$cmfix
+  :: forall e a.
+     (a -> Data.Either.Either e a) -> Data.Either.Either e a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGDY]
+        let {
+          a1_sbGDZ [Occ=LoopBreaker] :: Data.Either.Either e_abGnt a_abGnB
+          [LclId] =
+              [f_sbGDY a1_sbGDZ] \u []
+                  let {
+                    sat_sbGE3 [Occ=Once] :: a_abGnB
+                    [LclId] =
+                        [a1_sbGDZ] \u []
+                            case a1_sbGDZ of {
+                              Data.Either.Left _ [Occ=Dead] ->
+                                  Control.Monad.Fix.$fMonadFixEither1;
+                              Data.Either.Right x_sbGE2 [Occ=Once] -> x_sbGE2;
+                            };
+                  } in  f_sbGDY sat_sbGE3;
+        } in  a1_sbGDZ;
+
+Control.Monad.Fix.$fMonadFixEither [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall e. Control.Monad.Fix.MonadFix (Data.Either.Either e)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Either.$fMonadEither
+                                                 Control.Monad.Fix.$fMonadFixEither_$cmfix];
+
+Control.Monad.Fix.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fix.MonadFix (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.ST.$fMonadST
+                                                 GHC.ST.fixST1];
+
+Control.Monad.Fix.$fMonadFixDual_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Dual a)
+     -> Data.Semigroup.Internal.Dual a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGE4]
+        let {
+          x_sbGE5 [Occ=LoopBreaker] :: Data.Semigroup.Internal.Dual a_abGmZ
+          [LclId] =
+              [f_sbGE4 x_sbGE5] \u [] f_sbGE4 x_sbGE5;
+        } in  x_sbGE5;
+
+Control.Monad.Fix.$fMonadFixDual [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Dual
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadDual
+                                                 Control.Monad.Fix.$fMonadFixDual_$cmfix];
+
+Control.Monad.Fix.$fMonadFixSum_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Sum a)
+     -> Data.Semigroup.Internal.Sum a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGE6]
+        let {
+          x_sbGE7 [Occ=LoopBreaker] :: Data.Semigroup.Internal.Sum a_abGmF
+          [LclId] =
+              [f_sbGE6 x_sbGE7] \u [] f_sbGE6 x_sbGE7;
+        } in  x_sbGE7;
+
+Control.Monad.Fix.$fMonadFixSum [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Sum
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadSum
+                                                 Control.Monad.Fix.$fMonadFixSum_$cmfix];
+
+Control.Monad.Fix.$fMonadFixProduct_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Product a)
+     -> Data.Semigroup.Internal.Product a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGE8]
+        let {
+          x_sbGE9 [Occ=LoopBreaker]
+            :: Data.Semigroup.Internal.Product a_abGml
+          [LclId] =
+              [f_sbGE8 x_sbGE9] \u [] f_sbGE8 x_sbGE9;
+        } in  x_sbGE9;
+
+Control.Monad.Fix.$fMonadFixProduct [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Product
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadProduct
+                                                 Control.Monad.Fix.$fMonadFixProduct_$cmfix];
+
+Control.Monad.Fix.$fMonadFixFirst_$cmfix
+  :: forall a. (a -> Data.Monoid.First a) -> Data.Monoid.First a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGEa]
+        let {
+          a1_sbGEb [Occ=LoopBreaker] :: Data.Monoid.First a_abGlY
+          [LclId] =
+              [f_sbGEa a1_sbGEb] \u []
+                  let {
+                    sat_sbGEe [Occ=Once] :: a_abGlY
+                    [LclId] =
+                        [a1_sbGEb] \u []
+                            case a1_sbGEb of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbGEd [Occ=Once] -> x_sbGEd;
+                            };
+                  } in  f_sbGEa sat_sbGEe;
+        } in  a1_sbGEb;
+
+Control.Monad.Fix.$fMonadFixFirst [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.First
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadFirst
+                                                 Control.Monad.Fix.$fMonadFixFirst_$cmfix];
+
+Control.Monad.Fix.$fMonadFixLast_$cmfix
+  :: forall a. (a -> Data.Monoid.Last a) -> Data.Monoid.Last a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGEf]
+        let {
+          a1_sbGEg [Occ=LoopBreaker] :: Data.Monoid.Last a_abGlB
+          [LclId] =
+              [f_sbGEf a1_sbGEg] \u []
+                  let {
+                    sat_sbGEj [Occ=Once] :: a_abGlB
+                    [LclId] =
+                        [a1_sbGEg] \u []
+                            case a1_sbGEg of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbGEi [Occ=Once] -> x_sbGEi;
+                            };
+                  } in  f_sbGEf sat_sbGEj;
+        } in  a1_sbGEg;
+
+Control.Monad.Fix.$fMonadFixLast [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.Last
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadLast
+                                                 Control.Monad.Fix.$fMonadFixLast_$cmfix];
+
+Control.Monad.Fix.$fMonadFixAlt1
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> Data.Semigroup.Internal.Alt f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEk f1_sbGEl]
+        let {
+          sat_sbGEn [Occ=Once] :: a_abGl8 -> f_abGkZ a_abGl8
+          [LclId] =
+              [f1_sbGEl] \r [x_sbGEm] f1_sbGEl x_sbGEm;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbGEk sat_sbGEn;
+
+Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (Data.Semigroup.Internal.Alt f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEo]
+        let {
+          sat_sbGEp [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGm6
+          [LclId] =
+              [$dMonadFix_sbGEo] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGEo;
+        } in  Data.Semigroup.Internal.$fMonadAlt sat_sbGEp;
+
+Control.Monad.Fix.$fMonadFixAlt [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (Data.Semigroup.Internal.Alt f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbGEq]
+        let {
+          sat_sbGEs [Occ=Once]
+            :: forall a.
+               (a -> Data.Semigroup.Internal.Alt f_XbGm7 a)
+               -> Data.Semigroup.Internal.Alt f_XbGm7 a
+          [LclId] =
+              [$dMonadFix_sbGEq] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixAlt1 $dMonadFix_sbGEq eta_B1; } in
+        let {
+          sat_sbGEr [Occ=Once]
+            :: GHC.Base.Monad (Data.Semigroup.Internal.Alt f_XbGm7)
+          [LclId] =
+              [$dMonadFix_sbGEq] \u []
+                  Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix $dMonadFix_sbGEq;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGEr sat_sbGEs];
+
+Control.Monad.Fix.$fMonadFixPar1_$cmfix
+  :: forall a. (a -> GHC.Generics.Par1 a) -> GHC.Generics.Par1 a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGEt]
+        let {
+          x_sbGEu [Occ=LoopBreaker] :: GHC.Generics.Par1 a_abGkM
+          [LclId] =
+              [f_sbGEt x_sbGEu] \u [] f_sbGEt x_sbGEu;
+        } in  x_sbGEu;
+
+Control.Monad.Fix.$fMonadFixPar1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Generics.Par1
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Generics.$fMonadPar1
+                                                 Control.Monad.Fix.$fMonadFixPar1_$cmfix];
+
+Control.Monad.Fix.$fMonadFixRec2
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.Rec1 f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEv f1_sbGEw]
+        let {
+          sat_sbGEy [Occ=Once] :: a_abGkj -> f_abGka a_abGkj
+          [LclId] =
+              [f1_sbGEw] \r [x_sbGEx] f1_sbGEw x_sbGEx;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbGEv sat_sbGEy;
+
+Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.Rec1 f)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEz]
+        let {
+          sat_sbGEA [Occ=Once,
+                     Dmd=<L,U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_XbGlr
+          [LclId] =
+              [$dMonadFix_sbGEz] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGEz;
+        } in  GHC.Generics.$fMonadRec1 sat_sbGEA;
+
+Control.Monad.Fix.$fMonadFixRec1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.Rec1 f)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbGEB]
+        let {
+          sat_sbGED [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.Rec1 f_XbGls a) -> GHC.Generics.Rec1 f_XbGls a
+          [LclId] =
+              [$dMonadFix_sbGEB] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixRec2 $dMonadFix_sbGEB eta_B1; } in
+        let {
+          sat_sbGEC [Occ=Once] :: GHC.Base.Monad (GHC.Generics.Rec1 f_XbGls)
+          [LclId] =
+              [$dMonadFix_sbGEB] \u []
+                  Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix $dMonadFix_sbGEB;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGEC sat_sbGED];
+
+Control.Monad.Fix.$fMonadFixM2
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.M1 i c f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEE f1_sbGEF]
+        let {
+          sat_sbGEH [Occ=Once] :: a_abGjJ -> f_abGjy a_abGjJ
+          [LclId] =
+              [f1_sbGEF] \r [x_sbGEG] f1_sbGEF x_sbGEG;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbGEE sat_sbGEH;
+
+Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.M1 i c f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEI]
+        let {
+          sat_sbGEJ [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGkZ
+          [LclId] =
+              [$dMonadFix_sbGEI] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGEI;
+        } in  GHC.Generics.$fMonadM1 sat_sbGEJ;
+
+Control.Monad.Fix.$fMonadFixM1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.M1 i c f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbGEK]
+        let {
+          sat_sbGEM [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a)
+               -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a
+          [LclId] =
+              [$dMonadFix_sbGEK] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixM2 $dMonadFix_sbGEK eta_B1; } in
+        let {
+          sat_sbGEL [Occ=Once]
+            :: GHC.Base.Monad (GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0)
+          [LclId] =
+              [$dMonadFix_sbGEK] \u []
+                  Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix $dMonadFix_sbGEK;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGEL sat_sbGEM];
+
+Control.Monad.Fix.$fMonadFix:*:_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     forall a.
+     (a -> (GHC.Generics.:*:) f g a) -> (GHC.Generics.:*:) f g a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U))><L,1*U(A,1*C1(U))><L,C(U(1*U,1*U))>m,
+ Unf=OtherCon []] =
+    [] \r [w_sbGEN w1_sbGEO w2_sbGEP]
+        let {
+          sat_sbGF1 [Occ=Once] :: g_sbGA1 a_sbGA4
+          [LclId] =
+              [w1_sbGEO w2_sbGEP] \u []
+                  let {
+                    sat_sbGF0 [Occ=Once] :: a_sbGA4 -> g_sbGA1 a_sbGA4
+                    [LclId] =
+                        [w2_sbGEP] \r [x_sbGEW]
+                            case w2_sbGEP x_sbGEW of {
+                              GHC.Generics.:*: _ [Occ=Dead] b_sbGEZ [Occ=Once] -> b_sbGEZ;
+                            };
+                  } in  Control.Monad.Fix.mfix w1_sbGEO sat_sbGF0; } in
+        let {
+          sat_sbGEV [Occ=Once] :: f_sbGA0 a_sbGA4
+          [LclId] =
+              [w_sbGEN w2_sbGEP] \u []
+                  let {
+                    sat_sbGEU [Occ=Once] :: a_sbGA4 -> f_sbGA0 a_sbGA4
+                    [LclId] =
+                        [w2_sbGEP] \r [x_sbGEQ]
+                            case w2_sbGEP x_sbGEQ of {
+                              GHC.Generics.:*: a1_sbGES [Occ=Once] _ [Occ=Dead] -> a1_sbGES;
+                            };
+                  } in  Control.Monad.Fix.mfix w_sbGEN sat_sbGEU;
+        } in  GHC.Generics.:*: [sat_sbGEV sat_sbGF1];
+
+Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     GHC.Base.Monad (f GHC.Generics.:*: g)
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)><L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGF2 $dMonadFix1_sbGF3]
+        let {
+          sat_sbGF5 [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad g_abGig
+          [LclId] =
+              [$dMonadFix1_sbGF3] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix1_sbGF3; } in
+        let {
+          sat_sbGF4 [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_abGif
+          [LclId] =
+              [$dMonadFix_sbGF2] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGF2;
+        } in  GHC.Generics.$fMonad:*: sat_sbGF4 sat_sbGF5;
+
+Control.Monad.Fix.$fMonadFix:*: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     Control.Monad.Fix.MonadFix (f GHC.Generics.:*: g)
+[GblId[DFunId],
+ Arity=2,
+ Str=<L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))><L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbGF6 $dMonadFix1_sbGF7]
+        let {
+          sat_sbGF9 [Occ=Once]
+            :: forall a.
+               (a -> (GHC.Generics.:*:) f_abGif g_abGig a)
+               -> (GHC.Generics.:*:) f_abGif g_abGig a
+          [LclId] =
+              [$dMonadFix_sbGF6 $dMonadFix1_sbGF7] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFix:*:_$cmfix
+                      $dMonadFix_sbGF6 $dMonadFix1_sbGF7 eta_B1; } in
+        let {
+          sat_sbGF8 [Occ=Once]
+            :: GHC.Base.Monad (f_abGif GHC.Generics.:*: g_abGig)
+          [LclId] =
+              [$dMonadFix_sbGF6 $dMonadFix1_sbGF7] \u []
+                  Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+                      $dMonadFix_sbGF6 $dMonadFix1_sbGF7;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGF8 sat_sbGF9];
+
+Control.Monad.Fix.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.Fix.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule4];
+
+Control.Monad.Fix.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.Fix"#;
+
+Control.Monad.Fix.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule2];
+
+Control.Monad.Fix.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.Fix.$trModule3
+                                     Control.Monad.Fix.$trModule1];
+
+$krep_rbGDc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+Control.Monad.Fix.$tcMonadFix1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [GHC.Types.krep$*Arr*
+                                         $krep_rbGDc];
+
+Control.Monad.Fix.$tcMonadFix3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MonadFix"#;
+
+Control.Monad.Fix.$tcMonadFix2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$tcMonadFix3];
+
+Control.Monad.Fix.$tcMonadFix :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9994897379720692231##
+                                    15179622530544898162##
+                                    Control.Monad.Fix.$trModule
+                                    Control.Monad.Fix.$tcMonadFix2
+                                    0#
+                                    Control.Monad.Fix.$tcMonadFix1];
+
+Control.Monad.Fix.C:MonadFix
+  :: forall (m :: * -> *).
+     GHC.Base.Monad m =>
+     (forall a. (a -> m a) -> m a) -> Control.Monad.Fix.MonadFix m
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Monad.Fix.C:MonadFix [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:06:34.169489113 UTC
+
+Control.Monad.Fix.$p1MonadFix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     GHC.Base.Monad m
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(SL),U(U,A)>] =
+    [] \r [v_sbGDe]
+        case v_sbGDe of {
+          Control.Monad.Fix.C:MonadFix v_sbGDg [Occ=Once] _ [Occ=Dead] ->
+              v_sbGDg;
+        };
+
+Control.Monad.Fix.mfix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     forall a. (a -> m a) -> m a
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(LS),U(A,U)>] =
+    [] \r [v_sbGDi]
+        case v_sbGDi of {
+          Control.Monad.Fix.C:MonadFix _ [Occ=Dead] v_sbGDl [Occ=Once] ->
+              v_sbGDl;
+        };
+
+lvl_rbGDa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Maybe: Nothing"#;
+
+Control.Monad.Fix.$fMonadFixFirst1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rbGDa of sat_sbGDm {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbGDm;
+        };
+
+Control.Monad.Fix.$fMonadFixMaybe_$cmfix
+  :: forall a. (a -> GHC.Base.Maybe a) -> GHC.Base.Maybe a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGDn]
+        let {
+          a1_sbGDo [Occ=LoopBreaker] :: GHC.Base.Maybe a_abGq2
+          [LclId] =
+              [f_sbGDn a1_sbGDo] \u []
+                  let {
+                    sat_sbGDr [Occ=Once] :: a_abGq2
+                    [LclId] =
+                        [a1_sbGDo] \u []
+                            case a1_sbGDo of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbGDq [Occ=Once] -> x_sbGDq;
+                            };
+                  } in  f_sbGDn sat_sbGDr;
+        } in  a1_sbGDo;
+
+Control.Monad.Fix.$fMonadFixMaybe [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.Maybe
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadMaybe
+                                                 Control.Monad.Fix.$fMonadFixMaybe_$cmfix];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 [Occ=LoopBreaker]
+  :: forall a. (a -> [a]) -> [a]
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGDs]
+        let {
+          x_sbGDt [Occ=LoopBreaker] :: [a_abGpB]
+          [LclId] =
+              [f_sbGDs x_sbGDt] \u []
+                  let {
+                    sat_sbGDu [Occ=Once] :: a_abGpB
+                    [LclId] =
+                        [x_sbGDt] \u [] GHC.List.head x_sbGDt;
+                  } in  f_sbGDs sat_sbGDu;
+        } in 
+          case x_sbGDt of {
+            [] -> [] [];
+            : x1_sbGDw [Occ=Once] _ [Occ=Dead] ->
+                let {
+                  sat_sbGDD [Occ=Once] :: [a_abGpB]
+                  [LclId] =
+                      [f_sbGDs] \u []
+                          let {
+                            sat_sbGDC [Occ=Once] :: a_abGpB -> [a_abGpB]
+                            [LclId] =
+                                [f_sbGDs] \r [x2_sbGDy]
+                                    case f_sbGDs x2_sbGDy of {
+                                      [] -> GHC.List.scanl2;
+                                      : _ [Occ=Dead] xs_sbGDB [Occ=Once] -> xs_sbGDB;
+                                    };
+                          } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbGDC;
+                } in  : [x1_sbGDw sat_sbGDD];
+          };
+
+Control.Monad.Fix.$fMonadFix[] [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix []
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad[]
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> GHC.Base.NonEmpty a) -> GHC.Base.NonEmpty a
+[GblId, Arity=1, Str=<L,C(U(U,U))>m, Unf=OtherCon []] =
+    [] \r [w_sbGDE]
+        let {
+          sat_sbGDT [Occ=Once] :: [a_sbGzU]
+          [LclId] =
+              [w_sbGDE] \u []
+                  let {
+                    sat_sbGDS [Occ=Once] :: a_sbGzU -> [a_sbGzU]
+                    [LclId] =
+                        [w_sbGDE] \r [x_sbGDO]
+                            case w_sbGDE x_sbGDO of {
+                              GHC.Base.:| _ [Occ=Dead] as_sbGDR [Occ=Once] -> as_sbGDR;
+                            };
+                  } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbGDS; } in
+        let {
+          sat_sbGDN [Occ=Once] :: a_sbGzU
+          [LclId] =
+              [w_sbGDE] \u []
+                  let {
+                    x_sbGDF [Occ=LoopBreaker] :: GHC.Base.NonEmpty a_sbGzU
+                    [LclId] =
+                        [w_sbGDE x_sbGDF] \u []
+                            let {
+                              sat_sbGDJ [Occ=Once] :: a_sbGzU
+                              [LclId] =
+                                  [x_sbGDF] \u []
+                                      case x_sbGDF of {
+                                        GHC.Base.:| a1_sbGDH [Occ=Once] _ [Occ=Dead] -> a1_sbGDH;
+                                      };
+                            } in  w_sbGDE sat_sbGDJ;
+                  } in 
+                    case x_sbGDF of {
+                      GHC.Base.:| x1_sbGDL [Occ=Once] _ [Occ=Dead] -> x1_sbGDL;
+                    };
+        } in  GHC.Base.:| [sat_sbGDN sat_sbGDT];
+
+Control.Monad.Fix.$fMonadFixNonEmpty [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.NonEmpty
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadNonEmpty
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix];
+
+Control.Monad.Fix.$fMonadFixIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Types.IO
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadIO
+                                                 System.IO.fixIO1];
+
+Control.Monad.Fix.$fMonadFix(->)_$cmfix
+  :: forall r a. (a -> r -> a) -> r -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sbGDU r1_sbGDV]
+        let {
+          a1_sbGDW [Occ=LoopBreaker] :: a_abGoe
+          [LclId] =
+              [f_sbGDU r1_sbGDV a1_sbGDW] \u [] f_sbGDU a1_sbGDW r1_sbGDV;
+        } in  a1_sbGDW;
+
+Control.Monad.Fix.$fMonadFix(->) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall r. Control.Monad.Fix.MonadFix ((->) r)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad(->)
+                                                 Control.Monad.Fix.$fMonadFix(->)_$cmfix];
+
+lvl1_rbGDb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Either: Left"#;
+
+Control.Monad.Fix.$fMonadFixEither1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl1_rbGDb of sat_sbGDX {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbGDX;
+        };
+
+Control.Monad.Fix.$fMonadFixEither_$cmfix
+  :: forall e a.
+     (a -> Data.Either.Either e a) -> Data.Either.Either e a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGDY]
+        let {
+          a1_sbGDZ [Occ=LoopBreaker] :: Data.Either.Either e_abGnt a_abGnB
+          [LclId] =
+              [f_sbGDY a1_sbGDZ] \u []
+                  let {
+                    sat_sbGE3 [Occ=Once] :: a_abGnB
+                    [LclId] =
+                        [a1_sbGDZ] \u []
+                            case a1_sbGDZ of {
+                              Data.Either.Left _ [Occ=Dead] ->
+                                  Control.Monad.Fix.$fMonadFixEither1;
+                              Data.Either.Right x_sbGE2 [Occ=Once] -> x_sbGE2;
+                            };
+                  } in  f_sbGDY sat_sbGE3;
+        } in  a1_sbGDZ;
+
+Control.Monad.Fix.$fMonadFixEither [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall e. Control.Monad.Fix.MonadFix (Data.Either.Either e)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Either.$fMonadEither
+                                                 Control.Monad.Fix.$fMonadFixEither_$cmfix];
+
+Control.Monad.Fix.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fix.MonadFix (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.ST.$fMonadST
+                                                 GHC.ST.fixST1];
+
+Control.Monad.Fix.$fMonadFixDual_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Dual a)
+     -> Data.Semigroup.Internal.Dual a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGE4]
+        let {
+          x_sbGE5 [Occ=LoopBreaker] :: Data.Semigroup.Internal.Dual a_abGmZ
+          [LclId] =
+              [f_sbGE4 x_sbGE5] \u [] f_sbGE4 x_sbGE5;
+        } in  x_sbGE5;
+
+Control.Monad.Fix.$fMonadFixDual [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Dual
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadDual
+                                                 Control.Monad.Fix.$fMonadFixDual_$cmfix];
+
+Control.Monad.Fix.$fMonadFixSum_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Sum a)
+     -> Data.Semigroup.Internal.Sum a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGE6]
+        let {
+          x_sbGE7 [Occ=LoopBreaker] :: Data.Semigroup.Internal.Sum a_abGmF
+          [LclId] =
+              [f_sbGE6 x_sbGE7] \u [] f_sbGE6 x_sbGE7;
+        } in  x_sbGE7;
+
+Control.Monad.Fix.$fMonadFixSum [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Sum
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadSum
+                                                 Control.Monad.Fix.$fMonadFixSum_$cmfix];
+
+Control.Monad.Fix.$fMonadFixProduct_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Product a)
+     -> Data.Semigroup.Internal.Product a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGE8]
+        let {
+          x_sbGE9 [Occ=LoopBreaker]
+            :: Data.Semigroup.Internal.Product a_abGml
+          [LclId] =
+              [f_sbGE8 x_sbGE9] \u [] f_sbGE8 x_sbGE9;
+        } in  x_sbGE9;
+
+Control.Monad.Fix.$fMonadFixProduct [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Product
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadProduct
+                                                 Control.Monad.Fix.$fMonadFixProduct_$cmfix];
+
+Control.Monad.Fix.$fMonadFixFirst_$cmfix
+  :: forall a. (a -> Data.Monoid.First a) -> Data.Monoid.First a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGEa]
+        let {
+          a1_sbGEb [Occ=LoopBreaker] :: Data.Monoid.First a_abGlY
+          [LclId] =
+              [f_sbGEa a1_sbGEb] \u []
+                  let {
+                    sat_sbGEe [Occ=Once] :: a_abGlY
+                    [LclId] =
+                        [a1_sbGEb] \u []
+                            case a1_sbGEb of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbGEd [Occ=Once] -> x_sbGEd;
+                            };
+                  } in  f_sbGEa sat_sbGEe;
+        } in  a1_sbGEb;
+
+Control.Monad.Fix.$fMonadFixFirst [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.First
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadFirst
+                                                 Control.Monad.Fix.$fMonadFixFirst_$cmfix];
+
+Control.Monad.Fix.$fMonadFixLast_$cmfix
+  :: forall a. (a -> Data.Monoid.Last a) -> Data.Monoid.Last a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGEf]
+        let {
+          a1_sbGEg [Occ=LoopBreaker] :: Data.Monoid.Last a_abGlB
+          [LclId] =
+              [f_sbGEf a1_sbGEg] \u []
+                  let {
+                    sat_sbGEj [Occ=Once] :: a_abGlB
+                    [LclId] =
+                        [a1_sbGEg] \u []
+                            case a1_sbGEg of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbGEi [Occ=Once] -> x_sbGEi;
+                            };
+                  } in  f_sbGEf sat_sbGEj;
+        } in  a1_sbGEg;
+
+Control.Monad.Fix.$fMonadFixLast [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.Last
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadLast
+                                                 Control.Monad.Fix.$fMonadFixLast_$cmfix];
+
+Control.Monad.Fix.$fMonadFixAlt1
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> Data.Semigroup.Internal.Alt f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEk f1_sbGEl]
+        let {
+          sat_sbGEn [Occ=Once] :: a_abGl8 -> f_abGkZ a_abGl8
+          [LclId] =
+              [f1_sbGEl] \r [x_sbGEm] f1_sbGEl x_sbGEm;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbGEk sat_sbGEn;
+
+Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (Data.Semigroup.Internal.Alt f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEo]
+        let {
+          sat_sbGEp [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGm6
+          [LclId] =
+              [$dMonadFix_sbGEo] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGEo;
+        } in  Data.Semigroup.Internal.$fMonadAlt sat_sbGEp;
+
+Control.Monad.Fix.$fMonadFixAlt [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (Data.Semigroup.Internal.Alt f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbGEq]
+        let {
+          sat_sbGEs [Occ=Once]
+            :: forall a.
+               (a -> Data.Semigroup.Internal.Alt f_XbGm7 a)
+               -> Data.Semigroup.Internal.Alt f_XbGm7 a
+          [LclId] =
+              [$dMonadFix_sbGEq] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixAlt1 $dMonadFix_sbGEq eta_B1; } in
+        let {
+          sat_sbGEr [Occ=Once]
+            :: GHC.Base.Monad (Data.Semigroup.Internal.Alt f_XbGm7)
+          [LclId] =
+              [$dMonadFix_sbGEq] \u []
+                  Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix $dMonadFix_sbGEq;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGEr sat_sbGEs];
+
+Control.Monad.Fix.$fMonadFixPar1_$cmfix
+  :: forall a. (a -> GHC.Generics.Par1 a) -> GHC.Generics.Par1 a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbGEt]
+        let {
+          x_sbGEu [Occ=LoopBreaker] :: GHC.Generics.Par1 a_abGkM
+          [LclId] =
+              [f_sbGEt x_sbGEu] \u [] f_sbGEt x_sbGEu;
+        } in  x_sbGEu;
+
+Control.Monad.Fix.$fMonadFixPar1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Generics.Par1
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Generics.$fMonadPar1
+                                                 Control.Monad.Fix.$fMonadFixPar1_$cmfix];
+
+Control.Monad.Fix.$fMonadFixRec2
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.Rec1 f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEv f1_sbGEw]
+        let {
+          sat_sbGEy [Occ=Once] :: a_abGkj -> f_abGka a_abGkj
+          [LclId] =
+              [f1_sbGEw] \r [x_sbGEx] f1_sbGEw x_sbGEx;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbGEv sat_sbGEy;
+
+Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.Rec1 f)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEz]
+        let {
+          sat_sbGEA [Occ=Once,
+                     Dmd=<L,U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_XbGlr
+          [LclId] =
+              [$dMonadFix_sbGEz] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGEz;
+        } in  GHC.Generics.$fMonadRec1 sat_sbGEA;
+
+Control.Monad.Fix.$fMonadFixRec1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.Rec1 f)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbGEB]
+        let {
+          sat_sbGED [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.Rec1 f_XbGls a) -> GHC.Generics.Rec1 f_XbGls a
+          [LclId] =
+              [$dMonadFix_sbGEB] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixRec2 $dMonadFix_sbGEB eta_B1; } in
+        let {
+          sat_sbGEC [Occ=Once] :: GHC.Base.Monad (GHC.Generics.Rec1 f_XbGls)
+          [LclId] =
+              [$dMonadFix_sbGEB] \u []
+                  Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix $dMonadFix_sbGEB;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGEC sat_sbGED];
+
+Control.Monad.Fix.$fMonadFixM2
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.M1 i c f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEE f1_sbGEF]
+        let {
+          sat_sbGEH [Occ=Once] :: a_abGjJ -> f_abGjy a_abGjJ
+          [LclId] =
+              [f1_sbGEF] \r [x_sbGEG] f1_sbGEF x_sbGEG;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbGEE sat_sbGEH;
+
+Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.M1 i c f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGEI]
+        let {
+          sat_sbGEJ [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGkZ
+          [LclId] =
+              [$dMonadFix_sbGEI] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGEI;
+        } in  GHC.Generics.$fMonadM1 sat_sbGEJ;
+
+Control.Monad.Fix.$fMonadFixM1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.M1 i c f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbGEK]
+        let {
+          sat_sbGEM [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a)
+               -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a
+          [LclId] =
+              [$dMonadFix_sbGEK] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixM2 $dMonadFix_sbGEK eta_B1; } in
+        let {
+          sat_sbGEL [Occ=Once]
+            :: GHC.Base.Monad (GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0)
+          [LclId] =
+              [$dMonadFix_sbGEK] \u []
+                  Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix $dMonadFix_sbGEK;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGEL sat_sbGEM];
+
+Control.Monad.Fix.$fMonadFix:*:_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     forall a.
+     (a -> (GHC.Generics.:*:) f g a) -> (GHC.Generics.:*:) f g a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U))><L,1*U(A,1*C1(U))><L,C(U(1*U,1*U))>m,
+ Unf=OtherCon []] =
+    [] \r [w_sbGEN w1_sbGEO w2_sbGEP]
+        let {
+          sat_sbGF1 [Occ=Once] :: g_sbGA1 a_sbGA4
+          [LclId] =
+              [w1_sbGEO w2_sbGEP] \u []
+                  let {
+                    sat_sbGF0 [Occ=Once] :: a_sbGA4 -> g_sbGA1 a_sbGA4
+                    [LclId] =
+                        [w2_sbGEP] \r [x_sbGEW]
+                            case w2_sbGEP x_sbGEW of {
+                              GHC.Generics.:*: _ [Occ=Dead] b_sbGEZ [Occ=Once] -> b_sbGEZ;
+                            };
+                  } in  Control.Monad.Fix.mfix w1_sbGEO sat_sbGF0; } in
+        let {
+          sat_sbGEV [Occ=Once] :: f_sbGA0 a_sbGA4
+          [LclId] =
+              [w_sbGEN w2_sbGEP] \u []
+                  let {
+                    sat_sbGEU [Occ=Once] :: a_sbGA4 -> f_sbGA0 a_sbGA4
+                    [LclId] =
+                        [w2_sbGEP] \r [x_sbGEQ]
+                            case w2_sbGEP x_sbGEQ of {
+                              GHC.Generics.:*: a1_sbGES [Occ=Once] _ [Occ=Dead] -> a1_sbGES;
+                            };
+                  } in  Control.Monad.Fix.mfix w_sbGEN sat_sbGEU;
+        } in  GHC.Generics.:*: [sat_sbGEV sat_sbGF1];
+
+Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     GHC.Base.Monad (f GHC.Generics.:*: g)
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)><L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbGF2 $dMonadFix1_sbGF3]
+        let {
+          sat_sbGF5 [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad g_abGig
+          [LclId] =
+              [$dMonadFix1_sbGF3] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix1_sbGF3; } in
+        let {
+          sat_sbGF4 [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_abGif
+          [LclId] =
+              [$dMonadFix_sbGF2] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbGF2;
+        } in  GHC.Generics.$fMonad:*: sat_sbGF4 sat_sbGF5;
+
+Control.Monad.Fix.$fMonadFix:*: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     Control.Monad.Fix.MonadFix (f GHC.Generics.:*: g)
+[GblId[DFunId],
+ Arity=2,
+ Str=<L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))><L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbGF6 $dMonadFix1_sbGF7]
+        let {
+          sat_sbGF9 [Occ=Once]
+            :: forall a.
+               (a -> (GHC.Generics.:*:) f_abGif g_abGig a)
+               -> (GHC.Generics.:*:) f_abGif g_abGig a
+          [LclId] =
+              [$dMonadFix_sbGF6 $dMonadFix1_sbGF7] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFix:*:_$cmfix
+                      $dMonadFix_sbGF6 $dMonadFix1_sbGF7 eta_B1; } in
+        let {
+          sat_sbGF8 [Occ=Once]
+            :: GHC.Base.Monad (f_abGif GHC.Generics.:*: g_abGig)
+          [LclId] =
+              [$dMonadFix_sbGF6 $dMonadFix1_sbGF7] \u []
+                  Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+                      $dMonadFix_sbGF6 $dMonadFix1_sbGF7;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbGF8 sat_sbGF9];
+
+Control.Monad.Fix.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.Fix.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule4];
+
+Control.Monad.Fix.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.Fix"#;
+
+Control.Monad.Fix.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule2];
+
+Control.Monad.Fix.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.Fix.$trModule3
+                                     Control.Monad.Fix.$trModule1];
+
+$krep_rbGDc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+Control.Monad.Fix.$tcMonadFix1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [GHC.Types.krep$*Arr*
+                                         $krep_rbGDc];
+
+Control.Monad.Fix.$tcMonadFix3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MonadFix"#;
+
+Control.Monad.Fix.$tcMonadFix2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$tcMonadFix3];
+
+Control.Monad.Fix.$tcMonadFix :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9994897379720692231##
+                                    15179622530544898162##
+                                    Control.Monad.Fix.$trModule
+                                    Control.Monad.Fix.$tcMonadFix2
+                                    0#
+                                    Control.Monad.Fix.$tcMonadFix1];
+
+Control.Monad.Fix.C:MonadFix
+  :: forall (m :: * -> *).
+     GHC.Base.Monad m =>
+     (forall a. (a -> m a) -> m a) -> Control.Monad.Fix.MonadFix m
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Monad.Fix.C:MonadFix [eta_B2 eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:06:34.952887199 UTC
+
+Control.Monad.Fix.$p1MonadFix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     GHC.Base.Monad m
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(SL),U(U,A)>] =
+    [] \r [v_sbHip]
+        case v_sbHip of {
+          Control.Monad.Fix.C:MonadFix v_sbHir [Occ=Once] _ [Occ=Dead] ->
+              v_sbHir;
+        };
+
+Control.Monad.Fix.mfix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     forall a. (a -> m a) -> m a
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(LS),U(A,U)>] =
+    [] \r [v_sbHit]
+        case v_sbHit of {
+          Control.Monad.Fix.C:MonadFix _ [Occ=Dead] v_sbHiw [Occ=Once] ->
+              v_sbHiw;
+        };
+
+lvl_rbGDa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Maybe: Nothing"#;
+
+Control.Monad.Fix.$fMonadFixFirst1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rbGDa of sat_sbHix {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbHix;
+        };
+
+Control.Monad.Fix.$fMonadFixMaybe_$cmfix
+  :: forall a. (a -> GHC.Base.Maybe a) -> GHC.Base.Maybe a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHiy]
+        let {
+          a1_sbHiz [Occ=LoopBreaker] :: GHC.Base.Maybe a_abGq2
+          [LclId] =
+              [f_sbHiy a1_sbHiz] \u []
+                  let {
+                    sat_sbHiC [Occ=Once] :: a_abGq2
+                    [LclId] =
+                        [a1_sbHiz] \u []
+                            case a1_sbHiz of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbHiB [Occ=Once] -> x_sbHiB;
+                            };
+                  } in  f_sbHiy sat_sbHiC;
+        } in  a1_sbHiz;
+
+Control.Monad.Fix.$fMonadFixMaybe [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.Maybe
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadMaybe
+                                                 Control.Monad.Fix.$fMonadFixMaybe_$cmfix];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 [Occ=LoopBreaker]
+  :: forall a. (a -> [a]) -> [a]
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHiD]
+        let {
+          x_sbHiE [Occ=LoopBreaker] :: [a_abGpB]
+          [LclId] =
+              [f_sbHiD x_sbHiE] \u []
+                  let {
+                    sat_sbHiF [Occ=Once] :: a_abGpB
+                    [LclId] =
+                        [x_sbHiE] \u [] GHC.List.head x_sbHiE;
+                  } in  f_sbHiD sat_sbHiF;
+        } in 
+          case x_sbHiE of {
+            [] -> [] [];
+            : x1_sbHiH [Occ=Once] _ [Occ=Dead] ->
+                let {
+                  sat_sbHiO [Occ=Once] :: [a_abGpB]
+                  [LclId] =
+                      [f_sbHiD] \u []
+                          let {
+                            sat_sbHiN [Occ=Once] :: a_abGpB -> [a_abGpB]
+                            [LclId] =
+                                [f_sbHiD] \r [x2_sbHiJ]
+                                    case f_sbHiD x2_sbHiJ of {
+                                      [] -> GHC.List.scanl2;
+                                      : _ [Occ=Dead] xs_sbHiM [Occ=Once] -> xs_sbHiM;
+                                    };
+                          } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbHiN;
+                } in  : [x1_sbHiH sat_sbHiO];
+          };
+
+Control.Monad.Fix.$fMonadFix[] [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix []
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad[]
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> GHC.Base.NonEmpty a) -> GHC.Base.NonEmpty a
+[GblId, Arity=1, Str=<L,C(U(U,U))>m, Unf=OtherCon []] =
+    [] \r [w_sbHiP]
+        let {
+          sat_sbHj4 [Occ=Once] :: [a_sbGzU]
+          [LclId] =
+              [w_sbHiP] \u []
+                  let {
+                    sat_sbHj3 [Occ=Once] :: a_sbGzU -> [a_sbGzU]
+                    [LclId] =
+                        [w_sbHiP] \r [x_sbHiZ]
+                            case w_sbHiP x_sbHiZ of {
+                              GHC.Base.:| _ [Occ=Dead] as_sbHj2 [Occ=Once] -> as_sbHj2;
+                            };
+                  } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbHj3; } in
+        let {
+          sat_sbHiY [Occ=Once] :: a_sbGzU
+          [LclId] =
+              [w_sbHiP] \u []
+                  let {
+                    x_sbHiQ [Occ=LoopBreaker] :: GHC.Base.NonEmpty a_sbGzU
+                    [LclId] =
+                        [w_sbHiP x_sbHiQ] \u []
+                            let {
+                              sat_sbHiU [Occ=Once] :: a_sbGzU
+                              [LclId] =
+                                  [x_sbHiQ] \u []
+                                      case x_sbHiQ of {
+                                        GHC.Base.:| a1_sbHiS [Occ=Once] _ [Occ=Dead] -> a1_sbHiS;
+                                      };
+                            } in  w_sbHiP sat_sbHiU;
+                  } in 
+                    case x_sbHiQ of {
+                      GHC.Base.:| x1_sbHiW [Occ=Once] _ [Occ=Dead] -> x1_sbHiW;
+                    };
+        } in  GHC.Base.:| [sat_sbHiY sat_sbHj4];
+
+Control.Monad.Fix.$fMonadFixNonEmpty [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.NonEmpty
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadNonEmpty
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix];
+
+Control.Monad.Fix.$fMonadFixIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Types.IO
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadIO
+                                                 System.IO.fixIO1];
+
+Control.Monad.Fix.$fMonadFix(->)_$cmfix
+  :: forall r a. (a -> r -> a) -> r -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sbHj5 r1_sbHj6]
+        let {
+          a1_sbHj7 [Occ=LoopBreaker] :: a_abGoe
+          [LclId] =
+              [f_sbHj5 r1_sbHj6 a1_sbHj7] \u [] f_sbHj5 a1_sbHj7 r1_sbHj6;
+        } in  a1_sbHj7;
+
+Control.Monad.Fix.$fMonadFix(->) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall r. Control.Monad.Fix.MonadFix ((->) r)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad(->)
+                                                 Control.Monad.Fix.$fMonadFix(->)_$cmfix];
+
+lvl1_rbGDb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Either: Left"#;
+
+Control.Monad.Fix.$fMonadFixEither1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl1_rbGDb of sat_sbHj8 {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbHj8;
+        };
+
+Control.Monad.Fix.$fMonadFixEither_$cmfix
+  :: forall e a.
+     (a -> Data.Either.Either e a) -> Data.Either.Either e a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHj9]
+        let {
+          a1_sbHja [Occ=LoopBreaker] :: Data.Either.Either e_abGnt a_abGnB
+          [LclId] =
+              [f_sbHj9 a1_sbHja] \u []
+                  let {
+                    sat_sbHje [Occ=Once] :: a_abGnB
+                    [LclId] =
+                        [a1_sbHja] \u []
+                            case a1_sbHja of {
+                              Data.Either.Left _ [Occ=Dead] ->
+                                  Control.Monad.Fix.$fMonadFixEither1;
+                              Data.Either.Right x_sbHjd [Occ=Once] -> x_sbHjd;
+                            };
+                  } in  f_sbHj9 sat_sbHje;
+        } in  a1_sbHja;
+
+Control.Monad.Fix.$fMonadFixEither [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall e. Control.Monad.Fix.MonadFix (Data.Either.Either e)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Either.$fMonadEither
+                                                 Control.Monad.Fix.$fMonadFixEither_$cmfix];
+
+Control.Monad.Fix.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fix.MonadFix (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.ST.$fMonadST
+                                                 GHC.ST.fixST1];
+
+Control.Monad.Fix.$fMonadFixDual_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Dual a)
+     -> Data.Semigroup.Internal.Dual a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjf]
+        let {
+          x_sbHjg [Occ=LoopBreaker] :: Data.Semigroup.Internal.Dual a_abGmZ
+          [LclId] =
+              [f_sbHjf x_sbHjg] \u [] f_sbHjf x_sbHjg;
+        } in  x_sbHjg;
+
+Control.Monad.Fix.$fMonadFixDual [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Dual
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadDual
+                                                 Control.Monad.Fix.$fMonadFixDual_$cmfix];
+
+Control.Monad.Fix.$fMonadFixSum_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Sum a)
+     -> Data.Semigroup.Internal.Sum a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjh]
+        let {
+          x_sbHji [Occ=LoopBreaker] :: Data.Semigroup.Internal.Sum a_abGmF
+          [LclId] =
+              [f_sbHjh x_sbHji] \u [] f_sbHjh x_sbHji;
+        } in  x_sbHji;
+
+Control.Monad.Fix.$fMonadFixSum [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Sum
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadSum
+                                                 Control.Monad.Fix.$fMonadFixSum_$cmfix];
+
+Control.Monad.Fix.$fMonadFixProduct_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Product a)
+     -> Data.Semigroup.Internal.Product a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjj]
+        let {
+          x_sbHjk [Occ=LoopBreaker]
+            :: Data.Semigroup.Internal.Product a_abGml
+          [LclId] =
+              [f_sbHjj x_sbHjk] \u [] f_sbHjj x_sbHjk;
+        } in  x_sbHjk;
+
+Control.Monad.Fix.$fMonadFixProduct [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Product
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadProduct
+                                                 Control.Monad.Fix.$fMonadFixProduct_$cmfix];
+
+Control.Monad.Fix.$fMonadFixFirst_$cmfix
+  :: forall a. (a -> Data.Monoid.First a) -> Data.Monoid.First a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjl]
+        let {
+          a1_sbHjm [Occ=LoopBreaker] :: Data.Monoid.First a_abGlY
+          [LclId] =
+              [f_sbHjl a1_sbHjm] \u []
+                  let {
+                    sat_sbHjp [Occ=Once] :: a_abGlY
+                    [LclId] =
+                        [a1_sbHjm] \u []
+                            case a1_sbHjm of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbHjo [Occ=Once] -> x_sbHjo;
+                            };
+                  } in  f_sbHjl sat_sbHjp;
+        } in  a1_sbHjm;
+
+Control.Monad.Fix.$fMonadFixFirst [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.First
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadFirst
+                                                 Control.Monad.Fix.$fMonadFixFirst_$cmfix];
+
+Control.Monad.Fix.$fMonadFixLast_$cmfix
+  :: forall a. (a -> Data.Monoid.Last a) -> Data.Monoid.Last a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjq]
+        let {
+          a1_sbHjr [Occ=LoopBreaker] :: Data.Monoid.Last a_abGlB
+          [LclId] =
+              [f_sbHjq a1_sbHjr] \u []
+                  let {
+                    sat_sbHju [Occ=Once] :: a_abGlB
+                    [LclId] =
+                        [a1_sbHjr] \u []
+                            case a1_sbHjr of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbHjt [Occ=Once] -> x_sbHjt;
+                            };
+                  } in  f_sbHjq sat_sbHju;
+        } in  a1_sbHjr;
+
+Control.Monad.Fix.$fMonadFixLast [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.Last
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadLast
+                                                 Control.Monad.Fix.$fMonadFixLast_$cmfix];
+
+Control.Monad.Fix.$fMonadFixAlt1
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> Data.Semigroup.Internal.Alt f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjv f1_sbHjw]
+        let {
+          sat_sbHjy [Occ=Once] :: a_abGl8 -> f_abGkZ a_abGl8
+          [LclId] =
+              [f1_sbHjw] \r [x_sbHjx] f1_sbHjw x_sbHjx;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbHjv sat_sbHjy;
+
+Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (Data.Semigroup.Internal.Alt f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjz]
+        let {
+          sat_sbHjA [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGm6
+          [LclId] =
+              [$dMonadFix_sbHjz] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHjz;
+        } in  Data.Semigroup.Internal.$fMonadAlt sat_sbHjA;
+
+Control.Monad.Fix.$fMonadFixAlt [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (Data.Semigroup.Internal.Alt f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbHjB]
+        let {
+          sat_sbHjD [Occ=Once]
+            :: forall a.
+               (a -> Data.Semigroup.Internal.Alt f_XbGm7 a)
+               -> Data.Semigroup.Internal.Alt f_XbGm7 a
+          [LclId] =
+              [$dMonadFix_sbHjB] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixAlt1 $dMonadFix_sbHjB eta_B1; } in
+        let {
+          sat_sbHjC [Occ=Once]
+            :: GHC.Base.Monad (Data.Semigroup.Internal.Alt f_XbGm7)
+          [LclId] =
+              [$dMonadFix_sbHjB] \u []
+                  Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix $dMonadFix_sbHjB;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHjC sat_sbHjD];
+
+Control.Monad.Fix.$fMonadFixPar1_$cmfix
+  :: forall a. (a -> GHC.Generics.Par1 a) -> GHC.Generics.Par1 a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjE]
+        let {
+          x_sbHjF [Occ=LoopBreaker] :: GHC.Generics.Par1 a_abGkM
+          [LclId] =
+              [f_sbHjE x_sbHjF] \u [] f_sbHjE x_sbHjF;
+        } in  x_sbHjF;
+
+Control.Monad.Fix.$fMonadFixPar1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Generics.Par1
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Generics.$fMonadPar1
+                                                 Control.Monad.Fix.$fMonadFixPar1_$cmfix];
+
+Control.Monad.Fix.$fMonadFixRec2
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.Rec1 f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjG f1_sbHjH]
+        let {
+          sat_sbHjJ [Occ=Once] :: a_abGkj -> f_abGka a_abGkj
+          [LclId] =
+              [f1_sbHjH] \r [x_sbHjI] f1_sbHjH x_sbHjI;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbHjG sat_sbHjJ;
+
+Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.Rec1 f)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjK]
+        let {
+          sat_sbHjL [Occ=Once,
+                     Dmd=<L,U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_XbGlr
+          [LclId] =
+              [$dMonadFix_sbHjK] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHjK;
+        } in  GHC.Generics.$fMonadRec1 sat_sbHjL;
+
+Control.Monad.Fix.$fMonadFixRec1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.Rec1 f)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbHjM]
+        let {
+          sat_sbHjO [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.Rec1 f_XbGls a) -> GHC.Generics.Rec1 f_XbGls a
+          [LclId] =
+              [$dMonadFix_sbHjM] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixRec2 $dMonadFix_sbHjM eta_B1; } in
+        let {
+          sat_sbHjN [Occ=Once] :: GHC.Base.Monad (GHC.Generics.Rec1 f_XbGls)
+          [LclId] =
+              [$dMonadFix_sbHjM] \u []
+                  Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix $dMonadFix_sbHjM;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHjN sat_sbHjO];
+
+Control.Monad.Fix.$fMonadFixM2
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.M1 i c f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjP f1_sbHjQ]
+        let {
+          sat_sbHjS [Occ=Once] :: a_abGjJ -> f_abGjy a_abGjJ
+          [LclId] =
+              [f1_sbHjQ] \r [x_sbHjR] f1_sbHjQ x_sbHjR;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbHjP sat_sbHjS;
+
+Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.M1 i c f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjT]
+        let {
+          sat_sbHjU [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGkZ
+          [LclId] =
+              [$dMonadFix_sbHjT] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHjT;
+        } in  GHC.Generics.$fMonadM1 sat_sbHjU;
+
+Control.Monad.Fix.$fMonadFixM1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.M1 i c f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbHjV]
+        let {
+          sat_sbHjX [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a)
+               -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a
+          [LclId] =
+              [$dMonadFix_sbHjV] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixM2 $dMonadFix_sbHjV eta_B1; } in
+        let {
+          sat_sbHjW [Occ=Once]
+            :: GHC.Base.Monad (GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0)
+          [LclId] =
+              [$dMonadFix_sbHjV] \u []
+                  Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix $dMonadFix_sbHjV;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHjW sat_sbHjX];
+
+Control.Monad.Fix.$fMonadFix:*:_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     forall a.
+     (a -> (GHC.Generics.:*:) f g a) -> (GHC.Generics.:*:) f g a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U))><L,1*U(A,1*C1(U))><L,C(U(1*U,1*U))>m,
+ Unf=OtherCon []] =
+    [] \r [w_sbHjY w1_sbHjZ w2_sbHk0]
+        let {
+          sat_sbHkc [Occ=Once] :: g_sbGA1 a_sbGA4
+          [LclId] =
+              [w1_sbHjZ w2_sbHk0] \u []
+                  let {
+                    sat_sbHkb [Occ=Once] :: a_sbGA4 -> g_sbGA1 a_sbGA4
+                    [LclId] =
+                        [w2_sbHk0] \r [x_sbHk7]
+                            case w2_sbHk0 x_sbHk7 of {
+                              GHC.Generics.:*: _ [Occ=Dead] b_sbHka [Occ=Once] -> b_sbHka;
+                            };
+                  } in  Control.Monad.Fix.mfix w1_sbHjZ sat_sbHkb; } in
+        let {
+          sat_sbHk6 [Occ=Once] :: f_sbGA0 a_sbGA4
+          [LclId] =
+              [w_sbHjY w2_sbHk0] \u []
+                  let {
+                    sat_sbHk5 [Occ=Once] :: a_sbGA4 -> f_sbGA0 a_sbGA4
+                    [LclId] =
+                        [w2_sbHk0] \r [x_sbHk1]
+                            case w2_sbHk0 x_sbHk1 of {
+                              GHC.Generics.:*: a1_sbHk3 [Occ=Once] _ [Occ=Dead] -> a1_sbHk3;
+                            };
+                  } in  Control.Monad.Fix.mfix w_sbHjY sat_sbHk5;
+        } in  GHC.Generics.:*: [sat_sbHk6 sat_sbHkc];
+
+Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     GHC.Base.Monad (f GHC.Generics.:*: g)
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)><L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHkd $dMonadFix1_sbHke]
+        let {
+          sat_sbHkg [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad g_abGig
+          [LclId] =
+              [$dMonadFix1_sbHke] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix1_sbHke; } in
+        let {
+          sat_sbHkf [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_abGif
+          [LclId] =
+              [$dMonadFix_sbHkd] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHkd;
+        } in  GHC.Generics.$fMonad:*: sat_sbHkf sat_sbHkg;
+
+Control.Monad.Fix.$fMonadFix:*: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     Control.Monad.Fix.MonadFix (f GHC.Generics.:*: g)
+[GblId[DFunId],
+ Arity=2,
+ Str=<L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))><L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbHkh $dMonadFix1_sbHki]
+        let {
+          sat_sbHkk [Occ=Once]
+            :: forall a.
+               (a -> (GHC.Generics.:*:) f_abGif g_abGig a)
+               -> (GHC.Generics.:*:) f_abGif g_abGig a
+          [LclId] =
+              [$dMonadFix_sbHkh $dMonadFix1_sbHki] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFix:*:_$cmfix
+                      $dMonadFix_sbHkh $dMonadFix1_sbHki eta_B1; } in
+        let {
+          sat_sbHkj [Occ=Once]
+            :: GHC.Base.Monad (f_abGif GHC.Generics.:*: g_abGig)
+          [LclId] =
+              [$dMonadFix_sbHkh $dMonadFix1_sbHki] \u []
+                  Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+                      $dMonadFix_sbHkh $dMonadFix1_sbHki;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHkj sat_sbHkk];
+
+Control.Monad.Fix.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.Fix.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule4];
+
+Control.Monad.Fix.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.Fix"#;
+
+Control.Monad.Fix.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule2];
+
+Control.Monad.Fix.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.Fix.$trModule3
+                                     Control.Monad.Fix.$trModule1];
+
+$krep_rbGDc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+Control.Monad.Fix.$tcMonadFix1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [GHC.Types.krep$*Arr*
+                                         $krep_rbGDc];
+
+Control.Monad.Fix.$tcMonadFix3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MonadFix"#;
+
+Control.Monad.Fix.$tcMonadFix2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$tcMonadFix3];
+
+Control.Monad.Fix.$tcMonadFix :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9994897379720692231##
+                                    15179622530544898162##
+                                    Control.Monad.Fix.$trModule
+                                    Control.Monad.Fix.$tcMonadFix2
+                                    0#
+                                    Control.Monad.Fix.$tcMonadFix1];
+
+Control.Monad.Fix.C:MonadFix
+  :: forall (m :: * -> *).
+     GHC.Base.Monad m =>
+     (forall a. (a -> m a) -> m a) -> Control.Monad.Fix.MonadFix m
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Monad.Fix.C:MonadFix [eta_B2 eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:06:34.964379539 UTC
+
+Control.Monad.Fix.$p1MonadFix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     GHC.Base.Monad m
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(SL),U(U,A)>] =
+    [] \r [v_sbHip]
+        case v_sbHip of {
+          Control.Monad.Fix.C:MonadFix v_sbHir [Occ=Once] _ [Occ=Dead] ->
+              v_sbHir;
+        };
+
+Control.Monad.Fix.mfix
+  :: forall (m :: * -> *).
+     Control.Monad.Fix.MonadFix m =>
+     forall a. (a -> m a) -> m a
+[GblId[ClassOp], Arity=1, Caf=NoCafRefs, Str=<S(LS),U(A,U)>] =
+    [] \r [v_sbHit]
+        case v_sbHit of {
+          Control.Monad.Fix.C:MonadFix _ [Occ=Dead] v_sbHiw [Occ=Once] ->
+              v_sbHiw;
+        };
+
+lvl_rbGDa :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Maybe: Nothing"#;
+
+Control.Monad.Fix.$fMonadFixFirst1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_rbGDa of sat_sbHix {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbHix;
+        };
+
+Control.Monad.Fix.$fMonadFixMaybe_$cmfix
+  :: forall a. (a -> GHC.Base.Maybe a) -> GHC.Base.Maybe a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHiy]
+        let {
+          a1_sbHiz [Occ=LoopBreaker] :: GHC.Base.Maybe a_abGq2
+          [LclId] =
+              [f_sbHiy a1_sbHiz] \u []
+                  let {
+                    sat_sbHiC [Occ=Once] :: a_abGq2
+                    [LclId] =
+                        [a1_sbHiz] \u []
+                            case a1_sbHiz of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbHiB [Occ=Once] -> x_sbHiB;
+                            };
+                  } in  f_sbHiy sat_sbHiC;
+        } in  a1_sbHiz;
+
+Control.Monad.Fix.$fMonadFixMaybe [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.Maybe
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadMaybe
+                                                 Control.Monad.Fix.$fMonadFixMaybe_$cmfix];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 [Occ=LoopBreaker]
+  :: forall a. (a -> [a]) -> [a]
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHiD]
+        let {
+          x_sbHiE [Occ=LoopBreaker] :: [a_abGpB]
+          [LclId] =
+              [f_sbHiD x_sbHiE] \u []
+                  let {
+                    sat_sbHiF [Occ=Once] :: a_abGpB
+                    [LclId] =
+                        [x_sbHiE] \u [] GHC.List.head x_sbHiE;
+                  } in  f_sbHiD sat_sbHiF;
+        } in 
+          case x_sbHiE of {
+            [] -> [] [];
+            : x1_sbHiH [Occ=Once] _ [Occ=Dead] ->
+                let {
+                  sat_sbHiO [Occ=Once] :: [a_abGpB]
+                  [LclId] =
+                      [f_sbHiD] \u []
+                          let {
+                            sat_sbHiN [Occ=Once] :: a_abGpB -> [a_abGpB]
+                            [LclId] =
+                                [f_sbHiD] \r [x2_sbHiJ]
+                                    case f_sbHiD x2_sbHiJ of {
+                                      [] -> GHC.List.scanl2;
+                                      : _ [Occ=Dead] xs_sbHiM [Occ=Once] -> xs_sbHiM;
+                                    };
+                          } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbHiN;
+                } in  : [x1_sbHiH sat_sbHiO];
+          };
+
+Control.Monad.Fix.$fMonadFix[] [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix []
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad[]
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1];
+
+Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall a. (a -> GHC.Base.NonEmpty a) -> GHC.Base.NonEmpty a
+[GblId, Arity=1, Str=<L,C(U(U,U))>m, Unf=OtherCon []] =
+    [] \r [w_sbHiP]
+        let {
+          sat_sbHj4 [Occ=Once] :: [a_sbGzU]
+          [LclId] =
+              [w_sbHiP] \u []
+                  let {
+                    sat_sbHj3 [Occ=Once] :: a_sbGzU -> [a_sbGzU]
+                    [LclId] =
+                        [w_sbHiP] \r [x_sbHiZ]
+                            case w_sbHiP x_sbHiZ of {
+                              GHC.Base.:| _ [Occ=Dead] as_sbHj2 [Occ=Once] -> as_sbHj2;
+                            };
+                  } in  Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix1 sat_sbHj3; } in
+        let {
+          sat_sbHiY [Occ=Once] :: a_sbGzU
+          [LclId] =
+              [w_sbHiP] \u []
+                  let {
+                    x_sbHiQ [Occ=LoopBreaker] :: GHC.Base.NonEmpty a_sbGzU
+                    [LclId] =
+                        [w_sbHiP x_sbHiQ] \u []
+                            let {
+                              sat_sbHiU [Occ=Once] :: a_sbGzU
+                              [LclId] =
+                                  [x_sbHiQ] \u []
+                                      case x_sbHiQ of {
+                                        GHC.Base.:| a1_sbHiS [Occ=Once] _ [Occ=Dead] -> a1_sbHiS;
+                                      };
+                            } in  w_sbHiP sat_sbHiU;
+                  } in 
+                    case x_sbHiQ of {
+                      GHC.Base.:| x1_sbHiW [Occ=Once] _ [Occ=Dead] -> x1_sbHiW;
+                    };
+        } in  GHC.Base.:| [sat_sbHiY sat_sbHj4];
+
+Control.Monad.Fix.$fMonadFixNonEmpty [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Base.NonEmpty
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadNonEmpty
+                                                 Control.Monad.Fix.$fMonadFixNonEmpty_$cmfix];
+
+Control.Monad.Fix.$fMonadFixIO [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Types.IO
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonadIO
+                                                 System.IO.fixIO1];
+
+Control.Monad.Fix.$fMonadFix(->)_$cmfix
+  :: forall r a. (a -> r -> a) -> r -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),C(C1(U))><L,U>,
+ Unf=OtherCon []] =
+    [] \r [f_sbHj5 r1_sbHj6]
+        let {
+          a1_sbHj7 [Occ=LoopBreaker] :: a_abGoe
+          [LclId] =
+              [f_sbHj5 r1_sbHj6 a1_sbHj7] \u [] f_sbHj5 a1_sbHj7 r1_sbHj6;
+        } in  a1_sbHj7;
+
+Control.Monad.Fix.$fMonadFix(->) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall r. Control.Monad.Fix.MonadFix ((->) r)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Base.$fMonad(->)
+                                                 Control.Monad.Fix.$fMonadFix(->)_$cmfix];
+
+lvl1_rbGDb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "mfix Either: Left"#;
+
+Control.Monad.Fix.$fMonadFixEither1 :: forall a. a
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl1_rbGDb of sat_sbHj8 {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_sbHj8;
+        };
+
+Control.Monad.Fix.$fMonadFixEither_$cmfix
+  :: forall e a.
+     (a -> Data.Either.Either e a) -> Data.Either.Either e a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHj9]
+        let {
+          a1_sbHja [Occ=LoopBreaker] :: Data.Either.Either e_abGnt a_abGnB
+          [LclId] =
+              [f_sbHj9 a1_sbHja] \u []
+                  let {
+                    sat_sbHje [Occ=Once] :: a_abGnB
+                    [LclId] =
+                        [a1_sbHja] \u []
+                            case a1_sbHja of {
+                              Data.Either.Left _ [Occ=Dead] ->
+                                  Control.Monad.Fix.$fMonadFixEither1;
+                              Data.Either.Right x_sbHjd [Occ=Once] -> x_sbHjd;
+                            };
+                  } in  f_sbHj9 sat_sbHje;
+        } in  a1_sbHja;
+
+Control.Monad.Fix.$fMonadFixEither [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall e. Control.Monad.Fix.MonadFix (Data.Either.Either e)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Either.$fMonadEither
+                                                 Control.Monad.Fix.$fMonadFixEither_$cmfix];
+
+Control.Monad.Fix.$fMonadFixST [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall s. Control.Monad.Fix.MonadFix (GHC.ST.ST s)
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.ST.$fMonadST
+                                                 GHC.ST.fixST1];
+
+Control.Monad.Fix.$fMonadFixDual_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Dual a)
+     -> Data.Semigroup.Internal.Dual a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjf]
+        let {
+          x_sbHjg [Occ=LoopBreaker] :: Data.Semigroup.Internal.Dual a_abGmZ
+          [LclId] =
+              [f_sbHjf x_sbHjg] \u [] f_sbHjf x_sbHjg;
+        } in  x_sbHjg;
+
+Control.Monad.Fix.$fMonadFixDual [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Dual
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadDual
+                                                 Control.Monad.Fix.$fMonadFixDual_$cmfix];
+
+Control.Monad.Fix.$fMonadFixSum_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Sum a)
+     -> Data.Semigroup.Internal.Sum a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjh]
+        let {
+          x_sbHji [Occ=LoopBreaker] :: Data.Semigroup.Internal.Sum a_abGmF
+          [LclId] =
+              [f_sbHjh x_sbHji] \u [] f_sbHjh x_sbHji;
+        } in  x_sbHji;
+
+Control.Monad.Fix.$fMonadFixSum [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Sum
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadSum
+                                                 Control.Monad.Fix.$fMonadFixSum_$cmfix];
+
+Control.Monad.Fix.$fMonadFixProduct_$cmfix
+  :: forall a.
+     (a -> Data.Semigroup.Internal.Product a)
+     -> Data.Semigroup.Internal.Product a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjj]
+        let {
+          x_sbHjk [Occ=LoopBreaker]
+            :: Data.Semigroup.Internal.Product a_abGml
+          [LclId] =
+              [f_sbHjj x_sbHjk] \u [] f_sbHjj x_sbHjk;
+        } in  x_sbHjk;
+
+Control.Monad.Fix.$fMonadFixProduct [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Semigroup.Internal.Product
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Semigroup.Internal.$fMonadProduct
+                                                 Control.Monad.Fix.$fMonadFixProduct_$cmfix];
+
+Control.Monad.Fix.$fMonadFixFirst_$cmfix
+  :: forall a. (a -> Data.Monoid.First a) -> Data.Monoid.First a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjl]
+        let {
+          a1_sbHjm [Occ=LoopBreaker] :: Data.Monoid.First a_abGlY
+          [LclId] =
+              [f_sbHjl a1_sbHjm] \u []
+                  let {
+                    sat_sbHjp [Occ=Once] :: a_abGlY
+                    [LclId] =
+                        [a1_sbHjm] \u []
+                            case a1_sbHjm of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbHjo [Occ=Once] -> x_sbHjo;
+                            };
+                  } in  f_sbHjl sat_sbHjp;
+        } in  a1_sbHjm;
+
+Control.Monad.Fix.$fMonadFixFirst [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.First
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadFirst
+                                                 Control.Monad.Fix.$fMonadFixFirst_$cmfix];
+
+Control.Monad.Fix.$fMonadFixLast_$cmfix
+  :: forall a. (a -> Data.Monoid.Last a) -> Data.Monoid.Last a
+[GblId, Arity=1, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjq]
+        let {
+          a1_sbHjr [Occ=LoopBreaker] :: Data.Monoid.Last a_abGlB
+          [LclId] =
+              [f_sbHjq a1_sbHjr] \u []
+                  let {
+                    sat_sbHju [Occ=Once] :: a_abGlB
+                    [LclId] =
+                        [a1_sbHjr] \u []
+                            case a1_sbHjr of {
+                              GHC.Base.Nothing -> Control.Monad.Fix.$fMonadFixFirst1;
+                              GHC.Base.Just x_sbHjt [Occ=Once] -> x_sbHjt;
+                            };
+                  } in  f_sbHjq sat_sbHju;
+        } in  a1_sbHjr;
+
+Control.Monad.Fix.$fMonadFixLast [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix Data.Monoid.Last
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [Data.Monoid.$fMonadLast
+                                                 Control.Monad.Fix.$fMonadFixLast_$cmfix];
+
+Control.Monad.Fix.$fMonadFixAlt1
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> Data.Semigroup.Internal.Alt f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjv f1_sbHjw]
+        let {
+          sat_sbHjy [Occ=Once] :: a_abGl8 -> f_abGkZ a_abGl8
+          [LclId] =
+              [f1_sbHjw] \r [x_sbHjx] f1_sbHjw x_sbHjx;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbHjv sat_sbHjy;
+
+Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (Data.Semigroup.Internal.Alt f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjz]
+        let {
+          sat_sbHjA [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGm6
+          [LclId] =
+              [$dMonadFix_sbHjz] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHjz;
+        } in  Data.Semigroup.Internal.$fMonadAlt sat_sbHjA;
+
+Control.Monad.Fix.$fMonadFixAlt [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (Data.Semigroup.Internal.Alt f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbHjB]
+        let {
+          sat_sbHjD [Occ=Once]
+            :: forall a.
+               (a -> Data.Semigroup.Internal.Alt f_XbGm7 a)
+               -> Data.Semigroup.Internal.Alt f_XbGm7 a
+          [LclId] =
+              [$dMonadFix_sbHjB] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixAlt1 $dMonadFix_sbHjB eta_B1; } in
+        let {
+          sat_sbHjC [Occ=Once]
+            :: GHC.Base.Monad (Data.Semigroup.Internal.Alt f_XbGm7)
+          [LclId] =
+              [$dMonadFix_sbHjB] \u []
+                  Control.Monad.Fix.$fMonadFixAlt_$cp1MonadFix $dMonadFix_sbHjB;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHjC sat_sbHjD];
+
+Control.Monad.Fix.$fMonadFixPar1_$cmfix
+  :: forall a. (a -> GHC.Generics.Par1 a) -> GHC.Generics.Par1 a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<C(S),C(U)>, Unf=OtherCon []] =
+    [] \r [f_sbHjE]
+        let {
+          x_sbHjF [Occ=LoopBreaker] :: GHC.Generics.Par1 a_abGkM
+          [LclId] =
+              [f_sbHjE x_sbHjF] \u [] f_sbHjE x_sbHjF;
+        } in  x_sbHjF;
+
+Control.Monad.Fix.$fMonadFixPar1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: Control.Monad.Fix.MonadFix GHC.Generics.Par1
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE Control.Monad.Fix.C:MonadFix! [GHC.Generics.$fMonadPar1
+                                                 Control.Monad.Fix.$fMonadFixPar1_$cmfix];
+
+Control.Monad.Fix.$fMonadFixRec2
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.Rec1 f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjG f1_sbHjH]
+        let {
+          sat_sbHjJ [Occ=Once] :: a_abGkj -> f_abGka a_abGkj
+          [LclId] =
+              [f1_sbHjH] \r [x_sbHjI] f1_sbHjH x_sbHjI;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbHjG sat_sbHjJ;
+
+Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.Rec1 f)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjK]
+        let {
+          sat_sbHjL [Occ=Once,
+                     Dmd=<L,U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_XbGlr
+          [LclId] =
+              [$dMonadFix_sbHjK] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHjK;
+        } in  GHC.Generics.$fMonadRec1 sat_sbHjL;
+
+Control.Monad.Fix.$fMonadFixRec1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.Rec1 f)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbHjM]
+        let {
+          sat_sbHjO [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.Rec1 f_XbGls a) -> GHC.Generics.Rec1 f_XbGls a
+          [LclId] =
+              [$dMonadFix_sbHjM] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixRec2 $dMonadFix_sbHjM eta_B1; } in
+        let {
+          sat_sbHjN [Occ=Once] :: GHC.Base.Monad (GHC.Generics.Rec1 f_XbGls)
+          [LclId] =
+              [$dMonadFix_sbHjM] \u []
+                  Control.Monad.Fix.$fMonadFixRec1_$cp1MonadFix $dMonadFix_sbHjM;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHjN sat_sbHjO];
+
+Control.Monad.Fix.$fMonadFixM2
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     forall a. (a -> GHC.Generics.M1 i c f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(S)),1*U(A,1*C1(U))><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjP f1_sbHjQ]
+        let {
+          sat_sbHjS [Occ=Once] :: a_abGjJ -> f_abGjy a_abGjJ
+          [LclId] =
+              [f1_sbHjQ] \r [x_sbHjR] f1_sbHjQ x_sbHjR;
+        } in  Control.Monad.Fix.mfix $dMonadFix_sbHjP sat_sbHjS;
+
+Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     GHC.Base.Monad (GHC.Generics.M1 i c f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHjT]
+        let {
+          sat_sbHjU [Occ=Once,
+                     Dmd=<L,U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U)>]
+            :: GHC.Base.Monad f_XbGkZ
+          [LclId] =
+              [$dMonadFix_sbHjT] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHjT;
+        } in  GHC.Generics.$fMonadM1 sat_sbHjU;
+
+Control.Monad.Fix.$fMonadFixM1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) i (c :: GHC.Generics.Meta).
+     Control.Monad.Fix.MonadFix f =>
+     Control.Monad.Fix.MonadFix (GHC.Generics.M1 i c f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),C(U))>m] =
+    [] \r [$dMonadFix_sbHjV]
+        let {
+          sat_sbHjX [Occ=Once]
+            :: forall a.
+               (a -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a)
+               -> GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0 a
+          [LclId] =
+              [$dMonadFix_sbHjV] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFixM2 $dMonadFix_sbHjV eta_B1; } in
+        let {
+          sat_sbHjW [Occ=Once]
+            :: GHC.Base.Monad (GHC.Generics.M1 i_XbGl2 c_XbGl4 f_XbGl0)
+          [LclId] =
+              [$dMonadFix_sbHjV] \u []
+                  Control.Monad.Fix.$fMonadFixM1_$cp1MonadFix $dMonadFix_sbHjV;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHjW sat_sbHjX];
+
+Control.Monad.Fix.$fMonadFix:*:_$cmfix [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     forall a.
+     (a -> (GHC.Generics.:*:) f g a) -> (GHC.Generics.:*:) f g a
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,1*C1(U))><L,1*U(A,1*C1(U))><L,C(U(1*U,1*U))>m,
+ Unf=OtherCon []] =
+    [] \r [w_sbHjY w1_sbHjZ w2_sbHk0]
+        let {
+          sat_sbHkc [Occ=Once] :: g_sbGA1 a_sbGA4
+          [LclId] =
+              [w1_sbHjZ w2_sbHk0] \u []
+                  let {
+                    sat_sbHkb [Occ=Once] :: a_sbGA4 -> g_sbGA1 a_sbGA4
+                    [LclId] =
+                        [w2_sbHk0] \r [x_sbHk7]
+                            case w2_sbHk0 x_sbHk7 of {
+                              GHC.Generics.:*: _ [Occ=Dead] b_sbHka [Occ=Once] -> b_sbHka;
+                            };
+                  } in  Control.Monad.Fix.mfix w1_sbHjZ sat_sbHkb; } in
+        let {
+          sat_sbHk6 [Occ=Once] :: f_sbGA0 a_sbGA4
+          [LclId] =
+              [w_sbHjY w2_sbHk0] \u []
+                  let {
+                    sat_sbHk5 [Occ=Once] :: a_sbGA4 -> f_sbGA0 a_sbGA4
+                    [LclId] =
+                        [w2_sbHk0] \r [x_sbHk1]
+                            case w2_sbHk0 x_sbHk1 of {
+                              GHC.Generics.:*: a1_sbHk3 [Occ=Once] _ [Occ=Dead] -> a1_sbHk3;
+                            };
+                  } in  Control.Monad.Fix.mfix w_sbHjY sat_sbHk5;
+        } in  GHC.Generics.:*: [sat_sbHk6 sat_sbHkc];
+
+Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     GHC.Base.Monad (f GHC.Generics.:*: g)
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)><L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A)>m,
+ Unf=OtherCon []] =
+    [] \r [$dMonadFix_sbHkd $dMonadFix1_sbHke]
+        let {
+          sat_sbHkg [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad g_abGig
+          [LclId] =
+              [$dMonadFix1_sbHke] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix1_sbHke; } in
+        let {
+          sat_sbHkf [Occ=Once,
+                     Dmd=<L,U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A)>]
+            :: GHC.Base.Monad f_abGif
+          [LclId] =
+              [$dMonadFix_sbHkd] \u []
+                  Control.Monad.Fix.$p1MonadFix $dMonadFix_sbHkd;
+        } in  GHC.Generics.$fMonad:*: sat_sbHkf sat_sbHkg;
+
+Control.Monad.Fix.$fMonadFix:*: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (Control.Monad.Fix.MonadFix f, Control.Monad.Fix.MonadFix g) =>
+     Control.Monad.Fix.MonadFix (f GHC.Generics.:*: g)
+[GblId[DFunId],
+ Arity=2,
+ Str=<L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))><L,U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),C(U))>m] =
+    [] \r [$dMonadFix_sbHkh $dMonadFix1_sbHki]
+        let {
+          sat_sbHkk [Occ=Once]
+            :: forall a.
+               (a -> (GHC.Generics.:*:) f_abGif g_abGig a)
+               -> (GHC.Generics.:*:) f_abGif g_abGig a
+          [LclId] =
+              [$dMonadFix_sbHkh $dMonadFix1_sbHki] \r [eta_B1]
+                  Control.Monad.Fix.$fMonadFix:*:_$cmfix
+                      $dMonadFix_sbHkh $dMonadFix1_sbHki eta_B1; } in
+        let {
+          sat_sbHkj [Occ=Once]
+            :: GHC.Base.Monad (f_abGif GHC.Generics.:*: g_abGig)
+          [LclId] =
+              [$dMonadFix_sbHkh $dMonadFix1_sbHki] \u []
+                  Control.Monad.Fix.$fMonadFix:*:_$cp1MonadFix
+                      $dMonadFix_sbHkh $dMonadFix1_sbHki;
+        } in  Control.Monad.Fix.C:MonadFix [sat_sbHkj sat_sbHkk];
+
+Control.Monad.Fix.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Control.Monad.Fix.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule4];
+
+Control.Monad.Fix.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Control.Monad.Fix"#;
+
+Control.Monad.Fix.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$trModule2];
+
+Control.Monad.Fix.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Control.Monad.Fix.$trModule3
+                                     Control.Monad.Fix.$trModule1];
+
+$krep_rbGDc :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcConstraint
+                                              GHC.Types.[]];
+
+Control.Monad.Fix.$tcMonadFix1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [GHC.Types.krep$*Arr*
+                                         $krep_rbGDc];
+
+Control.Monad.Fix.$tcMonadFix3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "MonadFix"#;
+
+Control.Monad.Fix.$tcMonadFix2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Control.Monad.Fix.$tcMonadFix3];
+
+Control.Monad.Fix.$tcMonadFix :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [9994897379720692231##
+                                    15179622530544898162##
+                                    Control.Monad.Fix.$trModule
+                                    Control.Monad.Fix.$tcMonadFix2
+                                    0#
+                                    Control.Monad.Fix.$tcMonadFix1];
+
+Control.Monad.Fix.C:MonadFix
+  :: forall (m :: * -> *).
+     GHC.Base.Monad m =>
+     (forall a. (a -> m a) -> m a) -> Control.Monad.Fix.MonadFix m
+[GblId[DataCon],
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] Control.Monad.Fix.C:MonadFix [eta_B2 eta_B1];
+

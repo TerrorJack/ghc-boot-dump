@@ -1,0 +1,208 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:05:16.714262607 UTC
+
+Result size of Tidy Core
+  = {terms: 177, types: 309, coercions: 6, joins: 3/6}
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Environment.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Environment.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Environment.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Environment.$trModule3
+  = GHC.Types.TrNameS GHC.Environment.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Environment.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Environment.$trModule2 = "GHC.Environment"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Environment.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Environment.$trModule1
+  = GHC.Types.TrNameS GHC.Environment.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Environment.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Environment.$trModule
+  = GHC.Types.Module
+      GHC.Environment.$trModule3 GHC.Environment.$trModule1
+
+-- RHS size: {terms: 160, types: 290, coercions: 2, joins: 3/6}
+GHC.Environment.getFullArgs1
+  :: State# RealWorld -> (# State# RealWorld, [String] #)
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 363 0}]
+GHC.Environment.getFullArgs1
+  = \ (eta_iafjx :: State# RealWorld) ->
+      case newAlignedPinnedByteArray# @ RealWorld 4# 4# eta_iafjx of
+      { (# ipv_iafjI, ipv1_iafjJ #) ->
+      case unsafeFreezeByteArray# @ RealWorld ipv1_iafjJ ipv_iafjI of
+      { (# ipv2_iafjN, ipv3_iafjO #) ->
+      case newAlignedPinnedByteArray# @ RealWorld 8# 8# ipv2_iafjN of
+      { (# ipv4_Xafki, ipv5_Xafkk #) ->
+      case unsafeFreezeByteArray# @ RealWorld ipv5_Xafkk ipv4_Xafki of
+      { (# ipv6_Xafks, ipv7_Xafku #) ->
+      let {
+        p_argc_saflX [Dmd=<S,U>] :: Addr#
+        [LclId]
+        p_argc_saflX = byteArrayContents# ipv3_iafjO } in
+      let {
+        p_argv_saflW [Dmd=<S,U>] :: Addr#
+        [LclId]
+        p_argv_saflW = byteArrayContents# ipv7_Xafku } in
+      case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Addr# -> State# RealWorld -> (# State# RealWorld #)}_dafkp
+             p_argc_saflX p_argv_saflW ipv6_Xafks
+      of
+      { (# ds_dafkn #) ->
+      case readInt32OffAddr# @ RealWorld p_argc_saflX 0# ds_dafkn of
+      { (# ipv8_i9h52, ipv9_i9h53 #) ->
+      case readAddrOffAddr# @ RealWorld p_argv_saflW 0# ipv8_i9h52 of
+      { (# ipv10_i9h9c, ipv11_i9h9d #) ->
+      case GHC.IO.Encoding.getFileSystemEncoding1 of
+      { (getFileSystemEncoding81_iafkV, setFileSystemEncoding1_iafkW) ->
+      case (getFileSystemEncoding81_iafkV
+            `cast` (GHC.Types.N:IO[0] <TextEncoding>_R
+                    :: (IO TextEncoding :: *)
+                       ~R# (State# RealWorld
+                            -> (# State# RealWorld, TextEncoding #) :: *)))
+             ipv10_i9h9c
+      of
+      { (# ipv12_X7IBL, ipv13_X7IBN #) ->
+      join {
+        $j_safnM [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+          :: State# RealWorld
+             -> [CString] -> (# State# RealWorld, [String] #)
+        [LclId[JoinId(2)], Arity=2, Str=<S,U><S,1*U>, Unf=OtherCon []]
+        $j_safnM (ipv14_X7IBQ [OS=OneShot] :: State# RealWorld)
+                 (ipv15_X7IBS [OS=OneShot] :: [CString])
+          = letrec {
+              go_safo8 [Occ=LoopBreaker]
+                :: [GHC.Foreign.CString]
+                   -> State# RealWorld -> (# State# RealWorld, [String] #)
+              [LclId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []]
+              go_safo8
+                = \ (ds9_i7Jck :: [GHC.Foreign.CString])
+                    (eta1_B1 :: State# RealWorld) ->
+                    case ds9_i7Jck of {
+                      [] -> (# eta1_B1, GHC.Types.[] @ String #);
+                      : y_i7Jcp ys_i7Jcq ->
+                        case y_i7Jcp of { GHC.Ptr.Ptr ww1_iafln ->
+                        case GHC.Foreign.$wpeekCString ipv13_X7IBN ww1_iafln eta1_B1 of
+                        { (# ipv16_X7IC1, ipv17_X7IC3 #) ->
+                        case go_safo8 ys_i7Jcq ipv16_X7IC1 of
+                        { (# ipv18_X7IC7, ipv19_X7IC9 #) ->
+                        (# ipv18_X7IC7, GHC.Types.: @ String ipv17_X7IC3 ipv19_X7IC9 #)
+                        }
+                        }
+                        }
+                    }; } in
+            case go_safo8 ipv15_X7IBS ipv14_X7IBQ of
+            { (# ipv16_iafjS, ipv17_iafjT #) ->
+            case touch# @ 'UnliftedRep @ ByteArray# ipv7_Xafku ipv16_iafjS
+            of s4_iafjV
+            { __DEFAULT ->
+            case touch# @ 'UnliftedRep @ ByteArray# ipv3_iafjO s4_iafjV
+            of s1_Xaflm
+            { __DEFAULT ->
+            (# s1_Xaflm, ipv17_iafjT #)
+            }
+            }
+            } } in
+      case <=# ipv9_i9h53 0# of {
+        __DEFAULT ->
+          join {
+            exit_iafm6 [Dmd=<C(C(S)),C(C1(U(U,U)))>]
+              :: [CString]
+                 -> State# RealWorld -> (# State# RealWorld, [String] #)
+            [LclId[JoinId(2)], Arity=2, Str=<L,U><S,U>]
+            exit_iafm6 (w3_iafm7 [OS=OneShot] :: [CString])
+                       (w4_iafm8 [OS=OneShot] :: State# RealWorld)
+              = case readAddrOffAddr# @ RealWorld ipv11_i9h9d 0# w4_iafm8 of
+                { (# ipv14_i9ham, ipv15_i9han #) ->
+                jump $j_safnM
+                  ipv14_i9ham
+                  (GHC.Types.: @ CString (GHC.Ptr.Ptr @ CChar ipv15_i9han) w3_iafm7)
+                } } in
+          joinrec {
+            $wf_iafmf [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+              :: Int#
+                 -> [CString]
+                 -> State# RealWorld
+                 -> (# State# RealWorld, [String] #)
+            [LclId[JoinId(3)], Arity=3, Str=<S,1*U><L,U><S,U>, Unf=OtherCon []]
+            $wf_iafmf (ww1_iafmg :: Int#)
+                      (w3_iafmh :: [CString])
+                      (w4_iafmi :: State# RealWorld)
+              = case ww1_iafmg of ds9_iafmj {
+                  __DEFAULT ->
+                    case readAddrOffAddr# @ RealWorld ipv11_i9h9d ds9_iafmj w4_iafmi of
+                    { (# ipv14_i9ham, ipv15_i9han #) ->
+                    jump $wf_iafmf
+                      (-# ds9_iafmj 1#)
+                      (GHC.Types.: @ CString (GHC.Ptr.Ptr @ CChar ipv15_i9han) w3_iafmh)
+                      ipv14_i9ham
+                    };
+                  0# -> jump exit_iafm6 w3_iafmh w4_iafmi
+                }; } in
+          jump $wf_iafmf
+            (-# ipv9_i9h53 1#) (GHC.Types.[] @ CString) ipv12_X7IBL;
+        1# -> jump $j_safnM ipv12_X7IBL (GHC.Types.[] @ CString)
+      }
+      }
+      }
+      }
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 4, joins: 0/0}
+getFullArgs :: IO [String]
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Environment.getFullArgs1
+               `cast` (Sym (GHC.Types.N:IO[0] <[String]>_R)
+                       :: (State# RealWorld -> (# State# RealWorld, [String] #) :: *)
+                          ~R# (IO [String] :: *))}]
+getFullArgs
+  = GHC.Environment.getFullArgs1
+    `cast` (Sym (GHC.Types.N:IO[0] <[String]>_R)
+            :: (State# RealWorld -> (# State# RealWorld, [String] #) :: *)
+               ~R# (IO [String] :: *))
+
+

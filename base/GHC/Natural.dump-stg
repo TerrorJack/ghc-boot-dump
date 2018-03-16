@@ -1,0 +1,3996 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:59:03.944076207 UTC
+
+GHC.Natural.$fNumNatural_$cabs [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4bvN] ds_s4bvN;
+
+GHC.Natural.$fRealNatural_$ctoRational [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Real.Rational
+[GblId, Arity=1, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fFractionalRatio_$s$cfromInteger eta_B1;
+
+GHC.Natural.$fEnumNatural_$cfromEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$cfromEnum eta_B1;
+
+lvl_r4bvC :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.toEnum: negative"#;
+
+lvl1_r4bvD :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_r4bvC of sat_s4bvO {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4bvO;
+        };
+
+GHC.Natural.$fEnumNatural_$ctoEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_s4bvP]
+        case eta_s4bvP of {
+          GHC.Types.I# x_s4bvR ->
+              case <# [x_s4bvR 0#] of {
+                __DEFAULT -> GHC.Integer.Type.smallInteger x_s4bvR;
+                1# -> lvl1_r4bvD;
+              };
+        };
+
+GHC.Natural.$fBitsNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+lvl2_r4bvE :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.pred: 0"#;
+
+lvl3_r4bvF :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl2_r4bvE of sat_s4bvT {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4bvT;
+        };
+
+GHC.Natural.$fEnumNatural_$cpred [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_s4bvU]
+        case
+            GHC.Integer.Type.eqInteger# eta_s4bvU GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Enum.$fEnumInteger_$cpred eta_s4bvU;
+          1# -> lvl3_r4bvF;
+        };
+
+GHC.Natural.$fEnumNatural_$csucc [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$csucc eta_B1;
+
+$ctoInteger_r4bvG :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_s4bvW] ds_s4bvW;
+
+GHC.Natural.$fIntegralNatural_$ctoInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Integer.Type.Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] $ctoInteger_r4bvG eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdivMod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4bvX ds1_s4bvY]
+        let {
+          ds2_s4bvZ [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4bvX ds1_s4bvY] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4bvY GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.divModInteger ds_s4bvX ds1_s4bvY of {
+                          (#,#) ipv_s4bw2 [Occ=Once] ipv1_s4bw3 [Occ=Once] ->
+                              (,) [ipv_s4bw2 ipv1_s4bw3];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4bwb [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bvZ] \u []
+                  case ds2_s4bvZ of {
+                    (,) _ [Occ=Dead] r_s4bwa [Occ=Once] -> r_s4bwa;
+                  }; } in
+        let {
+          sat_s4bw7 [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bvZ] \u []
+                  case ds2_s4bvZ of {
+                    (,) q_s4bw5 [Occ=Once] _ [Occ=Dead] -> q_s4bw5;
+                  };
+        } in  (,) [sat_s4bw7 sat_s4bwb];
+
+GHC.Natural.$fIntegralNatural_$cquotRem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4bwc ds1_s4bwd]
+        let {
+          ds2_s4bwe [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4bwc ds1_s4bwd] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4bwd GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.quotRemInteger ds_s4bwc ds1_s4bwd of {
+                          (#,#) ipv_s4bwh [Occ=Once] ipv1_s4bwi [Occ=Once] ->
+                              (,) [ipv_s4bwh ipv1_s4bwi];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4bwq [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bwe] \u []
+                  case ds2_s4bwe of {
+                    (,) _ [Occ=Dead] r_s4bwp [Occ=Once] -> r_s4bwp;
+                  }; } in
+        let {
+          sat_s4bwm [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bwe] \u []
+                  case ds2_s4bwe of {
+                    (,) q_s4bwk [Occ=Once] _ [Occ=Dead] -> q_s4bwk;
+                  };
+        } in  (,) [sat_s4bwm sat_s4bwq];
+
+GHC.Natural.$fEqNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Integer.Type.eqInteger
+                                     GHC.Integer.Type.neqInteger];
+
+GHC.Natural.$fOrdNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.Natural.$fEqNatural
+                                      GHC.Integer.Type.compareInteger
+                                      GHC.Integer.Type.ltInteger
+                                      GHC.Integer.Type.leInteger
+                                      GHC.Integer.Type.gtInteger
+                                      GHC.Integer.Type.geInteger
+                                      GHC.Integer.Type.$fOrdInteger_$cmax
+                                      GHC.Integer.Type.$fOrdInteger_$cmin];
+
+GHC.Natural.underflowError [InlPrag=NOINLINE] :: forall a. a
+[GblId, Str=x] =
+    [] \u [] raise# [GHC.Exception.underflowException];
+
+GHC.Natural.$fNumNatural_$cnegate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4bwr]
+        case
+            GHC.Integer.Type.minusInteger GHC.Natural.$fBitsNatural1 eta_s4bwr
+        of
+        result_s4bws [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4bws GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4bws;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.naturalFromInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Integer.Type.Integer -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [n_s4bwu]
+        case
+            GHC.Integer.Type.geInteger# n_s4bwu GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Natural.underflowError;
+          1# -> n_s4bwu;
+        };
+
+GHC.Natural.$fNumNatural_$c- [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4bww eta1_s4bwx]
+        case
+            GHC.Integer.Type.minusInteger eta_s4bww eta1_s4bwx
+        of
+        result_s4bwy [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4bwy GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4bwy;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.$fNumNatural_$c+ [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.plusInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$c* [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.timesInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$csignum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Integer.Type.signumInteger eta_B1;
+
+GHC.Natural.$fNumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Num.Num GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Num.C:Num! [GHC.Natural.$fNumNatural_$c+
+                                  GHC.Natural.$fNumNatural_$c-
+                                  GHC.Natural.$fNumNatural_$c*
+                                  GHC.Natural.$fNumNatural_$cnegate
+                                  GHC.Natural.$fNumNatural_$cabs
+                                  GHC.Natural.$fNumNatural_$csignum
+                                  GHC.Natural.naturalFromInteger];
+
+GHC.Natural.$fRealNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Real GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Real! [GHC.Natural.$fNumNatural
+                                    GHC.Natural.$fOrdNatural
+                                    GHC.Natural.$fRealNatural_$ctoRational];
+
+GHC.Natural.$fIntegralNatural_$cquot [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cquot eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$crem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$crem eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdiv [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cdiv eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cmod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cmod eta_B2 eta_B1;
+
+GHC.Natural.$fEnumNatural_$cenumFromThen
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> [GHC.Natural.Natural]
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4bwA y_s4bwB]
+        case GHC.Integer.Type.leInteger# x_s4bwA y_s4bwB of {
+          __DEFAULT ->
+              case GHC.Integer.Type.minusInteger y_s4bwB x_s4bwA of sat_s4bwD {
+                __DEFAULT ->
+                    GHC.Enum.enumDeltaToInteger
+                        x_s4bwA sat_s4bwD GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Enum.$fEnumInteger_$cenumFromThen x_s4bwA y_s4bwB;
+        };
+
+GHC.Natural.$fEnumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Enum.Enum GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Enum.C:Enum! [GHC.Natural.$fEnumNatural_$csucc
+                                    GHC.Natural.$fEnumNatural_$cpred
+                                    GHC.Natural.$fEnumNatural_$ctoEnum
+                                    GHC.Natural.$fEnumNatural_$cfromEnum
+                                    GHC.Enum.$fEnumInteger_$cenumFrom
+                                    GHC.Natural.$fEnumNatural_$cenumFromThen
+                                    GHC.Enum.$fEnumInteger_$cenumFromTo
+                                    GHC.Enum.$fEnumInteger_$cenumFromThenTo];
+
+GHC.Natural.$fIntegralNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Integral GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Integral! [GHC.Natural.$fRealNatural
+                                        GHC.Natural.$fEnumNatural
+                                        GHC.Natural.$fIntegralNatural_$cquot
+                                        GHC.Natural.$fIntegralNatural_$crem
+                                        GHC.Natural.$fIntegralNatural_$cdiv
+                                        GHC.Natural.$fIntegralNatural_$cmod
+                                        GHC.Natural.$fIntegralNatural_$cquotRem
+                                        GHC.Natural.$fIntegralNatural_$cdivMod
+                                        GHC.Natural.$fIntegralNatural_$ctoInteger];
+
+sat_s4bwE :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2#];
+
+sat_s4bwF :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwE GHC.Types.[]];
+
+GHC.Natural.$seven_n :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4bwF;
+
+GHC.Natural.$fShowNatural_$cshow
+  :: GHC.Natural.Natural -> GHC.Base.String
+[GblId, Arity=1, Str=<S,U>m2, Unf=OtherCon []] =
+    [] \r [x_s4bwG]
+        case GHC.Show.$w$cshowsPrec4 0# x_s4bwG GHC.Types.[] of {
+          (#,#) ww3_s4bwI [Occ=Once] ww4_s4bwJ [Occ=Once] ->
+              : [ww3_s4bwI ww4_s4bwJ];
+        };
+
+GHC.Natural.$fShowNatural1
+  :: GHC.Integer.Type.Integer -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,U><L,U>m2, Unf=OtherCon []] =
+    [] \r [w1_s4bwK w2_s4bwL]
+        case GHC.Show.$w$cshowsPrec4 0# w1_s4bwK w2_s4bwL of {
+          (#,#) ww3_s4bwN [Occ=Once] ww4_s4bwO [Occ=Once] ->
+              : [ww3_s4bwN ww4_s4bwO];
+        };
+
+GHC.Natural.$fShowNatural_$cshowList
+  :: [GHC.Natural.Natural] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s4bwP s_s4bwQ]
+        GHC.Show.showList__ GHC.Natural.$fShowNatural1 ls_s4bwP s_s4bwQ;
+
+GHC.Natural.$fShowNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.Show.$fShowInteger_$cshowsPrec
+                                    GHC.Natural.$fShowNatural_$cshow
+                                    GHC.Natural.$fShowNatural_$cshowList];
+
+GHC.Natural.$fBitsNatural_$cpopCount [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Str=<L,U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] Data.Bits.$fBitsInteger_$cpopCount eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$crotateR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cisSigned [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4bwR] GHC.Types.False [];
+
+lvl4_r4bvH :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural: bitSize"#;
+
+GHC.Natural.$fBitsNatural_$cbitSize [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl4_r4bvH of sat_s4bwS {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4bwS;
+        };
+
+GHC.Natural.$fBitsNatural_$cbitSizeMaybe [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4bwT] GHC.Base.Nothing [];
+
+GHC.Natural.$fBitsNatural_$ctestBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ctestBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$ccomplementBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ccomplementBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cclearBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cclearBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$csetBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$csetBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshift [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+lvl5_r4bvI :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Bits.complement: Natural complement undefined"#;
+
+lvl6_r4bvJ :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r4bvI;
+
+GHC.Natural.$fBitsNatural_$ccomplement [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<B,A>x, Unf=OtherCon []] =
+    [] \r [ds_s4bwU] GHC.Err.errorWithoutStackTrace lvl6_r4bvJ;
+
+GHC.Natural.$fBitsNatural_$cxor [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.xorInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.|. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.orInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.&. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.andInteger eta_B2 eta_B1;
+
+GHC.Natural.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Natural.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule4];
+
+GHC.Natural.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Natural"#;
+
+GHC.Natural.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule2];
+
+GHC.Natural.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Natural.$trModule3
+                                     GHC.Natural.$trModule1];
+
+$krep_r4bvK :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Integer.Type.$tcInteger
+                                              GHC.Types.[]];
+
+GHC.Natural.$tcNatural2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural"#;
+
+GHC.Natural.$tcNatural1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tcNatural2];
+
+GHC.Natural.$tcNatural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18275189520134122949##
+                                    2097940004095541788##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tcNatural1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_r4bvL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+GHC.Natural.$tc'Natural1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r4bvK $krep1_r4bvL];
+
+GHC.Natural.$tc'Natural3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Natural"#;
+
+GHC.Natural.$tc'Natural2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tc'Natural3];
+
+GHC.Natural.$tc'Natural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11998593531750078056##
+                                    1104420550366228074##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tc'Natural2
+                                    0#
+                                    GHC.Natural.$tc'Natural1];
+
+GHC.Natural.wordToNatural :: GHC.Types.Word -> GHC.Natural.Natural
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fIntegralWord_$ctoInteger eta_B1;
+
+sat_s4bwX :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [3#];
+
+sat_s4bwY :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwX GHC.Types.[]];
+
+sat_s4bwW :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4bwZ :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwW sat_s4bwY];
+
+sat_s4bwV :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4bx0 :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwV sat_s4bwZ];
+
+GHC.Natural.naturalToWordMaybe1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4bx0;
+
+GHC.Natural.naturalToWordMaybe
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Word
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4bx1]
+        case
+            GHC.Integer.Type.leInteger#
+                ds_s4bx1 GHC.Natural.naturalToWordMaybe1
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4bx4 [Occ=Once] :: GHC.Types.Word
+                [LclId] =
+                    [ds_s4bx1] \u []
+                        case GHC.Integer.Type.integerToWord ds_s4bx1 of wild1_s4bx3 {
+                          __DEFAULT -> GHC.Types.W# [wild1_s4bx3];
+                        };
+              } in  GHC.Base.Just [sat_s4bx4];
+        };
+
+GHC.Natural.$fReadNatural_go [Occ=LoopBreaker]
+  :: [(GHC.Integer.Type.Integer, GHC.Base.String)]
+     -> [(GHC.Natural.Natural, GHC.Base.String)]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4bx5]
+        case ds_s4bx5 of {
+          [] -> [] [];
+          : y_s4bx7 [Occ=Once!] ys_s4bx8 [Occ=Once*] ->
+              case y_s4bx7 of {
+                (,) x_s4bxa ds1_s4bxb [Occ=Once] ->
+                    case
+                        GHC.Integer.Type.geInteger# x_s4bxa GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT -> GHC.Natural.$fReadNatural_go ys_s4bx8;
+                      1# ->
+                          let {
+                            sat_s4bxe [Occ=Once] :: [(GHC.Natural.Natural, GHC.Base.String)]
+                            [LclId] =
+                                [ys_s4bx8] \u [] GHC.Natural.$fReadNatural_go ys_s4bx8;
+                          } in  : [wild1_s4bx9 sat_s4bxe];
+                    };
+              };
+        };
+
+GHC.Natural.$fReadNatural_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [d_s4bxf]
+        let {
+          g_s4bxg [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [d_s4bxf] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      d_s4bxf
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          sat_s4bxj [Occ=OnceT[0]]
+            :: GHC.Base.String -> [(GHC.Natural.Natural, GHC.Base.String)]
+          [LclId] =
+              [g_s4bxg] \r [x_s4bxh]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4bxg x_s4bxh
+                  of
+                  sat_s4bxi
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4bxi;
+                  };
+        } in  sat_s4bxj;
+
+GHC.Natural.$fReadNatural4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s4bxk]
+        let {
+          g_s4bxl [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [n_s4bxk] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      n_s4bxk
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          w_s4bxm [Occ=OnceL, Dmd=<L,C(U)>]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+          [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+              [g_s4bxl] \r [x_s4bxn]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4bxl x_s4bxn
+                  of
+                  sat_s4bxo
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4bxo;
+                  }; } in
+        let {
+          sat_s4bxs [Occ=OnceT[0]]
+            :: forall b.
+               (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+               -> Text.ParserCombinators.ReadP.P b
+          [LclId] =
+              [w_s4bxm] \r [w1_s4bxp]
+                  case
+                      Text.ParserCombinators.ReadP.$wreadS_to_P w_s4bxm w1_s4bxp
+                  of
+                  { Unit# ww1_s4bxr [Occ=Once] ->
+                        Text.ParserCombinators.ReadP.Look [ww1_s4bxr];
+                  };
+        } in  sat_s4bxs;
+
+GHC.Natural.$fReadNatural3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Natural.$fReadNatural2
+  :: Text.ParserCombinators.ReadP.P [GHC.Natural.Natural]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.Natural.$fReadNatural4
+            GHC.Natural.$fReadNatural3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.Natural.$fReadNatural_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.Natural.Natural]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run GHC.Natural.$fReadNatural2 eta_B1;
+
+GHC.Natural.$fReadNatural1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.Natural.Natural] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s4bxt w1_s4bxu]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.Natural.$fReadNatural_$creadList w1_s4bxu
+        of
+        { Unit# ww1_s4bxw [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s4bxw];
+        };
+
+GHC.Natural.$fReadNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.Natural.$fReadNatural_$creadsPrec
+                                    GHC.Natural.$fReadNatural_$creadList
+                                    GHC.Natural.$fReadNatural4
+                                    GHC.Natural.$fReadNatural1];
+
+GHC.Natural.isValidNatural :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4bxx]
+        case
+            GHC.Integer.Type.geInteger# ds_s4bxx GHC.Natural.$fBitsNatural1
+        of
+        wild_s4bxy
+        { __DEFAULT -> tagToEnum# [wild_s4bxy];
+        };
+
+GHC.Natural.minusNaturalMaybe
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Base.Maybe GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4bxz y_s4bxA]
+        case GHC.Integer.Type.geInteger# x_s4bxz y_s4bxA of {
+          __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4bxC [Occ=Once] :: GHC.Natural.Natural
+                [LclId] =
+                    [x_s4bxz y_s4bxA] \u []
+                        GHC.Natural.$fNumNatural_$c- x_s4bxz y_s4bxA;
+              } in  GHC.Base.Just [sat_s4bxC];
+        };
+
+GHC.Natural.$fIxNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Arr.Ix GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Arr.C:Ix! [GHC.Natural.$fOrdNatural
+                                 GHC.Arr.$fIxInteger_$crange
+                                 GHC.Arr.$fIxInteger_$cindex
+                                 GHC.Arr.$fIxInteger_$cunsafeIndex
+                                 GHC.Arr.$fIxInteger_$cinRange
+                                 GHC.Arr.$fIxInteger_$crangeSize
+                                 GHC.Arr.$fIxInteger_$cunsafeRangeSize];
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftL [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftR [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: Data.Bits.Bits GHC.Natural.Natural
+[GblId[DFunId]] =
+    CCS_DONT_CARE Data.Bits.C:Bits! [GHC.Natural.$fEqNatural
+                                     GHC.Natural.$fBitsNatural_$c.&.
+                                     GHC.Natural.$fBitsNatural_$c.|.
+                                     GHC.Natural.$fBitsNatural_$cxor
+                                     GHC.Natural.$fBitsNatural_$ccomplement
+                                     GHC.Natural.$fBitsNatural_$cshift
+                                     GHC.Natural.$fBitsNatural_$crotate
+                                     GHC.Natural.$fBitsNatural1
+                                     Data.Bits.$fBitsInteger_$cbit
+                                     GHC.Natural.$fBitsNatural_$csetBit
+                                     GHC.Natural.$fBitsNatural_$cclearBit
+                                     GHC.Natural.$fBitsNatural_$ccomplementBit
+                                     GHC.Natural.$fBitsNatural_$ctestBit
+                                     GHC.Natural.$fBitsNatural_$cbitSizeMaybe
+                                     GHC.Natural.$fBitsNatural_$cbitSize
+                                     GHC.Natural.$fBitsNatural_$cisSigned
+                                     GHC.Natural.$fBitsNatural_$cshiftL
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftL
+                                     GHC.Natural.$fBitsNatural_$cshiftR
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftR
+                                     GHC.Natural.$fBitsNatural_$crotateL
+                                     GHC.Natural.$fBitsNatural_$crotateR
+                                     GHC.Natural.$fBitsNatural_$cpopCount];
+
+sat_s4bxD :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s4bxE :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bxD GHC.Types.[]];
+
+GHC.Natural.powModNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4bxE;
+
+GHC.Natural.powModNatural
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4bxF ds1_s4bxG ds2_s4bxH]
+        case
+            GHC.Integer.Type.eqInteger# ds2_s4bxH GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.eqInteger# ds2_s4bxH GHC.Natural.powModNatural1
+              of
+              { __DEFAULT ->
+                    case
+                        GHC.Integer.Type.eqInteger# ds1_s4bxG GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT ->
+                          case
+                              GHC.Integer.Type.eqInteger# ds_s4bxF GHC.Natural.$fBitsNatural1
+                          of
+                          { __DEFAULT ->
+                                case
+                                    GHC.Integer.Type.eqInteger# ds_s4bxF GHC.Natural.powModNatural1
+                                of
+                                { __DEFAULT ->
+                                      let-no-escape {
+                                        go_s4bxN [Occ=LoopBreakerT[3]]
+                                          :: GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                        [LclId[JoinId(3)],
+                                         Arity=3,
+                                         Str=<S,1*U><S,U><S,1*U>,
+                                         Unf=OtherCon []] =
+                                            sat-only [ds2_s4bxH go_s4bxN] \r [b_s4bxO
+                                                                              e_s4bxP
+                                                                              r_s4bxQ]
+                                                case b_s4bxO of nt_s4bxR {
+                                                  __DEFAULT ->
+                                                      case
+                                                          GHC.Integer.Type.remInteger
+                                                              e_s4bxP GHC.Natural.$seven_n
+                                                      of
+                                                      sat_s4bxS
+                                                      { __DEFAULT ->
+                                                            case
+                                                                GHC.Integer.Type.eqInteger#
+                                                                    sat_s4bxS
+                                                                    GHC.Natural.$fBitsNatural1
+                                                            of
+                                                            { __DEFAULT ->
+                                                                  case
+                                                                      GHC.Integer.Type.timesInteger
+                                                                          r_s4bxQ nt_s4bxR
+                                                                  of
+                                                                  sat_s4bxX
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.modInteger
+                                                                                sat_s4bxX ds2_s4bxH
+                                                                        of
+                                                                        sat_s4bxY
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.shiftRInteger
+                                                                                      e_s4bxP 1#
+                                                                              of
+                                                                              sat_s4bxW
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.timesInteger
+                                                                                            nt_s4bxR
+                                                                                            nt_s4bxR
+                                                                                    of
+                                                                                    sat_s4bxU
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              GHC.Integer.Type.modInteger
+                                                                                                  sat_s4bxU
+                                                                                                  ds2_s4bxH
+                                                                                          of
+                                                                                          sat_s4bxV
+                                                                                          { __DEFAULT ->
+                                                                                                go_s4bxN
+                                                                                                    sat_s4bxV
+                                                                                                    sat_s4bxW
+                                                                                                    sat_s4bxY;
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                  };
+                                                              1# ->
+                                                                  case
+                                                                      GHC.Integer.Type.eqInteger#
+                                                                          e_s4bxP
+                                                                          GHC.Natural.$fBitsNatural1
+                                                                  of
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.shiftRInteger
+                                                                                e_s4bxP 1#
+                                                                        of
+                                                                        sat_s4by2
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.timesInteger
+                                                                                      nt_s4bxR
+                                                                                      nt_s4bxR
+                                                                              of
+                                                                              sat_s4by0
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.modInteger
+                                                                                            sat_s4by0
+                                                                                            ds2_s4bxH
+                                                                                    of
+                                                                                    sat_s4by1
+                                                                                    { __DEFAULT ->
+                                                                                          go_s4bxN
+                                                                                              sat_s4by1
+                                                                                              sat_s4by2
+                                                                                              r_s4bxQ;
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                    1# -> r_s4bxQ;
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                      } in  go_s4bxN ds_s4bxF ds1_s4bxG GHC.Natural.powModNatural1;
+                                  1# -> GHC.Natural.powModNatural1;
+                                };
+                            1# -> GHC.Natural.$fBitsNatural1;
+                          };
+                      1# -> GHC.Natural.powModNatural1;
+                    };
+                1# -> GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Real.divZeroError;
+        };
+
+
+==================== STG syntax: ====================
+2018-03-16 15:59:03.95762034 UTC
+
+GHC.Natural.$fNumNatural_$cabs [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4bvN] ds_s4bvN;
+
+GHC.Natural.$fRealNatural_$ctoRational [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Real.Rational
+[GblId, Arity=1, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fFractionalRatio_$s$cfromInteger eta_B1;
+
+GHC.Natural.$fEnumNatural_$cfromEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$cfromEnum eta_B1;
+
+lvl_r4bvC :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.toEnum: negative"#;
+
+lvl1_r4bvD :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_r4bvC of sat_s4bvO {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4bvO;
+        };
+
+GHC.Natural.$fEnumNatural_$ctoEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_s4bvP]
+        case eta_s4bvP of {
+          GHC.Types.I# x_s4bvR ->
+              case <# [x_s4bvR 0#] of {
+                __DEFAULT -> GHC.Integer.Type.smallInteger x_s4bvR;
+                1# -> lvl1_r4bvD;
+              };
+        };
+
+GHC.Natural.$fBitsNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+lvl2_r4bvE :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.pred: 0"#;
+
+lvl3_r4bvF :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl2_r4bvE of sat_s4bvT {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4bvT;
+        };
+
+GHC.Natural.$fEnumNatural_$cpred [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_s4bvU]
+        case
+            GHC.Integer.Type.eqInteger# eta_s4bvU GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Enum.$fEnumInteger_$cpred eta_s4bvU;
+          1# -> lvl3_r4bvF;
+        };
+
+GHC.Natural.$fEnumNatural_$csucc [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$csucc eta_B1;
+
+$ctoInteger_r4bvG :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_s4bvW] ds_s4bvW;
+
+GHC.Natural.$fIntegralNatural_$ctoInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Integer.Type.Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] $ctoInteger_r4bvG eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdivMod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4bvX ds1_s4bvY]
+        let {
+          ds2_s4bvZ [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4bvX ds1_s4bvY] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4bvY GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.divModInteger ds_s4bvX ds1_s4bvY of {
+                          (#,#) ipv_s4bw2 [Occ=Once] ipv1_s4bw3 [Occ=Once] ->
+                              (,) [ipv_s4bw2 ipv1_s4bw3];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4bwb [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bvZ] \u []
+                  case ds2_s4bvZ of {
+                    (,) _ [Occ=Dead] r_s4bwa [Occ=Once] -> r_s4bwa;
+                  }; } in
+        let {
+          sat_s4bw7 [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bvZ] \u []
+                  case ds2_s4bvZ of {
+                    (,) q_s4bw5 [Occ=Once] _ [Occ=Dead] -> q_s4bw5;
+                  };
+        } in  (,) [sat_s4bw7 sat_s4bwb];
+
+GHC.Natural.$fIntegralNatural_$cquotRem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4bwc ds1_s4bwd]
+        let {
+          ds2_s4bwe [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4bwc ds1_s4bwd] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4bwd GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.quotRemInteger ds_s4bwc ds1_s4bwd of {
+                          (#,#) ipv_s4bwh [Occ=Once] ipv1_s4bwi [Occ=Once] ->
+                              (,) [ipv_s4bwh ipv1_s4bwi];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4bwq [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bwe] \u []
+                  case ds2_s4bwe of {
+                    (,) _ [Occ=Dead] r_s4bwp [Occ=Once] -> r_s4bwp;
+                  }; } in
+        let {
+          sat_s4bwm [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4bwe] \u []
+                  case ds2_s4bwe of {
+                    (,) q_s4bwk [Occ=Once] _ [Occ=Dead] -> q_s4bwk;
+                  };
+        } in  (,) [sat_s4bwm sat_s4bwq];
+
+GHC.Natural.$fEqNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Integer.Type.eqInteger
+                                     GHC.Integer.Type.neqInteger];
+
+GHC.Natural.$fOrdNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.Natural.$fEqNatural
+                                      GHC.Integer.Type.compareInteger
+                                      GHC.Integer.Type.ltInteger
+                                      GHC.Integer.Type.leInteger
+                                      GHC.Integer.Type.gtInteger
+                                      GHC.Integer.Type.geInteger
+                                      GHC.Integer.Type.$fOrdInteger_$cmax
+                                      GHC.Integer.Type.$fOrdInteger_$cmin];
+
+GHC.Natural.underflowError [InlPrag=NOINLINE] :: forall a. a
+[GblId, Str=x] =
+    [] \u [] raise# [GHC.Exception.underflowException];
+
+GHC.Natural.$fNumNatural_$cnegate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4bwr]
+        case
+            GHC.Integer.Type.minusInteger GHC.Natural.$fBitsNatural1 eta_s4bwr
+        of
+        result_s4bws [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4bws GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4bws;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.naturalFromInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Integer.Type.Integer -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [n_s4bwu]
+        case
+            GHC.Integer.Type.geInteger# n_s4bwu GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Natural.underflowError;
+          1# -> n_s4bwu;
+        };
+
+GHC.Natural.$fNumNatural_$c- [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4bww eta1_s4bwx]
+        case
+            GHC.Integer.Type.minusInteger eta_s4bww eta1_s4bwx
+        of
+        result_s4bwy [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4bwy GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4bwy;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.$fNumNatural_$c+ [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.plusInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$c* [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.timesInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$csignum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Integer.Type.signumInteger eta_B1;
+
+GHC.Natural.$fNumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Num.Num GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Num.C:Num! [GHC.Natural.$fNumNatural_$c+
+                                  GHC.Natural.$fNumNatural_$c-
+                                  GHC.Natural.$fNumNatural_$c*
+                                  GHC.Natural.$fNumNatural_$cnegate
+                                  GHC.Natural.$fNumNatural_$cabs
+                                  GHC.Natural.$fNumNatural_$csignum
+                                  GHC.Natural.naturalFromInteger];
+
+GHC.Natural.$fRealNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Real GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Real! [GHC.Natural.$fNumNatural
+                                    GHC.Natural.$fOrdNatural
+                                    GHC.Natural.$fRealNatural_$ctoRational];
+
+GHC.Natural.$fIntegralNatural_$cquot [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cquot eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$crem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$crem eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdiv [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cdiv eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cmod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cmod eta_B2 eta_B1;
+
+GHC.Natural.$fEnumNatural_$cenumFromThen
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> [GHC.Natural.Natural]
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4bwA y_s4bwB]
+        case GHC.Integer.Type.leInteger# x_s4bwA y_s4bwB of {
+          __DEFAULT ->
+              case GHC.Integer.Type.minusInteger y_s4bwB x_s4bwA of sat_s4bwD {
+                __DEFAULT ->
+                    GHC.Enum.enumDeltaToInteger
+                        x_s4bwA sat_s4bwD GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Enum.$fEnumInteger_$cenumFromThen x_s4bwA y_s4bwB;
+        };
+
+GHC.Natural.$fEnumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Enum.Enum GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Enum.C:Enum! [GHC.Natural.$fEnumNatural_$csucc
+                                    GHC.Natural.$fEnumNatural_$cpred
+                                    GHC.Natural.$fEnumNatural_$ctoEnum
+                                    GHC.Natural.$fEnumNatural_$cfromEnum
+                                    GHC.Enum.$fEnumInteger_$cenumFrom
+                                    GHC.Natural.$fEnumNatural_$cenumFromThen
+                                    GHC.Enum.$fEnumInteger_$cenumFromTo
+                                    GHC.Enum.$fEnumInteger_$cenumFromThenTo];
+
+GHC.Natural.$fIntegralNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Integral GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Integral! [GHC.Natural.$fRealNatural
+                                        GHC.Natural.$fEnumNatural
+                                        GHC.Natural.$fIntegralNatural_$cquot
+                                        GHC.Natural.$fIntegralNatural_$crem
+                                        GHC.Natural.$fIntegralNatural_$cdiv
+                                        GHC.Natural.$fIntegralNatural_$cmod
+                                        GHC.Natural.$fIntegralNatural_$cquotRem
+                                        GHC.Natural.$fIntegralNatural_$cdivMod
+                                        GHC.Natural.$fIntegralNatural_$ctoInteger];
+
+sat_s4bwE :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2#];
+
+sat_s4bwF :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwE GHC.Types.[]];
+
+GHC.Natural.$seven_n :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4bwF;
+
+GHC.Natural.$fShowNatural_$cshow
+  :: GHC.Natural.Natural -> GHC.Base.String
+[GblId, Arity=1, Str=<S,U>m2, Unf=OtherCon []] =
+    [] \r [x_s4bwG]
+        case GHC.Show.$w$cshowsPrec4 0# x_s4bwG GHC.Types.[] of {
+          (#,#) ww3_s4bwI [Occ=Once] ww4_s4bwJ [Occ=Once] ->
+              : [ww3_s4bwI ww4_s4bwJ];
+        };
+
+GHC.Natural.$fShowNatural1
+  :: GHC.Integer.Type.Integer -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,U><L,U>m2, Unf=OtherCon []] =
+    [] \r [w1_s4bwK w2_s4bwL]
+        case GHC.Show.$w$cshowsPrec4 0# w1_s4bwK w2_s4bwL of {
+          (#,#) ww3_s4bwN [Occ=Once] ww4_s4bwO [Occ=Once] ->
+              : [ww3_s4bwN ww4_s4bwO];
+        };
+
+GHC.Natural.$fShowNatural_$cshowList
+  :: [GHC.Natural.Natural] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s4bwP s_s4bwQ]
+        GHC.Show.showList__ GHC.Natural.$fShowNatural1 ls_s4bwP s_s4bwQ;
+
+GHC.Natural.$fShowNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.Show.$fShowInteger_$cshowsPrec
+                                    GHC.Natural.$fShowNatural_$cshow
+                                    GHC.Natural.$fShowNatural_$cshowList];
+
+GHC.Natural.$fBitsNatural_$cpopCount [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Str=<L,U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] Data.Bits.$fBitsInteger_$cpopCount eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$crotateR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cisSigned [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4bwR] GHC.Types.False [];
+
+lvl4_r4bvH :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural: bitSize"#;
+
+GHC.Natural.$fBitsNatural_$cbitSize [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl4_r4bvH of sat_s4bwS {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4bwS;
+        };
+
+GHC.Natural.$fBitsNatural_$cbitSizeMaybe [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4bwT] GHC.Base.Nothing [];
+
+GHC.Natural.$fBitsNatural_$ctestBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ctestBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$ccomplementBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ccomplementBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cclearBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cclearBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$csetBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$csetBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshift [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+lvl5_r4bvI :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Bits.complement: Natural complement undefined"#;
+
+lvl6_r4bvJ :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r4bvI;
+
+GHC.Natural.$fBitsNatural_$ccomplement [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<B,A>x, Unf=OtherCon []] =
+    [] \r [ds_s4bwU] GHC.Err.errorWithoutStackTrace lvl6_r4bvJ;
+
+GHC.Natural.$fBitsNatural_$cxor [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.xorInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.|. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.orInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.&. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.andInteger eta_B2 eta_B1;
+
+GHC.Natural.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Natural.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule4];
+
+GHC.Natural.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Natural"#;
+
+GHC.Natural.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule2];
+
+GHC.Natural.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Natural.$trModule3
+                                     GHC.Natural.$trModule1];
+
+$krep_r4bvK :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Integer.Type.$tcInteger
+                                              GHC.Types.[]];
+
+GHC.Natural.$tcNatural2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural"#;
+
+GHC.Natural.$tcNatural1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tcNatural2];
+
+GHC.Natural.$tcNatural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18275189520134122949##
+                                    2097940004095541788##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tcNatural1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_r4bvL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+GHC.Natural.$tc'Natural1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r4bvK $krep1_r4bvL];
+
+GHC.Natural.$tc'Natural3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Natural"#;
+
+GHC.Natural.$tc'Natural2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tc'Natural3];
+
+GHC.Natural.$tc'Natural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11998593531750078056##
+                                    1104420550366228074##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tc'Natural2
+                                    0#
+                                    GHC.Natural.$tc'Natural1];
+
+GHC.Natural.wordToNatural :: GHC.Types.Word -> GHC.Natural.Natural
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fIntegralWord_$ctoInteger eta_B1;
+
+sat_s4bwX :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [3#];
+
+sat_s4bwY :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwX GHC.Types.[]];
+
+sat_s4bwW :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4bwZ :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwW sat_s4bwY];
+
+sat_s4bwV :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4bx0 :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bwV sat_s4bwZ];
+
+GHC.Natural.naturalToWordMaybe1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4bx0;
+
+GHC.Natural.naturalToWordMaybe
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Word
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4bx1]
+        case
+            GHC.Integer.Type.leInteger#
+                ds_s4bx1 GHC.Natural.naturalToWordMaybe1
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4bx4 [Occ=Once] :: GHC.Types.Word
+                [LclId] =
+                    [ds_s4bx1] \u []
+                        case GHC.Integer.Type.integerToWord ds_s4bx1 of wild1_s4bx3 {
+                          __DEFAULT -> GHC.Types.W# [wild1_s4bx3];
+                        };
+              } in  GHC.Base.Just [sat_s4bx4];
+        };
+
+GHC.Natural.$fReadNatural_go [Occ=LoopBreaker]
+  :: [(GHC.Integer.Type.Integer, GHC.Base.String)]
+     -> [(GHC.Natural.Natural, GHC.Base.String)]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4bx5]
+        case ds_s4bx5 of {
+          [] -> [] [];
+          : y_s4bx7 [Occ=Once!] ys_s4bx8 [Occ=Once*] ->
+              case y_s4bx7 of {
+                (,) x_s4bxa ds1_s4bxb [Occ=Once] ->
+                    case
+                        GHC.Integer.Type.geInteger# x_s4bxa GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT -> GHC.Natural.$fReadNatural_go ys_s4bx8;
+                      1# ->
+                          let {
+                            sat_s4bxe [Occ=Once] :: [(GHC.Natural.Natural, GHC.Base.String)]
+                            [LclId] =
+                                [ys_s4bx8] \u [] GHC.Natural.$fReadNatural_go ys_s4bx8;
+                          } in  : [wild1_s4bx9 sat_s4bxe];
+                    };
+              };
+        };
+
+GHC.Natural.$fReadNatural_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [d_s4bxf]
+        let {
+          g_s4bxg [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [d_s4bxf] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      d_s4bxf
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          sat_s4bxj [Occ=OnceT[0]]
+            :: GHC.Base.String -> [(GHC.Natural.Natural, GHC.Base.String)]
+          [LclId] =
+              [g_s4bxg] \r [x_s4bxh]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4bxg x_s4bxh
+                  of
+                  sat_s4bxi
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4bxi;
+                  };
+        } in  sat_s4bxj;
+
+GHC.Natural.$fReadNatural4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s4bxk]
+        let {
+          g_s4bxl [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [n_s4bxk] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      n_s4bxk
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          w_s4bxm [Occ=OnceL, Dmd=<L,C(U)>]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+          [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+              [g_s4bxl] \r [x_s4bxn]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4bxl x_s4bxn
+                  of
+                  sat_s4bxo
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4bxo;
+                  }; } in
+        let {
+          sat_s4bxs [Occ=OnceT[0]]
+            :: forall b.
+               (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+               -> Text.ParserCombinators.ReadP.P b
+          [LclId] =
+              [w_s4bxm] \r [w1_s4bxp]
+                  case
+                      Text.ParserCombinators.ReadP.$wreadS_to_P w_s4bxm w1_s4bxp
+                  of
+                  { Unit# ww1_s4bxr [Occ=Once] ->
+                        Text.ParserCombinators.ReadP.Look [ww1_s4bxr];
+                  };
+        } in  sat_s4bxs;
+
+GHC.Natural.$fReadNatural3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Natural.$fReadNatural2
+  :: Text.ParserCombinators.ReadP.P [GHC.Natural.Natural]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.Natural.$fReadNatural4
+            GHC.Natural.$fReadNatural3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.Natural.$fReadNatural_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.Natural.Natural]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run GHC.Natural.$fReadNatural2 eta_B1;
+
+GHC.Natural.$fReadNatural1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.Natural.Natural] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s4bxt w1_s4bxu]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.Natural.$fReadNatural_$creadList w1_s4bxu
+        of
+        { Unit# ww1_s4bxw [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s4bxw];
+        };
+
+GHC.Natural.$fReadNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.Natural.$fReadNatural_$creadsPrec
+                                    GHC.Natural.$fReadNatural_$creadList
+                                    GHC.Natural.$fReadNatural4
+                                    GHC.Natural.$fReadNatural1];
+
+GHC.Natural.isValidNatural :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4bxx]
+        case
+            GHC.Integer.Type.geInteger# ds_s4bxx GHC.Natural.$fBitsNatural1
+        of
+        wild_s4bxy
+        { __DEFAULT -> tagToEnum# [wild_s4bxy];
+        };
+
+GHC.Natural.minusNaturalMaybe
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Base.Maybe GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4bxz y_s4bxA]
+        case GHC.Integer.Type.geInteger# x_s4bxz y_s4bxA of {
+          __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4bxC [Occ=Once] :: GHC.Natural.Natural
+                [LclId] =
+                    [x_s4bxz y_s4bxA] \u []
+                        GHC.Natural.$fNumNatural_$c- x_s4bxz y_s4bxA;
+              } in  GHC.Base.Just [sat_s4bxC];
+        };
+
+GHC.Natural.$fIxNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Arr.Ix GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Arr.C:Ix! [GHC.Natural.$fOrdNatural
+                                 GHC.Arr.$fIxInteger_$crange
+                                 GHC.Arr.$fIxInteger_$cindex
+                                 GHC.Arr.$fIxInteger_$cunsafeIndex
+                                 GHC.Arr.$fIxInteger_$cinRange
+                                 GHC.Arr.$fIxInteger_$crangeSize
+                                 GHC.Arr.$fIxInteger_$cunsafeRangeSize];
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftL [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftR [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: Data.Bits.Bits GHC.Natural.Natural
+[GblId[DFunId]] =
+    CCS_DONT_CARE Data.Bits.C:Bits! [GHC.Natural.$fEqNatural
+                                     GHC.Natural.$fBitsNatural_$c.&.
+                                     GHC.Natural.$fBitsNatural_$c.|.
+                                     GHC.Natural.$fBitsNatural_$cxor
+                                     GHC.Natural.$fBitsNatural_$ccomplement
+                                     GHC.Natural.$fBitsNatural_$cshift
+                                     GHC.Natural.$fBitsNatural_$crotate
+                                     GHC.Natural.$fBitsNatural1
+                                     Data.Bits.$fBitsInteger_$cbit
+                                     GHC.Natural.$fBitsNatural_$csetBit
+                                     GHC.Natural.$fBitsNatural_$cclearBit
+                                     GHC.Natural.$fBitsNatural_$ccomplementBit
+                                     GHC.Natural.$fBitsNatural_$ctestBit
+                                     GHC.Natural.$fBitsNatural_$cbitSizeMaybe
+                                     GHC.Natural.$fBitsNatural_$cbitSize
+                                     GHC.Natural.$fBitsNatural_$cisSigned
+                                     GHC.Natural.$fBitsNatural_$cshiftL
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftL
+                                     GHC.Natural.$fBitsNatural_$cshiftR
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftR
+                                     GHC.Natural.$fBitsNatural_$crotateL
+                                     GHC.Natural.$fBitsNatural_$crotateR
+                                     GHC.Natural.$fBitsNatural_$cpopCount];
+
+sat_s4bxD :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s4bxE :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4bxD GHC.Types.[]];
+
+GHC.Natural.powModNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4bxE;
+
+GHC.Natural.powModNatural
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4bxF ds1_s4bxG ds2_s4bxH]
+        case
+            GHC.Integer.Type.eqInteger# ds2_s4bxH GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.eqInteger# ds2_s4bxH GHC.Natural.powModNatural1
+              of
+              { __DEFAULT ->
+                    case
+                        GHC.Integer.Type.eqInteger# ds1_s4bxG GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT ->
+                          case
+                              GHC.Integer.Type.eqInteger# ds_s4bxF GHC.Natural.$fBitsNatural1
+                          of
+                          { __DEFAULT ->
+                                case
+                                    GHC.Integer.Type.eqInteger# ds_s4bxF GHC.Natural.powModNatural1
+                                of
+                                { __DEFAULT ->
+                                      let-no-escape {
+                                        go_s4bxN [Occ=LoopBreakerT[3]]
+                                          :: GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                        [LclId[JoinId(3)],
+                                         Arity=3,
+                                         Str=<S,1*U><S,U><S,1*U>,
+                                         Unf=OtherCon []] =
+                                            sat-only [ds2_s4bxH go_s4bxN] \r [b_s4bxO
+                                                                              e_s4bxP
+                                                                              r_s4bxQ]
+                                                case b_s4bxO of nt_s4bxR {
+                                                  __DEFAULT ->
+                                                      case
+                                                          GHC.Integer.Type.remInteger
+                                                              e_s4bxP GHC.Natural.$seven_n
+                                                      of
+                                                      sat_s4bxS
+                                                      { __DEFAULT ->
+                                                            case
+                                                                GHC.Integer.Type.eqInteger#
+                                                                    sat_s4bxS
+                                                                    GHC.Natural.$fBitsNatural1
+                                                            of
+                                                            { __DEFAULT ->
+                                                                  case
+                                                                      GHC.Integer.Type.timesInteger
+                                                                          r_s4bxQ nt_s4bxR
+                                                                  of
+                                                                  sat_s4bxX
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.modInteger
+                                                                                sat_s4bxX ds2_s4bxH
+                                                                        of
+                                                                        sat_s4bxY
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.shiftRInteger
+                                                                                      e_s4bxP 1#
+                                                                              of
+                                                                              sat_s4bxW
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.timesInteger
+                                                                                            nt_s4bxR
+                                                                                            nt_s4bxR
+                                                                                    of
+                                                                                    sat_s4bxU
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              GHC.Integer.Type.modInteger
+                                                                                                  sat_s4bxU
+                                                                                                  ds2_s4bxH
+                                                                                          of
+                                                                                          sat_s4bxV
+                                                                                          { __DEFAULT ->
+                                                                                                go_s4bxN
+                                                                                                    sat_s4bxV
+                                                                                                    sat_s4bxW
+                                                                                                    sat_s4bxY;
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                  };
+                                                              1# ->
+                                                                  case
+                                                                      GHC.Integer.Type.eqInteger#
+                                                                          e_s4bxP
+                                                                          GHC.Natural.$fBitsNatural1
+                                                                  of
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.shiftRInteger
+                                                                                e_s4bxP 1#
+                                                                        of
+                                                                        sat_s4by2
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.timesInteger
+                                                                                      nt_s4bxR
+                                                                                      nt_s4bxR
+                                                                              of
+                                                                              sat_s4by0
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.modInteger
+                                                                                            sat_s4by0
+                                                                                            ds2_s4bxH
+                                                                                    of
+                                                                                    sat_s4by1
+                                                                                    { __DEFAULT ->
+                                                                                          go_s4bxN
+                                                                                              sat_s4by1
+                                                                                              sat_s4by2
+                                                                                              r_s4bxQ;
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                    1# -> r_s4bxQ;
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                      } in  go_s4bxN ds_s4bxF ds1_s4bxG GHC.Natural.powModNatural1;
+                                  1# -> GHC.Natural.powModNatural1;
+                                };
+                            1# -> GHC.Natural.$fBitsNatural1;
+                          };
+                      1# -> GHC.Natural.powModNatural1;
+                    };
+                1# -> GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Real.divZeroError;
+        };
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:59:05.551681286 UTC
+
+GHC.Natural.$fNumNatural_$cabs [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4cst] ds_s4cst;
+
+GHC.Natural.$fRealNatural_$ctoRational [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Real.Rational
+[GblId, Arity=1, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fFractionalRatio_$s$cfromInteger eta_B1;
+
+GHC.Natural.$fEnumNatural_$cfromEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$cfromEnum eta_B1;
+
+lvl_r4bvC :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.toEnum: negative"#;
+
+lvl1_r4bvD :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_r4bvC of sat_s4csu {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4csu;
+        };
+
+GHC.Natural.$fEnumNatural_$ctoEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_s4csv]
+        case eta_s4csv of {
+          GHC.Types.I# x_s4csx ->
+              case <# [x_s4csx 0#] of {
+                __DEFAULT -> GHC.Integer.Type.smallInteger x_s4csx;
+                1# -> lvl1_r4bvD;
+              };
+        };
+
+GHC.Natural.$fBitsNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+lvl2_r4bvE :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.pred: 0"#;
+
+lvl3_r4bvF :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl2_r4bvE of sat_s4csz {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4csz;
+        };
+
+GHC.Natural.$fEnumNatural_$cpred [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_s4csA]
+        case
+            GHC.Integer.Type.eqInteger# eta_s4csA GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Enum.$fEnumInteger_$cpred eta_s4csA;
+          1# -> lvl3_r4bvF;
+        };
+
+GHC.Natural.$fEnumNatural_$csucc [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$csucc eta_B1;
+
+$ctoInteger_r4bvG :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_s4csC] ds_s4csC;
+
+GHC.Natural.$fIntegralNatural_$ctoInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Integer.Type.Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] $ctoInteger_r4bvG eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdivMod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4csD ds1_s4csE]
+        let {
+          ds2_s4csF [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4csD ds1_s4csE] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4csE GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.divModInteger ds_s4csD ds1_s4csE of {
+                          (#,#) ipv_s4csI [Occ=Once] ipv1_s4csJ [Occ=Once] ->
+                              (,) [ipv_s4csI ipv1_s4csJ];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4csR [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csF] \u []
+                  case ds2_s4csF of {
+                    (,) _ [Occ=Dead] r_s4csQ [Occ=Once] -> r_s4csQ;
+                  }; } in
+        let {
+          sat_s4csN [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csF] \u []
+                  case ds2_s4csF of {
+                    (,) q_s4csL [Occ=Once] _ [Occ=Dead] -> q_s4csL;
+                  };
+        } in  (,) [sat_s4csN sat_s4csR];
+
+GHC.Natural.$fIntegralNatural_$cquotRem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4csS ds1_s4csT]
+        let {
+          ds2_s4csU [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4csS ds1_s4csT] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4csT GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.quotRemInteger ds_s4csS ds1_s4csT of {
+                          (#,#) ipv_s4csX [Occ=Once] ipv1_s4csY [Occ=Once] ->
+                              (,) [ipv_s4csX ipv1_s4csY];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4ct6 [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csU] \u []
+                  case ds2_s4csU of {
+                    (,) _ [Occ=Dead] r_s4ct5 [Occ=Once] -> r_s4ct5;
+                  }; } in
+        let {
+          sat_s4ct2 [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csU] \u []
+                  case ds2_s4csU of {
+                    (,) q_s4ct0 [Occ=Once] _ [Occ=Dead] -> q_s4ct0;
+                  };
+        } in  (,) [sat_s4ct2 sat_s4ct6];
+
+GHC.Natural.$fEqNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Integer.Type.eqInteger
+                                     GHC.Integer.Type.neqInteger];
+
+GHC.Natural.$fOrdNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.Natural.$fEqNatural
+                                      GHC.Integer.Type.compareInteger
+                                      GHC.Integer.Type.ltInteger
+                                      GHC.Integer.Type.leInteger
+                                      GHC.Integer.Type.gtInteger
+                                      GHC.Integer.Type.geInteger
+                                      GHC.Integer.Type.$fOrdInteger_$cmax
+                                      GHC.Integer.Type.$fOrdInteger_$cmin];
+
+GHC.Natural.underflowError [InlPrag=NOINLINE] :: forall a. a
+[GblId, Str=x] =
+    [] \u [] raise# [GHC.Exception.underflowException];
+
+GHC.Natural.$fNumNatural_$cnegate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4ct7]
+        case
+            GHC.Integer.Type.minusInteger GHC.Natural.$fBitsNatural1 eta_s4ct7
+        of
+        result_s4ct8 [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4ct8 GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4ct8;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.naturalFromInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Integer.Type.Integer -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [n_s4cta]
+        case
+            GHC.Integer.Type.geInteger# n_s4cta GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Natural.underflowError;
+          1# -> n_s4cta;
+        };
+
+GHC.Natural.$fNumNatural_$c- [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4ctc eta1_s4ctd]
+        case
+            GHC.Integer.Type.minusInteger eta_s4ctc eta1_s4ctd
+        of
+        result_s4cte [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4cte GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4cte;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.$fNumNatural_$c+ [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.plusInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$c* [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.timesInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$csignum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Integer.Type.signumInteger eta_B1;
+
+GHC.Natural.$fNumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Num.Num GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Num.C:Num! [GHC.Natural.$fNumNatural_$c+
+                                  GHC.Natural.$fNumNatural_$c-
+                                  GHC.Natural.$fNumNatural_$c*
+                                  GHC.Natural.$fNumNatural_$cnegate
+                                  GHC.Natural.$fNumNatural_$cabs
+                                  GHC.Natural.$fNumNatural_$csignum
+                                  GHC.Natural.naturalFromInteger];
+
+GHC.Natural.$fRealNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Real GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Real! [GHC.Natural.$fNumNatural
+                                    GHC.Natural.$fOrdNatural
+                                    GHC.Natural.$fRealNatural_$ctoRational];
+
+GHC.Natural.$fIntegralNatural_$cquot [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cquot eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$crem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$crem eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdiv [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cdiv eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cmod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cmod eta_B2 eta_B1;
+
+GHC.Natural.$fEnumNatural_$cenumFromThen
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> [GHC.Natural.Natural]
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4ctg y_s4cth]
+        case GHC.Integer.Type.leInteger# x_s4ctg y_s4cth of {
+          __DEFAULT ->
+              case GHC.Integer.Type.minusInteger y_s4cth x_s4ctg of sat_s4ctj {
+                __DEFAULT ->
+                    GHC.Enum.enumDeltaToInteger
+                        x_s4ctg sat_s4ctj GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Enum.$fEnumInteger_$cenumFromThen x_s4ctg y_s4cth;
+        };
+
+GHC.Natural.$fEnumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Enum.Enum GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Enum.C:Enum! [GHC.Natural.$fEnumNatural_$csucc
+                                    GHC.Natural.$fEnumNatural_$cpred
+                                    GHC.Natural.$fEnumNatural_$ctoEnum
+                                    GHC.Natural.$fEnumNatural_$cfromEnum
+                                    GHC.Enum.$fEnumInteger_$cenumFrom
+                                    GHC.Natural.$fEnumNatural_$cenumFromThen
+                                    GHC.Enum.$fEnumInteger_$cenumFromTo
+                                    GHC.Enum.$fEnumInteger_$cenumFromThenTo];
+
+GHC.Natural.$fIntegralNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Integral GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Integral! [GHC.Natural.$fRealNatural
+                                        GHC.Natural.$fEnumNatural
+                                        GHC.Natural.$fIntegralNatural_$cquot
+                                        GHC.Natural.$fIntegralNatural_$crem
+                                        GHC.Natural.$fIntegralNatural_$cdiv
+                                        GHC.Natural.$fIntegralNatural_$cmod
+                                        GHC.Natural.$fIntegralNatural_$cquotRem
+                                        GHC.Natural.$fIntegralNatural_$cdivMod
+                                        GHC.Natural.$fIntegralNatural_$ctoInteger];
+
+sat_s4ctk :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2#];
+
+sat_s4ctl :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctk GHC.Types.[]];
+
+GHC.Natural.$seven_n :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4ctl;
+
+GHC.Natural.$fShowNatural_$cshow
+  :: GHC.Natural.Natural -> GHC.Base.String
+[GblId, Arity=1, Str=<S,U>m2, Unf=OtherCon []] =
+    [] \r [x_s4ctm]
+        case GHC.Show.$w$cshowsPrec4 0# x_s4ctm GHC.Types.[] of {
+          (#,#) ww3_s4cto [Occ=Once] ww4_s4ctp [Occ=Once] ->
+              : [ww3_s4cto ww4_s4ctp];
+        };
+
+GHC.Natural.$fShowNatural1
+  :: GHC.Integer.Type.Integer -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,U><L,U>m2, Unf=OtherCon []] =
+    [] \r [w1_s4ctq w2_s4ctr]
+        case GHC.Show.$w$cshowsPrec4 0# w1_s4ctq w2_s4ctr of {
+          (#,#) ww3_s4ctt [Occ=Once] ww4_s4ctu [Occ=Once] ->
+              : [ww3_s4ctt ww4_s4ctu];
+        };
+
+GHC.Natural.$fShowNatural_$cshowList
+  :: [GHC.Natural.Natural] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s4ctv s_s4ctw]
+        GHC.Show.showList__ GHC.Natural.$fShowNatural1 ls_s4ctv s_s4ctw;
+
+GHC.Natural.$fShowNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.Show.$fShowInteger_$cshowsPrec
+                                    GHC.Natural.$fShowNatural_$cshow
+                                    GHC.Natural.$fShowNatural_$cshowList];
+
+GHC.Natural.$fBitsNatural_$cpopCount [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Str=<L,U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] Data.Bits.$fBitsInteger_$cpopCount eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$crotateR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cisSigned [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4ctx] GHC.Types.False [];
+
+lvl4_r4bvH :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural: bitSize"#;
+
+GHC.Natural.$fBitsNatural_$cbitSize [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl4_r4bvH of sat_s4cty {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4cty;
+        };
+
+GHC.Natural.$fBitsNatural_$cbitSizeMaybe [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4ctz] GHC.Base.Nothing [];
+
+GHC.Natural.$fBitsNatural_$ctestBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ctestBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$ccomplementBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ccomplementBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cclearBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cclearBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$csetBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$csetBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshift [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+lvl5_r4bvI :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Bits.complement: Natural complement undefined"#;
+
+lvl6_r4bvJ :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r4bvI;
+
+GHC.Natural.$fBitsNatural_$ccomplement [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<B,A>x, Unf=OtherCon []] =
+    [] \r [ds_s4ctA] GHC.Err.errorWithoutStackTrace lvl6_r4bvJ;
+
+GHC.Natural.$fBitsNatural_$cxor [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.xorInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.|. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.orInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.&. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.andInteger eta_B2 eta_B1;
+
+GHC.Natural.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Natural.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule4];
+
+GHC.Natural.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Natural"#;
+
+GHC.Natural.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule2];
+
+GHC.Natural.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Natural.$trModule3
+                                     GHC.Natural.$trModule1];
+
+$krep_r4bvK :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Integer.Type.$tcInteger
+                                              GHC.Types.[]];
+
+GHC.Natural.$tcNatural2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural"#;
+
+GHC.Natural.$tcNatural1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tcNatural2];
+
+GHC.Natural.$tcNatural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18275189520134122949##
+                                    2097940004095541788##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tcNatural1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_r4bvL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+GHC.Natural.$tc'Natural1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r4bvK $krep1_r4bvL];
+
+GHC.Natural.$tc'Natural3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Natural"#;
+
+GHC.Natural.$tc'Natural2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tc'Natural3];
+
+GHC.Natural.$tc'Natural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11998593531750078056##
+                                    1104420550366228074##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tc'Natural2
+                                    0#
+                                    GHC.Natural.$tc'Natural1];
+
+GHC.Natural.wordToNatural :: GHC.Types.Word -> GHC.Natural.Natural
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fIntegralWord_$ctoInteger eta_B1;
+
+sat_s4ctD :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [3#];
+
+sat_s4ctE :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctD GHC.Types.[]];
+
+sat_s4ctC :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4ctF :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctC sat_s4ctE];
+
+sat_s4ctB :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4ctG :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctB sat_s4ctF];
+
+GHC.Natural.naturalToWordMaybe1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4ctG;
+
+GHC.Natural.naturalToWordMaybe
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Word
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4ctH]
+        case
+            GHC.Integer.Type.leInteger#
+                ds_s4ctH GHC.Natural.naturalToWordMaybe1
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4ctK [Occ=Once] :: GHC.Types.Word
+                [LclId] =
+                    [ds_s4ctH] \u []
+                        case GHC.Integer.Type.integerToWord ds_s4ctH of wild1_s4ctJ {
+                          __DEFAULT -> GHC.Types.W# [wild1_s4ctJ];
+                        };
+              } in  GHC.Base.Just [sat_s4ctK];
+        };
+
+GHC.Natural.$fReadNatural_go [Occ=LoopBreaker]
+  :: [(GHC.Integer.Type.Integer, GHC.Base.String)]
+     -> [(GHC.Natural.Natural, GHC.Base.String)]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4ctL]
+        case ds_s4ctL of {
+          [] -> [] [];
+          : y_s4ctN [Occ=Once!] ys_s4ctO [Occ=Once*] ->
+              case y_s4ctN of {
+                (,) x_s4ctQ ds1_s4ctR [Occ=Once] ->
+                    case
+                        GHC.Integer.Type.geInteger# x_s4ctQ GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT -> GHC.Natural.$fReadNatural_go ys_s4ctO;
+                      1# ->
+                          let {
+                            sat_s4ctU [Occ=Once] :: [(GHC.Natural.Natural, GHC.Base.String)]
+                            [LclId] =
+                                [ys_s4ctO] \u [] GHC.Natural.$fReadNatural_go ys_s4ctO;
+                          } in  : [wild1_s4ctP sat_s4ctU];
+                    };
+              };
+        };
+
+GHC.Natural.$fReadNatural_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [d_s4ctV]
+        let {
+          g_s4ctW [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [d_s4ctV] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      d_s4ctV
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          sat_s4ctZ [Occ=OnceT[0]]
+            :: GHC.Base.String -> [(GHC.Natural.Natural, GHC.Base.String)]
+          [LclId] =
+              [g_s4ctW] \r [x_s4ctX]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4ctW x_s4ctX
+                  of
+                  sat_s4ctY
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4ctY;
+                  };
+        } in  sat_s4ctZ;
+
+GHC.Natural.$fReadNatural4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s4cu0]
+        let {
+          g_s4cu1 [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [n_s4cu0] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      n_s4cu0
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          w_s4cu2 [Occ=OnceL, Dmd=<L,C(U)>]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+          [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+              [g_s4cu1] \r [x_s4cu3]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4cu1 x_s4cu3
+                  of
+                  sat_s4cu4
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4cu4;
+                  }; } in
+        let {
+          sat_s4cu8 [Occ=OnceT[0]]
+            :: forall b.
+               (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+               -> Text.ParserCombinators.ReadP.P b
+          [LclId] =
+              [w_s4cu2] \r [w1_s4cu5]
+                  case
+                      Text.ParserCombinators.ReadP.$wreadS_to_P w_s4cu2 w1_s4cu5
+                  of
+                  { Unit# ww1_s4cu7 [Occ=Once] ->
+                        Text.ParserCombinators.ReadP.Look [ww1_s4cu7];
+                  };
+        } in  sat_s4cu8;
+
+GHC.Natural.$fReadNatural3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Natural.$fReadNatural2
+  :: Text.ParserCombinators.ReadP.P [GHC.Natural.Natural]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.Natural.$fReadNatural4
+            GHC.Natural.$fReadNatural3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.Natural.$fReadNatural_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.Natural.Natural]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run GHC.Natural.$fReadNatural2 eta_B1;
+
+GHC.Natural.$fReadNatural1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.Natural.Natural] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s4cu9 w1_s4cua]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.Natural.$fReadNatural_$creadList w1_s4cua
+        of
+        { Unit# ww1_s4cuc [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s4cuc];
+        };
+
+GHC.Natural.$fReadNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.Natural.$fReadNatural_$creadsPrec
+                                    GHC.Natural.$fReadNatural_$creadList
+                                    GHC.Natural.$fReadNatural4
+                                    GHC.Natural.$fReadNatural1];
+
+GHC.Natural.isValidNatural :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4cud]
+        case
+            GHC.Integer.Type.geInteger# ds_s4cud GHC.Natural.$fBitsNatural1
+        of
+        wild_s4cue
+        { __DEFAULT -> tagToEnum# [wild_s4cue];
+        };
+
+GHC.Natural.minusNaturalMaybe
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Base.Maybe GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4cuf y_s4cug]
+        case GHC.Integer.Type.geInteger# x_s4cuf y_s4cug of {
+          __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4cui [Occ=Once] :: GHC.Natural.Natural
+                [LclId] =
+                    [x_s4cuf y_s4cug] \u []
+                        GHC.Natural.$fNumNatural_$c- x_s4cuf y_s4cug;
+              } in  GHC.Base.Just [sat_s4cui];
+        };
+
+GHC.Natural.$fIxNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Arr.Ix GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Arr.C:Ix! [GHC.Natural.$fOrdNatural
+                                 GHC.Arr.$fIxInteger_$crange
+                                 GHC.Arr.$fIxInteger_$cindex
+                                 GHC.Arr.$fIxInteger_$cunsafeIndex
+                                 GHC.Arr.$fIxInteger_$cinRange
+                                 GHC.Arr.$fIxInteger_$crangeSize
+                                 GHC.Arr.$fIxInteger_$cunsafeRangeSize];
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftL [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftR [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: Data.Bits.Bits GHC.Natural.Natural
+[GblId[DFunId]] =
+    CCS_DONT_CARE Data.Bits.C:Bits! [GHC.Natural.$fEqNatural
+                                     GHC.Natural.$fBitsNatural_$c.&.
+                                     GHC.Natural.$fBitsNatural_$c.|.
+                                     GHC.Natural.$fBitsNatural_$cxor
+                                     GHC.Natural.$fBitsNatural_$ccomplement
+                                     GHC.Natural.$fBitsNatural_$cshift
+                                     GHC.Natural.$fBitsNatural_$crotate
+                                     GHC.Natural.$fBitsNatural1
+                                     Data.Bits.$fBitsInteger_$cbit
+                                     GHC.Natural.$fBitsNatural_$csetBit
+                                     GHC.Natural.$fBitsNatural_$cclearBit
+                                     GHC.Natural.$fBitsNatural_$ccomplementBit
+                                     GHC.Natural.$fBitsNatural_$ctestBit
+                                     GHC.Natural.$fBitsNatural_$cbitSizeMaybe
+                                     GHC.Natural.$fBitsNatural_$cbitSize
+                                     GHC.Natural.$fBitsNatural_$cisSigned
+                                     GHC.Natural.$fBitsNatural_$cshiftL
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftL
+                                     GHC.Natural.$fBitsNatural_$cshiftR
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftR
+                                     GHC.Natural.$fBitsNatural_$crotateL
+                                     GHC.Natural.$fBitsNatural_$crotateR
+                                     GHC.Natural.$fBitsNatural_$cpopCount];
+
+sat_s4cuj :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s4cuk :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4cuj GHC.Types.[]];
+
+GHC.Natural.powModNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4cuk;
+
+GHC.Natural.powModNatural
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4cul ds1_s4cum ds2_s4cun]
+        case
+            GHC.Integer.Type.eqInteger# ds2_s4cun GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.eqInteger# ds2_s4cun GHC.Natural.powModNatural1
+              of
+              { __DEFAULT ->
+                    case
+                        GHC.Integer.Type.eqInteger# ds1_s4cum GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT ->
+                          case
+                              GHC.Integer.Type.eqInteger# ds_s4cul GHC.Natural.$fBitsNatural1
+                          of
+                          { __DEFAULT ->
+                                case
+                                    GHC.Integer.Type.eqInteger# ds_s4cul GHC.Natural.powModNatural1
+                                of
+                                { __DEFAULT ->
+                                      let-no-escape {
+                                        go_s4cut [Occ=LoopBreakerT[3]]
+                                          :: GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                        [LclId[JoinId(3)],
+                                         Arity=3,
+                                         Str=<S,1*U><S,U><S,1*U>,
+                                         Unf=OtherCon []] =
+                                            sat-only [ds2_s4cun go_s4cut] \r [b_s4cuu
+                                                                              e_s4cuv
+                                                                              r_s4cuw]
+                                                case b_s4cuu of nt_s4cux {
+                                                  __DEFAULT ->
+                                                      case
+                                                          GHC.Integer.Type.remInteger
+                                                              e_s4cuv GHC.Natural.$seven_n
+                                                      of
+                                                      sat_s4cuy
+                                                      { __DEFAULT ->
+                                                            case
+                                                                GHC.Integer.Type.eqInteger#
+                                                                    sat_s4cuy
+                                                                    GHC.Natural.$fBitsNatural1
+                                                            of
+                                                            { __DEFAULT ->
+                                                                  case
+                                                                      GHC.Integer.Type.timesInteger
+                                                                          r_s4cuw nt_s4cux
+                                                                  of
+                                                                  sat_s4cuD
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.modInteger
+                                                                                sat_s4cuD ds2_s4cun
+                                                                        of
+                                                                        sat_s4cuE
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.shiftRInteger
+                                                                                      e_s4cuv 1#
+                                                                              of
+                                                                              sat_s4cuC
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.timesInteger
+                                                                                            nt_s4cux
+                                                                                            nt_s4cux
+                                                                                    of
+                                                                                    sat_s4cuA
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              GHC.Integer.Type.modInteger
+                                                                                                  sat_s4cuA
+                                                                                                  ds2_s4cun
+                                                                                          of
+                                                                                          sat_s4cuB
+                                                                                          { __DEFAULT ->
+                                                                                                go_s4cut
+                                                                                                    sat_s4cuB
+                                                                                                    sat_s4cuC
+                                                                                                    sat_s4cuE;
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                  };
+                                                              1# ->
+                                                                  case
+                                                                      GHC.Integer.Type.eqInteger#
+                                                                          e_s4cuv
+                                                                          GHC.Natural.$fBitsNatural1
+                                                                  of
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.shiftRInteger
+                                                                                e_s4cuv 1#
+                                                                        of
+                                                                        sat_s4cuI
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.timesInteger
+                                                                                      nt_s4cux
+                                                                                      nt_s4cux
+                                                                              of
+                                                                              sat_s4cuG
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.modInteger
+                                                                                            sat_s4cuG
+                                                                                            ds2_s4cun
+                                                                                    of
+                                                                                    sat_s4cuH
+                                                                                    { __DEFAULT ->
+                                                                                          go_s4cut
+                                                                                              sat_s4cuH
+                                                                                              sat_s4cuI
+                                                                                              r_s4cuw;
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                    1# -> r_s4cuw;
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                      } in  go_s4cut ds_s4cul ds1_s4cum GHC.Natural.powModNatural1;
+                                  1# -> GHC.Natural.powModNatural1;
+                                };
+                            1# -> GHC.Natural.$fBitsNatural1;
+                          };
+                      1# -> GHC.Natural.powModNatural1;
+                    };
+                1# -> GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Real.divZeroError;
+        };
+
+
+==================== STG syntax: ====================
+2018-03-16 15:59:05.566011679 UTC
+
+GHC.Natural.$fNumNatural_$cabs [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4cst] ds_s4cst;
+
+GHC.Natural.$fRealNatural_$ctoRational [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Real.Rational
+[GblId, Arity=1, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fFractionalRatio_$s$cfromInteger eta_B1;
+
+GHC.Natural.$fEnumNatural_$cfromEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$cfromEnum eta_B1;
+
+lvl_r4bvC :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.toEnum: negative"#;
+
+lvl1_r4bvD :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl_r4bvC of sat_s4csu {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4csu;
+        };
+
+GHC.Natural.$fEnumNatural_$ctoEnum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_s4csv]
+        case eta_s4csv of {
+          GHC.Types.I# x_s4csx ->
+              case <# [x_s4csx 0#] of {
+                __DEFAULT -> GHC.Integer.Type.smallInteger x_s4csx;
+                1# -> lvl1_r4bvD;
+              };
+        };
+
+GHC.Natural.$fBitsNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+lvl2_r4bvE :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural.pred: 0"#;
+
+lvl3_r4bvF :: GHC.Natural.Natural
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl2_r4bvE of sat_s4csz {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4csz;
+        };
+
+GHC.Natural.$fEnumNatural_$cpred [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [eta_s4csA]
+        case
+            GHC.Integer.Type.eqInteger# eta_s4csA GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Enum.$fEnumInteger_$cpred eta_s4csA;
+          1# -> lvl3_r4bvF;
+        };
+
+GHC.Natural.$fEnumNatural_$csucc [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Enum.$fEnumInteger_$csucc eta_B1;
+
+$ctoInteger_r4bvG :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    sat-only [] \r [ds_s4csC] ds_s4csC;
+
+GHC.Natural.$fIntegralNatural_$ctoInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Integer.Type.Integer
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] $ctoInteger_r4bvG eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdivMod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4csD ds1_s4csE]
+        let {
+          ds2_s4csF [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4csD ds1_s4csE] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4csE GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.divModInteger ds_s4csD ds1_s4csE of {
+                          (#,#) ipv_s4csI [Occ=Once] ipv1_s4csJ [Occ=Once] ->
+                              (,) [ipv_s4csI ipv1_s4csJ];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4csR [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csF] \u []
+                  case ds2_s4csF of {
+                    (,) _ [Occ=Dead] r_s4csQ [Occ=Once] -> r_s4csQ;
+                  }; } in
+        let {
+          sat_s4csN [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csF] \u []
+                  case ds2_s4csF of {
+                    (,) q_s4csL [Occ=Once] _ [Occ=Dead] -> q_s4csL;
+                  };
+        } in  (,) [sat_s4csN sat_s4csR];
+
+GHC.Natural.$fIntegralNatural_$cquotRem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> (GHC.Natural.Natural, GHC.Natural.Natural)
+[GblId, Arity=2, Str=<L,1*U><L,U>m, Unf=OtherCon []] =
+    [] \r [ds_s4csS ds1_s4csT]
+        let {
+          ds2_s4csU [Dmd=<L,U(1*U,1*U)>]
+            :: (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+          [LclId] =
+              [ds_s4csS ds1_s4csT] \u []
+                  case
+                      GHC.Integer.Type.eqInteger# ds1_s4csT GHC.Natural.$fBitsNatural1
+                  of
+                  { __DEFAULT ->
+                        case GHC.Integer.Type.quotRemInteger ds_s4csS ds1_s4csT of {
+                          (#,#) ipv_s4csX [Occ=Once] ipv1_s4csY [Occ=Once] ->
+                              (,) [ipv_s4csX ipv1_s4csY];
+                        };
+                    1# -> GHC.Real.divZeroError;
+                  }; } in
+        let {
+          sat_s4ct6 [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csU] \u []
+                  case ds2_s4csU of {
+                    (,) _ [Occ=Dead] r_s4ct5 [Occ=Once] -> r_s4ct5;
+                  }; } in
+        let {
+          sat_s4ct2 [Occ=Once] :: GHC.Natural.Natural
+          [LclId] =
+              [ds2_s4csU] \u []
+                  case ds2_s4csU of {
+                    (,) q_s4ct0 [Occ=Once] _ [Occ=Dead] -> q_s4ct0;
+                  };
+        } in  (,) [sat_s4ct2 sat_s4ct6];
+
+GHC.Natural.$fEqNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Eq GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Eq! [GHC.Integer.Type.eqInteger
+                                     GHC.Integer.Type.neqInteger];
+
+GHC.Natural.$fOrdNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Classes.Ord GHC.Natural.Natural
+[GblId[DFunId], Caf=NoCafRefs, Str=m] =
+    CCS_DONT_CARE GHC.Classes.C:Ord! [GHC.Natural.$fEqNatural
+                                      GHC.Integer.Type.compareInteger
+                                      GHC.Integer.Type.ltInteger
+                                      GHC.Integer.Type.leInteger
+                                      GHC.Integer.Type.gtInteger
+                                      GHC.Integer.Type.geInteger
+                                      GHC.Integer.Type.$fOrdInteger_$cmax
+                                      GHC.Integer.Type.$fOrdInteger_$cmin];
+
+GHC.Natural.underflowError [InlPrag=NOINLINE] :: forall a. a
+[GblId, Str=x] =
+    [] \u [] raise# [GHC.Exception.underflowException];
+
+GHC.Natural.$fNumNatural_$cnegate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4ct7]
+        case
+            GHC.Integer.Type.minusInteger GHC.Natural.$fBitsNatural1 eta_s4ct7
+        of
+        result_s4ct8 [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4ct8 GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4ct8;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.naturalFromInteger [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Integer.Type.Integer -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [n_s4cta]
+        case
+            GHC.Integer.Type.geInteger# n_s4cta GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT -> GHC.Natural.underflowError;
+          1# -> n_s4cta;
+        };
+
+GHC.Natural.$fNumNatural_$c- [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_s4ctc eta1_s4ctd]
+        case
+            GHC.Integer.Type.minusInteger eta_s4ctc eta1_s4ctd
+        of
+        result_s4cte [Dmd=<S,U>]
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.ltInteger# result_s4cte GHC.Natural.$fBitsNatural1
+              of
+              { __DEFAULT -> result_s4cte;
+                1# -> GHC.Natural.underflowError;
+              };
+        };
+
+GHC.Natural.$fNumNatural_$c+ [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.plusInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$c* [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.timesInteger eta_B2 eta_B1;
+
+GHC.Natural.$fNumNatural_$csignum [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Integer.Type.signumInteger eta_B1;
+
+GHC.Natural.$fNumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Num.Num GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Num.C:Num! [GHC.Natural.$fNumNatural_$c+
+                                  GHC.Natural.$fNumNatural_$c-
+                                  GHC.Natural.$fNumNatural_$c*
+                                  GHC.Natural.$fNumNatural_$cnegate
+                                  GHC.Natural.$fNumNatural_$cabs
+                                  GHC.Natural.$fNumNatural_$csignum
+                                  GHC.Natural.naturalFromInteger];
+
+GHC.Natural.$fRealNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Real GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Real! [GHC.Natural.$fNumNatural
+                                    GHC.Natural.$fOrdNatural
+                                    GHC.Natural.$fRealNatural_$ctoRational];
+
+GHC.Natural.$fIntegralNatural_$cquot [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cquot eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$crem [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$crem eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cdiv [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cdiv eta_B2 eta_B1;
+
+GHC.Natural.$fIntegralNatural_$cmod [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        GHC.Real.$fIntegralInteger_$cmod eta_B2 eta_B1;
+
+GHC.Natural.$fEnumNatural_$cenumFromThen
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> [GHC.Natural.Natural]
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4ctg y_s4cth]
+        case GHC.Integer.Type.leInteger# x_s4ctg y_s4cth of {
+          __DEFAULT ->
+              case GHC.Integer.Type.minusInteger y_s4cth x_s4ctg of sat_s4ctj {
+                __DEFAULT ->
+                    GHC.Enum.enumDeltaToInteger
+                        x_s4ctg sat_s4ctj GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Enum.$fEnumInteger_$cenumFromThen x_s4ctg y_s4cth;
+        };
+
+GHC.Natural.$fEnumNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Enum.Enum GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Enum.C:Enum! [GHC.Natural.$fEnumNatural_$csucc
+                                    GHC.Natural.$fEnumNatural_$cpred
+                                    GHC.Natural.$fEnumNatural_$ctoEnum
+                                    GHC.Natural.$fEnumNatural_$cfromEnum
+                                    GHC.Enum.$fEnumInteger_$cenumFrom
+                                    GHC.Natural.$fEnumNatural_$cenumFromThen
+                                    GHC.Enum.$fEnumInteger_$cenumFromTo
+                                    GHC.Enum.$fEnumInteger_$cenumFromThenTo];
+
+GHC.Natural.$fIntegralNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Real.Integral GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Real.C:Integral! [GHC.Natural.$fRealNatural
+                                        GHC.Natural.$fEnumNatural
+                                        GHC.Natural.$fIntegralNatural_$cquot
+                                        GHC.Natural.$fIntegralNatural_$crem
+                                        GHC.Natural.$fIntegralNatural_$cdiv
+                                        GHC.Natural.$fIntegralNatural_$cmod
+                                        GHC.Natural.$fIntegralNatural_$cquotRem
+                                        GHC.Natural.$fIntegralNatural_$cdivMod
+                                        GHC.Natural.$fIntegralNatural_$ctoInteger];
+
+sat_s4ctk :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2#];
+
+sat_s4ctl :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctk GHC.Types.[]];
+
+GHC.Natural.$seven_n :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4ctl;
+
+GHC.Natural.$fShowNatural_$cshow
+  :: GHC.Natural.Natural -> GHC.Base.String
+[GblId, Arity=1, Str=<S,U>m2, Unf=OtherCon []] =
+    [] \r [x_s4ctm]
+        case GHC.Show.$w$cshowsPrec4 0# x_s4ctm GHC.Types.[] of {
+          (#,#) ww3_s4cto [Occ=Once] ww4_s4ctp [Occ=Once] ->
+              : [ww3_s4cto ww4_s4ctp];
+        };
+
+GHC.Natural.$fShowNatural1
+  :: GHC.Integer.Type.Integer -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,U><L,U>m2, Unf=OtherCon []] =
+    [] \r [w1_s4ctq w2_s4ctr]
+        case GHC.Show.$w$cshowsPrec4 0# w1_s4ctq w2_s4ctr of {
+          (#,#) ww3_s4ctt [Occ=Once] ww4_s4ctu [Occ=Once] ->
+              : [ww3_s4ctt ww4_s4ctu];
+        };
+
+GHC.Natural.$fShowNatural_$cshowList
+  :: [GHC.Natural.Natural] -> GHC.Show.ShowS
+[GblId, Arity=2, Str=<S,1*U><L,U>, Unf=OtherCon []] =
+    [] \r [ls_s4ctv s_s4ctw]
+        GHC.Show.showList__ GHC.Natural.$fShowNatural1 ls_s4ctv s_s4ctw;
+
+GHC.Natural.$fShowNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Show.Show GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Show.C:Show! [GHC.Show.$fShowInteger_$cshowsPrec
+                                    GHC.Natural.$fShowNatural_$cshow
+                                    GHC.Natural.$fShowNatural_$cshowList];
+
+GHC.Natural.$fBitsNatural_$cpopCount [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Arity=1, Str=<L,U>m, Unf=OtherCon []] =
+    [] \r [eta_B1] Data.Bits.$fBitsInteger_$cpopCount eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$crotateR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotateL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftR [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshiftL [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cisSigned [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4ctx] GHC.Types.False [];
+
+lvl4_r4bvH :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural: bitSize"#;
+
+GHC.Natural.$fBitsNatural_$cbitSize [InlPrag=INLINE (sat-args=0)]
+  :: GHC.Natural.Natural -> GHC.Types.Int
+[GblId, Str=x] =
+    [] \u []
+        case GHC.CString.unpackCString# lvl4_r4bvH of sat_s4cty {
+          __DEFAULT -> GHC.Err.errorWithoutStackTrace sat_s4cty;
+        };
+
+GHC.Natural.$fBitsNatural_$cbitSizeMaybe [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Int
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,A>, Unf=OtherCon []] =
+    [] \r [ds_s4ctz] GHC.Base.Nothing [];
+
+GHC.Natural.$fBitsNatural_$ctestBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S(S),1*U(U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ctestBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$ccomplementBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$ccomplementBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cclearBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cclearBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$csetBit [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$csetBit eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$crotate [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cshift [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+lvl5_r4bvI :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Bits.complement: Natural complement undefined"#;
+
+lvl6_r4bvJ :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r4bvI;
+
+GHC.Natural.$fBitsNatural_$ccomplement [InlPrag=INLINE (sat-args=1)]
+  :: GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId, Arity=1, Str=<B,A>x, Unf=OtherCon []] =
+    [] \r [ds_s4ctA] GHC.Err.errorWithoutStackTrace lvl6_r4bvJ;
+
+GHC.Natural.$fBitsNatural_$cxor [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.xorInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.|. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.orInteger eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$c.&. [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Natural.Natural
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Integer.Type.andInteger eta_B2 eta_B1;
+
+GHC.Natural.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Natural.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule4];
+
+GHC.Natural.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Natural"#;
+
+GHC.Natural.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$trModule2];
+
+GHC.Natural.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Natural.$trModule3
+                                     GHC.Natural.$trModule1];
+
+$krep_r4bvK :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Integer.Type.$tcInteger
+                                              GHC.Types.[]];
+
+GHC.Natural.$tcNatural2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Natural"#;
+
+GHC.Natural.$tcNatural1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tcNatural2];
+
+GHC.Natural.$tcNatural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [18275189520134122949##
+                                    2097940004095541788##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tcNatural1
+                                    0#
+                                    GHC.Types.krep$*];
+
+$krep1_r4bvL :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Natural.$tcNatural
+                                              GHC.Types.[]];
+
+GHC.Natural.$tc'Natural1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep_r4bvK $krep1_r4bvL];
+
+GHC.Natural.$tc'Natural3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Natural"#;
+
+GHC.Natural.$tc'Natural2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Natural.$tc'Natural3];
+
+GHC.Natural.$tc'Natural :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [11998593531750078056##
+                                    1104420550366228074##
+                                    GHC.Natural.$trModule
+                                    GHC.Natural.$tc'Natural2
+                                    0#
+                                    GHC.Natural.$tc'Natural1];
+
+GHC.Natural.wordToNatural :: GHC.Types.Word -> GHC.Natural.Natural
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)>,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Real.$fIntegralWord_$ctoInteger eta_B1;
+
+sat_s4ctD :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [3#];
+
+sat_s4ctE :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctD GHC.Types.[]];
+
+sat_s4ctC :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4ctF :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctC sat_s4ctE];
+
+sat_s4ctB :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [2147483647#];
+
+sat_s4ctG :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4ctB sat_s4ctF];
+
+GHC.Natural.naturalToWordMaybe1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4ctG;
+
+GHC.Natural.naturalToWordMaybe
+  :: GHC.Natural.Natural -> GHC.Base.Maybe GHC.Types.Word
+[GblId, Arity=1, Str=<S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4ctH]
+        case
+            GHC.Integer.Type.leInteger#
+                ds_s4ctH GHC.Natural.naturalToWordMaybe1
+        of
+        { __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4ctK [Occ=Once] :: GHC.Types.Word
+                [LclId] =
+                    [ds_s4ctH] \u []
+                        case GHC.Integer.Type.integerToWord ds_s4ctH of wild1_s4ctJ {
+                          __DEFAULT -> GHC.Types.W# [wild1_s4ctJ];
+                        };
+              } in  GHC.Base.Just [sat_s4ctK];
+        };
+
+GHC.Natural.$fReadNatural_go [Occ=LoopBreaker]
+  :: [(GHC.Integer.Type.Integer, GHC.Base.String)]
+     -> [(GHC.Natural.Natural, GHC.Base.String)]
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4ctL]
+        case ds_s4ctL of {
+          [] -> [] [];
+          : y_s4ctN [Occ=Once!] ys_s4ctO [Occ=Once*] ->
+              case y_s4ctN of {
+                (,) x_s4ctQ ds1_s4ctR [Occ=Once] ->
+                    case
+                        GHC.Integer.Type.geInteger# x_s4ctQ GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT -> GHC.Natural.$fReadNatural_go ys_s4ctO;
+                      1# ->
+                          let {
+                            sat_s4ctU [Occ=Once] :: [(GHC.Natural.Natural, GHC.Base.String)]
+                            [LclId] =
+                                [ys_s4ctO] \u [] GHC.Natural.$fReadNatural_go ys_s4ctO;
+                          } in  : [wild1_s4ctP sat_s4ctU];
+                    };
+              };
+        };
+
+GHC.Natural.$fReadNatural_$creadsPrec
+  :: GHC.Types.Int
+     -> Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [d_s4ctV]
+        let {
+          g_s4ctW [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [d_s4ctV] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      d_s4ctV
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          sat_s4ctZ [Occ=OnceT[0]]
+            :: GHC.Base.String -> [(GHC.Natural.Natural, GHC.Base.String)]
+          [LclId] =
+              [g_s4ctW] \r [x_s4ctX]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4ctW x_s4ctX
+                  of
+                  sat_s4ctY
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4ctY;
+                  };
+        } in  sat_s4ctZ;
+
+GHC.Natural.$fReadNatural4
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+    [] \r [n_s4cu0]
+        let {
+          g_s4cu1 [Occ=OnceL]
+            :: Text.ParserCombinators.ReadP.P GHC.Integer.Type.Integer
+          [LclId] =
+              [n_s4cu0] \u []
+                  GHC.Read.$fReadInteger_$sreadNumber
+                      GHC.Read.$fReadInteger2
+                      n_s4cu0
+                      Text.ParserCombinators.ReadP.$fApplicativeP_$cpure; } in
+        let {
+          w_s4cu2 [Occ=OnceL, Dmd=<L,C(U)>]
+            :: Text.ParserCombinators.ReadP.ReadS GHC.Natural.Natural
+          [LclId, Arity=1, Str=<L,U>, Unf=OtherCon []] =
+              [g_s4cu1] \r [x_s4cu3]
+                  case
+                      Text.ParserCombinators.ReadP.run g_s4cu1 x_s4cu3
+                  of
+                  sat_s4cu4
+                  { __DEFAULT -> GHC.Natural.$fReadNatural_go sat_s4cu4;
+                  }; } in
+        let {
+          sat_s4cu8 [Occ=OnceT[0]]
+            :: forall b.
+               (GHC.Natural.Natural -> Text.ParserCombinators.ReadP.P b)
+               -> Text.ParserCombinators.ReadP.P b
+          [LclId] =
+              [w_s4cu2] \r [w1_s4cu5]
+                  case
+                      Text.ParserCombinators.ReadP.$wreadS_to_P w_s4cu2 w1_s4cu5
+                  of
+                  { Unit# ww1_s4cu7 [Occ=Once] ->
+                        Text.ParserCombinators.ReadP.Look [ww1_s4cu7];
+                  };
+        } in  sat_s4cu8;
+
+GHC.Natural.$fReadNatural3 :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [0#];
+
+GHC.Natural.$fReadNatural2
+  :: Text.ParserCombinators.ReadP.P [GHC.Natural.Natural]
+[GblId] =
+    [] \u []
+        GHC.Read.list
+            GHC.Natural.$fReadNatural4
+            GHC.Natural.$fReadNatural3
+            Text.ParserCombinators.ReadP.$fApplicativeP_$cpure;
+
+GHC.Natural.$fReadNatural_$creadList
+  :: Text.ParserCombinators.ReadP.ReadS [GHC.Natural.Natural]
+[GblId, Arity=1, Unf=OtherCon []] =
+    [] \r [eta_B1]
+        Text.ParserCombinators.ReadP.run GHC.Natural.$fReadNatural2 eta_B1;
+
+GHC.Natural.$fReadNatural1
+  :: Text.ParserCombinators.ReadPrec.Prec
+     -> forall b.
+        ([GHC.Natural.Natural] -> Text.ParserCombinators.ReadP.P b)
+        -> Text.ParserCombinators.ReadP.P b
+[GblId, Arity=2, Str=<L,A><L,C(U)>m2, Unf=OtherCon []] =
+    [] \r [n_s4cu9 w1_s4cua]
+        case
+            Text.ParserCombinators.ReadP.$wreadS_to_P
+                GHC.Natural.$fReadNatural_$creadList w1_s4cua
+        of
+        { Unit# ww1_s4cuc [Occ=Once] ->
+              Text.ParserCombinators.ReadP.Look [ww1_s4cuc];
+        };
+
+GHC.Natural.$fReadNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Read.Read GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Read.C:Read! [GHC.Natural.$fReadNatural_$creadsPrec
+                                    GHC.Natural.$fReadNatural_$creadList
+                                    GHC.Natural.$fReadNatural4
+                                    GHC.Natural.$fReadNatural1];
+
+GHC.Natural.isValidNatural :: GHC.Natural.Natural -> GHC.Types.Bool
+[GblId, Arity=1, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s4cud]
+        case
+            GHC.Integer.Type.geInteger# ds_s4cud GHC.Natural.$fBitsNatural1
+        of
+        wild_s4cue
+        { __DEFAULT -> tagToEnum# [wild_s4cue];
+        };
+
+GHC.Natural.minusNaturalMaybe
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural -> GHC.Base.Maybe GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,U><S,U>, Unf=OtherCon []] =
+    [] \r [x_s4cuf y_s4cug]
+        case GHC.Integer.Type.geInteger# x_s4cuf y_s4cug of {
+          __DEFAULT -> GHC.Base.Nothing [];
+          1# ->
+              let {
+                sat_s4cui [Occ=Once] :: GHC.Natural.Natural
+                [LclId] =
+                    [x_s4cuf y_s4cug] \u []
+                        GHC.Natural.$fNumNatural_$c- x_s4cuf y_s4cug;
+              } in  GHC.Base.Just [sat_s4cui];
+        };
+
+GHC.Natural.$fIxNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: GHC.Arr.Ix GHC.Natural.Natural
+[GblId[DFunId], Str=m] =
+    CCS_DONT_CARE GHC.Arr.C:Ix! [GHC.Natural.$fOrdNatural
+                                 GHC.Arr.$fIxInteger_$crange
+                                 GHC.Arr.$fIxInteger_$cindex
+                                 GHC.Arr.$fIxInteger_$cunsafeIndex
+                                 GHC.Arr.$fIxInteger_$cinRange
+                                 GHC.Arr.$fIxInteger_$crangeSize
+                                 GHC.Arr.$fIxInteger_$cunsafeRangeSize];
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftL [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshift eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural_$cunsafeShiftR [InlPrag=INLINE (sat-args=2)]
+  :: GHC.Natural.Natural -> GHC.Types.Int -> GHC.Natural.Natural
+[GblId, Arity=2, Str=<S,1*U><S(S),1*U(U)>, Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1]
+        Data.Bits.$fBitsInteger_$cshiftR eta_B2 eta_B1;
+
+GHC.Natural.$fBitsNatural [InlPrag=NOUSERINLINE CONLIKE]
+  :: Data.Bits.Bits GHC.Natural.Natural
+[GblId[DFunId]] =
+    CCS_DONT_CARE Data.Bits.C:Bits! [GHC.Natural.$fEqNatural
+                                     GHC.Natural.$fBitsNatural_$c.&.
+                                     GHC.Natural.$fBitsNatural_$c.|.
+                                     GHC.Natural.$fBitsNatural_$cxor
+                                     GHC.Natural.$fBitsNatural_$ccomplement
+                                     GHC.Natural.$fBitsNatural_$cshift
+                                     GHC.Natural.$fBitsNatural_$crotate
+                                     GHC.Natural.$fBitsNatural1
+                                     Data.Bits.$fBitsInteger_$cbit
+                                     GHC.Natural.$fBitsNatural_$csetBit
+                                     GHC.Natural.$fBitsNatural_$cclearBit
+                                     GHC.Natural.$fBitsNatural_$ccomplementBit
+                                     GHC.Natural.$fBitsNatural_$ctestBit
+                                     GHC.Natural.$fBitsNatural_$cbitSizeMaybe
+                                     GHC.Natural.$fBitsNatural_$cbitSize
+                                     GHC.Natural.$fBitsNatural_$cisSigned
+                                     GHC.Natural.$fBitsNatural_$cshiftL
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftL
+                                     GHC.Natural.$fBitsNatural_$cshiftR
+                                     GHC.Natural.$fBitsNatural_$cunsafeShiftR
+                                     GHC.Natural.$fBitsNatural_$crotateL
+                                     GHC.Natural.$fBitsNatural_$crotateR
+                                     GHC.Natural.$fBitsNatural_$cpopCount];
+
+sat_s4cuj :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s4cuk :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s4cuj GHC.Types.[]];
+
+GHC.Natural.powModNatural1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s4cuk;
+
+GHC.Natural.powModNatural
+  :: GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+     -> GHC.Natural.Natural
+[GblId, Arity=3, Str=<L,U><L,U><S,U>, Unf=OtherCon []] =
+    [] \r [ds_s4cul ds1_s4cum ds2_s4cun]
+        case
+            GHC.Integer.Type.eqInteger# ds2_s4cun GHC.Natural.$fBitsNatural1
+        of
+        { __DEFAULT ->
+              case
+                  GHC.Integer.Type.eqInteger# ds2_s4cun GHC.Natural.powModNatural1
+              of
+              { __DEFAULT ->
+                    case
+                        GHC.Integer.Type.eqInteger# ds1_s4cum GHC.Natural.$fBitsNatural1
+                    of
+                    { __DEFAULT ->
+                          case
+                              GHC.Integer.Type.eqInteger# ds_s4cul GHC.Natural.$fBitsNatural1
+                          of
+                          { __DEFAULT ->
+                                case
+                                    GHC.Integer.Type.eqInteger# ds_s4cul GHC.Natural.powModNatural1
+                                of
+                                { __DEFAULT ->
+                                      let-no-escape {
+                                        go_s4cut [Occ=LoopBreakerT[3]]
+                                          :: GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                             -> GHC.Natural.Natural
+                                        [LclId[JoinId(3)],
+                                         Arity=3,
+                                         Str=<S,1*U><S,U><S,1*U>,
+                                         Unf=OtherCon []] =
+                                            sat-only [ds2_s4cun go_s4cut] \r [b_s4cuu
+                                                                              e_s4cuv
+                                                                              r_s4cuw]
+                                                case b_s4cuu of nt_s4cux {
+                                                  __DEFAULT ->
+                                                      case
+                                                          GHC.Integer.Type.remInteger
+                                                              e_s4cuv GHC.Natural.$seven_n
+                                                      of
+                                                      sat_s4cuy
+                                                      { __DEFAULT ->
+                                                            case
+                                                                GHC.Integer.Type.eqInteger#
+                                                                    sat_s4cuy
+                                                                    GHC.Natural.$fBitsNatural1
+                                                            of
+                                                            { __DEFAULT ->
+                                                                  case
+                                                                      GHC.Integer.Type.timesInteger
+                                                                          r_s4cuw nt_s4cux
+                                                                  of
+                                                                  sat_s4cuD
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.modInteger
+                                                                                sat_s4cuD ds2_s4cun
+                                                                        of
+                                                                        sat_s4cuE
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.shiftRInteger
+                                                                                      e_s4cuv 1#
+                                                                              of
+                                                                              sat_s4cuC
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.timesInteger
+                                                                                            nt_s4cux
+                                                                                            nt_s4cux
+                                                                                    of
+                                                                                    sat_s4cuA
+                                                                                    { __DEFAULT ->
+                                                                                          case
+                                                                                              GHC.Integer.Type.modInteger
+                                                                                                  sat_s4cuA
+                                                                                                  ds2_s4cun
+                                                                                          of
+                                                                                          sat_s4cuB
+                                                                                          { __DEFAULT ->
+                                                                                                go_s4cut
+                                                                                                    sat_s4cuB
+                                                                                                    sat_s4cuC
+                                                                                                    sat_s4cuE;
+                                                                                          };
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                  };
+                                                              1# ->
+                                                                  case
+                                                                      GHC.Integer.Type.eqInteger#
+                                                                          e_s4cuv
+                                                                          GHC.Natural.$fBitsNatural1
+                                                                  of
+                                                                  { __DEFAULT ->
+                                                                        case
+                                                                            GHC.Integer.Type.shiftRInteger
+                                                                                e_s4cuv 1#
+                                                                        of
+                                                                        sat_s4cuI
+                                                                        { __DEFAULT ->
+                                                                              case
+                                                                                  GHC.Integer.Type.timesInteger
+                                                                                      nt_s4cux
+                                                                                      nt_s4cux
+                                                                              of
+                                                                              sat_s4cuG
+                                                                              { __DEFAULT ->
+                                                                                    case
+                                                                                        GHC.Integer.Type.modInteger
+                                                                                            sat_s4cuG
+                                                                                            ds2_s4cun
+                                                                                    of
+                                                                                    sat_s4cuH
+                                                                                    { __DEFAULT ->
+                                                                                          go_s4cut
+                                                                                              sat_s4cuH
+                                                                                              sat_s4cuI
+                                                                                              r_s4cuw;
+                                                                                    };
+                                                                              };
+                                                                        };
+                                                                    1# -> r_s4cuw;
+                                                                  };
+                                                            };
+                                                      };
+                                                };
+                                      } in  go_s4cut ds_s4cul ds1_s4cum GHC.Natural.powModNatural1;
+                                  1# -> GHC.Natural.powModNatural1;
+                                };
+                            1# -> GHC.Natural.$fBitsNatural1;
+                          };
+                      1# -> GHC.Natural.powModNatural1;
+                    };
+                1# -> GHC.Natural.$fBitsNatural1;
+              };
+          1# -> GHC.Real.divZeroError;
+        };
+

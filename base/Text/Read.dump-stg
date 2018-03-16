@@ -1,0 +1,656 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:00:16.818287012 UTC
+
+Text.Read.reads
+  :: forall a.
+     GHC.Read.Read a =>
+     Text.ParserCombinators.ReadP.ReadS a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(C(S)LLL),1*U(1*C1(U),A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnd]
+        GHC.Read.readsPrec
+            $dRead_s5hnd Text.ParserCombinators.ReadPrec.minPrec;
+
+Text.Read.readEither6 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: no parse"#;
+
+Text.Read.readEither5 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither6;
+
+Text.Read.readEither4
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither5];
+
+Text.Read.readEither3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: ambiguous parse"#;
+
+Text.Read.readEither2 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither3;
+
+Text.Read.readEither1
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither2];
+
+Text.Read.readEither7 [InlPrag=NOUSERINLINE[0]]
+  :: forall a. a -> Text.ParserCombinators.ReadP.P a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>m2, Unf=OtherCon []] =
+    [] \r [w_s5hne]
+        let {
+          lvl_s5hnf [Occ=OnceL] :: Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Unf=OtherCon []] =
+              CCCS Text.ParserCombinators.ReadP.Result! [w_s5hne
+                                                         Text.ParserCombinators.ReadP.Fail]; } in
+        let {
+          k_s5hng [Occ=OnceL, Dmd=<L,C(U)>]
+            :: () -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+              [lvl_s5hnf] \r [a1_s5hnh] lvl_s5hnf; } in
+        let {
+          sat_s5hnj [Occ=Once]
+            :: GHC.Base.String -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId] =
+              [k_s5hng] \r [a1_s5hni]
+                  Text.ParserCombinators.ReadP.skipSpaces2 a1_s5hni k_s5hng;
+        } in  Text.ParserCombinators.ReadP.Look [sat_s5hnj];
+
+Text.Read.readEither8 [Occ=LoopBreaker]
+  :: forall a. [(a, GHC.Base.String)] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5hnk]
+        case ds_s5hnk of {
+          [] -> [] [];
+          : y_s5hnm [Occ=Once!] ys_s5hnn [Occ=Once*] ->
+              case y_s5hnm of {
+                (,) x_s5hnp [Occ=Once] ds1_s5hnq [Occ=Once!] ->
+                    case ds1_s5hnq of {
+                      [] ->
+                          let {
+                            sat_s5hns [Occ=Once] :: [a_a5hip]
+                            [LclId] =
+                                [ys_s5hnn] \u [] Text.Read.readEither8 ys_s5hnn;
+                          } in  : [x_s5hnp sat_s5hns];
+                      : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither8 ys_s5hnn;
+                    };
+              };
+        };
+
+Text.Read.readEither
+  :: forall a.
+     GHC.Read.Read a =>
+     GHC.Base.String -> Data.Either.Either GHC.Base.String a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnv s_s5hnw]
+        case
+            GHC.Read.readPrec
+                $dRead_s5hnv
+                Text.ParserCombinators.ReadPrec.minPrec
+                Text.Read.readEither7
+        of
+        sat_s5hnx
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5hnx s_s5hnw
+              of
+              sat_s5hny
+              { __DEFAULT ->
+                    case Text.Read.readEither8 sat_s5hny of {
+                      [] -> Text.Read.readEither4;
+                      : x_s5hnA [Occ=Once] ds_s5hnB [Occ=Once!] ->
+                          case ds_s5hnB of {
+                            [] -> Data.Either.Right [x_s5hnA];
+                            : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither1;
+                          };
+                    };
+              };
+        };
+
+Text.Read.readMaybe
+  :: forall a. GHC.Read.Read a => GHC.Base.String -> GHC.Base.Maybe a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnF s_s5hnG]
+        case Text.Read.readEither $dRead_s5hnF s_s5hnG of {
+          Data.Either.Left _ [Occ=Dead] -> GHC.Base.Nothing [];
+          Data.Either.Right a1_s5hnJ [Occ=Once] -> GHC.Base.Just [a1_s5hnJ];
+        };
+
+Text.Read.read :: forall a. GHC.Read.Read a => GHC.Base.String -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnK s_s5hnL]
+        case Text.Read.readEither $dRead_s5hnK s_s5hnL of {
+          Data.Either.Left x_s5hnN [Occ=Once] ->
+              GHC.Err.errorWithoutStackTrace x_s5hnN;
+          Data.Either.Right y_s5hnO [Occ=Once] -> y_s5hnO;
+        };
+
+Text.Read.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Text.Read.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule4];
+
+Text.Read.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Text.Read"#;
+
+Text.Read.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule2];
+
+Text.Read.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Text.Read.$trModule3
+                                     Text.Read.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:00:16.821625162 UTC
+
+Text.Read.reads
+  :: forall a.
+     GHC.Read.Read a =>
+     Text.ParserCombinators.ReadP.ReadS a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(C(S)LLL),1*U(1*C1(U),A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnd]
+        GHC.Read.readsPrec
+            $dRead_s5hnd Text.ParserCombinators.ReadPrec.minPrec;
+
+Text.Read.readEither6 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: no parse"#;
+
+Text.Read.readEither5 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither6;
+
+Text.Read.readEither4
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither5];
+
+Text.Read.readEither3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: ambiguous parse"#;
+
+Text.Read.readEither2 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither3;
+
+Text.Read.readEither1
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither2];
+
+Text.Read.readEither7 [InlPrag=NOUSERINLINE[0]]
+  :: forall a. a -> Text.ParserCombinators.ReadP.P a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>m2, Unf=OtherCon []] =
+    [] \r [w_s5hne]
+        let {
+          lvl_s5hnf [Occ=OnceL] :: Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Unf=OtherCon []] =
+              CCCS Text.ParserCombinators.ReadP.Result! [w_s5hne
+                                                         Text.ParserCombinators.ReadP.Fail]; } in
+        let {
+          k_s5hng [Occ=OnceL, Dmd=<L,C(U)>]
+            :: () -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+              [lvl_s5hnf] \r [a1_s5hnh] lvl_s5hnf; } in
+        let {
+          sat_s5hnj [Occ=Once]
+            :: GHC.Base.String -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId] =
+              [k_s5hng] \r [a1_s5hni]
+                  Text.ParserCombinators.ReadP.skipSpaces2 a1_s5hni k_s5hng;
+        } in  Text.ParserCombinators.ReadP.Look [sat_s5hnj];
+
+Text.Read.readEither8 [Occ=LoopBreaker]
+  :: forall a. [(a, GHC.Base.String)] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5hnk]
+        case ds_s5hnk of {
+          [] -> [] [];
+          : y_s5hnm [Occ=Once!] ys_s5hnn [Occ=Once*] ->
+              case y_s5hnm of {
+                (,) x_s5hnp [Occ=Once] ds1_s5hnq [Occ=Once!] ->
+                    case ds1_s5hnq of {
+                      [] ->
+                          let {
+                            sat_s5hns [Occ=Once] :: [a_a5hip]
+                            [LclId] =
+                                [ys_s5hnn] \u [] Text.Read.readEither8 ys_s5hnn;
+                          } in  : [x_s5hnp sat_s5hns];
+                      : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither8 ys_s5hnn;
+                    };
+              };
+        };
+
+Text.Read.readEither
+  :: forall a.
+     GHC.Read.Read a =>
+     GHC.Base.String -> Data.Either.Either GHC.Base.String a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnv s_s5hnw]
+        case
+            GHC.Read.readPrec
+                $dRead_s5hnv
+                Text.ParserCombinators.ReadPrec.minPrec
+                Text.Read.readEither7
+        of
+        sat_s5hnx
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5hnx s_s5hnw
+              of
+              sat_s5hny
+              { __DEFAULT ->
+                    case Text.Read.readEither8 sat_s5hny of {
+                      [] -> Text.Read.readEither4;
+                      : x_s5hnA [Occ=Once] ds_s5hnB [Occ=Once!] ->
+                          case ds_s5hnB of {
+                            [] -> Data.Either.Right [x_s5hnA];
+                            : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither1;
+                          };
+                    };
+              };
+        };
+
+Text.Read.readMaybe
+  :: forall a. GHC.Read.Read a => GHC.Base.String -> GHC.Base.Maybe a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnF s_s5hnG]
+        case Text.Read.readEither $dRead_s5hnF s_s5hnG of {
+          Data.Either.Left _ [Occ=Dead] -> GHC.Base.Nothing [];
+          Data.Either.Right a1_s5hnJ [Occ=Once] -> GHC.Base.Just [a1_s5hnJ];
+        };
+
+Text.Read.read :: forall a. GHC.Read.Read a => GHC.Base.String -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hnK s_s5hnL]
+        case Text.Read.readEither $dRead_s5hnK s_s5hnL of {
+          Data.Either.Left x_s5hnN [Occ=Once] ->
+              GHC.Err.errorWithoutStackTrace x_s5hnN;
+          Data.Either.Right y_s5hnO [Occ=Once] -> y_s5hnO;
+        };
+
+Text.Read.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Text.Read.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule4];
+
+Text.Read.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Text.Read"#;
+
+Text.Read.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule2];
+
+Text.Read.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Text.Read.$trModule3
+                                     Text.Read.$trModule1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:00:17.09121763 UTC
+
+Text.Read.reads
+  :: forall a.
+     GHC.Read.Read a =>
+     Text.ParserCombinators.ReadP.ReadS a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(C(S)LLL),1*U(1*C1(U),A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzg]
+        GHC.Read.readsPrec
+            $dRead_s5hzg Text.ParserCombinators.ReadPrec.minPrec;
+
+Text.Read.readEither6 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: no parse"#;
+
+Text.Read.readEither5 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither6;
+
+Text.Read.readEither4
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither5];
+
+Text.Read.readEither3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: ambiguous parse"#;
+
+Text.Read.readEither2 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither3;
+
+Text.Read.readEither1
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither2];
+
+Text.Read.readEither7 [InlPrag=NOUSERINLINE[0]]
+  :: forall a. a -> Text.ParserCombinators.ReadP.P a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>m2, Unf=OtherCon []] =
+    [] \r [w_s5hzh]
+        let {
+          lvl_s5hzi [Occ=OnceL] :: Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Unf=OtherCon []] =
+              CCCS Text.ParserCombinators.ReadP.Result! [w_s5hzh
+                                                         Text.ParserCombinators.ReadP.Fail]; } in
+        let {
+          k_s5hzj [Occ=OnceL, Dmd=<L,C(U)>]
+            :: () -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+              [lvl_s5hzi] \r [a1_s5hzk] lvl_s5hzi; } in
+        let {
+          sat_s5hzm [Occ=Once]
+            :: GHC.Base.String -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId] =
+              [k_s5hzj] \r [a1_s5hzl]
+                  Text.ParserCombinators.ReadP.skipSpaces2 a1_s5hzl k_s5hzj;
+        } in  Text.ParserCombinators.ReadP.Look [sat_s5hzm];
+
+Text.Read.readEither8 [Occ=LoopBreaker]
+  :: forall a. [(a, GHC.Base.String)] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5hzn]
+        case ds_s5hzn of {
+          [] -> [] [];
+          : y_s5hzp [Occ=Once!] ys_s5hzq [Occ=Once*] ->
+              case y_s5hzp of {
+                (,) x_s5hzs [Occ=Once] ds1_s5hzt [Occ=Once!] ->
+                    case ds1_s5hzt of {
+                      [] ->
+                          let {
+                            sat_s5hzv [Occ=Once] :: [a_a5hip]
+                            [LclId] =
+                                [ys_s5hzq] \u [] Text.Read.readEither8 ys_s5hzq;
+                          } in  : [x_s5hzs sat_s5hzv];
+                      : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither8 ys_s5hzq;
+                    };
+              };
+        };
+
+Text.Read.readEither
+  :: forall a.
+     GHC.Read.Read a =>
+     GHC.Base.String -> Data.Either.Either GHC.Base.String a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzy s_s5hzz]
+        case
+            GHC.Read.readPrec
+                $dRead_s5hzy
+                Text.ParserCombinators.ReadPrec.minPrec
+                Text.Read.readEither7
+        of
+        sat_s5hzA
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5hzA s_s5hzz
+              of
+              sat_s5hzB
+              { __DEFAULT ->
+                    case Text.Read.readEither8 sat_s5hzB of {
+                      [] -> Text.Read.readEither4;
+                      : x_s5hzD [Occ=Once] ds_s5hzE [Occ=Once!] ->
+                          case ds_s5hzE of {
+                            [] -> Data.Either.Right [x_s5hzD];
+                            : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither1;
+                          };
+                    };
+              };
+        };
+
+Text.Read.readMaybe
+  :: forall a. GHC.Read.Read a => GHC.Base.String -> GHC.Base.Maybe a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzI s_s5hzJ]
+        case Text.Read.readEither $dRead_s5hzI s_s5hzJ of {
+          Data.Either.Left _ [Occ=Dead] -> GHC.Base.Nothing [];
+          Data.Either.Right a1_s5hzM [Occ=Once] -> GHC.Base.Just [a1_s5hzM];
+        };
+
+Text.Read.read :: forall a. GHC.Read.Read a => GHC.Base.String -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzN s_s5hzO]
+        case Text.Read.readEither $dRead_s5hzN s_s5hzO of {
+          Data.Either.Left x_s5hzQ [Occ=Once] ->
+              GHC.Err.errorWithoutStackTrace x_s5hzQ;
+          Data.Either.Right y_s5hzR [Occ=Once] -> y_s5hzR;
+        };
+
+Text.Read.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Text.Read.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule4];
+
+Text.Read.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Text.Read"#;
+
+Text.Read.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule2];
+
+Text.Read.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Text.Read.$trModule3
+                                     Text.Read.$trModule1];
+
+
+==================== STG syntax: ====================
+2018-03-16 16:00:17.098246554 UTC
+
+Text.Read.reads
+  :: forall a.
+     GHC.Read.Read a =>
+     Text.ParserCombinators.ReadP.ReadS a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(C(S)LLL),1*U(1*C1(U),A,A,A)>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzg]
+        GHC.Read.readsPrec
+            $dRead_s5hzg Text.ParserCombinators.ReadPrec.minPrec;
+
+Text.Read.readEither6 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: no parse"#;
+
+Text.Read.readEither5 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither6;
+
+Text.Read.readEither4
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither5];
+
+Text.Read.readEither3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Prelude.read: ambiguous parse"#;
+
+Text.Read.readEither2 :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# Text.Read.readEither3;
+
+Text.Read.readEither1
+  :: forall a. Data.Either.Either [GHC.Types.Char] a
+[GblId, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE Data.Either.Left! [Text.Read.readEither2];
+
+Text.Read.readEither7 [InlPrag=NOUSERINLINE[0]]
+  :: forall a. a -> Text.ParserCombinators.ReadP.P a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<L,U>m2, Unf=OtherCon []] =
+    [] \r [w_s5hzh]
+        let {
+          lvl_s5hzi [Occ=OnceL] :: Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Unf=OtherCon []] =
+              CCCS Text.ParserCombinators.ReadP.Result! [w_s5hzh
+                                                         Text.ParserCombinators.ReadP.Fail]; } in
+        let {
+          k_s5hzj [Occ=OnceL, Dmd=<L,C(U)>]
+            :: () -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId, Arity=1, Str=<L,A>, Unf=OtherCon []] =
+              [lvl_s5hzi] \r [a1_s5hzk] lvl_s5hzi; } in
+        let {
+          sat_s5hzm [Occ=Once]
+            :: GHC.Base.String -> Text.ParserCombinators.ReadP.P a_s5hm2
+          [LclId] =
+              [k_s5hzj] \r [a1_s5hzl]
+                  Text.ParserCombinators.ReadP.skipSpaces2 a1_s5hzl k_s5hzj;
+        } in  Text.ParserCombinators.ReadP.Look [sat_s5hzm];
+
+Text.Read.readEither8 [Occ=LoopBreaker]
+  :: forall a. [(a, GHC.Base.String)] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []] =
+    [] \r [ds_s5hzn]
+        case ds_s5hzn of {
+          [] -> [] [];
+          : y_s5hzp [Occ=Once!] ys_s5hzq [Occ=Once*] ->
+              case y_s5hzp of {
+                (,) x_s5hzs [Occ=Once] ds1_s5hzt [Occ=Once!] ->
+                    case ds1_s5hzt of {
+                      [] ->
+                          let {
+                            sat_s5hzv [Occ=Once] :: [a_a5hip]
+                            [LclId] =
+                                [ys_s5hzq] \u [] Text.Read.readEither8 ys_s5hzq;
+                          } in  : [x_s5hzs sat_s5hzv];
+                      : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither8 ys_s5hzq;
+                    };
+              };
+        };
+
+Text.Read.readEither
+  :: forall a.
+     GHC.Read.Read a =>
+     GHC.Base.String -> Data.Either.Either GHC.Base.String a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzy s_s5hzz]
+        case
+            GHC.Read.readPrec
+                $dRead_s5hzy
+                Text.ParserCombinators.ReadPrec.minPrec
+                Text.Read.readEither7
+        of
+        sat_s5hzA
+        { __DEFAULT ->
+              case
+                  Text.ParserCombinators.ReadP.run sat_s5hzA s_s5hzz
+              of
+              sat_s5hzB
+              { __DEFAULT ->
+                    case Text.Read.readEither8 sat_s5hzB of {
+                      [] -> Text.Read.readEither4;
+                      : x_s5hzD [Occ=Once] ds_s5hzE [Occ=Once!] ->
+                          case ds_s5hzE of {
+                            [] -> Data.Either.Right [x_s5hzD];
+                            : _ [Occ=Dead] _ [Occ=Dead] -> Text.Read.readEither1;
+                          };
+                    };
+              };
+        };
+
+Text.Read.readMaybe
+  :: forall a. GHC.Read.Read a => GHC.Base.String -> GHC.Base.Maybe a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzI s_s5hzJ]
+        case Text.Read.readEither $dRead_s5hzI s_s5hzJ of {
+          Data.Either.Left _ [Occ=Dead] -> GHC.Base.Nothing [];
+          Data.Either.Right a1_s5hzM [Occ=Once] -> GHC.Base.Just [a1_s5hzM];
+        };
+
+Text.Read.read :: forall a. GHC.Read.Read a => GHC.Base.String -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U>,
+ Unf=OtherCon []] =
+    [] \r [$dRead_s5hzN s_s5hzO]
+        case Text.Read.readEither $dRead_s5hzN s_s5hzO of {
+          Data.Either.Left x_s5hzQ [Occ=Once] ->
+              GHC.Err.errorWithoutStackTrace x_s5hzQ;
+          Data.Either.Right y_s5hzR [Occ=Once] -> y_s5hzR;
+        };
+
+Text.Read.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+Text.Read.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule4];
+
+Text.Read.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Text.Read"#;
+
+Text.Read.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Text.Read.$trModule2];
+
+Text.Read.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Text.Read.$trModule3
+                                     Text.Read.$trModule1];
+

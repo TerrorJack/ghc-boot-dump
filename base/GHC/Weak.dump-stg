@@ -1,0 +1,1028 @@
+
+==================== Pre unarise: ====================
+2018-03-16 15:57:07.643282261 UTC
+
+GHC.Weak.mkWeak1
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Weak.Weak v #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [key_s2nGL val_s2nGM ds_s2nGN eta_s2nGO]
+        case ds_s2nGN of {
+          GHC.Base.Nothing ->
+              case mkWeakNoFinalizer# [key_s2nGL val_s2nGM eta_s2nGO] of {
+                (#,#) ipv_s2nGR [Occ=Once] ipv1_s2nGS [Occ=Once] ->
+                    let {
+                      sat_s2nGT [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nGS];
+                    } in  (#,#) [ipv_s2nGR sat_s2nGT];
+              };
+          GHC.Base.Just ds1_s2nGU [Occ=Once] ->
+              case mkWeak# [key_s2nGL val_s2nGM ds1_s2nGU eta_s2nGO] of {
+                (#,#) ipv_s2nGW [Occ=Once] ipv1_s2nGX [Occ=Once] ->
+                    let {
+                      sat_s2nGY [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nGX];
+                    } in  (#,#) [ipv_s2nGW sat_s2nGY];
+              };
+        };
+
+GHC.Weak.mkWeak
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Types.IO (GHC.Weak.Weak v)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.Weak.mkWeak1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.Weak.deRefWeak1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe v #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nGZ eta_s2nH0]
+        case ds_s2nGZ of {
+          GHC.Weak.Weak w_s2nH2 [Occ=Once] ->
+              case deRefWeak# [w_s2nH2 eta_s2nH0] of {
+                (#,,#) ipv_s2nH4 [Occ=Once*]
+                       ipv1_s2nH5 [Occ=Once!]
+                       ipv2_s2nH6 [Occ=Once] ->
+                    case ipv1_s2nH5 of {
+                      __DEFAULT ->
+                          let {
+                            sat_s2nH8 [Occ=Once] :: GHC.Base.Maybe v_a2nAA
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_s2nH6];
+                          } in  (#,#) [ipv_s2nH4 sat_s2nH8];
+                      0# -> (#,#) [ipv_s2nH4 GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.Weak.deRefWeak
+  :: forall v. GHC.Weak.Weak v -> GHC.Types.IO (GHC.Base.Maybe v)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Weak.deRefWeak1 eta_B2 eta_B1;
+
+GHC.Weak.finalize1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nH9 eta_s2nHa]
+        case ds_s2nH9 of {
+          GHC.Weak.Weak w_s2nHc [Occ=Once] ->
+              case finalizeWeak# [w_s2nHc eta_s2nHa] of {
+                (#,,#) ipv_s2nHe [Occ=Once*]
+                       ipv1_s2nHf [Occ=Once!]
+                       ipv2_s2nHg [Occ=Once!] ->
+                    case ipv1_s2nHf of {
+                      __DEFAULT -> ipv2_s2nHg ipv_s2nHe;
+                      0# -> (#,#) [ipv_s2nHe GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Weak.finalize :: forall v. GHC.Weak.Weak v -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Weak.finalize1 eta_B2 eta_B1;
+
+GHC.Weak.runFinalizerBatch1
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nHi arr_s2nHj eta_s2nHk]
+        case ds_s2nHi of {
+          GHC.Types.I# n_s2nHm [Occ=Once] ->
+              let-no-escape {
+                go_s2nHn [Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+                    sat-only [arr_s2nHj go_s2nHn] \r [m_s2nHo s_s2nHp]
+                        case m_s2nHo of ds1_s2nHq {
+                          __DEFAULT ->
+                              case -# [ds1_s2nHq 1#] of m'_s2nHr [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case indexArray# [arr_s2nHj m'_s2nHr] of {
+                                      Unit# ipv_s2nHt [Occ=Once!] ->
+                                          case ipv_s2nHt s_s2nHp of s'_s2nHu {
+                                            __DEFAULT -> go_s2nHn m'_s2nHr s'_s2nHu;
+                                          };
+                                    };
+                              };
+                          0# -> (#,#) [s_s2nHp GHC.Tuple.()];
+                        };
+              } in  go_s2nHn n_s2nHm eta_s2nHk;
+        };
+
+GHC.Weak.runFinalizerBatch
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Weak.runFinalizerBatch1 eta_B3 eta_B2 eta_B1;
+
+GHC.Weak.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Weak.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule4];
+
+GHC.Weak.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Weak"#;
+
+GHC.Weak.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule2];
+
+GHC.Weak.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Weak.$trModule3
+                                     GHC.Weak.$trModule1];
+
+$krep_r2nGG :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r2nGH :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r2nGG GHC.Types.[]];
+
+$krep2_r2nGI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcWeak#
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tcWeak2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Weak"#;
+
+GHC.Weak.$tcWeak1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tcWeak2];
+
+GHC.Weak.$tcWeak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [16083706323098193819##
+                                    16670279643231176950##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tcWeak1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r2nGJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Weak.$tcWeak
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tc'Weak1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r2nGI $krep3_r2nGJ];
+
+GHC.Weak.$tc'Weak3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Weak"#;
+
+GHC.Weak.$tc'Weak2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tc'Weak3];
+
+GHC.Weak.$tc'Weak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3879909390682789585##
+                                    9243676412269356154##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tc'Weak2
+                                    1#
+                                    GHC.Weak.$tc'Weak1];
+
+GHC.Weak.Weak :: forall v. GHC.Prim.Weak# v -> GHC.Weak.Weak v
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Weak.Weak [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:57:07.648127168 UTC
+
+GHC.Weak.mkWeak1
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Weak.Weak v #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [key_s2nGL val_s2nGM ds_s2nGN void_0E]
+        case ds_s2nGN of {
+          GHC.Base.Nothing ->
+              case mkWeakNoFinalizer# [key_s2nGL val_s2nGM GHC.Prim.void#] of {
+                Unit# ipv1_s2nGS [Occ=Once] ->
+                    let {
+                      sat_s2nGT [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nGS];
+                    } in  Unit# [sat_s2nGT];
+              };
+          GHC.Base.Just ds1_s2nGU [Occ=Once] ->
+              case mkWeak# [key_s2nGL val_s2nGM ds1_s2nGU GHC.Prim.void#] of {
+                Unit# ipv1_s2nGX [Occ=Once] ->
+                    let {
+                      sat_s2nGY [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nGX];
+                    } in  Unit# [sat_s2nGY];
+              };
+        };
+
+GHC.Weak.mkWeak
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Types.IO (GHC.Weak.Weak v)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.Weak.mkWeak1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.deRefWeak1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe v #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nGZ void_0E]
+        case ds_s2nGZ of {
+          GHC.Weak.Weak w_s2nH2 [Occ=Once] ->
+              case deRefWeak# [w_s2nH2 GHC.Prim.void#] of {
+                (#,#) ipv1_s2nH5 [Occ=Once!] ipv2_s2nH6 [Occ=Once] ->
+                    case ipv1_s2nH5 of {
+                      __DEFAULT ->
+                          let {
+                            sat_s2nH8 [Occ=Once] :: GHC.Base.Maybe v_a2nAA
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_s2nH6];
+                          } in  Unit# [sat_s2nH8];
+                      0# -> Unit# [GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.Weak.deRefWeak
+  :: forall v. GHC.Weak.Weak v -> GHC.Types.IO (GHC.Base.Maybe v)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Weak.deRefWeak1 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.finalize1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nH9 void_0E]
+        case ds_s2nH9 of {
+          GHC.Weak.Weak w_s2nHc [Occ=Once] ->
+              case finalizeWeak# [w_s2nHc GHC.Prim.void#] of {
+                (#,#) ipv1_s2nHf [Occ=Once!] ipv2_s2nHg [Occ=Once!] ->
+                    case ipv1_s2nHf of {
+                      __DEFAULT -> ipv2_s2nHg GHC.Prim.void#;
+                      0# -> Unit# [GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Weak.finalize :: forall v. GHC.Weak.Weak v -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Weak.finalize1 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.runFinalizerBatch1
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nHi arr_s2nHj void_0E]
+        case ds_s2nHi of {
+          GHC.Types.I# n_s2nHm [Occ=Once] ->
+              let-no-escape {
+                go_s2nHn [Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+                    sat-only [arr_s2nHj go_s2nHn] \r [m_s2nHo void_0E]
+                        case m_s2nHo of ds1_s2nHq {
+                          __DEFAULT ->
+                              case -# [ds1_s2nHq 1#] of m'_s2nHr [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case indexArray# [arr_s2nHj m'_s2nHr] of {
+                                      Unit# ipv_s2nHt [Occ=Once!] ->
+                                          case ipv_s2nHt GHC.Prim.void# of s'_s2nHu {
+                                            (##) -> go_s2nHn m'_s2nHr GHC.Prim.void#;
+                                          };
+                                    };
+                              };
+                          0# -> Unit# [GHC.Tuple.()];
+                        };
+              } in  go_s2nHn n_s2nHm GHC.Prim.void#;
+        };
+
+GHC.Weak.runFinalizerBatch
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Weak.runFinalizerBatch1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Weak.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule4];
+
+GHC.Weak.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Weak"#;
+
+GHC.Weak.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule2];
+
+GHC.Weak.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Weak.$trModule3
+                                     GHC.Weak.$trModule1];
+
+$krep_r2nGG :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r2nGH :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r2nGG GHC.Types.[]];
+
+$krep2_r2nGI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcWeak#
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tcWeak2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Weak"#;
+
+GHC.Weak.$tcWeak1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tcWeak2];
+
+GHC.Weak.$tcWeak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [16083706323098193819##
+                                    16670279643231176950##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tcWeak1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r2nGJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Weak.$tcWeak
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tc'Weak1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r2nGI $krep3_r2nGJ];
+
+GHC.Weak.$tc'Weak3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Weak"#;
+
+GHC.Weak.$tc'Weak2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tc'Weak3];
+
+GHC.Weak.$tc'Weak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3879909390682789585##
+                                    9243676412269356154##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tc'Weak2
+                                    1#
+                                    GHC.Weak.$tc'Weak1];
+
+GHC.Weak.Weak :: forall v. GHC.Prim.Weak# v -> GHC.Weak.Weak v
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Weak.Weak [eta_B1];
+
+
+==================== Pre unarise: ====================
+2018-03-16 15:57:07.920590773 UTC
+
+GHC.Weak.mkWeak1
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Weak.Weak v #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [key_s2nR1 val_s2nR2 ds_s2nR3 eta_s2nR4]
+        case ds_s2nR3 of {
+          GHC.Base.Nothing ->
+              case mkWeakNoFinalizer# [key_s2nR1 val_s2nR2 eta_s2nR4] of {
+                (#,#) ipv_s2nR7 [Occ=Once] ipv1_s2nR8 [Occ=Once] ->
+                    let {
+                      sat_s2nR9 [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nR8];
+                    } in  (#,#) [ipv_s2nR7 sat_s2nR9];
+              };
+          GHC.Base.Just ds1_s2nRa [Occ=Once] ->
+              case mkWeak# [key_s2nR1 val_s2nR2 ds1_s2nRa eta_s2nR4] of {
+                (#,#) ipv_s2nRc [Occ=Once] ipv1_s2nRd [Occ=Once] ->
+                    let {
+                      sat_s2nRe [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nRd];
+                    } in  (#,#) [ipv_s2nRc sat_s2nRe];
+              };
+        };
+
+GHC.Weak.mkWeak
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Types.IO (GHC.Weak.Weak v)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        GHC.Weak.mkWeak1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+GHC.Weak.deRefWeak1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe v #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nRf eta_s2nRg]
+        case ds_s2nRf of {
+          GHC.Weak.Weak w_s2nRi [Occ=Once] ->
+              case deRefWeak# [w_s2nRi eta_s2nRg] of {
+                (#,,#) ipv_s2nRk [Occ=Once*]
+                       ipv1_s2nRl [Occ=Once!]
+                       ipv2_s2nRm [Occ=Once] ->
+                    case ipv1_s2nRl of {
+                      __DEFAULT ->
+                          let {
+                            sat_s2nRo [Occ=Once] :: GHC.Base.Maybe v_a2nAA
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_s2nRm];
+                          } in  (#,#) [ipv_s2nRk sat_s2nRo];
+                      0# -> (#,#) [ipv_s2nRk GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.Weak.deRefWeak
+  :: forall v. GHC.Weak.Weak v -> GHC.Types.IO (GHC.Base.Maybe v)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Weak.deRefWeak1 eta_B2 eta_B1;
+
+GHC.Weak.finalize1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nRp eta_s2nRq]
+        case ds_s2nRp of {
+          GHC.Weak.Weak w_s2nRs [Occ=Once] ->
+              case finalizeWeak# [w_s2nRs eta_s2nRq] of {
+                (#,,#) ipv_s2nRu [Occ=Once*]
+                       ipv1_s2nRv [Occ=Once!]
+                       ipv2_s2nRw [Occ=Once!] ->
+                    case ipv1_s2nRv of {
+                      __DEFAULT -> ipv2_s2nRw ipv_s2nRu;
+                      0# -> (#,#) [ipv_s2nRu GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Weak.finalize :: forall v. GHC.Weak.Weak v -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 eta_B1] GHC.Weak.finalize1 eta_B2 eta_B1;
+
+GHC.Weak.runFinalizerBatch1
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nRy arr_s2nRz eta_s2nRA]
+        case ds_s2nRy of {
+          GHC.Types.I# n_s2nRC [Occ=Once] ->
+              let-no-escape {
+                go_s2nRD [Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+                    sat-only [arr_s2nRz go_s2nRD] \r [m_s2nRE s_s2nRF]
+                        case m_s2nRE of ds1_s2nRG {
+                          __DEFAULT ->
+                              case -# [ds1_s2nRG 1#] of m'_s2nRH [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case indexArray# [arr_s2nRz m'_s2nRH] of {
+                                      Unit# ipv_s2nRJ [Occ=Once!] ->
+                                          case ipv_s2nRJ s_s2nRF of s'_s2nRK {
+                                            __DEFAULT -> go_s2nRD m'_s2nRH s'_s2nRK;
+                                          };
+                                    };
+                              };
+                          0# -> (#,#) [s_s2nRF GHC.Tuple.()];
+                        };
+              } in  go_s2nRD n_s2nRC eta_s2nRA;
+        };
+
+GHC.Weak.runFinalizerBatch
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        GHC.Weak.runFinalizerBatch1 eta_B3 eta_B2 eta_B1;
+
+GHC.Weak.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Weak.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule4];
+
+GHC.Weak.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Weak"#;
+
+GHC.Weak.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule2];
+
+GHC.Weak.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Weak.$trModule3
+                                     GHC.Weak.$trModule1];
+
+$krep_r2nGG :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r2nGH :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r2nGG GHC.Types.[]];
+
+$krep2_r2nGI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcWeak#
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tcWeak2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Weak"#;
+
+GHC.Weak.$tcWeak1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tcWeak2];
+
+GHC.Weak.$tcWeak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [16083706323098193819##
+                                    16670279643231176950##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tcWeak1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r2nGJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Weak.$tcWeak
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tc'Weak1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r2nGI $krep3_r2nGJ];
+
+GHC.Weak.$tc'Weak3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Weak"#;
+
+GHC.Weak.$tc'Weak2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tc'Weak3];
+
+GHC.Weak.$tc'Weak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3879909390682789585##
+                                    9243676412269356154##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tc'Weak2
+                                    1#
+                                    GHC.Weak.$tc'Weak1];
+
+GHC.Weak.Weak :: forall v. GHC.Prim.Weak# v -> GHC.Weak.Weak v
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Weak.Weak [eta_B1];
+
+
+==================== STG syntax: ====================
+2018-03-16 15:57:07.9259184 UTC
+
+GHC.Weak.mkWeak1
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Weak.Weak v #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [key_s2nR1 val_s2nR2 ds_s2nR3 void_0E]
+        case ds_s2nR3 of {
+          GHC.Base.Nothing ->
+              case mkWeakNoFinalizer# [key_s2nR1 val_s2nR2 GHC.Prim.void#] of {
+                Unit# ipv1_s2nR8 [Occ=Once] ->
+                    let {
+                      sat_s2nR9 [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nR8];
+                    } in  Unit# [sat_s2nR9];
+              };
+          GHC.Base.Just ds1_s2nRa [Occ=Once] ->
+              case mkWeak# [key_s2nR1 val_s2nR2 ds1_s2nRa GHC.Prim.void#] of {
+                Unit# ipv1_s2nRd [Occ=Once] ->
+                    let {
+                      sat_s2nRe [Occ=Once] :: GHC.Weak.Weak v_a2nAN
+                      [LclId] =
+                          CCCS GHC.Weak.Weak! [ipv1_s2nRd];
+                    } in  Unit# [sat_s2nRe];
+              };
+        };
+
+GHC.Weak.mkWeak
+  :: forall k v.
+     k
+     -> v
+     -> GHC.Base.Maybe (GHC.Types.IO ())
+     -> GHC.Types.IO (GHC.Weak.Weak v)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,U><L,U><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        GHC.Weak.mkWeak1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.deRefWeak1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe v #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nRf void_0E]
+        case ds_s2nRf of {
+          GHC.Weak.Weak w_s2nRi [Occ=Once] ->
+              case deRefWeak# [w_s2nRi GHC.Prim.void#] of {
+                (#,#) ipv1_s2nRl [Occ=Once!] ipv2_s2nRm [Occ=Once] ->
+                    case ipv1_s2nRl of {
+                      __DEFAULT ->
+                          let {
+                            sat_s2nRo [Occ=Once] :: GHC.Base.Maybe v_a2nAA
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv2_s2nRm];
+                          } in  Unit# [sat_s2nRo];
+                      0# -> Unit# [GHC.Base.Nothing];
+                    };
+              };
+        };
+
+GHC.Weak.deRefWeak
+  :: forall v. GHC.Weak.Weak v -> GHC.Types.IO (GHC.Base.Maybe v)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Weak.deRefWeak1 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.finalize1
+  :: forall v.
+     GHC.Weak.Weak v
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nRp void_0E]
+        case ds_s2nRp of {
+          GHC.Weak.Weak w_s2nRs [Occ=Once] ->
+              case finalizeWeak# [w_s2nRs GHC.Prim.void#] of {
+                (#,#) ipv1_s2nRv [Occ=Once!] ipv2_s2nRw [Occ=Once!] ->
+                    case ipv1_s2nRv of {
+                      __DEFAULT -> ipv2_s2nRw GHC.Prim.void#;
+                      0# -> Unit# [GHC.Tuple.()];
+                    };
+              };
+        };
+
+GHC.Weak.finalize :: forall v. GHC.Weak.Weak v -> GHC.Types.IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B2 void_0E] GHC.Weak.finalize1 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.runFinalizerBatch1
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s2nRy arr_s2nRz void_0E]
+        case ds_s2nRy of {
+          GHC.Types.I# n_s2nRC [Occ=Once] ->
+              let-no-escape {
+                go_s2nRD [Occ=LoopBreakerT[2]]
+                  :: GHC.Prim.Int#
+                     -> GHC.Prim.State# GHC.Prim.RealWorld
+                     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                [LclId[JoinId(2)], Arity=2, Str=<S,1*U><S,U>, Unf=OtherCon []] =
+                    sat-only [arr_s2nRz go_s2nRD] \r [m_s2nRE void_0E]
+                        case m_s2nRE of ds1_s2nRG {
+                          __DEFAULT ->
+                              case -# [ds1_s2nRG 1#] of m'_s2nRH [Dmd=<S,U>] {
+                                __DEFAULT ->
+                                    case indexArray# [arr_s2nRz m'_s2nRH] of {
+                                      Unit# ipv_s2nRJ [Occ=Once!] ->
+                                          case ipv_s2nRJ GHC.Prim.void# of s'_s2nRK {
+                                            (##) -> go_s2nRD m'_s2nRH GHC.Prim.void#;
+                                          };
+                                    };
+                              };
+                          0# -> Unit# [GHC.Tuple.()];
+                        };
+              } in  go_s2nRD n_s2nRC GHC.Prim.void#;
+        };
+
+GHC.Weak.runFinalizerBatch
+  :: GHC.Types.Int
+     -> GHC.Prim.Array#
+          (GHC.Prim.State# GHC.Prim.RealWorld
+           -> GHC.Prim.State# GHC.Prim.RealWorld)
+     -> GHC.Types.IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(1*U)><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        GHC.Weak.runFinalizerBatch1 eta_B3 eta_B2 GHC.Prim.void#;
+
+GHC.Weak.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+GHC.Weak.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule4];
+
+GHC.Weak.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "GHC.Weak"#;
+
+GHC.Weak.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$trModule2];
+
+GHC.Weak.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [GHC.Weak.$trModule3
+                                     GHC.Weak.$trModule1];
+
+$krep_r2nGG :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepVar! [0#];
+
+$krep1_r2nGH :: [GHC.Types.KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE :! [$krep_r2nGG GHC.Types.[]];
+
+$krep2_r2nGI :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Types.$tcWeak#
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tcWeak2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Weak"#;
+
+GHC.Weak.$tcWeak1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tcWeak2];
+
+GHC.Weak.$tcWeak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [16083706323098193819##
+                                    16670279643231176950##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tcWeak1
+                                    0#
+                                    GHC.Types.krep$*Arr*];
+
+$krep3_r2nGJ :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepTyConApp! [GHC.Weak.$tcWeak
+                                              $krep1_r2nGH];
+
+GHC.Weak.$tc'Weak1 [InlPrag=NOUSERINLINE[~]] :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.KindRepFun! [$krep2_r2nGI $krep3_r2nGJ];
+
+GHC.Weak.$tc'Weak3 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "'Weak"#;
+
+GHC.Weak.$tc'Weak2 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [GHC.Weak.$tc'Weak3];
+
+GHC.Weak.$tc'Weak :: GHC.Types.TyCon
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TyCon! [3879909390682789585##
+                                    9243676412269356154##
+                                    GHC.Weak.$trModule
+                                    GHC.Weak.$tc'Weak2
+                                    1#
+                                    GHC.Weak.$tc'Weak1];
+
+GHC.Weak.Weak :: forall v. GHC.Prim.Weak# v -> GHC.Weak.Weak v
+[GblId[DataCon],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=OtherCon []] =
+    [] \r [eta_B1] GHC.Weak.Weak [eta_B1];
+

@@ -1,0 +1,1456 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:03:56.662486063 UTC
+
+Result size of Tidy Core
+  = {terms: 571, types: 839, coercions: 143, joins: 0/2}
+
+-- RHS size: {terms: 33, types: 62, coercions: 2, joins: 0/0}
+Foreign.Marshal.Alloc.allocaBytes1
+  :: forall a b.
+     Int
+     -> (Ptr a -> IO b) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8MH6)
+                 (@ b_a8MH7)
+                 (ds_d8MJD [Occ=Once!] :: Int)
+                 (action_a8MBf [Occ=Once!] :: Ptr a_a8MH6 -> IO b_a8MH7)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d8MJD of { I# size_a8MBe [Occ=Once] ->
+                 case newPinnedByteArray# @ RealWorld size_a8MBe eta_B1 of
+                 { (# ipv_s8MKN [Occ=Once], ipv1_s8MKO [Occ=Once] #) ->
+                 case unsafeFreezeByteArray# @ RealWorld ipv1_s8MKO ipv_s8MKN of
+                 { (# ipv2_s8MKR [Occ=Once], ipv3_s8MKS #) ->
+                 case ((action_a8MBf
+                          (GHC.Ptr.Ptr @ a_a8MH6 (byteArrayContents# ipv3_s8MKS)))
+                       `cast` (GHC.Types.N:IO[0] <b_a8MH7>_R
+                               :: (IO b_a8MH7 :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, b_a8MH7 #) :: *)))
+                        ipv2_s8MKR
+                 of
+                 { (# ipv4_s8MKV [Occ=Once], ipv5_s8MKW [Occ=Once] #) ->
+                 case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8MKS ipv4_s8MKV
+                 of s4_a8MBp
+                 { __DEFAULT ->
+                 (# s4_a8MBp, ipv5_s8MKW #)
+                 }
+                 }
+                 }
+                 }
+                 }}]
+Foreign.Marshal.Alloc.allocaBytes1
+  = \ (@ a_a8MH6)
+      (@ b_a8MH7)
+      (ds_d8MJD :: Int)
+      (action_a8MBf :: Ptr a_a8MH6 -> IO b_a8MH7)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d8MJD of { I# size_a8MBe ->
+      case newPinnedByteArray# @ RealWorld size_a8MBe eta_B1 of
+      { (# ipv_s8MKN, ipv1_s8MKO #) ->
+      case unsafeFreezeByteArray# @ RealWorld ipv1_s8MKO ipv_s8MKN of
+      { (# ipv2_s8MKR, ipv3_s8MKS #) ->
+      case ((action_a8MBf
+               (GHC.Ptr.Ptr @ a_a8MH6 (byteArrayContents# ipv3_s8MKS)))
+            `cast` (GHC.Types.N:IO[0] <b_a8MH7>_R
+                    :: (IO b_a8MH7 :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, b_a8MH7 #) :: *)))
+             ipv2_s8MKR
+      of
+      { (# ipv4_s8MKV, ipv5_s8MKW #) ->
+      case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8MKS ipv4_s8MKV
+      of s4_a8MBp
+      { __DEFAULT ->
+      (# s4_a8MBp, ipv5_s8MKW #)
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+allocaBytes :: forall a b. Int -> (Ptr a -> IO b) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.allocaBytes1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <Int>_R ->_R <Ptr a -> IO b>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           Int
+                           -> (Ptr a -> IO b)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. Int -> (Ptr a -> IO b) -> IO b :: *))}]
+allocaBytes
+  = Foreign.Marshal.Alloc.allocaBytes1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <Int>_R ->_R <Ptr a -> IO b>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                Int
+                -> (Ptr a -> IO b)
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. Int -> (Ptr a -> IO b) -> IO b :: *))
+
+-- RHS size: {terms: 38, types: 65, coercions: 2, joins: 0/0}
+Foreign.Marshal.Alloc.allocaBytesAligned1
+  :: forall a b.
+     Int
+     -> Int
+     -> (Ptr a -> IO b)
+     -> State# RealWorld
+     -> (# State# RealWorld, b #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8MGA)
+                 (@ b_a8MGB)
+                 (ds_d8MJa [Occ=Once!] :: Int)
+                 (ds1_d8MJb [Occ=Once!] :: Int)
+                 (action_a8MBs [Occ=Once!] :: Ptr a_a8MGA -> IO b_a8MGB)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d8MJa of { I# size_a8MBq [Occ=Once] ->
+                 case ds1_d8MJb of { I# align_a8MBr [Occ=Once] ->
+                 case newAlignedPinnedByteArray#
+                        @ RealWorld size_a8MBq align_a8MBr eta_B1
+                 of
+                 { (# ipv_s8ML2 [Occ=Once], ipv1_s8ML3 [Occ=Once] #) ->
+                 case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+                 { (# ipv2_s8ML6 [Occ=Once], ipv3_s8ML7 #) ->
+                 case ((action_a8MBs
+                          (GHC.Ptr.Ptr @ a_a8MGA (byteArrayContents# ipv3_s8ML7)))
+                       `cast` (GHC.Types.N:IO[0] <b_a8MGB>_R
+                               :: (IO b_a8MGB :: *)
+                                  ~R# (State# RealWorld -> (# State# RealWorld, b_a8MGB #) :: *)))
+                        ipv2_s8ML6
+                 of
+                 { (# ipv4_s8MLa [Occ=Once], ipv5_s8MLb [Occ=Once] #) ->
+                 case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv4_s8MLa
+                 of s4_a8MBC
+                 { __DEFAULT ->
+                 (# s4_a8MBC, ipv5_s8MLb #)
+                 }
+                 }
+                 }
+                 }
+                 }
+                 }}]
+Foreign.Marshal.Alloc.allocaBytesAligned1
+  = \ (@ a_a8MGA)
+      (@ b_a8MGB)
+      (ds_d8MJa :: Int)
+      (ds1_d8MJb :: Int)
+      (action_a8MBs :: Ptr a_a8MGA -> IO b_a8MGB)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d8MJa of { I# size_a8MBq ->
+      case ds1_d8MJb of { I# align_a8MBr ->
+      case newAlignedPinnedByteArray#
+             @ RealWorld size_a8MBq align_a8MBr eta_B1
+      of
+      { (# ipv_s8ML2, ipv1_s8ML3 #) ->
+      case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+      { (# ipv2_s8ML6, ipv3_s8ML7 #) ->
+      case ((action_a8MBs
+               (GHC.Ptr.Ptr @ a_a8MGA (byteArrayContents# ipv3_s8ML7)))
+            `cast` (GHC.Types.N:IO[0] <b_a8MGB>_R
+                    :: (IO b_a8MGB :: *)
+                       ~R# (State# RealWorld -> (# State# RealWorld, b_a8MGB #) :: *)))
+             ipv2_s8ML6
+      of
+      { (# ipv4_s8MLa, ipv5_s8MLb #) ->
+      case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv4_s8MLa
+      of s4_a8MBC
+      { __DEFAULT ->
+      (# s4_a8MBC, ipv5_s8MLb #)
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 18, joins: 0/0}
+allocaBytesAligned
+  :: forall a b. Int -> Int -> (Ptr a -> IO b) -> IO b
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><C(C(S(SL))),1*C1(C1(U(U,U)))><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.allocaBytesAligned1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <Int>_R
+                       ->_R <Int>_R
+                       ->_R <Ptr a -> IO b>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           Int
+                           -> Int
+                           -> (Ptr a -> IO b)
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. Int -> Int -> (Ptr a -> IO b) -> IO b :: *))}]
+allocaBytesAligned
+  = Foreign.Marshal.Alloc.allocaBytesAligned1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <Int>_R
+            ->_R <Int>_R
+            ->_R <Ptr a -> IO b>_R
+            ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                Int
+                -> Int
+                -> (Ptr a -> IO b)
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. Int -> Int -> (Ptr a -> IO b) -> IO b :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_r8N65 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_r8N65 = "undefined"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl1_r8N66 :: [Char]
+[GblId]
+lvl1_r8N66 = unpackCString# lvl_r8N65
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl2_r8N67 :: [Char]
+[GblId]
+lvl2_r8N67 = unpackCString# Foreign.Marshal.Alloc.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 70 0}]
+Foreign.Marshal.Alloc.$trModule2 = "Foreign.Marshal.Alloc"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl3_r8N68 :: [Char]
+[GblId]
+lvl3_r8N68 = unpackCString# Foreign.Marshal.Alloc.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl4_r8N69 :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl4_r8N69 = "./Foreign/Marshal/Alloc.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl5_r8N6a :: [Char]
+[GblId]
+lvl5_r8N6a = unpackCString# lvl4_r8N69
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl6_r8N6b :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl6_r8N6b = GHC.Types.I# 117#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_r8N6c :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl7_r8N6c = GHC.Types.I# 31#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl8_r8N6d :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl8_r8N6d = GHC.Types.I# 40#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl9_r8N6e :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl9_r8N6e
+  = GHC.Stack.Types.SrcLoc
+      lvl2_r8N67
+      lvl3_r8N68
+      lvl5_r8N6a
+      lvl6_r8N6b
+      lvl7_r8N6c
+      lvl6_r8N6b
+      lvl8_r8N6d
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl10_r8N6f :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl10_r8N6f
+  = GHC.Stack.Types.PushCallStack
+      lvl1_r8N66 lvl9_r8N6e GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+lvl11_r8N6g :: forall a. a
+[GblId, Str=x]
+lvl11_r8N6g
+  = \ (@ a_a8MHC) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a8MHC
+        (lvl10_r8N6f
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl12_r8N6h :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl12_r8N6h = GHC.Types.I# 60#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl13_r8N6i :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl13_r8N6i = GHC.Types.I# 69#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl14_r8N6j :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl14_r8N6j
+  = GHC.Stack.Types.SrcLoc
+      lvl2_r8N67
+      lvl3_r8N68
+      lvl5_r8N6a
+      lvl6_r8N6b
+      lvl12_r8N6h
+      lvl6_r8N6b
+      lvl13_r8N6i
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl15_r8N6k :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl15_r8N6k
+  = GHC.Stack.Types.PushCallStack
+      lvl1_r8N66 lvl14_r8N6j GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+lvl16_r8N6l :: forall a. a
+[GblId, Str=x]
+lvl16_r8N6l
+  = \ (@ a_a8MHC) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a8MHC
+        (lvl15_r8N6k
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 45, types: 71, coercions: 10, joins: 0/2}
+alloca [InlPrag=INLINE (sat-args=0)]
+  :: forall a b. Storable a => (Ptr a -> IO b) -> IO b
+[GblId,
+ Arity=1,
+ Str=<L,U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a8MHC)
+                 (@ b_a8MHD)
+                 ($dStorable_a8MHF :: Storable a_a8MHC) ->
+                 let {
+                   ds_X8MJM [Occ=OnceL!] :: Int
+                   [LclId]
+                   ds_X8MJM
+                     = sizeOf
+                         @ a_a8MHC
+                         $dStorable_a8MHF
+                         (undefined
+                            @ 'LiftedRep
+                            @ a_a8MHC
+                            ((GHC.Stack.Types.PushCallStack
+                                (build
+                                   @ Char
+                                   (\ (@ b1_i7Jbh) -> unpackFoldrCString# @ b1_i7Jbh "undefined"#))
+                                (GHC.Stack.Types.SrcLoc
+                                   (build
+                                      @ Char
+                                      (\ (@ b1_i7Jbh) -> unpackFoldrCString# @ b1_i7Jbh "base"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b1_i7Jbh) ->
+                                         unpackFoldrCString# @ b1_i7Jbh "Foreign.Marshal.Alloc"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b1_i7Jbh) ->
+                                         unpackFoldrCString#
+                                           @ b1_i7Jbh "./Foreign/Marshal/Alloc.hs"#))
+                                   (GHC.Types.I# 117#)
+                                   (GHC.Types.I# 31#)
+                                   (GHC.Types.I# 117#)
+                                   (GHC.Types.I# 40#))
+                                GHC.Stack.Types.EmptyCallStack)
+                             `cast` (Sym (GHC.Classes.N:IP[0]
+                                              <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                                     :: (GHC.Stack.Types.CallStack :: *)
+                                        ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))) } in
+                 let {
+                   ds1_X8MJP [Occ=OnceL!] :: Int
+                   [LclId]
+                   ds1_X8MJP
+                     = alignment
+                         @ a_a8MHC
+                         $dStorable_a8MHF
+                         (undefined
+                            @ 'LiftedRep
+                            @ a_a8MHC
+                            ((GHC.Stack.Types.PushCallStack
+                                (build
+                                   @ Char
+                                   (\ (@ b1_i7Jbh) -> unpackFoldrCString# @ b1_i7Jbh "undefined"#))
+                                (GHC.Stack.Types.SrcLoc
+                                   (build
+                                      @ Char
+                                      (\ (@ b1_i7Jbh) -> unpackFoldrCString# @ b1_i7Jbh "base"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b1_i7Jbh) ->
+                                         unpackFoldrCString# @ b1_i7Jbh "Foreign.Marshal.Alloc"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b1_i7Jbh) ->
+                                         unpackFoldrCString#
+                                           @ b1_i7Jbh "./Foreign/Marshal/Alloc.hs"#))
+                                   (GHC.Types.I# 117#)
+                                   (GHC.Types.I# 60#)
+                                   (GHC.Types.I# 117#)
+                                   (GHC.Types.I# 69#))
+                                GHC.Stack.Types.EmptyCallStack)
+                             `cast` (Sym (GHC.Classes.N:IP[0]
+                                              <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                                     :: (GHC.Stack.Types.CallStack :: *)
+                                        ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))) } in
+                 (\ (action_X8MC8 [Occ=Once!] :: Ptr a_a8MHC -> IO b_a8MHD)
+                    (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                    case ds_X8MJM of { I# size_a8MBq [Occ=Once] ->
+                    case ds1_X8MJP of { I# align_a8MBr [Occ=Once] ->
+                    case newAlignedPinnedByteArray#
+                           @ RealWorld size_a8MBq align_a8MBr eta_B1
+                    of
+                    { (# ipv_s8ML2 [Occ=Once], ipv1_s8ML3 [Occ=Once] #) ->
+                    case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+                    { (# ipv2_s8ML6 [Occ=Once], ipv3_s8ML7 #) ->
+                    case ((action_X8MC8
+                             (GHC.Ptr.Ptr @ a_a8MHC (byteArrayContents# ipv3_s8ML7)))
+                          `cast` (GHC.Types.N:IO[0] <b_a8MHD>_R
+                                  :: (IO b_a8MHD :: *)
+                                     ~R# (State# RealWorld
+                                          -> (# State# RealWorld, b_a8MHD #) :: *)))
+                           ipv2_s8ML6
+                    of
+                    { (# ipv4_s8MLa [Occ=Once], ipv5_s8MLb [Occ=Once] #) ->
+                    case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv4_s8MLa
+                    of s4_a8MBC
+                    { __DEFAULT ->
+                    (# s4_a8MBC, ipv5_s8MLb #)
+                    }
+                    }
+                    }
+                    }
+                    }
+                    })
+                 `cast` (<Ptr a_a8MHC -> IO b_a8MHD>_R
+                         ->_R Sym (GHC.Types.N:IO[0] <b_a8MHD>_R)
+                         :: ((Ptr a_a8MHC -> IO b_a8MHD)
+                             -> State# RealWorld -> (# State# RealWorld, b_a8MHD #) :: *)
+                            ~R# ((Ptr a_a8MHC -> IO b_a8MHD) -> IO b_a8MHD :: *))}]
+alloca
+  = \ (@ a_a8MHC)
+      (@ b_a8MHD)
+      ($dStorable_a8MHF :: Storable a_a8MHC) ->
+      let {
+        ds_s8MPJ [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        ds_s8MPJ
+          = sizeOf @ a_a8MHC $dStorable_a8MHF (lvl11_r8N6g @ a_a8MHC) } in
+      let {
+        ds1_s8MPI [Dmd=<L,U(U)>] :: Int
+        [LclId]
+        ds1_s8MPI
+          = alignment @ a_a8MHC $dStorable_a8MHF (lvl16_r8N6l @ a_a8MHC) } in
+      (\ (action_X8MC8 :: Ptr a_a8MHC -> IO b_a8MHD)
+         (eta_B1 :: State# RealWorld) ->
+         case ds_s8MPJ of { I# size_a8MBq ->
+         case ds1_s8MPI of { I# align_a8MBr ->
+         case newAlignedPinnedByteArray#
+                @ RealWorld size_a8MBq align_a8MBr eta_B1
+         of
+         { (# ipv_s8ML2, ipv1_s8ML3 #) ->
+         case unsafeFreezeByteArray# @ RealWorld ipv1_s8ML3 ipv_s8ML2 of
+         { (# ipv2_s8ML6, ipv3_s8ML7 #) ->
+         case ((action_X8MC8
+                  (GHC.Ptr.Ptr @ a_a8MHC (byteArrayContents# ipv3_s8ML7)))
+               `cast` (GHC.Types.N:IO[0] <b_a8MHD>_R
+                       :: (IO b_a8MHD :: *)
+                          ~R# (State# RealWorld -> (# State# RealWorld, b_a8MHD #) :: *)))
+                ipv2_s8ML6
+         of
+         { (# ipv4_s8MLa, ipv5_s8MLb #) ->
+         case touch# @ 'UnliftedRep @ ByteArray# ipv3_s8ML7 ipv4_s8MLa
+         of s4_a8MBC
+         { __DEFAULT ->
+         (# s4_a8MBC, ipv5_s8MLb #)
+         }
+         }
+         }
+         }
+         }
+         })
+      `cast` (<Ptr a_a8MHC -> IO b_a8MHD>_R
+              ->_R Sym (GHC.Types.N:IO[0] <b_a8MHD>_R)
+              :: ((Ptr a_a8MHC -> IO b_a8MHD)
+                  -> State# RealWorld -> (# State# RealWorld, b_a8MHD #) :: *)
+                 ~R# ((Ptr a_a8MHC -> IO b_a8MHD) -> IO b_a8MHD :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Foreign.Marshal.Alloc.$trModule3
+  = GHC.Types.TrNameS Foreign.Marshal.Alloc.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Foreign.Marshal.Alloc.$trModule1
+  = GHC.Types.TrNameS Foreign.Marshal.Alloc.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Foreign.Marshal.Alloc.$trModule
+  = GHC.Types.Module
+      Foreign.Marshal.Alloc.$trModule3 Foreign.Marshal.Alloc.$trModule1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.malloc4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Foreign.Marshal.Alloc.malloc4 = "malloc"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.malloc3 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.malloc3
+  = unpackCString# Foreign.Marshal.Alloc.malloc4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.calloc4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+Foreign.Marshal.Alloc.calloc4 = "out of memory"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.calloc3 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.calloc3
+  = unpackCString# Foreign.Marshal.Alloc.calloc4
+
+-- RHS size: {terms: 7, types: 3, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.malloc2 :: IOException
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Foreign.Marshal.Alloc.malloc2
+  = GHC.IO.Exception.IOError
+      (GHC.Base.Nothing @ GHC.IO.Handle.Types.Handle)
+      GHC.IO.Exception.ResourceExhausted
+      Foreign.Marshal.Alloc.malloc3
+      Foreign.Marshal.Alloc.calloc3
+      (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+      (GHC.Base.Nothing @ GHC.IO.FilePath)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.malloc1 :: GHC.Exception.SomeException
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.malloc1
+  = GHC.IO.Exception.$fExceptionIOException_$ctoException
+      Foreign.Marshal.Alloc.malloc2
+
+-- RHS size: {terms: 25, types: 31, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.mallocBytes1
+  :: forall a.
+     Int -> State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=2,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8MIg)
+                 (size_a8MBc [Occ=Once!] :: Int)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case size_a8MBc of { I# x#_i7NZc [Occ=Once] ->
+                 case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+                        (int2Word# x#_i7NZc) s_i7IAv
+                 of
+                 { (# ds_d8MKF [Occ=Once*], ds1_d8MKE #) ->
+                 case eqAddr# ds1_d8MKE __NULL of {
+                   __DEFAULT -> (# ds_d8MKF, GHC.Ptr.Ptr @ a_a8MIg ds1_d8MKE #);
+                   1# ->
+                     raiseIO#
+                       @ GHC.Exception.SomeException
+                       @ (Ptr a_a8MIg)
+                       Foreign.Marshal.Alloc.malloc1
+                       ds_d8MKF
+                 }
+                 }
+                 }}]
+Foreign.Marshal.Alloc.mallocBytes1
+  = \ (@ a_a8MIg)
+      (size_a8MBc :: Int)
+      (s_i7IAv :: State# RealWorld) ->
+      case size_a8MBc of { I# x#_i7NZc ->
+      case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+             (int2Word# x#_i7NZc) s_i7IAv
+      of
+      { (# ds_d8MKF, ds1_d8MKE #) ->
+      case eqAddr# ds1_d8MKE __NULL of {
+        __DEFAULT -> (# ds_d8MKF, GHC.Ptr.Ptr @ a_a8MIg ds1_d8MKE #);
+        1# ->
+          raiseIO#
+            @ GHC.Exception.SomeException
+            @ (Ptr a_a8MIg)
+            Foreign.Marshal.Alloc.malloc1
+            ds_d8MKF
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+mallocBytes :: forall a. Int -> IO (Ptr a)
+[GblId,
+ Arity=2,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.mallocBytes1
+               `cast` (forall (a :: <*>_N).
+                       <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall a.
+                           Int -> State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+                          ~R# (forall a. Int -> IO (Ptr a) :: *))}]
+mallocBytes
+  = Foreign.Marshal.Alloc.mallocBytes1
+    `cast` (forall (a :: <*>_N).
+            <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall a.
+                Int -> State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+               ~R# (forall a. Int -> IO (Ptr a) :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl17_r8N6m :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl17_r8N6m = GHC.Types.I# 84#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl18_r8N6n :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl18_r8N6n = GHC.Types.I# 32#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl19_r8N6o :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl19_r8N6o = GHC.Types.I# 41#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl20_r8N6p :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl20_r8N6p
+  = GHC.Stack.Types.SrcLoc
+      lvl2_r8N67
+      lvl3_r8N68
+      lvl5_r8N6a
+      lvl17_r8N6m
+      lvl18_r8N6n
+      lvl17_r8N6m
+      lvl19_r8N6o
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl21_r8N6q :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl21_r8N6q
+  = GHC.Stack.Types.PushCallStack
+      lvl1_r8N66 lvl20_r8N6p GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+lvl22_r8N6r :: forall a. a
+[GblId, Str=x]
+lvl22_r8N6r
+  = \ (@ a_a8MIE) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a8MIE
+        (lvl21_r8N6q
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 27, types: 34, coercions: 0, joins: 0/0}
+malloc5_r8N6s
+  :: forall a.
+     Storable a =>
+     State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=2,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U>,
+ Unf=OtherCon []]
+malloc5_r8N6s
+  = \ (@ a_a8MIE)
+      ($dStorable_a8MIG :: Storable a_a8MIE)
+      (eta_B1 :: State# RealWorld) ->
+      case sizeOf @ a_a8MIE $dStorable_a8MIG (lvl22_r8N6r @ a_a8MIE) of
+      { I# x#_i7NZc ->
+      case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+             (int2Word# x#_i7NZc) eta_B1
+      of
+      { (# ds_d8MKF, ds1_d8MKE #) ->
+      case eqAddr# ds1_d8MKE __NULL of {
+        __DEFAULT -> (# ds_d8MKF, GHC.Ptr.Ptr @ a_a8MIE ds1_d8MKE #);
+        1# ->
+          raiseIO#
+            @ GHC.Exception.SomeException
+            @ (Ptr a_a8MIE)
+            Foreign.Marshal.Alloc.malloc1
+            ds_d8MKF
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+malloc [InlPrag=INLINE (sat-args=0)]
+  :: forall a. Storable a => IO (Ptr a)
+[GblId,
+ Arity=2,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ a_X8MJp)
+                  ($dStorable_X8MJs [Occ=Once] :: Storable a_X8MJp)
+                  (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                  case sizeOf
+                         @ a_X8MJp
+                         $dStorable_X8MJs
+                         (undefined
+                            @ 'LiftedRep
+                            @ a_X8MJp
+                            ((GHC.Stack.Types.PushCallStack
+                                (build
+                                   @ Char
+                                   (\ (@ b_i7Jbh) -> unpackFoldrCString# @ b_i7Jbh "undefined"#))
+                                (GHC.Stack.Types.SrcLoc
+                                   (build
+                                      @ Char
+                                      (\ (@ b_i7Jbh) -> unpackFoldrCString# @ b_i7Jbh "base"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b_i7Jbh) ->
+                                         unpackFoldrCString# @ b_i7Jbh "Foreign.Marshal.Alloc"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b_i7Jbh) ->
+                                         unpackFoldrCString#
+                                           @ b_i7Jbh "./Foreign/Marshal/Alloc.hs"#))
+                                   (GHC.Types.I# 84#)
+                                   (GHC.Types.I# 32#)
+                                   (GHC.Types.I# 84#)
+                                   (GHC.Types.I# 41#))
+                                GHC.Stack.Types.EmptyCallStack)
+                             `cast` (Sym (GHC.Classes.N:IP[0]
+                                              <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                                     :: (GHC.Stack.Types.CallStack :: *)
+                                        ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint))))
+                  of
+                  { I# x#_i7NZc [Occ=Once] ->
+                  case {__pkg_ccall base-4.11.0.0 Word#
+                           -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKH
+                         (int2Word# x#_i7NZc) s_i7IAv
+                  of
+                  { (# ds_d8MKF [Occ=Once*], ds1_d8MKE #) ->
+                  case eqAddr# ds1_d8MKE __NULL of {
+                    __DEFAULT -> (# ds_d8MKF, GHC.Ptr.Ptr @ a_X8MJp ds1_d8MKE #);
+                    1# ->
+                      raiseIO#
+                        @ GHC.Exception.SomeException
+                        @ (Ptr a_X8MJp)
+                        Foreign.Marshal.Alloc.malloc1
+                        ds_d8MKF
+                  }
+                  }
+                  })
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall a.
+                           Storable a =>
+                           State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+                          ~R# (forall a. Storable a => IO (Ptr a) :: *))}]
+malloc
+  = malloc5_r8N6s
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall a.
+                Storable a =>
+                State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+               ~R# (forall a. Storable a => IO (Ptr a) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.calloc6 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Foreign.Marshal.Alloc.calloc6 = "calloc"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.calloc5 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.calloc5
+  = unpackCString# Foreign.Marshal.Alloc.calloc6
+
+-- RHS size: {terms: 7, types: 3, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.calloc2 :: IOException
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Foreign.Marshal.Alloc.calloc2
+  = GHC.IO.Exception.IOError
+      (GHC.Base.Nothing @ GHC.IO.Handle.Types.Handle)
+      GHC.IO.Exception.ResourceExhausted
+      Foreign.Marshal.Alloc.calloc5
+      Foreign.Marshal.Alloc.calloc3
+      (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+      (GHC.Base.Nothing @ GHC.IO.FilePath)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.calloc1 :: GHC.Exception.SomeException
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.calloc1
+  = GHC.IO.Exception.$fExceptionIOException_$ctoException
+      Foreign.Marshal.Alloc.calloc2
+
+-- RHS size: {terms: 26, types: 31, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.callocBytes1
+  :: forall a.
+     Int -> State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=2,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a8MI3)
+                 (size_a8MBd [Occ=Once!] :: Int)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case size_a8MBd of { I# x#_i7NZc [Occ=Once] ->
+                 case {__pkg_ccall base-4.11.0.0 Word#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKz
+                        1## (int2Word# x#_i7NZc) s_i7IAv
+                 of
+                 { (# ds_d8MKx [Occ=Once*], ds1_d8MKw #) ->
+                 case eqAddr# ds1_d8MKw __NULL of {
+                   __DEFAULT -> (# ds_d8MKx, GHC.Ptr.Ptr @ a_a8MI3 ds1_d8MKw #);
+                   1# ->
+                     raiseIO#
+                       @ GHC.Exception.SomeException
+                       @ (Ptr a_a8MI3)
+                       Foreign.Marshal.Alloc.calloc1
+                       ds_d8MKx
+                 }
+                 }
+                 }}]
+Foreign.Marshal.Alloc.callocBytes1
+  = \ (@ a_a8MI3)
+      (size_a8MBd :: Int)
+      (s_i7IAv :: State# RealWorld) ->
+      case size_a8MBd of { I# x#_i7NZc ->
+      case {__pkg_ccall base-4.11.0.0 Word#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKz
+             1## (int2Word# x#_i7NZc) s_i7IAv
+      of
+      { (# ds_d8MKx, ds1_d8MKw #) ->
+      case eqAddr# ds1_d8MKw __NULL of {
+        __DEFAULT -> (# ds_d8MKx, GHC.Ptr.Ptr @ a_a8MI3 ds1_d8MKw #);
+        1# ->
+          raiseIO#
+            @ GHC.Exception.SomeException
+            @ (Ptr a_a8MI3)
+            Foreign.Marshal.Alloc.calloc1
+            ds_d8MKx
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+callocBytes :: forall a. Int -> IO (Ptr a)
+[GblId,
+ Arity=2,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.callocBytes1
+               `cast` (forall (a :: <*>_N).
+                       <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall a.
+                           Int -> State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+                          ~R# (forall a. Int -> IO (Ptr a) :: *))}]
+callocBytes
+  = Foreign.Marshal.Alloc.callocBytes1
+    `cast` (forall (a :: <*>_N).
+            <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall a.
+                Int -> State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+               ~R# (forall a. Int -> IO (Ptr a) :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl23_r8N6t :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl23_r8N6t = GHC.Types.I# 90#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl24_r8N6u :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl24_r8N6u
+  = GHC.Stack.Types.SrcLoc
+      lvl2_r8N67
+      lvl3_r8N68
+      lvl5_r8N6a
+      lvl23_r8N6t
+      lvl7_r8N6c
+      lvl23_r8N6t
+      lvl8_r8N6d
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl25_r8N6v :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl25_r8N6v
+  = GHC.Stack.Types.PushCallStack
+      lvl1_r8N66 lvl24_r8N6u GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+lvl26_r8N6w :: forall a. a
+[GblId, Str=x]
+lvl26_r8N6w
+  = \ (@ a_a8MIp) ->
+      undefined
+        @ 'LiftedRep
+        @ a_a8MIp
+        (lvl25_r8N6v
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 28, types: 34, coercions: 0, joins: 0/0}
+calloc7_r8N6x
+  :: forall a.
+     Storable a =>
+     State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=2,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U>,
+ Unf=OtherCon []]
+calloc7_r8N6x
+  = \ (@ a_a8MIp)
+      ($dStorable_a8MIr :: Storable a_a8MIp)
+      (eta_B1 :: State# RealWorld) ->
+      case sizeOf @ a_a8MIp $dStorable_a8MIr (lvl26_r8N6w @ a_a8MIp) of
+      { I# x#_i7NZc ->
+      case {__pkg_ccall base-4.11.0.0 Word#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKz
+             1## (int2Word# x#_i7NZc) eta_B1
+      of
+      { (# ds_d8MKx, ds1_d8MKw #) ->
+      case eqAddr# ds1_d8MKw __NULL of {
+        __DEFAULT -> (# ds_d8MKx, GHC.Ptr.Ptr @ a_a8MIp ds1_d8MKw #);
+        1# ->
+          raiseIO#
+            @ GHC.Exception.SomeException
+            @ (Ptr a_a8MIp)
+            Foreign.Marshal.Alloc.calloc1
+            ds_d8MKx
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 10, joins: 0/0}
+calloc [InlPrag=INLINE (sat-args=0)]
+  :: forall a. Storable a => IO (Ptr a)
+[GblId,
+ Arity=2,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= (\ (@ a_X8MJo)
+                  ($dStorable_X8MJr [Occ=Once] :: Storable a_X8MJo)
+                  (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                  case sizeOf
+                         @ a_X8MJo
+                         $dStorable_X8MJr
+                         (undefined
+                            @ 'LiftedRep
+                            @ a_X8MJo
+                            ((GHC.Stack.Types.PushCallStack
+                                (build
+                                   @ Char
+                                   (\ (@ b_i7Jbh) -> unpackFoldrCString# @ b_i7Jbh "undefined"#))
+                                (GHC.Stack.Types.SrcLoc
+                                   (build
+                                      @ Char
+                                      (\ (@ b_i7Jbh) -> unpackFoldrCString# @ b_i7Jbh "base"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b_i7Jbh) ->
+                                         unpackFoldrCString# @ b_i7Jbh "Foreign.Marshal.Alloc"#))
+                                   (build
+                                      @ Char
+                                      (\ (@ b_i7Jbh) ->
+                                         unpackFoldrCString#
+                                           @ b_i7Jbh "./Foreign/Marshal/Alloc.hs"#))
+                                   (GHC.Types.I# 90#)
+                                   (GHC.Types.I# 31#)
+                                   (GHC.Types.I# 90#)
+                                   (GHC.Types.I# 40#))
+                                GHC.Stack.Types.EmptyCallStack)
+                             `cast` (Sym (GHC.Classes.N:IP[0]
+                                              <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                                     :: (GHC.Stack.Types.CallStack :: *)
+                                        ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint))))
+                  of
+                  { I# x#_i7NZc [Occ=Once] ->
+                  case {__pkg_ccall base-4.11.0.0 Word#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKz
+                         1## (int2Word# x#_i7NZc) s_i7IAv
+                  of
+                  { (# ds_d8MKx [Occ=Once*], ds1_d8MKw #) ->
+                  case eqAddr# ds1_d8MKw __NULL of {
+                    __DEFAULT -> (# ds_d8MKx, GHC.Ptr.Ptr @ a_X8MJo ds1_d8MKw #);
+                    1# ->
+                      raiseIO#
+                        @ GHC.Exception.SomeException
+                        @ (Ptr a_X8MJo)
+                        Foreign.Marshal.Alloc.calloc1
+                        ds_d8MKx
+                  }
+                  }
+                  })
+               `cast` (forall (a :: <*>_N).
+                       <Storable a>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall a.
+                           Storable a =>
+                           State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+                          ~R# (forall a. Storable a => IO (Ptr a) :: *))}]
+calloc
+  = calloc7_r8N6x
+    `cast` (forall (a :: <*>_N).
+            <Storable a>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall a.
+                Storable a =>
+                State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+               ~R# (forall a. Storable a => IO (Ptr a) :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.realloc5 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Foreign.Marshal.Alloc.realloc5 = "realloc"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.realloc4 :: [Char]
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=True,
+         WorkFree=False, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.realloc4
+  = unpackCString# Foreign.Marshal.Alloc.realloc5
+
+-- RHS size: {terms: 7, types: 3, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.realloc3 :: IOException
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Foreign.Marshal.Alloc.realloc3
+  = GHC.IO.Exception.IOError
+      (GHC.Base.Nothing @ GHC.IO.Handle.Types.Handle)
+      GHC.IO.Exception.ResourceExhausted
+      Foreign.Marshal.Alloc.realloc4
+      Foreign.Marshal.Alloc.calloc3
+      (GHC.Base.Nothing @ Foreign.C.Types.CInt)
+      (GHC.Base.Nothing @ GHC.IO.FilePath)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.realloc2 :: GHC.Exception.SomeException
+[GblId,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=False, ConLike=False,
+         WorkFree=False, Expandable=False, Guidance=IF_ARGS [] 20 0}]
+Foreign.Marshal.Alloc.realloc2
+  = GHC.IO.Exception.$fExceptionIOException_$ctoException
+      Foreign.Marshal.Alloc.realloc3
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl27_r8N6y :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl27_r8N6y = GHC.Types.I# 162#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl28_r8N6z :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl28_r8N6z = GHC.Types.I# 34#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl29_r8N6A :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl29_r8N6A = GHC.Types.I# 43#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl30_r8N6B :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl30_r8N6B
+  = GHC.Stack.Types.SrcLoc
+      lvl2_r8N67
+      lvl3_r8N68
+      lvl5_r8N6a
+      lvl27_r8N6y
+      lvl28_r8N6z
+      lvl27_r8N6y
+      lvl29_r8N6A
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl31_r8N6C :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl31_r8N6C
+  = GHC.Stack.Types.PushCallStack
+      lvl1_r8N66 lvl30_r8N6B GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 3, types: 4, coercions: 4, joins: 0/0}
+Foreign.Marshal.Alloc.realloc6 :: forall b. b
+[GblId, Str=x]
+Foreign.Marshal.Alloc.realloc6
+  = \ (@ b_a8MG5) ->
+      undefined
+        @ 'LiftedRep
+        @ b_a8MG5
+        (lvl31_r8N6C
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+
+-- RHS size: {terms: 30, types: 37, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$wrealloc [InlPrag=NOUSERINLINE[0]]
+  :: forall a b.
+     Storable b =>
+     Addr# -> State# RealWorld -> (# State# RealWorld, Ptr b #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0 0] 104 30}]
+Foreign.Marshal.Alloc.$wrealloc
+  = \ (@ a_s8MYF)
+      (@ b_s8MYG)
+      (w_s8MYH :: Storable b_s8MYG)
+      (ww_s8MYM :: Addr#)
+      (w1_s8MYJ :: State# RealWorld) ->
+      case sizeOf
+             @ b_s8MYG w_s8MYH (Foreign.Marshal.Alloc.realloc6 @ b_s8MYG)
+      of
+      { I# x#_i7NZc ->
+      case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKo
+             ww_s8MYM (int2Word# x#_i7NZc) w1_s8MYJ
+      of
+      { (# ds_d8MKm, ds1_d8MKl #) ->
+      case eqAddr# ds1_d8MKl __NULL of {
+        __DEFAULT -> (# ds_d8MKm, GHC.Ptr.Ptr @ b_s8MYG ds1_d8MKl #);
+        1# ->
+          raiseIO#
+            @ GHC.Exception.SomeException
+            @ (Ptr b_s8MYG)
+            Foreign.Marshal.Alloc.realloc2
+            ds_d8MKm
+      }
+      }
+      }
+
+-- RHS size: {terms: 12, types: 15, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.realloc1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a b.
+     Storable b =>
+     Ptr a -> State# RealWorld -> (# State# RealWorld, Ptr b #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s8MYF)
+                 (@ b_s8MYG)
+                 (w_s8MYH [Occ=Once] :: Storable b_s8MYG)
+                 (w1_s8MYI [Occ=Once!] :: Ptr a_s8MYF)
+                 (w2_s8MYJ [Occ=Once] :: State# RealWorld) ->
+                 case w1_s8MYI of { Ptr ww1_s8MYM [Occ=Once] ->
+                 Foreign.Marshal.Alloc.$wrealloc
+                   @ a_s8MYF @ b_s8MYG w_s8MYH ww1_s8MYM w2_s8MYJ
+                 }}]
+Foreign.Marshal.Alloc.realloc1
+  = \ (@ a_s8MYF)
+      (@ b_s8MYG)
+      (w_s8MYH :: Storable b_s8MYG)
+      (w1_s8MYI :: Ptr a_s8MYF)
+      (w2_s8MYJ :: State# RealWorld) ->
+      case w1_s8MYI of { Ptr ww1_s8MYM ->
+      Foreign.Marshal.Alloc.$wrealloc
+        @ a_s8MYF @ b_s8MYG w_s8MYH ww1_s8MYM w2_s8MYJ
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 16, joins: 0/0}
+realloc :: forall a b. Storable b => Ptr a -> IO (Ptr b)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),1*U(1*C1(U(U)),A,A,A,A,A,A,A)><S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.realloc1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <Storable b>_R
+                       ->_R <Ptr a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <Ptr b>_R)
+                       :: (forall a b.
+                           Storable b =>
+                           Ptr a -> State# RealWorld -> (# State# RealWorld, Ptr b #) :: *)
+                          ~R# (forall a b. Storable b => Ptr a -> IO (Ptr b) :: *))}]
+realloc
+  = Foreign.Marshal.Alloc.realloc1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <Storable b>_R
+            ->_R <Ptr a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <Ptr b>_R)
+            :: (forall a b.
+                Storable b =>
+                Ptr a -> State# RealWorld -> (# State# RealWorld, Ptr b #) :: *)
+               ~R# (forall a b. Storable b => Ptr a -> IO (Ptr b) :: *))
+
+-- RHS size: {terms: 14, types: 24, coercions: 0, joins: 0/0}
+free1_r8N6D
+  :: forall a.
+     Ptr a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []]
+free1_r8N6D
+  = \ (@ a_a8MBM)
+      (ds_d8MK8 :: Ptr a_a8MBM)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d8MK8 of { Ptr ds2_d8MKa ->
+      case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld #)}_d8MKd
+             ds2_d8MKa eta_B1
+      of
+      { (# ds3_d8MKb #) ->
+      (# ds3_d8MKb, GHC.Tuple.() #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+free :: forall a. Ptr a -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_X8MCE) (ds_X8ML1 [Occ=Once!] :: Ptr a_X8MCE) ->
+                 case ds_X8ML1 of { Ptr ds2_d8MKa [Occ=Once] ->
+                 (\ (ds3_d8MKc [Occ=Once] :: State# RealWorld) ->
+                    case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld #)}_d8MKd
+                           ds2_d8MKa ds3_d8MKc
+                    of
+                    { (# ds4_d8MKb [Occ=Once] #) ->
+                    (# ds4_d8MKb, GHC.Tuple.() #)
+                    })
+                 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, () #) :: *)
+                            ~R# (IO () :: *))
+                 }}]
+free
+  = free1_r8N6D
+    `cast` (forall (a :: <*>_N).
+            <Ptr a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                Ptr a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. Ptr a -> IO () :: *))
+
+-- RHS size: {terms: 36, types: 48, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.$wreallocBytes [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Addr# -> Int# -> State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<S,U><S,1*U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 50 0] 104 60}]
+Foreign.Marshal.Alloc.$wreallocBytes
+  = \ (@ a_s8MYR)
+      (ww_s8MYX :: Addr#)
+      (ww1_s8MZ1 :: Int#)
+      (w_s8MYU :: State# RealWorld) ->
+      case ww1_s8MZ1 of ds_X8MJu {
+        __DEFAULT ->
+          case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> Word# -> State# RealWorld -> (# State# RealWorld, Addr# #)}_d8MKo
+                 ww_s8MYX (int2Word# ds_X8MJu) w_s8MYU
+          of
+          { (# ds1_d8MKm, ds2_d8MKl #) ->
+          case eqAddr# ds2_d8MKl __NULL of {
+            __DEFAULT -> (# ds1_d8MKm, GHC.Ptr.Ptr @ a_s8MYR ds2_d8MKl #);
+            1# ->
+              raiseIO#
+                @ GHC.Exception.SomeException
+                @ (Ptr a_s8MYR)
+                Foreign.Marshal.Alloc.realloc2
+                ds1_d8MKm
+          }
+          };
+        0# ->
+          case {__pkg_ccall base-4.11.0.0 Addr#
+                           -> State# RealWorld -> (# State# RealWorld #)}_d8MKd
+                 ww_s8MYX w_s8MYU
+          of
+          { (# ds1_d8MKb #) ->
+          (# ds1_d8MKb, nullPtr @ a_s8MYR #)
+          }
+      }
+
+-- RHS size: {terms: 14, types: 13, coercions: 0, joins: 0/0}
+Foreign.Marshal.Alloc.reallocBytes1 [InlPrag=NOUSERINLINE[0]]
+  :: forall a.
+     Ptr a -> Int -> State# RealWorld -> (# State# RealWorld, Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(1*U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_s8MYR)
+                 (w_s8MYS [Occ=Once!] :: Ptr a_s8MYR)
+                 (w1_s8MYT [Occ=Once!] :: Int)
+                 (w2_s8MYU [Occ=Once] :: State# RealWorld) ->
+                 case w_s8MYS of { Ptr ww1_s8MYX [Occ=Once] ->
+                 case w1_s8MYT of { I# ww3_s8MZ1 [Occ=Once] ->
+                 Foreign.Marshal.Alloc.$wreallocBytes
+                   @ a_s8MYR ww1_s8MYX ww3_s8MZ1 w2_s8MYU
+                 }
+                 }}]
+Foreign.Marshal.Alloc.reallocBytes1
+  = \ (@ a_s8MYR)
+      (w_s8MYS :: Ptr a_s8MYR)
+      (w1_s8MYT :: Int)
+      (w2_s8MYU :: State# RealWorld) ->
+      case w_s8MYS of { Ptr ww1_s8MYX ->
+      case w1_s8MYT of { I# ww3_s8MZ1 ->
+      Foreign.Marshal.Alloc.$wreallocBytes
+        @ a_s8MYR ww1_s8MYX ww3_s8MZ1 w2_s8MYU
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 12, joins: 0/0}
+reallocBytes :: forall a. Ptr a -> Int -> IO (Ptr a)
+[GblId,
+ Arity=3,
+ Str=<S(S),1*U(U)><S(S),1*U(1*U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Foreign.Marshal.Alloc.reallocBytes1
+               `cast` (forall (a :: <*>_N).
+                       <Ptr a>_R ->_R <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+                       :: (forall a.
+                           Ptr a
+                           -> Int -> State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+                          ~R# (forall a. Ptr a -> Int -> IO (Ptr a) :: *))}]
+reallocBytes
+  = Foreign.Marshal.Alloc.reallocBytes1
+    `cast` (forall (a :: <*>_N).
+            <Ptr a>_R ->_R <Int>_R ->_R Sym (GHC.Types.N:IO[0] <Ptr a>_R)
+            :: (forall a.
+                Ptr a
+                -> Int -> State# RealWorld -> (# State# RealWorld, Ptr a #) :: *)
+               ~R# (forall a. Ptr a -> Int -> IO (Ptr a) :: *))
+
+-- RHS size: {terms: 3, types: 6, coercions: 0, joins: 0/0}
+finalizerFree :: forall a. FinalizerPtr a
+[GblId,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+finalizerFree
+  = \ (@ a_a8MBL) ->
+      GHC.Ptr.FunPtr @ (Ptr a_a8MBL -> IO ()) (__label "free" (function))
+
+

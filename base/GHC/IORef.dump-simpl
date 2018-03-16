@@ -1,0 +1,391 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:02:49.130193827 UTC
+
+Result size of Tidy Core
+  = {terms: 106, types: 160, coercions: 71, joins: 0/0}
+
+-- RHS size: {terms: 4, types: 8, coercions: 18, joins: 0/0}
+GHC.IORef.$fEqIORef [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Eq (IORef a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_a7Ivb) ->
+       GHC.Classes.C:Eq TYPE: IORef a_a7Ivb
+                        (GHC.STRef.$fEqSTRef_$c== @ RealWorld @ a_a7Ivb)
+                        `cast` (Sym (GHC.IORef.N:IORef[0]) <a_a7Ivb>_N
+                                ->_R Sym (GHC.IORef.N:IORef[0]) <a_a7Ivb>_N
+                                ->_R <Bool>_R
+                                :: (STRef RealWorld a_a7Ivb
+                                    -> STRef RealWorld a_a7Ivb -> Bool :: *)
+                                   ~R# (IORef a_a7Ivb -> IORef a_a7Ivb -> Bool :: *))
+                        (GHC.STRef.$fEqSTRef_$c/= @ RealWorld @ a_a7Ivb)
+                        `cast` (Sym (GHC.IORef.N:IORef[0]) <a_a7Ivb>_N
+                                ->_R Sym (GHC.IORef.N:IORef[0]) <a_a7Ivb>_N
+                                ->_R <Bool>_R
+                                :: (STRef RealWorld a_a7Ivb
+                                    -> STRef RealWorld a_a7Ivb -> Bool :: *)
+                                   ~R# (IORef a_a7Ivb -> IORef a_a7Ivb -> Bool :: *))]
+GHC.IORef.$fEqIORef
+  = \ (@ a_a7Iy7) ->
+      GHC.Classes.C:Eq
+        @ (IORef a_a7Iy7)
+        ((GHC.STRef.$fEqSTRef_$c== @ RealWorld @ a_a7Iy7)
+         `cast` (Sym (GHC.IORef.N:IORef[0]) <a_a7Iy7>_N
+                 ->_R Sym (GHC.IORef.N:IORef[0]) <a_a7Iy7>_N
+                 ->_R <Bool>_R
+                 :: (STRef RealWorld a_a7Iy7
+                     -> STRef RealWorld a_a7Iy7 -> Bool :: *)
+                    ~R# (IORef a_a7Iy7 -> IORef a_a7Iy7 -> Bool :: *)))
+        ((GHC.STRef.$fEqSTRef_$c/= @ RealWorld @ a_a7Iy7)
+         `cast` (Sym (GHC.IORef.N:IORef[0]) <a_a7Iy7>_N
+                 ->_R Sym (GHC.IORef.N:IORef[0]) <a_a7Iy7>_N
+                 ->_R <Bool>_R
+                 :: (STRef RealWorld a_a7Iy7
+                     -> STRef RealWorld a_a7Iy7 -> Bool :: *)
+                    ~R# (IORef a_a7Iy7 -> IORef a_a7Iy7 -> Bool :: *)))
+
+-- RHS size: {terms: 12, types: 32, coercions: 3, joins: 0/0}
+GHC.IORef.newIORef1
+  :: forall a.
+     a -> State# RealWorld -> (# State# RealWorld, IORef a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7IxG)
+                 (v_a7Ivh [Occ=Once] :: a_a7IxG)
+                 (s_i7IAv [Occ=Once] :: State# RealWorld) ->
+                 case newMutVar# @ a_a7IxG @ RealWorld v_a7Ivh s_i7IAv of
+                 { (# ipv_i7IAN [Occ=Once], ipv1_i7IAO [Occ=Once] #) ->
+                 (# ipv_i7IAN,
+                    (GHC.STRef.STRef @ RealWorld @ a_a7IxG ipv1_i7IAO)
+                    `cast` (Sym (GHC.IORef.N:IORef[0]) <a_a7IxG>_N
+                            :: (STRef RealWorld a_a7IxG :: *) ~R# (IORef a_a7IxG :: *)) #)
+                 }}]
+GHC.IORef.newIORef1
+  = \ (@ a_a7IxG)
+      (v_a7Ivh :: a_a7IxG)
+      (s_i7IAv :: State# RealWorld) ->
+      case newMutVar# @ a_a7IxG @ RealWorld v_a7Ivh s_i7IAv of
+      { (# ipv_i7IAN, ipv1_i7IAO #) ->
+      (# ipv_i7IAN,
+         (GHC.STRef.STRef @ RealWorld @ a_a7IxG ipv1_i7IAO)
+         `cast` (Sym (GHC.IORef.N:IORef[0]) <a_a7IxG>_N
+                 :: (STRef RealWorld a_a7IxG :: *) ~R# (IORef a_a7IxG :: *)) #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+newIORef :: forall a. a -> IO (IORef a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IORef.newIORef1
+               `cast` (forall (a :: <*>_N).
+                       <a>_R ->_R Sym (GHC.Types.N:IO[0] <IORef a>_R)
+                       :: (forall a.
+                           a -> State# RealWorld -> (# State# RealWorld, IORef a #) :: *)
+                          ~R# (forall a. a -> IO (IORef a) :: *))}]
+newIORef
+  = GHC.IORef.newIORef1
+    `cast` (forall (a :: <*>_N).
+            <a>_R ->_R Sym (GHC.Types.N:IO[0] <IORef a>_R)
+            :: (forall a.
+                a -> State# RealWorld -> (# State# RealWorld, IORef a #) :: *)
+               ~R# (forall a. a -> IO (IORef a) :: *))
+
+-- RHS size: {terms: 1, types: 1, coercions: 10, joins: 0/0}
+readIORef :: forall a. IORef a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= (GHC.STRef.readSTRef1 @ RealWorld)
+               `cast` (forall (a :: <*>_N).
+                       Sym (GHC.IORef.N:IORef[0]) <a>_N ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           STRef RealWorld a
+                           -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. IORef a -> IO a :: *))}]
+readIORef
+  = (GHC.STRef.readSTRef1 @ RealWorld)
+    `cast` (forall (a :: <*>_N).
+            Sym (GHC.IORef.N:IORef[0]) <a>_N ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                STRef RealWorld a
+                -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. IORef a -> IO a :: *))
+
+-- RHS size: {terms: 1, types: 1, coercions: 12, joins: 0/0}
+writeIORef :: forall a. IORef a -> a -> IO ()
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= (GHC.STRef.writeSTRef1 @ RealWorld)
+               `cast` (forall (a :: <*>_N).
+                       Sym (GHC.IORef.N:IORef[0]) <a>_N
+                       ->_R <a>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+                       :: (forall a.
+                           STRef RealWorld a
+                           -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+                          ~R# (forall a. IORef a -> a -> IO () :: *))}]
+writeIORef
+  = (GHC.STRef.writeSTRef1 @ RealWorld)
+    `cast` (forall (a :: <*>_N).
+            Sym (GHC.IORef.N:IORef[0]) <a>_N
+            ->_R <a>_R
+            ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                STRef RealWorld a
+                -> a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. IORef a -> a -> IO () :: *))
+
+-- RHS size: {terms: 12, types: 24, coercions: 2, joins: 0/0}
+GHC.IORef.atomicModifyIORef1
+  :: forall a b.
+     IORef a
+     -> (a -> (a, b)) -> State# RealWorld -> (# State# RealWorld, b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a7Ix5)
+                 (@ b_a7Ix6)
+                 (ds_d7Iz0 [Occ=Once] :: IORef a_a7Ix5)
+                 (f_a7Ivn [Occ=Once] :: a_a7Ix5 -> (a_a7Ix5, b_a7Ix6))
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d7Iz0
+                      `cast` (GHC.IORef.N:IORef[0] <a_a7Ix5>_N
+                              :: (IORef a_a7Ix5 :: *) ~R# (STRef RealWorld a_a7Ix5 :: *))
+                 of
+                 { STRef r#_a7Ivm [Occ=Once] ->
+                 atomicModifyMutVar#
+                   @ RealWorld
+                   @ a_a7Ix5
+                   @ (a_a7Ix5, b_a7Ix6)
+                   @ b_a7Ix6
+                   r#_a7Ivm
+                   f_a7Ivn
+                   eta_B1
+                 }}]
+GHC.IORef.atomicModifyIORef1
+  = \ (@ a_a7Ix5)
+      (@ b_a7Ix6)
+      (ds_d7Iz0 :: IORef a_a7Ix5)
+      (f_a7Ivn :: a_a7Ix5 -> (a_a7Ix5, b_a7Ix6))
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d7Iz0
+           `cast` (GHC.IORef.N:IORef[0] <a_a7Ix5>_N
+                   :: (IORef a_a7Ix5 :: *) ~R# (STRef RealWorld a_a7Ix5 :: *))
+      of
+      { STRef r#_a7Ivm ->
+      atomicModifyMutVar#
+        @ RealWorld
+        @ a_a7Ix5
+        @ (a_a7Ix5, b_a7Ix6)
+        @ b_a7Ix6
+        r#_a7Ivm
+        f_a7Ivn
+        eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 17, joins: 0/0}
+atomicModifyIORef :: forall a b. IORef a -> (a -> (a, b)) -> IO b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.IORef.atomicModifyIORef1
+               `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                       <IORef a>_R ->_R <a -> (a, b)>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+                       :: (forall a b.
+                           IORef a
+                           -> (a -> (a, b))
+                           -> State# RealWorld
+                           -> (# State# RealWorld, b #) :: *)
+                          ~R# (forall a b. IORef a -> (a -> (a, b)) -> IO b :: *))}]
+atomicModifyIORef
+  = GHC.IORef.atomicModifyIORef1
+    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+            <IORef a>_R ->_R <a -> (a, b)>_R ->_R Sym (GHC.Types.N:IO[0] <b>_R)
+            :: (forall a b.
+                IORef a
+                -> (a -> (a, b))
+                -> State# RealWorld
+                -> (# State# RealWorld, b #) :: *)
+               ~R# (forall a b. IORef a -> (a -> (a, b)) -> IO b :: *))
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.IORef.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IORef.$trModule3 = GHC.Types.TrNameS GHC.IORef.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.IORef.$trModule2 = "GHC.IORef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IORef.$trModule1 = GHC.Types.TrNameS GHC.IORef.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.IORef.$trModule
+  = GHC.Types.Module GHC.IORef.$trModule3 GHC.IORef.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_r7ICj :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_r7ICj
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcRealWorld (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r7ICk :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r7ICk = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep2_r7ICl :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep2_r7ICl
+  = GHC.Types.: @ KindRep $krep1_r7ICk (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep3_r7ICm :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r7ICm = GHC.Types.: @ KindRep $krep_r7ICj $krep2_r7ICl
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r7ICn :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r7ICn
+  = GHC.Types.KindRepTyConApp GHC.STRef.$tcSTRef $krep3_r7ICm
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tcIORef2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.IORef.$tcIORef2 = "IORef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tcIORef1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IORef.$tcIORef1 = GHC.Types.TrNameS GHC.IORef.$tcIORef2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tcIORef :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.IORef.$tcIORef
+  = GHC.Types.TyCon
+      5761034149999810170##
+      8168006477930971655##
+      GHC.IORef.$trModule
+      GHC.IORef.$tcIORef1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r7ICo :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_r7ICo
+  = GHC.Types.KindRepTyConApp GHC.IORef.$tcIORef $krep2_r7ICl
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tc'IORef1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.IORef.$tc'IORef1
+  = GHC.Types.KindRepFun $krep4_r7ICn $krep5_r7ICo
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tc'IORef3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.IORef.$tc'IORef3 = "'IORef"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tc'IORef2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.IORef.$tc'IORef2 = GHC.Types.TrNameS GHC.IORef.$tc'IORef3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.IORef.$tc'IORef :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.IORef.$tc'IORef
+  = GHC.Types.TyCon
+      14185804013584085799##
+      4414908929010825378##
+      GHC.IORef.$trModule
+      GHC.IORef.$tc'IORef2
+      1#
+      GHC.IORef.$tc'IORef1
+
+

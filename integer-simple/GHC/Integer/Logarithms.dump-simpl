@@ -1,0 +1,105 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:53:58.649016077 UTC
+
+Result size of Tidy Core
+  = {terms: 63, types: 49, coercions: 0, joins: 0/1}
+
+-- RHS size: {terms: 44, types: 37, coercions: 0, joins: 0/1}
+integerLogBase# :: Integer -> Integer -> Int#
+[GblId,
+ Arity=2,
+ Str=<S,U><S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0 0] 243 0}]
+integerLogBase#
+  = \ (b_ab3H :: Integer) (m_ab3I :: Integer) ->
+      letrec {
+        step_sb5m [Occ=LoopBreaker] :: Integer -> (# Integer, Int# #)
+        [LclId, Arity=1, Str=<S,U>, Unf=OtherCon []]
+        step_sb5m
+          = \ (pw_ab3K :: Integer) ->
+              case ltInteger# m_ab3I pw_ab3K of {
+                __DEFAULT ->
+                  case step_sb5m (timesInteger pw_ab3K pw_ab3K) of
+                  { (# ipv_sb53, ipv1_sb54 #) ->
+                  case ltInteger# ipv_sb53 pw_ab3K of {
+                    __DEFAULT ->
+                      (# quotInteger ipv_sb53 pw_ab3K, +# (*# 2# ipv1_sb54) 1# #);
+                    1# -> (# ipv_sb53, *# 2# ipv1_sb54 #)
+                  }
+                  };
+                1# -> (# m_ab3I, 0# #)
+              }; } in
+      case step_sb5m b_ab3H of { (# ipv_sb58, ipv1_sb59 #) -> ipv1_sb59 }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+integerLog2# :: Integer -> Int#
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= I.integerLog2#}]
+integerLog2# = I.integerLog2#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+wordLog2# :: Word# -> Int#
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= I.wordLog2#}]
+wordLog2# = I.wordLog2#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Integer.Logarithms.$trModule4 = "integer-simple"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Logarithms.$trModule3
+  = GHC.Types.TrNameS GHC.Integer.Logarithms.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 70 0}]
+GHC.Integer.Logarithms.$trModule2 = "GHC.Integer.Logarithms"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Integer.Logarithms.$trModule1
+  = GHC.Types.TrNameS GHC.Integer.Logarithms.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Integer.Logarithms.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Integer.Logarithms.$trModule
+  = GHC.Types.Module
+      GHC.Integer.Logarithms.$trModule3 GHC.Integer.Logarithms.$trModule1
+
+

@@ -1,0 +1,382 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:59:02.298539201 UTC
+
+Result size of Tidy Core
+  = {terms: 220, types: 198, coercions: 0, joins: 0/0}
+
+-- RHS size: {terms: 14, types: 9, coercions: 0, joins: 0/0}
+unpackCString :: forall a. Ptr a -> [Char]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a49mV) (a1_a49ij [Occ=Once!] :: Ptr a_a49mV) ->
+                 case a1_a49ij of { Ptr addr_a49ik ->
+                 case eqAddr# addr_a49ik __NULL of {
+                   __DEFAULT ->
+                     build
+                       @ Char (\ (@ b_i1AKE) -> unpackFoldrCString# @ b_i1AKE addr_a49ik);
+                   1# -> GHC.Types.[] @ Char
+                 }
+                 }}]
+unpackCString
+  = \ (@ a_a49mV) (a1_a49ij :: Ptr a_a49mV) ->
+      case a1_a49ij of { Ptr addr_a49ik ->
+      case eqAddr# addr_a49ik __NULL of {
+        __DEFAULT -> unpackCString# addr_a49ik;
+        1# -> GHC.Types.[] @ Char
+      }
+      }
+
+Rec {
+-- RHS size: {terms: 36, types: 30, coercions: 0, joins: 0/0}
+GHC.Pack.$wfill_in [InlPrag=NOUSERINLINE[0], Occ=LoopBreaker]
+  :: forall s.
+     MutableByteArray# s
+     -> Int# -> [Char] -> State# s -> (# State# s, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S,U><S,U><S,1*U><S,U>,
+ Unf=OtherCon []]
+GHC.Pack.$wfill_in
+  = \ (@ s_s49so)
+      (ww_s49sx :: MutableByteArray# s_s49so)
+      (w_s49sq :: Int#)
+      (w1_s49sr :: [Char])
+      (w2_s49ss :: State# s_s49so) ->
+      case w1_s49sr of {
+        [] ->
+          case writeCharArray# @ s_s49so ww_s49sx w_s49sq '\NUL'# w2_s49ss
+          of s2#_a49iK
+          { __DEFAULT ->
+          (# s2#_a49iK, GHC.Tuple.() #)
+          };
+        : ds_d49o4 cs_a49iz ->
+          case ds_d49o4 of { C# c_a49iy ->
+          case writeCharArray# @ s_s49so ww_s49sx w_s49sq c_a49iy w2_s49ss
+          of s2#_a49iK
+          { __DEFAULT ->
+          GHC.Pack.$wfill_in
+            @ s_s49so ww_s49sx (+# w_s49sq 1#) cs_a49iz s2#_a49iK
+          }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.packCString#1 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.packCString#1 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 40, types: 91, coercions: 0, joins: 0/0}
+packCString# :: [Char] -> ByteArray#
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 165 0}]
+packCString#
+  = \ (str_a49il :: [Char]) ->
+      case GHC.List.$wlenAcc @ Char str_a49il 0# of ww2_i3wsE
+      { __DEFAULT ->
+      case runRW#
+             @ ('TupleRep '['TupleRep '[], 'LiftedRep])
+             @ (# State# RealWorld, ByteArray Int #)
+             (\ (s1_a1J6a [OS=OneShot] :: State# RealWorld) ->
+                case newByteArray# @ RealWorld (+# ww2_i3wsE 1#) s1_a1J6a of
+                { (# ipv_s49oI, ipv1_s49oJ #) ->
+                case GHC.Pack.$wfill_in
+                       @ RealWorld ipv1_s49oJ 0# str_a49il ipv_s49oI
+                of
+                { (# ipv2_X1Jlw, ipv3_X1Jly #) ->
+                case unsafeFreezeByteArray# @ RealWorld ipv1_s49oJ ipv2_X1Jlw of
+                { (# ipv4_s49oP, ipv5_s49oQ #) ->
+                (# ipv4_s49oP,
+                   GHC.Pack.ByteArray
+                     @ Int GHC.Pack.packCString#1 (GHC.Types.I# ww2_i3wsE) ipv5_s49oQ #)
+                }
+                }
+                })
+      of
+      { (# ipv_s1JmS, ipv1_s1JmT #) ->
+      case ipv1_s1JmT of { ByteArray ds_d49oi ds2_d49oj bytes_a49im ->
+      bytes_a49im
+      }
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Pack.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.$trModule3 = GHC.Types.TrNameS GHC.Pack.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+GHC.Pack.$trModule2 = "GHC.Pack"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.$trModule1 = GHC.Types.TrNameS GHC.Pack.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Pack.$trModule
+  = GHC.Types.Module GHC.Pack.$trModule3 GHC.Pack.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r49tW :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r49tW = GHC.Types.KindRepVar 1#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep1_r49tX :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r49tX = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep2_r49tY :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep2_r49tY
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcByteArray# (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep3_r49tZ :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep3_r49tZ
+  = GHC.Types.: @ KindRep $krep1_r49tX (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep4_r49u0 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep4_r49u0
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcMutableByteArray# $krep3_r49tZ
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tcByteArray2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Pack.$tcByteArray2 = "ByteArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tcByteArray1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.$tcByteArray1 = GHC.Types.TrNameS GHC.Pack.$tcByteArray2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tcByteArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Pack.$tcByteArray
+  = GHC.Types.TyCon
+      6611072354126638117##
+      11678736345727892353##
+      GHC.Pack.$trModule
+      GHC.Pack.$tcByteArray1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5_r49u1 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep5_r49u1
+  = GHC.Types.KindRepTyConApp GHC.Pack.$tcByteArray $krep3_r49tZ
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep6_r49u2 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep6_r49u2 = GHC.Types.KindRepFun $krep2_r49tY $krep5_r49u1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep7_r49u3 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep7_r49u3 = GHC.Types.KindRepFun $krep1_r49tX $krep6_r49u2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'ByteArray1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Pack.$tc'ByteArray1
+  = GHC.Types.KindRepFun $krep1_r49tX $krep7_r49u3
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'ByteArray3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Pack.$tc'ByteArray3 = "'ByteArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'ByteArray2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.$tc'ByteArray2 = GHC.Types.TrNameS GHC.Pack.$tc'ByteArray3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'ByteArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Pack.$tc'ByteArray
+  = GHC.Types.TyCon
+      11073751302644004223##
+      16492867229169068973##
+      GHC.Pack.$trModule
+      GHC.Pack.$tc'ByteArray2
+      1#
+      GHC.Pack.$tc'ByteArray1
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tcMutableByteArray2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+GHC.Pack.$tcMutableByteArray2 = "MutableByteArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tcMutableByteArray1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.$tcMutableByteArray1
+  = GHC.Types.TrNameS GHC.Pack.$tcMutableByteArray2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tcMutableByteArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Pack.$tcMutableByteArray
+  = GHC.Types.TyCon
+      10421317957223969791##
+      16976841683708620350##
+      GHC.Pack.$trModule
+      GHC.Pack.$tcMutableByteArray1
+      0#
+      GHC.Types.krep$*->*->*
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep8_r49u4 :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep8_r49u4
+  = GHC.Types.: @ KindRep $krep_r49tW (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep9_r49u5 :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep9_r49u5 = GHC.Types.: @ KindRep $krep1_r49tX $krep8_r49u4
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep10_r49u6 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep10_r49u6
+  = GHC.Types.KindRepTyConApp
+      GHC.Pack.$tcMutableByteArray $krep9_r49u5
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep11_r49u7 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep11_r49u7 = GHC.Types.KindRepFun $krep4_r49u0 $krep10_r49u6
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep12_r49u8 :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+$krep12_r49u8 = GHC.Types.KindRepFun $krep_r49tW $krep11_r49u7
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'MutableByteArray1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Pack.$tc'MutableByteArray1
+  = GHC.Types.KindRepFun $krep_r49tW $krep12_r49u8
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'MutableByteArray3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+GHC.Pack.$tc'MutableByteArray3 = "'MutableByteArray"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'MutableByteArray2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Pack.$tc'MutableByteArray2
+  = GHC.Types.TrNameS GHC.Pack.$tc'MutableByteArray3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Pack.$tc'MutableByteArray :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Pack.$tc'MutableByteArray
+  = GHC.Types.TyCon
+      4727910943669758619##
+      1938961805888617932##
+      GHC.Pack.$trModule
+      GHC.Pack.$tc'MutableByteArray2
+      2#
+      GHC.Pack.$tc'MutableByteArray1
+
+

@@ -1,0 +1,353 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:55:05.03007399 UTC
+
+Result size of Tidy Core
+  = {terms: 157, types: 231, coercions: 0, joins: 0/0}
+
+-- RHS size: {terms: 12, types: 12, coercions: 0, joins: 0/0}
+maybe :: forall b a. b -> (a -> b) -> Maybe a -> b
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U><L,1*C1(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_argZ)
+                 (@ a_arh0)
+                 (n_ardo [Occ=Once] :: b_argZ)
+                 (ds_drj2 [Occ=Once!] :: a_arh0 -> b_argZ)
+                 (ds1_drj3 [Occ=Once!] :: Maybe a_arh0) ->
+                 case ds1_drj3 of {
+                   Nothing -> n_ardo;
+                   Just x_ardq [Occ=Once] -> ds_drj2 x_ardq
+                 }}]
+maybe
+  = \ (@ b_argZ)
+      (@ a_arh0)
+      (n_ardo :: b_argZ)
+      (ds_drj2 :: a_arh0 -> b_argZ)
+      (ds1_drj3 :: Maybe a_arh0) ->
+      case ds1_drj3 of {
+        Nothing -> n_ardo;
+        Just x_ardq -> ds_drj2 x_ardq
+      }
+
+-- RHS size: {terms: 8, types: 7, coercions: 0, joins: 0/0}
+isJust :: forall a. Maybe a -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_argX) (ds_driU [Occ=Once!] :: Maybe a_argX) ->
+                 case ds_driU of {
+                   Nothing -> GHC.Types.False;
+                   Just _ [Occ=Dead] -> GHC.Types.True
+                 }}]
+isJust
+  = \ (@ a_argX) (ds_driU :: Maybe a_argX) ->
+      case ds_driU of {
+        Nothing -> GHC.Types.False;
+        Just ipv_srkp -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 8, types: 7, coercions: 0, joins: 0/0}
+isNothing :: forall a. Maybe a -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_argV) (ds_driM [Occ=Once!] :: Maybe a_argV) ->
+                 case ds_driM of {
+                   Nothing -> GHC.Types.True;
+                   Just _ [Occ=Dead] -> GHC.Types.False
+                 }}]
+isNothing
+  = \ (@ a_argV) (ds_driM :: Maybe a_argV) ->
+      case ds_driM of {
+        Nothing -> GHC.Types.True;
+        Just ipv_srkm -> GHC.Types.False
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_rrod :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_rrod = "Maybe.fromJust: Nothing"#
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+Data.Maybe.fromJust1 :: forall a. a
+[GblId, Str=x]
+Data.Maybe.fromJust1
+  = \ (@ a_argR) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep @ a_argR (unpackCString# lvl_rrod)
+
+-- RHS size: {terms: 8, types: 8, coercions: 0, joins: 0/0}
+fromJust :: forall a. Maybe a -> a
+[GblId,
+ Arity=1,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_argR) (ds_driH [Occ=Once!] :: Maybe a_argR) ->
+                 case ds_driH of {
+                   Nothing -> Data.Maybe.fromJust1 @ a_argR;
+                   Just x_ardr [Occ=Once] -> x_ardr
+                 }}]
+fromJust
+  = \ (@ a_argR) (ds_driH :: Maybe a_argR) ->
+      case ds_driH of {
+        Nothing -> Data.Maybe.fromJust1 @ a_argR;
+        Just x_ardr -> x_ardr
+      }
+
+-- RHS size: {terms: 9, types: 8, coercions: 0, joins: 0/0}
+fromMaybe :: forall a. a -> Maybe a -> a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_argN)
+                 (d_ards [Occ=Once] :: a_argN)
+                 (x_ardt [Occ=Once!] :: Maybe a_argN) ->
+                 case x_ardt of {
+                   Nothing -> d_ards;
+                   Just v_ardu [Occ=Once] -> v_ardu
+                 }}]
+fromMaybe
+  = \ (@ a_argN) (d_ards :: a_argN) (x_ardt :: Maybe a_argN) ->
+      case x_ardt of {
+        Nothing -> d_ards;
+        Just v_ardu -> v_ardu
+      }
+
+-- RHS size: {terms: 10, types: 10, coercions: 0, joins: 0/0}
+maybeToList :: forall a. Maybe a -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_argL) (ds_dris [Occ=Once!] :: Maybe a_argL) ->
+                 case ds_dris of {
+                   Nothing -> GHC.Types.[] @ a_argL;
+                   Just x_ardv [Occ=Once] ->
+                     GHC.Types.: @ a_argL x_ardv (GHC.Types.[] @ a_argL)
+                 }}]
+maybeToList
+  = \ (@ a_argL) (ds_dris :: Maybe a_argL) ->
+      case ds_dris of {
+        Nothing -> GHC.Types.[] @ a_argL;
+        Just x_ardv -> GHC.Types.: @ a_argL x_ardv (GHC.Types.[] @ a_argL)
+      }
+
+-- RHS size: {terms: 9, types: 11, coercions: 0, joins: 0/0}
+go_rroe :: forall a. [a] -> Maybe a
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+go_rroe
+  = \ (@ a_argx) (ds_irij :: [a_argx]) ->
+      case ds_irij of {
+        [] -> GHC.Base.Nothing @ a_argx;
+        : y_irio ys_irip -> GHC.Base.Just @ a_argx y_irio
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+listToMaybe [InlPrag=INLINE (sat-args=0)]
+  :: forall a. [a] -> Maybe a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_argx) ->
+                 foldr
+                   @ a_argx
+                   @ (Maybe a_argx)
+                   (\ (x_inLI [Occ=OnceL] :: a_argx) ->
+                      let {
+                        x1_inNH [Occ=OnceL] :: Maybe a_argx
+                        [LclId, Unf=OtherCon []]
+                        x1_inNH = GHC.Base.Just @ a_argx x_inLI } in
+                      \ _ [Occ=Dead] -> x1_inNH)
+                   (GHC.Base.Nothing @ a_argx)}]
+listToMaybe = go_rroe
+
+Rec {
+-- RHS size: {terms: 17, types: 20, coercions: 0, joins: 0/0}
+Data.Maybe.catMaybes1 [Occ=LoopBreaker]
+  :: forall a. [Maybe a] -> [a]
+[GblId, Arity=1, Caf=NoCafRefs, Str=<S,1*U>, Unf=OtherCon []]
+Data.Maybe.catMaybes1
+  = \ (@ a_argu) (ds_irij :: [Maybe a_argu]) ->
+      case ds_irij of {
+        [] -> GHC.Types.[] @ a_argu;
+        : y_irio ys_irip ->
+          case y_irio of {
+            Nothing -> Data.Maybe.catMaybes1 @ a_argu ys_irip;
+            Just x_ardx ->
+              GHC.Types.:
+                @ a_argu x_ardx (Data.Maybe.catMaybes1 @ a_argu ys_irip)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+catMaybes :: forall a. [Maybe a] -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)}]
+catMaybes
+  = \ (@ a_argu) (ls_ardw :: [Maybe a_argu]) ->
+      Data.Maybe.catMaybes1 @ a_argu ls_ardw
+
+-- RHS size: {terms: 16, types: 17, coercions: 0, joins: 0/0}
+mapMaybeFB [InlPrag=INLINE[0] (sat-args=4)]
+  :: forall b r a. (b -> r -> r) -> (a -> Maybe b) -> a -> r -> r
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(S),1*C1(U)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ b_arg9)
+                 (@ r_arga)
+                 (@ a_argb)
+                 (cons_ardD [Occ=Once!] :: b_arg9 -> r_arga -> r_arga)
+                 (f_ardE [Occ=Once!] :: a_argb -> Maybe b_arg9)
+                 (x_ardF [Occ=Once] :: a_argb)
+                 (next_ardG [Occ=Once*] :: r_arga) ->
+                 case f_ardE x_ardF of {
+                   Nothing -> next_ardG;
+                   Just r1_ardH [Occ=Once] -> cons_ardD r1_ardH next_ardG
+                 }}]
+mapMaybeFB
+  = \ (@ b_arg9)
+      (@ r_arga)
+      (@ a_argb)
+      (cons_ardD :: b_arg9 -> r_arga -> r_arga)
+      (f_ardE :: a_argb -> Maybe b_arg9)
+      (x_ardF :: a_argb)
+      (next_ardG :: r_arga) ->
+      case f_ardE x_ardF of {
+        Nothing -> next_ardG;
+        Just r1_ardH -> cons_ardD r1_ardH next_ardG
+      }
+
+Rec {
+-- RHS size: {terms: 22, types: 23, coercions: 0, joins: 0/0}
+mapMaybe [InlPrag=NOINLINE[1], Occ=LoopBreaker]
+  :: forall a b. (a -> Maybe b) -> [a] -> [b]
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,C(U)><S,1*U>,
+ Unf=OtherCon []]
+mapMaybe
+  = \ (@ a_argf)
+      (@ b_argg)
+      (ds_drhN :: a_argf -> Maybe b_argg)
+      (ds1_drhO :: [a_argf]) ->
+      case ds1_drhO of {
+        [] -> GHC.Types.[] @ b_argg;
+        : x_ardz xs_ardA ->
+          case ds_drhN x_ardz of {
+            Nothing -> mapMaybe @ a_argf @ b_argg ds_drhN xs_ardA;
+            Just r_ardC ->
+              GHC.Types.:
+                @ b_argg r_ardC (mapMaybe @ a_argf @ b_argg ds_drhN xs_ardA)
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Maybe.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Maybe.$trModule2 = "Data.Maybe"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Maybe.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Maybe.$trModule1 = GHC.Types.TrNameS Data.Maybe.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Maybe.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Maybe.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Maybe.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Maybe.$trModule3 = GHC.Types.TrNameS Data.Maybe.$trModule4
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Maybe.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Maybe.$trModule
+  = GHC.Types.Module Data.Maybe.$trModule3 Data.Maybe.$trModule1
+
+
+------ Local rules for imported ids --------
+"mapMaybe" [~1]
+    forall (@ b_arh8)
+           (@ a_arh7)
+           (f_ardI :: a_arh7 -> Maybe b_arh8)
+           (xs_ardJ :: [a_arh7]).
+      mapMaybe @ a_arh7 @ b_arh8 f_ardI xs_ardJ
+      = build
+          @ b_arh8
+          (\ (@ b1_arhf)
+             (c_ardK [OS=OneShot] :: b_arh8 -> b1_arhf -> b1_arhf)
+             (n_ardL [OS=OneShot] :: b1_arhf) ->
+             foldr
+               @ a_arh7
+               @ b1_arhf
+               (mapMaybeFB @ b_arh8 @ b1_arhf @ a_arh7 c_ardK f_ardI)
+               n_ardL
+               xs_ardJ)
+"mapMaybeList" [1]
+    forall (@ a_arhx) (@ b_arhB) (f_ardM :: a_arhx -> Maybe b_arhB).
+      foldr @ a_arhx
+            @ [b_arhB]
+            (mapMaybeFB
+               @ b_arhB @ [b_arhB] @ a_arhx (GHC.Types.: @ b_arhB) f_ardM)
+            (GHC.Types.[] @ b_arhB)
+      = mapMaybe @ a_arhx @ b_arhB f_ardM
+

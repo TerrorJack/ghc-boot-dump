@@ -1,0 +1,3269 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:08:39.274129268 UTC
+
+Result size of Tidy Core
+  = {terms: 1,056, types: 3,190, coercions: 762, joins: 0/11}
+
+-- RHS size: {terms: 6, types: 50, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$p1MonadZip
+  :: forall (m :: * -> *). MonadZip m => Monad m
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SLLL),U(U,A,A,A)>,
+ RULES: Built in rule for Control.Monad.Zip.$p1MonadZip: "Class op $p1MonadZip"]
+Control.Monad.Zip.$p1MonadZip
+  = \ (@ (m_adt27 :: * -> *)) (v_B1 :: MonadZip m_adt27) ->
+      case v_B1 of v_B1
+      { Control.Monad.Zip.C:MonadZip v_B2 v_B3 v_B4 v_B5 ->
+      v_B2
+      }
+
+-- RHS size: {terms: 6, types: 50, coercions: 0, joins: 0/0}
+mzip
+  :: forall (m :: * -> *).
+     MonadZip m =>
+     forall a b. m a -> m b -> m (a, b)
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLL),U(A,U,A,A)>,
+ RULES: Built in rule for mzip: "Class op mzip"]
+mzip
+  = \ (@ (m_adt27 :: * -> *)) (v_B1 :: MonadZip m_adt27) ->
+      case v_B1 of v_B1
+      { Control.Monad.Zip.C:MonadZip v_B2 v_B3 v_B4 v_B5 ->
+      v_B3
+      }
+
+-- RHS size: {terms: 6, types: 50, coercions: 0, joins: 0/0}
+mzipWith
+  :: forall (m :: * -> *).
+     MonadZip m =>
+     forall a b c. (a -> b -> c) -> m a -> m b -> m c
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLSL),U(A,A,U,A)>,
+ RULES: Built in rule for mzipWith: "Class op mzipWith"]
+mzipWith
+  = \ (@ (m_adt27 :: * -> *)) (v_B1 :: MonadZip m_adt27) ->
+      case v_B1 of v_B1
+      { Control.Monad.Zip.C:MonadZip v_B2 v_B3 v_B4 v_B5 ->
+      v_B4
+      }
+
+-- RHS size: {terms: 6, types: 50, coercions: 0, joins: 0/0}
+munzip
+  :: forall (m :: * -> *).
+     MonadZip m =>
+     forall a b. m (a, b) -> (m a, m b)
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),U(A,A,A,U)>,
+ RULES: Built in rule for munzip: "Class op munzip"]
+munzip
+  = \ (@ (m_adt27 :: * -> *)) (v_B1 :: MonadZip m_adt27) ->
+      case v_B1 of v_B1
+      { Control.Monad.Zip.C:MonadZip v_B2 v_B3 v_B4 v_B5 ->
+      v_B5
+      }
+
+-- RHS size: {terms: 5, types: 1, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZip[] [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip []
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: []
+                                    GHC.Base.$fMonad[]
+                                    zip
+                                    zipWith
+                                    unzip]
+Control.Monad.Zip.$fMonadZip[]
+  = Control.Monad.Zip.C:MonadZip
+      @ [] GHC.Base.$fMonad[] zip zipWith unzip
+
+-- RHS size: {terms: 32, types: 82, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$w$cmunzip3 [InlPrag=NOUSERINLINE[0]]
+  :: forall a b.
+     NE.NonEmpty (a, b) -> (# NE.NonEmpty a, NE.NonEmpty b #)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(U(1*U,1*U),U)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [80] 140 30}]
+Control.Monad.Zip.$w$cmunzip3
+  = \ (@ a_sdtv0)
+      (@ b_sdtv1)
+      (w_sdtv2 :: NE.NonEmpty (a_sdtv0, b_sdtv1)) ->
+      (# GHC.Base.:|
+           @ a_sdtv0
+           (case w_sdtv2 of { NE.:| a1_idoog as_idooh ->
+            case a1_idoog of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A }
+            })
+           (case w_sdtv2 of { NE.:| a1_idooo as_idoop ->
+            map
+              @ (a_sdtv0, b_sdtv1) @ a_sdtv0 (fst @ a_sdtv0 @ b_sdtv1) as_idoop
+            }),
+         GHC.Base.:|
+           @ b_sdtv1
+           (case w_sdtv2 of { NE.:| a1_idoog as_idooh ->
+            case a1_idoog of { (ds1_iaIin, y_iaIio) -> y_iaIio }
+            })
+           (case w_sdtv2 of { NE.:| a1_idooo as_idoop ->
+            map
+              @ (a_sdtv0, b_sdtv1) @ b_sdtv1 (snd @ a_sdtv0 @ b_sdtv1) as_idoop
+            }) #)
+
+-- RHS size: {terms: 10, types: 25, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipNonEmpty_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall a b. NE.NonEmpty (a, b) -> (NE.NonEmpty a, NE.NonEmpty b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(U(U,U),U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sdtv0)
+                 (@ b_sdtv1)
+                 (w_sdtv2 [Occ=Once] :: NE.NonEmpty (a_sdtv0, b_sdtv1)) ->
+                 case Control.Monad.Zip.$w$cmunzip3 @ a_sdtv0 @ b_sdtv1 w_sdtv2 of
+                 { (# ww1_sdtwE [Occ=Once], ww2_sdtwF [Occ=Once] #) ->
+                 (ww1_sdtwE, ww2_sdtwF)
+                 }}]
+Control.Monad.Zip.$fMonadZipNonEmpty_$cmunzip
+  = \ (@ a_sdtv0)
+      (@ b_sdtv1)
+      (w_sdtv2 :: NE.NonEmpty (a_sdtv0, b_sdtv1)) ->
+      case Control.Monad.Zip.$w$cmunzip3 @ a_sdtv0 @ b_sdtv1 w_sdtv2 of
+      { (# ww1_sdtwE, ww2_sdtwF #) ->
+      (ww1_sdtwE, ww2_sdtwF)
+      }
+
+-- RHS size: {terms: 5, types: 1, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipNonEmpty [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip NE.NonEmpty
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: NE.NonEmpty
+                                    GHC.Base.$fMonadNonEmpty
+                                    NE.zip
+                                    NE.zipWith
+                                    Control.Monad.Zip.$fMonadZipNonEmpty_$cmunzip]
+Control.Monad.Zip.$fMonadZipNonEmpty
+  = Control.Monad.Zip.C:MonadZip
+      @ NE.NonEmpty
+      GHC.Base.$fMonadNonEmpty
+      NE.zip
+      NE.zipWith
+      Control.Monad.Zip.$fMonadZipNonEmpty_$cmunzip
+
+-- RHS size: {terms: 9, types: 17, coercions: 10, joins: 0/0}
+Control.Monad.Zip.$fMonadZipIdentity_$cmunzip
+  :: forall a b. Identity (a, b) -> (Identity a, Identity b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adtfw)
+                 (@ b_adtfx)
+                 (ds_ddtis [Occ=Once] :: Identity (a_adtfw, b_adtfx)) ->
+                 case ds_ddtis
+                      `cast` (Data.Functor.Identity.N:Identity[0] <(a_adtfw, b_adtfx)>_R
+                              :: (Identity (a_adtfw, b_adtfx) :: *)
+                                 ~R# ((a_adtfw, b_adtfx) :: *))
+                 of
+                 { (a1_adt2E [Occ=Once], b1_adt2F [Occ=Once]) ->
+                 (a1_adt2E
+                  `cast` (Sym (Data.Functor.Identity.N:Identity[0] <a_adtfw>_R)
+                          :: (a_adtfw :: *) ~R# (Identity a_adtfw :: *)),
+                  b1_adt2F
+                  `cast` (Sym (Data.Functor.Identity.N:Identity[0] <b_adtfx>_R)
+                          :: (b_adtfx :: *) ~R# (Identity b_adtfx :: *)))
+                 }}]
+Control.Monad.Zip.$fMonadZipIdentity_$cmunzip
+  = \ (@ a_adtfw)
+      (@ b_adtfx)
+      (ds_ddtis :: Identity (a_adtfw, b_adtfx)) ->
+      case ds_ddtis
+           `cast` (Data.Functor.Identity.N:Identity[0] <(a_adtfw, b_adtfx)>_R
+                   :: (Identity (a_adtfw, b_adtfx) :: *)
+                      ~R# ((a_adtfw, b_adtfx) :: *))
+      of
+      { (a1_adt2E, b1_adt2F) ->
+      (a1_adt2E
+       `cast` (Sym (Data.Functor.Identity.N:Identity[0] <a_adtfw>_R)
+               :: (a_adtfw :: *) ~R# (Identity a_adtfw :: *)),
+       b1_adt2F
+       `cast` (Sym (Data.Functor.Identity.N:Identity[0] <b_adtfx>_R)
+               :: (b_adtfx :: *) ~R# (Identity b_adtfx :: *)))
+      }
+
+-- RHS size: {terms: 9, types: 13, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipIdentity1
+  :: forall b a c. (a -> b -> c) -> Identity a -> Identity b -> c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_adtfk)
+                 (@ a_adtfj)
+                 (@ c_adtfl)
+                 (f_X9DlW [Occ=Once!] :: a_adtfj -> b_adtfk -> c_adtfl)
+                 (m1_X9DlY [Occ=Once] :: Identity a_adtfj)
+                 (m2_X9Dm0 [Occ=Once] :: Identity b_adtfk) ->
+                 f_X9DlW
+                   (m1_X9DlY
+                    `cast` (Data.Functor.Identity.N:Identity[0] <a_adtfj>_R
+                            :: (Identity a_adtfj :: *) ~R# (a_adtfj :: *)))
+                   (m2_X9Dm0
+                    `cast` (Data.Functor.Identity.N:Identity[0] <b_adtfk>_R
+                            :: (Identity b_adtfk :: *) ~R# (b_adtfk :: *)))}]
+Control.Monad.Zip.$fMonadZipIdentity1
+  = \ (@ b_adtfk)
+      (@ a_adtfj)
+      (@ c_adtfl)
+      (f_X9DlW :: a_adtfj -> b_adtfk -> c_adtfl)
+      (m1_X9DlY :: Identity a_adtfj)
+      (m2_X9Dm0 :: Identity b_adtfk) ->
+      f_X9DlW
+        (m1_X9DlY
+         `cast` (Data.Functor.Identity.N:Identity[0] <a_adtfj>_R
+                 :: (Identity a_adtfj :: *) ~R# (a_adtfj :: *)))
+        (m2_X9Dm0
+         `cast` (Data.Functor.Identity.N:Identity[0] <b_adtfk>_R
+                 :: (Identity b_adtfk :: *) ~R# (b_adtfk :: *)))
+
+-- RHS size: {terms: 9, types: 13, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipDual1
+  :: forall b a c. (a -> b -> c) -> Dual a -> Dual b -> c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_adteH)
+                 (@ a_adteG)
+                 (@ c_adteI)
+                 (f_X9DlY [Occ=Once!] :: a_adteG -> b_adteH -> c_adteI)
+                 (m1_X9Dm0 [Occ=Once] :: Dual a_adteG)
+                 (m2_X9Dm2 [Occ=Once] :: Dual b_adteH) ->
+                 f_X9DlY
+                   (m1_X9Dm0
+                    `cast` (Data.Semigroup.Internal.N:Dual[0] <a_adteG>_R
+                            :: (Dual a_adteG :: *) ~R# (a_adteG :: *)))
+                   (m2_X9Dm2
+                    `cast` (Data.Semigroup.Internal.N:Dual[0] <b_adteH>_R
+                            :: (Dual b_adteH :: *) ~R# (b_adteH :: *)))}]
+Control.Monad.Zip.$fMonadZipDual1
+  = \ (@ b_adteH)
+      (@ a_adteG)
+      (@ c_adteI)
+      (f_X9DlY :: a_adteG -> b_adteH -> c_adteI)
+      (m1_X9Dm0 :: Dual a_adteG)
+      (m2_X9Dm2 :: Dual b_adteH) ->
+      f_X9DlY
+        (m1_X9Dm0
+         `cast` (Data.Semigroup.Internal.N:Dual[0] <a_adteG>_R
+                 :: (Dual a_adteG :: *) ~R# (a_adteG :: *)))
+        (m2_X9Dm2
+         `cast` (Data.Semigroup.Internal.N:Dual[0] <b_adteH>_R
+                 :: (Dual b_adteH :: *) ~R# (b_adteH :: *)))
+
+-- RHS size: {terms: 9, types: 13, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipSum1
+  :: forall b a c. (a -> b -> c) -> Sum a -> Sum b -> c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_adte4)
+                 (@ a_adte3)
+                 (@ c_adte5)
+                 (f_X9Dm0 [Occ=Once!] :: a_adte3 -> b_adte4 -> c_adte5)
+                 (m1_X9Dm2 [Occ=Once] :: Sum a_adte3)
+                 (m2_X9Dm4 [Occ=Once] :: Sum b_adte4) ->
+                 f_X9Dm0
+                   (m1_X9Dm2
+                    `cast` (Data.Semigroup.Internal.N:Sum[0] <a_adte3>_R
+                            :: (Sum a_adte3 :: *) ~R# (a_adte3 :: *)))
+                   (m2_X9Dm4
+                    `cast` (Data.Semigroup.Internal.N:Sum[0] <b_adte4>_R
+                            :: (Sum b_adte4 :: *) ~R# (b_adte4 :: *)))}]
+Control.Monad.Zip.$fMonadZipSum1
+  = \ (@ b_adte4)
+      (@ a_adte3)
+      (@ c_adte5)
+      (f_X9Dm0 :: a_adte3 -> b_adte4 -> c_adte5)
+      (m1_X9Dm2 :: Sum a_adte3)
+      (m2_X9Dm4 :: Sum b_adte4) ->
+      f_X9Dm0
+        (m1_X9Dm2
+         `cast` (Data.Semigroup.Internal.N:Sum[0] <a_adte3>_R
+                 :: (Sum a_adte3 :: *) ~R# (a_adte3 :: *)))
+        (m2_X9Dm4
+         `cast` (Data.Semigroup.Internal.N:Sum[0] <b_adte4>_R
+                 :: (Sum b_adte4 :: *) ~R# (b_adte4 :: *)))
+
+-- RHS size: {terms: 9, types: 13, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProduct1
+  :: forall b a c. (a -> b -> c) -> Product a -> Product b -> c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_adtdr)
+                 (@ a_adtdq)
+                 (@ c_adtds)
+                 (f_X9Dm2 [Occ=Once!] :: a_adtdq -> b_adtdr -> c_adtds)
+                 (m1_X9Dm4 [Occ=Once] :: Product a_adtdq)
+                 (m2_X9Dm6 [Occ=Once] :: Product b_adtdr) ->
+                 f_X9Dm2
+                   (m1_X9Dm4
+                    `cast` (Data.Semigroup.Internal.N:Product[0] <a_adtdq>_R
+                            :: (Product a_adtdq :: *) ~R# (a_adtdq :: *)))
+                   (m2_X9Dm6
+                    `cast` (Data.Semigroup.Internal.N:Product[0] <b_adtdr>_R
+                            :: (Product b_adtdr :: *) ~R# (b_adtdr :: *)))}]
+Control.Monad.Zip.$fMonadZipProduct1
+  = \ (@ b_adtdr)
+      (@ a_adtdq)
+      (@ c_adtds)
+      (f_X9Dm2 :: a_adtdq -> b_adtdr -> c_adtds)
+      (m1_X9Dm4 :: Product a_adtdq)
+      (m2_X9Dm6 :: Product b_adtdr) ->
+      f_X9Dm2
+        (m1_X9Dm4
+         `cast` (Data.Semigroup.Internal.N:Product[0] <a_adtdq>_R
+                 :: (Product a_adtdq :: *) ~R# (a_adtdq :: *)))
+        (m2_X9Dm6
+         `cast` (Data.Semigroup.Internal.N:Product[0] <b_adtdr>_R
+                 :: (Product b_adtdr :: *) ~R# (b_adtdr :: *)))
+
+-- RHS size: {terms: 20, types: 22, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipMaybe_$cmzipWith
+  :: forall a b c. (a -> b -> c) -> Maybe a -> Maybe b -> Maybe c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adtcN)
+                 (@ b_adtcO)
+                 (@ c_adtcP)
+                 (f_i9DkB [Occ=Once!] :: a_adtcN -> b_adtcO -> c_adtcP)
+                 (m1_i9DkC [Occ=Once!] :: Maybe a_adtcN)
+                 (m2_i9DkD [Occ=Once!] :: Maybe b_adtcO) ->
+                 case m1_i9DkC of {
+                   Nothing -> GHC.Base.Nothing @ c_adtcP;
+                   Just x_i8hBy [Occ=Once] ->
+                     case m2_i9DkD of {
+                       Nothing -> GHC.Base.Nothing @ c_adtcP;
+                       Just x1_X8hD8 [Occ=Once] ->
+                         GHC.Base.Just @ c_adtcP (f_i9DkB x_i8hBy x1_X8hD8)
+                     }
+                 }}]
+Control.Monad.Zip.$fMonadZipMaybe_$cmzipWith
+  = \ (@ a_adtcN)
+      (@ b_adtcO)
+      (@ c_adtcP)
+      (f_i9DkB :: a_adtcN -> b_adtcO -> c_adtcP)
+      (m1_i9DkC :: Maybe a_adtcN)
+      (m2_i9DkD :: Maybe b_adtcO) ->
+      case m1_i9DkC of {
+        Nothing -> GHC.Base.Nothing @ c_adtcP;
+        Just x_i8hBy ->
+          case m2_i9DkD of {
+            Nothing -> GHC.Base.Nothing @ c_adtcP;
+            Just x1_X8hD8 -> GHC.Base.Just @ c_adtcP (f_i9DkB x_i8hBy x1_X8hD8)
+          }
+      }
+
+-- RHS size: {terms: 20, types: 22, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipFirst1
+  :: forall a b c. (a -> b -> c) -> First a -> First b -> Maybe c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adtca)
+                 (@ b_adtcb)
+                 (@ c_adtcc)
+                 (f_i9DkB [Occ=Once!] :: a_adtca -> b_adtcb -> c_adtcc)
+                 (m1_i9DkC [Occ=Once] :: First a_adtca)
+                 (m2_i9DkD [Occ=Once] :: First b_adtcb) ->
+                 case m1_i9DkC
+                      `cast` (Data.Monoid.N:First[0] <a_adtca>_N
+                              :: (First a_adtca :: *) ~R# (Maybe a_adtca :: *))
+                 of {
+                   Nothing -> GHC.Base.Nothing @ c_adtcc;
+                   Just x_i8hBy [Occ=Once] ->
+                     case m2_i9DkD
+                          `cast` (Data.Monoid.N:First[0] <b_adtcb>_N
+                                  :: (First b_adtcb :: *) ~R# (Maybe b_adtcb :: *))
+                     of {
+                       Nothing -> GHC.Base.Nothing @ c_adtcc;
+                       Just x1_X8hDb [Occ=Once] ->
+                         GHC.Base.Just @ c_adtcc (f_i9DkB x_i8hBy x1_X8hDb)
+                     }
+                 }}]
+Control.Monad.Zip.$fMonadZipFirst1
+  = \ (@ a_adtca)
+      (@ b_adtcb)
+      (@ c_adtcc)
+      (f_i9DkB :: a_adtca -> b_adtcb -> c_adtcc)
+      (m1_i9DkC :: First a_adtca)
+      (m2_i9DkD :: First b_adtcb) ->
+      case m1_i9DkC
+           `cast` (Data.Monoid.N:First[0] <a_adtca>_N
+                   :: (First a_adtca :: *) ~R# (Maybe a_adtca :: *))
+      of {
+        Nothing -> GHC.Base.Nothing @ c_adtcc;
+        Just x_i8hBy ->
+          case m2_i9DkD
+               `cast` (Data.Monoid.N:First[0] <b_adtcb>_N
+                       :: (First b_adtcb :: *) ~R# (Maybe b_adtcb :: *))
+          of {
+            Nothing -> GHC.Base.Nothing @ c_adtcc;
+            Just x1_X8hDb -> GHC.Base.Just @ c_adtcc (f_i9DkB x_i8hBy x1_X8hDb)
+          }
+      }
+
+-- RHS size: {terms: 20, types: 22, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipLast1
+  :: forall a b c. (a -> b -> c) -> Last a -> Last b -> Maybe c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adtbx)
+                 (@ b_adtby)
+                 (@ c_adtbz)
+                 (f_X9Dmc [Occ=Once!] :: a_adtbx -> b_adtby -> c_adtbz)
+                 (m1_X9Dme [Occ=Once] :: Last a_adtbx)
+                 (m2_X9Dmg [Occ=Once] :: Last b_adtby) ->
+                 case m1_X9Dme
+                      `cast` (Data.Monoid.N:Last[0] <a_adtbx>_N
+                              :: (Last a_adtbx :: *) ~R# (Maybe a_adtbx :: *))
+                 of {
+                   Nothing -> GHC.Base.Nothing @ c_adtbz;
+                   Just x_i8hBy [Occ=Once] ->
+                     case m2_X9Dmg
+                          `cast` (Data.Monoid.N:Last[0] <b_adtby>_N
+                                  :: (Last b_adtby :: *) ~R# (Maybe b_adtby :: *))
+                     of {
+                       Nothing -> GHC.Base.Nothing @ c_adtbz;
+                       Just x1_X8hDj [Occ=Once] ->
+                         GHC.Base.Just @ c_adtbz (f_X9Dmc x_i8hBy x1_X8hDj)
+                     }
+                 }}]
+Control.Monad.Zip.$fMonadZipLast1
+  = \ (@ a_adtbx)
+      (@ b_adtby)
+      (@ c_adtbz)
+      (f_X9Dmc :: a_adtbx -> b_adtby -> c_adtbz)
+      (m1_X9Dme :: Last a_adtbx)
+      (m2_X9Dmg :: Last b_adtby) ->
+      case m1_X9Dme
+           `cast` (Data.Monoid.N:Last[0] <a_adtbx>_N
+                   :: (Last a_adtbx :: *) ~R# (Maybe a_adtbx :: *))
+      of {
+        Nothing -> GHC.Base.Nothing @ c_adtbz;
+        Just x_i8hBy ->
+          case m2_X9Dmg
+               `cast` (Data.Monoid.N:Last[0] <b_adtby>_N
+                       :: (Last b_adtby :: *) ~R# (Maybe b_adtby :: *))
+          of {
+            Nothing -> GHC.Base.Nothing @ c_adtbz;
+            Just x1_X8hDj -> GHC.Base.Just @ c_adtbz (f_X9Dmc x_i8hBy x1_X8hDj)
+          }
+      }
+
+-- RHS size: {terms: 5, types: 8, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipAlt_$cp1MonadZip
+  :: forall (f :: * -> *). MonadZip f => Monad (Alt f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A,A,A)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_Xdtc6 :: * -> *))
+                 ($dMonadZip_Xdtc8 [Occ=Once] :: MonadZip f_Xdtc6) ->
+                 Data.Semigroup.Internal.$fMonadAlt
+                   @ f_Xdtc6
+                   (Control.Monad.Zip.$p1MonadZip @ f_Xdtc6 $dMonadZip_Xdtc8)}]
+Control.Monad.Zip.$fMonadZipAlt_$cp1MonadZip
+  = \ (@ (f_Xdtc6 :: * -> *))
+      ($dMonadZip_Xdtc8 :: MonadZip f_Xdtc6) ->
+      Data.Semigroup.Internal.$fMonadAlt
+        @ f_Xdtc6
+        (Control.Monad.Zip.$p1MonadZip @ f_Xdtc6 $dMonadZip_Xdtc8)
+
+-- RHS size: {terms: 7, types: 20, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProxy_$cmzipWith
+  :: forall a b c. (a -> b -> c) -> Proxy a -> Proxy b -> Proxy c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adtag)
+                 (@ b_adtah)
+                 (@ c_adtai)
+                 _ [Occ=Dead]
+                 _ [Occ=Dead]
+                 _ [Occ=Dead] ->
+                 Data.Proxy.Proxy @ * @ c_adtai}]
+Control.Monad.Zip.$fMonadZipProxy_$cmzipWith
+  = \ (@ a_adtag)
+      (@ b_adtah)
+      (@ c_adtai)
+      _ [Occ=Dead]
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      Data.Proxy.Proxy @ * @ c_adtai
+
+-- RHS size: {terms: 7, types: 20, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipU1_$cmzipWith
+  :: forall a b c. (a -> b -> c) -> U1 a -> U1 b -> U1 c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adt9H)
+                 (@ b_adt9I)
+                 (@ c_adt9J)
+                 _ [Occ=Dead]
+                 _ [Occ=Dead]
+                 _ [Occ=Dead] ->
+                 GHC.Generics.U1 @ * @ c_adt9J}]
+Control.Monad.Zip.$fMonadZipU1_$cmzipWith
+  = \ (@ a_adt9H)
+      (@ b_adt9I)
+      (@ c_adt9J)
+      _ [Occ=Dead]
+      _ [Occ=Dead]
+      _ [Occ=Dead] ->
+      GHC.Generics.U1 @ * @ c_adt9J
+
+-- RHS size: {terms: 9, types: 13, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipPar2
+  :: forall b a c. (a -> b -> c) -> Par1 a -> Par1 b -> c
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ b_adt95)
+                 (@ a_adt94)
+                 (@ c_adt96)
+                 (f_X9Dmk [Occ=Once!] :: a_adt94 -> b_adt95 -> c_adt96)
+                 (m1_X9Dmm [Occ=Once] :: Par1 a_adt94)
+                 (m2_X9Dmo [Occ=Once] :: Par1 b_adt95) ->
+                 f_X9Dmk
+                   (m1_X9Dmm
+                    `cast` (GHC.Generics.N:Par1[0] <a_adt94>_R
+                            :: (Par1 a_adt94 :: *) ~R# (a_adt94 :: *)))
+                   (m2_X9Dmo
+                    `cast` (GHC.Generics.N:Par1[0] <b_adt95>_R
+                            :: (Par1 b_adt95 :: *) ~R# (b_adt95 :: *)))}]
+Control.Monad.Zip.$fMonadZipPar2
+  = \ (@ b_adt95)
+      (@ a_adt94)
+      (@ c_adt96)
+      (f_X9Dmk :: a_adt94 -> b_adt95 -> c_adt96)
+      (m1_X9Dmm :: Par1 a_adt94)
+      (m2_X9Dmo :: Par1 b_adt95) ->
+      f_X9Dmk
+        (m1_X9Dmm
+         `cast` (GHC.Generics.N:Par1[0] <a_adt94>_R
+                 :: (Par1 a_adt94 :: *) ~R# (a_adt94 :: *)))
+        (m2_X9Dmo
+         `cast` (GHC.Generics.N:Par1[0] <b_adt95>_R
+                 :: (Par1 b_adt95 :: *) ~R# (b_adt95 :: *)))
+
+-- RHS size: {terms: 5, types: 8, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipRec1_$cp1MonadZip
+  :: forall (f :: * -> *). MonadZip f => Monad (Rec1 f)
+[GblId,
+ Arity=1,
+ Str=<L,1*U(1*U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),A,A,A)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_Xdt9S :: * -> *))
+                 ($dMonadZip_Xdt9U [Occ=Once] :: MonadZip f_Xdt9S) ->
+                 GHC.Generics.$fMonadRec1
+                   @ f_Xdt9S
+                   (Control.Monad.Zip.$p1MonadZip @ f_Xdt9S $dMonadZip_Xdt9U)}]
+Control.Monad.Zip.$fMonadZipRec1_$cp1MonadZip
+  = \ (@ (f_Xdt9S :: * -> *))
+      ($dMonadZip_Xdt9U :: MonadZip f_Xdt9S) ->
+      GHC.Generics.$fMonadRec1
+        @ f_Xdt9S
+        (Control.Monad.Zip.$p1MonadZip @ f_Xdt9S $dMonadZip_Xdt9U)
+
+-- RHS size: {terms: 7, types: 12, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipM1_$cp1MonadZip
+  :: forall (f :: * -> *) i (c :: Meta).
+     MonadZip f =>
+     Monad (M1 i c f)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),1*U,1*U,1*U,1*U),A,A,A)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_Xdt9j :: * -> *))
+                 (@ i_Xdt9l)
+                 (@ (c_Xdt9n :: Meta))
+                 ($dMonadZip_Xdt9p [Occ=Once] :: MonadZip f_Xdt9j) ->
+                 GHC.Generics.$fMonadM1
+                   @ f_Xdt9j
+                   @ i_Xdt9l
+                   @ c_Xdt9n
+                   (Control.Monad.Zip.$p1MonadZip @ f_Xdt9j $dMonadZip_Xdt9p)}]
+Control.Monad.Zip.$fMonadZipM1_$cp1MonadZip
+  = \ (@ (f_Xdt9j :: * -> *))
+      (@ i_Xdt9l)
+      (@ (c_Xdt9n :: Meta))
+      ($dMonadZip_Xdt9p :: MonadZip f_Xdt9j) ->
+      GHC.Generics.$fMonadM1
+        @ f_Xdt9j
+        @ i_Xdt9l
+        @ c_Xdt9n
+        (Control.Monad.Zip.$p1MonadZip @ f_Xdt9j $dMonadZip_Xdt9p)
+
+-- RHS size: {terms: 27, types: 66, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZip:*:_$cmzipWith [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (MonadZip f, MonadZip g) =>
+     forall a b c.
+     (a -> b -> c) -> (:*:) f g a -> (:*:) f g b -> (:*:) f g c
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A)><L,1*U(A,A,1*C1(C1(C1(U))),A)><L,U><S,1*U(U,U)><S,1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=5,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_sdtv7 :: * -> *))
+                 (@ (g_sdtv8 :: * -> *))
+                 (w_sdtv9 [Occ=Once] :: MonadZip f_sdtv7)
+                 (w1_sdtva [Occ=Once] :: MonadZip g_sdtv8)
+                 (@ a_sdtvb)
+                 (@ b_sdtvc)
+                 (@ c_sdtvd)
+                 (w2_sdtve :: a_sdtvb -> b_sdtvc -> c_sdtvd)
+                 (w3_sdtvf [Occ=Once!] :: (:*:) f_sdtv7 g_sdtv8 a_sdtvb)
+                 (w4_sdtvg [Occ=Once!] :: (:*:) f_sdtv7 g_sdtv8 b_sdtvc) ->
+                 case w3_sdtvf of { :*: ww1_sdtvj [Occ=Once] ww2_sdtvk [Occ=Once] ->
+                 case w4_sdtvg of { :*: ww4_sdtvo [Occ=Once] ww5_sdtvp [Occ=Once] ->
+                 GHC.Generics.:*:
+                   @ *
+                   @ f_sdtv7
+                   @ g_sdtv8
+                   @ c_sdtvd
+                   (mzipWith
+                      @ f_sdtv7
+                      w_sdtv9
+                      @ a_sdtvb
+                      @ b_sdtvc
+                      @ c_sdtvd
+                      w2_sdtve
+                      ww1_sdtvj
+                      ww4_sdtvo)
+                   (mzipWith
+                      @ g_sdtv8
+                      w1_sdtva
+                      @ a_sdtvb
+                      @ b_sdtvc
+                      @ c_sdtvd
+                      w2_sdtve
+                      ww2_sdtvk
+                      ww5_sdtvp)
+                 }
+                 }}]
+Control.Monad.Zip.$fMonadZip:*:_$cmzipWith
+  = \ (@ (f_sdtv7 :: * -> *))
+      (@ (g_sdtv8 :: * -> *))
+      (w_sdtv9 :: MonadZip f_sdtv7)
+      (w1_sdtva :: MonadZip g_sdtv8)
+      (@ a_sdtvb)
+      (@ b_sdtvc)
+      (@ c_sdtvd)
+      (w2_sdtve :: a_sdtvb -> b_sdtvc -> c_sdtvd)
+      (w3_sdtvf :: (:*:) f_sdtv7 g_sdtv8 a_sdtvb)
+      (w4_sdtvg :: (:*:) f_sdtv7 g_sdtv8 b_sdtvc) ->
+      case w3_sdtvf of { :*: ww1_sdtvj ww2_sdtvk ->
+      case w4_sdtvg of { :*: ww4_sdtvo ww5_sdtvp ->
+      GHC.Generics.:*:
+        @ *
+        @ f_sdtv7
+        @ g_sdtv8
+        @ c_sdtvd
+        (mzipWith
+           @ f_sdtv7
+           w_sdtv9
+           @ a_sdtvb
+           @ b_sdtvc
+           @ c_sdtvd
+           w2_sdtve
+           ww1_sdtvj
+           ww4_sdtvo)
+        (mzipWith
+           @ g_sdtv8
+           w1_sdtva
+           @ a_sdtvb
+           @ b_sdtvc
+           @ c_sdtvd
+           w2_sdtve
+           ww2_sdtvk
+           ww5_sdtvp)
+      }
+      }
+
+-- RHS size: {terms: 9, types: 16, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZip:*:_$cp1MonadZip
+  :: forall (f :: * -> *) (g :: * -> *).
+     (MonadZip f, MonadZip g) =>
+     Monad (f :*: g)
+[GblId,
+ Arity=2,
+ Str=<L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A,A,A)><L,1*U(1*U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A,A,A)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_adt6t :: * -> *))
+                 (@ (g_adt6u :: * -> *))
+                 ($dMonadZip_adt6v [Occ=Once] :: MonadZip f_adt6t)
+                 ($dMonadZip1_adt6w [Occ=Once] :: MonadZip g_adt6u) ->
+                 GHC.Generics.$fMonad:*:
+                   @ f_adt6t
+                   @ g_adt6u
+                   (Control.Monad.Zip.$p1MonadZip @ f_adt6t $dMonadZip_adt6v)
+                   (Control.Monad.Zip.$p1MonadZip @ g_adt6u $dMonadZip1_adt6w)}]
+Control.Monad.Zip.$fMonadZip:*:_$cp1MonadZip
+  = \ (@ (f_adt6t :: * -> *))
+      (@ (g_adt6u :: * -> *))
+      ($dMonadZip_adt6v :: MonadZip f_adt6t)
+      ($dMonadZip1_adt6w :: MonadZip g_adt6u) ->
+      GHC.Generics.$fMonad:*:
+        @ f_adt6t
+        @ g_adt6u
+        (Control.Monad.Zip.$p1MonadZip @ f_adt6t $dMonadZip_adt6v)
+        (Control.Monad.Zip.$p1MonadZip @ g_adt6u $dMonadZip1_adt6w)
+
+-- RHS size: {terms: 29, types: 51, coercions: 0, joins: 0/1}
+Control.Monad.Zip.$dmmunzip
+  :: forall (m :: * -> *).
+     MonadZip m =>
+     forall a b. m (a, b) -> (m a, m b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(A,C(C1(U)),A,C(U),A),A,A,A)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_adt27 :: * -> *))
+                 ($dMonadZip_adt5F [Occ=OnceL] :: MonadZip m_adt27) ->
+                 let {
+                   $dMonad_adtgP :: Monad m_adt27
+                   [LclId]
+                   $dMonad_adtgP
+                     = Control.Monad.Zip.$p1MonadZip @ m_adt27 $dMonadZip_adt5F } in
+                 \ (@ a_adt6c)
+                   (@ b_adt6d)
+                   (mab_adt2i :: m_adt27 (a_adt6c, b_adt6d)) ->
+                   (>>=
+                      @ m_adt27
+                      $dMonad_adtgP
+                      @ (a_adt6c, b_adt6d)
+                      @ a_adt6c
+                      mab_adt2i
+                      (\ (x1_i7S9R [Occ=Once!] :: (a_adt6c, b_adt6d)) ->
+                         return
+                           @ m_adt27
+                           $dMonad_adtgP
+                           @ a_adt6c
+                           (case x1_i7S9R of { (x_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                            x_i8S6A
+                            })),
+                    >>=
+                      @ m_adt27
+                      $dMonad_adtgP
+                      @ (a_adt6c, b_adt6d)
+                      @ b_adt6d
+                      mab_adt2i
+                      (\ (x1_i7S9R [Occ=Once!] :: (a_adt6c, b_adt6d)) ->
+                         return
+                           @ m_adt27
+                           $dMonad_adtgP
+                           @ b_adt6d
+                           (case x1_i7S9R of { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                            y_iaIio
+                            })))}]
+Control.Monad.Zip.$dmmunzip
+  = \ (@ (m_adt27 :: * -> *))
+      ($dMonadZip_adt5F :: MonadZip m_adt27)
+      (@ a_adt6c)
+      (@ b_adt6d)
+      (eta_B1 :: m_adt27 (a_adt6c, b_adt6d)) ->
+      let {
+        $dMonad_sdtnR [Dmd=<L,U(A,C(C1(U)),A,C(U),A)>] :: Monad m_adt27
+        [LclId]
+        $dMonad_sdtnR
+          = Control.Monad.Zip.$p1MonadZip @ m_adt27 $dMonadZip_adt5F } in
+      (>>=
+         @ m_adt27
+         $dMonad_sdtnR
+         @ (a_adt6c, b_adt6d)
+         @ a_adt6c
+         eta_B1
+         (\ (x1_i7S9R :: (a_adt6c, b_adt6d)) ->
+            return
+              @ m_adt27
+              $dMonad_sdtnR
+              @ a_adt6c
+              (case x1_i7S9R of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A })),
+       >>=
+         @ m_adt27
+         $dMonad_sdtnR
+         @ (a_adt6c, b_adt6d)
+         @ b_adt6d
+         eta_B1
+         (\ (x1_i7S9R :: (a_adt6c, b_adt6d)) ->
+            return
+              @ m_adt27
+              $dMonad_sdtnR
+              @ b_adt6d
+              (case x1_i7S9R of { (ds1_iaIin, y_iaIio) -> y_iaIio })))
+
+-- RHS size: {terms: 29, types: 45, coercions: 0, joins: 0/1}
+Control.Monad.Zip.$dmmzipWith
+  :: forall (m :: * -> *).
+     MonadZip m =>
+     forall a b c. (a -> b -> c) -> m a -> m b -> m c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S(LC(C(S))LLL)LLL),U(1*U(A,1*C1(C1(U)),A,C(U),A),1*C1(C1(U)),A,A)><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_adt27 :: * -> *))
+                 ($dMonadZip_adt5F :: MonadZip m_adt27)
+                 (@ a_adt5U)
+                 (@ b_adt5V)
+                 (@ c_adt5W) ->
+                 let {
+                   $dMonad_adt61 :: Monad m_adt27
+                   [LclId]
+                   $dMonad_adt61
+                     = Control.Monad.Zip.$p1MonadZip @ m_adt27 $dMonadZip_adt5F } in
+                 \ (f_adt2f [Occ=OnceL!] :: a_adt5U -> b_adt5V -> c_adt5W)
+                   (ma_adt2g [Occ=Once] :: m_adt27 a_adt5U)
+                   (mb_adt2h [Occ=Once] :: m_adt27 b_adt5V) ->
+                   >>=
+                     @ m_adt27
+                     $dMonad_adt61
+                     @ (a_adt5U, b_adt5V)
+                     @ c_adt5W
+                     (mzip
+                        @ m_adt27 $dMonadZip_adt5F @ a_adt5U @ b_adt5V ma_adt2g mb_adt2h)
+                     (\ (x1_i7S9R :: (a_adt5U, b_adt5V)) ->
+                        return
+                          @ m_adt27
+                          $dMonad_adt61
+                          @ c_adt5W
+                          (f_adt2f
+                             (case x1_i7S9R of { (x_ibNkV [Occ=Once], _ [Occ=Dead]) ->
+                              x_ibNkV
+                              })
+                             (case x1_i7S9R of { (_ [Occ=Dead], y_ibNl1 [Occ=Once]) ->
+                              y_ibNl1
+                              })))}]
+Control.Monad.Zip.$dmmzipWith
+  = \ (@ (m_adt27 :: * -> *))
+      ($dMonadZip_adt5F :: MonadZip m_adt27)
+      (@ a_adt5U)
+      (@ b_adt5V)
+      (@ c_adt5W)
+      (eta_B3 :: a_adt5U -> b_adt5V -> c_adt5W)
+      (eta1_B2 :: m_adt27 a_adt5U)
+      (eta2_B1 :: m_adt27 b_adt5V) ->
+      let {
+        $dMonad_sdtnP [Dmd=<S(LC(C(S))LLL),U(A,1*C1(C1(U)),A,C(U),A)>]
+          :: Monad m_adt27
+        [LclId]
+        $dMonad_sdtnP
+          = Control.Monad.Zip.$p1MonadZip @ m_adt27 $dMonadZip_adt5F } in
+      >>=
+        @ m_adt27
+        $dMonad_sdtnP
+        @ (a_adt5U, b_adt5V)
+        @ c_adt5W
+        (mzip
+           @ m_adt27 $dMonadZip_adt5F @ a_adt5U @ b_adt5V eta1_B2 eta2_B1)
+        (\ (x1_i7S9R :: (a_adt5U, b_adt5V)) ->
+           return
+             @ m_adt27
+             $dMonad_sdtnP
+             @ c_adt5W
+             (eta_B3
+                (case x1_i7S9R of { (x_ibNkV, ds_ibNkW) -> x_ibNkV })
+                (case x1_i7S9R of { (ds_ibNl0, y_ibNl1) -> y_ibNl1 })))
+
+-- RHS size: {terms: 7, types: 18, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$dmmzip
+  :: forall (m :: * -> *).
+     MonadZip m =>
+     forall a b. m a -> m b -> m (a, b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLC(S)L),1*U(A,A,1*C1(U),A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (m_adt27 :: * -> *))
+                 ($dMonadZip_adt5F [Occ=Once] :: MonadZip m_adt27)
+                 (@ a_adt5H)
+                 (@ b_adt5I) ->
+                 mzipWith
+                   @ m_adt27
+                   $dMonadZip_adt5F
+                   @ a_adt5H
+                   @ b_adt5I
+                   @ (a_adt5H, b_adt5I)
+                   (GHC.Tuple.(,) @ a_adt5H @ b_adt5I)}]
+Control.Monad.Zip.$dmmzip
+  = \ (@ (m_adt27 :: * -> *))
+      ($dMonadZip_adt5F :: MonadZip m_adt27)
+      (@ a_adt5H)
+      (@ b_adt5I) ->
+      mzipWith
+        @ m_adt27
+        $dMonadZip_adt5F
+        @ a_adt5H
+        @ b_adt5I
+        @ (a_adt5H, b_adt5I)
+        (GHC.Tuple.(,) @ a_adt5H @ b_adt5I)
+
+-- RHS size: {terms: 25, types: 71, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZip:*:_$cmzip
+  :: forall (f :: * -> *) (g :: * -> *).
+     (MonadZip f, MonadZip g) =>
+     forall a b. (:*:) f g a -> (:*:) f g b -> (:*:) f g (a, b)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*U(A,A,1*C1(C1(C1(U))),A)><L,1*U(A,A,1*C1(C1(C1(U))),A)><S,1*U(U,U)><S,1*U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_adt6t :: * -> *))
+                 (@ (g_adt6u :: * -> *))
+                 ($dMonadZip_adt6v [Occ=Once] :: MonadZip f_adt6t)
+                 ($dMonadZip1_adt6w [Occ=Once] :: MonadZip g_adt6u)
+                 (@ a_adt6E)
+                 (@ b_adt6F) ->
+                 Control.Monad.Zip.$fMonadZip:*:_$cmzipWith
+                   @ f_adt6t
+                   @ g_adt6u
+                   $dMonadZip_adt6v
+                   $dMonadZip1_adt6w
+                   @ a_adt6E
+                   @ b_adt6F
+                   @ (a_adt6E, b_adt6F)
+                   (GHC.Tuple.(,) @ a_adt6E @ b_adt6F)}]
+Control.Monad.Zip.$fMonadZip:*:_$cmzip
+  = \ (@ (f_adt6t :: * -> *))
+      (@ (g_adt6u :: * -> *))
+      ($dMonadZip_adt6v :: MonadZip f_adt6t)
+      ($dMonadZip1_adt6w :: MonadZip g_adt6u)
+      (@ a_adt6E)
+      (@ b_adt6F)
+      (w_sdtvf :: (:*:) f_adt6t g_adt6u a_adt6E)
+      (w1_sdtvg :: (:*:) f_adt6t g_adt6u b_adt6F) ->
+      case w_sdtvf of { :*: ww1_sdtvj ww2_sdtvk ->
+      case w1_sdtvg of { :*: ww4_sdtvo ww5_sdtvp ->
+      GHC.Generics.:*:
+        @ *
+        @ f_adt6t
+        @ g_adt6u
+        @ (a_adt6E, b_adt6F)
+        (mzipWith
+           @ f_adt6t
+           $dMonadZip_adt6v
+           @ a_adt6E
+           @ b_adt6F
+           @ (a_adt6E, b_adt6F)
+           (GHC.Tuple.(,) @ a_adt6E @ b_adt6F)
+           ww1_sdtvj
+           ww4_sdtvo)
+        (mzipWith
+           @ g_adt6u
+           $dMonadZip1_adt6w
+           @ a_adt6E
+           @ b_adt6F
+           @ (a_adt6E, b_adt6F)
+           (GHC.Tuple.(,) @ a_adt6E @ b_adt6F)
+           ww2_sdtvk
+           ww5_sdtvp)
+      }
+      }
+
+-- RHS size: {terms: 68, types: 152, coercions: 0, joins: 0/4}
+Control.Monad.Zip.$w$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (MonadZip f, MonadZip g) =>
+     forall a b. (:*:) f g (a, b) -> (# (:*:) f g a, (:*:) f g b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(A,C(U),A,A,A,A),C(C1(U)),A,A,A),A,A,A)><L,1*U(1*U(1*U(A,C(U),A,A,A,A),C(C1(U)),A,A,A),A,A,A)><L,U(U,U)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 30 40] 520 30}]
+Control.Monad.Zip.$w$cmunzip
+  = \ (@ (f_sdtvF :: * -> *))
+      (@ (g_sdtvG :: * -> *))
+      (w_sdtvH :: MonadZip f_sdtvF)
+      (w1_sdtvI :: MonadZip g_sdtvG)
+      (@ a_sdtvJ)
+      (@ b_sdtvK)
+      (w2_sdtvL :: (:*:) f_sdtvF g_sdtvG (a_sdtvJ, b_sdtvK)) ->
+      let {
+        $dMonad_sdtnM [Dmd=<L,U(1*U(A,C(U),A,A,A,A),C(C1(U)),A,A,A)>]
+          :: Monad g_sdtvG
+        [LclId]
+        $dMonad_sdtnM
+          = Control.Monad.Zip.$p1MonadZip @ g_sdtvG w1_sdtvI } in
+      let {
+        lvl_sdtDv [Dmd=<L,U(A,C(U),A,A,A,A)>] :: Applicative g_sdtvG
+        [LclId]
+        lvl_sdtDv = GHC.Base.$p1Monad @ g_sdtvG $dMonad_sdtnM } in
+      let {
+        $dMonad1_sdtnN [Dmd=<L,U(1*U(A,C(U),A,A,A,A),C(C1(U)),A,A,A)>]
+          :: Monad f_sdtvF
+        [LclId]
+        $dMonad1_sdtnN
+          = Control.Monad.Zip.$p1MonadZip @ f_sdtvF w_sdtvH } in
+      let {
+        lvl1_sdtDu [Dmd=<L,U(A,C(U),A,A,A,A)>] :: Applicative f_sdtvF
+        [LclId]
+        lvl1_sdtDu = GHC.Base.$p1Monad @ f_sdtvF $dMonad1_sdtnN } in
+      (# case w2_sdtvL of { :*: ww1_idtjS ww2_idtjT ->
+         GHC.Generics.:*:
+           @ *
+           @ f_sdtvF
+           @ g_sdtvG
+           @ a_sdtvJ
+           (>>=
+              @ f_sdtvF
+              $dMonad1_sdtnN
+              @ (a_sdtvJ, b_sdtvK)
+              @ a_sdtvJ
+              ww1_idtjS
+              (\ (a1_idtjV :: (a_sdtvJ, b_sdtvK)) ->
+                 pure
+                   @ f_sdtvF
+                   lvl1_sdtDu
+                   @ a_sdtvJ
+                   (case a1_idtjV of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A })))
+           (>>=
+              @ g_sdtvG
+              $dMonad_sdtnM
+              @ (a_sdtvJ, b_sdtvK)
+              @ a_sdtvJ
+              ww2_idtjT
+              (\ (a1_idtk1 :: (a_sdtvJ, b_sdtvK)) ->
+                 pure
+                   @ g_sdtvG
+                   lvl_sdtDv
+                   @ a_sdtvJ
+                   (case a1_idtk1 of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A })))
+         },
+         case w2_sdtvL of { :*: ww1_idtjS ww2_idtjT ->
+         GHC.Generics.:*:
+           @ *
+           @ f_sdtvF
+           @ g_sdtvG
+           @ b_sdtvK
+           (>>=
+              @ f_sdtvF
+              $dMonad1_sdtnN
+              @ (a_sdtvJ, b_sdtvK)
+              @ b_sdtvK
+              ww1_idtjS
+              (\ (a1_idtjV :: (a_sdtvJ, b_sdtvK)) ->
+                 pure
+                   @ f_sdtvF
+                   lvl1_sdtDu
+                   @ b_sdtvK
+                   (case a1_idtjV of { (ds1_iaIin, y_iaIio) -> y_iaIio })))
+           (>>=
+              @ g_sdtvG
+              $dMonad_sdtnM
+              @ (a_sdtvJ, b_sdtvK)
+              @ b_sdtvK
+              ww2_idtjT
+              (\ (a1_idtk1 :: (a_sdtvJ, b_sdtvK)) ->
+                 pure
+                   @ g_sdtvG
+                   lvl_sdtDv
+                   @ b_sdtvK
+                   (case a1_idtk1 of { (ds1_iaIin, y_iaIio) -> y_iaIio })))
+         } #)
+
+-- RHS size: {terms: 16, types: 67, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZip:*:_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (MonadZip f, MonadZip g) =>
+     forall a b. (:*:) f g (a, b) -> ((:*:) f g a, (:*:) f g b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(1*U(A,C(U),A,A,A,A),C(C1(U)),A,A,A),A,A,A)><L,1*U(1*U(1*U(A,C(U),A,A,A,A),C(C1(U)),A,A,A),A,A,A)><L,U(U,U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_sdtvF :: * -> *))
+                 (@ (g_sdtvG :: * -> *))
+                 (w_sdtvH [Occ=Once] :: MonadZip f_sdtvF)
+                 (w1_sdtvI [Occ=Once] :: MonadZip g_sdtvG)
+                 (@ a_sdtvJ)
+                 (@ b_sdtvK)
+                 (w2_sdtvL [Occ=Once]
+                    :: (:*:) f_sdtvF g_sdtvG (a_sdtvJ, b_sdtvK)) ->
+                 case Control.Monad.Zip.$w$cmunzip
+                        @ f_sdtvF @ g_sdtvG w_sdtvH w1_sdtvI @ a_sdtvJ @ b_sdtvK w2_sdtvL
+                 of
+                 { (# ww1_sdtwQ [Occ=Once], ww2_sdtwR [Occ=Once] #) ->
+                 (ww1_sdtwQ, ww2_sdtwR)
+                 }}]
+Control.Monad.Zip.$fMonadZip:*:_$cmunzip
+  = \ (@ (f_sdtvF :: * -> *))
+      (@ (g_sdtvG :: * -> *))
+      (w_sdtvH :: MonadZip f_sdtvF)
+      (w1_sdtvI :: MonadZip g_sdtvG)
+      (@ a_sdtvJ)
+      (@ b_sdtvK)
+      (w2_sdtvL :: (:*:) f_sdtvF g_sdtvG (a_sdtvJ, b_sdtvK)) ->
+      case Control.Monad.Zip.$w$cmunzip
+             @ f_sdtvF @ g_sdtvG w_sdtvH w1_sdtvI @ a_sdtvJ @ b_sdtvK w2_sdtvL
+      of
+      { (# ww1_sdtwQ, ww2_sdtwR #) ->
+      (ww1_sdtwQ, ww2_sdtwR)
+      }
+
+-- RHS size: {terms: 17, types: 25, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZip:*: [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) (g :: * -> *).
+     (MonadZip f, MonadZip g) =>
+     MonadZip (f :*: g)
+[GblId[DFunId],
+ Arity=2,
+ Str=<L,U(U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A,C(C1(C1(U))),A)><L,U(U(U(U(C(C1(U)),C(C1(U))),C(U),C(C1(U)),C(C1(C1(U))),A,A),C(C1(U)),A,A,A),A,C(C1(C1(U))),A)>m,
+ Unf=DFun: \ (@ (f_adt2j :: * -> *))
+             (@ (g_adt2k :: * -> *))
+             (v_B1 :: MonadZip f_adt2j)
+             (v1_B2 :: MonadZip g_adt2k) ->
+       Control.Monad.Zip.C:MonadZip TYPE: f_adt2j :*: g_adt2k
+                                    Control.Monad.Zip.$fMonadZip:*:_$cp1MonadZip
+                                      @ f_adt2j @ g_adt2k v_B1 v1_B2
+                                    Control.Monad.Zip.$fMonadZip:*:_$cmzip
+                                      @ f_adt2j @ g_adt2k v_B1 v1_B2
+                                    Control.Monad.Zip.$fMonadZip:*:_$cmzipWith
+                                      @ f_adt2j @ g_adt2k v_B1 v1_B2
+                                    Control.Monad.Zip.$fMonadZip:*:_$cmunzip
+                                      @ f_adt2j @ g_adt2k v_B1 v1_B2]
+Control.Monad.Zip.$fMonadZip:*:
+  = \ (@ (f_adt6t :: * -> *))
+      (@ (g_adt6u :: * -> *))
+      ($dMonadZip_adt6v :: MonadZip f_adt6t)
+      ($dMonadZip1_adt6w :: MonadZip g_adt6u) ->
+      Control.Monad.Zip.C:MonadZip
+        @ (f_adt6t :*: g_adt6u)
+        (Control.Monad.Zip.$fMonadZip:*:_$cp1MonadZip
+           @ f_adt6t @ g_adt6u $dMonadZip_adt6v $dMonadZip1_adt6w)
+        (Control.Monad.Zip.$fMonadZip:*:_$cmzip
+           @ f_adt6t @ g_adt6u $dMonadZip_adt6v $dMonadZip1_adt6w)
+        (Control.Monad.Zip.$fMonadZip:*:_$cmzipWith
+           @ f_adt6t @ g_adt6u $dMonadZip_adt6v $dMonadZip1_adt6w)
+        (Control.Monad.Zip.$fMonadZip:*:_$cmunzip
+           @ f_adt6t @ g_adt6u $dMonadZip_adt6v $dMonadZip1_adt6w)
+
+-- RHS size: {terms: 13, types: 34, coercions: 14, joins: 0/0}
+Control.Monad.Zip.$fMonadZipM2
+  :: forall (f :: * -> *) i (c :: Meta).
+     MonadZip f =>
+     forall a b. M1 i c f a -> M1 i c f b -> f (a, b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_Xdt9u :: * -> *))
+                 (@ i_Xdt9w)
+                 (@ (c_Xdt9y :: Meta))
+                 ($dMonadZip_Xdt9A [Occ=Once] :: MonadZip f_Xdt9u)
+                 (@ a_adt7u)
+                 (@ b_adt7v)
+                 (ds_XdtjU [Occ=Once] :: M1 i_Xdt9w c_Xdt9y f_Xdt9u a_adt7u)
+                 (ds1_XdtjW [Occ=Once] :: M1 i_Xdt9w c_Xdt9y f_Xdt9u b_adt7v) ->
+                 mzipWith
+                   @ f_Xdt9u
+                   $dMonadZip_Xdt9A
+                   @ a_adt7u
+                   @ b_adt7v
+                   @ (a_adt7u, b_adt7v)
+                   (GHC.Tuple.(,) @ a_adt7u @ b_adt7v)
+                   (ds_XdtjU
+                    `cast` (GHC.Generics.N:M1[0]
+                                <*>_N <i_Xdt9w>_P <c_Xdt9y>_P <f_Xdt9u>_R <a_adt7u>_N
+                            :: (M1 i_Xdt9w c_Xdt9y f_Xdt9u a_adt7u :: *)
+                               ~R# (f_Xdt9u a_adt7u :: *)))
+                   (ds1_XdtjW
+                    `cast` (GHC.Generics.N:M1[0]
+                                <*>_N <i_Xdt9w>_P <c_Xdt9y>_P <f_Xdt9u>_R <b_adt7v>_N
+                            :: (M1 i_Xdt9w c_Xdt9y f_Xdt9u b_adt7v :: *)
+                               ~R# (f_Xdt9u b_adt7v :: *)))}]
+Control.Monad.Zip.$fMonadZipM2
+  = \ (@ (f_Xdt9u :: * -> *))
+      (@ i_Xdt9w)
+      (@ (c_Xdt9y :: Meta))
+      ($dMonadZip_Xdt9A :: MonadZip f_Xdt9u)
+      (@ a_adt7u)
+      (@ b_adt7v)
+      (ds_XdtjU :: M1 i_Xdt9w c_Xdt9y f_Xdt9u a_adt7u)
+      (ds1_XdtjW :: M1 i_Xdt9w c_Xdt9y f_Xdt9u b_adt7v) ->
+      mzipWith
+        @ f_Xdt9u
+        $dMonadZip_Xdt9A
+        @ a_adt7u
+        @ b_adt7v
+        @ (a_adt7u, b_adt7v)
+        (GHC.Tuple.(,) @ a_adt7u @ b_adt7v)
+        (ds_XdtjU
+         `cast` (GHC.Generics.N:M1[0]
+                     <*>_N <i_Xdt9w>_P <c_Xdt9y>_P <f_Xdt9u>_R <a_adt7u>_N
+                 :: (M1 i_Xdt9w c_Xdt9y f_Xdt9u a_adt7u :: *)
+                    ~R# (f_Xdt9u a_adt7u :: *)))
+        (ds1_XdtjW
+         `cast` (GHC.Generics.N:M1[0]
+                     <*>_N <i_Xdt9w>_P <c_Xdt9y>_P <f_Xdt9u>_R <b_adt7v>_N
+                 :: (M1 i_Xdt9w c_Xdt9y f_Xdt9u b_adt7v :: *)
+                    ~R# (f_Xdt9u b_adt7v :: *)))
+
+-- RHS size: {terms: 31, types: 70, coercions: 34, joins: 0/1}
+Control.Monad.Zip.$w$cmunzip2 [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) i (c :: Meta).
+     MonadZip f =>
+     forall a b. M1 i c f (a, b) -> (# M1 i c f a, M1 i c f b #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(A,C(C1(U)),A,C(U),A),A,A,A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 210 30}]
+Control.Monad.Zip.$w$cmunzip2
+  = \ (@ (f_sdtvQ :: * -> *))
+      (@ i_sdtvR)
+      (@ (c_sdtvS :: Meta))
+      (w_sdtvT :: MonadZip f_sdtvQ)
+      (@ a_sdtvU)
+      (@ b_sdtvV)
+      (w1_sdtvW :: M1 i_sdtvR c_sdtvS f_sdtvQ (a_sdtvU, b_sdtvV)) ->
+      let {
+        $dMonad_sdtnJ [Dmd=<L,U(A,C(C1(U)),A,C(U),A)>] :: Monad f_sdtvQ
+        [LclId]
+        $dMonad_sdtnJ
+          = Control.Monad.Zip.$p1MonadZip @ f_sdtvQ w_sdtvT } in
+      (# (>>=
+            @ f_sdtvQ
+            $dMonad_sdtnJ
+            @ (a_sdtvU, b_sdtvV)
+            @ a_sdtvU
+            (w1_sdtvW
+             `cast` (GHC.Generics.N:M1[0]
+                         <*>_N <i_sdtvR>_P <c_sdtvS>_P <f_sdtvQ>_R <(a_sdtvU, b_sdtvV)>_N
+                     :: (M1 i_sdtvR c_sdtvS f_sdtvQ (a_sdtvU, b_sdtvV) :: *)
+                        ~R# (f_sdtvQ (a_sdtvU, b_sdtvV) :: *)))
+            (\ (x1_i7S9R :: (a_sdtvU, b_sdtvV)) ->
+               return
+                 @ f_sdtvQ
+                 $dMonad_sdtnJ
+                 @ a_sdtvU
+                 (case x1_i7S9R of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A })))
+         `cast` (Sym (GHC.Generics.N:M1[0]
+                          <*>_N <i_sdtvR>_P <c_sdtvS>_P <f_sdtvQ>_R) <a_sdtvU>_N
+                 :: (f_sdtvQ a_sdtvU :: *)
+                    ~R# (M1 i_sdtvR c_sdtvS f_sdtvQ a_sdtvU :: *)),
+         (>>=
+            @ f_sdtvQ
+            $dMonad_sdtnJ
+            @ (a_sdtvU, b_sdtvV)
+            @ b_sdtvV
+            (w1_sdtvW
+             `cast` (GHC.Generics.N:M1[0]
+                         <*>_N <i_sdtvR>_P <c_sdtvS>_P <f_sdtvQ>_R <(a_sdtvU, b_sdtvV)>_N
+                     :: (M1 i_sdtvR c_sdtvS f_sdtvQ (a_sdtvU, b_sdtvV) :: *)
+                        ~R# (f_sdtvQ (a_sdtvU, b_sdtvV) :: *)))
+            (\ (x1_i7S9R :: (a_sdtvU, b_sdtvV)) ->
+               return
+                 @ f_sdtvQ
+                 $dMonad_sdtnJ
+                 @ b_sdtvV
+                 (case x1_i7S9R of { (ds1_iaIin, y_iaIio) -> y_iaIio })))
+         `cast` (Sym (GHC.Generics.N:M1[0]
+                          <*>_N <i_sdtvR>_P <c_sdtvS>_P <f_sdtvQ>_R) <b_sdtvV>_N
+                 :: (f_sdtvQ b_sdtvV :: *)
+                    ~R# (M1 i_sdtvR c_sdtvS f_sdtvQ b_sdtvV :: *)) #)
+
+-- RHS size: {terms: 15, types: 71, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipM1_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *) i (c :: Meta).
+     MonadZip f =>
+     forall a b. M1 i c f (a, b) -> (M1 i c f a, M1 i c f b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(A,C(C1(U)),A,C(U),A),A,A,A)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_sdtvQ :: * -> *))
+                 (@ i_sdtvR)
+                 (@ (c_sdtvS :: Meta))
+                 (w_sdtvT [Occ=Once] :: MonadZip f_sdtvQ)
+                 (@ a_sdtvU)
+                 (@ b_sdtvV)
+                 (w1_sdtvW [Occ=Once]
+                    :: M1 i_sdtvR c_sdtvS f_sdtvQ (a_sdtvU, b_sdtvV)) ->
+                 case Control.Monad.Zip.$w$cmunzip2
+                        @ f_sdtvQ @ i_sdtvR @ c_sdtvS w_sdtvT @ a_sdtvU @ b_sdtvV w1_sdtvW
+                 of
+                 { (# ww1_sdtwT [Occ=Once], ww2_sdtwU [Occ=Once] #) ->
+                 (ww1_sdtwT, ww2_sdtwU)
+                 }}]
+Control.Monad.Zip.$fMonadZipM1_$cmunzip
+  = \ (@ (f_sdtvQ :: * -> *))
+      (@ i_sdtvR)
+      (@ (c_sdtvS :: Meta))
+      (w_sdtvT :: MonadZip f_sdtvQ)
+      (@ a_sdtvU)
+      (@ b_sdtvV)
+      (w1_sdtvW :: M1 i_sdtvR c_sdtvS f_sdtvQ (a_sdtvU, b_sdtvV)) ->
+      case Control.Monad.Zip.$w$cmunzip2
+             @ f_sdtvQ @ i_sdtvR @ c_sdtvS w_sdtvT @ a_sdtvU @ b_sdtvV w1_sdtvW
+      of
+      { (# ww1_sdtwT, ww2_sdtwU #) ->
+      (ww1_sdtwT, ww2_sdtwU)
+      }
+
+-- RHS size: {terms: 22, types: 50, coercions: 83, joins: 0/0}
+Control.Monad.Zip.$fMonadZipM1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *) i (c :: Meta).
+     MonadZip f =>
+     MonadZip (M1 i c f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),U,1*U,U,1*U),A,C(C1(C1(U))),A)>m,
+ Unf=DFun: \ (@ (f_adt2q :: * -> *))
+             (@ i_adt2r)
+             (@ (c_adt2s :: Meta))
+             (v_B1 :: MonadZip f_adt2q) ->
+       Control.Monad.Zip.C:MonadZip TYPE: M1 i_adt2r c_adt2s f_adt2q
+                                    Control.Monad.Zip.$fMonadZipM1_$cp1MonadZip
+                                      @ f_adt2q @ i_adt2r @ c_adt2s v_B1
+                                    (Control.Monad.Zip.$fMonadZipM2
+                                       @ f_adt2q @ i_adt2r @ c_adt2s v_B1)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            <M1 i_adt2r c_adt2s f_adt2q a>_R
+                                            ->_R <M1 i_adt2r c_adt2s f_adt2q b>_R
+                                            ->_R Sym (GHC.Generics.N:M1[0]
+                                                          <*>_N
+                                                          <i_adt2r>_P
+                                                          <c_adt2s>_P
+                                                          <f_adt2q>_R) <(a, b)>_N
+                                            :: (forall a b.
+                                                M1 i_adt2r c_adt2s f_adt2q a
+                                                -> M1 i_adt2r c_adt2s f_adt2q b
+                                                -> f_adt2q (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    M1 i_adt2r c_adt2s f_adt2q a
+                                                    -> M1 i_adt2r c_adt2s f_adt2q b
+                                                    -> M1 i_adt2r c_adt2s f_adt2q (a, b) :: *))
+                                    (\ (@ a_Xdt9S)
+                                       (@ b_Xdt9U)
+                                       (@ c1_Xdt9W)
+                                       (f1_Xdt4K [Occ=Once] :: a_Xdt9S -> b_Xdt9U -> c1_Xdt9W)
+                                       (ds_XdtjU [Occ=Once] :: M1 i_adt2r c_adt2s f_adt2q a_Xdt9S)
+                                       (ds1_XdtjW [Occ=Once]
+                                          :: M1 i_adt2r c_adt2s f_adt2q b_Xdt9U) ->
+                                       mzipWith
+                                         @ f_adt2q
+                                         v_B1
+                                         @ a_Xdt9S
+                                         @ b_Xdt9U
+                                         @ c1_Xdt9W
+                                         f1_Xdt4K
+                                         (ds_XdtjU
+                                          `cast` (GHC.Generics.N:M1[0]
+                                                      <*>_N
+                                                      <i_adt2r>_P
+                                                      <c_adt2s>_P
+                                                      <f_adt2q>_R <a_Xdt9S>_N
+                                                  :: (M1 i_adt2r c_adt2s f_adt2q a_Xdt9S :: *)
+                                                     ~R# (f_adt2q a_Xdt9S :: *)))
+                                         (ds1_XdtjW
+                                          `cast` (GHC.Generics.N:M1[0]
+                                                      <*>_N
+                                                      <i_adt2r>_P
+                                                      <c_adt2s>_P
+                                                      <f_adt2q>_R <b_Xdt9U>_N
+                                                  :: (M1 i_adt2r c_adt2s f_adt2q b_Xdt9U :: *)
+                                                     ~R# (f_adt2q b_Xdt9U :: *))))
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c1 :: <*>_N).
+                                            <a -> b -> c1>_R
+                                            ->_R <M1 i_adt2r c_adt2s f_adt2q a>_R
+                                            ->_R <M1 i_adt2r c_adt2s f_adt2q b>_R
+                                            ->_R Sym (GHC.Generics.N:M1[0]
+                                                          <*>_N
+                                                          <i_adt2r>_P
+                                                          <c_adt2s>_P
+                                                          <f_adt2q>_R) <c1>_N
+                                            :: (forall a b c1.
+                                                (a -> b -> c1)
+                                                -> M1 i_adt2r c_adt2s f_adt2q a
+                                                -> M1 i_adt2r c_adt2s f_adt2q b
+                                                -> f_adt2q c1 :: *)
+                                               ~R# (forall a b c1.
+                                                    (a -> b -> c1)
+                                                    -> M1 i_adt2r c_adt2s f_adt2q a
+                                                    -> M1 i_adt2r c_adt2s f_adt2q b
+                                                    -> M1 i_adt2r c_adt2s f_adt2q c1 :: *))
+                                    Control.Monad.Zip.$fMonadZipM1_$cmunzip
+                                      @ f_adt2q @ i_adt2r @ c_adt2s v_B1]
+Control.Monad.Zip.$fMonadZipM1
+  = \ (@ (f_Xdt9s :: * -> *))
+      (@ i_Xdt9u)
+      (@ (c_Xdt9w :: Meta))
+      ($dMonadZip_Xdt9y :: MonadZip f_Xdt9s) ->
+      Control.Monad.Zip.C:MonadZip
+        @ (M1 i_Xdt9u c_Xdt9w f_Xdt9s)
+        (Control.Monad.Zip.$fMonadZipM1_$cp1MonadZip
+           @ f_Xdt9s @ i_Xdt9u @ c_Xdt9w $dMonadZip_Xdt9y)
+        ((Control.Monad.Zip.$fMonadZipM2
+            @ f_Xdt9s @ i_Xdt9u @ c_Xdt9w $dMonadZip_Xdt9y)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <M1 i_Xdt9u c_Xdt9w f_Xdt9s a>_R
+                 ->_R <M1 i_Xdt9u c_Xdt9w f_Xdt9s b>_R
+                 ->_R Sym (GHC.Generics.N:M1[0]
+                               <*>_N <i_Xdt9u>_P <c_Xdt9w>_P <f_Xdt9s>_R) <(a, b)>_N
+                 :: (forall a b.
+                     M1 i_Xdt9u c_Xdt9w f_Xdt9s a
+                     -> M1 i_Xdt9u c_Xdt9w f_Xdt9s b -> f_Xdt9s (a, b) :: *)
+                    ~R# (forall a b.
+                         M1 i_Xdt9u c_Xdt9w f_Xdt9s a
+                         -> M1 i_Xdt9u c_Xdt9w f_Xdt9s b
+                         -> M1 i_Xdt9u c_Xdt9w f_Xdt9s (a, b) :: *)))
+        ((\ (@ a_Xdt9S)
+            (@ b_Xdt9U)
+            (@ c1_Xdt9W)
+            (f1_Xdt4K :: a_Xdt9S -> b_Xdt9U -> c1_Xdt9W)
+            (ds_XdtjU :: M1 i_Xdt9u c_Xdt9w f_Xdt9s a_Xdt9S)
+            (ds1_XdtjW :: M1 i_Xdt9u c_Xdt9w f_Xdt9s b_Xdt9U) ->
+            mzipWith
+              @ f_Xdt9s
+              $dMonadZip_Xdt9y
+              @ a_Xdt9S
+              @ b_Xdt9U
+              @ c1_Xdt9W
+              f1_Xdt4K
+              (ds_XdtjU
+               `cast` (GHC.Generics.N:M1[0]
+                           <*>_N <i_Xdt9u>_P <c_Xdt9w>_P <f_Xdt9s>_R <a_Xdt9S>_N
+                       :: (M1 i_Xdt9u c_Xdt9w f_Xdt9s a_Xdt9S :: *)
+                          ~R# (f_Xdt9s a_Xdt9S :: *)))
+              (ds1_XdtjW
+               `cast` (GHC.Generics.N:M1[0]
+                           <*>_N <i_Xdt9u>_P <c_Xdt9w>_P <f_Xdt9s>_R <b_Xdt9U>_N
+                       :: (M1 i_Xdt9u c_Xdt9w f_Xdt9s b_Xdt9U :: *)
+                          ~R# (f_Xdt9s b_Xdt9U :: *))))
+         `cast` (forall (a :: <*>_N) (b :: <*>_N) (c1 :: <*>_N).
+                 <a -> b -> c1>_R
+                 ->_R <M1 i_Xdt9u c_Xdt9w f_Xdt9s a>_R
+                 ->_R <M1 i_Xdt9u c_Xdt9w f_Xdt9s b>_R
+                 ->_R Sym (GHC.Generics.N:M1[0]
+                               <*>_N <i_Xdt9u>_P <c_Xdt9w>_P <f_Xdt9s>_R) <c1>_N
+                 :: (forall a b c1.
+                     (a -> b -> c1)
+                     -> M1 i_Xdt9u c_Xdt9w f_Xdt9s a
+                     -> M1 i_Xdt9u c_Xdt9w f_Xdt9s b
+                     -> f_Xdt9s c1 :: *)
+                    ~R# (forall a b c1.
+                         (a -> b -> c1)
+                         -> M1 i_Xdt9u c_Xdt9w f_Xdt9s a
+                         -> M1 i_Xdt9u c_Xdt9w f_Xdt9s b
+                         -> M1 i_Xdt9u c_Xdt9w f_Xdt9s c1 :: *)))
+        (Control.Monad.Zip.$fMonadZipM1_$cmunzip
+           @ f_Xdt9s @ i_Xdt9u @ c_Xdt9w $dMonadZip_Xdt9y)
+
+-- RHS size: {terms: 11, types: 28, coercions: 10, joins: 0/0}
+Control.Monad.Zip.$fMonadZipRec2
+  :: forall (f :: * -> *).
+     MonadZip f =>
+     forall a b. Rec1 f a -> Rec1 f b -> f (a, b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_Xdtaq :: * -> *))
+                 ($dMonadZip_Xdtas [Occ=Once] :: MonadZip f_Xdtaq)
+                 (@ a_adt8e)
+                 (@ b_adt8f)
+                 (ds_Xdtkc [Occ=Once] :: Rec1 f_Xdtaq a_adt8e)
+                 (ds1_Xdtke [Occ=Once] :: Rec1 f_Xdtaq b_adt8f) ->
+                 mzipWith
+                   @ f_Xdtaq
+                   $dMonadZip_Xdtas
+                   @ a_adt8e
+                   @ b_adt8f
+                   @ (a_adt8e, b_adt8f)
+                   (GHC.Tuple.(,) @ a_adt8e @ b_adt8f)
+                   (ds_Xdtkc
+                    `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtaq>_R <a_adt8e>_N
+                            :: (Rec1 f_Xdtaq a_adt8e :: *) ~R# (f_Xdtaq a_adt8e :: *)))
+                   (ds1_Xdtke
+                    `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtaq>_R <b_adt8f>_N
+                            :: (Rec1 f_Xdtaq b_adt8f :: *) ~R# (f_Xdtaq b_adt8f :: *)))}]
+Control.Monad.Zip.$fMonadZipRec2
+  = \ (@ (f_Xdtaq :: * -> *))
+      ($dMonadZip_Xdtas :: MonadZip f_Xdtaq)
+      (@ a_adt8e)
+      (@ b_adt8f)
+      (ds_Xdtkc :: Rec1 f_Xdtaq a_adt8e)
+      (ds1_Xdtke :: Rec1 f_Xdtaq b_adt8f) ->
+      mzipWith
+        @ f_Xdtaq
+        $dMonadZip_Xdtas
+        @ a_adt8e
+        @ b_adt8f
+        @ (a_adt8e, b_adt8f)
+        (GHC.Tuple.(,) @ a_adt8e @ b_adt8f)
+        (ds_Xdtkc
+         `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtaq>_R <a_adt8e>_N
+                 :: (Rec1 f_Xdtaq a_adt8e :: *) ~R# (f_Xdtaq a_adt8e :: *)))
+        (ds1_Xdtke
+         `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtaq>_R <b_adt8f>_N
+                 :: (Rec1 f_Xdtaq b_adt8f :: *) ~R# (f_Xdtaq b_adt8f :: *)))
+
+-- RHS size: {terms: 35, types: 68, coercions: 26, joins: 0/3}
+Control.Monad.Zip.$w$cmunzip4 [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *).
+     MonadZip f =>
+     forall a b. Rec1 f (a, b) -> (# Rec1 f a, Rec1 f b #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(U(A,C(U),A,A,A,A),C(C1(U)),A,A,A),A,A,A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 270 30}]
+Control.Monad.Zip.$w$cmunzip4
+  = \ (@ (f_sdtw1 :: * -> *))
+      (w_sdtw2 :: MonadZip f_sdtw1)
+      (@ a_sdtw3)
+      (@ b_sdtw4)
+      (w1_sdtw5 :: Rec1 f_sdtw1 (a_sdtw3, b_sdtw4)) ->
+      let {
+        $dMonad_sdtnH [Dmd=<L,U(U(A,C(U),A,A,A,A),C(C1(U)),A,A,A)>]
+          :: Monad f_sdtw1
+        [LclId]
+        $dMonad_sdtnH
+          = Control.Monad.Zip.$p1MonadZip @ f_sdtw1 w_sdtw2 } in
+      (# let {
+           lvl_sdtnT [Dmd=<L,U(A,C(U),A,A,A,A)>] :: Applicative f_sdtw1
+           [LclId]
+           lvl_sdtnT = GHC.Base.$p1Monad @ f_sdtw1 $dMonad_sdtnH } in
+         (>>=
+            @ f_sdtw1
+            $dMonad_sdtnH
+            @ (a_sdtw3, b_sdtw4)
+            @ a_sdtw3
+            (w1_sdtw5
+             `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_sdtw1>_R <(a_sdtw3,
+                                                                b_sdtw4)>_N
+                     :: (Rec1 f_sdtw1 (a_sdtw3, b_sdtw4) :: *)
+                        ~R# (f_sdtw1 (a_sdtw3, b_sdtw4) :: *)))
+            (\ (a1_idtkq :: (a_sdtw3, b_sdtw4)) ->
+               pure
+                 @ f_sdtw1
+                 lvl_sdtnT
+                 @ a_sdtw3
+                 (case a1_idtkq of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A })))
+         `cast` (Sym (GHC.Generics.N:Rec1[0] <*>_N <f_sdtw1>_R) <a_sdtw3>_N
+                 :: (f_sdtw1 a_sdtw3 :: *) ~R# (Rec1 f_sdtw1 a_sdtw3 :: *)),
+         let {
+           lvl_sdtnU [Dmd=<L,U(A,C(U),A,A,A,A)>] :: Applicative f_sdtw1
+           [LclId]
+           lvl_sdtnU = GHC.Base.$p1Monad @ f_sdtw1 $dMonad_sdtnH } in
+         (>>=
+            @ f_sdtw1
+            $dMonad_sdtnH
+            @ (a_sdtw3, b_sdtw4)
+            @ b_sdtw4
+            (w1_sdtw5
+             `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_sdtw1>_R <(a_sdtw3,
+                                                                b_sdtw4)>_N
+                     :: (Rec1 f_sdtw1 (a_sdtw3, b_sdtw4) :: *)
+                        ~R# (f_sdtw1 (a_sdtw3, b_sdtw4) :: *)))
+            (\ (a1_idtkq :: (a_sdtw3, b_sdtw4)) ->
+               pure
+                 @ f_sdtw1
+                 lvl_sdtnU
+                 @ b_sdtw4
+                 (case a1_idtkq of { (ds1_iaIin, y_iaIio) -> y_iaIio })))
+         `cast` (Sym (GHC.Generics.N:Rec1[0] <*>_N <f_sdtw1>_R) <b_sdtw4>_N
+                 :: (f_sdtw1 b_sdtw4 :: *) ~R# (Rec1 f_sdtw1 b_sdtw4 :: *)) #)
+
+-- RHS size: {terms: 13, types: 53, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipRec1_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *).
+     MonadZip f =>
+     forall a b. Rec1 f (a, b) -> (Rec1 f a, Rec1 f b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(U(A,C(U),A,A,A,A),C(C1(U)),A,A,A),A,A,A)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_sdtw1 :: * -> *))
+                 (w_sdtw2 [Occ=Once] :: MonadZip f_sdtw1)
+                 (@ a_sdtw3)
+                 (@ b_sdtw4)
+                 (w1_sdtw5 [Occ=Once] :: Rec1 f_sdtw1 (a_sdtw3, b_sdtw4)) ->
+                 case Control.Monad.Zip.$w$cmunzip4
+                        @ f_sdtw1 w_sdtw2 @ a_sdtw3 @ b_sdtw4 w1_sdtw5
+                 of
+                 { (# ww1_sdtwW [Occ=Once], ww2_sdtwX [Occ=Once] #) ->
+                 (ww1_sdtwW, ww2_sdtwX)
+                 }}]
+Control.Monad.Zip.$fMonadZipRec1_$cmunzip
+  = \ (@ (f_sdtw1 :: * -> *))
+      (w_sdtw2 :: MonadZip f_sdtw1)
+      (@ a_sdtw3)
+      (@ b_sdtw4)
+      (w1_sdtw5 :: Rec1 f_sdtw1 (a_sdtw3, b_sdtw4)) ->
+      case Control.Monad.Zip.$w$cmunzip4
+             @ f_sdtw1 w_sdtw2 @ a_sdtw3 @ b_sdtw4 w1_sdtw5
+      of
+      { (# ww1_sdtwW, ww2_sdtwX #) ->
+      (ww1_sdtwW, ww2_sdtwX)
+      }
+
+-- RHS size: {terms: 20, types: 36, coercions: 67, joins: 0/0}
+Control.Monad.Zip.$fMonadZipRec1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *). MonadZip f => MonadZip (Rec1 f)
+[GblId[DFunId],
+ Arity=1,
+ Str=<L,U(U(U(1*U(1*U,1*U),U,1*U,1*U,1*U,1*U),C(C1(U)),A,A,A),A,C(C1(C1(U))),A)>m,
+ Unf=DFun: \ (@ (f_adt2w :: * -> *)) (v_B1 :: MonadZip f_adt2w) ->
+       Control.Monad.Zip.C:MonadZip TYPE: Rec1 f_adt2w
+                                    Control.Monad.Zip.$fMonadZipRec1_$cp1MonadZip @ f_adt2w v_B1
+                                    (Control.Monad.Zip.$fMonadZipRec2 @ f_adt2w v_B1)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            <Rec1 f_adt2w a>_R
+                                            ->_R <Rec1 f_adt2w b>_R
+                                            ->_R Sym (GHC.Generics.N:Rec1[0] <*>_N <f_adt2w>_R) <(a,
+                                                                                                  b)>_N
+                                            :: (forall a b.
+                                                Rec1 f_adt2w a
+                                                -> Rec1 f_adt2w b -> f_adt2w (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Rec1 f_adt2w a
+                                                    -> Rec1 f_adt2w b -> Rec1 f_adt2w (a, b) :: *))
+                                    (\ (@ a_XdtaK)
+                                       (@ b_XdtaM)
+                                       (@ c_XdtaO)
+                                       (f1_Xdt4W [Occ=Once] :: a_XdtaK -> b_XdtaM -> c_XdtaO)
+                                       (ds_Xdtkc [Occ=Once] :: Rec1 f_adt2w a_XdtaK)
+                                       (ds1_Xdtke [Occ=Once] :: Rec1 f_adt2w b_XdtaM) ->
+                                       mzipWith
+                                         @ f_adt2w
+                                         v_B1
+                                         @ a_XdtaK
+                                         @ b_XdtaM
+                                         @ c_XdtaO
+                                         f1_Xdt4W
+                                         (ds_Xdtkc
+                                          `cast` (GHC.Generics.N:Rec1[0]
+                                                      <*>_N <f_adt2w>_R <a_XdtaK>_N
+                                                  :: (Rec1 f_adt2w a_XdtaK :: *)
+                                                     ~R# (f_adt2w a_XdtaK :: *)))
+                                         (ds1_Xdtke
+                                          `cast` (GHC.Generics.N:Rec1[0]
+                                                      <*>_N <f_adt2w>_R <b_XdtaM>_N
+                                                  :: (Rec1 f_adt2w b_XdtaM :: *)
+                                                     ~R# (f_adt2w b_XdtaM :: *))))
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Rec1 f_adt2w a>_R
+                                            ->_R <Rec1 f_adt2w b>_R
+                                            ->_R Sym (GHC.Generics.N:Rec1[0]
+                                                          <*>_N <f_adt2w>_R) <c>_N
+                                            :: (forall a b c.
+                                                (a -> b -> c)
+                                                -> Rec1 f_adt2w a
+                                                -> Rec1 f_adt2w b
+                                                -> f_adt2w c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Rec1 f_adt2w a
+                                                    -> Rec1 f_adt2w b
+                                                    -> Rec1 f_adt2w c :: *))
+                                    Control.Monad.Zip.$fMonadZipRec1_$cmunzip @ f_adt2w v_B1]
+Control.Monad.Zip.$fMonadZipRec1
+  = \ (@ (f_Xdtao :: * -> *))
+      ($dMonadZip_Xdtaq :: MonadZip f_Xdtao) ->
+      Control.Monad.Zip.C:MonadZip
+        @ (Rec1 f_Xdtao)
+        (Control.Monad.Zip.$fMonadZipRec1_$cp1MonadZip
+           @ f_Xdtao $dMonadZip_Xdtaq)
+        ((Control.Monad.Zip.$fMonadZipRec2 @ f_Xdtao $dMonadZip_Xdtaq)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <Rec1 f_Xdtao a>_R
+                 ->_R <Rec1 f_Xdtao b>_R
+                 ->_R Sym (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtao>_R) <(a, b)>_N
+                 :: (forall a b.
+                     Rec1 f_Xdtao a -> Rec1 f_Xdtao b -> f_Xdtao (a, b) :: *)
+                    ~R# (forall a b.
+                         Rec1 f_Xdtao a -> Rec1 f_Xdtao b -> Rec1 f_Xdtao (a, b) :: *)))
+        ((\ (@ a_XdtaK)
+            (@ b_XdtaM)
+            (@ c_XdtaO)
+            (f1_Xdt4W :: a_XdtaK -> b_XdtaM -> c_XdtaO)
+            (ds_Xdtkc :: Rec1 f_Xdtao a_XdtaK)
+            (ds1_Xdtke :: Rec1 f_Xdtao b_XdtaM) ->
+            mzipWith
+              @ f_Xdtao
+              $dMonadZip_Xdtaq
+              @ a_XdtaK
+              @ b_XdtaM
+              @ c_XdtaO
+              f1_Xdt4W
+              (ds_Xdtkc
+               `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtao>_R <a_XdtaK>_N
+                       :: (Rec1 f_Xdtao a_XdtaK :: *) ~R# (f_Xdtao a_XdtaK :: *)))
+              (ds1_Xdtke
+               `cast` (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtao>_R <b_XdtaM>_N
+                       :: (Rec1 f_Xdtao b_XdtaM :: *) ~R# (f_Xdtao b_XdtaM :: *))))
+         `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                 <a -> b -> c>_R
+                 ->_R <Rec1 f_Xdtao a>_R
+                 ->_R <Rec1 f_Xdtao b>_R
+                 ->_R Sym (GHC.Generics.N:Rec1[0] <*>_N <f_Xdtao>_R) <c>_N
+                 :: (forall a b c.
+                     (a -> b -> c)
+                     -> Rec1 f_Xdtao a -> Rec1 f_Xdtao b -> f_Xdtao c :: *)
+                    ~R# (forall a b c.
+                         (a -> b -> c)
+                         -> Rec1 f_Xdtao a -> Rec1 f_Xdtao b -> Rec1 f_Xdtao c :: *)))
+        (Control.Monad.Zip.$fMonadZipRec1_$cmunzip
+           @ f_Xdtao $dMonadZip_Xdtaq)
+
+-- RHS size: {terms: 12, types: 22, coercions: 14, joins: 0/0}
+Control.Monad.Zip.$fMonadZipPar1_$cmunzip
+  :: forall a b. Par1 (a, b) -> (Par1 a, Par1 b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U,1*U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adt9h)
+                 (@ b_adt9i)
+                 (mab_adt2i :: Par1 (a_adt9h, b_adt9i)) ->
+                 (case mab_adt2i
+                       `cast` (GHC.Generics.N:Par1[0] <(a_adt9h, b_adt9i)>_R
+                               :: (Par1 (a_adt9h, b_adt9i) :: *) ~R# ((a_adt9h, b_adt9i) :: *))
+                  of
+                  { (x_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                  x_i8S6A
+                  `cast` (Sym (GHC.Generics.N:Par1[0] <a_adt9h>_R)
+                          :: (a_adt9h :: *) ~R# (Par1 a_adt9h :: *))
+                  },
+                  case mab_adt2i
+                       `cast` (GHC.Generics.N:Par1[0] <(a_adt9h, b_adt9i)>_R
+                               :: (Par1 (a_adt9h, b_adt9i) :: *) ~R# ((a_adt9h, b_adt9i) :: *))
+                  of
+                  { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                  y_iaIio
+                  `cast` (Sym (GHC.Generics.N:Par1[0] <b_adt9i>_R)
+                          :: (b_adt9i :: *) ~R# (Par1 b_adt9i :: *))
+                  })}]
+Control.Monad.Zip.$fMonadZipPar1_$cmunzip
+  = \ (@ a_adt9h)
+      (@ b_adt9i)
+      (mab_adt2i :: Par1 (a_adt9h, b_adt9i)) ->
+      (case mab_adt2i
+            `cast` (GHC.Generics.N:Par1[0] <(a_adt9h, b_adt9i)>_R
+                    :: (Par1 (a_adt9h, b_adt9i) :: *) ~R# ((a_adt9h, b_adt9i) :: *))
+       of
+       { (x_i8S6A, ds1_i8S6B) ->
+       x_i8S6A
+       `cast` (Sym (GHC.Generics.N:Par1[0] <a_adt9h>_R)
+               :: (a_adt9h :: *) ~R# (Par1 a_adt9h :: *))
+       },
+       case mab_adt2i
+            `cast` (GHC.Generics.N:Par1[0] <(a_adt9h, b_adt9i)>_R
+                    :: (Par1 (a_adt9h, b_adt9i) :: *) ~R# ((a_adt9h, b_adt9i) :: *))
+       of
+       { (ds1_iaIin, y_iaIio) ->
+       y_iaIio
+       `cast` (Sym (GHC.Generics.N:Par1[0] <b_adt9i>_R)
+               :: (b_adt9i :: *) ~R# (Par1 b_adt9i :: *))
+       })
+
+-- RHS size: {terms: 8, types: 10, coercions: 41, joins: 0/0}
+Control.Monad.Zip.$fMonadZipPar1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Par1
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Par1
+                                    GHC.Generics.$fMonadPar1
+                                    GHC.Tuple.(,)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            Sym (GHC.Generics.N:Par1[0] <a>_R)
+                                            ->_R Sym (GHC.Generics.N:Par1[0] <b>_R)
+                                            ->_R Sym (GHC.Generics.N:Par1[0] <(a, b)>_R)
+                                            :: (forall a b. a -> b -> (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Par1 a -> Par1 b -> Par1 (a, b) :: *))
+                                    (\ (@ a_adt94) (@ b_adt95) (@ c_adt96) ->
+                                       Control.Monad.Zip.$fMonadZipPar2
+                                         @ b_adt95 @ a_adt94 @ c_adt96)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Par1 a>_R
+                                            ->_R <Par1 b>_R
+                                            ->_R Sym (GHC.Generics.N:Par1[0] <c>_R)
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> Par1 a -> Par1 b -> c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Par1 a -> Par1 b -> Par1 c :: *))
+                                    Control.Monad.Zip.$fMonadZipPar1_$cmunzip]
+Control.Monad.Zip.$fMonadZipPar1
+  = Control.Monad.Zip.C:MonadZip
+      @ Par1
+      GHC.Generics.$fMonadPar1
+      (GHC.Tuple.(,)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               Sym (GHC.Generics.N:Par1[0] <a>_R)
+               ->_R Sym (GHC.Generics.N:Par1[0] <b>_R)
+               ->_R Sym (GHC.Generics.N:Par1[0] <(a, b)>_R)
+               :: (forall a b. a -> b -> (a, b) :: *)
+                  ~R# (forall a b. Par1 a -> Par1 b -> Par1 (a, b) :: *)))
+      ((\ (@ a_adt94) (@ b_adt95) (@ c_adt96) ->
+          Control.Monad.Zip.$fMonadZipPar2 @ b_adt95 @ a_adt94 @ c_adt96)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <Par1 a>_R
+               ->_R <Par1 b>_R
+               ->_R Sym (GHC.Generics.N:Par1[0] <c>_R)
+               :: (forall a b c. (a -> b -> c) -> Par1 a -> Par1 b -> c :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> Par1 a -> Par1 b -> Par1 c :: *)))
+      Control.Monad.Zip.$fMonadZipPar1_$cmunzip
+
+-- RHS size: {terms: 5, types: 17, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipU1_$cmzip
+  :: forall a b. U1 a -> U1 b -> U1 (a, b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adt9x) (@ b_adt9y) _ [Occ=Dead] _ [Occ=Dead] ->
+                 GHC.Generics.U1 @ * @ (a_adt9x, b_adt9y)}]
+Control.Monad.Zip.$fMonadZipU1_$cmzip
+  = \ (@ a_adt9x) (@ b_adt9y) _ [Occ=Dead] _ [Occ=Dead] ->
+      GHC.Generics.U1 @ * @ (a_adt9x, b_adt9y)
+
+-- RHS size: {terms: 5, types: 18, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipU2 :: forall b a. (U1 a, U1 b)
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Monad.Zip.$fMonadZipU2
+  = \ (@ b_adt9R) (@ a_adt9Q) ->
+      (GHC.Generics.U1 @ * @ a_adt9Q, GHC.Generics.U1 @ * @ b_adt9R)
+
+-- RHS size: {terms: 4, types: 12, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipU1_$cmunzip
+  :: forall a b. U1 (a, b) -> (U1 a, U1 b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,A>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adt9Q) (@ b_adt9R) _ [Occ=Dead] ->
+                 Control.Monad.Zip.$fMonadZipU2 @ b_adt9R @ a_adt9Q}]
+Control.Monad.Zip.$fMonadZipU1_$cmunzip
+  = \ (@ a_adt9Q) (@ b_adt9R) _ [Occ=Dead] ->
+      Control.Monad.Zip.$fMonadZipU2 @ b_adt9R @ a_adt9Q
+
+-- RHS size: {terms: 5, types: 3, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipU1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip U1
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: U1
+                                    GHC.Generics.$fMonadU1
+                                    Control.Monad.Zip.$fMonadZipU1_$cmzip
+                                    Control.Monad.Zip.$fMonadZipU1_$cmzipWith
+                                    Control.Monad.Zip.$fMonadZipU1_$cmunzip]
+Control.Monad.Zip.$fMonadZipU1
+  = Control.Monad.Zip.C:MonadZip
+      @ U1
+      GHC.Generics.$fMonadU1
+      Control.Monad.Zip.$fMonadZipU1_$cmzip
+      Control.Monad.Zip.$fMonadZipU1_$cmzipWith
+      Control.Monad.Zip.$fMonadZipU1_$cmunzip
+
+-- RHS size: {terms: 5, types: 17, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProxy_$cmzip
+  :: forall a b. Proxy a -> Proxy b -> Proxy (a, b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adta6) (@ b_adta7) _ [Occ=Dead] _ [Occ=Dead] ->
+                 Data.Proxy.Proxy @ * @ (a_adta6, b_adta7)}]
+Control.Monad.Zip.$fMonadZipProxy_$cmzip
+  = \ (@ a_adta6) (@ b_adta7) _ [Occ=Dead] _ [Occ=Dead] ->
+      Data.Proxy.Proxy @ * @ (a_adta6, b_adta7)
+
+-- RHS size: {terms: 5, types: 18, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProxy1
+  :: forall b a. (Proxy a, Proxy b)
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Monad.Zip.$fMonadZipProxy1
+  = \ (@ b_adtaq) (@ a_adtap) ->
+      (Data.Proxy.Proxy @ * @ a_adtap, Data.Proxy.Proxy @ * @ b_adtaq)
+
+-- RHS size: {terms: 4, types: 12, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProxy_$cmunzip
+  :: forall a b. Proxy (a, b) -> (Proxy a, Proxy b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,A>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adtap) (@ b_adtaq) _ [Occ=Dead] ->
+                 Control.Monad.Zip.$fMonadZipProxy1 @ b_adtaq @ a_adtap}]
+Control.Monad.Zip.$fMonadZipProxy_$cmunzip
+  = \ (@ a_adtap) (@ b_adtaq) _ [Occ=Dead] ->
+      Control.Monad.Zip.$fMonadZipProxy1 @ b_adtaq @ a_adtap
+
+-- RHS size: {terms: 5, types: 3, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProxy [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Proxy
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Proxy
+                                    Data.Proxy.$fMonadProxy
+                                    Control.Monad.Zip.$fMonadZipProxy_$cmzip
+                                    Control.Monad.Zip.$fMonadZipProxy_$cmzipWith
+                                    Control.Monad.Zip.$fMonadZipProxy_$cmunzip]
+Control.Monad.Zip.$fMonadZipProxy
+  = Control.Monad.Zip.C:MonadZip
+      @ Proxy
+      Data.Proxy.$fMonadProxy
+      Control.Monad.Zip.$fMonadZipProxy_$cmzip
+      Control.Monad.Zip.$fMonadZipProxy_$cmzipWith
+      Control.Monad.Zip.$fMonadZipProxy_$cmunzip
+
+-- RHS size: {terms: 11, types: 28, coercions: 10, joins: 0/0}
+Control.Monad.Zip.$fMonadZipAlt1
+  :: forall (f :: * -> *).
+     MonadZip f =>
+     forall a b. Alt f a -> Alt f b -> f (a, b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_Xdtda :: * -> *))
+                 ($dMonadZip_Xdtdc [Occ=Once] :: MonadZip f_Xdtda)
+                 (@ a_adtaH)
+                 (@ b_adtaI)
+                 (ds_XdtkS [Occ=Once] :: Alt f_Xdtda a_adtaH)
+                 (ds1_XdtkU [Occ=Once] :: Alt f_Xdtda b_adtaI) ->
+                 mzipWith
+                   @ f_Xdtda
+                   $dMonadZip_Xdtdc
+                   @ a_adtaH
+                   @ b_adtaI
+                   @ (a_adtaH, b_adtaI)
+                   (GHC.Tuple.(,) @ a_adtaH @ b_adtaI)
+                   (ds_XdtkS
+                    `cast` (Data.Semigroup.Internal.N:Alt[0]
+                                <*>_N <f_Xdtda>_R <a_adtaH>_N
+                            :: (Alt f_Xdtda a_adtaH :: *) ~R# (f_Xdtda a_adtaH :: *)))
+                   (ds1_XdtkU
+                    `cast` (Data.Semigroup.Internal.N:Alt[0]
+                                <*>_N <f_Xdtda>_R <b_adtaI>_N
+                            :: (Alt f_Xdtda b_adtaI :: *) ~R# (f_Xdtda b_adtaI :: *)))}]
+Control.Monad.Zip.$fMonadZipAlt1
+  = \ (@ (f_Xdtda :: * -> *))
+      ($dMonadZip_Xdtdc :: MonadZip f_Xdtda)
+      (@ a_adtaH)
+      (@ b_adtaI)
+      (ds_XdtkS :: Alt f_Xdtda a_adtaH)
+      (ds1_XdtkU :: Alt f_Xdtda b_adtaI) ->
+      mzipWith
+        @ f_Xdtda
+        $dMonadZip_Xdtdc
+        @ a_adtaH
+        @ b_adtaI
+        @ (a_adtaH, b_adtaI)
+        (GHC.Tuple.(,) @ a_adtaH @ b_adtaI)
+        (ds_XdtkS
+         `cast` (Data.Semigroup.Internal.N:Alt[0]
+                     <*>_N <f_Xdtda>_R <a_adtaH>_N
+                 :: (Alt f_Xdtda a_adtaH :: *) ~R# (f_Xdtda a_adtaH :: *)))
+        (ds1_XdtkU
+         `cast` (Data.Semigroup.Internal.N:Alt[0]
+                     <*>_N <f_Xdtda>_R <b_adtaI>_N
+                 :: (Alt f_Xdtda b_adtaI :: *) ~R# (f_Xdtda b_adtaI :: *)))
+
+-- RHS size: {terms: 29, types: 62, coercions: 26, joins: 0/1}
+Control.Monad.Zip.$w$cmunzip1 [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *).
+     MonadZip f =>
+     forall a b. Alt f (a, b) -> (# Alt f a, Alt f b #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(A,C(C1(U)),A,C(U),A),A,A,A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 210 30}]
+Control.Monad.Zip.$w$cmunzip1
+  = \ (@ (f_sdtwa :: * -> *))
+      (w_sdtwb :: MonadZip f_sdtwa)
+      (@ a_sdtwc)
+      (@ b_sdtwd)
+      (w1_sdtwe :: Alt f_sdtwa (a_sdtwc, b_sdtwd)) ->
+      let {
+        $dMonad_sdtnF [Dmd=<L,U(A,C(C1(U)),A,C(U),A)>] :: Monad f_sdtwa
+        [LclId]
+        $dMonad_sdtnF
+          = Control.Monad.Zip.$p1MonadZip @ f_sdtwa w_sdtwb } in
+      (# (>>=
+            @ f_sdtwa
+            $dMonad_sdtnF
+            @ (a_sdtwc, b_sdtwd)
+            @ a_sdtwc
+            (w1_sdtwe
+             `cast` (Data.Semigroup.Internal.N:Alt[0]
+                         <*>_N <f_sdtwa>_R <(a_sdtwc, b_sdtwd)>_N
+                     :: (Alt f_sdtwa (a_sdtwc, b_sdtwd) :: *)
+                        ~R# (f_sdtwa (a_sdtwc, b_sdtwd) :: *)))
+            (\ (x1_i7S9R :: (a_sdtwc, b_sdtwd)) ->
+               return
+                 @ f_sdtwa
+                 $dMonad_sdtnF
+                 @ a_sdtwc
+                 (case x1_i7S9R of { (x_i8S6A, ds1_i8S6B) -> x_i8S6A })))
+         `cast` (Sym (Data.Semigroup.Internal.N:Alt[0]
+                          <*>_N <f_sdtwa>_R) <a_sdtwc>_N
+                 :: (f_sdtwa a_sdtwc :: *) ~R# (Alt f_sdtwa a_sdtwc :: *)),
+         (>>=
+            @ f_sdtwa
+            $dMonad_sdtnF
+            @ (a_sdtwc, b_sdtwd)
+            @ b_sdtwd
+            (w1_sdtwe
+             `cast` (Data.Semigroup.Internal.N:Alt[0]
+                         <*>_N <f_sdtwa>_R <(a_sdtwc, b_sdtwd)>_N
+                     :: (Alt f_sdtwa (a_sdtwc, b_sdtwd) :: *)
+                        ~R# (f_sdtwa (a_sdtwc, b_sdtwd) :: *)))
+            (\ (x1_i7S9R :: (a_sdtwc, b_sdtwd)) ->
+               return
+                 @ f_sdtwa
+                 $dMonad_sdtnF
+                 @ b_sdtwd
+                 (case x1_i7S9R of { (ds1_iaIin, y_iaIio) -> y_iaIio })))
+         `cast` (Sym (Data.Semigroup.Internal.N:Alt[0]
+                          <*>_N <f_sdtwa>_R) <b_sdtwd>_N
+                 :: (f_sdtwa b_sdtwd :: *) ~R# (Alt f_sdtwa b_sdtwd :: *)) #)
+
+-- RHS size: {terms: 13, types: 53, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipAlt_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall (f :: * -> *).
+     MonadZip f =>
+     forall a b. Alt f (a, b) -> (Alt f a, Alt f b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*U(1*U(A,C(C1(U)),A,C(U),A),A,A,A)><L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (f_sdtwa :: * -> *))
+                 (w_sdtwb [Occ=Once] :: MonadZip f_sdtwa)
+                 (@ a_sdtwc)
+                 (@ b_sdtwd)
+                 (w1_sdtwe [Occ=Once] :: Alt f_sdtwa (a_sdtwc, b_sdtwd)) ->
+                 case Control.Monad.Zip.$w$cmunzip1
+                        @ f_sdtwa w_sdtwb @ a_sdtwc @ b_sdtwd w1_sdtwe
+                 of
+                 { (# ww1_sdtwZ [Occ=Once], ww2_sdtx0 [Occ=Once] #) ->
+                 (ww1_sdtwZ, ww2_sdtx0)
+                 }}]
+Control.Monad.Zip.$fMonadZipAlt_$cmunzip
+  = \ (@ (f_sdtwa :: * -> *))
+      (w_sdtwb :: MonadZip f_sdtwa)
+      (@ a_sdtwc)
+      (@ b_sdtwd)
+      (w1_sdtwe :: Alt f_sdtwa (a_sdtwc, b_sdtwd)) ->
+      case Control.Monad.Zip.$w$cmunzip1
+             @ f_sdtwa w_sdtwb @ a_sdtwc @ b_sdtwd w1_sdtwe
+      of
+      { (# ww1_sdtwZ, ww2_sdtx0 #) ->
+      (ww1_sdtwZ, ww2_sdtx0)
+      }
+
+-- RHS size: {terms: 20, types: 36, coercions: 67, joins: 0/0}
+Control.Monad.Zip.$fMonadZipAlt [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall (f :: * -> *). MonadZip f => MonadZip (Alt f)
+[GblId[DFunId],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(U(1*U(1*U(1*U,1*U),1*U,1*U,1*U,1*U,1*U),U,1*U,U,1*U),A,C(C1(C1(U))),A)>m,
+ Unf=DFun: \ (@ (f_adt2A :: * -> *)) (v_B1 :: MonadZip f_adt2A) ->
+       Control.Monad.Zip.C:MonadZip TYPE: Alt f_adt2A
+                                    Control.Monad.Zip.$fMonadZipAlt_$cp1MonadZip @ f_adt2A v_B1
+                                    (Control.Monad.Zip.$fMonadZipAlt1 @ f_adt2A v_B1)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            <Alt f_adt2A a>_R
+                                            ->_R <Alt f_adt2A b>_R
+                                            ->_R Sym (Data.Semigroup.Internal.N:Alt[0]
+                                                          <*>_N <f_adt2A>_R) <(a, b)>_N
+                                            :: (forall a b.
+                                                Alt f_adt2A a
+                                                -> Alt f_adt2A b -> f_adt2A (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Alt f_adt2A a
+                                                    -> Alt f_adt2A b -> Alt f_adt2A (a, b) :: *))
+                                    (\ (@ a_Xdtdu)
+                                       (@ b_Xdtdw)
+                                       (@ c_Xdtdy)
+                                       (f1_Xdt5h [Occ=Once] :: a_Xdtdu -> b_Xdtdw -> c_Xdtdy)
+                                       (ds_XdtkS [Occ=Once] :: Alt f_adt2A a_Xdtdu)
+                                       (ds1_XdtkU [Occ=Once] :: Alt f_adt2A b_Xdtdw) ->
+                                       mzipWith
+                                         @ f_adt2A
+                                         v_B1
+                                         @ a_Xdtdu
+                                         @ b_Xdtdw
+                                         @ c_Xdtdy
+                                         f1_Xdt5h
+                                         (ds_XdtkS
+                                          `cast` (Data.Semigroup.Internal.N:Alt[0]
+                                                      <*>_N <f_adt2A>_R <a_Xdtdu>_N
+                                                  :: (Alt f_adt2A a_Xdtdu :: *)
+                                                     ~R# (f_adt2A a_Xdtdu :: *)))
+                                         (ds1_XdtkU
+                                          `cast` (Data.Semigroup.Internal.N:Alt[0]
+                                                      <*>_N <f_adt2A>_R <b_Xdtdw>_N
+                                                  :: (Alt f_adt2A b_Xdtdw :: *)
+                                                     ~R# (f_adt2A b_Xdtdw :: *))))
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Alt f_adt2A a>_R
+                                            ->_R <Alt f_adt2A b>_R
+                                            ->_R Sym (Data.Semigroup.Internal.N:Alt[0]
+                                                          <*>_N <f_adt2A>_R) <c>_N
+                                            :: (forall a b c.
+                                                (a -> b -> c)
+                                                -> Alt f_adt2A a -> Alt f_adt2A b -> f_adt2A c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Alt f_adt2A a
+                                                    -> Alt f_adt2A b
+                                                    -> Alt f_adt2A c :: *))
+                                    Control.Monad.Zip.$fMonadZipAlt_$cmunzip @ f_adt2A v_B1]
+Control.Monad.Zip.$fMonadZipAlt
+  = \ (@ (f_Xdtd8 :: * -> *))
+      ($dMonadZip_Xdtda :: MonadZip f_Xdtd8) ->
+      Control.Monad.Zip.C:MonadZip
+        @ (Alt f_Xdtd8)
+        (Control.Monad.Zip.$fMonadZipAlt_$cp1MonadZip
+           @ f_Xdtd8 $dMonadZip_Xdtda)
+        ((Control.Monad.Zip.$fMonadZipAlt1 @ f_Xdtd8 $dMonadZip_Xdtda)
+         `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                 <Alt f_Xdtd8 a>_R
+                 ->_R <Alt f_Xdtd8 b>_R
+                 ->_R Sym (Data.Semigroup.Internal.N:Alt[0] <*>_N <f_Xdtd8>_R) <(a,
+                                                                                 b)>_N
+                 :: (forall a b.
+                     Alt f_Xdtd8 a -> Alt f_Xdtd8 b -> f_Xdtd8 (a, b) :: *)
+                    ~R# (forall a b.
+                         Alt f_Xdtd8 a -> Alt f_Xdtd8 b -> Alt f_Xdtd8 (a, b) :: *)))
+        ((\ (@ a_Xdtdu)
+            (@ b_Xdtdw)
+            (@ c_Xdtdy)
+            (f1_Xdt5h :: a_Xdtdu -> b_Xdtdw -> c_Xdtdy)
+            (ds_XdtkS :: Alt f_Xdtd8 a_Xdtdu)
+            (ds1_XdtkU :: Alt f_Xdtd8 b_Xdtdw) ->
+            mzipWith
+              @ f_Xdtd8
+              $dMonadZip_Xdtda
+              @ a_Xdtdu
+              @ b_Xdtdw
+              @ c_Xdtdy
+              f1_Xdt5h
+              (ds_XdtkS
+               `cast` (Data.Semigroup.Internal.N:Alt[0]
+                           <*>_N <f_Xdtd8>_R <a_Xdtdu>_N
+                       :: (Alt f_Xdtd8 a_Xdtdu :: *) ~R# (f_Xdtd8 a_Xdtdu :: *)))
+              (ds1_XdtkU
+               `cast` (Data.Semigroup.Internal.N:Alt[0]
+                           <*>_N <f_Xdtd8>_R <b_Xdtdw>_N
+                       :: (Alt f_Xdtd8 b_Xdtdw :: *) ~R# (f_Xdtd8 b_Xdtdw :: *))))
+         `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                 <a -> b -> c>_R
+                 ->_R <Alt f_Xdtd8 a>_R
+                 ->_R <Alt f_Xdtd8 b>_R
+                 ->_R Sym (Data.Semigroup.Internal.N:Alt[0] <*>_N <f_Xdtd8>_R) <c>_N
+                 :: (forall a b c.
+                     (a -> b -> c) -> Alt f_Xdtd8 a -> Alt f_Xdtd8 b -> f_Xdtd8 c :: *)
+                    ~R# (forall a b c.
+                         (a -> b -> c)
+                         -> Alt f_Xdtd8 a -> Alt f_Xdtd8 b -> Alt f_Xdtd8 c :: *)))
+        (Control.Monad.Zip.$fMonadZipAlt_$cmunzip
+           @ f_Xdtd8 $dMonadZip_Xdtda)
+
+-- RHS size: {terms: 18, types: 25, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipLast2
+  :: forall b a. Last a -> Last b -> Maybe (a, b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_adtbo)
+                 (@ a_adtbn)
+                 (m1_X9Dns [Occ=Once] :: Last a_adtbn)
+                 (m2_X9Dnu [Occ=Once] :: Last b_adtbo) ->
+                 case m1_X9Dns
+                      `cast` (Data.Monoid.N:Last[0] <a_adtbn>_N
+                              :: (Last a_adtbn :: *) ~R# (Maybe a_adtbn :: *))
+                 of {
+                   Nothing -> GHC.Base.Nothing @ (a_adtbn, b_adtbo);
+                   Just x_i8hBy [Occ=Once] ->
+                     case m2_X9Dnu
+                          `cast` (Data.Monoid.N:Last[0] <b_adtbo>_N
+                                  :: (Last b_adtbo :: *) ~R# (Maybe b_adtbo :: *))
+                     of {
+                       Nothing -> GHC.Base.Nothing @ (a_adtbn, b_adtbo);
+                       Just x1_X8hEu [Occ=Once] ->
+                         GHC.Base.Just @ (a_adtbn, b_adtbo) (x_i8hBy, x1_X8hEu)
+                     }
+                 }}]
+Control.Monad.Zip.$fMonadZipLast2
+  = \ (@ b_adtbo)
+      (@ a_adtbn)
+      (m1_X9Dns :: Last a_adtbn)
+      (m2_X9Dnu :: Last b_adtbo) ->
+      case m1_X9Dns
+           `cast` (Data.Monoid.N:Last[0] <a_adtbn>_N
+                   :: (Last a_adtbn :: *) ~R# (Maybe a_adtbn :: *))
+      of {
+        Nothing -> GHC.Base.Nothing @ (a_adtbn, b_adtbo);
+        Just x_i8hBy ->
+          case m2_X9Dnu
+               `cast` (Data.Monoid.N:Last[0] <b_adtbo>_N
+                       :: (Last b_adtbo :: *) ~R# (Maybe b_adtbo :: *))
+          of {
+            Nothing -> GHC.Base.Nothing @ (a_adtbn, b_adtbo);
+            Just x1_X8hEu ->
+              GHC.Base.Just @ (a_adtbn, b_adtbo) (x_i8hBy, x1_X8hEu)
+          }
+      }
+
+-- RHS size: {terms: 24, types: 40, coercions: 20, joins: 0/0}
+Control.Monad.Zip.$fMonadZipLast_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall a b. Last (a, b) -> (Last a, Last b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sdtwj)
+                 (@ b_sdtwk)
+                 (w_sdtwl :: Last (a_sdtwj, b_sdtwk)) ->
+                 (case w_sdtwl
+                       `cast` (Data.Monoid.N:Last[0] <(a_sdtwj, b_sdtwk)>_N
+                               :: (Last (a_sdtwj, b_sdtwk) :: *)
+                                  ~R# (Maybe (a_sdtwj, b_sdtwk) :: *))
+                  of {
+                    Nothing ->
+                      (GHC.Base.Nothing @ a_sdtwj)
+                      `cast` (Sym (Data.Monoid.N:Last[0]) <a_sdtwj>_N
+                              :: (Maybe a_sdtwj :: *) ~R# (Last a_sdtwj :: *));
+                    Just x_i8hBy [Occ=Once!] ->
+                      (GHC.Base.Just
+                         @ a_sdtwj
+                         (case x_i8hBy of { (x1_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                          x1_i8S6A
+                          }))
+                      `cast` (Sym (Data.Monoid.N:Last[0]) <a_sdtwj>_N
+                              :: (Maybe a_sdtwj :: *) ~R# (Last a_sdtwj :: *))
+                  },
+                  case w_sdtwl
+                       `cast` (Data.Monoid.N:Last[0] <(a_sdtwj, b_sdtwk)>_N
+                               :: (Last (a_sdtwj, b_sdtwk) :: *)
+                                  ~R# (Maybe (a_sdtwj, b_sdtwk) :: *))
+                  of {
+                    Nothing ->
+                      (GHC.Base.Nothing @ b_sdtwk)
+                      `cast` (Sym (Data.Monoid.N:Last[0]) <b_sdtwk>_N
+                              :: (Maybe b_sdtwk :: *) ~R# (Last b_sdtwk :: *));
+                    Just x_i8hBy [Occ=Once!] ->
+                      (GHC.Base.Just
+                         @ b_sdtwk
+                         (case x_i8hBy of { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                          y_iaIio
+                          }))
+                      `cast` (Sym (Data.Monoid.N:Last[0]) <b_sdtwk>_N
+                              :: (Maybe b_sdtwk :: *) ~R# (Last b_sdtwk :: *))
+                  })}]
+Control.Monad.Zip.$fMonadZipLast_$cmunzip
+  = \ (@ a_sdtwj) (@ b_sdtwk) (w_sdtwl :: Last (a_sdtwj, b_sdtwk)) ->
+      (case w_sdtwl
+            `cast` (Data.Monoid.N:Last[0] <(a_sdtwj, b_sdtwk)>_N
+                    :: (Last (a_sdtwj, b_sdtwk) :: *)
+                       ~R# (Maybe (a_sdtwj, b_sdtwk) :: *))
+       of {
+         Nothing ->
+           (GHC.Base.Nothing @ a_sdtwj)
+           `cast` (Sym (Data.Monoid.N:Last[0]) <a_sdtwj>_N
+                   :: (Maybe a_sdtwj :: *) ~R# (Last a_sdtwj :: *));
+         Just x_i8hBy ->
+           (GHC.Base.Just
+              @ a_sdtwj (case x_i8hBy of { (x1_i8S6A, ds1_i8S6B) -> x1_i8S6A }))
+           `cast` (Sym (Data.Monoid.N:Last[0]) <a_sdtwj>_N
+                   :: (Maybe a_sdtwj :: *) ~R# (Last a_sdtwj :: *))
+       },
+       case w_sdtwl
+            `cast` (Data.Monoid.N:Last[0] <(a_sdtwj, b_sdtwk)>_N
+                    :: (Last (a_sdtwj, b_sdtwk) :: *)
+                       ~R# (Maybe (a_sdtwj, b_sdtwk) :: *))
+       of {
+         Nothing ->
+           (GHC.Base.Nothing @ b_sdtwk)
+           `cast` (Sym (Data.Monoid.N:Last[0]) <b_sdtwk>_N
+                   :: (Maybe b_sdtwk :: *) ~R# (Last b_sdtwk :: *));
+         Just x_i8hBy ->
+           (GHC.Base.Just
+              @ b_sdtwk (case x_i8hBy of { (ds1_iaIin, y_iaIio) -> y_iaIio }))
+           `cast` (Sym (Data.Monoid.N:Last[0]) <b_sdtwk>_N
+                   :: (Maybe b_sdtwk :: *) ~R# (Last b_sdtwk :: *))
+       })
+
+-- RHS size: {terms: 7, types: 7, coercions: 39, joins: 0/0}
+Control.Monad.Zip.$fMonadZipLast [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Last
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Last
+                                    Data.Monoid.$fMonadLast
+                                    (\ (@ a_adtbn) (@ b_adtbo) ->
+                                       Control.Monad.Zip.$fMonadZipLast2 @ b_adtbo @ a_adtbn)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            <Last a>_R
+                                            ->_R <Last b>_R
+                                            ->_R Sym (Data.Monoid.N:Last[0]) <(a, b)>_N
+                                            :: (forall a b. Last a -> Last b -> Maybe (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Last a -> Last b -> Last (a, b) :: *))
+                                    Control.Monad.Zip.$fMonadZipLast1
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Last a>_R
+                                            ->_R <Last b>_R
+                                            ->_R Sym (Data.Monoid.N:Last[0]) <c>_N
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> Last a -> Last b -> Maybe c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Last a -> Last b -> Last c :: *))
+                                    Control.Monad.Zip.$fMonadZipLast_$cmunzip]
+Control.Monad.Zip.$fMonadZipLast
+  = Control.Monad.Zip.C:MonadZip
+      @ Last
+      Data.Monoid.$fMonadLast
+      ((\ (@ a_adtbn) (@ b_adtbo) ->
+          Control.Monad.Zip.$fMonadZipLast2 @ b_adtbo @ a_adtbn)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <Last a>_R
+               ->_R <Last b>_R
+               ->_R Sym (Data.Monoid.N:Last[0]) <(a, b)>_N
+               :: (forall a b. Last a -> Last b -> Maybe (a, b) :: *)
+                  ~R# (forall a b. Last a -> Last b -> Last (a, b) :: *)))
+      (Control.Monad.Zip.$fMonadZipLast1
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <Last a>_R
+               ->_R <Last b>_R
+               ->_R Sym (Data.Monoid.N:Last[0]) <c>_N
+               :: (forall a b c.
+                   (a -> b -> c) -> Last a -> Last b -> Maybe c :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> Last a -> Last b -> Last c :: *)))
+      Control.Monad.Zip.$fMonadZipLast_$cmunzip
+
+-- RHS size: {terms: 18, types: 25, coercions: 4, joins: 0/0}
+Control.Monad.Zip.$fMonadZipFirst2
+  :: forall b a. First a -> First b -> Maybe (a, b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ b_adtc1)
+                 (@ a_adtc0)
+                 (m1_X9Dnw [Occ=Once] :: First a_adtc0)
+                 (m2_X9Dny [Occ=Once] :: First b_adtc1) ->
+                 case m1_X9Dnw
+                      `cast` (Data.Monoid.N:First[0] <a_adtc0>_N
+                              :: (First a_adtc0 :: *) ~R# (Maybe a_adtc0 :: *))
+                 of {
+                   Nothing -> GHC.Base.Nothing @ (a_adtc0, b_adtc1);
+                   Just x_i8hBy [Occ=Once] ->
+                     case m2_X9Dny
+                          `cast` (Data.Monoid.N:First[0] <b_adtc1>_N
+                                  :: (First b_adtc1 :: *) ~R# (Maybe b_adtc1 :: *))
+                     of {
+                       Nothing -> GHC.Base.Nothing @ (a_adtc0, b_adtc1);
+                       Just x1_X8hEy [Occ=Once] ->
+                         GHC.Base.Just @ (a_adtc0, b_adtc1) (x_i8hBy, x1_X8hEy)
+                     }
+                 }}]
+Control.Monad.Zip.$fMonadZipFirst2
+  = \ (@ b_adtc1)
+      (@ a_adtc0)
+      (m1_X9Dnw :: First a_adtc0)
+      (m2_X9Dny :: First b_adtc1) ->
+      case m1_X9Dnw
+           `cast` (Data.Monoid.N:First[0] <a_adtc0>_N
+                   :: (First a_adtc0 :: *) ~R# (Maybe a_adtc0 :: *))
+      of {
+        Nothing -> GHC.Base.Nothing @ (a_adtc0, b_adtc1);
+        Just x_i8hBy ->
+          case m2_X9Dny
+               `cast` (Data.Monoid.N:First[0] <b_adtc1>_N
+                       :: (First b_adtc1 :: *) ~R# (Maybe b_adtc1 :: *))
+          of {
+            Nothing -> GHC.Base.Nothing @ (a_adtc0, b_adtc1);
+            Just x1_X8hEy ->
+              GHC.Base.Just @ (a_adtc0, b_adtc1) (x_i8hBy, x1_X8hEy)
+          }
+      }
+
+-- RHS size: {terms: 24, types: 40, coercions: 20, joins: 0/0}
+Control.Monad.Zip.$fMonadZipFirst_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall a b. First (a, b) -> (First a, First b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sdtwq)
+                 (@ b_sdtwr)
+                 (w_sdtws :: First (a_sdtwq, b_sdtwr)) ->
+                 (case w_sdtws
+                       `cast` (Data.Monoid.N:First[0] <(a_sdtwq, b_sdtwr)>_N
+                               :: (First (a_sdtwq, b_sdtwr) :: *)
+                                  ~R# (Maybe (a_sdtwq, b_sdtwr) :: *))
+                  of {
+                    Nothing ->
+                      (GHC.Base.Nothing @ a_sdtwq)
+                      `cast` (Sym (Data.Monoid.N:First[0]) <a_sdtwq>_N
+                              :: (Maybe a_sdtwq :: *) ~R# (First a_sdtwq :: *));
+                    Just x_i8hBy [Occ=Once!] ->
+                      (GHC.Base.Just
+                         @ a_sdtwq
+                         (case x_i8hBy of { (x1_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                          x1_i8S6A
+                          }))
+                      `cast` (Sym (Data.Monoid.N:First[0]) <a_sdtwq>_N
+                              :: (Maybe a_sdtwq :: *) ~R# (First a_sdtwq :: *))
+                  },
+                  case w_sdtws
+                       `cast` (Data.Monoid.N:First[0] <(a_sdtwq, b_sdtwr)>_N
+                               :: (First (a_sdtwq, b_sdtwr) :: *)
+                                  ~R# (Maybe (a_sdtwq, b_sdtwr) :: *))
+                  of {
+                    Nothing ->
+                      (GHC.Base.Nothing @ b_sdtwr)
+                      `cast` (Sym (Data.Monoid.N:First[0]) <b_sdtwr>_N
+                              :: (Maybe b_sdtwr :: *) ~R# (First b_sdtwr :: *));
+                    Just x_i8hBy [Occ=Once!] ->
+                      (GHC.Base.Just
+                         @ b_sdtwr
+                         (case x_i8hBy of { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                          y_iaIio
+                          }))
+                      `cast` (Sym (Data.Monoid.N:First[0]) <b_sdtwr>_N
+                              :: (Maybe b_sdtwr :: *) ~R# (First b_sdtwr :: *))
+                  })}]
+Control.Monad.Zip.$fMonadZipFirst_$cmunzip
+  = \ (@ a_sdtwq)
+      (@ b_sdtwr)
+      (w_sdtws :: First (a_sdtwq, b_sdtwr)) ->
+      (case w_sdtws
+            `cast` (Data.Monoid.N:First[0] <(a_sdtwq, b_sdtwr)>_N
+                    :: (First (a_sdtwq, b_sdtwr) :: *)
+                       ~R# (Maybe (a_sdtwq, b_sdtwr) :: *))
+       of {
+         Nothing ->
+           (GHC.Base.Nothing @ a_sdtwq)
+           `cast` (Sym (Data.Monoid.N:First[0]) <a_sdtwq>_N
+                   :: (Maybe a_sdtwq :: *) ~R# (First a_sdtwq :: *));
+         Just x_i8hBy ->
+           (GHC.Base.Just
+              @ a_sdtwq (case x_i8hBy of { (x1_i8S6A, ds1_i8S6B) -> x1_i8S6A }))
+           `cast` (Sym (Data.Monoid.N:First[0]) <a_sdtwq>_N
+                   :: (Maybe a_sdtwq :: *) ~R# (First a_sdtwq :: *))
+       },
+       case w_sdtws
+            `cast` (Data.Monoid.N:First[0] <(a_sdtwq, b_sdtwr)>_N
+                    :: (First (a_sdtwq, b_sdtwr) :: *)
+                       ~R# (Maybe (a_sdtwq, b_sdtwr) :: *))
+       of {
+         Nothing ->
+           (GHC.Base.Nothing @ b_sdtwr)
+           `cast` (Sym (Data.Monoid.N:First[0]) <b_sdtwr>_N
+                   :: (Maybe b_sdtwr :: *) ~R# (First b_sdtwr :: *));
+         Just x_i8hBy ->
+           (GHC.Base.Just
+              @ b_sdtwr (case x_i8hBy of { (ds1_iaIin, y_iaIio) -> y_iaIio }))
+           `cast` (Sym (Data.Monoid.N:First[0]) <b_sdtwr>_N
+                   :: (Maybe b_sdtwr :: *) ~R# (First b_sdtwr :: *))
+       })
+
+-- RHS size: {terms: 7, types: 7, coercions: 39, joins: 0/0}
+Control.Monad.Zip.$fMonadZipFirst [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip First
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: First
+                                    Data.Monoid.$fMonadFirst
+                                    (\ (@ a_adtc0) (@ b_adtc1) ->
+                                       Control.Monad.Zip.$fMonadZipFirst2 @ b_adtc1 @ a_adtc0)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            <First a>_R
+                                            ->_R <First b>_R
+                                            ->_R Sym (Data.Monoid.N:First[0]) <(a, b)>_N
+                                            :: (forall a b. First a -> First b -> Maybe (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    First a -> First b -> First (a, b) :: *))
+                                    Control.Monad.Zip.$fMonadZipFirst1
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <First a>_R
+                                            ->_R <First b>_R
+                                            ->_R Sym (Data.Monoid.N:First[0]) <c>_N
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> First a -> First b -> Maybe c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> First a -> First b -> First c :: *))
+                                    Control.Monad.Zip.$fMonadZipFirst_$cmunzip]
+Control.Monad.Zip.$fMonadZipFirst
+  = Control.Monad.Zip.C:MonadZip
+      @ First
+      Data.Monoid.$fMonadFirst
+      ((\ (@ a_adtc0) (@ b_adtc1) ->
+          Control.Monad.Zip.$fMonadZipFirst2 @ b_adtc1 @ a_adtc0)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               <First a>_R
+               ->_R <First b>_R
+               ->_R Sym (Data.Monoid.N:First[0]) <(a, b)>_N
+               :: (forall a b. First a -> First b -> Maybe (a, b) :: *)
+                  ~R# (forall a b. First a -> First b -> First (a, b) :: *)))
+      (Control.Monad.Zip.$fMonadZipFirst1
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <First a>_R
+               ->_R <First b>_R
+               ->_R Sym (Data.Monoid.N:First[0]) <c>_N
+               :: (forall a b c.
+                   (a -> b -> c) -> First a -> First b -> Maybe c :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> First a -> First b -> First c :: *)))
+      Control.Monad.Zip.$fMonadZipFirst_$cmunzip
+
+-- RHS size: {terms: 18, types: 25, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipMaybe_$cmzip
+  :: forall a b. Maybe a -> Maybe b -> Maybe (a, b)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S,1*U><L,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adtcD)
+                 (@ b_adtcE)
+                 (m1_X9Dn1 [Occ=Once!] :: Maybe a_adtcD)
+                 (m2_X9Dn3 [Occ=Once!] :: Maybe b_adtcE) ->
+                 case m1_X9Dn1 of {
+                   Nothing -> GHC.Base.Nothing @ (a_adtcD, b_adtcE);
+                   Just x_i8hBy [Occ=Once] ->
+                     case m2_X9Dn3 of {
+                       Nothing -> GHC.Base.Nothing @ (a_adtcD, b_adtcE);
+                       Just x1_X8hD8 [Occ=Once] ->
+                         GHC.Base.Just @ (a_adtcD, b_adtcE) (x_i8hBy, x1_X8hD8)
+                     }
+                 }}]
+Control.Monad.Zip.$fMonadZipMaybe_$cmzip
+  = \ (@ a_adtcD)
+      (@ b_adtcE)
+      (m1_X9Dn1 :: Maybe a_adtcD)
+      (m2_X9Dn3 :: Maybe b_adtcE) ->
+      case m1_X9Dn1 of {
+        Nothing -> GHC.Base.Nothing @ (a_adtcD, b_adtcE);
+        Just x_i8hBy ->
+          case m2_X9Dn3 of {
+            Nothing -> GHC.Base.Nothing @ (a_adtcD, b_adtcE);
+            Just x1_X8hD8 ->
+              GHC.Base.Just @ (a_adtcD, b_adtcE) (x_i8hBy, x1_X8hD8)
+          }
+      }
+
+-- RHS size: {terms: 24, types: 40, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipMaybe_$cmunzip [InlPrag=NOUSERINLINE[0]]
+  :: forall a b. Maybe (a, b) -> (Maybe a, Maybe b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_sdtwx)
+                 (@ b_sdtwy)
+                 (w_sdtwz :: Maybe (a_sdtwx, b_sdtwy)) ->
+                 (case w_sdtwz of {
+                    Nothing -> GHC.Base.Nothing @ a_sdtwx;
+                    Just x_i8hBy [Occ=Once!] ->
+                      GHC.Base.Just
+                        @ a_sdtwx
+                        (case x_i8hBy of { (x1_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                         x1_i8S6A
+                         })
+                  },
+                  case w_sdtwz of {
+                    Nothing -> GHC.Base.Nothing @ b_sdtwy;
+                    Just x_i8hBy [Occ=Once!] ->
+                      GHC.Base.Just
+                        @ b_sdtwy
+                        (case x_i8hBy of { (_ [Occ=Dead], y_iaIio [Occ=Once]) -> y_iaIio })
+                  })}]
+Control.Monad.Zip.$fMonadZipMaybe_$cmunzip
+  = \ (@ a_sdtwx)
+      (@ b_sdtwy)
+      (w_sdtwz :: Maybe (a_sdtwx, b_sdtwy)) ->
+      (case w_sdtwz of {
+         Nothing -> GHC.Base.Nothing @ a_sdtwx;
+         Just x_i8hBy ->
+           GHC.Base.Just
+             @ a_sdtwx (case x_i8hBy of { (x1_i8S6A, ds1_i8S6B) -> x1_i8S6A })
+       },
+       case w_sdtwz of {
+         Nothing -> GHC.Base.Nothing @ b_sdtwy;
+         Just x_i8hBy ->
+           GHC.Base.Just
+             @ b_sdtwy (case x_i8hBy of { (ds1_iaIin, y_iaIio) -> y_iaIio })
+       })
+
+-- RHS size: {terms: 5, types: 1, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$fMonadZipMaybe [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Maybe
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Maybe
+                                    GHC.Base.$fMonadMaybe
+                                    Control.Monad.Zip.$fMonadZipMaybe_$cmzip
+                                    Control.Monad.Zip.$fMonadZipMaybe_$cmzipWith
+                                    Control.Monad.Zip.$fMonadZipMaybe_$cmunzip]
+Control.Monad.Zip.$fMonadZipMaybe
+  = Control.Monad.Zip.C:MonadZip
+      @ Maybe
+      GHC.Base.$fMonadMaybe
+      Control.Monad.Zip.$fMonadZipMaybe_$cmzip
+      Control.Monad.Zip.$fMonadZipMaybe_$cmzipWith
+      Control.Monad.Zip.$fMonadZipMaybe_$cmunzip
+
+-- RHS size: {terms: 12, types: 22, coercions: 14, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProduct_$cmunzip
+  :: forall a b. Product (a, b) -> (Product a, Product b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U,1*U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adtdD)
+                 (@ b_adtdE)
+                 (mab_adt2i :: Product (a_adtdD, b_adtdE)) ->
+                 (case mab_adt2i
+                       `cast` (Data.Semigroup.Internal.N:Product[0] <(a_adtdD, b_adtdE)>_R
+                               :: (Product (a_adtdD, b_adtdE) :: *) ~R# ((a_adtdD, b_adtdE) :: *))
+                  of
+                  { (x_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                  x_i8S6A
+                  `cast` (Sym (Data.Semigroup.Internal.N:Product[0] <a_adtdD>_R)
+                          :: (a_adtdD :: *) ~R# (Product a_adtdD :: *))
+                  },
+                  case mab_adt2i
+                       `cast` (Data.Semigroup.Internal.N:Product[0] <(a_adtdD, b_adtdE)>_R
+                               :: (Product (a_adtdD, b_adtdE) :: *) ~R# ((a_adtdD, b_adtdE) :: *))
+                  of
+                  { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                  y_iaIio
+                  `cast` (Sym (Data.Semigroup.Internal.N:Product[0] <b_adtdE>_R)
+                          :: (b_adtdE :: *) ~R# (Product b_adtdE :: *))
+                  })}]
+Control.Monad.Zip.$fMonadZipProduct_$cmunzip
+  = \ (@ a_adtdD)
+      (@ b_adtdE)
+      (mab_adt2i :: Product (a_adtdD, b_adtdE)) ->
+      (case mab_adt2i
+            `cast` (Data.Semigroup.Internal.N:Product[0] <(a_adtdD, b_adtdE)>_R
+                    :: (Product (a_adtdD, b_adtdE) :: *) ~R# ((a_adtdD, b_adtdE) :: *))
+       of
+       { (x_i8S6A, ds1_i8S6B) ->
+       x_i8S6A
+       `cast` (Sym (Data.Semigroup.Internal.N:Product[0] <a_adtdD>_R)
+               :: (a_adtdD :: *) ~R# (Product a_adtdD :: *))
+       },
+       case mab_adt2i
+            `cast` (Data.Semigroup.Internal.N:Product[0] <(a_adtdD, b_adtdE)>_R
+                    :: (Product (a_adtdD, b_adtdE) :: *) ~R# ((a_adtdD, b_adtdE) :: *))
+       of
+       { (ds1_iaIin, y_iaIio) ->
+       y_iaIio
+       `cast` (Sym (Data.Semigroup.Internal.N:Product[0] <b_adtdE>_R)
+               :: (b_adtdE :: *) ~R# (Product b_adtdE :: *))
+       })
+
+-- RHS size: {terms: 8, types: 10, coercions: 41, joins: 0/0}
+Control.Monad.Zip.$fMonadZipProduct [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Product
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Product
+                                    Data.Semigroup.Internal.$fMonadProduct
+                                    GHC.Tuple.(,)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            Sym (Data.Semigroup.Internal.N:Product[0] <a>_R)
+                                            ->_R Sym (Data.Semigroup.Internal.N:Product[0] <b>_R)
+                                            ->_R Sym (Data.Semigroup.Internal.N:Product[0]
+                                                          <(a, b)>_R)
+                                            :: (forall a b. a -> b -> (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Product a -> Product b -> Product (a, b) :: *))
+                                    (\ (@ a_adtdq) (@ b_adtdr) (@ c_adtds) ->
+                                       Control.Monad.Zip.$fMonadZipProduct1
+                                         @ b_adtdr @ a_adtdq @ c_adtds)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Product a>_R
+                                            ->_R <Product b>_R
+                                            ->_R Sym (Data.Semigroup.Internal.N:Product[0] <c>_R)
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> Product a -> Product b -> c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Product a -> Product b -> Product c :: *))
+                                    Control.Monad.Zip.$fMonadZipProduct_$cmunzip]
+Control.Monad.Zip.$fMonadZipProduct
+  = Control.Monad.Zip.C:MonadZip
+      @ Product
+      Data.Semigroup.Internal.$fMonadProduct
+      (GHC.Tuple.(,)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               Sym (Data.Semigroup.Internal.N:Product[0] <a>_R)
+               ->_R Sym (Data.Semigroup.Internal.N:Product[0] <b>_R)
+               ->_R Sym (Data.Semigroup.Internal.N:Product[0] <(a, b)>_R)
+               :: (forall a b. a -> b -> (a, b) :: *)
+                  ~R# (forall a b. Product a -> Product b -> Product (a, b) :: *)))
+      ((\ (@ a_adtdq) (@ b_adtdr) (@ c_adtds) ->
+          Control.Monad.Zip.$fMonadZipProduct1 @ b_adtdr @ a_adtdq @ c_adtds)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <Product a>_R
+               ->_R <Product b>_R
+               ->_R Sym (Data.Semigroup.Internal.N:Product[0] <c>_R)
+               :: (forall a b c.
+                   (a -> b -> c) -> Product a -> Product b -> c :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> Product a -> Product b -> Product c :: *)))
+      Control.Monad.Zip.$fMonadZipProduct_$cmunzip
+
+-- RHS size: {terms: 12, types: 22, coercions: 14, joins: 0/0}
+Control.Monad.Zip.$fMonadZipSum_$cmunzip
+  :: forall a b. Sum (a, b) -> (Sum a, Sum b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U,1*U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adteg)
+                 (@ b_adteh)
+                 (mab_adt2i :: Sum (a_adteg, b_adteh)) ->
+                 (case mab_adt2i
+                       `cast` (Data.Semigroup.Internal.N:Sum[0] <(a_adteg, b_adteh)>_R
+                               :: (Sum (a_adteg, b_adteh) :: *) ~R# ((a_adteg, b_adteh) :: *))
+                  of
+                  { (x_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                  x_i8S6A
+                  `cast` (Sym (Data.Semigroup.Internal.N:Sum[0] <a_adteg>_R)
+                          :: (a_adteg :: *) ~R# (Sum a_adteg :: *))
+                  },
+                  case mab_adt2i
+                       `cast` (Data.Semigroup.Internal.N:Sum[0] <(a_adteg, b_adteh)>_R
+                               :: (Sum (a_adteg, b_adteh) :: *) ~R# ((a_adteg, b_adteh) :: *))
+                  of
+                  { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                  y_iaIio
+                  `cast` (Sym (Data.Semigroup.Internal.N:Sum[0] <b_adteh>_R)
+                          :: (b_adteh :: *) ~R# (Sum b_adteh :: *))
+                  })}]
+Control.Monad.Zip.$fMonadZipSum_$cmunzip
+  = \ (@ a_adteg)
+      (@ b_adteh)
+      (mab_adt2i :: Sum (a_adteg, b_adteh)) ->
+      (case mab_adt2i
+            `cast` (Data.Semigroup.Internal.N:Sum[0] <(a_adteg, b_adteh)>_R
+                    :: (Sum (a_adteg, b_adteh) :: *) ~R# ((a_adteg, b_adteh) :: *))
+       of
+       { (x_i8S6A, ds1_i8S6B) ->
+       x_i8S6A
+       `cast` (Sym (Data.Semigroup.Internal.N:Sum[0] <a_adteg>_R)
+               :: (a_adteg :: *) ~R# (Sum a_adteg :: *))
+       },
+       case mab_adt2i
+            `cast` (Data.Semigroup.Internal.N:Sum[0] <(a_adteg, b_adteh)>_R
+                    :: (Sum (a_adteg, b_adteh) :: *) ~R# ((a_adteg, b_adteh) :: *))
+       of
+       { (ds1_iaIin, y_iaIio) ->
+       y_iaIio
+       `cast` (Sym (Data.Semigroup.Internal.N:Sum[0] <b_adteh>_R)
+               :: (b_adteh :: *) ~R# (Sum b_adteh :: *))
+       })
+
+-- RHS size: {terms: 8, types: 10, coercions: 41, joins: 0/0}
+Control.Monad.Zip.$fMonadZipSum [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Sum
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Sum
+                                    Data.Semigroup.Internal.$fMonadSum
+                                    GHC.Tuple.(,)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            Sym (Data.Semigroup.Internal.N:Sum[0] <a>_R)
+                                            ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <b>_R)
+                                            ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <(a, b)>_R)
+                                            :: (forall a b. a -> b -> (a, b) :: *)
+                                               ~R# (forall a b. Sum a -> Sum b -> Sum (a, b) :: *))
+                                    (\ (@ a_adte3) (@ b_adte4) (@ c_adte5) ->
+                                       Control.Monad.Zip.$fMonadZipSum1
+                                         @ b_adte4 @ a_adte3 @ c_adte5)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Sum a>_R
+                                            ->_R <Sum b>_R
+                                            ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <c>_R)
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> Sum a -> Sum b -> c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c) -> Sum a -> Sum b -> Sum c :: *))
+                                    Control.Monad.Zip.$fMonadZipSum_$cmunzip]
+Control.Monad.Zip.$fMonadZipSum
+  = Control.Monad.Zip.C:MonadZip
+      @ Sum
+      Data.Semigroup.Internal.$fMonadSum
+      (GHC.Tuple.(,)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               Sym (Data.Semigroup.Internal.N:Sum[0] <a>_R)
+               ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <b>_R)
+               ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <(a, b)>_R)
+               :: (forall a b. a -> b -> (a, b) :: *)
+                  ~R# (forall a b. Sum a -> Sum b -> Sum (a, b) :: *)))
+      ((\ (@ a_adte3) (@ b_adte4) (@ c_adte5) ->
+          Control.Monad.Zip.$fMonadZipSum1 @ b_adte4 @ a_adte3 @ c_adte5)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <Sum a>_R
+               ->_R <Sum b>_R
+               ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <c>_R)
+               :: (forall a b c. (a -> b -> c) -> Sum a -> Sum b -> c :: *)
+                  ~R# (forall a b c. (a -> b -> c) -> Sum a -> Sum b -> Sum c :: *)))
+      Control.Monad.Zip.$fMonadZipSum_$cmunzip
+
+-- RHS size: {terms: 12, types: 22, coercions: 14, joins: 0/0}
+Control.Monad.Zip.$fMonadZipDual_$cmunzip
+  :: forall a b. Dual (a, b) -> (Dual a, Dual b)
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<L,U(1*U,1*U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adteT)
+                 (@ b_adteU)
+                 (mab_adt2i :: Dual (a_adteT, b_adteU)) ->
+                 (case mab_adt2i
+                       `cast` (Data.Semigroup.Internal.N:Dual[0] <(a_adteT, b_adteU)>_R
+                               :: (Dual (a_adteT, b_adteU) :: *) ~R# ((a_adteT, b_adteU) :: *))
+                  of
+                  { (x_i8S6A [Occ=Once], _ [Occ=Dead]) ->
+                  x_i8S6A
+                  `cast` (Sym (Data.Semigroup.Internal.N:Dual[0] <a_adteT>_R)
+                          :: (a_adteT :: *) ~R# (Dual a_adteT :: *))
+                  },
+                  case mab_adt2i
+                       `cast` (Data.Semigroup.Internal.N:Dual[0] <(a_adteT, b_adteU)>_R
+                               :: (Dual (a_adteT, b_adteU) :: *) ~R# ((a_adteT, b_adteU) :: *))
+                  of
+                  { (_ [Occ=Dead], y_iaIio [Occ=Once]) ->
+                  y_iaIio
+                  `cast` (Sym (Data.Semigroup.Internal.N:Dual[0] <b_adteU>_R)
+                          :: (b_adteU :: *) ~R# (Dual b_adteU :: *))
+                  })}]
+Control.Monad.Zip.$fMonadZipDual_$cmunzip
+  = \ (@ a_adteT)
+      (@ b_adteU)
+      (mab_adt2i :: Dual (a_adteT, b_adteU)) ->
+      (case mab_adt2i
+            `cast` (Data.Semigroup.Internal.N:Dual[0] <(a_adteT, b_adteU)>_R
+                    :: (Dual (a_adteT, b_adteU) :: *) ~R# ((a_adteT, b_adteU) :: *))
+       of
+       { (x_i8S6A, ds1_i8S6B) ->
+       x_i8S6A
+       `cast` (Sym (Data.Semigroup.Internal.N:Dual[0] <a_adteT>_R)
+               :: (a_adteT :: *) ~R# (Dual a_adteT :: *))
+       },
+       case mab_adt2i
+            `cast` (Data.Semigroup.Internal.N:Dual[0] <(a_adteT, b_adteU)>_R
+                    :: (Dual (a_adteT, b_adteU) :: *) ~R# ((a_adteT, b_adteU) :: *))
+       of
+       { (ds1_iaIin, y_iaIio) ->
+       y_iaIio
+       `cast` (Sym (Data.Semigroup.Internal.N:Dual[0] <b_adteU>_R)
+               :: (b_adteU :: *) ~R# (Dual b_adteU :: *))
+       })
+
+-- RHS size: {terms: 8, types: 10, coercions: 41, joins: 0/0}
+Control.Monad.Zip.$fMonadZipDual [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Dual
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Dual
+                                    Data.Semigroup.Internal.$fMonadDual
+                                    GHC.Tuple.(,)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            Sym (Data.Semigroup.Internal.N:Dual[0] <a>_R)
+                                            ->_R Sym (Data.Semigroup.Internal.N:Dual[0] <b>_R)
+                                            ->_R Sym (Data.Semigroup.Internal.N:Dual[0] <(a, b)>_R)
+                                            :: (forall a b. a -> b -> (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Dual a -> Dual b -> Dual (a, b) :: *))
+                                    (\ (@ a_adteG) (@ b_adteH) (@ c_adteI) ->
+                                       Control.Monad.Zip.$fMonadZipDual1
+                                         @ b_adteH @ a_adteG @ c_adteI)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Dual a>_R
+                                            ->_R <Dual b>_R
+                                            ->_R Sym (Data.Semigroup.Internal.N:Dual[0] <c>_R)
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> Dual a -> Dual b -> c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Dual a -> Dual b -> Dual c :: *))
+                                    Control.Monad.Zip.$fMonadZipDual_$cmunzip]
+Control.Monad.Zip.$fMonadZipDual
+  = Control.Monad.Zip.C:MonadZip
+      @ Dual
+      Data.Semigroup.Internal.$fMonadDual
+      (GHC.Tuple.(,)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               Sym (Data.Semigroup.Internal.N:Dual[0] <a>_R)
+               ->_R Sym (Data.Semigroup.Internal.N:Dual[0] <b>_R)
+               ->_R Sym (Data.Semigroup.Internal.N:Dual[0] <(a, b)>_R)
+               :: (forall a b. a -> b -> (a, b) :: *)
+                  ~R# (forall a b. Dual a -> Dual b -> Dual (a, b) :: *)))
+      ((\ (@ a_adteG) (@ b_adteH) (@ c_adteI) ->
+          Control.Monad.Zip.$fMonadZipDual1 @ b_adteH @ a_adteG @ c_adteI)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <Dual a>_R
+               ->_R <Dual b>_R
+               ->_R Sym (Data.Semigroup.Internal.N:Dual[0] <c>_R)
+               :: (forall a b c. (a -> b -> c) -> Dual a -> Dual b -> c :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> Dual a -> Dual b -> Dual c :: *)))
+      Control.Monad.Zip.$fMonadZipDual_$cmunzip
+
+-- RHS size: {terms: 8, types: 10, coercions: 41, joins: 0/0}
+Control.Monad.Zip.$fMonadZipIdentity [InlPrag=NOUSERINLINE CONLIKE]
+  :: MonadZip Identity
+[GblId[DFunId],
+ Str=m,
+ Unf=DFun: \ ->
+       Control.Monad.Zip.C:MonadZip TYPE: Identity
+                                    Data.Functor.Identity.$fMonadIdentity
+                                    GHC.Tuple.(,)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N).
+                                            Sym (Data.Functor.Identity.N:Identity[0] <a>_R)
+                                            ->_R Sym (Data.Functor.Identity.N:Identity[0] <b>_R)
+                                            ->_R Sym (Data.Functor.Identity.N:Identity[0]
+                                                          <(a, b)>_R)
+                                            :: (forall a b. a -> b -> (a, b) :: *)
+                                               ~R# (forall a b.
+                                                    Identity a
+                                                    -> Identity b -> Identity (a, b) :: *))
+                                    (\ (@ a_adtfj) (@ b_adtfk) (@ c_adtfl) ->
+                                       Control.Monad.Zip.$fMonadZipIdentity1
+                                         @ b_adtfk @ a_adtfj @ c_adtfl)
+                                    `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+                                            <a -> b -> c>_R
+                                            ->_R <Identity a>_R
+                                            ->_R <Identity b>_R
+                                            ->_R Sym (Data.Functor.Identity.N:Identity[0] <c>_R)
+                                            :: (forall a b c.
+                                                (a -> b -> c) -> Identity a -> Identity b -> c :: *)
+                                               ~R# (forall a b c.
+                                                    (a -> b -> c)
+                                                    -> Identity a -> Identity b -> Identity c :: *))
+                                    Control.Monad.Zip.$fMonadZipIdentity_$cmunzip]
+Control.Monad.Zip.$fMonadZipIdentity
+  = Control.Monad.Zip.C:MonadZip
+      @ Identity
+      Data.Functor.Identity.$fMonadIdentity
+      (GHC.Tuple.(,)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N).
+               Sym (Data.Functor.Identity.N:Identity[0] <a>_R)
+               ->_R Sym (Data.Functor.Identity.N:Identity[0] <b>_R)
+               ->_R Sym (Data.Functor.Identity.N:Identity[0] <(a, b)>_R)
+               :: (forall a b. a -> b -> (a, b) :: *)
+                  ~R# (forall a b.
+                       Identity a -> Identity b -> Identity (a, b) :: *)))
+      ((\ (@ a_adtfj) (@ b_adtfk) (@ c_adtfl) ->
+          Control.Monad.Zip.$fMonadZipIdentity1
+            @ b_adtfk @ a_adtfj @ c_adtfl)
+       `cast` (forall (a :: <*>_N) (b :: <*>_N) (c :: <*>_N).
+               <a -> b -> c>_R
+               ->_R <Identity a>_R
+               ->_R <Identity b>_R
+               ->_R Sym (Data.Functor.Identity.N:Identity[0] <c>_R)
+               :: (forall a b c.
+                   (a -> b -> c) -> Identity a -> Identity b -> c :: *)
+                  ~R# (forall a b c.
+                       (a -> b -> c) -> Identity a -> Identity b -> Identity c :: *)))
+      Control.Monad.Zip.$fMonadZipIdentity_$cmunzip
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Control.Monad.Zip.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.Zip.$trModule3
+  = GHC.Types.TrNameS Control.Monad.Zip.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 60 0}]
+Control.Monad.Zip.$trModule2 = "Control.Monad.Zip"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.Zip.$trModule1
+  = GHC.Types.TrNameS Control.Monad.Zip.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Control.Monad.Zip.$trModule
+  = GHC.Types.Module
+      Control.Monad.Zip.$trModule3 Control.Monad.Zip.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rdtIk :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rdtIk
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$tcMonadZip1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Control.Monad.Zip.$tcMonadZip1
+  = GHC.Types.KindRepFun GHC.Types.krep$*Arr* $krep_rdtIk
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$tcMonadZip3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 30 0}]
+Control.Monad.Zip.$tcMonadZip3 = "MonadZip"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$tcMonadZip2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Control.Monad.Zip.$tcMonadZip2
+  = GHC.Types.TrNameS Control.Monad.Zip.$tcMonadZip3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Control.Monad.Zip.$tcMonadZip :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Control.Monad.Zip.$tcMonadZip
+  = GHC.Types.TyCon
+      4362170845454097361##
+      3840659568565778968##
+      Control.Monad.Zip.$trModule
+      Control.Monad.Zip.$tcMonadZip2
+      0#
+      Control.Monad.Zip.$tcMonadZip1
+
+

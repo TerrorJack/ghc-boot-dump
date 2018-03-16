@@ -1,0 +1,256 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:00:17.249362566 UTC
+
+Result size of Tidy Core
+  = {terms: 166, types: 60, coercions: 0, joins: 0/3}
+
+-- RHS size: {terms: 16, types: 2, coercions: 0, joins: 0/0}
+Data.Char.$wisLetter [InlPrag=NOUSERINLINE[0]] :: Char# -> Bool
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 80 60}]
+Data.Char.$wisLetter
+  = \ (ww_s5hOR :: Char#) ->
+      case GHC.Unicode.$wgeneralCategory ww_s5hOR of {
+        __DEFAULT -> GHC.Types.False;
+        UppercaseLetter -> GHC.Types.True;
+        LowercaseLetter -> GHC.Types.True;
+        TitlecaseLetter -> GHC.Types.True;
+        ModifierLetter -> GHC.Types.True;
+        OtherLetter -> GHC.Types.True
+      }
+
+-- RHS size: {terms: 6, types: 3, coercions: 0, joins: 0/0}
+isLetter [InlPrag=NOUSERINLINE[0]] :: Char -> Bool
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s5hOO [Occ=Once!] :: Char) ->
+                 case w_s5hOO of { C# ww1_s5hOR [Occ=Once] ->
+                 Data.Char.$wisLetter ww1_s5hOR
+                 }}]
+isLetter
+  = \ (w_s5hOO :: Char) ->
+      case w_s5hOO of { C# ww1_s5hOR -> Data.Char.$wisLetter ww1_s5hOR }
+
+-- RHS size: {terms: 15, types: 4, coercions: 0, joins: 0/0}
+isMark :: Char -> Bool
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (c_a5hFE [Occ=Once!] :: Char) ->
+                 case c_a5hFE of { C# ww1_s2iDX [Occ=Once] ->
+                 case GHC.Unicode.$wgeneralCategory ww1_s2iDX of {
+                   __DEFAULT -> GHC.Types.False;
+                   NonSpacingMark -> GHC.Types.True;
+                   SpacingCombiningMark -> GHC.Types.True;
+                   EnclosingMark -> GHC.Types.True
+                 }
+                 }}]
+isMark
+  = \ (c_a5hFE :: Char) ->
+      case c_a5hFE of { C# ww1_s2iDX ->
+      case GHC.Unicode.$wgeneralCategory ww1_s2iDX of {
+        __DEFAULT -> GHC.Types.False;
+        NonSpacingMark -> GHC.Types.True;
+        SpacingCombiningMark -> GHC.Types.True;
+        EnclosingMark -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 15, types: 4, coercions: 0, joins: 0/0}
+isNumber :: Char -> Bool
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (c_a5hFF [Occ=Once!] :: Char) ->
+                 case c_a5hFF of { C# ww1_s2iDX [Occ=Once] ->
+                 case GHC.Unicode.$wgeneralCategory ww1_s2iDX of {
+                   __DEFAULT -> GHC.Types.False;
+                   DecimalNumber -> GHC.Types.True;
+                   LetterNumber -> GHC.Types.True;
+                   OtherNumber -> GHC.Types.True
+                 }
+                 }}]
+isNumber
+  = \ (c_a5hFF :: Char) ->
+      case c_a5hFF of { C# ww1_s2iDX ->
+      case GHC.Unicode.$wgeneralCategory ww1_s2iDX of {
+        __DEFAULT -> GHC.Types.False;
+        DecimalNumber -> GHC.Types.True;
+        LetterNumber -> GHC.Types.True;
+        OtherNumber -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 15, types: 4, coercions: 0, joins: 0/0}
+isSeparator :: Char -> Bool
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (c_a5hFG [Occ=Once!] :: Char) ->
+                 case c_a5hFG of { C# ww1_s2iDX [Occ=Once] ->
+                 case GHC.Unicode.$wgeneralCategory ww1_s2iDX of {
+                   __DEFAULT -> GHC.Types.False;
+                   Space -> GHC.Types.True;
+                   LineSeparator -> GHC.Types.True;
+                   ParagraphSeparator -> GHC.Types.True
+                 }
+                 }}]
+isSeparator
+  = \ (c_a5hFG :: Char) ->
+      case c_a5hFG of { C# ww1_s2iDX ->
+      case GHC.Unicode.$wgeneralCategory ww1_s2iDX of {
+        __DEFAULT -> GHC.Types.False;
+        Space -> GHC.Types.True;
+        LineSeparator -> GHC.Types.True;
+        ParagraphSeparator -> GHC.Types.True
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Char.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Char.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Char.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Char.$trModule3 = GHC.Types.TrNameS Data.Char.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Char.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Char.$trModule2 = "Data.Char"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Char.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Char.$trModule1 = GHC.Types.TrNameS Data.Char.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Char.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Char.$trModule
+  = GHC.Types.Module Data.Char.$trModule3 Data.Char.$trModule1
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+lvl_r5hRh :: [Char]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+lvl_r5hRh
+  = GHC.Types.: @ Char GHC.Show.$fShowChar3 (GHC.Types.[] @ Char)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl1_r5hRi :: Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl1_r5hRi = "Char.digitToInt: not a digit "#
+
+-- RHS size: {terms: 14, types: 5, coercions: 0, joins: 0/0}
+Data.Char.$wlvl [InlPrag=NOUSERINLINE[0]] :: Char# -> Int
+[GblId, Arity=1, Str=<B,1*U>x, Unf=OtherCon []]
+Data.Char.$wlvl
+  = \ (ww_s5hOX :: Char#) ->
+      errorWithoutStackTrace
+        @ 'LiftedRep
+        @ Int
+        (unpackAppendCString#
+           lvl1_r5hRi
+           (case ww_s5hOX of ds1_i5hKM {
+              __DEFAULT ->
+                GHC.Types.:
+                  @ Char
+                  GHC.Show.$fShowChar3
+                  (GHC.Show.$wshowLitChar ds1_i5hKM lvl_r5hRh);
+              '\''# -> GHC.Show.$fShowChar1
+            }))
+
+-- RHS size: {terms: 47, types: 8, coercions: 0, joins: 0/3}
+Data.Char.$wdigitToInt [InlPrag=NOUSERINLINE[0]] :: Char# -> Int#
+[GblId,
+ Arity=1,
+ Str=<S,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [0] 88 0}]
+Data.Char.$wdigitToInt
+  = \ (ww_s5hP3 :: Char#) ->
+      let {
+        x#_i1AQD [Dmd=<S,U>] :: Int#
+        [LclId]
+        x#_i1AQD = -# (ord# ww_s5hP3) 48# } in
+      case leWord# (int2Word# x#_i1AQD) 9## of {
+        __DEFAULT ->
+          let {
+            x#1_X1ARr [Dmd=<S,U>] :: Int#
+            [LclId]
+            x#1_X1ARr = -# (ord# ww_s5hP3) 97# } in
+          case leWord# (int2Word# x#1_X1ARr) 5## of {
+            __DEFAULT ->
+              let {
+                x#2_X1ARz [Dmd=<S,U>] :: Int#
+                [LclId]
+                x#2_X1ARz = -# (ord# ww_s5hP3) 65# } in
+              case leWord# (int2Word# x#2_X1ARz) 5## of {
+                __DEFAULT -> case Data.Char.$wlvl ww_s5hP3 of wild_00 { };
+                1# -> +# x#2_X1ARz 10#
+              };
+            1# -> +# x#1_X1ARr 10#
+          };
+        1# -> x#_i1AQD
+      }
+
+-- RHS size: {terms: 10, types: 4, coercions: 0, joins: 0/0}
+digitToInt [InlPrag=NOUSERINLINE[0]] :: Char -> Int
+[GblId,
+ Arity=1,
+ Str=<S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (w_s5hP0 [Occ=Once!] :: Char) ->
+                 case w_s5hP0 of { C# ww1_s5hP3 [Occ=Once] ->
+                 case Data.Char.$wdigitToInt ww1_s5hP3 of ww2_s5hP7 { __DEFAULT ->
+                 GHC.Types.I# ww2_s5hP7
+                 }
+                 }}]
+digitToInt
+  = \ (w_s5hP0 :: Char) ->
+      case w_s5hP0 of { C# ww1_s5hP3 ->
+      case Data.Char.$wdigitToInt ww1_s5hP3 of ww2_s5hP7 { __DEFAULT ->
+      GHC.Types.I# ww2_s5hP7
+      }
+      }
+
+

@@ -1,0 +1,4212 @@
+
+==================== Tidy Core ====================
+2018-03-16 16:08:58.409477652 UTC
+
+Result size of Tidy Core
+  = {terms: 1,584, types: 4,436, coercions: 364, joins: 0/9}
+
+-- RHS size: {terms: 6, types: 68, coercions: 0, joins: 0/0}
+bifold
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall m. Monoid m => p m m -> m
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(SLLL),U(U,A,A,A)>,
+ RULES: Built in rule for bifold: "Class op bifold"]
+bifold
+  = \ (@ (p_adJOS :: * -> * -> *)) (v_B1 :: Bifoldable p_adJOS) ->
+      case v_B1 of v_B1
+      { Data.Bifoldable.C:Bifoldable v_B2 v_B3 v_B4 v_B5 ->
+      v_B2
+      }
+
+-- RHS size: {terms: 6, types: 68, coercions: 0, joins: 0/0}
+bifoldMap
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall m a b. Monoid m => (a -> m) -> (b -> m) -> p a b -> m
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LSLL),U(A,U,A,A)>,
+ RULES: Built in rule for bifoldMap: "Class op bifoldMap"]
+bifoldMap
+  = \ (@ (p_adJOS :: * -> * -> *)) (v_B1 :: Bifoldable p_adJOS) ->
+      case v_B1 of v_B1
+      { Data.Bifoldable.C:Bifoldable v_B2 v_B3 v_B4 v_B5 ->
+      v_B3
+      }
+
+-- RHS size: {terms: 6, types: 68, coercions: 0, joins: 0/0}
+bifoldr
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall a c b. (a -> c -> c) -> (b -> c -> c) -> c -> p a b -> c
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLSL),U(A,A,U,A)>,
+ RULES: Built in rule for bifoldr: "Class op bifoldr"]
+bifoldr
+  = \ (@ (p_adJOS :: * -> * -> *)) (v_B1 :: Bifoldable p_adJOS) ->
+      case v_B1 of v_B1
+      { Data.Bifoldable.C:Bifoldable v_B2 v_B3 v_B4 v_B5 ->
+      v_B4
+      }
+
+-- RHS size: {terms: 6, types: 68, coercions: 0, joins: 0/0}
+bifoldl
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall c a b. (c -> a -> c) -> (c -> b -> c) -> c -> p a b -> c
+[GblId[ClassOp],
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLLS),U(A,A,A,U)>,
+ RULES: Built in rule for bifoldl: "Class op bifoldl"]
+bifoldl
+  = \ (@ (p_adJOS :: * -> * -> *)) (v_B1 :: Bifoldable p_adJOS) ->
+      case v_B1 of v_B1
+      { Data.Bifoldable.C:Bifoldable v_B2 v_B3 v_B4 v_B5 ->
+      v_B5
+      }
+
+-- RHS size: {terms: 19, types: 26, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,)_$cbifoldMap
+  :: forall m a b. Monoid m => (a -> m) -> (b -> m) -> (a, b) -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,1*C1(U)><L,1*C1(U)><L,U(1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ m_adKxe)
+                 (@ a_adKxf)
+                 (@ b_adKxg)
+                 ($dMonoid_adKxi [Occ=Once] :: Monoid m_adKxe)
+                 (f_adJPV [Occ=Once!] :: a_adKxf -> m_adKxe)
+                 (g_adJPW [Occ=Once!] :: b_adKxg -> m_adKxe)
+                 (ds_ddKE1 :: (a_adKxf, b_adKxg)) ->
+                 mappend
+                   @ m_adKxe
+                   $dMonoid_adKxi
+                   (f_adJPV
+                      (case ds_ddKE1 of { (a1_adJPX [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPX
+                       }))
+                   (g_adJPW
+                      (case ds_ddKE1 of { (_ [Occ=Dead], b1_adJPY [Occ=Once]) ->
+                       b1_adJPY
+                       }))}]
+Data.Bifoldable.$fBifoldable(,)_$cbifoldMap
+  = \ (@ m_adKxe)
+      (@ a_adKxf)
+      (@ b_adKxg)
+      ($dMonoid_adKxi :: Monoid m_adKxe)
+      (f_adJPV :: a_adKxf -> m_adKxe)
+      (g_adJPW :: b_adKxg -> m_adKxe)
+      (ds_ddKE1 :: (a_adKxf, b_adKxg)) ->
+      mappend
+        @ m_adKxe
+        $dMonoid_adKxi
+        (f_adJPV (case ds_ddKE1 of { (a1_adJPX, b1_adJPY) -> a1_adJPX }))
+        (g_adJPW (case ds_ddKE1 of { (a1_adJPX, b1_adJPY) -> b1_adJPY }))
+
+-- RHS size: {terms: 9, types: 17, coercions: 5, joins: 0/0}
+Data.Bifoldable.$fBifoldableConst_$cbifoldMap
+  :: forall m a b. Monoid m => (a -> m) -> (b -> m) -> Const a b -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><C(S),1*C1(U)><L,A><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ m_adKwv)
+                 (@ a_adKww)
+                 (@ b_adKwx)
+                 _ [Occ=Dead]
+                 (f_adJPT [Occ=Once!] :: a_adKww -> m_adKwv)
+                 _ [Occ=Dead]
+                 (ds1_ddKDV [Occ=Once] :: Const a_adKww b_adKwx) ->
+                 f_adJPT
+                   (ds1_ddKDV
+                    `cast` (Data.Functor.Const.N:Const[0] <*>_N <a_adKww>_R <b_adKwx>_P
+                            :: (Const a_adKww b_adKwx :: *) ~R# (a_adKww :: *)))}]
+Data.Bifoldable.$fBifoldableConst_$cbifoldMap
+  = \ (@ m_adKwv)
+      (@ a_adKww)
+      (@ b_adKwx)
+      _ [Occ=Dead]
+      (f_adJPT :: a_adKww -> m_adKwv)
+      _ [Occ=Dead]
+      (ds1_ddKDV :: Const a_adKww b_adKwx) ->
+      f_adJPT
+        (ds1_ddKDV
+         `cast` (Data.Functor.Const.N:Const[0] <*>_N <a_adKww>_R <b_adKwx>_P
+                 :: (Const a_adKww b_adKwx :: *) ~R# (a_adKww :: *)))
+
+-- RHS size: {terms: 10, types: 19, coercions: 6, joins: 0/0}
+Data.Bifoldable.$fBifoldableK1_$cbifoldMap
+  :: forall i m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> K1 i a b -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><C(S),1*C1(U)><L,A><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ i_adKvy)
+                 (@ m_adKvM)
+                 (@ a_adKvN)
+                 (@ b_adKvO)
+                 _ [Occ=Dead]
+                 (f_adJPR [Occ=Once!] :: a_adKvN -> m_adKvM)
+                 _ [Occ=Dead]
+                 (ds1_ddKDO [Occ=Once] :: K1 i_adKvy a_adKvN b_adKvO) ->
+                 f_adJPR
+                   (ds1_ddKDO
+                    `cast` (GHC.Generics.N:K1[0]
+                                <*>_N <i_adKvy>_P <a_adKvN>_R <b_adKvO>_P
+                            :: (K1 i_adKvy a_adKvN b_adKvO :: *) ~R# (a_adKvN :: *)))}]
+Data.Bifoldable.$fBifoldableK1_$cbifoldMap
+  = \ (@ i_adKvy)
+      (@ m_adKvM)
+      (@ a_adKvN)
+      (@ b_adKvO)
+      _ [Occ=Dead]
+      (f_adJPR :: a_adKvN -> m_adKvM)
+      _ [Occ=Dead]
+      (ds1_ddKDO :: K1 i_adKvy a_adKvN b_adKvO) ->
+      f_adJPR
+        (ds1_ddKDO
+         `cast` (GHC.Generics.N:K1[0]
+                     <*>_N <i_adKvy>_P <a_adKvN>_R <b_adKvO>_P
+                 :: (K1 i_adKvy a_adKvN b_adKvO :: *) ~R# (a_adKvN :: *)))
+
+-- RHS size: {terms: 20, types: 33, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,)_$cbifoldMap
+  :: forall x m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> (x, a, b) -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,1*C1(U)><L,1*C1(U)><L,U(A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKuM)
+                 (@ m_adKv0)
+                 (@ a_adKv1)
+                 (@ b_adKv2)
+                 ($dMonoid_adKv4 [Occ=Once] :: Monoid m_adKv0)
+                 (f_adJPM [Occ=Once!] :: a_adKv1 -> m_adKv0)
+                 (g_adJPN [Occ=Once!] :: b_adKv2 -> m_adKv0)
+                 (ds_ddKDs :: (x_adKuM, a_adKv1, b_adKv2)) ->
+                 mappend
+                   @ m_adKv0
+                   $dMonoid_adKv4
+                   (f_adJPM
+                      (case ds_ddKDs of
+                       { (_ [Occ=Dead], a1_adJPO [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPO
+                       }))
+                   (g_adJPN
+                      (case ds_ddKDs of
+                       { (_ [Occ=Dead], _ [Occ=Dead], b1_adJPP [Occ=Once]) ->
+                       b1_adJPP
+                       }))}]
+Data.Bifoldable.$fBifoldable(,,)_$cbifoldMap
+  = \ (@ x_adKuM)
+      (@ m_adKv0)
+      (@ a_adKv1)
+      (@ b_adKv2)
+      ($dMonoid_adKv4 :: Monoid m_adKv0)
+      (f_adJPM :: a_adKv1 -> m_adKv0)
+      (g_adJPN :: b_adKv2 -> m_adKv0)
+      (ds_ddKDs :: (x_adKuM, a_adKv1, b_adKv2)) ->
+      mappend
+        @ m_adKv0
+        $dMonoid_adKv4
+        (f_adJPM
+           (case ds_ddKDs of { (ds1_ddKDE, a1_adJPO, b1_adJPP) -> a1_adJPO }))
+        (g_adJPN
+           (case ds_ddKDs of { (ds1_ddKDM, a1_adJPO, b1_adJPP) -> b1_adJPP }))
+
+-- RHS size: {terms: 21, types: 40, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,)_$cbifoldMap
+  :: forall x y m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> (x, y, a, b) -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,1*C1(U)><L,1*C1(U)><L,U(A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtZ)
+                 (@ y_adKu0)
+                 (@ m_adKue)
+                 (@ a_adKuf)
+                 (@ b_adKug)
+                 ($dMonoid_adKui [Occ=Once] :: Monoid m_adKue)
+                 (f_adJPH [Occ=Once!] :: a_adKuf -> m_adKue)
+                 (g_adJPI [Occ=Once!] :: b_adKug -> m_adKue)
+                 (ds_ddKD1 :: (x_adKtZ, y_adKu0, a_adKuf, b_adKug)) ->
+                 mappend
+                   @ m_adKue
+                   $dMonoid_adKui
+                   (f_adJPH
+                      (case ds_ddKD1 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], a1_adJPJ [Occ=Once],
+                          _ [Occ=Dead]) ->
+                       a1_adJPJ
+                       }))
+                   (g_adJPI
+                      (case ds_ddKD1 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          b1_adJPK [Occ=Once]) ->
+                       b1_adJPK
+                       }))}]
+Data.Bifoldable.$fBifoldable(,,,)_$cbifoldMap
+  = \ (@ x_adKtZ)
+      (@ y_adKu0)
+      (@ m_adKue)
+      (@ a_adKuf)
+      (@ b_adKug)
+      ($dMonoid_adKui :: Monoid m_adKue)
+      (f_adJPH :: a_adKuf -> m_adKue)
+      (g_adJPI :: b_adKug -> m_adKue)
+      (ds_ddKD1 :: (x_adKtZ, y_adKu0, a_adKuf, b_adKug)) ->
+      mappend
+        @ m_adKue
+        $dMonoid_adKui
+        (f_adJPH
+           (case ds_ddKD1 of { (ds1_ddKDf, ds2_ddKDg, a1_adJPJ, b1_adJPK) ->
+            a1_adJPJ
+            }))
+        (g_adJPI
+           (case ds_ddKD1 of { (ds1_ddKDq, ds2_ddKDr, a1_adJPJ, b1_adJPK) ->
+            b1_adJPK
+            }))
+
+-- RHS size: {terms: 22, types: 47, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldMap
+  :: forall x y z m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> (x, y, z, a, b) -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,1*C1(U)><L,1*C1(U)><L,U(A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtb)
+                 (@ y_adKtc)
+                 (@ z_adKtd)
+                 (@ m_adKtr)
+                 (@ a_adKts)
+                 (@ b_adKtt)
+                 ($dMonoid_adKtv [Occ=Once] :: Monoid m_adKtr)
+                 (f_adJPB [Occ=Once!] :: a_adKts -> m_adKtr)
+                 (g_adJPC [Occ=Once!] :: b_adKtt -> m_adKtr)
+                 (ds_ddKCu :: (x_adKtb, y_adKtc, z_adKtd, a_adKts, b_adKtt)) ->
+                 mappend
+                   @ m_adKtr
+                   $dMonoid_adKtv
+                   (f_adJPB
+                      (case ds_ddKCu of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], a1_adJPD [Occ=Once],
+                          _ [Occ=Dead]) ->
+                       a1_adJPD
+                       }))
+                   (g_adJPC
+                      (case ds_ddKCu of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          b1_adJPE [Occ=Once]) ->
+                       b1_adJPE
+                       }))}]
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldMap
+  = \ (@ x_adKtb)
+      (@ y_adKtc)
+      (@ z_adKtd)
+      (@ m_adKtr)
+      (@ a_adKts)
+      (@ b_adKtt)
+      ($dMonoid_adKtv :: Monoid m_adKtr)
+      (f_adJPB :: a_adKts -> m_adKtr)
+      (g_adJPC :: b_adKtt -> m_adKtr)
+      (ds_ddKCu :: (x_adKtb, y_adKtc, z_adKtd, a_adKts, b_adKtt)) ->
+      mappend
+        @ m_adKtr
+        $dMonoid_adKtv
+        (f_adJPB
+           (case ds_ddKCu of
+            { (ds1_ddKCK, ds2_ddKCL, ds3_ddKCM, a1_adJPD, b1_adJPE) ->
+            a1_adJPD
+            }))
+        (g_adJPC
+           (case ds_ddKCu of
+            { (ds1_ddKCY, ds2_ddKCZ, ds3_ddKD0, a1_adJPD, b1_adJPE) ->
+            b1_adJPE
+            }))
+
+-- RHS size: {terms: 23, types: 54, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldMap
+  :: forall x y z w m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> (x, y, z, w, a, b) -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,1*C1(U)><L,1*C1(U)><L,U(A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKsm)
+                 (@ y_adKsn)
+                 (@ z_adKso)
+                 (@ w_adKsp)
+                 (@ m_adKsD)
+                 (@ a_adKsE)
+                 (@ b_adKsF)
+                 ($dMonoid_adKsH [Occ=Once] :: Monoid m_adKsD)
+                 (f_adJPu [Occ=Once!] :: a_adKsE -> m_adKsD)
+                 (g_adJPv [Occ=Once!] :: b_adKsF -> m_adKsD)
+                 (ds_ddKBR
+                    :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, a_adKsE, b_adKsF)) ->
+                 mappend
+                   @ m_adKsD
+                   $dMonoid_adKsH
+                   (f_adJPu
+                      (case ds_ddKBR of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          a1_adJPw [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPw
+                       }))
+                   (g_adJPv
+                      (case ds_ddKBR of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          _ [Occ=Dead], b1_adJPx [Occ=Once]) ->
+                       b1_adJPx
+                       }))}]
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldMap
+  = \ (@ x_adKsm)
+      (@ y_adKsn)
+      (@ z_adKso)
+      (@ w_adKsp)
+      (@ m_adKsD)
+      (@ a_adKsE)
+      (@ b_adKsF)
+      ($dMonoid_adKsH :: Monoid m_adKsD)
+      (f_adJPu :: a_adKsE -> m_adKsD)
+      (g_adJPv :: b_adKsF -> m_adKsD)
+      (ds_ddKBR
+         :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, a_adKsE, b_adKsF)) ->
+      mappend
+        @ m_adKsD
+        $dMonoid_adKsH
+        (f_adJPu
+           (case ds_ddKBR of
+            { (ds1_ddKC9, ds2_ddKCa, ds3_ddKCb, ds4_ddKCc, a1_adJPw,
+               b1_adJPx) ->
+            a1_adJPw
+            }))
+        (g_adJPv
+           (case ds_ddKBR of
+            { (ds1_ddKCq, ds2_ddKCr, ds3_ddKCs, ds4_ddKCt, a1_adJPw,
+               b1_adJPx) ->
+            b1_adJPx
+            }))
+
+-- RHS size: {terms: 24, types: 61, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldMap
+  :: forall x y z w v m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> (x, y, z, w, v, a, b) -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,1*C1(U)><L,1*C1(U)><L,U(A,A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKrw)
+                 (@ y_adKrx)
+                 (@ z_adKry)
+                 (@ w_adKrz)
+                 (@ v_adKrA)
+                 (@ m_adKrO)
+                 (@ a_adKrP)
+                 (@ b_adKrQ)
+                 ($dMonoid_adKrS [Occ=Once] :: Monoid m_adKrO)
+                 (f_adJPm [Occ=Once!] :: a_adKrP -> m_adKrO)
+                 (g_adJPn [Occ=Once!] :: b_adKrQ -> m_adKrO)
+                 (ds_ddKB8
+                    :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, a_adKrP,
+                        b_adKrQ)) ->
+                 mappend
+                   @ m_adKrO
+                   $dMonoid_adKrS
+                   (f_adJPm
+                      (case ds_ddKB8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          _ [Occ=Dead], a1_adJPo [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPo
+                       }))
+                   (g_adJPn
+                      (case ds_ddKB8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          _ [Occ=Dead], _ [Occ=Dead], b1_adJPp [Occ=Once]) ->
+                       b1_adJPp
+                       }))}]
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldMap
+  = \ (@ x_adKrw)
+      (@ y_adKrx)
+      (@ z_adKry)
+      (@ w_adKrz)
+      (@ v_adKrA)
+      (@ m_adKrO)
+      (@ a_adKrP)
+      (@ b_adKrQ)
+      ($dMonoid_adKrS :: Monoid m_adKrO)
+      (f_adJPm :: a_adKrP -> m_adKrO)
+      (g_adJPn :: b_adKrQ -> m_adKrO)
+      (ds_ddKB8
+         :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, a_adKrP,
+             b_adKrQ)) ->
+      mappend
+        @ m_adKrO
+        $dMonoid_adKrS
+        (f_adJPm
+           (case ds_ddKB8 of
+            { (ds1_ddKBs, ds2_ddKBt, ds3_ddKBu, ds4_ddKBv, ds5_ddKBw, a1_adJPo,
+               b1_adJPp) ->
+            a1_adJPo
+            }))
+        (g_adJPn
+           (case ds_ddKB8 of
+            { (ds1_ddKBM, ds2_ddKBN, ds3_ddKBO, ds4_ddKBP, ds5_ddKBQ, a1_adJPo,
+               b1_adJPp) ->
+            b1_adJPp
+            }))
+
+-- RHS size: {terms: 15, types: 20, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableEither_$cbifoldMap
+  :: forall m a b.
+     Monoid m =>
+     (a -> m) -> (b -> m) -> Either a b -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,A><L,1*C1(U)><L,1*C1(U)><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ m_adKr0)
+                 (@ a_adKr1)
+                 (@ b_adKr2)
+                 _ [Occ=Dead]
+                 (f_adJPd [Occ=Once!] :: a_adKr1 -> m_adKr0)
+                 (ds_ddKAY [Occ=Once!] :: b_adKr2 -> m_adKr0)
+                 (ds1_ddKAZ [Occ=Once!] :: Either a_adKr1 b_adKr2) ->
+                 case ds1_ddKAZ of {
+                   Left a1_adJPe [Occ=Once] -> f_adJPd a1_adJPe;
+                   Right b1_adJPg [Occ=Once] -> ds_ddKAY b1_adJPg
+                 }}]
+Data.Bifoldable.$fBifoldableEither_$cbifoldMap
+  = \ (@ m_adKr0)
+      (@ a_adKr1)
+      (@ b_adKr2)
+      _ [Occ=Dead]
+      (f_adJPd :: a_adKr1 -> m_adKr0)
+      (ds_ddKAY :: b_adKr2 -> m_adKr0)
+      (ds1_ddKAZ :: Either a_adKr1 b_adKr2) ->
+      case ds1_ddKAZ of {
+        Left a1_adJPe -> f_adJPd a1_adJPe;
+        Right b1_adJPg -> ds_ddKAY b1_adJPg
+      }
+
+-- RHS size: {terms: 3, types: 5, coercions: 0, joins: 0/0}
+poly_$dMonoid_rdL8r :: forall c. Monoid (Dual (Endo c))
+[GblId]
+poly_$dMonoid_rdL8r
+  = \ (@ c_adKqd) ->
+      Data.Semigroup.Internal.$fMonoidDual
+        @ (Endo c_adKqd) (Data.Semigroup.Internal.$fMonoidEndo @ c_adKqd)
+
+-- RHS size: {terms: 24, types: 35, coercions: 15, joins: 0/0}
+Data.Bifoldable.$dmbifoldl
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall c a b. (c -> a -> c) -> (c -> b -> c) -> c -> p a b -> c
+[GblId,
+ Arity=5,
+ Str=<S(LC(C(C(C(S))))LL),1*U(A,1*C1(C1(C1(C1(U)))),A,A)><L,C(C1(U))><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (p_adJOS :: * -> * -> *))
+                 ($dBifoldable_adKp7 [Occ=OnceL] :: Bifoldable p_adJOS)
+                 (@ c_adKqd)
+                 (@ a_adKqe)
+                 (@ b_adKqf) ->
+                 let {
+                   $dMonoid_adKqo [Occ=OnceL] :: Monoid (Dual (Endo c_adKqd))
+                   [LclId]
+                   $dMonoid_adKqo
+                     = Data.Semigroup.Internal.$fMonoidDual
+                         @ (Endo c_adKqd)
+                         (Data.Semigroup.Internal.$fMonoidEndo @ c_adKqd) } in
+                 \ (f_adJP9 [Occ=OnceL!] :: c_adKqd -> a_adKqe -> c_adKqd)
+                   (g_adJPa [Occ=OnceL!] :: c_adKqd -> b_adKqf -> c_adKqd)
+                   (z_adJPb [Occ=Once] :: c_adKqd)
+                   (t_adJPc [Occ=Once] :: p_adJOS a_adKqe b_adKqf) ->
+                   ((bifoldMap
+                       @ p_adJOS
+                       $dBifoldable_adKp7
+                       @ (Dual (Endo c_adKqd))
+                       @ a_adKqe
+                       @ b_adKqf
+                       $dMonoid_adKqo
+                       ((\ (x_X7Rz5 [Occ=Once] :: a_adKqe)
+                           (y_i8X9Y [Occ=Once] :: c_adKqd) ->
+                           f_adJP9 y_i8X9Y x_X7Rz5)
+                        `cast` (<a_adKqe>_R
+                                ->_R Sym (Data.Semigroup.Internal.N:Dual[0]
+                                              (Data.Semigroup.Internal.N:Endo[0] <c_adKqd>_R))
+                                :: (a_adKqe -> c_adKqd -> c_adKqd :: *)
+                                   ~R# (a_adKqe -> Dual (Endo c_adKqd) :: *)))
+                       ((\ (x_X7Rz5 [Occ=Once] :: b_adKqf)
+                           (y_i8X9Y [Occ=Once] :: c_adKqd) ->
+                           g_adJPa y_i8X9Y x_X7Rz5)
+                        `cast` (<b_adKqf>_R
+                                ->_R Sym (Data.Semigroup.Internal.N:Dual[0]
+                                              (Data.Semigroup.Internal.N:Endo[0] <c_adKqd>_R))
+                                :: (b_adKqf -> c_adKqd -> c_adKqd :: *)
+                                   ~R# (b_adKqf -> Dual (Endo c_adKqd) :: *)))
+                       t_adJPc)
+                    `cast` (Data.Semigroup.Internal.N:Dual[0]
+                                (Data.Semigroup.Internal.N:Endo[0] <c_adKqd>_R)
+                            :: (Dual (Endo c_adKqd) :: *) ~R# (c_adKqd -> c_adKqd :: *)))
+                     z_adJPb}]
+Data.Bifoldable.$dmbifoldl
+  = \ (@ (p_adJOS :: * -> * -> *))
+      ($dBifoldable_adKp7 :: Bifoldable p_adJOS)
+      (@ c_adKqd)
+      (@ a_adKqe)
+      (@ b_adKqf)
+      (f_adJP9 :: c_adKqd -> a_adKqe -> c_adKqd)
+      (g_adJPa :: c_adKqd -> b_adKqf -> c_adKqd)
+      (z_adJPb :: c_adKqd)
+      (t_adJPc :: p_adJOS a_adKqe b_adKqf) ->
+      ((bifoldMap
+          @ p_adJOS
+          $dBifoldable_adKp7
+          @ (Dual (Endo c_adKqd))
+          @ a_adKqe
+          @ b_adKqf
+          (poly_$dMonoid_rdL8r @ c_adKqd)
+          ((\ (x_X7Rz5 :: a_adKqe) (y_i8X9Y :: c_adKqd) ->
+              f_adJP9 y_i8X9Y x_X7Rz5)
+           `cast` (<a_adKqe>_R
+                   ->_R Sym (Data.Semigroup.Internal.N:Dual[0]
+                                 (Data.Semigroup.Internal.N:Endo[0] <c_adKqd>_R))
+                   :: (a_adKqe -> c_adKqd -> c_adKqd :: *)
+                      ~R# (a_adKqe -> Dual (Endo c_adKqd) :: *)))
+          ((\ (x_X7Rz5 :: b_adKqf) (y_i8X9Y :: c_adKqd) ->
+              g_adJPa y_i8X9Y x_X7Rz5)
+           `cast` (<b_adKqf>_R
+                   ->_R Sym (Data.Semigroup.Internal.N:Dual[0]
+                                 (Data.Semigroup.Internal.N:Endo[0] <c_adKqd>_R))
+                   :: (b_adKqf -> c_adKqd -> c_adKqd :: *)
+                      ~R# (b_adKqf -> Dual (Endo c_adKqd) :: *)))
+          t_adJPc)
+       `cast` (Data.Semigroup.Internal.N:Dual[0]
+                   (Data.Semigroup.Internal.N:Endo[0] <c_adKqd>_R)
+               :: (Dual (Endo c_adKqd) :: *) ~R# (c_adKqd -> c_adKqd :: *)))
+        z_adJPb
+
+-- RHS size: {terms: 16, types: 30, coercions: 12, joins: 0/0}
+Data.Bifoldable.$dmbifoldr
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall a c b. (a -> c -> c) -> (b -> c -> c) -> c -> p a b -> c
+[GblId,
+ Arity=5,
+ Str=<S(LC(C(C(C(S))))LL),1*U(A,1*C1(C1(C1(C1(U)))),A,A)><L,U><L,U><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (p_adJOS :: * -> * -> *))
+                 ($dBifoldable_adKp7 [Occ=Once] :: Bifoldable p_adJOS)
+                 (@ a_adKpM)
+                 (@ c_adKpN)
+                 (@ b_adKpO)
+                 (f_adJP5 [Occ=Once] :: a_adKpM -> c_adKpN -> c_adKpN)
+                 (g_adJP6 [Occ=Once] :: b_adKpO -> c_adKpN -> c_adKpN)
+                 (z_adJP7 [Occ=Once] :: c_adKpN)
+                 (t_adJP8 [Occ=Once] :: p_adJOS a_adKpM b_adKpO) ->
+                 ((bifoldMap
+                     @ p_adJOS
+                     $dBifoldable_adKp7
+                     @ (Endo c_adKpN)
+                     @ a_adKpM
+                     @ b_adKpO
+                     (Data.Semigroup.Internal.$fMonoidEndo @ c_adKpN)
+                     (f_adJP5
+                      `cast` (<a_adKpM>_R
+                              ->_R Sym (Data.Semigroup.Internal.N:Endo[0] <c_adKpN>_R)
+                              :: (a_adKpM -> c_adKpN -> c_adKpN :: *)
+                                 ~R# (a_adKpM -> Endo c_adKpN :: *)))
+                     (g_adJP6
+                      `cast` (<b_adKpO>_R
+                              ->_R Sym (Data.Semigroup.Internal.N:Endo[0] <c_adKpN>_R)
+                              :: (b_adKpO -> c_adKpN -> c_adKpN :: *)
+                                 ~R# (b_adKpO -> Endo c_adKpN :: *)))
+                     t_adJP8)
+                  `cast` (Data.Semigroup.Internal.N:Endo[0] <c_adKpN>_R
+                          :: (Endo c_adKpN :: *) ~R# (c_adKpN -> c_adKpN :: *)))
+                   z_adJP7}]
+Data.Bifoldable.$dmbifoldr
+  = \ (@ (p_adJOS :: * -> * -> *))
+      ($dBifoldable_adKp7 :: Bifoldable p_adJOS)
+      (@ a_adKpM)
+      (@ c_adKpN)
+      (@ b_adKpO)
+      (f_adJP5 :: a_adKpM -> c_adKpN -> c_adKpN)
+      (g_adJP6 :: b_adKpO -> c_adKpN -> c_adKpN)
+      (z_adJP7 :: c_adKpN)
+      (t_adJP8 :: p_adJOS a_adKpM b_adKpO) ->
+      ((bifoldMap
+          @ p_adJOS
+          $dBifoldable_adKp7
+          @ (Endo c_adKpN)
+          @ a_adKpM
+          @ b_adKpO
+          (Data.Semigroup.Internal.$fMonoidEndo @ c_adKpN)
+          (f_adJP5
+           `cast` (<a_adKpM>_R
+                   ->_R Sym (Data.Semigroup.Internal.N:Endo[0] <c_adKpN>_R)
+                   :: (a_adKpM -> c_adKpN -> c_adKpN :: *)
+                      ~R# (a_adKpM -> Endo c_adKpN :: *)))
+          (g_adJP6
+           `cast` (<b_adKpO>_R
+                   ->_R Sym (Data.Semigroup.Internal.N:Endo[0] <c_adKpN>_R)
+                   :: (b_adKpO -> c_adKpN -> c_adKpN :: *)
+                      ~R# (b_adKpO -> Endo c_adKpN :: *)))
+          t_adJP8)
+       `cast` (Data.Semigroup.Internal.N:Endo[0] <c_adKpN>_R
+               :: (Endo c_adKpN :: *) ~R# (c_adKpN -> c_adKpN :: *)))
+        z_adJP7
+
+-- RHS size: {terms: 22, types: 29, coercions: 0, joins: 0/0}
+Data.Bifoldable.$dmbifoldMap
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall m a b. Monoid m => (a -> m) -> (b -> m) -> p a b -> m
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*U,C(U),A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (p_adJOS :: * -> * -> *))
+                 ($dBifoldable_adKp7 [Occ=Once] :: Bifoldable p_adJOS)
+                 (@ m_adKpn)
+                 (@ a_adKpo)
+                 (@ b_adKpp)
+                 ($dMonoid_adKpr :: Monoid m_adKpn)
+                 (f_adJP3 [Occ=OnceL!] :: a_adKpo -> m_adKpn)
+                 (g_adJP4 [Occ=OnceL!] :: b_adKpp -> m_adKpn) ->
+                 bifoldr
+                   @ p_adJOS
+                   $dBifoldable_adKp7
+                   @ a_adKpo
+                   @ m_adKpn
+                   @ b_adKpp
+                   (let {
+                      f1_i7Rxg [Occ=OnceL!] :: m_adKpn -> m_adKpn -> m_adKpn
+                      [LclId]
+                      f1_i7Rxg = mappend @ m_adKpn $dMonoid_adKpr } in
+                    \ (x_i7Rxi [Occ=Once] :: a_adKpo) -> f1_i7Rxg (f_adJP3 x_i7Rxi))
+                   (let {
+                      f1_i7Rxg [Occ=OnceL!] :: m_adKpn -> m_adKpn -> m_adKpn
+                      [LclId]
+                      f1_i7Rxg = mappend @ m_adKpn $dMonoid_adKpr } in
+                    \ (x_i7Rxi [Occ=Once] :: b_adKpp) -> f1_i7Rxg (g_adJP4 x_i7Rxi))
+                   (mempty @ m_adKpn $dMonoid_adKpr)}]
+Data.Bifoldable.$dmbifoldMap
+  = \ (@ (p_adJOS :: * -> * -> *))
+      ($dBifoldable_adKp7 :: Bifoldable p_adJOS)
+      (@ m_adKpn)
+      (@ a_adKpo)
+      (@ b_adKpp)
+      ($dMonoid_adKpr :: Monoid m_adKpn)
+      (f_adJP3 :: a_adKpo -> m_adKpn)
+      (g_adJP4 :: b_adKpp -> m_adKpn) ->
+      bifoldr
+        @ p_adJOS
+        $dBifoldable_adKp7
+        @ a_adKpo
+        @ m_adKpn
+        @ b_adKpp
+        (\ (x_i7Rxi :: a_adKpo) ->
+           mappend @ m_adKpn $dMonoid_adKpr (f_adJP3 x_i7Rxi))
+        (\ (x_i7Rxi :: b_adKpp) ->
+           mappend @ m_adKpn $dMonoid_adKpr (g_adJP4 x_i7Rxi))
+        (mempty @ m_adKpn $dMonoid_adKpr)
+
+-- RHS size: {terms: 9, types: 18, coercions: 0, joins: 0/0}
+Data.Bifoldable.$dmbifold
+  :: forall (p :: * -> * -> *).
+     Bifoldable p =>
+     forall m. Monoid m => p m m -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (p_adJOS :: * -> * -> *))
+                 ($dBifoldable_adKp7 [Occ=Once] :: Bifoldable p_adJOS)
+                 (@ m_adKp9)
+                 ($dMonoid_adKpb [Occ=Once] :: Monoid m_adKp9) ->
+                 bifoldMap
+                   @ p_adJOS
+                   $dBifoldable_adKp7
+                   @ m_adKp9
+                   @ m_adKp9
+                   @ m_adKp9
+                   $dMonoid_adKpb
+                   (id @ m_adKp9)
+                   (id @ m_adKp9)}]
+Data.Bifoldable.$dmbifold
+  = \ (@ (p_adJOS :: * -> * -> *))
+      ($dBifoldable_adKp7 :: Bifoldable p_adJOS)
+      (@ m_adKp9)
+      ($dMonoid_adKpb :: Monoid m_adKp9) ->
+      bifoldMap
+        @ p_adJOS
+        $dBifoldable_adKp7
+        @ m_adKp9
+        @ m_adKp9
+        @ m_adKp9
+        $dMonoid_adKpb
+        (id @ m_adKp9)
+        (id @ m_adKp9)
+
+-- RHS size: {terms: 9, types: 12, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableEither_$cbifold
+  :: forall m. Monoid m => Either m m -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ m_adKqQ)
+                 _ [Occ=Dead]
+                 (ds_ddKAZ [Occ=Once!] :: Either m_adKqQ m_adKqQ) ->
+                 case ds_ddKAZ of {
+                   Left a_adJPe [Occ=Once] -> a_adJPe;
+                   Right b_adJPg [Occ=Once] -> b_adJPg
+                 }}]
+Data.Bifoldable.$fBifoldableEither_$cbifold
+  = \ (@ m_adKqQ)
+      _ [Occ=Dead]
+      (ds_ddKAZ :: Either m_adKqQ m_adKqQ) ->
+      case ds_ddKAZ of {
+        Left a_adJPe -> a_adJPe;
+        Right b_adJPg -> b_adJPg
+      }
+
+-- RHS size: {terms: 17, types: 21, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableEither_$cbifoldr
+  :: forall a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> Either a b -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(C1(U))><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adKr9)
+                 (@ c_adKra)
+                 (@ b_adKrb)
+                 (f_adJP5 [Occ=Once!] :: a_adKr9 -> c_adKra -> c_adKra)
+                 (g_adJP6 [Occ=Once!] :: b_adKrb -> c_adKra -> c_adKra)
+                 (z_adJP7 [Occ=Once*] :: c_adKra)
+                 (t_adJP8 [Occ=Once!] :: Either a_adKr9 b_adKrb) ->
+                 case t_adJP8 of {
+                   Left a1_adJPe [Occ=Once] -> f_adJP5 a1_adJPe z_adJP7;
+                   Right b1_adJPg [Occ=Once] -> g_adJP6 b1_adJPg z_adJP7
+                 }}]
+Data.Bifoldable.$fBifoldableEither_$cbifoldr
+  = \ (@ a_adKr9)
+      (@ c_adKra)
+      (@ b_adKrb)
+      (f_adJP5 :: a_adKr9 -> c_adKra -> c_adKra)
+      (g_adJP6 :: b_adKrb -> c_adKra -> c_adKra)
+      (z_adJP7 :: c_adKra)
+      (t_adJP8 :: Either a_adKr9 b_adKrb) ->
+      case t_adJP8 of {
+        Left a1_adJPe -> f_adJP5 a1_adJPe z_adJP7;
+        Right b1_adJPg -> g_adJP6 b1_adJPg z_adJP7
+      }
+
+-- RHS size: {terms: 17, types: 21, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableEither_$cbifoldl
+  :: forall c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> Either a b -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><L,1*C1(C1(U))><L,U><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ c_adKrl)
+                 (@ a_adKrm)
+                 (@ b_adKrn)
+                 (f_XdJQV [Occ=Once!] :: c_adKrl -> a_adKrm -> c_adKrl)
+                 (g_XdJQX [Occ=Once!] :: c_adKrl -> b_adKrn -> c_adKrl)
+                 (z_XdJQZ [Occ=Once*] :: c_adKrl)
+                 (t_XdJR1 [Occ=Once!] :: Either a_adKrm b_adKrn) ->
+                 case t_XdJR1 of {
+                   Left a1_adJPe [Occ=Once] -> f_XdJQV z_XdJQZ a1_adJPe;
+                   Right b1_adJPg [Occ=Once] -> g_XdJQX z_XdJQZ b1_adJPg
+                 }}]
+Data.Bifoldable.$fBifoldableEither_$cbifoldl
+  = \ (@ c_adKrl)
+      (@ a_adKrm)
+      (@ b_adKrn)
+      (f_XdJQV :: c_adKrl -> a_adKrm -> c_adKrl)
+      (g_XdJQX :: c_adKrl -> b_adKrn -> c_adKrl)
+      (z_XdJQZ :: c_adKrl)
+      (t_XdJR1 :: Either a_adKrm b_adKrn) ->
+      case t_XdJR1 of {
+        Left a1_adJPe -> f_XdJQV z_XdJQZ a1_adJPe;
+        Right b1_adJPg -> g_XdJQX z_XdJQZ b1_adJPg
+      }
+
+-- RHS size: {terms: 5, types: 1, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableEither [InlPrag=NOUSERINLINE CONLIKE]
+  :: Bifoldable Either
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       Data.Bifoldable.C:Bifoldable TYPE: Either
+                                    Data.Bifoldable.$fBifoldableEither_$cbifold
+                                    Data.Bifoldable.$fBifoldableEither_$cbifoldMap
+                                    Data.Bifoldable.$fBifoldableEither_$cbifoldr
+                                    Data.Bifoldable.$fBifoldableEither_$cbifoldl]
+Data.Bifoldable.$fBifoldableEither
+  = Data.Bifoldable.C:Bifoldable
+      @ Either
+      Data.Bifoldable.$fBifoldableEither_$cbifold
+      Data.Bifoldable.$fBifoldableEither_$cbifoldMap
+      Data.Bifoldable.$fBifoldableEither_$cbifoldr
+      Data.Bifoldable.$fBifoldableEither_$cbifoldl
+
+-- RHS size: {terms: 18, types: 53, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifold
+  :: forall x y z w v m. Monoid m => (x, y, z, w, v, m, m) -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U(A,A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKrw)
+                 (@ y_adKrx)
+                 (@ z_adKry)
+                 (@ w_adKrz)
+                 (@ v_adKrA)
+                 (@ m_adKrE)
+                 ($dMonoid_adKrG [Occ=Once] :: Monoid m_adKrE)
+                 (ds_ddKB8
+                    :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, m_adKrE,
+                        m_adKrE)) ->
+                 mappend
+                   @ m_adKrE
+                   $dMonoid_adKrG
+                   (case ds_ddKB8 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       _ [Occ=Dead], a_adJPo [Occ=Once], _ [Occ=Dead]) ->
+                    a_adJPo
+                    })
+                   (case ds_ddKB8 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       _ [Occ=Dead], _ [Occ=Dead], b_adJPp [Occ=Once]) ->
+                    b_adJPp
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifold
+  = \ (@ x_adKrw)
+      (@ y_adKrx)
+      (@ z_adKry)
+      (@ w_adKrz)
+      (@ v_adKrA)
+      (@ m_adKrE)
+      ($dMonoid_adKrG :: Monoid m_adKrE)
+      (ds_ddKB8
+         :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, m_adKrE,
+             m_adKrE)) ->
+      mappend
+        @ m_adKrE
+        $dMonoid_adKrG
+        (case ds_ddKB8 of
+         { (ds1_ddKBs, ds2_ddKBt, ds3_ddKBu, ds4_ddKBv, ds5_ddKBw, a_adJPo,
+            b_adJPp) ->
+         a_adJPo
+         })
+        (case ds_ddKB8 of
+         { (ds1_ddKBM, ds2_ddKBN, ds3_ddKBO, ds4_ddKBP, ds5_ddKBQ, a_adJPo,
+            b_adJPp) ->
+         b_adJPp
+         })
+
+-- RHS size: {terms: 23, types: 61, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldr
+  :: forall x y z w v a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> (x, y, z, w, v, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U(A,A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKrw)
+                 (@ y_adKrx)
+                 (@ z_adKry)
+                 (@ w_adKrz)
+                 (@ v_adKrA)
+                 (@ a_adKrZ)
+                 (@ c_adKs0)
+                 (@ b_adKs1)
+                 (f_adJP5 [Occ=Once!] :: a_adKrZ -> c_adKs0 -> c_adKs0)
+                 (g_adJP6 [Occ=Once!] :: b_adKs1 -> c_adKs0 -> c_adKs0)
+                 (z1_adJP7 [Occ=Once] :: c_adKs0)
+                 (t_adJP8
+                    :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, a_adKrZ,
+                        b_adKs1)) ->
+                 f_adJP5
+                   (case t_adJP8 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       _ [Occ=Dead], a1_adJPo [Occ=Once], _ [Occ=Dead]) ->
+                    a1_adJPo
+                    })
+                   (g_adJP6
+                      (case t_adJP8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          _ [Occ=Dead], _ [Occ=Dead], b1_adJPp [Occ=Once]) ->
+                       b1_adJPp
+                       })
+                      z1_adJP7)}]
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldr
+  = \ (@ x_adKrw)
+      (@ y_adKrx)
+      (@ z_adKry)
+      (@ w_adKrz)
+      (@ v_adKrA)
+      (@ a_adKrZ)
+      (@ c_adKs0)
+      (@ b_adKs1)
+      (f_adJP5 :: a_adKrZ -> c_adKs0 -> c_adKs0)
+      (g_adJP6 :: b_adKs1 -> c_adKs0 -> c_adKs0)
+      (z1_adJP7 :: c_adKs0)
+      (t_adJP8
+         :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, a_adKrZ,
+             b_adKs1)) ->
+      f_adJP5
+        (case t_adJP8 of
+         { (ds_ddKBs, ds1_ddKBt, ds2_ddKBu, ds3_ddKBv, ds4_ddKBw, a1_adJPo,
+            b1_adJPp) ->
+         a1_adJPo
+         })
+        (g_adJP6
+           (case t_adJP8 of
+            { (ds_ddKBM, ds1_ddKBN, ds2_ddKBO, ds3_ddKBP, ds4_ddKBQ, a1_adJPo,
+               b1_adJPp) ->
+            b1_adJPp
+            })
+           z1_adJP7)
+
+-- RHS size: {terms: 23, types: 61, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldl
+  :: forall x y z w v c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> (x, y, z, w, v, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,U(A,A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKrw)
+                 (@ y_adKrx)
+                 (@ z_adKry)
+                 (@ w_adKrz)
+                 (@ v_adKrA)
+                 (@ c_adKsb)
+                 (@ a_adKsc)
+                 (@ b_adKsd)
+                 (f_XdJR5 [Occ=Once!] :: c_adKsb -> a_adKsc -> c_adKsb)
+                 (g_XdJR7 [Occ=Once!] :: c_adKsb -> b_adKsd -> c_adKsb)
+                 (z1_XdJR9 [Occ=Once] :: c_adKsb)
+                 (t_XdJRb
+                    :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, a_adKsc,
+                        b_adKsd)) ->
+                 g_XdJR7
+                   (f_XdJR5
+                      z1_XdJR9
+                      (case t_XdJRb of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          _ [Occ=Dead], a1_adJPo [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPo
+                       }))
+                   (case t_XdJRb of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       _ [Occ=Dead], _ [Occ=Dead], b1_adJPp [Occ=Once]) ->
+                    b1_adJPp
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldl
+  = \ (@ x_adKrw)
+      (@ y_adKrx)
+      (@ z_adKry)
+      (@ w_adKrz)
+      (@ v_adKrA)
+      (@ c_adKsb)
+      (@ a_adKsc)
+      (@ b_adKsd)
+      (f_XdJR5 :: c_adKsb -> a_adKsc -> c_adKsb)
+      (g_XdJR7 :: c_adKsb -> b_adKsd -> c_adKsb)
+      (z1_XdJR9 :: c_adKsb)
+      (t_XdJRb
+         :: (x_adKrw, y_adKrx, z_adKry, w_adKrz, v_adKrA, a_adKsc,
+             b_adKsd)) ->
+      g_XdJR7
+        (f_XdJR5
+           z1_XdJR9
+           (case t_XdJRb of
+            { (ds_ddKBs, ds1_ddKBt, ds2_ddKBu, ds3_ddKBv, ds4_ddKBw, a1_adJPo,
+               b1_adJPp) ->
+            a1_adJPo
+            }))
+        (case t_XdJRb of
+         { (ds_ddKBM, ds1_ddKBN, ds2_ddKBO, ds3_ddKBP, ds4_ddKBQ, a1_adJPo,
+            b1_adJPp) ->
+         b1_adJPp
+         })
+
+-- RHS size: {terms: 10, types: 36, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,,) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall x y z w v. Bifoldable ((,,,,,,) x y z w v)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ x_adJPh)
+             (@ y_adJPi)
+             (@ z_adJPj)
+             (@ w_adJPk)
+             (@ v_adJPl) ->
+       Data.Bifoldable.C:Bifoldable TYPE: (,,,,,,)
+                                            x_adJPh y_adJPi z_adJPj w_adJPk v_adJPl
+                                    Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifold
+                                      @ x_adJPh @ y_adJPi @ z_adJPj @ w_adJPk @ v_adJPl
+                                    Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldMap
+                                      @ x_adJPh @ y_adJPi @ z_adJPj @ w_adJPk @ v_adJPl
+                                    Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldr
+                                      @ x_adJPh @ y_adJPi @ z_adJPj @ w_adJPk @ v_adJPl
+                                    Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldl
+                                      @ x_adJPh @ y_adJPi @ z_adJPj @ w_adJPk @ v_adJPl]
+Data.Bifoldable.$fBifoldable(,,,,,,)
+  = \ (@ x_adKrw) (@ y_adKrx) (@ z_adKry) (@ w_adKrz) (@ v_adKrA) ->
+      Data.Bifoldable.C:Bifoldable
+        @ ((,,,,,,) x_adKrw y_adKrx z_adKry w_adKrz v_adKrA)
+        (Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifold
+           @ x_adKrw @ y_adKrx @ z_adKry @ w_adKrz @ v_adKrA)
+        (Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldMap
+           @ x_adKrw @ y_adKrx @ z_adKry @ w_adKrz @ v_adKrA)
+        (Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldr
+           @ x_adKrw @ y_adKrx @ z_adKry @ w_adKrz @ v_adKrA)
+        (Data.Bifoldable.$fBifoldable(,,,,,,)_$cbifoldl
+           @ x_adKrw @ y_adKrx @ z_adKry @ w_adKrz @ v_adKrA)
+
+-- RHS size: {terms: 17, types: 46, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifold
+  :: forall x y z w m. Monoid m => (x, y, z, w, m, m) -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U(A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKsm)
+                 (@ y_adKsn)
+                 (@ z_adKso)
+                 (@ w_adKsp)
+                 (@ m_adKst)
+                 ($dMonoid_adKsv [Occ=Once] :: Monoid m_adKst)
+                 (ds_ddKBR
+                    :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, m_adKst, m_adKst)) ->
+                 mappend
+                   @ m_adKst
+                   $dMonoid_adKsv
+                   (case ds_ddKBR of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       a_adJPw [Occ=Once], _ [Occ=Dead]) ->
+                    a_adJPw
+                    })
+                   (case ds_ddKBR of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       _ [Occ=Dead], b_adJPx [Occ=Once]) ->
+                    b_adJPx
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifold
+  = \ (@ x_adKsm)
+      (@ y_adKsn)
+      (@ z_adKso)
+      (@ w_adKsp)
+      (@ m_adKst)
+      ($dMonoid_adKsv :: Monoid m_adKst)
+      (ds_ddKBR
+         :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, m_adKst, m_adKst)) ->
+      mappend
+        @ m_adKst
+        $dMonoid_adKsv
+        (case ds_ddKBR of
+         { (ds1_ddKC9, ds2_ddKCa, ds3_ddKCb, ds4_ddKCc, a_adJPw, b_adJPx) ->
+         a_adJPw
+         })
+        (case ds_ddKBR of
+         { (ds1_ddKCq, ds2_ddKCr, ds3_ddKCs, ds4_ddKCt, a_adJPw, b_adJPx) ->
+         b_adJPx
+         })
+
+-- RHS size: {terms: 22, types: 54, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldr
+  :: forall x y z w a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> (x, y, z, w, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U(A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKsm)
+                 (@ y_adKsn)
+                 (@ z_adKso)
+                 (@ w_adKsp)
+                 (@ a_adKsO)
+                 (@ c_adKsP)
+                 (@ b_adKsQ)
+                 (f_adJP5 [Occ=Once!] :: a_adKsO -> c_adKsP -> c_adKsP)
+                 (g_adJP6 [Occ=Once!] :: b_adKsQ -> c_adKsP -> c_adKsP)
+                 (z1_adJP7 [Occ=Once] :: c_adKsP)
+                 (t_adJP8
+                    :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, a_adKsO, b_adKsQ)) ->
+                 f_adJP5
+                   (case t_adJP8 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       a1_adJPw [Occ=Once], _ [Occ=Dead]) ->
+                    a1_adJPw
+                    })
+                   (g_adJP6
+                      (case t_adJP8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          _ [Occ=Dead], b1_adJPx [Occ=Once]) ->
+                       b1_adJPx
+                       })
+                      z1_adJP7)}]
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldr
+  = \ (@ x_adKsm)
+      (@ y_adKsn)
+      (@ z_adKso)
+      (@ w_adKsp)
+      (@ a_adKsO)
+      (@ c_adKsP)
+      (@ b_adKsQ)
+      (f_adJP5 :: a_adKsO -> c_adKsP -> c_adKsP)
+      (g_adJP6 :: b_adKsQ -> c_adKsP -> c_adKsP)
+      (z1_adJP7 :: c_adKsP)
+      (t_adJP8
+         :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, a_adKsO, b_adKsQ)) ->
+      f_adJP5
+        (case t_adJP8 of
+         { (ds_ddKC9, ds1_ddKCa, ds2_ddKCb, ds3_ddKCc, a1_adJPw,
+            b1_adJPx) ->
+         a1_adJPw
+         })
+        (g_adJP6
+           (case t_adJP8 of
+            { (ds_ddKCq, ds1_ddKCr, ds2_ddKCs, ds3_ddKCt, a1_adJPw,
+               b1_adJPx) ->
+            b1_adJPx
+            })
+           z1_adJP7)
+
+-- RHS size: {terms: 22, types: 54, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldl
+  :: forall x y z w c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> (x, y, z, w, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,U(A,A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKsm)
+                 (@ y_adKsn)
+                 (@ z_adKso)
+                 (@ w_adKsp)
+                 (@ c_adKt0)
+                 (@ a_adKt1)
+                 (@ b_adKt2)
+                 (f_XdJR9 [Occ=Once!] :: c_adKt0 -> a_adKt1 -> c_adKt0)
+                 (g_XdJRb [Occ=Once!] :: c_adKt0 -> b_adKt2 -> c_adKt0)
+                 (z1_XdJRd [Occ=Once] :: c_adKt0)
+                 (t_XdJRf
+                    :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, a_adKt1, b_adKt2)) ->
+                 g_XdJRb
+                   (f_XdJR9
+                      z1_XdJRd
+                      (case t_XdJRf of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          a1_adJPw [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPw
+                       }))
+                   (case t_XdJRf of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       _ [Occ=Dead], b1_adJPx [Occ=Once]) ->
+                    b1_adJPx
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldl
+  = \ (@ x_adKsm)
+      (@ y_adKsn)
+      (@ z_adKso)
+      (@ w_adKsp)
+      (@ c_adKt0)
+      (@ a_adKt1)
+      (@ b_adKt2)
+      (f_XdJR9 :: c_adKt0 -> a_adKt1 -> c_adKt0)
+      (g_XdJRb :: c_adKt0 -> b_adKt2 -> c_adKt0)
+      (z1_XdJRd :: c_adKt0)
+      (t_XdJRf
+         :: (x_adKsm, y_adKsn, z_adKso, w_adKsp, a_adKt1, b_adKt2)) ->
+      g_XdJRb
+        (f_XdJR9
+           z1_XdJRd
+           (case t_XdJRf of
+            { (ds_ddKC9, ds1_ddKCa, ds2_ddKCb, ds3_ddKCc, a1_adJPw,
+               b1_adJPx) ->
+            a1_adJPw
+            }))
+        (case t_XdJRf of
+         { (ds_ddKCq, ds1_ddKCr, ds2_ddKCs, ds3_ddKCt, a1_adJPw,
+            b1_adJPx) ->
+         b1_adJPx
+         })
+
+-- RHS size: {terms: 9, types: 29, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,,) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall x y z w. Bifoldable ((,,,,,) x y z w)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ x_adJPq) (@ y_adJPr) (@ z_adJPs) (@ w_adJPt) ->
+       Data.Bifoldable.C:Bifoldable TYPE: (,,,,,)
+                                            x_adJPq y_adJPr z_adJPs w_adJPt
+                                    Data.Bifoldable.$fBifoldable(,,,,,)_$cbifold
+                                      @ x_adJPq @ y_adJPr @ z_adJPs @ w_adJPt
+                                    Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldMap
+                                      @ x_adJPq @ y_adJPr @ z_adJPs @ w_adJPt
+                                    Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldr
+                                      @ x_adJPq @ y_adJPr @ z_adJPs @ w_adJPt
+                                    Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldl
+                                      @ x_adJPq @ y_adJPr @ z_adJPs @ w_adJPt]
+Data.Bifoldable.$fBifoldable(,,,,,)
+  = \ (@ x_adKsm) (@ y_adKsn) (@ z_adKso) (@ w_adKsp) ->
+      Data.Bifoldable.C:Bifoldable
+        @ ((,,,,,) x_adKsm y_adKsn z_adKso w_adKsp)
+        (Data.Bifoldable.$fBifoldable(,,,,,)_$cbifold
+           @ x_adKsm @ y_adKsn @ z_adKso @ w_adKsp)
+        (Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldMap
+           @ x_adKsm @ y_adKsn @ z_adKso @ w_adKsp)
+        (Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldr
+           @ x_adKsm @ y_adKsn @ z_adKso @ w_adKsp)
+        (Data.Bifoldable.$fBifoldable(,,,,,)_$cbifoldl
+           @ x_adKsm @ y_adKsn @ z_adKso @ w_adKsp)
+
+-- RHS size: {terms: 16, types: 39, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifold
+  :: forall x y z m. Monoid m => (x, y, z, m, m) -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U(A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtb)
+                 (@ y_adKtc)
+                 (@ z_adKtd)
+                 (@ m_adKth)
+                 ($dMonoid_adKtj [Occ=Once] :: Monoid m_adKth)
+                 (ds_ddKCu :: (x_adKtb, y_adKtc, z_adKtd, m_adKth, m_adKth)) ->
+                 mappend
+                   @ m_adKth
+                   $dMonoid_adKtj
+                   (case ds_ddKCu of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], a_adJPD [Occ=Once],
+                       _ [Occ=Dead]) ->
+                    a_adJPD
+                    })
+                   (case ds_ddKCu of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       b_adJPE [Occ=Once]) ->
+                    b_adJPE
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifold
+  = \ (@ x_adKtb)
+      (@ y_adKtc)
+      (@ z_adKtd)
+      (@ m_adKth)
+      ($dMonoid_adKtj :: Monoid m_adKth)
+      (ds_ddKCu :: (x_adKtb, y_adKtc, z_adKtd, m_adKth, m_adKth)) ->
+      mappend
+        @ m_adKth
+        $dMonoid_adKtj
+        (case ds_ddKCu of
+         { (ds1_ddKCK, ds2_ddKCL, ds3_ddKCM, a_adJPD, b_adJPE) ->
+         a_adJPD
+         })
+        (case ds_ddKCu of
+         { (ds1_ddKCY, ds2_ddKCZ, ds3_ddKD0, a_adJPD, b_adJPE) ->
+         b_adJPE
+         })
+
+-- RHS size: {terms: 21, types: 47, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldr
+  :: forall x y z a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> (x, y, z, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U(A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtb)
+                 (@ y_adKtc)
+                 (@ z_adKtd)
+                 (@ a_adKtC)
+                 (@ c_adKtD)
+                 (@ b_adKtE)
+                 (f_adJP5 [Occ=Once!] :: a_adKtC -> c_adKtD -> c_adKtD)
+                 (g_adJP6 [Occ=Once!] :: b_adKtE -> c_adKtD -> c_adKtD)
+                 (z1_adJP7 [Occ=Once] :: c_adKtD)
+                 (t_adJP8 :: (x_adKtb, y_adKtc, z_adKtd, a_adKtC, b_adKtE)) ->
+                 f_adJP5
+                   (case t_adJP8 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], a1_adJPD [Occ=Once],
+                       _ [Occ=Dead]) ->
+                    a1_adJPD
+                    })
+                   (g_adJP6
+                      (case t_adJP8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          b1_adJPE [Occ=Once]) ->
+                       b1_adJPE
+                       })
+                      z1_adJP7)}]
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldr
+  = \ (@ x_adKtb)
+      (@ y_adKtc)
+      (@ z_adKtd)
+      (@ a_adKtC)
+      (@ c_adKtD)
+      (@ b_adKtE)
+      (f_adJP5 :: a_adKtC -> c_adKtD -> c_adKtD)
+      (g_adJP6 :: b_adKtE -> c_adKtD -> c_adKtD)
+      (z1_adJP7 :: c_adKtD)
+      (t_adJP8 :: (x_adKtb, y_adKtc, z_adKtd, a_adKtC, b_adKtE)) ->
+      f_adJP5
+        (case t_adJP8 of
+         { (ds_ddKCK, ds1_ddKCL, ds2_ddKCM, a1_adJPD, b1_adJPE) ->
+         a1_adJPD
+         })
+        (g_adJP6
+           (case t_adJP8 of
+            { (ds_ddKCY, ds1_ddKCZ, ds2_ddKD0, a1_adJPD, b1_adJPE) ->
+            b1_adJPE
+            })
+           z1_adJP7)
+
+-- RHS size: {terms: 21, types: 47, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldl
+  :: forall x y z c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> (x, y, z, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,U(A,A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtb)
+                 (@ y_adKtc)
+                 (@ z_adKtd)
+                 (@ c_adKtO)
+                 (@ a_adKtP)
+                 (@ b_adKtQ)
+                 (f_XdJRd [Occ=Once!] :: c_adKtO -> a_adKtP -> c_adKtO)
+                 (g_XdJRf [Occ=Once!] :: c_adKtO -> b_adKtQ -> c_adKtO)
+                 (z1_XdJRh [Occ=Once] :: c_adKtO)
+                 (t_XdJRj :: (x_adKtb, y_adKtc, z_adKtd, a_adKtP, b_adKtQ)) ->
+                 g_XdJRf
+                   (f_XdJRd
+                      z1_XdJRh
+                      (case t_XdJRj of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], a1_adJPD [Occ=Once],
+                          _ [Occ=Dead]) ->
+                       a1_adJPD
+                       }))
+                   (case t_XdJRj of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       b1_adJPE [Occ=Once]) ->
+                    b1_adJPE
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldl
+  = \ (@ x_adKtb)
+      (@ y_adKtc)
+      (@ z_adKtd)
+      (@ c_adKtO)
+      (@ a_adKtP)
+      (@ b_adKtQ)
+      (f_XdJRd :: c_adKtO -> a_adKtP -> c_adKtO)
+      (g_XdJRf :: c_adKtO -> b_adKtQ -> c_adKtO)
+      (z1_XdJRh :: c_adKtO)
+      (t_XdJRj :: (x_adKtb, y_adKtc, z_adKtd, a_adKtP, b_adKtQ)) ->
+      g_XdJRf
+        (f_XdJRd
+           z1_XdJRh
+           (case t_XdJRj of
+            { (ds_ddKCK, ds1_ddKCL, ds2_ddKCM, a1_adJPD, b1_adJPE) ->
+            a1_adJPD
+            }))
+        (case t_XdJRj of
+         { (ds_ddKCY, ds1_ddKCZ, ds2_ddKD0, a1_adJPD, b1_adJPE) ->
+         b1_adJPE
+         })
+
+-- RHS size: {terms: 8, types: 22, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,,) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall x y z. Bifoldable ((,,,,) x y z)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ x_adJPy) (@ y_adJPz) (@ z_adJPA) ->
+       Data.Bifoldable.C:Bifoldable TYPE: (,,,,) x_adJPy y_adJPz z_adJPA
+                                    Data.Bifoldable.$fBifoldable(,,,,)_$cbifold
+                                      @ x_adJPy @ y_adJPz @ z_adJPA
+                                    Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldMap
+                                      @ x_adJPy @ y_adJPz @ z_adJPA
+                                    Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldr
+                                      @ x_adJPy @ y_adJPz @ z_adJPA
+                                    Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldl
+                                      @ x_adJPy @ y_adJPz @ z_adJPA]
+Data.Bifoldable.$fBifoldable(,,,,)
+  = \ (@ x_adKtb) (@ y_adKtc) (@ z_adKtd) ->
+      Data.Bifoldable.C:Bifoldable
+        @ ((,,,,) x_adKtb y_adKtc z_adKtd)
+        (Data.Bifoldable.$fBifoldable(,,,,)_$cbifold
+           @ x_adKtb @ y_adKtc @ z_adKtd)
+        (Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldMap
+           @ x_adKtb @ y_adKtc @ z_adKtd)
+        (Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldr
+           @ x_adKtb @ y_adKtc @ z_adKtd)
+        (Data.Bifoldable.$fBifoldable(,,,,)_$cbifoldl
+           @ x_adKtb @ y_adKtc @ z_adKtd)
+
+-- RHS size: {terms: 15, types: 32, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,)_$cbifold
+  :: forall x y m. Monoid m => (x, y, m, m) -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U(A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtZ)
+                 (@ y_adKu0)
+                 (@ m_adKu4)
+                 ($dMonoid_adKu6 [Occ=Once] :: Monoid m_adKu4)
+                 (ds_ddKD1 :: (x_adKtZ, y_adKu0, m_adKu4, m_adKu4)) ->
+                 mappend
+                   @ m_adKu4
+                   $dMonoid_adKu6
+                   (case ds_ddKD1 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], a_adJPJ [Occ=Once], _ [Occ=Dead]) ->
+                    a_adJPJ
+                    })
+                   (case ds_ddKD1 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead], b_adJPK [Occ=Once]) ->
+                    b_adJPK
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,)_$cbifold
+  = \ (@ x_adKtZ)
+      (@ y_adKu0)
+      (@ m_adKu4)
+      ($dMonoid_adKu6 :: Monoid m_adKu4)
+      (ds_ddKD1 :: (x_adKtZ, y_adKu0, m_adKu4, m_adKu4)) ->
+      mappend
+        @ m_adKu4
+        $dMonoid_adKu6
+        (case ds_ddKD1 of { (ds1_ddKDf, ds2_ddKDg, a_adJPJ, b_adJPK) ->
+         a_adJPJ
+         })
+        (case ds_ddKD1 of { (ds1_ddKDq, ds2_ddKDr, a_adJPJ, b_adJPK) ->
+         b_adJPK
+         })
+
+-- RHS size: {terms: 20, types: 40, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,)_$cbifoldr
+  :: forall x y a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> (x, y, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U(A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtZ)
+                 (@ y_adKu0)
+                 (@ a_adKup)
+                 (@ c_adKuq)
+                 (@ b_adKur)
+                 (f_adJP5 [Occ=Once!] :: a_adKup -> c_adKuq -> c_adKuq)
+                 (g_adJP6 [Occ=Once!] :: b_adKur -> c_adKuq -> c_adKuq)
+                 (z_adJP7 [Occ=Once] :: c_adKuq)
+                 (t_adJP8 :: (x_adKtZ, y_adKu0, a_adKup, b_adKur)) ->
+                 f_adJP5
+                   (case t_adJP8 of
+                    { (_ [Occ=Dead], _ [Occ=Dead], a1_adJPJ [Occ=Once],
+                       _ [Occ=Dead]) ->
+                    a1_adJPJ
+                    })
+                   (g_adJP6
+                      (case t_adJP8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                          b1_adJPK [Occ=Once]) ->
+                       b1_adJPK
+                       })
+                      z_adJP7)}]
+Data.Bifoldable.$fBifoldable(,,,)_$cbifoldr
+  = \ (@ x_adKtZ)
+      (@ y_adKu0)
+      (@ a_adKup)
+      (@ c_adKuq)
+      (@ b_adKur)
+      (f_adJP5 :: a_adKup -> c_adKuq -> c_adKuq)
+      (g_adJP6 :: b_adKur -> c_adKuq -> c_adKuq)
+      (z_adJP7 :: c_adKuq)
+      (t_adJP8 :: (x_adKtZ, y_adKu0, a_adKup, b_adKur)) ->
+      f_adJP5
+        (case t_adJP8 of { (ds_ddKDf, ds1_ddKDg, a1_adJPJ, b1_adJPK) ->
+         a1_adJPJ
+         })
+        (g_adJP6
+           (case t_adJP8 of { (ds_ddKDq, ds1_ddKDr, a1_adJPJ, b1_adJPK) ->
+            b1_adJPK
+            })
+           z_adJP7)
+
+-- RHS size: {terms: 20, types: 40, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,)_$cbifoldl
+  :: forall x y c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> (x, y, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,U(A,A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKtZ)
+                 (@ y_adKu0)
+                 (@ c_adKuB)
+                 (@ a_adKuC)
+                 (@ b_adKuD)
+                 (f_XdJRh [Occ=Once!] :: c_adKuB -> a_adKuC -> c_adKuB)
+                 (g_XdJRj [Occ=Once!] :: c_adKuB -> b_adKuD -> c_adKuB)
+                 (z_XdJRl [Occ=Once] :: c_adKuB)
+                 (t_XdJRn :: (x_adKtZ, y_adKu0, a_adKuC, b_adKuD)) ->
+                 g_XdJRj
+                   (f_XdJRh
+                      z_XdJRl
+                      (case t_XdJRn of
+                       { (_ [Occ=Dead], _ [Occ=Dead], a1_adJPJ [Occ=Once],
+                          _ [Occ=Dead]) ->
+                       a1_adJPJ
+                       }))
+                   (case t_XdJRn of
+                    { (_ [Occ=Dead], _ [Occ=Dead], _ [Occ=Dead],
+                       b1_adJPK [Occ=Once]) ->
+                    b1_adJPK
+                    })}]
+Data.Bifoldable.$fBifoldable(,,,)_$cbifoldl
+  = \ (@ x_adKtZ)
+      (@ y_adKu0)
+      (@ c_adKuB)
+      (@ a_adKuC)
+      (@ b_adKuD)
+      (f_XdJRh :: c_adKuB -> a_adKuC -> c_adKuB)
+      (g_XdJRj :: c_adKuB -> b_adKuD -> c_adKuB)
+      (z_XdJRl :: c_adKuB)
+      (t_XdJRn :: (x_adKtZ, y_adKu0, a_adKuC, b_adKuD)) ->
+      g_XdJRj
+        (f_XdJRh
+           z_XdJRl
+           (case t_XdJRn of { (ds_ddKDf, ds1_ddKDg, a1_adJPJ, b1_adJPK) ->
+            a1_adJPJ
+            }))
+        (case t_XdJRn of { (ds_ddKDq, ds1_ddKDr, a1_adJPJ, b1_adJPK) ->
+         b1_adJPK
+         })
+
+-- RHS size: {terms: 7, types: 15, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,,) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall x y. Bifoldable ((,,,) x y)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ x_adJPF) (@ y_adJPG) ->
+       Data.Bifoldable.C:Bifoldable TYPE: (,,,) x_adJPF y_adJPG
+                                    Data.Bifoldable.$fBifoldable(,,,)_$cbifold @ x_adJPF @ y_adJPG
+                                    Data.Bifoldable.$fBifoldable(,,,)_$cbifoldMap
+                                      @ x_adJPF @ y_adJPG
+                                    Data.Bifoldable.$fBifoldable(,,,)_$cbifoldr @ x_adJPF @ y_adJPG
+                                    Data.Bifoldable.$fBifoldable(,,,)_$cbifoldl @ x_adJPF @ y_adJPG]
+Data.Bifoldable.$fBifoldable(,,,)
+  = \ (@ x_adKtZ) (@ y_adKu0) ->
+      Data.Bifoldable.C:Bifoldable
+        @ ((,,,) x_adKtZ y_adKu0)
+        (Data.Bifoldable.$fBifoldable(,,,)_$cbifold @ x_adKtZ @ y_adKu0)
+        (Data.Bifoldable.$fBifoldable(,,,)_$cbifoldMap @ x_adKtZ @ y_adKu0)
+        (Data.Bifoldable.$fBifoldable(,,,)_$cbifoldr @ x_adKtZ @ y_adKu0)
+        (Data.Bifoldable.$fBifoldable(,,,)_$cbifoldl @ x_adKtZ @ y_adKu0)
+
+-- RHS size: {terms: 14, types: 25, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,)_$cbifold
+  :: forall x m. Monoid m => (x, m, m) -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U(A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKuM)
+                 (@ m_adKuQ)
+                 ($dMonoid_adKuS [Occ=Once] :: Monoid m_adKuQ)
+                 (ds_ddKDs :: (x_adKuM, m_adKuQ, m_adKuQ)) ->
+                 mappend
+                   @ m_adKuQ
+                   $dMonoid_adKuS
+                   (case ds_ddKDs of
+                    { (_ [Occ=Dead], a_adJPO [Occ=Once], _ [Occ=Dead]) ->
+                    a_adJPO
+                    })
+                   (case ds_ddKDs of
+                    { (_ [Occ=Dead], _ [Occ=Dead], b_adJPP [Occ=Once]) ->
+                    b_adJPP
+                    })}]
+Data.Bifoldable.$fBifoldable(,,)_$cbifold
+  = \ (@ x_adKuM)
+      (@ m_adKuQ)
+      ($dMonoid_adKuS :: Monoid m_adKuQ)
+      (ds_ddKDs :: (x_adKuM, m_adKuQ, m_adKuQ)) ->
+      mappend
+        @ m_adKuQ
+        $dMonoid_adKuS
+        (case ds_ddKDs of { (ds1_ddKDE, a_adJPO, b_adJPP) -> a_adJPO })
+        (case ds_ddKDs of { (ds1_ddKDM, a_adJPO, b_adJPP) -> b_adJPP })
+
+-- RHS size: {terms: 19, types: 33, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,)_$cbifoldr
+  :: forall x a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> (x, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U(A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKuM)
+                 (@ a_adKvb)
+                 (@ c_adKvc)
+                 (@ b_adKvd)
+                 (f_adJP5 [Occ=Once!] :: a_adKvb -> c_adKvc -> c_adKvc)
+                 (g_adJP6 [Occ=Once!] :: b_adKvd -> c_adKvc -> c_adKvc)
+                 (z_adJP7 [Occ=Once] :: c_adKvc)
+                 (t_adJP8 :: (x_adKuM, a_adKvb, b_adKvd)) ->
+                 f_adJP5
+                   (case t_adJP8 of
+                    { (_ [Occ=Dead], a1_adJPO [Occ=Once], _ [Occ=Dead]) ->
+                    a1_adJPO
+                    })
+                   (g_adJP6
+                      (case t_adJP8 of
+                       { (_ [Occ=Dead], _ [Occ=Dead], b1_adJPP [Occ=Once]) ->
+                       b1_adJPP
+                       })
+                      z_adJP7)}]
+Data.Bifoldable.$fBifoldable(,,)_$cbifoldr
+  = \ (@ x_adKuM)
+      (@ a_adKvb)
+      (@ c_adKvc)
+      (@ b_adKvd)
+      (f_adJP5 :: a_adKvb -> c_adKvc -> c_adKvc)
+      (g_adJP6 :: b_adKvd -> c_adKvc -> c_adKvc)
+      (z_adJP7 :: c_adKvc)
+      (t_adJP8 :: (x_adKuM, a_adKvb, b_adKvd)) ->
+      f_adJP5
+        (case t_adJP8 of { (ds_ddKDE, a1_adJPO, b1_adJPP) -> a1_adJPO })
+        (g_adJP6
+           (case t_adJP8 of { (ds_ddKDM, a1_adJPO, b1_adJPP) -> b1_adJPP })
+           z_adJP7)
+
+-- RHS size: {terms: 19, types: 33, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,)_$cbifoldl
+  :: forall x c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> (x, a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,U(A,1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ x_adKuM)
+                 (@ c_adKvn)
+                 (@ a_adKvo)
+                 (@ b_adKvp)
+                 (f_XdJRl [Occ=Once!] :: c_adKvn -> a_adKvo -> c_adKvn)
+                 (g_XdJRn [Occ=Once!] :: c_adKvn -> b_adKvp -> c_adKvn)
+                 (z_XdJRp [Occ=Once] :: c_adKvn)
+                 (t_XdJRr :: (x_adKuM, a_adKvo, b_adKvp)) ->
+                 g_XdJRn
+                   (f_XdJRl
+                      z_XdJRp
+                      (case t_XdJRr of
+                       { (_ [Occ=Dead], a1_adJPO [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPO
+                       }))
+                   (case t_XdJRr of
+                    { (_ [Occ=Dead], _ [Occ=Dead], b1_adJPP [Occ=Once]) ->
+                    b1_adJPP
+                    })}]
+Data.Bifoldable.$fBifoldable(,,)_$cbifoldl
+  = \ (@ x_adKuM)
+      (@ c_adKvn)
+      (@ a_adKvo)
+      (@ b_adKvp)
+      (f_XdJRl :: c_adKvn -> a_adKvo -> c_adKvn)
+      (g_XdJRn :: c_adKvn -> b_adKvp -> c_adKvn)
+      (z_XdJRp :: c_adKvn)
+      (t_XdJRr :: (x_adKuM, a_adKvo, b_adKvp)) ->
+      g_XdJRn
+        (f_XdJRl
+           z_XdJRp
+           (case t_XdJRr of { (ds_ddKDE, a1_adJPO, b1_adJPP) -> a1_adJPO }))
+        (case t_XdJRr of { (ds_ddKDM, a1_adJPO, b1_adJPP) -> b1_adJPP })
+
+-- RHS size: {terms: 6, types: 8, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,,) [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall x. Bifoldable ((,,) x)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ x_adJPL) ->
+       Data.Bifoldable.C:Bifoldable TYPE: (,,) x_adJPL
+                                    Data.Bifoldable.$fBifoldable(,,)_$cbifold @ x_adJPL
+                                    Data.Bifoldable.$fBifoldable(,,)_$cbifoldMap @ x_adJPL
+                                    Data.Bifoldable.$fBifoldable(,,)_$cbifoldr @ x_adJPL
+                                    Data.Bifoldable.$fBifoldable(,,)_$cbifoldl @ x_adJPL]
+Data.Bifoldable.$fBifoldable(,,)
+  = \ (@ x_adKuM) ->
+      Data.Bifoldable.C:Bifoldable
+        @ ((,,) x_adKuM)
+        (Data.Bifoldable.$fBifoldable(,,)_$cbifold @ x_adKuM)
+        (Data.Bifoldable.$fBifoldable(,,)_$cbifoldMap @ x_adKuM)
+        (Data.Bifoldable.$fBifoldable(,,)_$cbifoldr @ x_adKuM)
+        (Data.Bifoldable.$fBifoldable(,,)_$cbifoldl @ x_adKuM)
+
+-- RHS size: {terms: 5, types: 11, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableK2
+  :: forall i m. Monoid m => K1 i m m -> K1 i m m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ i_adKvy)
+                 (@ m_adKvC)
+                 _ [Occ=Dead]
+                 (ds_ddKDO [Occ=Once] :: K1 i_adKvy m_adKvC m_adKvC) ->
+                 ds_ddKDO}]
+Data.Bifoldable.$fBifoldableK2
+  = \ (@ i_adKvy)
+      (@ m_adKvC)
+      _ [Occ=Dead]
+      (ds_ddKDO :: K1 i_adKvy m_adKvC m_adKvC) ->
+      ds_ddKDO
+
+-- RHS size: {terms: 11, types: 20, coercions: 6, joins: 0/0}
+Data.Bifoldable.$fBifoldableK1_$cbifoldr
+  :: forall i a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> K1 i a b -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,A><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ i_adKvy)
+                 (@ a_adKvV)
+                 (@ c_adKvW)
+                 (@ b_adKvX)
+                 (f_adJP5 [Occ=Once!] :: a_adKvV -> c_adKvW -> c_adKvW)
+                 _ [Occ=Dead]
+                 (z_adJP7 [Occ=Once] :: c_adKvW)
+                 (t_adJP8 [Occ=Once] :: K1 i_adKvy a_adKvV b_adKvX) ->
+                 f_adJP5
+                   (t_adJP8
+                    `cast` (GHC.Generics.N:K1[0]
+                                <*>_N <i_adKvy>_P <a_adKvV>_R <b_adKvX>_P
+                            :: (K1 i_adKvy a_adKvV b_adKvX :: *) ~R# (a_adKvV :: *)))
+                   z_adJP7}]
+Data.Bifoldable.$fBifoldableK1_$cbifoldr
+  = \ (@ i_adKvy)
+      (@ a_adKvV)
+      (@ c_adKvW)
+      (@ b_adKvX)
+      (f_adJP5 :: a_adKvV -> c_adKvW -> c_adKvW)
+      _ [Occ=Dead]
+      (z_adJP7 :: c_adKvW)
+      (t_adJP8 :: K1 i_adKvy a_adKvV b_adKvX) ->
+      f_adJP5
+        (t_adJP8
+         `cast` (GHC.Generics.N:K1[0]
+                     <*>_N <i_adKvy>_P <a_adKvV>_R <b_adKvX>_P
+                 :: (K1 i_adKvy a_adKvV b_adKvX :: *) ~R# (a_adKvV :: *)))
+        z_adJP7
+
+-- RHS size: {terms: 11, types: 20, coercions: 6, joins: 0/0}
+Data.Bifoldable.$fBifoldableK1_$cbifoldl
+  :: forall i c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> K1 i a b -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,A><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ i_adKvy)
+                 (@ c_adKw7)
+                 (@ a_adKw8)
+                 (@ b_adKw9)
+                 (f_XdJRq [Occ=Once!] :: c_adKw7 -> a_adKw8 -> c_adKw7)
+                 _ [Occ=Dead]
+                 (z_XdJRu [Occ=Once] :: c_adKw7)
+                 (t_XdJRw [Occ=Once] :: K1 i_adKvy a_adKw8 b_adKw9) ->
+                 f_XdJRq
+                   z_XdJRu
+                   (t_XdJRw
+                    `cast` (GHC.Generics.N:K1[0]
+                                <*>_N <i_adKvy>_P <a_adKw8>_R <b_adKw9>_P
+                            :: (K1 i_adKvy a_adKw8 b_adKw9 :: *) ~R# (a_adKw8 :: *)))}]
+Data.Bifoldable.$fBifoldableK1_$cbifoldl
+  = \ (@ i_adKvy)
+      (@ c_adKw7)
+      (@ a_adKw8)
+      (@ b_adKw9)
+      (f_XdJRq :: c_adKw7 -> a_adKw8 -> c_adKw7)
+      _ [Occ=Dead]
+      (z_XdJRu :: c_adKw7)
+      (t_XdJRw :: K1 i_adKvy a_adKw8 b_adKw9) ->
+      f_XdJRq
+        z_XdJRu
+        (t_XdJRw
+         `cast` (GHC.Generics.N:K1[0]
+                     <*>_N <i_adKvy>_P <a_adKw8>_R <b_adKw9>_P
+                 :: (K1 i_adKvy a_adKw8 b_adKw9 :: *) ~R# (a_adKw8 :: *)))
+
+-- RHS size: {terms: 6, types: 9, coercions: 19, joins: 0/0}
+Data.Bifoldable.$fBifoldableK1 [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall i. Bifoldable (K1 i)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ i_adJPQ) ->
+       Data.Bifoldable.C:Bifoldable TYPE: K1 i_adJPQ
+                                    (Data.Bifoldable.$fBifoldableK2 @ i_adJPQ)
+                                    `cast` (forall (m :: <*>_N).
+                                            <Monoid m>_R
+                                            ->_R <K1 i_adJPQ m m>_R
+                                            ->_R GHC.Generics.N:K1[0] <*>_N <i_adJPQ>_P <m>_R <m>_P
+                                            :: (forall m.
+                                                Monoid m =>
+                                                K1 i_adJPQ m m -> K1 i_adJPQ m m :: *)
+                                               ~R# (forall m. Monoid m => K1 i_adJPQ m m -> m :: *))
+                                    Data.Bifoldable.$fBifoldableK1_$cbifoldMap @ i_adJPQ
+                                    Data.Bifoldable.$fBifoldableK1_$cbifoldr @ i_adJPQ
+                                    Data.Bifoldable.$fBifoldableK1_$cbifoldl @ i_adJPQ]
+Data.Bifoldable.$fBifoldableK1
+  = \ (@ i_adKvy) ->
+      Data.Bifoldable.C:Bifoldable
+        @ (K1 i_adKvy)
+        ((Data.Bifoldable.$fBifoldableK2 @ i_adKvy)
+         `cast` (forall (m :: <*>_N).
+                 <Monoid m>_R
+                 ->_R <K1 i_adKvy m m>_R
+                 ->_R GHC.Generics.N:K1[0] <*>_N <i_adKvy>_P <m>_R <m>_P
+                 :: (forall m. Monoid m => K1 i_adKvy m m -> K1 i_adKvy m m :: *)
+                    ~R# (forall m. Monoid m => K1 i_adKvy m m -> m :: *)))
+        (Data.Bifoldable.$fBifoldableK1_$cbifoldMap @ i_adKvy)
+        (Data.Bifoldable.$fBifoldableK1_$cbifoldr @ i_adKvy)
+        (Data.Bifoldable.$fBifoldableK1_$cbifoldl @ i_adKvy)
+
+-- RHS size: {terms: 4, types: 9, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldableConst1
+  :: forall m. Monoid m => Const m m -> Const m m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ m_adKwl)
+                 _ [Occ=Dead]
+                 (ds_ddKDV [Occ=Once] :: Const m_adKwl m_adKwl) ->
+                 ds_ddKDV}]
+Data.Bifoldable.$fBifoldableConst1
+  = \ (@ m_adKwl) _ [Occ=Dead] (ds_ddKDV :: Const m_adKwl m_adKwl) ->
+      ds_ddKDV
+
+-- RHS size: {terms: 10, types: 18, coercions: 5, joins: 0/0}
+Data.Bifoldable.$fBifoldableConst_$cbifoldr
+  :: forall a c b.
+     (a -> c -> c) -> (b -> c -> c) -> c -> Const a b -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,A><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adKwE)
+                 (@ c_adKwF)
+                 (@ b_adKwG)
+                 (f_adJP5 [Occ=Once!] :: a_adKwE -> c_adKwF -> c_adKwF)
+                 _ [Occ=Dead]
+                 (z_adJP7 [Occ=Once] :: c_adKwF)
+                 (t_adJP8 [Occ=Once] :: Const a_adKwE b_adKwG) ->
+                 f_adJP5
+                   (t_adJP8
+                    `cast` (Data.Functor.Const.N:Const[0] <*>_N <a_adKwE>_R <b_adKwG>_P
+                            :: (Const a_adKwE b_adKwG :: *) ~R# (a_adKwE :: *)))
+                   z_adJP7}]
+Data.Bifoldable.$fBifoldableConst_$cbifoldr
+  = \ (@ a_adKwE)
+      (@ c_adKwF)
+      (@ b_adKwG)
+      (f_adJP5 :: a_adKwE -> c_adKwF -> c_adKwF)
+      _ [Occ=Dead]
+      (z_adJP7 :: c_adKwF)
+      (t_adJP8 :: Const a_adKwE b_adKwG) ->
+      f_adJP5
+        (t_adJP8
+         `cast` (Data.Functor.Const.N:Const[0] <*>_N <a_adKwE>_R <b_adKwG>_P
+                 :: (Const a_adKwE b_adKwG :: *) ~R# (a_adKwE :: *)))
+        z_adJP7
+
+-- RHS size: {terms: 10, types: 18, coercions: 5, joins: 0/0}
+Data.Bifoldable.$fBifoldableConst_$cbifoldl
+  :: forall c a b.
+     (c -> a -> c) -> (c -> b -> c) -> c -> Const a b -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,A><L,U><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ c_adKwQ)
+                 (@ a_adKwR)
+                 (@ b_adKwS)
+                 (f_XdJRy [Occ=Once!] :: c_adKwQ -> a_adKwR -> c_adKwQ)
+                 _ [Occ=Dead]
+                 (z_XdJRC [Occ=Once] :: c_adKwQ)
+                 (t_XdJRE [Occ=Once] :: Const a_adKwR b_adKwS) ->
+                 f_XdJRy
+                   z_XdJRC
+                   (t_XdJRE
+                    `cast` (Data.Functor.Const.N:Const[0] <*>_N <a_adKwR>_R <b_adKwS>_P
+                            :: (Const a_adKwR b_adKwS :: *) ~R# (a_adKwR :: *)))}]
+Data.Bifoldable.$fBifoldableConst_$cbifoldl
+  = \ (@ c_adKwQ)
+      (@ a_adKwR)
+      (@ b_adKwS)
+      (f_XdJRy :: c_adKwQ -> a_adKwR -> c_adKwQ)
+      _ [Occ=Dead]
+      (z_XdJRC :: c_adKwQ)
+      (t_XdJRE :: Const a_adKwR b_adKwS) ->
+      f_XdJRy
+        z_XdJRC
+        (t_XdJRE
+         `cast` (Data.Functor.Const.N:Const[0] <*>_N <a_adKwR>_R <b_adKwS>_P
+                 :: (Const a_adKwR b_adKwS :: *) ~R# (a_adKwR :: *)))
+
+-- RHS size: {terms: 5, types: 3, coercions: 17, joins: 0/0}
+Data.Bifoldable.$fBifoldableConst [InlPrag=NOUSERINLINE CONLIKE]
+  :: Bifoldable Const
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       Data.Bifoldable.C:Bifoldable TYPE: Const
+                                    Data.Bifoldable.$fBifoldableConst1
+                                    `cast` (forall (m :: <*>_N).
+                                            <Monoid m>_R
+                                            ->_R <Const m m>_R
+                                            ->_R Data.Functor.Const.N:Const[0] <*>_N <m>_R <m>_P
+                                            :: (forall m. Monoid m => Const m m -> Const m m :: *)
+                                               ~R# (forall m. Monoid m => Const m m -> m :: *))
+                                    Data.Bifoldable.$fBifoldableConst_$cbifoldMap
+                                    Data.Bifoldable.$fBifoldableConst_$cbifoldr
+                                    Data.Bifoldable.$fBifoldableConst_$cbifoldl]
+Data.Bifoldable.$fBifoldableConst
+  = Data.Bifoldable.C:Bifoldable
+      @ Const
+      (Data.Bifoldable.$fBifoldableConst1
+       `cast` (forall (m :: <*>_N).
+               <Monoid m>_R
+               ->_R <Const m m>_R
+               ->_R Data.Functor.Const.N:Const[0] <*>_N <m>_R <m>_P
+               :: (forall m. Monoid m => Const m m -> Const m m :: *)
+                  ~R# (forall m. Monoid m => Const m m -> m :: *)))
+      Data.Bifoldable.$fBifoldableConst_$cbifoldMap
+      Data.Bifoldable.$fBifoldableConst_$cbifoldr
+      Data.Bifoldable.$fBifoldableConst_$cbifoldl
+
+-- RHS size: {terms: 13, types: 18, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,)_$cbifold
+  :: forall m. Monoid m => (m, m) -> m
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(S))L),1*U(A,A,1*C1(C1(U)),A)><L,U(1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ m_adKx4)
+                 ($dMonoid_adKx6 [Occ=Once] :: Monoid m_adKx4)
+                 (ds_ddKE1 :: (m_adKx4, m_adKx4)) ->
+                 mappend
+                   @ m_adKx4
+                   $dMonoid_adKx6
+                   (case ds_ddKE1 of { (a_adJPX [Occ=Once], _ [Occ=Dead]) ->
+                    a_adJPX
+                    })
+                   (case ds_ddKE1 of { (_ [Occ=Dead], b_adJPY [Occ=Once]) ->
+                    b_adJPY
+                    })}]
+Data.Bifoldable.$fBifoldable(,)_$cbifold
+  = \ (@ m_adKx4)
+      ($dMonoid_adKx6 :: Monoid m_adKx4)
+      (ds_ddKE1 :: (m_adKx4, m_adKx4)) ->
+      mappend
+        @ m_adKx4
+        $dMonoid_adKx6
+        (case ds_ddKE1 of { (a_adJPX, b_adJPY) -> a_adJPX })
+        (case ds_ddKE1 of { (a_adJPX, b_adJPY) -> b_adJPY })
+
+-- RHS size: {terms: 18, types: 26, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,)_$cbifoldr
+  :: forall a c b. (a -> c -> c) -> (b -> c -> c) -> c -> (a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<C(C(S)),1*C1(C1(U))><L,1*C1(C1(U))><L,U><L,U(1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adKxp)
+                 (@ c_adKxq)
+                 (@ b_adKxr)
+                 (f_adJP5 [Occ=Once!] :: a_adKxp -> c_adKxq -> c_adKxq)
+                 (g_adJP6 [Occ=Once!] :: b_adKxr -> c_adKxq -> c_adKxq)
+                 (z_adJP7 [Occ=Once] :: c_adKxq)
+                 (t_adJP8 :: (a_adKxp, b_adKxr)) ->
+                 f_adJP5
+                   (case t_adJP8 of { (a1_adJPX [Occ=Once], _ [Occ=Dead]) ->
+                    a1_adJPX
+                    })
+                   (g_adJP6
+                      (case t_adJP8 of { (_ [Occ=Dead], b1_adJPY [Occ=Once]) ->
+                       b1_adJPY
+                       })
+                      z_adJP7)}]
+Data.Bifoldable.$fBifoldable(,)_$cbifoldr
+  = \ (@ a_adKxp)
+      (@ c_adKxq)
+      (@ b_adKxr)
+      (f_adJP5 :: a_adKxp -> c_adKxq -> c_adKxq)
+      (g_adJP6 :: b_adKxr -> c_adKxq -> c_adKxq)
+      (z_adJP7 :: c_adKxq)
+      (t_adJP8 :: (a_adKxp, b_adKxr)) ->
+      f_adJP5
+        (case t_adJP8 of { (a1_adJPX, b1_adJPY) -> a1_adJPX })
+        (g_adJP6
+           (case t_adJP8 of { (a1_adJPX, b1_adJPY) -> b1_adJPY }) z_adJP7)
+
+-- RHS size: {terms: 18, types: 26, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,)_$cbifoldl
+  :: forall c a b. (c -> a -> c) -> (c -> b -> c) -> c -> (a, b) -> c
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U))><C(C(S)),1*C1(C1(U))><L,U><L,U(1*U,1*U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=4,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ c_adKxB)
+                 (@ a_adKxC)
+                 (@ b_adKxD)
+                 (f_XdJRG [Occ=Once!] :: c_adKxB -> a_adKxC -> c_adKxB)
+                 (g_XdJRI [Occ=Once!] :: c_adKxB -> b_adKxD -> c_adKxB)
+                 (z_XdJRK [Occ=Once] :: c_adKxB)
+                 (t_XdJRM :: (a_adKxC, b_adKxD)) ->
+                 g_XdJRI
+                   (f_XdJRG
+                      z_XdJRK
+                      (case t_XdJRM of { (a1_adJPX [Occ=Once], _ [Occ=Dead]) ->
+                       a1_adJPX
+                       }))
+                   (case t_XdJRM of { (_ [Occ=Dead], b1_adJPY [Occ=Once]) ->
+                    b1_adJPY
+                    })}]
+Data.Bifoldable.$fBifoldable(,)_$cbifoldl
+  = \ (@ c_adKxB)
+      (@ a_adKxC)
+      (@ b_adKxD)
+      (f_XdJRG :: c_adKxB -> a_adKxC -> c_adKxB)
+      (g_XdJRI :: c_adKxB -> b_adKxD -> c_adKxB)
+      (z_XdJRK :: c_adKxB)
+      (t_XdJRM :: (a_adKxC, b_adKxD)) ->
+      g_XdJRI
+        (f_XdJRG
+           z_XdJRK (case t_XdJRM of { (a1_adJPX, b1_adJPY) -> a1_adJPX }))
+        (case t_XdJRM of { (a1_adJPX, b1_adJPY) -> b1_adJPY })
+
+-- RHS size: {terms: 5, types: 1, coercions: 0, joins: 0/0}
+Data.Bifoldable.$fBifoldable(,) [InlPrag=NOUSERINLINE CONLIKE]
+  :: Bifoldable (,)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ ->
+       Data.Bifoldable.C:Bifoldable TYPE: (,)
+                                    Data.Bifoldable.$fBifoldable(,)_$cbifold
+                                    Data.Bifoldable.$fBifoldable(,)_$cbifoldMap
+                                    Data.Bifoldable.$fBifoldable(,)_$cbifoldr
+                                    Data.Bifoldable.$fBifoldable(,)_$cbifoldl]
+Data.Bifoldable.$fBifoldable(,)
+  = Data.Bifoldable.C:Bifoldable
+      @ (,)
+      Data.Bifoldable.$fBifoldable(,)_$cbifold
+      Data.Bifoldable.$fBifoldable(,)_$cbifoldMap
+      Data.Bifoldable.$fBifoldable(,)_$cbifoldr
+      Data.Bifoldable.$fBifoldable(,)_$cbifoldl
+
+-- RHS size: {terms: 34, types: 40, coercions: 0, joins: 0/0}
+bifoldr'
+  :: forall (t :: * -> * -> *) a c b.
+     Bifoldable t =>
+     (a -> c -> c) -> (b -> c -> c) -> c -> t a b -> c
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLLC(C(C(C(S))))),1*U(A,A,A,1*C1(C1(C1(C1(U)))))><L,C(C1(U))><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 60 60 0 0] 250 0}]
+bifoldr'
+  = \ (@ (t_adKoa :: * -> * -> *))
+      (@ a_adKob)
+      (@ c_adKoc)
+      (@ b_adKod)
+      ($dBifoldable_adKof :: Bifoldable t_adKoa)
+      (f_adJRB :: a_adKob -> c_adKoc -> c_adKoc)
+      (g_adJRC :: b_adKod -> c_adKoc -> c_adKoc)
+      (z0_adJRD :: c_adKoc)
+      (xs_adJRE :: t_adKoa a_adKob b_adKod) ->
+      bifoldl
+        @ t_adKoa
+        $dBifoldable_adKof
+        @ (c_adKoc -> c_adKoc)
+        @ a_adKob
+        @ b_adKod
+        (\ (k_adJRH :: c_adKoc -> c_adKoc)
+           (x_adJRI :: a_adKob)
+           (z_adJRJ :: c_adKoc) ->
+           case f_adJRB x_adJRI z_adJRJ of vx_i7Sdn { __DEFAULT ->
+           k_adJRH vx_i7Sdn
+           })
+        (\ (k_adJRK :: c_adKoc -> c_adKoc)
+           (x_adJRL :: b_adKod)
+           (z_adJRM :: c_adKoc) ->
+           case g_adJRC x_adJRL z_adJRM of vx_i7Sdn { __DEFAULT ->
+           k_adJRK vx_i7Sdn
+           })
+        (id @ c_adKoc)
+        xs_adJRE
+        z0_adJRD
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl_rdL8s :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl_rdL8s = "error"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl1_rdL8t :: [Char]
+[GblId]
+lvl1_rdL8t = GHC.CString.unpackCString# lvl_rdL8s
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$trModule4 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+Data.Bifoldable.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl2_rdL8u :: [Char]
+[GblId]
+lvl2_rdL8u = GHC.CString.unpackCString# Data.Bifoldable.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$trModule2 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 50 0}]
+Data.Bifoldable.$trModule2 = "Data.Bifoldable"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl3_rdL8v :: [Char]
+[GblId]
+lvl3_rdL8v = GHC.CString.unpackCString# Data.Bifoldable.$trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl4_rdL8w :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl4_rdL8w = "./Data/Bifoldable.hs"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl5_rdL8x :: [Char]
+[GblId]
+lvl5_rdL8x = GHC.CString.unpackCString# lvl4_rdL8w
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl6_rdL8y :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl6_rdL8y = GHC.Types.I# 188#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl7_rdL8z :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl7_rdL8z = GHC.Types.I# 28#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl8_rdL8A :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl8_rdL8A = GHC.Types.I# 61#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl9_rdL8B :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl9_rdL8B
+  = GHC.Stack.Types.SrcLoc
+      lvl2_rdL8u
+      lvl3_rdL8v
+      lvl5_rdL8x
+      lvl6_rdL8y
+      lvl7_rdL8z
+      lvl6_rdL8y
+      lvl8_rdL8A
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl10_rdL8C :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl10_rdL8C
+  = GHC.Stack.Types.PushCallStack
+      lvl1_rdL8t lvl9_rdL8B GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl11_rdL8D :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl11_rdL8D = "bifoldr1: empty structure"#
+
+-- RHS size: {terms: 5, types: 4, coercions: 4, joins: 0/0}
+Data.Bifoldable.bifoldr2 :: forall a. a
+[GblId, Str=x]
+Data.Bifoldable.bifoldr2
+  = \ (@ a_adKmT) ->
+      error
+        @ 'GHC.Types.LiftedRep
+        @ a_adKmT
+        (lvl10_rdL8C
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+        (GHC.CString.unpackCString# lvl11_rdL8D)
+
+-- RHS size: {terms: 28, types: 38, coercions: 0, joins: 0/1}
+bifoldr1
+  :: forall (t :: * -> * -> *) a.
+     Bifoldable t =>
+     (a -> a -> a) -> t a a -> a
+[GblId,
+ Arity=3,
+ Str=<S(LLC(C(C(C(S))))L),1*U(A,A,1*C1(C1(C1(C1(U)))),A)><L,C(C1(U))><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 170 0}]
+bifoldr1
+  = \ (@ (t_adKmS :: * -> * -> *))
+      (@ a_adKmT)
+      ($dBifoldable_adKmV :: Bifoldable t_adKmS)
+      (f_adJRN :: a_adKmT -> a_adKmT -> a_adKmT)
+      (xs_adJRO :: t_adKmS a_adKmT a_adKmT) ->
+      let {
+        mbf_sdKM3 :: a_adKmT -> Maybe a_adKmT -> Maybe a_adKmT
+        [LclId,
+         Arity=2,
+         Str=<L,U><L,1*U>,
+         Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                 WorkFree=True, Expandable=True,
+                 Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+                 Tmpl= \ (x_adJRQ [Occ=Once*] :: a_adKmT)
+                         (m_adJRR [Occ=Once!] :: Maybe a_adKmT) ->
+                         GHC.Base.Just
+                           @ a_adKmT
+                           (case m_adJRR of {
+                              Nothing -> x_adJRQ;
+                              Just y_adJRS [Occ=Once] -> f_adJRN x_adJRQ y_adJRS
+                            })}]
+        mbf_sdKM3
+          = \ (x_adJRQ :: a_adKmT) (m_adJRR :: Maybe a_adKmT) ->
+              GHC.Base.Just
+                @ a_adKmT
+                (case m_adJRR of {
+                   Nothing -> x_adJRQ;
+                   Just y_adJRS -> f_adJRN x_adJRQ y_adJRS
+                 }) } in
+      case bifoldr
+             @ t_adKmS
+             $dBifoldable_adKmV
+             @ a_adKmT
+             @ (Maybe a_adKmT)
+             @ a_adKmT
+             mbf_sdKM3
+             mbf_sdKM3
+             (GHC.Base.Nothing @ a_adKmT)
+             xs_adJRO
+      of {
+        Nothing -> Data.Bifoldable.bifoldr2 @ a_adKmT;
+        Just v_icq5H -> v_icq5H
+      }
+
+-- RHS size: {terms: 33, types: 39, coercions: 0, joins: 0/1}
+bimaximumBy
+  :: forall (t :: * -> * -> *) a.
+     Bifoldable t =>
+     (a -> a -> Ordering) -> t a a -> a
+[GblId,
+ Arity=3,
+ Str=<S(LLC(C(C(C(S))))L),1*U(A,A,1*C1(C1(C1(C1(U)))),A)><L,C(C1(U))><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 190 0}]
+bimaximumBy
+  = \ (@ (t_adKno :: * -> * -> *))
+      (@ a_adKnp)
+      ($dBifoldable_adKnr :: Bifoldable t_adKno)
+      (cmp_adJSN :: a_adKnp -> a_adKnp -> Ordering)
+      (xs_adJRO :: t_adKno a_adKnp a_adKnp) ->
+      let {
+        mbf_sdKM3 :: a_adKnp -> Maybe a_adKnp -> Maybe a_adKnp
+        [LclId,
+         Arity=2,
+         Str=<L,U><L,1*U>,
+         Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                 WorkFree=True, Expandable=True,
+                 Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+                 Tmpl= \ (x_adJRQ :: a_adKnp)
+                         (m_adJRR [Occ=Once!] :: Maybe a_adKnp) ->
+                         GHC.Base.Just
+                           @ a_adKnp
+                           (case m_adJRR of {
+                              Nothing -> x_adJRQ;
+                              Just y_adJRS ->
+                                case cmp_adJSN x_adJRQ y_adJRS of {
+                                  __DEFAULT -> y_adJRS;
+                                  GT -> x_adJRQ
+                                }
+                            })}]
+        mbf_sdKM3
+          = \ (x_adJRQ :: a_adKnp) (m_adJRR :: Maybe a_adKnp) ->
+              GHC.Base.Just
+                @ a_adKnp
+                (case m_adJRR of {
+                   Nothing -> x_adJRQ;
+                   Just y_adJRS ->
+                     case cmp_adJSN x_adJRQ y_adJRS of {
+                       __DEFAULT -> y_adJRS;
+                       GT -> x_adJRQ
+                     }
+                 }) } in
+      case bifoldr
+             @ t_adKno
+             $dBifoldable_adKnr
+             @ a_adKnp
+             @ (Maybe a_adKnp)
+             @ a_adKnp
+             mbf_sdKM3
+             mbf_sdKM3
+             (GHC.Base.Nothing @ a_adKnp)
+             xs_adJRO
+      of {
+        Nothing -> Data.Bifoldable.bifoldr2 @ a_adKnp;
+        Just v_icq5H -> v_icq5H
+      }
+
+-- RHS size: {terms: 33, types: 39, coercions: 0, joins: 0/1}
+biminimumBy
+  :: forall (t :: * -> * -> *) a.
+     Bifoldable t =>
+     (a -> a -> Ordering) -> t a a -> a
+[GblId,
+ Arity=3,
+ Str=<S(LLC(C(C(C(S))))L),1*U(A,A,1*C1(C1(C1(C1(U)))),A)><L,C(C1(U))><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 190 0}]
+biminimumBy
+  = \ (@ (t_adKnM :: * -> * -> *))
+      (@ a_adKnN)
+      ($dBifoldable_adKnP :: Bifoldable t_adKnM)
+      (cmp_adJSR :: a_adKnN -> a_adKnN -> Ordering)
+      (xs_adJRO :: t_adKnM a_adKnN a_adKnN) ->
+      let {
+        mbf_sdKM3 :: a_adKnN -> Maybe a_adKnN -> Maybe a_adKnN
+        [LclId,
+         Arity=2,
+         Str=<L,U><L,1*U>,
+         Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                 WorkFree=True, Expandable=True,
+                 Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+                 Tmpl= \ (x_adJRQ :: a_adKnN)
+                         (m_adJRR [Occ=Once!] :: Maybe a_adKnN) ->
+                         GHC.Base.Just
+                           @ a_adKnN
+                           (case m_adJRR of {
+                              Nothing -> x_adJRQ;
+                              Just y_adJRS ->
+                                case cmp_adJSR x_adJRQ y_adJRS of {
+                                  __DEFAULT -> x_adJRQ;
+                                  GT -> y_adJRS
+                                }
+                            })}]
+        mbf_sdKM3
+          = \ (x_adJRQ :: a_adKnN) (m_adJRR :: Maybe a_adKnN) ->
+              GHC.Base.Just
+                @ a_adKnN
+                (case m_adJRR of {
+                   Nothing -> x_adJRQ;
+                   Just y_adJRS ->
+                     case cmp_adJSR x_adJRQ y_adJRS of {
+                       __DEFAULT -> x_adJRQ;
+                       GT -> y_adJRS
+                     }
+                 }) } in
+      case bifoldr
+             @ t_adKnM
+             $dBifoldable_adKnP
+             @ a_adKnN
+             @ (Maybe a_adKnN)
+             @ a_adKnN
+             mbf_sdKM3
+             mbf_sdKM3
+             (GHC.Base.Nothing @ a_adKnN)
+             xs_adJRO
+      of {
+        Nothing -> Data.Bifoldable.bifoldr2 @ a_adKnN;
+        Just v_icq5H -> v_icq5H
+      }
+
+-- RHS size: {terms: 35, types: 56, coercions: 0, joins: 0/0}
+bifoldrM
+  :: forall (t :: * -> * -> *) (m :: * -> *) a c b.
+     (Bifoldable t, Monad m) =>
+     (a -> c -> m c) -> (b -> c -> m c) -> c -> t a b -> m c
+[GblId,
+ Arity=6,
+ Caf=NoCafRefs,
+ Str=<S(LLLC(C(C(C(S))))),1*U(A,A,A,1*C1(C1(C1(C1(U)))))><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 90 60 60 0 0] 290 0}]
+bifoldrM
+  = \ (@ (t_adKlN :: * -> * -> *))
+      (@ (m_adKlO :: * -> *))
+      (@ a_adKlP)
+      (@ c_adKlQ)
+      (@ b_adKlR)
+      ($dBifoldable_adKlT :: Bifoldable t_adKlN)
+      ($dMonad_adKlU :: Monad m_adKlO)
+      (f_adJRT :: a_adKlP -> c_adKlQ -> m_adKlO c_adKlQ)
+      (g_adJRU :: b_adKlR -> c_adKlQ -> m_adKlO c_adKlQ)
+      (z0_adJRV :: c_adKlQ)
+      (xs_adJRW :: t_adKlN a_adKlP b_adKlR) ->
+      bifoldl
+        @ t_adKlN
+        $dBifoldable_adKlT
+        @ (c_adKlQ -> m_adKlO c_adKlQ)
+        @ a_adKlP
+        @ b_adKlR
+        (\ (k_adJRZ :: c_adKlQ -> m_adKlO c_adKlQ)
+           (x_adJS0 :: a_adKlP)
+           (z_adJS1 :: c_adKlQ) ->
+           >>=
+             @ m_adKlO
+             $dMonad_adKlU
+             @ c_adKlQ
+             @ c_adKlQ
+             (f_adJRT x_adJS0 z_adJS1)
+             k_adJRZ)
+        (\ (k_adJS2 :: c_adKlQ -> m_adKlO c_adKlQ)
+           (x_adJS3 :: b_adKlR)
+           (z_adJS4 :: c_adKlQ) ->
+           >>=
+             @ m_adKlO
+             $dMonad_adKlU
+             @ c_adKlQ
+             @ c_adKlQ
+             (g_adJRU x_adJS3 z_adJS4)
+             k_adJS2)
+        (return @ m_adKlO $dMonad_adKlU @ c_adKlQ)
+        xs_adJRW
+        z0_adJRV
+
+-- RHS size: {terms: 34, types: 40, coercions: 0, joins: 0/0}
+bifoldl'
+  :: forall (t :: * -> * -> *) a b c.
+     Bifoldable t =>
+     (a -> b -> a) -> (a -> c -> a) -> a -> t b c -> a
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(C(S))))L),1*U(A,A,1*C1(C1(C1(C1(U)))),A)><L,C(C1(U))><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 60 60 0 0] 250 0}]
+bifoldl'
+  = \ (@ (t_adKkv :: * -> * -> *))
+      (@ a_adKkw)
+      (@ b_adKkx)
+      (@ c_adKky)
+      ($dBifoldable_adKkA :: Bifoldable t_adKkv)
+      (f_adJS5 :: a_adKkw -> b_adKkx -> a_adKkw)
+      (g_adJS6 :: a_adKkw -> c_adKky -> a_adKkw)
+      (z0_adJS7 :: a_adKkw)
+      (xs_adJS8 :: t_adKkv b_adKkx c_adKky) ->
+      bifoldr
+        @ t_adKkv
+        $dBifoldable_adKkA
+        @ b_adKkx
+        @ (a_adKkw -> a_adKkw)
+        @ c_adKky
+        (\ (x_adJSb :: b_adKkx)
+           (k_adJSc :: a_adKkw -> a_adKkw)
+           (z_adJSd :: a_adKkw) ->
+           case f_adJS5 z_adJSd x_adJSb of vx_i7Sdn { __DEFAULT ->
+           k_adJSc vx_i7Sdn
+           })
+        (\ (x_adJSe :: c_adKky)
+           (k_adJSf :: a_adKkw -> a_adKkw)
+           (z_adJSg :: a_adKkw) ->
+           case g_adJS6 z_adJSg x_adJSe of vx_i7Sdn { __DEFAULT ->
+           k_adJSf vx_i7Sdn
+           })
+        (id @ a_adKkw)
+        xs_adJS8
+        z0_adJS7
+
+-- RHS size: {terms: 12, types: 8, coercions: 0, joins: 0/0}
+Data.Bifoldable.bilength2
+  :: forall a. a -> (Int -> Int) -> Int -> Int
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,A><C(S),1*C1(U(U))><S,1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_adKlt)
+                 _ [Occ=Dead]
+                 (k_adJSc [Occ=Once!] :: Int -> Int)
+                 (z_adJSd [Occ=Once!] :: Int) ->
+                 case z_adJSd of { GHC.Types.I# x1_i7MX1 [Occ=Once] ->
+                 k_adJSc (GHC.Types.I# (GHC.Prim.+# x1_i7MX1 1#))
+                 }}]
+Data.Bifoldable.bilength2
+  = \ (@ a_adKlt)
+      _ [Occ=Dead]
+      (k_adJSc :: Int -> Int)
+      (z_adJSd :: Int) ->
+      case z_adJSd of { GHC.Types.I# x1_i7MX1 ->
+      k_adJSc (GHC.Types.I# (GHC.Prim.+# x1_i7MX1 1#))
+      }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.bilength1 :: Int
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Bifoldable.bilength1 = GHC.Types.I# 0#
+
+-- RHS size: {terms: 12, types: 23, coercions: 0, joins: 0/0}
+bilength
+  :: forall (t :: * -> * -> *) a b. Bifoldable t => t a b -> Int
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(C(S))))L),1*U(A,A,1*C1(C1(C1(C1(U)))),A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKls :: * -> * -> *))
+                 (@ a_adKlt)
+                 (@ b_adKlu)
+                 ($dBifoldable_adKlw [Occ=Once] :: Bifoldable t_adKls)
+                 (eta_B1 [Occ=Once] :: t_adKls a_adKlt b_adKlu) ->
+                 bifoldr
+                   @ t_adKls
+                   $dBifoldable_adKlw
+                   @ a_adKlt
+                   @ (Int -> Int)
+                   @ b_adKlu
+                   (Data.Bifoldable.bilength2 @ a_adKlt)
+                   (Data.Bifoldable.bilength2 @ b_adKlu)
+                   (id @ Int)
+                   eta_B1
+                   Data.Bifoldable.bilength1}]
+bilength
+  = \ (@ (t_adKls :: * -> * -> *))
+      (@ a_adKlt)
+      (@ b_adKlu)
+      ($dBifoldable_adKlw :: Bifoldable t_adKls)
+      (eta_B1 :: t_adKls a_adKlt b_adKlu) ->
+      bifoldr
+        @ t_adKls
+        $dBifoldable_adKlw
+        @ a_adKlt
+        @ (Int -> Int)
+        @ b_adKlu
+        (Data.Bifoldable.bilength2 @ a_adKlt)
+        (Data.Bifoldable.bilength2 @ b_adKlu)
+        (id @ Int)
+        eta_B1
+        Data.Bifoldable.bilength1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl12_rdL8E :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl12_rdL8E = GHC.Types.I# 223#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl13_rdL8F :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl13_rdL8F
+  = GHC.Stack.Types.SrcLoc
+      lvl2_rdL8u
+      lvl3_rdL8v
+      lvl5_rdL8x
+      lvl12_rdL8E
+      lvl7_rdL8z
+      lvl12_rdL8E
+      lvl8_rdL8A
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl14_rdL8G :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl14_rdL8G
+  = GHC.Stack.Types.PushCallStack
+      lvl1_rdL8t lvl13_rdL8F GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl15_rdL8H :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl15_rdL8H = "bifoldl1: empty structure"#
+
+-- RHS size: {terms: 5, types: 4, coercions: 4, joins: 0/0}
+Data.Bifoldable.bifoldl2 :: forall a. a
+[GblId, Str=x]
+Data.Bifoldable.bifoldl2
+  = \ (@ a_adKk0) ->
+      error
+        @ 'GHC.Types.LiftedRep
+        @ a_adKk0
+        (lvl14_rdL8G
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+        (GHC.CString.unpackCString# lvl15_rdL8H)
+
+-- RHS size: {terms: 28, types: 38, coercions: 0, joins: 0/1}
+bifoldl1
+  :: forall (t :: * -> * -> *) a.
+     Bifoldable t =>
+     (a -> a -> a) -> t a a -> a
+[GblId,
+ Arity=3,
+ Str=<S(LLLC(C(C(C(S))))),1*U(A,A,A,1*C1(C1(C1(C1(U)))))><L,C(C1(U))><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 170 0}]
+bifoldl1
+  = \ (@ (t_adKjZ :: * -> * -> *))
+      (@ a_adKk0)
+      ($dBifoldable_adKk2 :: Bifoldable t_adKjZ)
+      (f_adJSh :: a_adKk0 -> a_adKk0 -> a_adKk0)
+      (xs_adJSi :: t_adKjZ a_adKk0 a_adKk0) ->
+      let {
+        mbf_sdKLH :: Maybe a_adKk0 -> a_adKk0 -> Maybe a_adKk0
+        [LclId,
+         Arity=2,
+         Str=<L,1*U><L,U>,
+         Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                 WorkFree=True, Expandable=True,
+                 Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+                 Tmpl= \ (m_adJSk [Occ=Once!] :: Maybe a_adKk0)
+                         (y_adJSl [Occ=Once*] :: a_adKk0) ->
+                         GHC.Base.Just
+                           @ a_adKk0
+                           (case m_adJSk of {
+                              Nothing -> y_adJSl;
+                              Just x_adJSm [Occ=Once] -> f_adJSh x_adJSm y_adJSl
+                            })}]
+        mbf_sdKLH
+          = \ (m_adJSk :: Maybe a_adKk0) (y_adJSl :: a_adKk0) ->
+              GHC.Base.Just
+                @ a_adKk0
+                (case m_adJSk of {
+                   Nothing -> y_adJSl;
+                   Just x_adJSm -> f_adJSh x_adJSm y_adJSl
+                 }) } in
+      case bifoldl
+             @ t_adKjZ
+             $dBifoldable_adKk2
+             @ (Maybe a_adKk0)
+             @ a_adKk0
+             @ a_adKk0
+             mbf_sdKLH
+             mbf_sdKLH
+             (GHC.Base.Nothing @ a_adKk0)
+             xs_adJSi
+      of {
+        Nothing -> Data.Bifoldable.bifoldl2 @ a_adKk0;
+        Just v_icq5H -> v_icq5H
+      }
+
+-- RHS size: {terms: 35, types: 56, coercions: 0, joins: 0/0}
+bifoldlM
+  :: forall (t :: * -> * -> *) (m :: * -> *) a b c.
+     (Bifoldable t, Monad m) =>
+     (a -> b -> m a) -> (a -> c -> m a) -> a -> t b c -> m a
+[GblId,
+ Arity=6,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(C(S))))L),1*U(A,A,1*C1(C1(C1(C1(U)))),A)><L,U(A,C(C1(U)),A,1*U,A)><L,C(C1(U))><L,C(C1(U))><L,U><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 90 60 60 0 0] 290 0}]
+bifoldlM
+  = \ (@ (t_adKiU :: * -> * -> *))
+      (@ (m_adKiV :: * -> *))
+      (@ a_adKiW)
+      (@ b_adKiX)
+      (@ c_adKiY)
+      ($dBifoldable_adKj0 :: Bifoldable t_adKiU)
+      ($dMonad_adKj1 :: Monad m_adKiV)
+      (f_adJSn :: a_adKiW -> b_adKiX -> m_adKiV a_adKiW)
+      (g_adJSo :: a_adKiW -> c_adKiY -> m_adKiV a_adKiW)
+      (z0_adJSp :: a_adKiW)
+      (xs_adJSq :: t_adKiU b_adKiX c_adKiY) ->
+      bifoldr
+        @ t_adKiU
+        $dBifoldable_adKj0
+        @ b_adKiX
+        @ (a_adKiW -> m_adKiV a_adKiW)
+        @ c_adKiY
+        (\ (x_adJSt :: b_adKiX)
+           (k_adJSu :: a_adKiW -> m_adKiV a_adKiW)
+           (z_adJSv :: a_adKiW) ->
+           >>=
+             @ m_adKiV
+             $dMonad_adKj1
+             @ a_adKiW
+             @ a_adKiW
+             (f_adJSn z_adJSv x_adJSt)
+             k_adJSu)
+        (\ (x_adJSw :: c_adKiY)
+           (k_adJSx :: a_adKiW -> m_adKiV a_adKiW)
+           (z_adJSy :: a_adKiW) ->
+           >>=
+             @ m_adKiV
+             $dMonad_adKj1
+             @ a_adKiW
+             @ a_adKiW
+             (g_adJSo z_adJSy x_adJSw)
+             k_adJSx)
+        (return @ m_adKiV $dMonad_adKj1 @ a_adKiW)
+        xs_adJSq
+        z0_adJSp
+
+-- RHS size: {terms: 25, types: 43, coercions: 0, joins: 0/0}
+bitraverse_
+  :: forall (t :: * -> * -> *) (f :: * -> *) a c b d.
+     (Bifoldable t, Applicative f) =>
+     (a -> f c) -> (b -> f d) -> t a b -> f ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*C1(U),A,A,C(U),A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=IF_ARGS [30 90 60 60] 200 0}]
+bitraverse_
+  = \ (@ (t_adKhw :: * -> * -> *))
+      (@ (f_adKhx :: * -> *))
+      (@ a_adKhy)
+      (@ c_adKhz)
+      (@ b_adKhA)
+      (@ d_adKhB)
+      ($dBifoldable_adKhD :: Bifoldable t_adKhw)
+      ($dApplicative_adKhE :: Applicative f_adKhx)
+      (f1_adJSz :: a_adKhy -> f_adKhx c_adKhz)
+      (g_adJSA :: b_adKhA -> f_adKhx d_adKhB) ->
+      bifoldr
+        @ t_adKhw
+        $dBifoldable_adKhD
+        @ a_adKhy
+        @ (f_adKhx ())
+        @ b_adKhA
+        (\ (x_i7Rxi :: a_adKhy) ->
+           *> @ f_adKhx $dApplicative_adKhE @ c_adKhz @ () (f1_adJSz x_i7Rxi))
+        (\ (x_i7Rxi :: b_adKhA) ->
+           *> @ f_adKhx $dApplicative_adKhE @ d_adKhB @ () (g_adJSA x_i7Rxi))
+        (pure @ f_adKhx $dApplicative_adKhE @ () GHC.Tuple.())
+
+-- RHS size: {terms: 17, types: 37, coercions: 0, joins: 0/0}
+bifor_
+  :: forall (t :: * -> * -> *) (f :: * -> *) a b c d.
+     (Bifoldable t, Applicative f) =>
+     t a b -> (a -> f c) -> (b -> f d) -> f ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,C(U),A,A,C(U),A)><L,U><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=5,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ (t_adKi2 :: * -> * -> *))
+                 (@ (f_adKi3 :: * -> *))
+                 (@ a_adKi4)
+                 (@ b_adKi5)
+                 (@ c_adKi6)
+                 (@ d_adKi7)
+                 ($dBifoldable_adKi9 [Occ=Once] :: Bifoldable t_adKi2)
+                 ($dApplicative_adKia [Occ=Once] :: Applicative f_adKi3)
+                 (t1_adJSB [Occ=Once] :: t_adKi2 a_adKi4 b_adKi5)
+                 (f1_adJSC [Occ=Once] :: a_adKi4 -> f_adKi3 c_adKi6)
+                 (g_adJSD [Occ=Once] :: b_adKi5 -> f_adKi3 d_adKi7) ->
+                 bitraverse_
+                   @ t_adKi2
+                   @ f_adKi3
+                   @ a_adKi4
+                   @ c_adKi6
+                   @ b_adKi5
+                   @ d_adKi7
+                   $dBifoldable_adKi9
+                   $dApplicative_adKia
+                   f1_adJSC
+                   g_adJSD
+                   t1_adJSB}]
+bifor_
+  = \ (@ (t_adKi2 :: * -> * -> *))
+      (@ (f_adKi3 :: * -> *))
+      (@ a_adKi4)
+      (@ b_adKi5)
+      (@ c_adKi6)
+      (@ d_adKi7)
+      ($dBifoldable_adKi9 :: Bifoldable t_adKi2)
+      ($dApplicative_adKia :: Applicative f_adKi3)
+      (t1_adJSB :: t_adKi2 a_adKi4 b_adKi5)
+      (f1_adJSC :: a_adKi4 -> f_adKi3 c_adKi6)
+      (g_adJSD :: b_adKi5 -> f_adKi3 d_adKi7) ->
+      bitraverse_
+        @ t_adKi2
+        @ f_adKi3
+        @ a_adKi4
+        @ c_adKi6
+        @ b_adKi5
+        @ d_adKi7
+        $dBifoldable_adKi9
+        $dApplicative_adKia
+        f1_adJSC
+        g_adJSD
+        t1_adJSB
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+biforM_
+  :: forall (t :: * -> * -> *) (f :: * -> *) a b c d.
+     (Bifoldable t, Applicative f) =>
+     t a b -> (a -> f c) -> (b -> f d) -> f ()
+[GblId,
+ Arity=5,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,C(U),A,A,C(U),A)><L,U><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= bifor_}]
+biforM_ = bifor_
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+bimapM_
+  :: forall (t :: * -> * -> *) (f :: * -> *) a c b d.
+     (Bifoldable t, Applicative f) =>
+     (a -> f c) -> (b -> f d) -> t a b -> f ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*C1(U),A,A,C(U),A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= bitraverse_}]
+bimapM_ = bitraverse_
+
+-- RHS size: {terms: 15, types: 33, coercions: 0, joins: 0/0}
+bisequence_
+  :: forall (t :: * -> * -> *) (f :: * -> *) a b.
+     (Bifoldable t, Applicative f) =>
+     t (f a) (f b) -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*C1(U),A,A,U,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 90] 120 0}]
+bisequence_
+  = \ (@ (t_adKgU :: * -> * -> *))
+      (@ (f_adKgV :: * -> *))
+      (@ a_adKgW)
+      (@ b_adKgX)
+      ($dBifoldable_adKgZ :: Bifoldable t_adKgU)
+      ($dApplicative_adKh0 :: Applicative f_adKgV) ->
+      bifoldr
+        @ t_adKgU
+        $dBifoldable_adKgZ
+        @ (f_adKgV a_adKgW)
+        @ (f_adKgV ())
+        @ (f_adKgV b_adKgX)
+        (*> @ f_adKgV $dApplicative_adKh0 @ a_adKgW @ ())
+        (*> @ f_adKgV $dApplicative_adKh0 @ b_adKgX @ ())
+        (pure @ f_adKgV $dApplicative_adKh0 @ () GHC.Tuple.())
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+bisequenceA_
+  :: forall (t :: * -> * -> *) (f :: * -> *) a b.
+     (Bifoldable t, Applicative f) =>
+     t (f a) (f b) -> f ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*C1(U),A,A,U,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= bisequence_}]
+bisequenceA_ = bisequence_
+
+-- RHS size: {terms: 13, types: 29, coercions: 0, joins: 0/0}
+biasum
+  :: forall (t :: * -> * -> *) (f :: * -> *) a.
+     (Bifoldable t, Alternative f) =>
+     t (f a) (f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*U,U,A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 90] 110 0}]
+biasum
+  = \ (@ (t_adKgn :: * -> * -> *))
+      (@ (f_adKgo :: * -> *))
+      (@ a_adKgp)
+      ($dBifoldable_adKgr :: Bifoldable t_adKgn)
+      ($dAlternative_adKgs :: Alternative f_adKgo) ->
+      bifoldr
+        @ t_adKgn
+        $dBifoldable_adKgr
+        @ (f_adKgo a_adKgp)
+        @ (f_adKgo a_adKgp)
+        @ (f_adKgo a_adKgp)
+        (<|> @ f_adKgo $dAlternative_adKgs @ a_adKgp)
+        (<|> @ f_adKgo $dAlternative_adKgs @ a_adKgp)
+        (empty @ f_adKgo $dAlternative_adKgs @ a_adKgp)
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+bimsum
+  :: forall (t :: * -> * -> *) (f :: * -> *) a.
+     (Bifoldable t, Alternative f) =>
+     t (f a) (f a) -> f a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)><L,U(A,1*U,U,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= biasum}]
+bimsum = biasum
+
+-- RHS size: {terms: 8, types: 18, coercions: 0, joins: 0/0}
+biList :: forall (t :: * -> * -> *) a. Bifoldable t => t a a -> [a]
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKgb :: * -> * -> *))
+                 (@ a_adKgc)
+                 ($dBifoldable_adKge [Occ=Once] :: Bifoldable t_adKgb) ->
+                 bifoldr
+                   @ t_adKgb
+                   $dBifoldable_adKge
+                   @ a_adKgc
+                   @ [a_adKgc]
+                   @ a_adKgc
+                   (GHC.Types.: @ a_adKgc)
+                   (GHC.Types.: @ a_adKgc)
+                   (GHC.Types.[] @ a_adKgc)}]
+biList
+  = \ (@ (t_adKgb :: * -> * -> *))
+      (@ a_adKgc)
+      ($dBifoldable_adKge :: Bifoldable t_adKgb) ->
+      bifoldr
+        @ t_adKgb
+        $dBifoldable_adKge
+        @ a_adKgc
+        @ [a_adKgc]
+        @ a_adKgc
+        (GHC.Types.: @ a_adKgc)
+        (GHC.Types.: @ a_adKgc)
+        (GHC.Types.[] @ a_adKgc)
+
+-- RHS size: {terms: 4, types: 4, coercions: 0, joins: 0/0}
+Data.Bifoldable.binull1 :: forall a. a -> Bool -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,A><L,A>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adKg1) _ [Occ=Dead] _ [Occ=Dead] -> GHC.Types.False}]
+Data.Bifoldable.binull1
+  = \ (@ a_adKg1) _ [Occ=Dead] _ [Occ=Dead] -> GHC.Types.False
+
+-- RHS size: {terms: 9, types: 18, coercions: 0, joins: 0/0}
+binull
+  :: forall (t :: * -> * -> *) a b. Bifoldable t => t a b -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(LLC(C(C(S)))L),1*U(A,A,1*C1(C1(C1(U))),A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKg0 :: * -> * -> *))
+                 (@ a_adKg1)
+                 (@ b_adKg2)
+                 ($dBifoldable_adKg4 [Occ=Once] :: Bifoldable t_adKg0) ->
+                 bifoldr
+                   @ t_adKg0
+                   $dBifoldable_adKg4
+                   @ a_adKg1
+                   @ Bool
+                   @ b_adKg2
+                   (Data.Bifoldable.binull1 @ a_adKg1)
+                   (Data.Bifoldable.binull1 @ b_adKg2)
+                   GHC.Types.True}]
+binull
+  = \ (@ (t_adKg0 :: * -> * -> *))
+      (@ a_adKg1)
+      (@ b_adKg2)
+      ($dBifoldable_adKg4 :: Bifoldable t_adKg0) ->
+      bifoldr
+        @ t_adKg0
+        $dBifoldable_adKg4
+        @ a_adKg1
+        @ Bool
+        @ b_adKg2
+        (Data.Bifoldable.binull1 @ a_adKg1)
+        (Data.Bifoldable.binull1 @ b_adKg2)
+        GHC.Types.True
+
+-- RHS size: {terms: 6, types: 14, coercions: 0, joins: 0/0}
+biconcat
+  :: forall (t :: * -> * -> *) a. Bifoldable t => t [a] [a] -> [a]
+[GblId,
+ Arity=1,
+ Str=<S(C(S)LLL),1*U(1*C1(U),A,A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKfq :: * -> * -> *))
+                 (@ a_adKfr)
+                 ($dBifoldable_adKft [Occ=Once] :: Bifoldable t_adKfq) ->
+                 bifold
+                   @ t_adKfq
+                   $dBifoldable_adKft
+                   @ [a_adKfr]
+                   (GHC.Base.$fMonoid[] @ a_adKfr)}]
+biconcat
+  = \ (@ (t_adKfq :: * -> * -> *))
+      (@ a_adKfr)
+      ($dBifoldable_adKft :: Bifoldable t_adKfq) ->
+      bifold
+        @ t_adKfq
+        $dBifoldable_adKft
+        @ [a_adKfr]
+        (GHC.Base.$fMonoid[] @ a_adKfr)
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl16_rdL8I :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl16_rdL8I = GHC.Types.I# 334#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl17_rdL8J :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl17_rdL8J = GHC.Types.I# 24#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl18_rdL8K :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl18_rdL8K = GHC.Types.I# 58#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl19_rdL8L :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl19_rdL8L
+  = GHC.Stack.Types.SrcLoc
+      lvl2_rdL8u
+      lvl3_rdL8v
+      lvl5_rdL8x
+      lvl16_rdL8I
+      lvl17_rdL8J
+      lvl16_rdL8I
+      lvl18_rdL8K
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl20_rdL8M :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl20_rdL8M
+  = GHC.Stack.Types.PushCallStack
+      lvl1_rdL8t lvl19_rdL8L GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl21_rdL8N :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl21_rdL8N = "bimaximum: empty structure"#
+
+-- RHS size: {terms: 5, types: 4, coercions: 4, joins: 0/0}
+Data.Bifoldable.bimaximum1 :: forall a. a
+[GblId, Str=x]
+Data.Bifoldable.bimaximum1
+  = \ (@ a_adKeE) ->
+      error
+        @ 'GHC.Types.LiftedRep
+        @ a_adKeE
+        (lvl20_rdL8M
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+        (GHC.CString.unpackCString# lvl21_rdL8N)
+
+-- RHS size: {terms: 19, types: 32, coercions: 12, joins: 0/1}
+bimaximum
+  :: forall (t :: * -> * -> *) a. (Bifoldable t, Ord a) => t a a -> a
+[GblId,
+ Arity=2,
+ Str=<L,1*U(A,1*C1(C1(C1(C(U)))),A,A)><L,U(A,A,A,A,A,C(C1(U)),A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 130 60}]
+bimaximum
+  = \ (@ (t_adKeD :: * -> * -> *))
+      (@ a_adKeE)
+      ($dBifoldable_adKeG :: Bifoldable t_adKeD)
+      ($dOrd_adKeH :: Ord a_adKeE) ->
+      let {
+        g_sdKLg [Dmd=<L,C(U)>] :: t_adKeD a_adKeE a_adKeE -> Max a_adKeE
+        [LclId]
+        g_sdKLg
+          = bifoldMap
+              @ t_adKeD
+              $dBifoldable_adKeG
+              @ (Max a_adKeE)
+              @ a_adKeE
+              @ a_adKeE
+              (Data.Functor.Utils.$fMonoidMax @ a_adKeE $dOrd_adKeH)
+              ((GHC.Base.Just @ a_adKeE)
+               `cast` (<a_adKeE>_R
+                       ->_R Sym (Data.Functor.Utils.N:Max[0]) <a_adKeE>_N
+                       :: (a_adKeE -> Maybe a_adKeE :: *)
+                          ~R# (a_adKeE -> Max a_adKeE :: *)))
+              ((GHC.Base.Just @ a_adKeE)
+               `cast` (<a_adKeE>_R
+                       ->_R Sym (Data.Functor.Utils.N:Max[0]) <a_adKeE>_N
+                       :: (a_adKeE -> Maybe a_adKeE :: *)
+                          ~R# (a_adKeE -> Max a_adKeE :: *))) } in
+      \ (x_X7RAj :: t_adKeD a_adKeE a_adKeE) ->
+        case (g_sdKLg x_X7RAj)
+             `cast` (Data.Functor.Utils.N:Max[0] <a_adKeE>_N
+                     :: (Max a_adKeE :: *) ~R# (Maybe a_adKeE :: *))
+        of {
+          Nothing -> Data.Bifoldable.bimaximum1 @ a_adKeE;
+          Just v_icq5H -> v_icq5H
+        }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+lvl22_rdL8O :: Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []]
+lvl22_rdL8O = GHC.Types.I# 342#
+
+-- RHS size: {terms: 8, types: 0, coercions: 0, joins: 0/0}
+lvl23_rdL8P :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []]
+lvl23_rdL8P
+  = GHC.Stack.Types.SrcLoc
+      lvl2_rdL8u
+      lvl3_rdL8v
+      lvl5_rdL8x
+      lvl22_rdL8O
+      lvl17_rdL8J
+      lvl22_rdL8O
+      lvl18_rdL8K
+
+-- RHS size: {terms: 4, types: 0, coercions: 0, joins: 0/0}
+lvl24_rdL8Q :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []]
+lvl24_rdL8Q
+  = GHC.Stack.Types.PushCallStack
+      lvl1_rdL8t lvl23_rdL8P GHC.Stack.Types.EmptyCallStack
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+lvl25_rdL8R :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []]
+lvl25_rdL8R = "biminimum: empty structure"#
+
+-- RHS size: {terms: 5, types: 4, coercions: 4, joins: 0/0}
+Data.Bifoldable.biminimum1 :: forall a. a
+[GblId, Str=x]
+Data.Bifoldable.biminimum1
+  = \ (@ a_adKdR) ->
+      error
+        @ 'GHC.Types.LiftedRep
+        @ a_adKdR
+        (lvl24_rdL8Q
+         `cast` (Sym (GHC.Classes.N:IP[0]
+                          <"callStack">_N <GHC.Stack.Types.CallStack>_N)
+                 :: (GHC.Stack.Types.CallStack :: *)
+                    ~R# (?callStack::GHC.Stack.Types.CallStack :: Constraint)))
+        (GHC.CString.unpackCString# lvl25_rdL8R)
+
+-- RHS size: {terms: 19, types: 32, coercions: 12, joins: 0/1}
+biminimum
+  :: forall (t :: * -> * -> *) a. (Bifoldable t, Ord a) => t a a -> a
+[GblId,
+ Arity=2,
+ Str=<L,1*U(A,1*C1(C1(C1(C(U)))),A,A)><L,U(A,A,A,C(C1(U)),A,A,A,A)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 0] 130 60}]
+biminimum
+  = \ (@ (t_adKdQ :: * -> * -> *))
+      (@ a_adKdR)
+      ($dBifoldable_adKdT :: Bifoldable t_adKdQ)
+      ($dOrd_adKdU :: Ord a_adKdR) ->
+      let {
+        g_sdKLc [Dmd=<L,C(U)>] :: t_adKdQ a_adKdR a_adKdR -> Min a_adKdR
+        [LclId]
+        g_sdKLc
+          = bifoldMap
+              @ t_adKdQ
+              $dBifoldable_adKdT
+              @ (Min a_adKdR)
+              @ a_adKdR
+              @ a_adKdR
+              (Data.Functor.Utils.$fMonoidMin @ a_adKdR $dOrd_adKdU)
+              ((GHC.Base.Just @ a_adKdR)
+               `cast` (<a_adKdR>_R
+                       ->_R Sym (Data.Functor.Utils.N:Min[0]) <a_adKdR>_N
+                       :: (a_adKdR -> Maybe a_adKdR :: *)
+                          ~R# (a_adKdR -> Min a_adKdR :: *)))
+              ((GHC.Base.Just @ a_adKdR)
+               `cast` (<a_adKdR>_R
+                       ->_R Sym (Data.Functor.Utils.N:Min[0]) <a_adKdR>_N
+                       :: (a_adKdR -> Maybe a_adKdR :: *)
+                          ~R# (a_adKdR -> Min a_adKdR :: *))) } in
+      \ (x_X7RAk :: t_adKdQ a_adKdR a_adKdR) ->
+        case (g_sdKLc x_X7RAk)
+             `cast` (Data.Functor.Utils.N:Min[0] <a_adKdR>_N
+                     :: (Min a_adKdR :: *) ~R# (Maybe a_adKdR :: *))
+        of {
+          Nothing -> Data.Bifoldable.biminimum1 @ a_adKdR;
+          Just v_icq5H -> v_icq5H
+        }
+
+-- RHS size: {terms: 3, types: 3, coercions: 0, joins: 0/0}
+Data.Bifoldable.biproduct2 :: forall a. a -> a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (@ a_adKdy) (v_B1 [Occ=Once] :: a_adKdy) -> v_B1}]
+Data.Bifoldable.biproduct2
+  = \ (@ a_adKdy) (v_B1 :: a_adKdy) -> v_B1
+
+-- RHS size: {terms: 10, types: 20, coercions: 10, joins: 0/0}
+Data.Bifoldable.bisum1
+  :: forall (t :: * -> * -> *) a.
+     (Bifoldable t, Num a) =>
+     t a a -> Sum a
+[GblId,
+ Arity=2,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U(U,A,C(C1(U)),A,A,A,C(U))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKdx :: * -> * -> *))
+                 (@ a_adKdy)
+                 ($dBifoldable_adKdA [Occ=Once] :: Bifoldable t_adKdx)
+                 ($dNum_adKdB [Occ=Once] :: Num a_adKdy) ->
+                 bifoldMap
+                   @ t_adKdx
+                   $dBifoldable_adKdA
+                   @ (Sum a_adKdy)
+                   @ a_adKdy
+                   @ a_adKdy
+                   (Data.Semigroup.Internal.$fMonoidSum @ a_adKdy $dNum_adKdB)
+                   ((Data.Bifoldable.biproduct2 @ a_adKdy)
+                    `cast` (<a_adKdy>_R
+                            ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <a_adKdy>_R)
+                            :: (a_adKdy -> a_adKdy :: *) ~R# (a_adKdy -> Sum a_adKdy :: *)))
+                   ((Data.Bifoldable.biproduct2 @ a_adKdy)
+                    `cast` (<a_adKdy>_R
+                            ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <a_adKdy>_R)
+                            :: (a_adKdy -> a_adKdy :: *) ~R# (a_adKdy -> Sum a_adKdy :: *)))}]
+Data.Bifoldable.bisum1
+  = \ (@ (t_adKdx :: * -> * -> *))
+      (@ a_adKdy)
+      ($dBifoldable_adKdA :: Bifoldable t_adKdx)
+      ($dNum_adKdB :: Num a_adKdy) ->
+      bifoldMap
+        @ t_adKdx
+        $dBifoldable_adKdA
+        @ (Sum a_adKdy)
+        @ a_adKdy
+        @ a_adKdy
+        (Data.Semigroup.Internal.$fMonoidSum @ a_adKdy $dNum_adKdB)
+        ((Data.Bifoldable.biproduct2 @ a_adKdy)
+         `cast` (<a_adKdy>_R
+                 ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <a_adKdy>_R)
+                 :: (a_adKdy -> a_adKdy :: *) ~R# (a_adKdy -> Sum a_adKdy :: *)))
+        ((Data.Bifoldable.biproduct2 @ a_adKdy)
+         `cast` (<a_adKdy>_R
+                 ->_R Sym (Data.Semigroup.Internal.N:Sum[0] <a_adKdy>_R)
+                 :: (a_adKdy -> a_adKdy :: *) ~R# (a_adKdy -> Sum a_adKdy :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 22, joins: 0/0}
+bisum
+  :: forall (t :: * -> * -> *) a. (Bifoldable t, Num a) => t a a -> a
+[GblId,
+ Arity=2,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U(U,A,C(C1(U)),A,A,A,C(U))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.bisum1
+               `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N).
+                       <Bifoldable t>_R
+                       ->_R <Num a>_R
+                       ->_R <t a a>_R
+                       ->_R Data.Semigroup.Internal.N:Sum[0] <a>_R
+                       :: (forall (t :: * -> * -> *) a.
+                           (Bifoldable t, Num a) =>
+                           t a a -> Sum a :: *)
+                          ~R# (forall (t :: * -> * -> *) a.
+                               (Bifoldable t, Num a) =>
+                               t a a -> a :: *))}]
+bisum
+  = Data.Bifoldable.bisum1
+    `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N).
+            <Bifoldable t>_R
+            ->_R <Num a>_R
+            ->_R <t a a>_R
+            ->_R Data.Semigroup.Internal.N:Sum[0] <a>_R
+            :: (forall (t :: * -> * -> *) a.
+                (Bifoldable t, Num a) =>
+                t a a -> Sum a :: *)
+               ~R# (forall (t :: * -> * -> *) a.
+                    (Bifoldable t, Num a) =>
+                    t a a -> a :: *))
+
+-- RHS size: {terms: 10, types: 20, coercions: 10, joins: 0/0}
+Data.Bifoldable.biproduct1
+  :: forall (t :: * -> * -> *) a.
+     (Bifoldable t, Num a) =>
+     t a a -> Product a
+[GblId,
+ Arity=2,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U(A,A,U,A,A,A,C(U))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKde :: * -> * -> *))
+                 (@ a_adKdf)
+                 ($dBifoldable_adKdh [Occ=Once] :: Bifoldable t_adKde)
+                 ($dNum_adKdi [Occ=Once] :: Num a_adKdf) ->
+                 bifoldMap
+                   @ t_adKde
+                   $dBifoldable_adKdh
+                   @ (Product a_adKdf)
+                   @ a_adKdf
+                   @ a_adKdf
+                   (Data.Semigroup.Internal.$fMonoidProduct @ a_adKdf $dNum_adKdi)
+                   ((Data.Bifoldable.biproduct2 @ a_adKdf)
+                    `cast` (<a_adKdf>_R
+                            ->_R Sym (Data.Semigroup.Internal.N:Product[0] <a_adKdf>_R)
+                            :: (a_adKdf -> a_adKdf :: *)
+                               ~R# (a_adKdf -> Product a_adKdf :: *)))
+                   ((Data.Bifoldable.biproduct2 @ a_adKdf)
+                    `cast` (<a_adKdf>_R
+                            ->_R Sym (Data.Semigroup.Internal.N:Product[0] <a_adKdf>_R)
+                            :: (a_adKdf -> a_adKdf :: *)
+                               ~R# (a_adKdf -> Product a_adKdf :: *)))}]
+Data.Bifoldable.biproduct1
+  = \ (@ (t_adKde :: * -> * -> *))
+      (@ a_adKdf)
+      ($dBifoldable_adKdh :: Bifoldable t_adKde)
+      ($dNum_adKdi :: Num a_adKdf) ->
+      bifoldMap
+        @ t_adKde
+        $dBifoldable_adKdh
+        @ (Product a_adKdf)
+        @ a_adKdf
+        @ a_adKdf
+        (Data.Semigroup.Internal.$fMonoidProduct @ a_adKdf $dNum_adKdi)
+        ((Data.Bifoldable.biproduct2 @ a_adKdf)
+         `cast` (<a_adKdf>_R
+                 ->_R Sym (Data.Semigroup.Internal.N:Product[0] <a_adKdf>_R)
+                 :: (a_adKdf -> a_adKdf :: *)
+                    ~R# (a_adKdf -> Product a_adKdf :: *)))
+        ((Data.Bifoldable.biproduct2 @ a_adKdf)
+         `cast` (<a_adKdf>_R
+                 ->_R Sym (Data.Semigroup.Internal.N:Product[0] <a_adKdf>_R)
+                 :: (a_adKdf -> a_adKdf :: *)
+                    ~R# (a_adKdf -> Product a_adKdf :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 22, joins: 0/0}
+biproduct
+  :: forall (t :: * -> * -> *) a. (Bifoldable t, Num a) => t a a -> a
+[GblId,
+ Arity=2,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U(A,A,U,A,A,A,C(U))>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.biproduct1
+               `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N).
+                       <Bifoldable t>_R
+                       ->_R <Num a>_R
+                       ->_R <t a a>_R
+                       ->_R Data.Semigroup.Internal.N:Product[0] <a>_R
+                       :: (forall (t :: * -> * -> *) a.
+                           (Bifoldable t, Num a) =>
+                           t a a -> Product a :: *)
+                          ~R# (forall (t :: * -> * -> *) a.
+                               (Bifoldable t, Num a) =>
+                               t a a -> a :: *))}]
+biproduct
+  = Data.Bifoldable.biproduct1
+    `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N).
+            <Bifoldable t>_R
+            ->_R <Num a>_R
+            ->_R <t a a>_R
+            ->_R Data.Semigroup.Internal.N:Product[0] <a>_R
+            :: (forall (t :: * -> * -> *) a.
+                (Bifoldable t, Num a) =>
+                t a a -> Product a :: *)
+               ~R# (forall (t :: * -> * -> *) a.
+                    (Bifoldable t, Num a) =>
+                    t a a -> a :: *))
+
+-- RHS size: {terms: 8, types: 20, coercions: 0, joins: 0/0}
+biconcatMap
+  :: forall (t :: * -> * -> *) a c b.
+     Bifoldable t =>
+     (a -> [c]) -> (b -> [c]) -> t a b -> [c]
+[GblId,
+ Arity=1,
+ Str=<S(LC(S)LL),1*U(A,1*C1(U),A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKd1 :: * -> * -> *))
+                 (@ a_adKd2)
+                 (@ c_adKd3)
+                 (@ b_adKd4)
+                 ($dBifoldable_adKd6 [Occ=Once] :: Bifoldable t_adKd1) ->
+                 bifoldMap
+                   @ t_adKd1
+                   $dBifoldable_adKd6
+                   @ [c_adKd3]
+                   @ a_adKd2
+                   @ b_adKd4
+                   (GHC.Base.$fMonoid[] @ c_adKd3)}]
+biconcatMap
+  = \ (@ (t_adKd1 :: * -> * -> *))
+      (@ a_adKd2)
+      (@ c_adKd3)
+      (@ b_adKd4)
+      ($dBifoldable_adKd6 :: Bifoldable t_adKd1) ->
+      bifoldMap
+        @ t_adKd1
+        $dBifoldable_adKd6
+        @ [c_adKd3]
+        @ a_adKd2
+        @ b_adKd4
+        (GHC.Base.$fMonoid[] @ c_adKd3)
+
+-- RHS size: {terms: 2, types: 1, coercions: 0, joins: 0/0}
+Data.Bifoldable.biand2 :: Bool -> Bool
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S,1*U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=True)
+         Tmpl= \ (v_B1 [Occ=Once] :: Bool) -> v_B1}]
+Data.Bifoldable.biand2 = \ (v_B1 :: Bool) -> v_B1
+
+-- RHS size: {terms: 7, types: 12, coercions: 8, joins: 0/0}
+Data.Bifoldable.biand1
+  :: forall (t :: * -> * -> *). Bifoldable t => t Bool Bool -> All
+[GblId,
+ Arity=1,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKcN :: * -> * -> *))
+                 ($dBifoldable_adKcP [Occ=Once] :: Bifoldable t_adKcN) ->
+                 bifoldMap
+                   @ t_adKcN
+                   $dBifoldable_adKcP
+                   @ All
+                   @ Bool
+                   @ Bool
+                   Data.Semigroup.Internal.$fMonoidAll
+                   (Data.Bifoldable.biand2
+                    `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:All[0])
+                            :: (Bool -> Bool :: *) ~R# (Bool -> All :: *)))
+                   (Data.Bifoldable.biand2
+                    `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:All[0])
+                            :: (Bool -> Bool :: *) ~R# (Bool -> All :: *)))}]
+Data.Bifoldable.biand1
+  = \ (@ (t_adKcN :: * -> * -> *))
+      ($dBifoldable_adKcP :: Bifoldable t_adKcN) ->
+      bifoldMap
+        @ t_adKcN
+        $dBifoldable_adKcP
+        @ All
+        @ Bool
+        @ Bool
+        Data.Semigroup.Internal.$fMonoidAll
+        (Data.Bifoldable.biand2
+         `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:All[0])
+                 :: (Bool -> Bool :: *) ~R# (Bool -> All :: *)))
+        (Data.Bifoldable.biand2
+         `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:All[0])
+                 :: (Bool -> Bool :: *) ~R# (Bool -> All :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+biand
+  :: forall (t :: * -> * -> *). Bifoldable t => t Bool Bool -> Bool
+[GblId,
+ Arity=1,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.biand1
+               `cast` (forall (t :: <* -> * -> *>_N).
+                       <Bifoldable t>_R
+                       ->_R <t Bool Bool>_R
+                       ->_R Data.Semigroup.Internal.N:All[0]
+                       :: (forall (t :: * -> * -> *).
+                           Bifoldable t =>
+                           t Bool Bool -> All :: *)
+                          ~R# (forall (t :: * -> * -> *).
+                               Bifoldable t =>
+                               t Bool Bool -> Bool :: *))}]
+biand
+  = Data.Bifoldable.biand1
+    `cast` (forall (t :: <* -> * -> *>_N).
+            <Bifoldable t>_R
+            ->_R <t Bool Bool>_R
+            ->_R Data.Semigroup.Internal.N:All[0]
+            :: (forall (t :: * -> * -> *).
+                Bifoldable t =>
+                t Bool Bool -> All :: *)
+               ~R# (forall (t :: * -> * -> *).
+                    Bifoldable t =>
+                    t Bool Bool -> Bool :: *))
+
+-- RHS size: {terms: 7, types: 12, coercions: 8, joins: 0/0}
+Data.Bifoldable.bior1
+  :: forall (t :: * -> * -> *). Bifoldable t => t Bool Bool -> Any
+[GblId,
+ Arity=1,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKcz :: * -> * -> *))
+                 ($dBifoldable_adKcB [Occ=Once] :: Bifoldable t_adKcz) ->
+                 bifoldMap
+                   @ t_adKcz
+                   $dBifoldable_adKcB
+                   @ Any
+                   @ Bool
+                   @ Bool
+                   Data.Semigroup.Internal.$fMonoidAny
+                   (Data.Bifoldable.biand2
+                    `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                            :: (Bool -> Bool :: *) ~R# (Bool -> Any :: *)))
+                   (Data.Bifoldable.biand2
+                    `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                            :: (Bool -> Bool :: *) ~R# (Bool -> Any :: *)))}]
+Data.Bifoldable.bior1
+  = \ (@ (t_adKcz :: * -> * -> *))
+      ($dBifoldable_adKcB :: Bifoldable t_adKcz) ->
+      bifoldMap
+        @ t_adKcz
+        $dBifoldable_adKcB
+        @ Any
+        @ Bool
+        @ Bool
+        Data.Semigroup.Internal.$fMonoidAny
+        (Data.Bifoldable.biand2
+         `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                 :: (Bool -> Bool :: *) ~R# (Bool -> Any :: *)))
+        (Data.Bifoldable.biand2
+         `cast` (<Bool>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                 :: (Bool -> Bool :: *) ~R# (Bool -> Any :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 15, joins: 0/0}
+bior
+  :: forall (t :: * -> * -> *). Bifoldable t => t Bool Bool -> Bool
+[GblId,
+ Arity=1,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.bior1
+               `cast` (forall (t :: <* -> * -> *>_N).
+                       <Bifoldable t>_R
+                       ->_R <t Bool Bool>_R
+                       ->_R Data.Semigroup.Internal.N:Any[0]
+                       :: (forall (t :: * -> * -> *).
+                           Bifoldable t =>
+                           t Bool Bool -> Any :: *)
+                          ~R# (forall (t :: * -> * -> *).
+                               Bifoldable t =>
+                               t Bool Bool -> Bool :: *))}]
+bior
+  = Data.Bifoldable.bior1
+    `cast` (forall (t :: <* -> * -> *>_N).
+            <Bifoldable t>_R
+            ->_R <t Bool Bool>_R
+            ->_R Data.Semigroup.Internal.N:Any[0]
+            :: (forall (t :: * -> * -> *).
+                Bifoldable t =>
+                t Bool Bool -> Any :: *)
+               ~R# (forall (t :: * -> * -> *).
+                    Bifoldable t =>
+                    t Bool Bool -> Bool :: *))
+
+-- RHS size: {terms: 15, types: 22, coercions: 8, joins: 0/0}
+Data.Bifoldable.biany1
+  :: forall (t :: * -> * -> *) a b.
+     Bifoldable t =>
+     (a -> Bool) -> (b -> Bool) -> t a b -> Any
+[GblId,
+ Arity=3,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 60] 110 0}]
+Data.Bifoldable.biany1
+  = \ (@ (t_adKcb :: * -> * -> *))
+      (@ a_adKcc)
+      (@ b_adKcd)
+      ($dBifoldable_adKcf :: Bifoldable t_adKcb)
+      (p_adJSJ :: a_adKcc -> Bool)
+      (q_adJSK :: b_adKcd -> Bool) ->
+      bifoldMap
+        @ t_adKcb
+        $dBifoldable_adKcf
+        @ Any
+        @ a_adKcc
+        @ b_adKcd
+        Data.Semigroup.Internal.$fMonoidAny
+        ((\ (x_i7Rxi :: a_adKcc) -> p_adJSJ x_i7Rxi)
+         `cast` (<a_adKcc>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                 :: (a_adKcc -> Bool :: *) ~R# (a_adKcc -> Any :: *)))
+        ((\ (x_i7Rxi :: b_adKcd) -> q_adJSK x_i7Rxi)
+         `cast` (<b_adKcd>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                 :: (b_adKcd -> Bool :: *) ~R# (b_adKcd -> Any :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 27, joins: 0/0}
+biany
+  :: forall (t :: * -> * -> *) a b.
+     Bifoldable t =>
+     (a -> Bool) -> (b -> Bool) -> t a b -> Bool
+[GblId,
+ Arity=3,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.biany1
+               `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N) (b :: <*>_N).
+                       <Bifoldable t>_R
+                       ->_R <a -> Bool>_R
+                       ->_R <b -> Bool>_R
+                       ->_R <t a b>_R
+                       ->_R Data.Semigroup.Internal.N:Any[0]
+                       :: (forall (t :: * -> * -> *) a b.
+                           Bifoldable t =>
+                           (a -> Bool) -> (b -> Bool) -> t a b -> Any :: *)
+                          ~R# (forall (t :: * -> * -> *) a b.
+                               Bifoldable t =>
+                               (a -> Bool) -> (b -> Bool) -> t a b -> Bool :: *))}]
+biany
+  = Data.Bifoldable.biany1
+    `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N) (b :: <*>_N).
+            <Bifoldable t>_R
+            ->_R <a -> Bool>_R
+            ->_R <b -> Bool>_R
+            ->_R <t a b>_R
+            ->_R Data.Semigroup.Internal.N:Any[0]
+            :: (forall (t :: * -> * -> *) a b.
+                Bifoldable t =>
+                (a -> Bool) -> (b -> Bool) -> t a b -> Any :: *)
+               ~R# (forall (t :: * -> * -> *) a b.
+                    Bifoldable t =>
+                    (a -> Bool) -> (b -> Bool) -> t a b -> Bool :: *))
+
+-- RHS size: {terms: 18, types: 21, coercions: 8, joins: 0/0}
+Data.Bifoldable.bielem1
+  :: forall (t :: * -> * -> *) a.
+     (Bifoldable t, Eq a) =>
+     a -> t a a -> Any
+[GblId,
+ Arity=3,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U(C(C1(U)),A)><L,U>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 0] 150 0}]
+Data.Bifoldable.bielem1
+  = \ (@ (t_adKfz :: * -> * -> *))
+      (@ a_adKfA)
+      ($dBifoldable_adKfC :: Bifoldable t_adKfz)
+      ($dEq_adKfD :: Eq a_adKfA)
+      (x_adJSG :: a_adKfA) ->
+      bifoldMap
+        @ t_adKfz
+        $dBifoldable_adKfC
+        @ Any
+        @ a_adKfA
+        @ a_adKfA
+        Data.Semigroup.Internal.$fMonoidAny
+        ((\ (x1_i7Rxi :: a_adKfA) ->
+            == @ a_adKfA $dEq_adKfD x1_i7Rxi x_adJSG)
+         `cast` (<a_adKfA>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                 :: (a_adKfA -> Bool :: *) ~R# (a_adKfA -> Any :: *)))
+        ((\ (x1_i7Rxi :: a_adKfA) ->
+            == @ a_adKfA $dEq_adKfD x1_i7Rxi x_adJSG)
+         `cast` (<a_adKfA>_R ->_R Sym (Data.Semigroup.Internal.N:Any[0])
+                 :: (a_adKfA -> Bool :: *) ~R# (a_adKfA -> Any :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 23, joins: 0/0}
+bielem
+  :: forall (t :: * -> * -> *) a.
+     (Bifoldable t, Eq a) =>
+     a -> t a a -> Bool
+[GblId,
+ Arity=3,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,U(C(C1(U)),A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.bielem1
+               `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N).
+                       <Bifoldable t>_R
+                       ->_R <Eq a>_R
+                       ->_R <a>_R
+                       ->_R <t a a>_R
+                       ->_R Data.Semigroup.Internal.N:Any[0]
+                       :: (forall (t :: * -> * -> *) a.
+                           (Bifoldable t, Eq a) =>
+                           a -> t a a -> Any :: *)
+                          ~R# (forall (t :: * -> * -> *) a.
+                               (Bifoldable t, Eq a) =>
+                               a -> t a a -> Bool :: *))}]
+bielem
+  = Data.Bifoldable.bielem1
+    `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N).
+            <Bifoldable t>_R
+            ->_R <Eq a>_R
+            ->_R <a>_R
+            ->_R <t a a>_R
+            ->_R Data.Semigroup.Internal.N:Any[0]
+            :: (forall (t :: * -> * -> *) a.
+                (Bifoldable t, Eq a) =>
+                a -> t a a -> Any :: *)
+               ~R# (forall (t :: * -> * -> *) a.
+                    (Bifoldable t, Eq a) =>
+                    a -> t a a -> Bool :: *))
+
+-- RHS size: {terms: 18, types: 23, coercions: 1, joins: 0/1}
+binotElem
+  :: forall (t :: * -> * -> *) a.
+     (Bifoldable t, Eq a) =>
+     a -> t a a -> Bool
+[GblId,
+ Arity=3,
+ Str=<L,1*U(A,1*C1(C1(C1(U))),A,A)><L,U(C(C1(U)),A)><L,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=3,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ (t_adKfN :: * -> * -> *))
+                 (@ a_adKfO)
+                 ($dBifoldable_adKfQ [Occ=Once] :: Bifoldable t_adKfN)
+                 ($dEq_adKfR [Occ=Once] :: Eq a_adKfO)
+                 (x_adJSV [Occ=Once] :: a_adKfO) ->
+                 let {
+                   g_sdKL9 [Occ=OnceL!] :: t_adKfN a_adKfO a_adKfO -> Any
+                   [LclId]
+                   g_sdKL9
+                     = Data.Bifoldable.bielem1
+                         @ t_adKfN @ a_adKfO $dBifoldable_adKfQ $dEq_adKfR x_adJSV } in
+                 \ (x1_i7Rxi [Occ=Once] :: t_adKfN a_adKfO a_adKfO) ->
+                   case (g_sdKL9 x1_i7Rxi)
+                        `cast` (Data.Semigroup.Internal.N:Any[0]
+                                :: (Any :: *) ~R# (Bool :: *))
+                   of {
+                     False -> GHC.Types.True;
+                     True -> GHC.Types.False
+                   }}]
+binotElem
+  = \ (@ (t_adKfN :: * -> * -> *))
+      (@ a_adKfO)
+      ($dBifoldable_adKfQ :: Bifoldable t_adKfN)
+      ($dEq_adKfR :: Eq a_adKfO)
+      (x_adJSV :: a_adKfO) ->
+      let {
+        g_sdKL9 [Dmd=<L,C(U)>] :: t_adKfN a_adKfO a_adKfO -> Any
+        [LclId]
+        g_sdKL9
+          = Data.Bifoldable.bielem1
+              @ t_adKfN @ a_adKfO $dBifoldable_adKfQ $dEq_adKfR x_adJSV } in
+      \ (x1_i7Rxi :: t_adKfN a_adKfO a_adKfO) ->
+        case (g_sdKL9 x1_i7Rxi)
+             `cast` (Data.Semigroup.Internal.N:Any[0]
+                     :: (Any :: *) ~R# (Bool :: *))
+        of {
+          False -> GHC.Types.True;
+          True -> GHC.Types.False
+        }
+
+-- RHS size: {terms: 15, types: 22, coercions: 8, joins: 0/0}
+Data.Bifoldable.biall1
+  :: forall (t :: * -> * -> *) a b.
+     Bifoldable t =>
+     (a -> Bool) -> (b -> Bool) -> t a b -> All
+[GblId,
+ Arity=3,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60 60] 110 0}]
+Data.Bifoldable.biall1
+  = \ (@ (t_adKbN :: * -> * -> *))
+      (@ a_adKbO)
+      (@ b_adKbP)
+      ($dBifoldable_adKbR :: Bifoldable t_adKbN)
+      (p_adJSL :: a_adKbO -> Bool)
+      (q_adJSM :: b_adKbP -> Bool) ->
+      bifoldMap
+        @ t_adKbN
+        $dBifoldable_adKbR
+        @ All
+        @ a_adKbO
+        @ b_adKbP
+        Data.Semigroup.Internal.$fMonoidAll
+        ((\ (x_i7Rxi :: a_adKbO) -> p_adJSL x_i7Rxi)
+         `cast` (<a_adKbO>_R ->_R Sym (Data.Semigroup.Internal.N:All[0])
+                 :: (a_adKbO -> Bool :: *) ~R# (a_adKbO -> All :: *)))
+        ((\ (x_i7Rxi :: b_adKbP) -> q_adJSM x_i7Rxi)
+         `cast` (<b_adKbP>_R ->_R Sym (Data.Semigroup.Internal.N:All[0])
+                 :: (b_adKbP -> Bool :: *) ~R# (b_adKbP -> All :: *)))
+
+-- RHS size: {terms: 1, types: 0, coercions: 27, joins: 0/0}
+biall
+  :: forall (t :: * -> * -> *) a b.
+     Bifoldable t =>
+     (a -> Bool) -> (b -> Bool) -> t a b -> Bool
+[GblId,
+ Arity=3,
+ Str=<S(LC(C(C(S)))LL),1*U(A,1*C1(C1(C1(U))),A,A)><L,C(U)><L,C(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= Data.Bifoldable.biall1
+               `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N) (b :: <*>_N).
+                       <Bifoldable t>_R
+                       ->_R <a -> Bool>_R
+                       ->_R <b -> Bool>_R
+                       ->_R <t a b>_R
+                       ->_R Data.Semigroup.Internal.N:All[0]
+                       :: (forall (t :: * -> * -> *) a b.
+                           Bifoldable t =>
+                           (a -> Bool) -> (b -> Bool) -> t a b -> All :: *)
+                          ~R# (forall (t :: * -> * -> *) a b.
+                               Bifoldable t =>
+                               (a -> Bool) -> (b -> Bool) -> t a b -> Bool :: *))}]
+biall
+  = Data.Bifoldable.biall1
+    `cast` (forall (t :: <* -> * -> *>_N) (a :: <*>_N) (b :: <*>_N).
+            <Bifoldable t>_R
+            ->_R <a -> Bool>_R
+            ->_R <b -> Bool>_R
+            ->_R <t a b>_R
+            ->_R Data.Semigroup.Internal.N:All[0]
+            :: (forall (t :: * -> * -> *) a b.
+                Bifoldable t =>
+                (a -> Bool) -> (b -> Bool) -> t a b -> All :: *)
+               ~R# (forall (t :: * -> * -> *) a b.
+                    Bifoldable t =>
+                    (a -> Bool) -> (b -> Bool) -> t a b -> Bool :: *))
+
+-- RHS size: {terms: 23, types: 33, coercions: 16, joins: 0/2}
+bifind
+  :: forall (t :: * -> * -> *) a.
+     Bifoldable t =>
+     (a -> Bool) -> t a a -> Maybe a
+[GblId,
+ Arity=2,
+ Str=<L,1*U(A,1*C1(C1(C1(C(U)))),A,A)><L,C(U)>,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [30 60] 160 60}]
+bifind
+  = \ (@ (t_adKbl :: * -> * -> *))
+      (@ a_adKbm)
+      ($dBifoldable_adKbo :: Bifoldable t_adKbl)
+      (p_adJSW :: a_adKbm -> Bool) ->
+      let {
+        g_sdKL6 [Dmd=<L,C(U)>] :: t_adKbl a_adKbm a_adKbm -> First a_adKbm
+        [LclId]
+        g_sdKL6
+          = let {
+              finder_sdKL7 :: a_adKbm -> Maybe a_adKbm
+              [LclId,
+               Arity=1,
+               Str=<L,U>,
+               Unf=Unf{Src=InlineStable, TopLvl=False, Value=True, ConLike=True,
+                       WorkFree=True, Expandable=True,
+                       Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+                       Tmpl= \ (x_adJSY :: a_adKbm) ->
+                               case p_adJSW x_adJSY of {
+                                 False -> GHC.Base.Nothing @ a_adKbm;
+                                 True -> GHC.Base.Just @ a_adKbm x_adJSY
+                               }}]
+              finder_sdKL7
+                = \ (x_adJSY :: a_adKbm) ->
+                    case p_adJSW x_adJSY of {
+                      False -> GHC.Base.Nothing @ a_adKbm;
+                      True -> GHC.Base.Just @ a_adKbm x_adJSY
+                    } } in
+            bifoldMap
+              @ t_adKbl
+              $dBifoldable_adKbo
+              @ (First a_adKbm)
+              @ a_adKbm
+              @ a_adKbm
+              (Data.Monoid.$fMonoidFirst @ a_adKbm)
+              (finder_sdKL7
+               `cast` (<a_adKbm>_R ->_R Sym (Data.Monoid.N:First[0]) <a_adKbm>_N
+                       :: (a_adKbm -> Maybe a_adKbm :: *)
+                          ~R# (a_adKbm -> First a_adKbm :: *)))
+              (finder_sdKL7
+               `cast` (<a_adKbm>_R ->_R Sym (Data.Monoid.N:First[0]) <a_adKbm>_N
+                       :: (a_adKbm -> Maybe a_adKbm :: *)
+                          ~R# (a_adKbm -> First a_adKbm :: *))) } in
+      (\ (x_i7Rxi :: t_adKbl a_adKbm a_adKbm) -> g_sdKL6 x_i7Rxi)
+      `cast` (<t_adKbl a_adKbm a_adKbm>_R
+              ->_R Data.Monoid.N:First[0] <a_adKbm>_N
+              :: (t_adKbl a_adKbm a_adKbm -> First a_adKbm :: *)
+                 ~R# (t_adKbl a_adKbm a_adKbm -> Maybe a_adKbm :: *))
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$trModule3 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Bifoldable.$trModule3
+  = GHC.Types.TrNameS Data.Bifoldable.$trModule4
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$trModule1 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Bifoldable.$trModule1
+  = GHC.Types.TrNameS Data.Bifoldable.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$trModule :: GHC.Types.Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+Data.Bifoldable.$trModule
+  = GHC.Types.Module
+      Data.Bifoldable.$trModule3 Data.Bifoldable.$trModule1
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep_rdL8S :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep_rdL8S
+  = GHC.Types.KindRepTyConApp
+      GHC.Types.$tcConstraint (GHC.Types.[] @ GHC.Types.KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$tcBifoldable1 [InlPrag=NOUSERINLINE[~]]
+  :: GHC.Types.KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+Data.Bifoldable.$tcBifoldable1
+  = GHC.Types.KindRepFun GHC.Types.krep$*->*->* $krep_rdL8S
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$tcBifoldable3 :: GHC.Prim.Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+Data.Bifoldable.$tcBifoldable3 = "Bifoldable"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$tcBifoldable2 :: GHC.Types.TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+Data.Bifoldable.$tcBifoldable2
+  = GHC.Types.TrNameS Data.Bifoldable.$tcBifoldable3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+Data.Bifoldable.$tcBifoldable :: GHC.Types.TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+Data.Bifoldable.$tcBifoldable
+  = GHC.Types.TyCon
+      13881323671910883383##
+      7079945659398195047##
+      Data.Bifoldable.$trModule
+      Data.Bifoldable.$tcBifoldable2
+      0#
+      Data.Bifoldable.$tcBifoldable1
+
+

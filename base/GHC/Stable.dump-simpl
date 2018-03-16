@@ -1,0 +1,444 @@
+
+==================== Tidy Core ====================
+2018-03-16 15:59:01.781847692 UTC
+
+Result size of Tidy Core
+  = {terms: 160, types: 230, coercions: 37, joins: 0/0}
+
+-- RHS size: {terms: 17, types: 16, coercions: 0, joins: 0/0}
+GHC.Stable.$fEqStablePtr_$c==
+  :: forall a. StablePtr a -> StablePtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a48VD)
+                 (ds_d48Wl [Occ=Once!] :: StablePtr a_a48VD)
+                 (ds1_d48Wm [Occ=Once!] :: StablePtr a_a48VD) ->
+                 case ds_d48Wl of { StablePtr sp1_a48TE [Occ=Once] ->
+                 case ds1_d48Wm of { StablePtr sp2_a48TF [Occ=Once] ->
+                 case eqStablePtr# @ a_a48VD sp1_a48TE sp2_a48TF of {
+                   __DEFAULT -> GHC.Types.True;
+                   0# -> GHC.Types.False
+                 }
+                 }
+                 }}]
+GHC.Stable.$fEqStablePtr_$c==
+  = \ (@ a_a48VD)
+      (ds_d48Wl :: StablePtr a_a48VD)
+      (ds1_d48Wm :: StablePtr a_a48VD) ->
+      case ds_d48Wl of { StablePtr sp1_a48TE ->
+      case ds1_d48Wm of { StablePtr sp2_a48TF ->
+      case eqStablePtr# @ a_a48VD sp1_a48TE sp2_a48TF of {
+        __DEFAULT -> GHC.Types.True;
+        0# -> GHC.Types.False
+      }
+      }
+      }
+
+-- RHS size: {terms: 17, types: 16, coercions: 0, joins: 0/0}
+GHC.Stable.$fEqStablePtr_$c/= [InlPrag=INLINE (sat-args=2)]
+  :: forall a. StablePtr a -> StablePtr a -> Bool
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_a48VD)
+                 (x_a22b [Occ=Once!] :: StablePtr a_a48VD)
+                 (y_a22c [Occ=Once!] :: StablePtr a_a48VD) ->
+                 case x_a22b of { StablePtr sp1_a48TE [Occ=Once] ->
+                 case y_a22c of { StablePtr sp2_a48TF [Occ=Once] ->
+                 case eqStablePtr# @ a_a48VD sp1_a48TE sp2_a48TF of {
+                   __DEFAULT -> GHC.Types.False;
+                   0# -> GHC.Types.True
+                 }
+                 }
+                 }}]
+GHC.Stable.$fEqStablePtr_$c/=
+  = \ (@ a_a48VD)
+      (eta_B2 :: StablePtr a_a48VD)
+      (eta1_B1 :: StablePtr a_a48VD) ->
+      case eta_B2 of { StablePtr sp1_a48TE ->
+      case eta1_B1 of { StablePtr sp2_a48TF ->
+      case eqStablePtr# @ a_a48VD sp1_a48TE sp2_a48TF of {
+        __DEFAULT -> GHC.Types.False;
+        0# -> GHC.Types.True
+      }
+      }
+      }
+
+-- RHS size: {terms: 4, types: 6, coercions: 0, joins: 0/0}
+GHC.Stable.$fEqStablePtr [InlPrag=NOUSERINLINE CONLIKE]
+  :: forall a. Eq (StablePtr a)
+[GblId[DFunId],
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=DFun: \ (@ a_a48TD) ->
+       GHC.Classes.C:Eq TYPE: StablePtr a_a48TD
+                        GHC.Stable.$fEqStablePtr_$c== @ a_a48TD
+                        GHC.Stable.$fEqStablePtr_$c/= @ a_a48TD]
+GHC.Stable.$fEqStablePtr
+  = \ (@ a_a48VD) ->
+      GHC.Classes.C:Eq
+        @ (StablePtr a_a48VD)
+        (GHC.Stable.$fEqStablePtr_$c== @ a_a48VD)
+        (GHC.Stable.$fEqStablePtr_$c/= @ a_a48VD)
+
+-- RHS size: {terms: 12, types: 28, coercions: 0, joins: 0/0}
+GHC.Stable.newStablePtr1
+  :: forall a.
+     a -> State# RealWorld -> (# State# RealWorld, StablePtr a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a48Vu)
+                 (a1_a48TK [Occ=Once] :: a_a48Vu)
+                 (s_a48TL [Occ=Once] :: State# RealWorld) ->
+                 case makeStablePtr# @ a_a48Vu a1_a48TK s_a48TL of
+                 { (# ipv_s48WO [Occ=Once], ipv1_s48WP [Occ=Once] #) ->
+                 (# ipv_s48WO, GHC.Stable.StablePtr @ a_a48Vu ipv1_s48WP #)
+                 }}]
+GHC.Stable.newStablePtr1
+  = \ (@ a_a48Vu)
+      (a1_a48TK :: a_a48Vu)
+      (s_a48TL :: State# RealWorld) ->
+      case makeStablePtr# @ a_a48Vu a1_a48TK s_a48TL of
+      { (# ipv_s48WO, ipv1_s48WP #) ->
+      (# ipv_s48WO, GHC.Stable.StablePtr @ a_a48Vu ipv1_s48WP #)
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+newStablePtr :: forall a. a -> IO (StablePtr a)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,U><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Stable.newStablePtr1
+               `cast` (forall (a :: <*>_N).
+                       <a>_R ->_R Sym (GHC.Types.N:IO[0] <StablePtr a>_R)
+                       :: (forall a.
+                           a -> State# RealWorld -> (# State# RealWorld, StablePtr a #) :: *)
+                          ~R# (forall a. a -> IO (StablePtr a) :: *))}]
+newStablePtr
+  = GHC.Stable.newStablePtr1
+    `cast` (forall (a :: <*>_N).
+            <a>_R ->_R Sym (GHC.Types.N:IO[0] <StablePtr a>_R)
+            :: (forall a.
+                a -> State# RealWorld -> (# State# RealWorld, StablePtr a #) :: *)
+               ~R# (forall a. a -> IO (StablePtr a) :: *))
+
+-- RHS size: {terms: 9, types: 11, coercions: 0, joins: 0/0}
+GHC.Stable.deRefStablePtr1
+  :: forall a.
+     StablePtr a -> State# RealWorld -> (# State# RealWorld, a #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=2,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a48Vo)
+                 (ds_d48W9 [Occ=Once!] :: StablePtr a_a48Vo)
+                 (eta_B1 [Occ=Once] :: State# RealWorld) ->
+                 case ds_d48W9 of { StablePtr sp_a48TO [Occ=Once] ->
+                 deRefStablePtr# @ a_a48Vo sp_a48TO eta_B1
+                 }}]
+GHC.Stable.deRefStablePtr1
+  = \ (@ a_a48Vo)
+      (ds_d48W9 :: StablePtr a_a48Vo)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d48W9 of { StablePtr sp_a48TO ->
+      deRefStablePtr# @ a_a48Vo sp_a48TO eta_B1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+deRefStablePtr :: forall a. StablePtr a -> IO a
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=0,unsat_ok=True,boring_ok=True)
+         Tmpl= GHC.Stable.deRefStablePtr1
+               `cast` (forall (a :: <*>_N).
+                       <StablePtr a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+                       :: (forall a.
+                           StablePtr a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+                          ~R# (forall a. StablePtr a -> IO a :: *))}]
+deRefStablePtr
+  = GHC.Stable.deRefStablePtr1
+    `cast` (forall (a :: <*>_N).
+            <StablePtr a>_R ->_R Sym (GHC.Types.N:IO[0] <a>_R)
+            :: (forall a.
+                StablePtr a -> State# RealWorld -> (# State# RealWorld, a #) :: *)
+               ~R# (forall a. StablePtr a -> IO a :: *))
+
+-- RHS size: {terms: 7, types: 9, coercions: 5, joins: 0/0}
+castStablePtrToPtr :: forall a. StablePtr a -> Ptr ()
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a48Vh) (ds_d48W5 [Occ=Once!] :: StablePtr a_a48Vh) ->
+                 case ds_d48W5 of { StablePtr s_a48TQ [Occ=Once] ->
+                 GHC.Ptr.Ptr
+                   @ ()
+                   (s_a48TQ
+                    `cast` (UnsafeCo representational (StablePtr# a_a48Vh) Addr#
+                            :: (StablePtr# a_a48Vh :: TYPE 'AddrRep)
+                               ~R# (Addr# :: TYPE 'AddrRep)))
+                 }}]
+castStablePtrToPtr
+  = \ (@ a_a48Vh) (ds_d48W5 :: StablePtr a_a48Vh) ->
+      case ds_d48W5 of { StablePtr s_a48TQ ->
+      GHC.Ptr.Ptr
+        @ ()
+        (s_a48TQ
+         `cast` (UnsafeCo representational (StablePtr# a_a48Vh) Addr#
+                 :: (StablePtr# a_a48Vh :: TYPE 'AddrRep)
+                    ~R# (Addr# :: TYPE 'AddrRep)))
+      }
+
+-- RHS size: {terms: 7, types: 8, coercions: 5, joins: 0/0}
+castPtrToStablePtr :: forall a. Ptr () -> StablePtr a
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)>m,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=True,boring_ok=False)
+         Tmpl= \ (@ a_a48Va) (ds_d48W1 [Occ=Once!] :: Ptr ()) ->
+                 case ds_d48W1 of { Ptr a1_a48TR [Occ=Once] ->
+                 GHC.Stable.StablePtr
+                   @ a_a48Va
+                   (a1_a48TR
+                    `cast` (UnsafeCo representational Addr# (StablePtr# a_a48Va)
+                            :: (Addr# :: TYPE 'AddrRep)
+                               ~R# (StablePtr# a_a48Va :: TYPE 'AddrRep)))
+                 }}]
+castPtrToStablePtr
+  = \ (@ a_a48Va) (ds_d48W1 :: Ptr ()) ->
+      case ds_d48W1 of { Ptr a1_a48TR ->
+      GHC.Stable.StablePtr
+        @ a_a48Va
+        (a1_a48TR
+         `cast` (UnsafeCo representational Addr# (StablePtr# a_a48Va)
+                 :: (Addr# :: TYPE 'AddrRep)
+                    ~R# (StablePtr# a_a48Va :: TYPE 'AddrRep)))
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$trModule4 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 20 0}]
+GHC.Stable.$trModule4 = "base"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$trModule3 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Stable.$trModule3 = GHC.Types.TrNameS GHC.Stable.$trModule4
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$trModule2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Stable.$trModule2 = "GHC.Stable"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$trModule1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Stable.$trModule1 = GHC.Types.TrNameS GHC.Stable.$trModule2
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$trModule :: Module
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 30}]
+GHC.Stable.$trModule
+  = GHC.Types.Module GHC.Stable.$trModule3 GHC.Stable.$trModule1
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$krep_r490l :: KindRep
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep_r490l = GHC.Types.KindRepVar 0#
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep1_r490m :: [KindRep]
+[GblId, Caf=NoCafRefs, Str=m2, Unf=OtherCon []]
+$krep1_r490m
+  = GHC.Types.: @ KindRep $krep_r490l (GHC.Types.[] @ KindRep)
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep2_r490n :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep2_r490n
+  = GHC.Types.KindRepTyConApp GHC.Types.$tcStablePtr# $krep1_r490m
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tcStablePtr2 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Stable.$tcStablePtr2 = "StablePtr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tcStablePtr1 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Stable.$tcStablePtr1
+  = GHC.Types.TrNameS GHC.Stable.$tcStablePtr2
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tcStablePtr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Stable.$tcStablePtr
+  = GHC.Types.TyCon
+      2212012310673685839##
+      12855461380626358372##
+      GHC.Stable.$trModule
+      GHC.Stable.$tcStablePtr1
+      0#
+      GHC.Types.krep$*Arr*
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3_r490o :: KindRep
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []]
+$krep3_r490o
+  = GHC.Types.KindRepTyConApp GHC.Stable.$tcStablePtr $krep1_r490m
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tc'StablePtr1 [InlPrag=NOUSERINLINE[~]] :: KindRep
+[GblId, Caf=NoCafRefs, Str=m4, Unf=OtherCon []]
+GHC.Stable.$tc'StablePtr1
+  = GHC.Types.KindRepFun $krep2_r490n $krep3_r490o
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tc'StablePtr3 :: Addr#
+[GblId,
+ Caf=NoCafRefs,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 40 0}]
+GHC.Stable.$tc'StablePtr3 = "'StablePtr"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tc'StablePtr2 :: TrName
+[GblId,
+ Caf=NoCafRefs,
+ Str=m1,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 20}]
+GHC.Stable.$tc'StablePtr2
+  = GHC.Types.TrNameS GHC.Stable.$tc'StablePtr3
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+GHC.Stable.$tc'StablePtr :: TyCon
+[GblId,
+ Caf=NoCafRefs,
+ Str=m,
+ Unf=Unf{Src=<vanilla>, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True, Guidance=IF_ARGS [] 10 70}]
+GHC.Stable.$tc'StablePtr
+  = GHC.Types.TyCon
+      2898738257036715821##
+      1170603501179803931##
+      GHC.Stable.$trModule
+      GHC.Stable.$tc'StablePtr2
+      1#
+      GHC.Stable.$tc'StablePtr1
+
+-- RHS size: {terms: 14, types: 26, coercions: 0, joins: 0/0}
+freeStablePtr1_r490p
+  :: forall a.
+     StablePtr a -> State# RealWorld -> (# State# RealWorld, () #)
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=OtherCon []]
+freeStablePtr1_r490p
+  = \ (@ a_a48TS)
+      (ds_d48Wy :: StablePtr a_a48TS)
+      (eta_B1 :: State# RealWorld) ->
+      case ds_d48Wy of { StablePtr ds2_d48WA ->
+      case {__pkg_ccall base-4.11.0.0 forall a.
+                           StablePtr# a -> State# RealWorld -> (# State# RealWorld #)}_d48WD
+             @ a_a48TS ds2_d48WA eta_B1
+      of
+      { (# ds3_d48WB #) ->
+      (# ds3_d48WB, GHC.Tuple.() #)
+      }
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 9, joins: 0/0}
+freeStablePtr :: forall a. StablePtr a -> IO ()
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S,U>,
+ Unf=Unf{Src=InlineStable, TopLvl=True, Value=True, ConLike=True,
+         WorkFree=True, Expandable=True,
+         Guidance=ALWAYS_IF(arity=1,unsat_ok=False,boring_ok=False)
+         Tmpl= \ (@ a_X48UO) (ds_X48Xv [Occ=Once!] :: StablePtr a_X48UO) ->
+                 case ds_X48Xv of { StablePtr ds2_d48WA [Occ=Once] ->
+                 (\ (ds3_d48WC [Occ=Once] :: State# RealWorld) ->
+                    case {__pkg_ccall base-4.11.0.0 forall a.
+                           StablePtr# a -> State# RealWorld -> (# State# RealWorld #)}_d48WD
+                           @ a_X48UO ds2_d48WA ds3_d48WC
+                    of
+                    { (# ds4_d48WB [Occ=Once] #) ->
+                    (# ds4_d48WB, GHC.Tuple.() #)
+                    })
+                 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)
+                         :: (State# RealWorld -> (# State# RealWorld, () #) :: *)
+                            ~R# (IO () :: *))
+                 }}]
+freeStablePtr
+  = freeStablePtr1_r490p
+    `cast` (forall (a :: <*>_N).
+            <StablePtr a>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)
+            :: (forall a.
+                StablePtr a -> State# RealWorld -> (# State# RealWorld, () #) :: *)
+               ~R# (forall a. StablePtr a -> IO () :: *))
+
+

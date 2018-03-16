@@ -1,0 +1,2320 @@
+
+==================== Pre unarise: ====================
+2018-03-16 16:03:57.955082089 UTC
+
+lvl_r8Ohb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r8Ohc :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r8Ohb;
+
+Foreign.Marshal.Utils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r8Ohd :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.Marshal.Utils.$trModule4;
+
+lvl3_r8Ohe :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Alloc"#;
+
+lvl4_r8Ohf :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_r8Ohe;
+
+lvl5_r8Ohg :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/Marshal/Alloc.hs"#;
+
+lvl6_r8Ohh :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r8Ohg;
+
+lvl7_r8Ohi :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [84#];
+
+lvl8_r8Ohj :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [32#];
+
+lvl9_r8Ohk :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [41#];
+
+lvl10_r8Ohl :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl7_r8Ohi
+                                           lvl8_r8Ohj
+                                           lvl7_r8Ohi
+                                           lvl9_r8Ohk];
+
+lvl11_r8Ohm :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl10_r8Ohl
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.new2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl11_r8Ohm;
+
+Foreign.Marshal.Utils.new1
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8Ohx val_s8Ohy s_s8Ohz]
+        case
+            Foreign.Storable.sizeOf $dStorable_s8Ohx Foreign.Marshal.Utils.new2
+        of
+        { GHC.Types.I# x#_s8OhB [Occ=Once] ->
+              case int2Word# [x#_s8OhB] of sat_s8OhD {
+                __DEFAULT ->
+                    case __pkg_ccall base-4.11.0.0 [sat_s8OhD s_s8Ohz] of {
+                      (#,#) ds_s8OhF [Occ=Once*] ds1_s8OhG ->
+                          case eqAddr# [ds1_s8OhG __NULL] of {
+                            __DEFAULT ->
+                                let {
+                                  ipv1_s8OhI :: GHC.Ptr.Ptr a_a8O3X
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [ds1_s8OhG];
+                                } in 
+                                  case
+                                      Foreign.Storable.poke
+                                          $dStorable_s8Ohx ipv1_s8OhI val_s8Ohy ds_s8OhF
+                                  of
+                                  { (#,#) ipv_s8OhK [Occ=Once] _ [Occ=Dead] ->
+                                        (#,#) [ipv_s8OhK ipv1_s8OhI];
+                                  };
+                            1# -> raiseIO# [Foreign.Marshal.Alloc.malloc1 ds_s8OhF];
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.new
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.new1 eta_B3 eta_B2 eta_B1;
+
+lvl12_r8Ohn :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [117#];
+
+lvl13_r8Oho :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [60#];
+
+lvl14_r8Ohp :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [69#];
+
+lvl15_r8Ohq :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl13_r8Oho
+                                           lvl12_r8Ohn
+                                           lvl14_r8Ohp];
+
+lvl16_r8Ohr :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl15_r8Ohq
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl16_r8Ohr;
+
+lvl17_r8Ohs :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [31#];
+
+lvl18_r8Oht :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [40#];
+
+lvl19_r8Ohu :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl17_r8Ohs
+                                           lvl12_r8Ohn
+                                           lvl18_r8Oht];
+
+lvl20_r8Ohv :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl19_r8Ohu
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with3 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl20_r8Ohv;
+
+Foreign.Marshal.Utils.with1
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8OhM val_s8OhN f_s8OhO eta_s8OhP]
+        case
+            Foreign.Storable.sizeOf
+                $dStorable_s8OhM Foreign.Marshal.Utils.with3
+        of
+        { GHC.Types.I# size_s8OhR [Occ=Once] ->
+              case
+                  Foreign.Storable.alignment
+                      $dStorable_s8OhM Foreign.Marshal.Utils.with2
+              of
+              { GHC.Types.I# align_s8OhT [Occ=Once] ->
+                    case
+                        newAlignedPinnedByteArray# [size_s8OhR align_s8OhT eta_s8OhP]
+                    of
+                    { (#,#) ipv_s8OhV [Occ=Once] ipv1_s8OhW [Occ=Once] ->
+                          case unsafeFreezeByteArray# [ipv1_s8OhW ipv_s8OhV] of {
+                            (#,#) ipv2_s8OhY [Occ=Once] ipv3_s8OhZ ->
+                                case byteArrayContents# [ipv3_s8OhZ] of ptr_s8Oi0 {
+                                  __DEFAULT ->
+                                      let {
+                                        ptr1_s8Oi1 :: GHC.Ptr.Ptr a_a8O3A
+                                        [LclId, Unf=OtherCon []] =
+                                            CCCS GHC.Ptr.Ptr! [ptr_s8Oi0];
+                                      } in 
+                                        case
+                                            Foreign.Storable.poke
+                                                $dStorable_s8OhM ptr1_s8Oi1 val_s8OhN ipv2_s8OhY
+                                        of
+                                        { (#,#) ipv4_s8Oi3 [Occ=Once] _ [Occ=Dead] ->
+                                              case f_s8OhO ptr1_s8Oi1 ipv4_s8Oi3 of {
+                                                (#,#) ipv6_s8Oi6 [Occ=Once] ipv7_s8Oi7 [Occ=Once] ->
+                                                    case
+                                                        touch# [ipv3_s8OhZ ipv6_s8Oi6]
+                                                    of
+                                                    s4_s8Oi8
+                                                    { __DEFAULT -> (#,#) [s4_s8Oi8 ipv7_s8Oi7];
+                                                    };
+                                              };
+                                        };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.with
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.with1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.fromBool2 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+sat_s8Oi9 :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s8Oia :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s8Oi9 GHC.Types.[]];
+
+Foreign.Marshal.Utils.fromBool1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s8Oia;
+
+Foreign.Marshal.Utils.fromBool
+  :: forall a. GHC.Num.Num a => GHC.Types.Bool -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLLLLLC(S)),1*U(A,A,A,A,A,A,1*C1(U))><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dNum_s8Oib ds_s8Oic]
+        case ds_s8Oic of {
+          GHC.Types.False ->
+              GHC.Num.fromInteger $dNum_s8Oib Foreign.Marshal.Utils.fromBool2;
+          GHC.Types.True ->
+              GHC.Num.fromInteger $dNum_s8Oib Foreign.Marshal.Utils.fromBool1;
+        };
+
+Foreign.Marshal.Utils.toBool
+  :: forall a.
+     (GHC.Classes.Eq a, GHC.Num.Num a) =>
+     a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Str=<L,U(A,C(C1(U)))><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dEq_s8Oie $dNum_s8Oif]
+        let {
+          ds_s8Oig [Occ=OnceL] :: a_a8O3j
+          [LclId] =
+              [$dNum_s8Oif] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Oif Foreign.Marshal.Utils.fromBool2; } in
+        let {
+          sat_s8Oii [Occ=OnceT[0]] :: a_a8O3j -> GHC.Types.Bool
+          [LclId] =
+              [$dEq_s8Oie ds_s8Oig] \r [ds1_s8Oih]
+                  GHC.Classes./= $dEq_s8Oie ds1_s8Oih ds_s8Oig;
+        } in  sat_s8Oii;
+
+Foreign.Marshal.Utils.maybeNew1
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8Oij ds1_s8Oik eta_s8Oil]
+        case ds1_s8Oik of {
+          GHC.Base.Nothing -> (#,#) [eta_s8Oil GHC.Ptr.nullPtr];
+          GHC.Base.Just x_s8Oin [Occ=Once] -> ds_s8Oij x_s8Oin eta_s8Oil;
+        };
+
+Foreign.Marshal.Utils.maybeNew
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a -> GHC.Types.IO (GHC.Ptr.Ptr b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.maybeNew1 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.maybeWith_n
+  :: forall b c. (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8Oio] ds_s8Oio GHC.Ptr.nullPtr;
+
+Foreign.Marshal.Utils.maybeWith
+  :: forall a b c.
+     (a -> (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c)
+     -> GHC.Base.Maybe a
+     -> (GHC.Ptr.Ptr b -> GHC.Types.IO c)
+     -> GHC.Types.IO c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8Oip ds1_s8Oiq]
+        case ds1_s8Oiq of {
+          GHC.Base.Nothing -> Foreign.Marshal.Utils.maybeWith_n;
+          GHC.Base.Just x_s8Ois [Occ=Once] -> ds_s8Oip x_s8Ois;
+        };
+
+Foreign.Marshal.Utils.maybePeek1
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [peek_s8Oit ptr_s8Oiu eta_s8Oiv]
+        case ptr_s8Oiu of wild_s8Oiw {
+          GHC.Ptr.Ptr a1_s8Oix [Occ=Once] ->
+              case eqAddr# [a1_s8Oix __NULL] of {
+                __DEFAULT ->
+                    case peek_s8Oit wild_s8Oiw eta_s8Oiv of {
+                      (#,#) ipv_s8OiA [Occ=Once] ipv1_s8OiB [Occ=Once] ->
+                          let {
+                            sat_s8OiC [Occ=Once] :: GHC.Base.Maybe b_a8O2E
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv1_s8OiB];
+                          } in  (#,#) [ipv_s8OiA sat_s8OiC];
+                    };
+                1# -> (#,#) [eta_s8Oiv GHC.Base.Nothing];
+              };
+        };
+
+Foreign.Marshal.Utils.maybePeek
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.Base.Maybe b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.maybePeek1 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.withMany [Occ=LoopBreaker]
+  :: forall a b res.
+     (a -> (b -> res) -> res) -> [a] -> ([b] -> res) -> res
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OiD ds1_s8OiE f_s8OiF]
+        case ds1_s8OiE of {
+          [] -> f_s8OiF GHC.Types.[];
+          : x_s8OiH [Occ=Once] xs_s8OiI [Occ=OnceL] ->
+              let {
+                sat_s8OiN [Occ=Once] :: b_a8O2u -> res_a8O2v
+                [LclId] =
+                    [ds_s8OiD f_s8OiF xs_s8OiI] \r [x'_s8OiJ]
+                        let {
+                          sat_s8OiM [Occ=Once] :: [b_a8O2u] -> res_a8O2v
+                          [LclId] =
+                              [f_s8OiF x'_s8OiJ] \r [xs'_s8OiK]
+                                  let {
+                                    sat_s8OiL [Occ=Once] :: [b_a8O2u]
+                                    [LclId] =
+                                        CCCS :! [x'_s8OiJ xs'_s8OiK];
+                                  } in  f_s8OiF sat_s8OiL;
+                        } in  Foreign.Marshal.Utils.withMany ds_s8OiD xs_s8OiI sat_s8OiM;
+              } in  ds_s8OiD x_s8OiH sat_s8OiN;
+        };
+
+Foreign.Marshal.Utils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule4];
+
+Foreign.Marshal.Utils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Utils"#;
+
+Foreign.Marshal.Utils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule2];
+
+Foreign.Marshal.Utils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Utils.$trModule3
+                                     Foreign.Marshal.Utils.$trModule1];
+
+Foreign.Marshal.Utils.copyBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OiO src_s8OiP size_s8OiQ s_s8OiR]
+        case dest_s8OiO of {
+          GHC.Ptr.Ptr ds1_s8OiT [Occ=Once] ->
+              case src_s8OiP of {
+                GHC.Ptr.Ptr ds3_s8OiV [Occ=Once] ->
+                    case size_s8OiQ of {
+                      GHC.Types.I# x#_s8OiX [Occ=Once] ->
+                          case int2Word# [x#_s8OiX] of sat_s8OiZ {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8OiT
+                                                               ds3_s8OiV
+                                                               sat_s8OiZ
+                                                               s_s8OiR]
+                                of
+                                { (#,#) ds4_s8Oj1 [Occ=Once] _ [Occ=Dead] ->
+                                      (#,#) [ds4_s8Oj1 GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.copyBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.copyBytes1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.moveBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8Oj3 src_s8Oj4 size_s8Oj5 s_s8Oj6]
+        case dest_s8Oj3 of {
+          GHC.Ptr.Ptr ds1_s8Oj8 [Occ=Once] ->
+              case src_s8Oj4 of {
+                GHC.Ptr.Ptr ds3_s8Oja [Occ=Once] ->
+                    case size_s8Oj5 of {
+                      GHC.Types.I# x#_s8Ojc [Occ=Once] ->
+                          case int2Word# [x#_s8Ojc] of sat_s8Oje {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8Oj8
+                                                               ds3_s8Oja
+                                                               sat_s8Oje
+                                                               s_s8Oj6]
+                                of
+                                { (#,#) ds4_s8Ojg [Occ=Once] _ [Occ=Dead] ->
+                                      (#,#) [ds4_s8Ojg GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.moveBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.moveBytes1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.fillBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Word.Word8
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8Oji char_s8Ojj size_s8Ojk s_s8Ojl]
+        case dest_s8Oji of {
+          GHC.Ptr.Ptr ds1_s8Ojn [Occ=Once] ->
+              case char_s8Ojj of {
+                GHC.Word.W8# x#_s8Ojp [Occ=Once] ->
+                    case size_s8Ojk of {
+                      GHC.Types.I# x#1_s8Ojr [Occ=Once] ->
+                          case int2Word# [x#1_s8Ojr] of sat_s8Oju {
+                            __DEFAULT ->
+                                case word2Int# [x#_s8Ojp] of sat_s8Ojt {
+                                  __DEFAULT ->
+                                      case
+                                          __pkg_ccall base-4.11.0.0 [ds1_s8Ojn
+                                                                     sat_s8Ojt
+                                                                     sat_s8Oju
+                                                                     s_s8Ojl]
+                                      of
+                                      { (#,#) ds2_s8Ojw [Occ=Once] _ [Occ=Dead] ->
+                                            (#,#) [ds2_s8Ojw GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.fillBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Word.Word8 -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.fillBytes1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:03:57.963574629 UTC
+
+lvl_r8Ohb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r8Ohc :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r8Ohb;
+
+Foreign.Marshal.Utils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r8Ohd :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.Marshal.Utils.$trModule4;
+
+lvl3_r8Ohe :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Alloc"#;
+
+lvl4_r8Ohf :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_r8Ohe;
+
+lvl5_r8Ohg :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/Marshal/Alloc.hs"#;
+
+lvl6_r8Ohh :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r8Ohg;
+
+lvl7_r8Ohi :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [84#];
+
+lvl8_r8Ohj :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [32#];
+
+lvl9_r8Ohk :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [41#];
+
+lvl10_r8Ohl :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl7_r8Ohi
+                                           lvl8_r8Ohj
+                                           lvl7_r8Ohi
+                                           lvl9_r8Ohk];
+
+lvl11_r8Ohm :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl10_r8Ohl
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.new2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl11_r8Ohm;
+
+Foreign.Marshal.Utils.new1
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8Ohx val_s8Ohy void_0E]
+        case
+            Foreign.Storable.sizeOf $dStorable_s8Ohx Foreign.Marshal.Utils.new2
+        of
+        { GHC.Types.I# x#_s8OhB [Occ=Once] ->
+              case int2Word# [x#_s8OhB] of sat_s8OhD {
+                __DEFAULT ->
+                    case __pkg_ccall base-4.11.0.0 [sat_s8OhD GHC.Prim.void#] of {
+                      Unit# ds1_s8OhG ->
+                          case eqAddr# [ds1_s8OhG __NULL] of {
+                            __DEFAULT ->
+                                let {
+                                  ipv1_s8OhI :: GHC.Ptr.Ptr a_a8O3X
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [ds1_s8OhG];
+                                } in 
+                                  case
+                                      Foreign.Storable.poke
+                                          $dStorable_s8Ohx ipv1_s8OhI val_s8Ohy GHC.Prim.void#
+                                  of
+                                  { Unit# _ [Occ=Dead] -> Unit# [ipv1_s8OhI];
+                                  };
+                            1# -> raiseIO# [Foreign.Marshal.Alloc.malloc1 GHC.Prim.void#];
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.new
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.new1 eta_B3 eta_B2 GHC.Prim.void#;
+
+lvl12_r8Ohn :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [117#];
+
+lvl13_r8Oho :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [60#];
+
+lvl14_r8Ohp :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [69#];
+
+lvl15_r8Ohq :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl13_r8Oho
+                                           lvl12_r8Ohn
+                                           lvl14_r8Ohp];
+
+lvl16_r8Ohr :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl15_r8Ohq
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl16_r8Ohr;
+
+lvl17_r8Ohs :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [31#];
+
+lvl18_r8Oht :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [40#];
+
+lvl19_r8Ohu :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl17_r8Ohs
+                                           lvl12_r8Ohn
+                                           lvl18_r8Oht];
+
+lvl20_r8Ohv :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl19_r8Ohu
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with3 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl20_r8Ohv;
+
+Foreign.Marshal.Utils.with1
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8OhM val_s8OhN f_s8OhO void_0E]
+        case
+            Foreign.Storable.sizeOf
+                $dStorable_s8OhM Foreign.Marshal.Utils.with3
+        of
+        { GHC.Types.I# size_s8OhR [Occ=Once] ->
+              case
+                  Foreign.Storable.alignment
+                      $dStorable_s8OhM Foreign.Marshal.Utils.with2
+              of
+              { GHC.Types.I# align_s8OhT [Occ=Once] ->
+                    case
+                        newAlignedPinnedByteArray# [size_s8OhR align_s8OhT GHC.Prim.void#]
+                    of
+                    { Unit# ipv1_s8OhW [Occ=Once] ->
+                          case unsafeFreezeByteArray# [ipv1_s8OhW GHC.Prim.void#] of {
+                            Unit# ipv3_s8OhZ ->
+                                case byteArrayContents# [ipv3_s8OhZ] of ptr_s8Oi0 {
+                                  __DEFAULT ->
+                                      let {
+                                        ptr1_s8Oi1 :: GHC.Ptr.Ptr a_a8O3A
+                                        [LclId, Unf=OtherCon []] =
+                                            CCCS GHC.Ptr.Ptr! [ptr_s8Oi0];
+                                      } in 
+                                        case
+                                            Foreign.Storable.poke
+                                                $dStorable_s8OhM ptr1_s8Oi1 val_s8OhN GHC.Prim.void#
+                                        of
+                                        { Unit# _ [Occ=Dead] ->
+                                              case f_s8OhO ptr1_s8Oi1 GHC.Prim.void# of {
+                                                Unit# ipv7_s8Oi7 [Occ=Once] ->
+                                                    case
+                                                        touch# [ipv3_s8OhZ GHC.Prim.void#]
+                                                    of
+                                                    s4_s8Oi8
+                                                    { (##) -> Unit# [ipv7_s8Oi7];
+                                                    };
+                                              };
+                                        };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.with
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.with1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.fromBool2 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+sat_s8Oi9 :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s8Oia :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s8Oi9 GHC.Types.[]];
+
+Foreign.Marshal.Utils.fromBool1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s8Oia;
+
+Foreign.Marshal.Utils.fromBool
+  :: forall a. GHC.Num.Num a => GHC.Types.Bool -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLLLLLC(S)),1*U(A,A,A,A,A,A,1*C1(U))><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dNum_s8Oib ds_s8Oic]
+        case ds_s8Oic of {
+          GHC.Types.False ->
+              GHC.Num.fromInteger $dNum_s8Oib Foreign.Marshal.Utils.fromBool2;
+          GHC.Types.True ->
+              GHC.Num.fromInteger $dNum_s8Oib Foreign.Marshal.Utils.fromBool1;
+        };
+
+Foreign.Marshal.Utils.toBool
+  :: forall a.
+     (GHC.Classes.Eq a, GHC.Num.Num a) =>
+     a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Str=<L,U(A,C(C1(U)))><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dEq_s8Oie $dNum_s8Oif]
+        let {
+          ds_s8Oig [Occ=OnceL] :: a_a8O3j
+          [LclId] =
+              [$dNum_s8Oif] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8Oif Foreign.Marshal.Utils.fromBool2; } in
+        let {
+          sat_s8Oii [Occ=OnceT[0]] :: a_a8O3j -> GHC.Types.Bool
+          [LclId] =
+              [$dEq_s8Oie ds_s8Oig] \r [ds1_s8Oih]
+                  GHC.Classes./= $dEq_s8Oie ds1_s8Oih ds_s8Oig;
+        } in  sat_s8Oii;
+
+Foreign.Marshal.Utils.maybeNew1
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8Oij ds1_s8Oik void_0E]
+        case ds1_s8Oik of {
+          GHC.Base.Nothing -> Unit# [GHC.Ptr.nullPtr];
+          GHC.Base.Just x_s8Oin [Occ=Once] ->
+              ds_s8Oij x_s8Oin GHC.Prim.void#;
+        };
+
+Foreign.Marshal.Utils.maybeNew
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a -> GHC.Types.IO (GHC.Ptr.Ptr b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.maybeNew1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.maybeWith_n
+  :: forall b c. (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8Oio] ds_s8Oio GHC.Ptr.nullPtr;
+
+Foreign.Marshal.Utils.maybeWith
+  :: forall a b c.
+     (a -> (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c)
+     -> GHC.Base.Maybe a
+     -> (GHC.Ptr.Ptr b -> GHC.Types.IO c)
+     -> GHC.Types.IO c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8Oip ds1_s8Oiq]
+        case ds1_s8Oiq of {
+          GHC.Base.Nothing -> Foreign.Marshal.Utils.maybeWith_n;
+          GHC.Base.Just x_s8Ois [Occ=Once] -> ds_s8Oip x_s8Ois;
+        };
+
+Foreign.Marshal.Utils.maybePeek1
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [peek_s8Oit ptr_s8Oiu void_0E]
+        case ptr_s8Oiu of wild_s8Oiw {
+          GHC.Ptr.Ptr a1_s8Oix [Occ=Once] ->
+              case eqAddr# [a1_s8Oix __NULL] of {
+                __DEFAULT ->
+                    case peek_s8Oit wild_s8Oiw GHC.Prim.void# of {
+                      Unit# ipv1_s8OiB [Occ=Once] ->
+                          let {
+                            sat_s8OiC [Occ=Once] :: GHC.Base.Maybe b_a8O2E
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv1_s8OiB];
+                          } in  Unit# [sat_s8OiC];
+                    };
+                1# -> Unit# [GHC.Base.Nothing];
+              };
+        };
+
+Foreign.Marshal.Utils.maybePeek
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.Base.Maybe b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.maybePeek1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.withMany [Occ=LoopBreaker]
+  :: forall a b res.
+     (a -> (b -> res) -> res) -> [a] -> ([b] -> res) -> res
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OiD ds1_s8OiE f_s8OiF]
+        case ds1_s8OiE of {
+          [] -> f_s8OiF GHC.Types.[];
+          : x_s8OiH [Occ=Once] xs_s8OiI [Occ=OnceL] ->
+              let {
+                sat_s8OiN [Occ=Once] :: b_a8O2u -> res_a8O2v
+                [LclId] =
+                    [ds_s8OiD f_s8OiF xs_s8OiI] \r [x'_s8OiJ]
+                        let {
+                          sat_s8OiM [Occ=Once] :: [b_a8O2u] -> res_a8O2v
+                          [LclId] =
+                              [f_s8OiF x'_s8OiJ] \r [xs'_s8OiK]
+                                  let {
+                                    sat_s8OiL [Occ=Once] :: [b_a8O2u]
+                                    [LclId] =
+                                        CCCS :! [x'_s8OiJ xs'_s8OiK];
+                                  } in  f_s8OiF sat_s8OiL;
+                        } in  Foreign.Marshal.Utils.withMany ds_s8OiD xs_s8OiI sat_s8OiM;
+              } in  ds_s8OiD x_s8OiH sat_s8OiN;
+        };
+
+Foreign.Marshal.Utils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule4];
+
+Foreign.Marshal.Utils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Utils"#;
+
+Foreign.Marshal.Utils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule2];
+
+Foreign.Marshal.Utils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Utils.$trModule3
+                                     Foreign.Marshal.Utils.$trModule1];
+
+Foreign.Marshal.Utils.copyBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OiO src_s8OiP size_s8OiQ void_0E]
+        case dest_s8OiO of {
+          GHC.Ptr.Ptr ds1_s8OiT [Occ=Once] ->
+              case src_s8OiP of {
+                GHC.Ptr.Ptr ds3_s8OiV [Occ=Once] ->
+                    case size_s8OiQ of {
+                      GHC.Types.I# x#_s8OiX [Occ=Once] ->
+                          case int2Word# [x#_s8OiX] of sat_s8OiZ {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8OiT
+                                                               ds3_s8OiV
+                                                               sat_s8OiZ
+                                                               GHC.Prim.void#]
+                                of
+                                { Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.copyBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.copyBytes1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.moveBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8Oj3 src_s8Oj4 size_s8Oj5 void_0E]
+        case dest_s8Oj3 of {
+          GHC.Ptr.Ptr ds1_s8Oj8 [Occ=Once] ->
+              case src_s8Oj4 of {
+                GHC.Ptr.Ptr ds3_s8Oja [Occ=Once] ->
+                    case size_s8Oj5 of {
+                      GHC.Types.I# x#_s8Ojc [Occ=Once] ->
+                          case int2Word# [x#_s8Ojc] of sat_s8Oje {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8Oj8
+                                                               ds3_s8Oja
+                                                               sat_s8Oje
+                                                               GHC.Prim.void#]
+                                of
+                                { Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.moveBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.moveBytes1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.fillBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Word.Word8
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8Oji char_s8Ojj size_s8Ojk void_0E]
+        case dest_s8Oji of {
+          GHC.Ptr.Ptr ds1_s8Ojn [Occ=Once] ->
+              case char_s8Ojj of {
+                GHC.Word.W8# x#_s8Ojp [Occ=Once] ->
+                    case size_s8Ojk of {
+                      GHC.Types.I# x#1_s8Ojr [Occ=Once] ->
+                          case int2Word# [x#1_s8Ojr] of sat_s8Oju {
+                            __DEFAULT ->
+                                case word2Int# [x#_s8Ojp] of sat_s8Ojt {
+                                  __DEFAULT ->
+                                      case
+                                          __pkg_ccall base-4.11.0.0 [ds1_s8Ojn
+                                                                     sat_s8Ojt
+                                                                     sat_s8Oju
+                                                                     GHC.Prim.void#]
+                                      of
+                                      { Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.fillBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Word.Word8 -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.fillBytes1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+
+==================== Pre unarise: ====================
+2018-03-16 16:03:58.72363024 UTC
+
+lvl_r8Ohb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r8Ohc :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r8Ohb;
+
+Foreign.Marshal.Utils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r8Ohd :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.Marshal.Utils.$trModule4;
+
+lvl3_r8Ohe :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Alloc"#;
+
+lvl4_r8Ohf :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_r8Ohe;
+
+lvl5_r8Ohg :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/Marshal/Alloc.hs"#;
+
+lvl6_r8Ohh :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r8Ohg;
+
+lvl7_r8Ohi :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [84#];
+
+lvl8_r8Ohj :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [32#];
+
+lvl9_r8Ohk :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [41#];
+
+lvl10_r8Ohl :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl7_r8Ohi
+                                           lvl8_r8Ohj
+                                           lvl7_r8Ohi
+                                           lvl9_r8Ohk];
+
+lvl11_r8Ohm :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl10_r8Ohl
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.new2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl11_r8Ohm;
+
+Foreign.Marshal.Utils.new1
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8OKI val_s8OKJ s_s8OKK]
+        case
+            Foreign.Storable.sizeOf $dStorable_s8OKI Foreign.Marshal.Utils.new2
+        of
+        { GHC.Types.I# x#_s8OKM [Occ=Once] ->
+              case int2Word# [x#_s8OKM] of sat_s8OKO {
+                __DEFAULT ->
+                    case __pkg_ccall base-4.11.0.0 [sat_s8OKO s_s8OKK] of {
+                      (#,#) ds_s8OKQ [Occ=Once*] ds1_s8OKR ->
+                          case eqAddr# [ds1_s8OKR __NULL] of {
+                            __DEFAULT ->
+                                let {
+                                  ipv1_s8OKT :: GHC.Ptr.Ptr a_a8O3X
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [ds1_s8OKR];
+                                } in 
+                                  case
+                                      Foreign.Storable.poke
+                                          $dStorable_s8OKI ipv1_s8OKT val_s8OKJ ds_s8OKQ
+                                  of
+                                  { (#,#) ipv_s8OKV [Occ=Once] _ [Occ=Dead] ->
+                                        (#,#) [ipv_s8OKV ipv1_s8OKT];
+                                  };
+                            1# -> raiseIO# [Foreign.Marshal.Alloc.malloc1 ds_s8OKQ];
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.new
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.new1 eta_B3 eta_B2 eta_B1;
+
+lvl12_r8Ohn :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [117#];
+
+lvl13_r8Oho :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [60#];
+
+lvl14_r8Ohp :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [69#];
+
+lvl15_r8Ohq :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl13_r8Oho
+                                           lvl12_r8Ohn
+                                           lvl14_r8Ohp];
+
+lvl16_r8Ohr :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl15_r8Ohq
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl16_r8Ohr;
+
+lvl17_r8Ohs :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [31#];
+
+lvl18_r8Oht :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [40#];
+
+lvl19_r8Ohu :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl17_r8Ohs
+                                           lvl12_r8Ohn
+                                           lvl18_r8Oht];
+
+lvl20_r8Ohv :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl19_r8Ohu
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with3 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl20_r8Ohv;
+
+Foreign.Marshal.Utils.with1
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8OKX val_s8OKY f_s8OKZ eta_s8OL0]
+        case
+            Foreign.Storable.sizeOf
+                $dStorable_s8OKX Foreign.Marshal.Utils.with3
+        of
+        { GHC.Types.I# size_s8OL2 [Occ=Once] ->
+              case
+                  Foreign.Storable.alignment
+                      $dStorable_s8OKX Foreign.Marshal.Utils.with2
+              of
+              { GHC.Types.I# align_s8OL4 [Occ=Once] ->
+                    case
+                        newAlignedPinnedByteArray# [size_s8OL2 align_s8OL4 eta_s8OL0]
+                    of
+                    { (#,#) ipv_s8OL6 [Occ=Once] ipv1_s8OL7 [Occ=Once] ->
+                          case unsafeFreezeByteArray# [ipv1_s8OL7 ipv_s8OL6] of {
+                            (#,#) ipv2_s8OL9 [Occ=Once] ipv3_s8OLa ->
+                                case byteArrayContents# [ipv3_s8OLa] of ptr_s8OLb {
+                                  __DEFAULT ->
+                                      let {
+                                        ptr1_s8OLc :: GHC.Ptr.Ptr a_a8O3A
+                                        [LclId, Unf=OtherCon []] =
+                                            CCCS GHC.Ptr.Ptr! [ptr_s8OLb];
+                                      } in 
+                                        case
+                                            Foreign.Storable.poke
+                                                $dStorable_s8OKX ptr1_s8OLc val_s8OKY ipv2_s8OL9
+                                        of
+                                        { (#,#) ipv4_s8OLe [Occ=Once] _ [Occ=Dead] ->
+                                              case f_s8OKZ ptr1_s8OLc ipv4_s8OLe of {
+                                                (#,#) ipv6_s8OLh [Occ=Once] ipv7_s8OLi [Occ=Once] ->
+                                                    case
+                                                        touch# [ipv3_s8OLa ipv6_s8OLh]
+                                                    of
+                                                    s4_s8OLj
+                                                    { __DEFAULT -> (#,#) [s4_s8OLj ipv7_s8OLi];
+                                                    };
+                                              };
+                                        };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.with
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.with1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.fromBool2 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+sat_s8OLk :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s8OLl :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s8OLk GHC.Types.[]];
+
+Foreign.Marshal.Utils.fromBool1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s8OLl;
+
+Foreign.Marshal.Utils.fromBool
+  :: forall a. GHC.Num.Num a => GHC.Types.Bool -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLLLLLC(S)),1*U(A,A,A,A,A,A,1*C1(U))><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dNum_s8OLm ds_s8OLn]
+        case ds_s8OLn of {
+          GHC.Types.False ->
+              GHC.Num.fromInteger $dNum_s8OLm Foreign.Marshal.Utils.fromBool2;
+          GHC.Types.True ->
+              GHC.Num.fromInteger $dNum_s8OLm Foreign.Marshal.Utils.fromBool1;
+        };
+
+Foreign.Marshal.Utils.toBool
+  :: forall a.
+     (GHC.Classes.Eq a, GHC.Num.Num a) =>
+     a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Str=<L,U(A,C(C1(U)))><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dEq_s8OLp $dNum_s8OLq]
+        let {
+          ds_s8OLr [Occ=OnceL] :: a_a8O3j
+          [LclId] =
+              [$dNum_s8OLq] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8OLq Foreign.Marshal.Utils.fromBool2; } in
+        let {
+          sat_s8OLt [Occ=OnceT[0]] :: a_a8O3j -> GHC.Types.Bool
+          [LclId] =
+              [$dEq_s8OLp ds_s8OLr] \r [ds1_s8OLs]
+                  GHC.Classes./= $dEq_s8OLp ds1_s8OLs ds_s8OLr;
+        } in  sat_s8OLt;
+
+Foreign.Marshal.Utils.maybeNew1
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLu ds1_s8OLv eta_s8OLw]
+        case ds1_s8OLv of {
+          GHC.Base.Nothing -> (#,#) [eta_s8OLw GHC.Ptr.nullPtr];
+          GHC.Base.Just x_s8OLy [Occ=Once] -> ds_s8OLu x_s8OLy eta_s8OLw;
+        };
+
+Foreign.Marshal.Utils.maybeNew
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a -> GHC.Types.IO (GHC.Ptr.Ptr b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.maybeNew1 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.maybeWith_n
+  :: forall b c. (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLz] ds_s8OLz GHC.Ptr.nullPtr;
+
+Foreign.Marshal.Utils.maybeWith
+  :: forall a b c.
+     (a -> (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c)
+     -> GHC.Base.Maybe a
+     -> (GHC.Ptr.Ptr b -> GHC.Types.IO c)
+     -> GHC.Types.IO c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLA ds1_s8OLB]
+        case ds1_s8OLB of {
+          GHC.Base.Nothing -> Foreign.Marshal.Utils.maybeWith_n;
+          GHC.Base.Just x_s8OLD [Occ=Once] -> ds_s8OLA x_s8OLD;
+        };
+
+Foreign.Marshal.Utils.maybePeek1
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [peek_s8OLE ptr_s8OLF eta_s8OLG]
+        case ptr_s8OLF of wild_s8OLH {
+          GHC.Ptr.Ptr a1_s8OLI [Occ=Once] ->
+              case eqAddr# [a1_s8OLI __NULL] of {
+                __DEFAULT ->
+                    case peek_s8OLE wild_s8OLH eta_s8OLG of {
+                      (#,#) ipv_s8OLL [Occ=Once] ipv1_s8OLM [Occ=Once] ->
+                          let {
+                            sat_s8OLN [Occ=Once] :: GHC.Base.Maybe b_a8O2E
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv1_s8OLM];
+                          } in  (#,#) [ipv_s8OLL sat_s8OLN];
+                    };
+                1# -> (#,#) [eta_s8OLG GHC.Base.Nothing];
+              };
+        };
+
+Foreign.Marshal.Utils.maybePeek
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.Base.Maybe b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.maybePeek1 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.withMany [Occ=LoopBreaker]
+  :: forall a b res.
+     (a -> (b -> res) -> res) -> [a] -> ([b] -> res) -> res
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLO ds1_s8OLP f_s8OLQ]
+        case ds1_s8OLP of {
+          [] -> f_s8OLQ GHC.Types.[];
+          : x_s8OLS [Occ=Once] xs_s8OLT [Occ=OnceL] ->
+              let {
+                sat_s8OLY [Occ=Once] :: b_a8O2u -> res_a8O2v
+                [LclId] =
+                    [ds_s8OLO f_s8OLQ xs_s8OLT] \r [x'_s8OLU]
+                        let {
+                          sat_s8OLX [Occ=Once] :: [b_a8O2u] -> res_a8O2v
+                          [LclId] =
+                              [f_s8OLQ x'_s8OLU] \r [xs'_s8OLV]
+                                  let {
+                                    sat_s8OLW [Occ=Once] :: [b_a8O2u]
+                                    [LclId] =
+                                        CCCS :! [x'_s8OLU xs'_s8OLV];
+                                  } in  f_s8OLQ sat_s8OLW;
+                        } in  Foreign.Marshal.Utils.withMany ds_s8OLO xs_s8OLT sat_s8OLX;
+              } in  ds_s8OLO x_s8OLS sat_s8OLY;
+        };
+
+Foreign.Marshal.Utils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule4];
+
+Foreign.Marshal.Utils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Utils"#;
+
+Foreign.Marshal.Utils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule2];
+
+Foreign.Marshal.Utils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Utils.$trModule3
+                                     Foreign.Marshal.Utils.$trModule1];
+
+Foreign.Marshal.Utils.copyBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OLZ src_s8OM0 size_s8OM1 s_s8OM2]
+        case dest_s8OLZ of {
+          GHC.Ptr.Ptr ds1_s8OM4 [Occ=Once] ->
+              case src_s8OM0 of {
+                GHC.Ptr.Ptr ds3_s8OM6 [Occ=Once] ->
+                    case size_s8OM1 of {
+                      GHC.Types.I# x#_s8OM8 [Occ=Once] ->
+                          case int2Word# [x#_s8OM8] of sat_s8OMa {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8OM4
+                                                               ds3_s8OM6
+                                                               sat_s8OMa
+                                                               s_s8OM2]
+                                of
+                                { (#,#) ds4_s8OMc [Occ=Once] _ [Occ=Dead] ->
+                                      (#,#) [ds4_s8OMc GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.copyBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.copyBytes1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.moveBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OMe src_s8OMf size_s8OMg s_s8OMh]
+        case dest_s8OMe of {
+          GHC.Ptr.Ptr ds1_s8OMj [Occ=Once] ->
+              case src_s8OMf of {
+                GHC.Ptr.Ptr ds3_s8OMl [Occ=Once] ->
+                    case size_s8OMg of {
+                      GHC.Types.I# x#_s8OMn [Occ=Once] ->
+                          case int2Word# [x#_s8OMn] of sat_s8OMp {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8OMj
+                                                               ds3_s8OMl
+                                                               sat_s8OMp
+                                                               s_s8OMh]
+                                of
+                                { (#,#) ds4_s8OMr [Occ=Once] _ [Occ=Dead] ->
+                                      (#,#) [ds4_s8OMr GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.moveBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.moveBytes1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+Foreign.Marshal.Utils.fillBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Word.Word8
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OMt char_s8OMu size_s8OMv s_s8OMw]
+        case dest_s8OMt of {
+          GHC.Ptr.Ptr ds1_s8OMy [Occ=Once] ->
+              case char_s8OMu of {
+                GHC.Word.W8# x#_s8OMA [Occ=Once] ->
+                    case size_s8OMv of {
+                      GHC.Types.I# x#1_s8OMC [Occ=Once] ->
+                          case int2Word# [x#1_s8OMC] of sat_s8OMF {
+                            __DEFAULT ->
+                                case word2Int# [x#_s8OMA] of sat_s8OME {
+                                  __DEFAULT ->
+                                      case
+                                          __pkg_ccall base-4.11.0.0 [ds1_s8OMy
+                                                                     sat_s8OME
+                                                                     sat_s8OMF
+                                                                     s_s8OMw]
+                                      of
+                                      { (#,#) ds2_s8OMH [Occ=Once] _ [Occ=Dead] ->
+                                            (#,#) [ds2_s8OMH GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.fillBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Word.Word8 -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 eta_B1]
+        Foreign.Marshal.Utils.fillBytes1 eta_B4 eta_B3 eta_B2 eta_B1;
+
+
+==================== STG syntax: ====================
+2018-03-16 16:03:58.733792919 UTC
+
+lvl_r8Ohb :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "undefined"#;
+
+lvl1_r8Ohc :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl_r8Ohb;
+
+Foreign.Marshal.Utils.$trModule4 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "base"#;
+
+lvl2_r8Ohd :: [GHC.Types.Char]
+[GblId] =
+    [] \u []
+        GHC.CString.unpackCString# Foreign.Marshal.Utils.$trModule4;
+
+lvl3_r8Ohe :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Alloc"#;
+
+lvl4_r8Ohf :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl3_r8Ohe;
+
+lvl5_r8Ohg :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "./Foreign/Marshal/Alloc.hs"#;
+
+lvl6_r8Ohh :: [GHC.Types.Char]
+[GblId] =
+    [] \u [] GHC.CString.unpackCString# lvl5_r8Ohg;
+
+lvl7_r8Ohi :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [84#];
+
+lvl8_r8Ohj :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [32#];
+
+lvl9_r8Ohk :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [41#];
+
+lvl10_r8Ohl :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl7_r8Ohi
+                                           lvl8_r8Ohj
+                                           lvl7_r8Ohi
+                                           lvl9_r8Ohk];
+
+lvl11_r8Ohm :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl10_r8Ohl
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.new2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl11_r8Ohm;
+
+Foreign.Marshal.Utils.new1
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr a #)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8OKI val_s8OKJ void_0E]
+        case
+            Foreign.Storable.sizeOf $dStorable_s8OKI Foreign.Marshal.Utils.new2
+        of
+        { GHC.Types.I# x#_s8OKM [Occ=Once] ->
+              case int2Word# [x#_s8OKM] of sat_s8OKO {
+                __DEFAULT ->
+                    case __pkg_ccall base-4.11.0.0 [sat_s8OKO GHC.Prim.void#] of {
+                      Unit# ds1_s8OKR ->
+                          case eqAddr# [ds1_s8OKR __NULL] of {
+                            __DEFAULT ->
+                                let {
+                                  ipv1_s8OKT :: GHC.Ptr.Ptr a_a8O3X
+                                  [LclId, Unf=OtherCon []] =
+                                      CCCS GHC.Ptr.Ptr! [ds1_s8OKR];
+                                } in 
+                                  case
+                                      Foreign.Storable.poke
+                                          $dStorable_s8OKI ipv1_s8OKT val_s8OKJ GHC.Prim.void#
+                                  of
+                                  { Unit# _ [Occ=Dead] -> Unit# [ipv1_s8OKT];
+                                  };
+                            1# -> raiseIO# [Foreign.Marshal.Alloc.malloc1 GHC.Prim.void#];
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.new
+  :: forall a.
+     Foreign.Storable.Storable a =>
+     a -> GHC.Types.IO (GHC.Ptr.Ptr a)
+[GblId,
+ Arity=3,
+ Str=<S(C(S(S))LLLLLLL),U(1*C1(U(U)),A,A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.new1 eta_B3 eta_B2 GHC.Prim.void#;
+
+lvl12_r8Ohn :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [117#];
+
+lvl13_r8Oho :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [60#];
+
+lvl14_r8Ohp :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [69#];
+
+lvl15_r8Ohq :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl13_r8Oho
+                                           lvl12_r8Ohn
+                                           lvl14_r8Ohp];
+
+lvl16_r8Ohr :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl15_r8Ohq
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with2 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl16_r8Ohr;
+
+lvl17_r8Ohs :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [31#];
+
+lvl18_r8Oht :: GHC.Types.Int
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.I#! [40#];
+
+lvl19_r8Ohu :: GHC.Stack.Types.SrcLoc
+[GblId, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.SrcLoc! [lvl2_r8Ohd
+                                           lvl4_r8Ohf
+                                           lvl6_r8Ohh
+                                           lvl12_r8Ohn
+                                           lvl17_r8Ohs
+                                           lvl12_r8Ohn
+                                           lvl18_r8Oht];
+
+lvl20_r8Ohv :: GHC.Stack.Types.CallStack
+[GblId, Str=m2, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Stack.Types.PushCallStack! [lvl1_r8Ohc
+                                                  lvl19_r8Ohu
+                                                  GHC.Stack.Types.EmptyCallStack];
+
+Foreign.Marshal.Utils.with3 :: forall a. a
+[GblId, Str=x] =
+    [] \u [] GHC.Err.undefined lvl20_r8Ohv;
+
+Foreign.Marshal.Utils.with1
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a
+     -> (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, b #)
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [$dStorable_s8OKX val_s8OKY f_s8OKZ void_0E]
+        case
+            Foreign.Storable.sizeOf
+                $dStorable_s8OKX Foreign.Marshal.Utils.with3
+        of
+        { GHC.Types.I# size_s8OL2 [Occ=Once] ->
+              case
+                  Foreign.Storable.alignment
+                      $dStorable_s8OKX Foreign.Marshal.Utils.with2
+              of
+              { GHC.Types.I# align_s8OL4 [Occ=Once] ->
+                    case
+                        newAlignedPinnedByteArray# [size_s8OL2 align_s8OL4 GHC.Prim.void#]
+                    of
+                    { Unit# ipv1_s8OL7 [Occ=Once] ->
+                          case unsafeFreezeByteArray# [ipv1_s8OL7 GHC.Prim.void#] of {
+                            Unit# ipv3_s8OLa ->
+                                case byteArrayContents# [ipv3_s8OLa] of ptr_s8OLb {
+                                  __DEFAULT ->
+                                      let {
+                                        ptr1_s8OLc :: GHC.Ptr.Ptr a_a8O3A
+                                        [LclId, Unf=OtherCon []] =
+                                            CCCS GHC.Ptr.Ptr! [ptr_s8OLb];
+                                      } in 
+                                        case
+                                            Foreign.Storable.poke
+                                                $dStorable_s8OKX ptr1_s8OLc val_s8OKY GHC.Prim.void#
+                                        of
+                                        { Unit# _ [Occ=Dead] ->
+                                              case f_s8OKZ ptr1_s8OLc GHC.Prim.void# of {
+                                                Unit# ipv7_s8OLi [Occ=Once] ->
+                                                    case
+                                                        touch# [ipv3_s8OLa GHC.Prim.void#]
+                                                    of
+                                                    s4_s8OLj
+                                                    { (##) -> Unit# [ipv7_s8OLi];
+                                                    };
+                                              };
+                                        };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.with
+  :: forall a b.
+     Foreign.Storable.Storable a =>
+     a -> (GHC.Ptr.Ptr a -> GHC.Types.IO b) -> GHC.Types.IO b
+[GblId,
+ Arity=4,
+ Str=<S(C(S(S))C(S(S))LLLLLC(C(C(S(SL))))),U(1*C1(U(U)),1*C1(U(U)),A,A,A,A,A,1*C1(C1(C1(U(U,A)))))><L,U><L,1*C1(C1(U(U,U)))><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.with1 eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.fromBool2 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True GHC.Types.[];
+
+sat_s8OLk :: GHC.Types.Int
+[LclId] =
+    CCS_DONT_CARE GHC.Types.I#! [1#];
+
+sat_s8OLl :: [GHC.Types.Int]
+[LclId] =
+    CCS_DONT_CARE :! [sat_s8OLk GHC.Types.[]];
+
+Foreign.Marshal.Utils.fromBool1 :: GHC.Integer.Type.Integer
+[GblId, Unf=OtherCon []] =
+    [] \u [] GHC.Integer.Type.mkInteger GHC.Types.True sat_s8OLl;
+
+Foreign.Marshal.Utils.fromBool
+  :: forall a. GHC.Num.Num a => GHC.Types.Bool -> a
+[GblId,
+ Arity=2,
+ Str=<S(LLLLLLC(S)),1*U(A,A,A,A,A,A,1*C1(U))><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [$dNum_s8OLm ds_s8OLn]
+        case ds_s8OLn of {
+          GHC.Types.False ->
+              GHC.Num.fromInteger $dNum_s8OLm Foreign.Marshal.Utils.fromBool2;
+          GHC.Types.True ->
+              GHC.Num.fromInteger $dNum_s8OLm Foreign.Marshal.Utils.fromBool1;
+        };
+
+Foreign.Marshal.Utils.toBool
+  :: forall a.
+     (GHC.Classes.Eq a, GHC.Num.Num a) =>
+     a -> GHC.Types.Bool
+[GblId,
+ Arity=2,
+ Str=<L,U(A,C(C1(U)))><L,1*U(A,A,A,A,A,A,1*C1(U))>,
+ Unf=OtherCon []] =
+    [] \r [$dEq_s8OLp $dNum_s8OLq]
+        let {
+          ds_s8OLr [Occ=OnceL] :: a_a8O3j
+          [LclId] =
+              [$dNum_s8OLq] \u []
+                  GHC.Num.fromInteger
+                      $dNum_s8OLq Foreign.Marshal.Utils.fromBool2; } in
+        let {
+          sat_s8OLt [Occ=OnceT[0]] :: a_a8O3j -> GHC.Types.Bool
+          [LclId] =
+              [$dEq_s8OLp ds_s8OLr] \r [ds1_s8OLs]
+                  GHC.Classes./= $dEq_s8OLp ds1_s8OLs ds_s8OLr;
+        } in  sat_s8OLt;
+
+Foreign.Marshal.Utils.maybeNew1
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Ptr.Ptr b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLu ds1_s8OLv void_0E]
+        case ds1_s8OLv of {
+          GHC.Base.Nothing -> Unit# [GHC.Ptr.nullPtr];
+          GHC.Base.Just x_s8OLy [Occ=Once] ->
+              ds_s8OLu x_s8OLy GHC.Prim.void#;
+        };
+
+Foreign.Marshal.Utils.maybeNew
+  :: forall a b.
+     (a -> GHC.Types.IO (GHC.Ptr.Ptr b))
+     -> GHC.Base.Maybe a -> GHC.Types.IO (GHC.Ptr.Ptr b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S,1*U><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.maybeNew1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.maybeWith_n
+  :: forall b c. (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c
+[GblId,
+ Arity=1,
+ Caf=NoCafRefs,
+ Str=<C(S),1*C1(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLz] ds_s8OLz GHC.Ptr.nullPtr;
+
+Foreign.Marshal.Utils.maybeWith
+  :: forall a b c.
+     (a -> (GHC.Ptr.Ptr b -> GHC.Types.IO c) -> GHC.Types.IO c)
+     -> GHC.Base.Maybe a
+     -> (GHC.Ptr.Ptr b -> GHC.Types.IO c)
+     -> GHC.Types.IO c
+[GblId,
+ Arity=2,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(U)><S,1*U>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLA ds1_s8OLB]
+        case ds1_s8OLB of {
+          GHC.Base.Nothing -> Foreign.Marshal.Utils.maybeWith_n;
+          GHC.Base.Just x_s8OLD [Occ=Once] -> ds_s8OLA x_s8OLD;
+        };
+
+Foreign.Marshal.Utils.maybePeek1
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GHC.Base.Maybe b #)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [peek_s8OLE ptr_s8OLF void_0E]
+        case ptr_s8OLF of wild_s8OLH {
+          GHC.Ptr.Ptr a1_s8OLI [Occ=Once] ->
+              case eqAddr# [a1_s8OLI __NULL] of {
+                __DEFAULT ->
+                    case peek_s8OLE wild_s8OLH GHC.Prim.void# of {
+                      Unit# ipv1_s8OLM [Occ=Once] ->
+                          let {
+                            sat_s8OLN [Occ=Once] :: GHC.Base.Maybe b_a8O2E
+                            [LclId] =
+                                CCCS GHC.Base.Just! [ipv1_s8OLM];
+                          } in  Unit# [sat_s8OLN];
+                    };
+                1# -> Unit# [GHC.Base.Nothing];
+              };
+        };
+
+Foreign.Marshal.Utils.maybePeek
+  :: forall a b.
+     (GHC.Ptr.Ptr a -> GHC.Types.IO b)
+     -> GHC.Ptr.Ptr a -> GHC.Types.IO (GHC.Base.Maybe b)
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,1*C1(C1(U(U,U)))><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.maybePeek1 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.withMany [Occ=LoopBreaker]
+  :: forall a b res.
+     (a -> (b -> res) -> res) -> [a] -> ([b] -> res) -> res
+[GblId,
+ Arity=3,
+ Caf=NoCafRefs,
+ Str=<L,C(C1(U))><S,1*U><L,C(U)>,
+ Unf=OtherCon []] =
+    [] \r [ds_s8OLO ds1_s8OLP f_s8OLQ]
+        case ds1_s8OLP of {
+          [] -> f_s8OLQ GHC.Types.[];
+          : x_s8OLS [Occ=Once] xs_s8OLT [Occ=OnceL] ->
+              let {
+                sat_s8OLY [Occ=Once] :: b_a8O2u -> res_a8O2v
+                [LclId] =
+                    [ds_s8OLO f_s8OLQ xs_s8OLT] \r [x'_s8OLU]
+                        let {
+                          sat_s8OLX [Occ=Once] :: [b_a8O2u] -> res_a8O2v
+                          [LclId] =
+                              [f_s8OLQ x'_s8OLU] \r [xs'_s8OLV]
+                                  let {
+                                    sat_s8OLW [Occ=Once] :: [b_a8O2u]
+                                    [LclId] =
+                                        CCCS :! [x'_s8OLU xs'_s8OLV];
+                                  } in  f_s8OLQ sat_s8OLW;
+                        } in  Foreign.Marshal.Utils.withMany ds_s8OLO xs_s8OLT sat_s8OLX;
+              } in  ds_s8OLO x_s8OLS sat_s8OLY;
+        };
+
+Foreign.Marshal.Utils.$trModule3 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule4];
+
+Foreign.Marshal.Utils.$trModule2 :: GHC.Prim.Addr#
+[GblId, Caf=NoCafRefs, Unf=OtherCon []] =
+    "Foreign.Marshal.Utils"#;
+
+Foreign.Marshal.Utils.$trModule1 :: GHC.Types.TrName
+[GblId, Caf=NoCafRefs, Str=m1, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.TrNameS! [Foreign.Marshal.Utils.$trModule2];
+
+Foreign.Marshal.Utils.$trModule :: GHC.Types.Module
+[GblId, Caf=NoCafRefs, Str=m, Unf=OtherCon []] =
+    CCS_DONT_CARE GHC.Types.Module! [Foreign.Marshal.Utils.$trModule3
+                                     Foreign.Marshal.Utils.$trModule1];
+
+Foreign.Marshal.Utils.copyBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OLZ src_s8OM0 size_s8OM1 void_0E]
+        case dest_s8OLZ of {
+          GHC.Ptr.Ptr ds1_s8OM4 [Occ=Once] ->
+              case src_s8OM0 of {
+                GHC.Ptr.Ptr ds3_s8OM6 [Occ=Once] ->
+                    case size_s8OM1 of {
+                      GHC.Types.I# x#_s8OM8 [Occ=Once] ->
+                          case int2Word# [x#_s8OM8] of sat_s8OMa {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8OM4
+                                                               ds3_s8OM6
+                                                               sat_s8OMa
+                                                               GHC.Prim.void#]
+                                of
+                                { Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.copyBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.copyBytes1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.moveBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Ptr.Ptr a
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OMe src_s8OMf size_s8OMg void_0E]
+        case dest_s8OMe of {
+          GHC.Ptr.Ptr ds1_s8OMj [Occ=Once] ->
+              case src_s8OMf of {
+                GHC.Ptr.Ptr ds3_s8OMl [Occ=Once] ->
+                    case size_s8OMg of {
+                      GHC.Types.I# x#_s8OMn [Occ=Once] ->
+                          case int2Word# [x#_s8OMn] of sat_s8OMp {
+                            __DEFAULT ->
+                                case
+                                    __pkg_ccall base-4.11.0.0 [ds1_s8OMj
+                                                               ds3_s8OMl
+                                                               sat_s8OMp
+                                                               GHC.Prim.void#]
+                                of
+                                { Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.moveBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Ptr.Ptr a -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.moveBytes1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
+Foreign.Marshal.Utils.fillBytes1
+  :: forall a.
+     GHC.Ptr.Ptr a
+     -> GHC.Word.Word8
+     -> GHC.Types.Int
+     -> GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [dest_s8OMt char_s8OMu size_s8OMv void_0E]
+        case dest_s8OMt of {
+          GHC.Ptr.Ptr ds1_s8OMy [Occ=Once] ->
+              case char_s8OMu of {
+                GHC.Word.W8# x#_s8OMA [Occ=Once] ->
+                    case size_s8OMv of {
+                      GHC.Types.I# x#1_s8OMC [Occ=Once] ->
+                          case int2Word# [x#1_s8OMC] of sat_s8OMF {
+                            __DEFAULT ->
+                                case word2Int# [x#_s8OMA] of sat_s8OME {
+                                  __DEFAULT ->
+                                      case
+                                          __pkg_ccall base-4.11.0.0 [ds1_s8OMy
+                                                                     sat_s8OME
+                                                                     sat_s8OMF
+                                                                     GHC.Prim.void#]
+                                      of
+                                      { Unit# _ [Occ=Dead] -> Unit# [GHC.Tuple.()];
+                                      };
+                                };
+                          };
+                    };
+              };
+        };
+
+Foreign.Marshal.Utils.fillBytes
+  :: forall a.
+     GHC.Ptr.Ptr a -> GHC.Word.Word8 -> GHC.Types.Int -> GHC.Types.IO ()
+[GblId,
+ Arity=4,
+ Caf=NoCafRefs,
+ Str=<S(S),1*U(U)><S(S),1*U(U)><S(S),1*U(U)><S,U>,
+ Unf=OtherCon []] =
+    [] \r [eta_B4 eta_B3 eta_B2 void_0E]
+        Foreign.Marshal.Utils.fillBytes1
+            eta_B4 eta_B3 eta_B2 GHC.Prim.void#;
+
